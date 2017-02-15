@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="rule_AD4UNIX_jump_samaccountname" operator="and" query="identity" displayname="rule AD4UNIX account samaccountname = {login}" version="3" notes="">
+	<RequestParam name="login" displayname="account login" query="account" criteria="likeLogin" criteriaparam="loginParam">
+		<Value name="0" data=""/>
+	</RequestParam>
+	<RequestJoin name="J1478598120130_481" operator="and" join="accountreconciliation">
+		<RequestJoin name="J1478598148632_483" operator="and" join="group">
+			<RequestJoin name="J1478598158546_485" operator="and" join="repository">
+				<RequestCriteria name="C1478598459210_497" criteria="eqCode">
+					<RequestCriteriaParam name="codeParam" ignoreifempty="false">
+						<Value name="0" data="AD4UNIX"/>
+					</RequestCriteriaParam>
+				</RequestCriteria>
+			</RequestJoin>
+			<RequestJoin name="J1478598175350_487" operator="and" join="account">
+				<RequestCriteria name="C1478599412150_39667" criteria="eqLogin">
+					<RequestCriteriaParam name="loginParam" reference="login" ignoreifempty="false">
+						<Value name="0"/>
+					</RequestCriteriaParam>
+				</RequestCriteria>
+			</RequestJoin>
+		</RequestJoin>
+		<RequestCriteria name="C1478599423614_39727" criteria="eqLogin">
+			<RequestCriteriaParam name="loginParam" reference="login" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

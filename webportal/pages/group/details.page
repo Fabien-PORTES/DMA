@@ -1,0 +1,447 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/details_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/resources/audittrail.page"
+import "/webportal/pages/mixins/workflow_mixins.page"
+
+
+groupDetailsManager_Dialog = Dialog {
+	title: $groupDetailsManager_Dialog_NLS.title
+	mixins: workflowDefaultMixin
+	buttons:OkButton
+	width:800
+	height:300
+	
+	/* Parameters here */
+	paramGroupUid = Variable {type:String multivalued:False}
+	
+	/* variables here */
+	newmanagerUid = Variable {type:String multivalued:False}
+
+	
+	/* Datasets and records here */
+	// Record for concept details
+	group = Record {
+		view: br_groupDetail with paramGroupUid to uid
+	}
+	
+	newManager = Record {
+		view: br_identityDetail with newmanagerUid to uid
+	}
+
+	groupbusinessowner = Record {
+		view: br_groupBusinessowner with paramGroupUid to uid
+	}
+
+	audittrailstatus = Record {
+		view:br_updatemanagerstatus with paramGroupUid to uid, Transform "Group" using entityDetailsManagerTicketTypeMapping to tickettype
+	}
+
+	task = TaskRecord (create "updategroupmanager")
+	
+	
+	/* Page content */
+	Grid {
+		columns:GridColumn{width:64px}, GridColumn{width:320px}, GridColumn{width:320px}, GridColumn{width:grow}
+		GridRow {
+			height:96
+			GridCell {
+				Image {
+					image: "48/red/group.png"
+					align: Center
+				}
+			}
+			GridCell {
+				Text {
+					label: $group.code
+					value: Transform group.code using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $group.displayname
+					value: Transform group.displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text{
+					label: $group.comment
+					value:  Transform group.comment using optionStringMapping
+				}
+			}
+			GridCell {
+				Text{
+					label:   $group.repositorydisplayname 
+					value: Transform group.repository_displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $groupDetailsManager_Dialog_NLS.managerhrcode
+					value: Transform groupbusinessowner.hrcode using optionStringMapping
+					lines: 2
+				}
+
+				Text {
+					label: $groupDetailsManager_Dialog_NLS.managerfullname
+					value: Transform groupbusinessowner.fullname using optionStringMapping
+					lines: 2
+				}
+			}
+			GridCell {
+			}
+		}
+		GridRow {
+			GridCell {
+				span:4
+				Header {
+					value:$groupDetailsManager_Dialog_NLS.question
+				}
+				Header {
+					value:$groupDetailsManager_Dialog_NLS.changeinprogress
+					styling:warningFieldStyle
+					hidden:
+							Not AndPredicate {
+								StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+								StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+							}
+				}
+			}
+		}
+		GridRow {
+			height:grow
+			GridCell {
+				span:4
+				ButtonGroup {
+						Button {
+							actions:Dialog identityPicker(newmanagerUid from outUid), 
+									Confirm $groupDetailsManager_Dialog_NLS.newmanagerconfirm(Transform newManager.hrcode using mayBeNullMapping, newManager.fullname, group.displayname, group.repository_displayname),
+									Flash Information $groupDetailsManager_Dialog_NLS.confirmupdate,
+									Set paramGroupUid to task.group,
+									Set newmanagerUid to task.manager,
+									StringCase(groupbusinessowner.fullname) { when IsEmpty then [Set 'create' to task.action] otherwise [Set 'modify' to task.action] },
+									TaskComplete task wait,
+									ReloadData (groupbusinessowner, audittrailstatus)
+							text:$groupDetailsManager_Dialog_NLS.setmanager
+							disabled:
+								AndPredicate {
+									StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+									StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Confirm $groupDetailsManager_Dialog_NLS.newmanagerremove(Transform groupbusinessowner.hrcode using mayBeNullMapping, groupbusinessowner.fullname, group.displayname, group.repository_displayname),
+									Flash Information $groupDetailsManager_Dialog_NLS.removeupdate,
+									Set paramGroupUid to task.group,
+									Set '' to task.manager,
+									Set 'delete' to task.action,
+									TaskComplete task wait,
+									ReloadData (groupbusinessowner, audittrailstatus)
+							text:$groupDetailsManager_Dialog_NLS.removemanager
+							disabled:
+								OrPredicate {
+									AndPredicate {
+										StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+										StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+									}
+								StringPredicate(groupbusinessowner.fullname) {when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Dialog entityDetailsManagerAuditDialog("Group" to type, paramGroupUid to entity) 
+						                        feature:groupdetails_auditmanager
+							                       
+							text:$groupDetailsManager_Dialog_NLS.manageraudittrail
+						}
+				}		
+			}
+		}
+	}
+}
+
+
+
+groupDetailsPageRecorduid = Page {
+	title: "Recorduid redirection (group)"
+	conditional-redirect: ConditionalRedirect { condition: True target: Page groupDetailsPage with groupUid.uid to paramGroupUid }
+	
+	recorduid = Parameter {
+		type: Integer
+		hidden: True
+		recorduid-of: Group
+		mandatory: True
+	}
+	
+	groupUid = Record {
+		view: br_groupDetail_uid with recorduid to recorduid
+	}
+}
+
+groupDetailsPage = Page {
+	title: $groupDetails.title
+	dynamic-title: $groupDetails.dynamictitle(group.displayname)
+	mixins: detailsPage
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set paramGroupUid to nonEmptyUid] when True then []}
+	
+	// Parameters Here
+	paramGroupUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: True
+	}
+	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	// Search Definition Here
+	groupSearch = SearchDefinition {
+		entity: Group
+		simple-mode-rule: br_group_simple_search
+	}
+	
+	// Variables Here
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedGroupUid = Variable {
+		type: String
+		initial: paramGroupUid
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Dataset for Navigator
+	groupList = Dataset {
+		search: Search {
+			definition: groupSearch
+			view: br_group_searchpoint with nonEmptyUid to uid unless-empty
+		}
+	}
+	
+	// Dataset for Reports
+	relatedLinksTiles = Dataset {
+		pages: Pages{tags: "group" and "byuid" }
+	}
+	
+	// Record for concept details
+	group = Record {
+		view: br_groupDetail with selectedGroupUid to uid
+	}
+	
+	// All other Records and Datasets
+	groupnbdirectaccounts = Record {
+		view: br_groupDetail_nbaccounts with group.recorduid to recorduid , True to isDirectLink
+	}
+	
+	groupnbaccounts = Record {
+		view: br_groupDetail_nbaccounts with group.recorduid to recorduid , False to isDirectLink
+	}
+	
+	groupbusinessowner = Record {
+		view: br_groupBusinessowner with selectedGroupUid to uid
+	}
+	// Start of the Layout based on a 1-column Grid
+	Grid {
+		columns: GridColumn{}
+		
+		// Row for the Navigator
+		GridRow {
+			GridCell{
+				Group{
+					layout: Layout {align: horizontal Center vertical Beginning }
+					Spacer {
+						height: 5
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					SetNavigator {
+						data: groupList
+						column: uid
+						selection: selectedGroupUid
+						back-link: Activity Group Search with SerializeSearch groupSearch to groupSearch, paramSearchMode to paramSearchMode, selectedGroupUid to initialUid, initialIndex to paramInitialIndex
+						initial: paramGroupUid
+						initial-index: paramInitialIndex
+						selection-index: initialIndex
+						show-count: True
+						show-first: True
+						show-last: True
+						count-width: 150
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					Spacer{
+						height:10
+					}
+				}
+			}
+		}
+		
+		// Row for header
+		GridRow{
+			GridCell{
+				background: Image "details/card_header.png"
+				Spacer { height: 67 }
+			}
+		}
+		
+		// Row for content
+		GridRow{
+			GridCell{
+				background: Image "details/card_content.png"
+				
+				Spacer { height:10 }
+				
+				Text {
+					value: group.displayname
+					styling:detailsTitle
+					align: Center
+				}
+				
+				Text {
+					value: $groupDetails.subtitle ( group.repository_displayname )
+					styling: detailsSubtitle
+					align:Center
+				}
+				
+				Spacer { height:5 }
+				
+				Flow {
+					disposition: Horizontal
+
+					// First Column
+					Group {
+						layout: Layout { hint: width 290}
+						Image {
+							image: "details/group.png"
+							align: Center
+						}
+					}
+					
+					// Second Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Text {
+							label: $group.displayname
+							value: Transform group.displayname using optionStringMapping
+							lines: 2
+						}
+						
+						Text {
+							label: $group.grouptype
+							value: Transform group.grouptype using optionStringMapping
+							lines: 2
+						}
+					}
+					
+					// Third Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Link {
+							label: $repository.concept
+							value: Transform group.repository_displayname using optionStringMapping
+							icon:"details/link_database_14.png"
+							target: Activity Repository Detail with group.repository_uid to paramRepositoryUid
+							disabled:
+								OrPredicate {
+									 StringPredicate( group.repository_displayname ) { when IsEmpty then True}
+									Not FeaturePredicate groupdetails_linktorepository						
+								}
+						}
+						
+						Text {
+							label: $groupDetails.nbaccounts
+							value: $groupDetails.nbaccounts.response( 
+								Transform groupnbdirectaccounts.count using nullToZeroMapping,
+								Transform groupnbaccounts.count using nullToZeroMapping)
+						}
+						Link {
+							label: $businessowner.concept
+							value: Concat(Transform groupbusinessowner.hrcode using optionStringMapping, ' / ', Transform groupbusinessowner.fullname using optionStringMapping)
+							target:Activity Identity Detail with groupbusinessowner.uid to paramIdentityUid
+							disabled:
+							OrPredicate {
+								StringPredicate(groupbusinessowner.uid) { when IsEmpty then True}
+								Not FeaturePredicate groupdetails_linktobusinessowner
+							}
+							commands:Commands { position: Before orientation: Horizontal 
+											Command{actions:Dialog groupDetailsManager_Dialog(selectedGroupUid to paramGroupUid), ReloadData (groupbusinessowner) 
+							                        icon:'16/red/edit_16.png' feature:groupdetails_updatemanager tooltip:$groupDetails.updatemanager
+							                       }
+							                  }
+						}
+					}
+				}
+				// Row with single column
+				Flow {
+					disposition: Horizontal
+					Group {
+						layout: Layout { hint: width 820}
+						
+						Text {
+							label: $group.code
+							value: Transform group.code using optionStringMapping
+						}
+						
+						Text {
+							label: $group.comment
+							value: Transform group.comment using optionStringMapping
+							lines: 2
+						}
+					}
+				}
+				Spacer { height: 20 }
+			}
+		}
+		
+		// Row for footer
+		GridRow{
+			GridCell{
+				background: Image "details/card_footer.png"
+				Spacer { height: 12 }
+			}
+		}
+		
+		// Row for links
+		GridRow{
+			GridCell{
+				Spacer { height: 20 }
+				Tiles {
+					columns:5
+					tile-height:120
+					mixins:detailIcons
+					TileGroup {
+						iterate-on: relatedLinksTiles
+						initial-sort: ^priority 
+						Tile {
+							Button {
+								actions: GoTo Dynamic (Current type, Current name) with group.recorduid to recorduid, group.uid to uid, SerializeSearch groupSearch to groupSearch, paramSearchMode to paramSearchMode
+								image: Current largeIcon
+								tooltip: Current title		
+							}
+							Text{
+								value: Current title
+								label: Label{ layout:Layout{indent: vertical 0 horizontal 0   }  }
+								lines:2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

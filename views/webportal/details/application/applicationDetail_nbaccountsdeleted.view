@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbaccountsdeleted" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="applicationDetail_nbaccountsnew" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1366622570038_109" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1366622579287_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1366622711992_142" kind="inner" identitysecure="false" join="timeslotapplications">
+		<ViewAttribute name="A1366622718695_143" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1366622721808_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1375890893411_502" kind="inner" identitysecure="false" join="account">
+			<ViewAttribute name="1375890903834_504" attribute="recorduid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1375890907376_506" attribute="importaction" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1366622619213_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="D"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

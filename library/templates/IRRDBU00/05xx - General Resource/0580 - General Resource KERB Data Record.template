@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource KERB data record" description="The general resource KERB Data record defines the Kerberos information for a realm. There is only one record per general resource profile that contains a KERB segment.">
+	<Source type="FORMATTED" filter="^0580 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRKERB_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the general resource KERB segment record (0580)."/>
+		<Attribute name="A4199536690768339793" attribute="GRKERB_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRKERB_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRKERB_KERB_NAME" column="262-501" type="String" multivalued="false" description="The Kerberos realm name."/>
+		<Attribute name="A7466509792483562716" attribute="GRKERB_MIN_LIFE" column="503-512" type="Number" multivalued="false" description="Minimum ticket life."/>
+		<Attribute name="A7466509792483562717" attribute="GRKERB_MAX_LIFE" column="514-523" type="Number" multivalued="false" description="Maximum ticket life."/>
+		<Attribute name="A7466509792483562718" attribute="GRKERB_DEF_LIFE" column="525-534" type="Number" multivalued="false" description="Default ticket life."/>
+		<Attribute name="A7466509792483562719" attribute="GRKERB_KEY_VERS" column="536-538" type="Number" multivalued="false" description="Current key version."/>
+		<Attribute name="A7466509792483562720" attribute="GRKERB_ENCRYPT_DES" column="540-543" type="Boolean" multivalued="false" description="Is key encryption using DES enabled?"/>
+		<Attribute name="A7466509792483562721" attribute="GRKERB_ENCRYPT_DES3" column="545-548" type="Boolean" multivalued="false" description="Is key encryption using DES3 enabled?"/>
+		<Attribute name="A7466509792483562722" attribute="GRKERB_ENCRYPT_DESD" column="550-553" type="Boolean" multivalued="false" description="Is key encryption using DES with derivation enabled?"/>
+		<Attribute name="A7466509792483562723" attribute="GRKERB_ENCRYPT_A128" column="550-558" type="Boolean" multivalued="false" description="Is key encryption using AES128 enabled?"/>
+		<Attribute name="A7466509792483562724" attribute="GRKERB_ENCRYPT_A256" column="560-563" type="Boolean" multivalued="false" description="Is key encryption using AES256 enabled?"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

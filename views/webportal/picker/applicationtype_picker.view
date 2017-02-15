@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationtype_picker" distinct="true" concept="application" displayname="Application types" notes="">
+	<ViewSort name="sort" attribute1="A1336065723219_325"/>
+	<ViewAttribute name="A1336065723219_325" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1347618041608_0" operation="isNotNull" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,46 @@
+
+
+
+action2 = Page {
+	title:'Message box and Flash examples'
+
+	Button {
+		text:'Default message box'
+		actions:Message 'message box'
+	}
+	Button {
+		text:'Warning message box'
+		actions:Message Warning 'message box'
+	}
+	Button {
+		text:'information message box'
+		actions:Message Information 'message box'
+	}
+	Button {
+		text:'error message box'
+		actions:Message Error 'message box'
+	}
+	Button {
+		text:'confim message box'
+		actions:Confirm 'message box',
+		        Message 'you clicked the OK button'
+	}
+	Button {
+		text:'default flash info'
+		actions:Flash 'flash info'
+	}
+	Button {
+		text:'warning flash info'
+		actions:Flash Warning 'flash info'
+	}
+	Button {
+		text:'information flash info'
+		actions:Flash Information 'flash info'
+	}
+	Button {
+		text:'error flash info'
+		actions:Flash Error 'flash info'
+	}
+}
+
+

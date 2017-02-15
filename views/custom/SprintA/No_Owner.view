@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="No_Owner" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="No_Owner">
+	<ViewSort name="sort"/>
+	<ViewCriteria name="I1484579467356_5785" criteria="noOwnerReconciliatedAccounts">
+	</ViewCriteria>
+	<ViewAttribute name="A1484579488970_5870" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579494914_5871" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579503286_5872" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579505650_5873" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579509429_5874" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579536150_5875" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579551406_5876" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579559866_5877" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579562346_5878" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579567871_5879" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579569317_5880" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484579571155_5881" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1484580841215_376" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1484580849491_377" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1484580859907_378" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ruleresult">
+		<ViewAttribute name="A1484580889066_380" attribute="ruledisplayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1484580892570_381" attribute="ruletagtype" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1484580979578_388" attribute="ruletagcustom1" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

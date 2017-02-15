@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_parentorganisations" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="br_organisationDetail_parentorganisations">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1365683988247_65" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1365683988253_66" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1365683988260_67" attribute="organisationtypecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1365683988265_68" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1365683988268_69" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1365683988270_70" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1365683988272_71" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1365605160460_193" prefix="parent" kind="left" identitysecure="false" join="parentorganisation">
+		<ViewAttribute name="1365684050320_78" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1365684050324_79" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1365684021540_72" kind="inner" identitysecure="false" join="downorganisation">
+		<ViewAttribute name="A1378375999563_363" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378376037850_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

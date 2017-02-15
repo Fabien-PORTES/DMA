@@ -1,0 +1,215 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+
+
+
+applicationSearchPage = Page {
+	title: $search.application.title
+	tags: "application" , "conceptsearch" priority 250
+	icon: "16/audit/application_16.png"
+	large-icon: "48/red/application.png"
+	description: $searchlabel.application
+	
+	initialUid = Parameter {
+		type: String
+		hidden: True
+	}
+	
+	useNavigatorMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: True
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	applicationSearch = SearchDefinition {
+		entity: Application
+		simple-mode-rule: br_application_simple_search
+	}
+	
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedApplicationUid = Variable {
+		type: String
+	}
+
+	showAnalytics = Variable {type:String initial:'0'}
+	uids =  Variable {type:String multivalued:True}
+	applicationanalytics = Dataset {
+		pages: Pages{tags: "application" and "byuids" }
+	}
+	
+	applicationData = Dataset {
+		search: Search {
+			definition: applicationSearch
+			view: br_application_searchpoint with "Profile" to applicationtype
+		}
+	}
+	
+	
+	
+	Grid {
+		columns:GridColumn{width:grow}, GridColumn
+		GridRow {
+		GridCell {
+			// Search section
+			Group {
+				layout: Layout { grab: horizontal True vertical False indent: horizontal 5 vertical 0 }
+				SearchEdition {
+					definition: applicationSearch
+					layout: Layout { grab: horizontal True vertical False }
+					simple-mode-columns: 2
+					simple-mode-layout: SimpleModeLayout {
+						code { label: $application.code },
+						name { label: $application.displayname }
+					}
+				}
+			}
+			Group {
+				layout: Layout { grab: horizontal True vertical True }
+				Table {
+					data: applicationData
+					show-count: True
+					double-click: GoTo Activity Application Detail with selectedApplicationUid to paramApplicationUid, SerializeSearch applicationSearch to applicationSearch, useNavigatorMode to paramSearchMode, initialIndex to paramInitialIndex
+					layout: Layout { grab: horizontal True vertical True }
+					configurable: True
+					persist-configuration: True
+					initial-selection: initialUid using uid
+					initial-selection-index: paramInitialIndex
+					selection-index: initialIndex
+					
+					Column {
+						column: uid
+						hidden: True
+						selection: selectedApplicationUid
+					}
+					Column {
+						column: code
+						header: $application.code
+						width: 100%
+						
+						initially-masked: False
+					}
+					Column {
+						column: displayname
+						header: $application.displayname
+						width: 100%
+						
+						initially-masked: False
+					}
+					Column {
+						column: repository_code
+						header: $prepository.code
+						width: 100%
+						
+						initially-masked: True
+					}
+					Column {
+						column: repository_displayname
+						header: $prepository.displayname
+						width: 100%
+						
+						initially-masked: True
+					}
+				}
+			}
+			
+			Group{
+				layout: Layout {align: horizontal End vertical Beginning grab: horizontal True vertical False }
+				ButtonGroup {
+					uniform:True
+					
+					Button {
+						actions:StringCase(showAnalytics) { when "0" then [Set "1" to showAnalytics] when "1" then [Set "0" to showAnalytics]}  
+						layout: Layout { grab: horizontal False vertical False hint: width 200}
+						feature:applicationsearch_analytics
+						hidden: IntPredicate ( Count applicationanalytics )  { when = 0 then True otherwise False }
+						text: Transform showAnalytics using search_page_analyticsSectionMapping
+					}
+					Button {
+						actions: GoTo Activity Application Detail with selectedApplicationUid to paramApplicationUid, SerializeSearch applicationSearch to applicationSearch, useNavigatorMode to paramSearchMode
+						layout: Layout { grab: horizontal False vertical False hint: width 200}
+					
+						disabled: StringPredicate(selectedApplicationUid) { when IsEmpty then True }
+						text: $search_page.showdetails
+					}
+				}
+			}
+			
+			
+			Spacer {
+				height:10
+			}
+		}
+		GridCell {
+			// Analytics section
+			Group {
+				hidden:StringPredicate(showAnalytics) { when '0' then True}
+				layout:Layout{hint:width 320}
+	
+				Header {
+					value:$search_page.analyticsreport
+					styling:bigRedTitleStyle
+					layout:Layout{align:horizontal Center vertical Center}
+					tooltip:$search_page.analyticsreporttooltip
+				}
+				TemplateTable {
+					data:applicationanalytics
+					layout:Layout{grab: horizontal True vertical True}
+					row-height:82
+					initial-sort:^priority
+					pagination:6
+					disabled:IntPredicate(Count applicationData) {when =0 then True when >2001 then True}  //MAX AS OF SQL SERVER : 2100 parameters in Hibernate request
+					show-filter:True			
+					double-click:TransferData applicationData(uid) to (uids), 
+								 GoTo Dynamic (Current type, Current name) with uids to uids
+					
+					ImageCell {
+						image:Current largeIcon
+						top:0
+						height:48
+						left:136
+						width:48
+						on-click:
+								TransferData applicationData(uid) to (uids), 
+								GoTo Dynamic (Current type, Current name) with uids to uids					
+						}
+					TextCell {
+						column:title
+						top:50
+						height:32
+						left:0
+						width:320
+						horizontal-align:Center
+						filterable:True
+						on-click:
+								TransferData applicationData(uid) to (uids), 
+								GoTo Dynamic (Current type, Current name) with uids to uids
+						/*
+								TransferData identityData(uid) to (uids), 
+									MultivaluedDistinct uids, MultivaluedRemove all '' from uids,
+										IntCase(SizeOf uids) { 
+											when =0 then [Message $search_page.analyticsreportnoentries]
+											when <2001 then [GoTo Dynamic (Current type, Current name) with uids to uids] //MAX AS OF SQL SERVER : 2100 parameters in Hibernate request
+											otherwise [Message $search_page.analyticsreporttoomanyentries]
+										}
+										*/
+					
+					}
+				
+				}
+			}
+		}	
+		}
+		}
+}

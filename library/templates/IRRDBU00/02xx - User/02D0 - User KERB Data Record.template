@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User KERB data record" description="The User KERB Data record defines the Kerberos principal information for a user. There is one record per user profile that contains a KERB segment.">
+	<Source type="FORMATTED" filter="^02D0 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USKERB_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the User KERB segment record (02D0)."/>
+		<Attribute name="A4199536690768339793" attribute="USKERB_NAME" column="6-13" type="String" multivalued="false" description="RACF user name as taken from the profile."/>
+		<Attribute name="A1290406167931330025" attribute="USKERB_KERBNAME" column="15-254" type="String" multivalued="false" description="The Kerberos principal name."/>
+		<Attribute name="A7466509792483562715" attribute="USKERB_MAX_LIFE" column="256-265" type="Number" multivalued="false" description="Maximum ticket life."/>
+		<Attribute name="A3188661801656117613" attribute="USKERB_KEY_VERS" column="267-269" type="Number" multivalued="false" description="Current key version."/>
+		<Attribute name="A4037269903301147695" attribute="USKERB_ENCRYPT_DES" column="271-274" type="Boolean" multivalued="false" description="Is key encryption using DES enabled?"/>
+		<Attribute name="A7863438466300294503" attribute="USKERB_ENCRYPT_DES3" column="276-279" type="Boolean" multivalued="false" description="Is key encryption using DES3 enabled?"/>
+		<Attribute name="A2460635583838380635" attribute="USKERB_ENCRYPT_DESD" column="281-284" type="Boolean" multivalued="false" description="Is key encryption using DES with derivation enabled?"/>
+		<Attribute name="A5281244329858370167" attribute="USKERB_ENCRYPT_A128" column="286-289" type="Boolean" multivalued="false" description="Is key encryption using AES128 enabled?"/>
+		<Attribute name="A5281244329858370168" attribute="USKERB_ENCRYPT_A256" column="291-294" type="Boolean" multivalued="false" description="Is key encryption using AES256 enabled?"/>
+		<Attribute name="A5281244329858370169" attribute="USKERB_KEY_FROM" column="351-358" type="String" multivalued="false" description="Key source. Valid values are PASSWORD or PHRASE."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

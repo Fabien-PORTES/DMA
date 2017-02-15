@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="Group OMVS data record" description="The Group OMVS Data record defines the information required by z/OS UNIX to verify that users are associated with a valid z/OS UNIX group identifier (GID). These records define the GIDs that have been assigned to RACF groups. There is one record per group/GID combination.">
+	<Source type="FORMATTED" filter="^0120 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GPOMVS_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the Group OMVS Data record (0120)."/>
+		<Attribute name="A4199536690768339793" attribute="GPOMVS_NAME" column="6-13" type="String" multivalued="false" description="Group name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GPOMVS_GID" column="15-24" type="String" multivalued="false" description="OMVS z/OS UNIX group identifier (GID) associated with the group name from the profile."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

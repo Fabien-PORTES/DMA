@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationcountidentity" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="Count the number of identities associated with a given application" notes="">
+	<ViewParam name="recorduid" displayname="Record UID">
+		<Value name="0" data="2"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1302171031148_368" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1302171039762_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1316330747123_787" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1316330751937_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Profile"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1382687130979_1540" kind="inner" identitysecure="false" join="account">
+		<ViewAttribute name="A1382687141724_1541" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382687152989_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382687157038_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1302171226499_512" kind="inner" identitysecure="false" join="identityreconciliation">
+			<ViewAttribute name="1382687147961_1544" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

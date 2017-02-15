@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Silo PUBLIC "-//Brainwave//DTD Silo 1.0//EN" "urn:brainwave:igrc:dtds/silo.dtd">
+<Silo version="1" name="NIS" displayname="NIS" collector="/collectors/NIS/010_NIS_LOADALL.collector" parentsilo="Aspire" iterate="false" folder="{config.importfiles}/Extracts_DMA/NIS_NISPlus_LDAP/" recurse="true" filter="*.passwd">
+</Silo>

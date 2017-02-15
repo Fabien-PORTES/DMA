@@ -1,0 +1,33 @@
+import "/webportal/pages/bw_pages_tutorial/widgets/widgettour.page"
+import "/webportal/pages/reports/standard.page"
+
+link1 = Page {
+	title:'Link samples'	
+
+	Link {
+		value:'go to Home Page'
+		target: HomePage
+	}
+	
+	Link {
+		value:'go to default identity search Pages'
+		target: Activity Identity Search
+	}
+
+	Link {
+		value:'go to the widget tour Pages'
+		target: Page widgettour 
+	}
+
+	Link {
+		value:'go to the identity search report'
+		target: Report browsing_identitysearch_simple
+	}
+	
+	Link {
+		value:"This is a hyperlink to a static content"
+		target: Static "static/bw_pages_tutorial/samplefile.html"
+	}
+}
+
+

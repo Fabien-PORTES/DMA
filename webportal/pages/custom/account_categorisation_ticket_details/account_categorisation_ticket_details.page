@@ -1,0 +1,286 @@
+/* Import other pages here */
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/custom/account/details.page"
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/custom/account_categorisation_ticket_details/account_ticket_management_change_status.page"
+import "/webportal/pages/custom/account_categorisation_ticket_details/account_ticket_management_change_informations.page"
+
+/* Nationalized labels here */
+account_categorisation_ticket_details = NLS {
+	inboxhelper [en "Click in the list
+to display the 
+categorisation details" fr "Cliquez pour afficher le détail"]
+	close_ticket [en "close_ticket" fr "close_ticket"]
+	dialog.title [en "Change ticket(s) information(s)" fr "Change ticket(s) information(s)"]
+	change_ticket [en "change_ticket" fr "change_ticket"]
+}
+	
+details_Ticket_Review = Page {
+	title: $ticket_review_managerNLS.title
+	icon: "16/red/asset.png"
+	large-icon: "48/audit/asset_48.png"
+	tags: "DMA_homepage"		
+	/* Parameters here */
+	paramAccountUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: False
+	}
+	/* Variables here */
+	selected_ticket_review_recorduid = Variable {
+		type: String
+		initial: ""
+		}
+	selected_tickets = Variable {
+		type: String
+		multivalued: True
+		}
+	account_categorisation_ticket_OPEN_detail = Dataset {
+		view: account_categorisation_ticket_OPEN_detail with paramAccountUid to account_uid
+	}
+	account_categorisation_ticket_not_OPEN_detail = Dataset {
+		view: account_categorisation_ticket_not_OPEN_detail with paramAccountUid to account_uid
+	}	
+	account_categorisation_ticket_review_detail = Record {
+		view: account_categorisation_ticket_review_detail with selected_ticket_review_recorduid to ticket_review_recorduid unless-empty
+	}
+	task_account_ticket_management = TaskRecord ( create "account_ticket_management_campaign" )
+
+	/* Page content */
+			Group {
+				Splitter {
+					disposition: Horizontal
+					size: 75%
+					Group {
+						layout: Layout { grab: horizontal True vertical True }
+					Splitter {
+					disposition: Vertical
+					size: 50%							
+						Group {
+							title: "Open ticket(s)"
+							border: False
+									ButtonGroup {
+										uniform: True
+										Button {
+										text: "Change selected ticket(s) status"
+										image: "16/famfamfam_silk_icons_v013/accept.png"
+										disabled: StringPredicate (selected_tickets) { when IsEmpty then True otherwise False }
+										actions: Dialog account_ticket_management_change_status  ( selected_tickets to inselected_tickets )
+											}
+										Button {
+										text: "Change ticket(s) information(s)"
+										image: "16/famfamfam_silk_icons_v013/accept.png"
+										disabled: StringPredicate (selected_tickets) { when IsEmpty then True otherwise False }
+										actions: Dialog account_ticket_management_change_informations ( selected_tickets to inselected_tickets )
+											}											
+										}							
+							Table {
+								data: account_categorisation_ticket_OPEN_detail
+								show-filter: True
+								show-count: True
+								double-click: GoTo Page accountNISDetailsPage with Current account_uid to paramAccountUid
+								checkboxes: ticket_review_recorduid to selected_tickets 
+								layout: Layout {
+									grab: horizontal True vertical True
+								}
+								Column {
+									column: ticket_review_recorduid
+									selection: selected_ticket_review_recorduid
+									hidden: True
+								}
+								Column {
+									column: account_uid
+									hidden: True
+								}
+								Column {
+									column: ticket_review_status
+									header: $ticketReviewAttributes.status
+									sortable: True
+									width: 20%
+								}								
+								Column {
+									column: account_identifier
+									header: $accountNISAttributes.hrcode
+									sortable: True
+									filterable: True
+									width: 15%
+								}
+								Column {
+									column: repository_displayname
+									header: $accountNISAttributes.repository
+									sortable: True
+									filterable: True
+									width: 10%
+								}
+								Column {
+									column: ticket_action_startdate
+									header: $ticketReviewAttributes.startdate
+									sortable: True
+									filterable: True
+									width: 20%
+								}
+								Column {
+									column: ticket_review_custom1
+									header: $ticketReviewAttributes.custom1
+									sortable: True
+									filterable: True
+									width: 30%
+								}
+								Column {
+									column: ticket_review_comment
+									header: $ticketReviewAttributes.comment
+									sortable: True
+									filterable: True
+									width: 20%
+								}
+							}
+						}
+						Group {
+							title: "Other ticket(s)"
+							border: False
+							Table {
+								data: account_categorisation_ticket_not_OPEN_detail
+								show-filter: True
+								show-count: True
+								double-click: GoTo Page accountNISDetailsPage with Current account_uid to paramAccountUid
+								layout: Layout {
+									grab: horizontal True vertical True
+								}
+								Column {
+									column: ticket_review_recorduid
+									selection: selected_ticket_review_recorduid
+									hidden: True
+								}
+								Column {
+									column: account_uid
+									hidden: True
+								}
+								Column {
+									column: ticket_review_status
+									header: $ticketReviewAttributes.status
+									sortable: True
+									width: 15%
+								}
+								Column {
+									column: account_identifier
+									header: $accountNISAttributes.hrcode
+									sortable: True
+									filterable: True
+									width: 15%
+								}
+								Column {
+									column: repository_displayname
+									header: $accountNISAttributes.repository
+									sortable: True
+									filterable: True
+									width: 10%
+								}
+								Column {
+									column: ticket_action_startdate
+									header: $ticketReviewAttributes.startdate
+									sortable: True
+									filterable: True
+									width: 20%
+								}
+								Column {
+									column: ticket_review_custom1
+									header: $ticketReviewAttributes.custom1
+									sortable: True
+									filterable: True
+									width: 30%
+								}
+								Column {
+									column: ticket_review_comment
+									header: $ticketReviewAttributes.comment
+									sortable: True
+									filterable: True
+									width: 20%
+								}
+							}
+						}
+					}						
+					}
+					Group {
+					ConditionalGroup { StringCondition ( selected_ticket_review_recorduid ) {
+					when Not IsEmpty then [
+						Group {
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.startdate
+								value: DateLDAP(account_categorisation_ticket_review_detail.ticket_action_startdate).value
+							}
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.actor_hrcode
+								value: account_categorisation_ticket_review_detail.actor_fullname
+							}
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.actorFullName
+								value: account_categorisation_ticket_review_detail.actor_hrcode
+							}							
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.status
+								value: account_categorisation_ticket_review_detail.ticket_review_status
+								}							
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.custom1
+								value: account_categorisation_ticket_review_detail.ticket_review_custom1
+							}
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.comment
+								value: account_categorisation_ticket_review_detail.ticket_review_comment
+								lines: 3
+							}
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.custom3
+								value: account_categorisation_ticket_review_detail.ticket_review_custom3
+							}
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.custom4
+								value: account_categorisation_ticket_review_detail.ticket_review_custom4
+							}
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.custom5
+								value: account_categorisation_ticket_review_detail.ticket_review_custom5
+							}
+							Text {
+								compact: True
+								label: $ticketReviewAttributes.custom6
+								value: account_categorisation_ticket_review_detail.ticket_review_custom6
+							}
+							}
+						]
+					otherwise [
+						Grid {
+							columns:GridColumn{},GridColumn{width:grow}
+							GridRow {
+								GridCell {
+									Image { image:"various/arrow_left.png" }
+								}
+								GridCell {
+									Text { value:"" compact:True}
+									Text {
+										value:$account_categorisation_ticket_details.inboxhelper
+										lines:3
+										styling:hugeRedTitleStyle
+										compact:True
+									 	}
+										}
+									} 
+								}		
+							]
+					}
+				}
+			}
+		}
+	}	
+}

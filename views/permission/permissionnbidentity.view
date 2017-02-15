@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissionnbidentity" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="# identities with a given permission" notes="">
+	<ViewParam name="recorduid" displayname="Record UID"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303289104451_472" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1303289385116_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1303289107700_473" kind="inner" identitysecure="false" join="right">
+		<ViewJoin name="J1303289113084_474" kind="inner" identitysecure="false" join="account">
+			<ViewJoin name="J1303289157956_475" kind="inner" identitysecure="false" join="identityreconciliation">
+				<ViewAttribute name="A1303289166167_476" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="1382793558315_2069" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1382787435042_0" operation="isNull" ignoreifempty="false"/>
+				<ViewAttributeFilter name="F1382787439277_1" operation="isFalse" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1304087615905_15484" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="A1316334033823_4935" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1316334037403_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Profile"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

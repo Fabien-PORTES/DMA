@@ -1,0 +1,156 @@
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+
+bw_recon_startNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation ?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process ?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Start Reconciliation Review" fr "Démarrer une revue de réconciliation"]
+	duedate [en "Due Date" fr "Date de fin"]
+	prioritylevel [en "Priority Level" fr "Niveau de priorité"]
+	repository [en "Repository" fr "Référentiel"]
+	reviewid [en "Review Id" fr "Identifiant de revue"]
+	//noownercode [en "No Owner Code" fr "Code sans propriétaire"]
+	//fuzzyNB [en "Fuzzy NB" fr "Fuzzy NB"]
+	low [en "low" fr "faible"]
+	medium [en "medium" fr "moyenne"]
+	high [en "high" fr "élevée"]
+	recontype [en "Type of reconciliation" fr "Type de réconciliation"]
+}
+
+bw_recon_start = Page {
+	title: $bw_recon_startNLS.title
+	mixins: workflowDefaultMixin
+	
+	// Page params
+	recontype = Variable { type: String }
+	repouid = Variable { type: String }
+	validDeadline = Variable { type: Boolean initial: False }
+	validreviewId = Variable { type: Boolean initial: False }
+	
+	task = TaskRecord (create "bw_recon_start")
+	
+	repositoryRecord = Record ( 
+		workflow_repositorydisplayname with task.repository to uid
+	)
+	
+	recontypes = Dataset {
+		view: bw_recon_noowners with repouid to repouid
+		excludes:
+			StringPredicate (  Current recon_noownercode ) {
+				when IsEmpty then True
+			}
+	}
+	
+	repos = Dataset {
+		view: bw_recon_repos
+	}
+	
+	Group {
+		layout: Layout { align: horizontal Center vertical Beginning grab: horizontal True vertical False }
+		border: False
+		Text {
+			label: Concat($bw_recon_startNLS.repository,"*")
+			value: repositoryRecord.displayname
+			mixins: workflowTextWithCommandMixin
+			commands: 
+				Command { 
+					actions: Dialog repositoryPicker(task.repository from outUid)
+					icon: "16/audit/repository_16.png"
+				}
+		}
+		Edit {
+			label: Concat($bw_recon_startNLS.reviewid,"*")
+			variable: task.reviewid
+			match: "^[0-9,a-z,A-Z,-,_]+$"
+			validity: validreviewId
+			limit: 100
+			layout: Layout { hint: width 300 }
+		}
+		DateTime {
+			type: Date
+			label: Concat($bw_recon_startNLS.duedate,"*")
+			variable: task.duedate
+			format: "yyyyMMddHHmmss"
+			allow-none: False
+			validity: validDeadline
+			date-after: Date.offset( 1 weeks )
+		}
+		Combo {
+			label: Concat($bw_recon_startNLS.prioritylevel,"*")
+			variable: task.prioritylevel
+			options: 
+				Static { 
+					Option { text: $bw_recon_startNLS.low value: "1" }  
+					Option { text: $bw_recon_startNLS.medium value: "2" }  
+					Option { text: $bw_recon_startNLS.high value: "3" }
+				}
+		}
+		Combo {
+			label: $bw_recon_startNLS.recontype
+			options: 
+				Dynamic {
+					data: recontypes
+					text: Current recon_noownercode
+					value: Current recon_noownercode
+				}
+			allow-none: True
+			variable: task.noownercode
+		}
+	//	Spinner {
+	//		label: $bw_recon_startNLS._fuzzyNB
+	//		variable: task.fuzzyNB
+	//		increment: 1
+	//	}
+		
+		Header {
+			value: $bw_recon_startNLS.mandatoryfields
+		}
+	}
+	
+	Group {
+		title: $bw_recon_startNLS.actionsection
+		mixins: workflowActionsMixin
+		layout: Layout { grab: horizontal True vertical False }
+		ButtonGroup {
+			// Cancel
+			Button { 
+				text: $bw_recon_startNLS.cancel.buttontext
+				image: "16/famfamfam_silk_icons_v013/delete.png"
+				actions:
+					Confirm $bw_recon_startNLS.cancel.confirm,
+					TaskCancel task,
+					GoTo HomePage
+			}
+			// Start review
+			Button { 
+				disabled: 
+					OrPredicate {
+						Not BooleanPredicate ( validDeadline )
+						Not BooleanPredicate ( validreviewId )
+						StringPredicate ( task.repository ) { when IsEmpty then True }
+					}
+				image: "16/famfamfam_silk_icons_v013/accept.png"
+				text: $bw_recon_startNLS.complete.buttontext
+				actions: 
+					StringCase (TaskValidation task) { 
+						when IsNull then [ 
+							Confirm $bw_recon_startNLS.complete.confirm,
+							Set repositoryRecord.displayname to task.repositoryName,
+							TaskComplete task,
+							Flash Information $bw_recon_startNLS.complete.flashmessage,
+							GoTo HomePage
+						] when False then [
+							Message Error TaskValidation task
+						]
+				}
+			}
+		}
+	}
+}

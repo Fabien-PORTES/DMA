@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User RRSF data record" description="The User RRSF Data record defines the information required by RRSF (RACF remote sharing facility). There is one record per user/RRSF data combination.">
+	<Source type="FORMATTED" filter="^0206 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USRSF_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the RRSF data record (0206)."/>
+		<Attribute name="A4199536690768339793" attribute="USRSF_NAME" column="6-13" type="String" multivalued="false" description="User ID as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="USRSF_TARG_NODE" column="15-22" type="String" multivalued="false" description="Target node name."/>
+		<Attribute name="A7466509792483562715" attribute="USRSF_TARG_USER_ID" column="24-31" type="String" multivalued="false" description="Target user ID."/>
+		<Attribute name="A3188661801656117613" attribute="USRSF_VERSION" column="33-35" type="Number" multivalued="false" description="Version of this record."/>
+		<Attribute name="A4037269903301147695" attribute="USRSF_PEER" column="37-40" type="Boolean" multivalued="false" description="Is this a peer user ID?"/>
+		<Attribute name="A7863438466300294503" attribute="USRSF_MANAGING" column="42-45" type="Boolean" multivalued="false" description="Is USRSF_NAME managing this ID?"/>
+		<Attribute name="A8801039954934473602" attribute="USRSF_MANAGED" column="47-50" type="Boolean" multivalued="false" description="Is USRSF_NAME being managed by this ID?"/>
+		<Attribute name="A2460635583838380635" attribute="USRSF_REMOTE_PEND" column="52-55" type="Boolean" multivalued="false" description="Is this remote RACF association pending?"/>
+		<Attribute name="A5281244329858370167" attribute="USRSF_LOCAL_PEND" column="57-60" type="Boolean" multivalued="false" description="Is this local RACF association pending?"/>
+		<Attribute name="A5281244329858370168" attribute="USRSF_PWD_SYNC" column="62-65" type="Boolean" multivalued="false" description="Is there password synchronization with this user ID?"/>
+		<Attribute name="A5281244329858370169" attribute="USRSF_REM_REFUSAL" column="67-70" type="Boolean" multivalued="false" description="Was a system error encountered on the remote system?"/>
+		<Attribute name="A5281244329858370170" attribute="USRSF_DEFINE_DATE" column="72-81" type="String" multivalued="false" description="GMT date stamp for when this record was defined."/>
+		<Attribute name="A5281244329858370171" attribute="USRSF_DEFINE_TIME" column="83-97" type="String" multivalued="false" description="GMT time stamp for when this record was defined."/>
+		<Attribute name="A5281244329858370172" attribute="USRSF_ACCEPT_DATE" column="99-108" type="String" multivalued="false" description="GMT date stamp when this association was approved or refused. Based on the REMOTE_REFUSAL bit setting."/>
+		<Attribute name="A5281244329858370173" attribute="USRSF_ACCEPT_TIME" column="110-124" type="String" multivalued="false" description="GMT time stamp when this association was approved or refused. Based on the REMOTE_REFUSAL bit setting."/>
+		<Attribute name="A5281244329858370174" attribute="USRSF_CREATOR_ID" column="126-133" type="String" multivalued="false" description="User ID who created this entry."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

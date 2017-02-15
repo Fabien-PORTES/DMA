@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="organisations_list" distinct="true" concept="organisation" displayname="Organisation list filtered by organisation code (count# of identity attached)">
+	<ViewParam name="typecode" displayname="Type Structure">
+		<Value name="0" data="Unité"/>
+		<Value name="1" data="Service"/>
+		<Value name="2" data="Direction"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1324286512882_88" attribute2="A1324286512882_84"/>
+	<ViewAttribute name="A1324286512882_81" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1324286512882_82" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1324286512882_83" attribute="code" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1324286512882_84" attribute="shortname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1324286512882_85" attribute="displayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1324286512882_86" attribute="organisationtyperecorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1324286512882_87" attribute="organisationtypeuid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1324286512882_88" attribute="organisationtypecode" alias="TypeCodeParam" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1324289292554_0" reference="typecode" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1324286512882_89" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1324290927554_91" kind="inner" join="upidentity">
+		<ViewAttribute name="A1324291140570_128" attribute="recorduid" alias="nb_ids" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

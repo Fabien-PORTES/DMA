@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="000_Identities_LOADALL" name="P1475239833330" startingpoint="start">
+		<Component name="start" type="library/components/start.component" x="50" y="50" w="250" h="64" title="start"/>
+		<Component name="C1475239833314_1" type="callfilter" x="50" y="150" w="250" h="64" title="010_Identities_STATIC">
+			<Line provisioningfile="/collectors/identity _ ALIR/010_Identities_STATIC.collector"/>
+		</Component>
+		<Component name="C1475239833314_2" type="callfilter" x="55" y="277" w="250" h="64" title="020_Identities">
+			<Line provisioningfile="/collectors/identity _ ALIR/020_Identities.collector"/>
+		</Component>
+		<Link name="L1481812253556" source="start" target="C1475239833314_1" priority="1"/>
+		<Link name="L1481812254400" source="C1475239833314_1" target="C1475239833314_2" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

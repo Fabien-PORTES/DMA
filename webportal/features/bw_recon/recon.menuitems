@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MenuItems PUBLIC "-//Brainwave//DTD MenuItems 1.0//EN" "urn:brainwave:igrc:dtds/menuitems.dtd">
+<MenuItems version="1" name="recon" description="Reconciliation Page">
+	<MenuItem name="M1424270846583" label="Recon" priority="1000" position="page:bw_recon_review_standalone" description="Reconciliation Page" feature="bw_recon"/>
+</MenuItems>

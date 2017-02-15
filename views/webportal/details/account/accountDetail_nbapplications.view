@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountDetail_nbapplications" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="br_accountDetail_nbapplications" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378138267670_563" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378138271961_564" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+		<ViewAttribute name="1378138276783_566" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378138227978_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1423156031196_730" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1423156046387_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="1423155315680_689" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1316330846581_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Profile"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_manager_audittrail" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketreview" displayname="br_manager_audittrail" notes="">
+	<ViewParam name="tickettype" displayname="tickettype">
+		<Value name="0" data="PERMISSIONMANAGER"/>
+	</ViewParam>
+	<ViewParam name="entityuid" displayname="entity uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1445604760647_642" attribute="custom1" alias="entity" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1445604826255_0" reference="entityuid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1445604768935_644" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1445604778164_645" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketaction">
+		<ViewJoin name="J1445604782283_646" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticket">
+			<ViewAttribute name="A1445604787156_647" attribute="tickettype" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1445604835789_0" reference="tickettype" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewAttribute name="A1445605799818_699" attribute="status" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1445605892957_700" prefix="actor" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="issuer">
+				<ViewAttribute name="A1445605901933_701" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1445605904395_702" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1445605947940_704" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1445605919609_703" attribute="closedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1445621124284_343" attribute="submissiondate" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

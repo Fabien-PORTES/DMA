@@ -1,0 +1,167 @@
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/bw_pages_tutorial/sharedfolder/standard.page"
+
+tutfilebrowser3_NLS = NLS {
+	title [en "File browser" fr "Explorateur de fichiers"]
+	directory [en "directory" fr "répertoire"]
+	name [en "name" fr "nom"]
+	path [en "path" fr "chemin"]
+	infos [en "infos" fr "infos"]
+	analytics [en "analytics" fr "analyse"]
+}
+
+tutfilebrowser3 = Page {
+	title:$tutfilebrowser3_NLS.title
+
+	selectedFileserver = Variable {type:String multivalued:False}
+	selectedSharedfolder = Variable {type:String multivalued:False}
+	selectedSharedfolderRecorduid = Variable {type:Integer multivalued:False}
+
+	fileservers = Dataset {
+		view:tutorial_getfileservers
+	}
+
+	sharedfolders = Dataset {
+		view:tutorial_getsharedfolders with selectedFileserver to uid
+	}
+	
+	sharedfolderstree = HierarchicalData {
+		view:tutorial_getsharedfolderstree with selectedFileserver to uid
+		connect:parent recorduid to child parentrecorduid
+		initial:parentrecorduid IsNull
+	}
+
+	identitiesWithSharedfolder = Dataset {
+		view:tutorial_getpeoplewithsharedfolder with selectedSharedfolder to uid
+	}
+	
+	nbidentitiesperdpt = Dataset {
+		view:tutorialnbidentitybyperm with selectedSharedfolder to uid
+	}
+	
+	currentSharedfolder = Record {
+		view:tutorial_getsharedfolder with selectedSharedfolder to uid
+	}
+	
+	Splitter {
+		disposition:Horizontal
+		size:33%
+		
+		Group {
+			Combo {
+				allow-none:True
+				options:Dynamic {
+					data:fileservers
+					text:Current displayname
+					value:Current uid
+				}
+				variable:selectedFileserver
+			}
+			
+			Tree {
+				data:sharedfolderstree
+				expand-level:2
+				layout:Layout {grab: horizontal True vertical True}
+				Column {
+					column:displayname
+					header:$tutfilebrowser3_NLS.directory
+					width:100%
+				}
+				Column {
+					column:uid
+					hidden:True
+					selection:selectedSharedfolder
+				}
+				Column {
+					column:recorduid
+					hidden:True
+					selection:selectedSharedfolderRecorduid
+				}
+			}
+		}
+		
+		Group {
+			Grid {
+				layout: Layout{grab: horizontal True vertical True}
+				columns:GridColumn{width:54px} ,GridColumn {width:grow},GridColumn {width:54px}
+				GridRow {
+					height:64px
+					GridCell {
+						Image {
+							image:"48/filesystems/folder_48.png"
+						}
+					
+					}
+					GridCell {
+						Text {
+							label:$tutfilebrowser3_NLS.name
+							compact:True
+							value:currentSharedfolder.displayname
+						}
+						Text {
+							label:$tutfilebrowser3_NLS.path
+							compact:True
+							value:currentSharedfolder.code
+						}
+					}
+					GridCell {
+						Button {
+							actions:GoTo Report browsing_sharedfolderdetail with selectedSharedfolderRecorduid to recorduid
+							presentation:Button
+							hide-text:True
+							image:'48/audit/application_48.png'
+							
+						}	
+					}
+				}
+				GridRow {
+					height:grow
+					GridCell {
+						span:3
+						TabFolder {
+							TabItem {
+								text:$tutfilebrowser3_NLS.infos
+								Table {
+									data:identitiesWithSharedfolder
+									layout:Layout {grab: horizontal True vertical True}
+							
+									Column {
+										column:action
+									}	
+									Column {
+										column:accountlogin
+									}	
+									Column {
+										column:identityhrcode
+									}	
+									Column {
+										column:identityfullname
+									}	
+									Column {
+										column:organisationcode
+									}	
+									Column {
+										column:organisationdisplayname
+									}	
+								}
+							}
+							TabItem {
+								text:$tutfilebrowser3_NLS.analytics
+								Chart {
+									data:nbidentitiesperdpt
+									layout:Layout {grab:horizontal True vertical True}
+									file:'charts/training'
+									series:(Current displayname) as String in "category",(Current nbidentities) as Double in "value"
+								}
+							}
+						}
+					}
+				}
+			}
+		
+		
+		}
+	}
+	
+
+}

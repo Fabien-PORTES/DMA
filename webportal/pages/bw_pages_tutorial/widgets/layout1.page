@@ -1,0 +1,19 @@
+layout1 = Page {
+	title:'Using the Layout property'
+	
+	Text {
+		label:'text'
+		value:'no layout'
+	}
+	Text {
+		layout:Layout {hint:width 300 height 128}
+		label:'text'
+		value:'Layout {hint:width 300 height 128}'
+	}
+	Text {
+		layout:Layout {grab:horizontal True vertical True}
+		label:'text'
+		value:'Layout {grab:horizontal True vertical True}'
+	}
+}
+

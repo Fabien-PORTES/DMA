@@ -1,0 +1,12 @@
+
+
+
+homepage1 = Page {
+	title:"A simple home page"
+	homepage-for:All
+
+	Header {
+		value:"This is a home page for everybody"
+	}
+}
+

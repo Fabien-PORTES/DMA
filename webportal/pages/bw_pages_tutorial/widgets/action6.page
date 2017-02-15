@@ -1,0 +1,119 @@
+action6 = Page {
+	title:'Playing with multi valued indexed variables'	
+
+	// those multi valued variables will be considered as a single Set of data (a table) 
+	mvarhrcodes = Variable {type:String multivalued:True initial:['ID0001','ID0002','ID0003','ID0004']}
+	mvarfirstnames = Variable {type:String multivalued:True initial:['john','bernard','caroline','sacha']}
+	mvarsurnames = Variable {type:String multivalued:True initial:['DUPONT','DOE','APIT','DISTEL']}
+	mvarcomments = Variable {type:String multivalued:True} // that one will be initialized through an action
+
+	// this dataset is actually binded to multi valued variables in order to display the results in a Table widget
+	myvariableset = Dataset {
+		columns:mvarhrcodes as hrcode, mvarfirstnames as firstname, mvarsurnames as surname, mvarcomments as comment
+	}
+
+	identities = Dataset {
+		view:br_identity
+	}
+
+	Tiles {
+		columns:2
+		tile-height:32
+	
+		Tile {
+
+			Button {
+				text:'Initialize the multi valued comment values'
+				actions: Set ['no comments...' repeat SizeOf mvarhrcodes] to mvarcomments
+				
+			}
+		}
+		Tile {
+			Button {
+				text:'Put a static values to multi valued variables'
+				actions: Set ['ID0001','ID0002','ID0003','ID0004'] to mvarhrcodes,
+				Set ['john','bernard','caroline','sacha'] to mvarfirstnames,
+				Set ['DUPONT','DOE','APIT','DISTEL'] to mvarsurnames,
+				Set [' ' repeat SizeOf mvarhrcodes] to mvarcomments
+			}
+		}
+		Tile {
+			Button {
+				text:'Append a value on a multivalued set'
+				actions: MultivaluedAdd "ID999" to mvarhrcodes,
+						 MultivaluedAdd "eric" to mvarfirstnames, 
+						 MultivaluedAdd "PAILA" to mvarsurnames, 
+						 MultivaluedAdd " " to mvarcomments
+			} 
+		}
+		Tile {
+			Button {
+				text:'Insert a value on a multivalued set'
+				actions: MultivaluedAdd "ID999" to mvarhrcodes at top,
+						 MultivaluedAdd "eric" to mvarfirstnames at top, 
+						 MultivaluedAdd "PAILA" to mvarsurnames at top, 
+						 MultivaluedAdd " " to mvarcomments at top
+			} 
+		}
+		Tile {
+			Button {
+				text:'Deduplicated a multivalued set (on hrcode)'
+				actions: MultivaluedDistinct mvarhrcodes and (mvarfirstnames,mvarsurnames,mvarcomments) 
+			} 
+		}
+		Tile {
+			Button {
+				text:'Update a multivalued set based on a condition (only the first ID999 element)'
+				actions: MultivaluedSet 'bertrand' to mvarfirstnames where mvarhrcodes is "ID999"
+			} 
+		
+		}
+		Tile {
+			Button {
+				text:'Update a multivalued set based on a condition (all ID999 elements)'
+				actions: MultivaluedSet 'bertrand' to mvarfirstnames where all mvarhrcodes is "ID999"
+			} 
+			
+		}
+		Tile {
+			Button {
+				text:'Remove multivalued set based on a condition (only the first ID999 element)'
+				actions: MultivaluedRemove "ID999" from mvarhrcodes and (mvarfirstnames, mvarsurnames,mvarcomments)
+			} 
+		
+		}
+		Tile {
+			Button {
+				text:'Remove multivalued set based on a condition (all ID999 elements)'
+				actions: MultivaluedRemove all "ID999" from mvarhrcodes and (mvarfirstnames, mvarsurnames,mvarcomments)
+			} 
+		}
+		Tile {
+			Button {
+				text:'Transfer data from the Identity Ledger to the attributes'
+				actions: TransferData identities(hrcode, givenname, surname) to (mvarhrcodes, mvarfirstnames, mvarsurnames),
+				         Set [' ' repeat SizeOf mvarhrcodes] to mvarcomments
+			}
+		}
+	}	
+	// display the results
+	
+	Table {
+		data:myvariableset
+		layout:Layout {grab: horizontal True vertical True}
+		Column {
+			column:hrcode
+		}
+		Column {
+			column:firstname
+		}
+		Column {
+			column:surname
+		}
+		Column {
+			column:comment
+		}
+	}
+}
+
+

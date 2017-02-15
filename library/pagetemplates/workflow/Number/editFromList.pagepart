@@ -1,0 +1,9 @@
+Combo {
+	label: <template:variablelabel/>
+	variable: <template:taskvariablename/>
+	options: Dynamic {
+		value: Current displayname
+		text: Current displayname
+		data: <template:variablevaluelistdataset/>
+	}
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1484297241332">
+	<Source file="{config.importfiles}\NIS_KEY.csv" type="CSV" separator=";" textseparator="&quot;" encoding="UTF-8"/>
+	<Attributes hasheader="true">
+		<Attribute name="A384550729009904578" attribute="uid" column="UID" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2269712847171329254" attribute="repo" column="REPO" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7737720593793625467" attribute="repo_uid" column="REPO_UID" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4294847206080461144" attribute="login" column="LOGIN" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Actions>
+		<Action name="U1484297429582" action="add" attribute="LOGIN_JOIN" newvalue="{dataset.login.get().toUpperCase()}"/>
+		<Action name="U1484928684168" action="add" attribute="UID_original_JOIN" newvalue="{dataset.uid.get()}"/>
+	</Actions>
+</Discovery>

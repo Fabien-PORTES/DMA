@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_grabdebugticketactions" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketaction" displayname="grabdebugticketactions">
+	<ViewAttribute name="A1475596383944_2264" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1475596400187_2265" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticket">
+		<ViewAttribute name="A1475596418509_2266" attribute="debugmode" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1475596420648_0" operation="isTrue" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="getcolleagues" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="get an identity direct colleagues given the identity UID">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1385403921913_561" attribute2="A1385403925643_562"/>
+	<ViewJoin name="J1385403890478_556" kind="inner" identitysecure="false" join="organisation">
+		<ViewJoin name="J1385403898392_557" kind="inner" identitysecure="false" join="identity">
+			<ViewAttribute name="A1385403920667_560" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1385403936503_0" reference="uid" operation="ne" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewAttribute name="A1385403921913_561" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1385403925643_562" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1387706213527_270" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1387706217843_271" attribute="phone" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1387706234915_272" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1385403907600_558" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1385403911155_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User OMVS data record" description="The User OMVS Data record defines the information required by z/OS UNIX to verify that users are associated with a valid z/OS UNIX user identifier (UID). These records define the UIDs that have been assigned to RACF users, their default directory, default program name, and user limits. There is only one record per user/UID data combination.">
+	<Source type="FORMATTED" filter="^0270 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USOMVS_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the User Data record (0270)."/>
+		<Attribute name="A4199536690768339793" attribute="USOMVS_NAME" column="6-13" type="String" multivalued="false" description="User name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="USOMVS_UID" column="15-24" type="String" multivalued="false" description="z/OS UNIX user identifier (UID) associated with the user name from the profile."/>
+		<Attribute name="A7466509792483562715" attribute="USOMVS_HOME_PATH" column="26-1048" type="String" multivalued="false" description="HOME PATH associated with the z/OS UNIX user identifier (UID)."/>
+		<Attribute name="A3188661801656117613" attribute="USOMVS_PROGRAM" column="1050-2072" type="String" multivalued="false" description="Default Program associated with the z/OS UNIX user identifier (UID)."/>
+		<Attribute name="A4037269903301147695" attribute="USOMVS_CPUTIMEMAX" column="2074-2083" type="Number" multivalued="false" description="Maximum CPU time associated with the UID."/>
+		<Attribute name="A7863438466300294503" attribute="USOMVS_ASSIZEMAX" column="2085-2094" type="Number" multivalued="false" description="Maximum address space size associated with the UID."/>
+		<Attribute name="A7863438466300294510" attribute="USOMVS_FILEPROCMAX" column="2096-2105" type="Number" multivalued="false" description="Maximum active or open files associated with the UID."/>
+		<Attribute name="A8801039954934473602" attribute="USOMVS_PROCUSERMAX" column="2107-2116" type="Number" multivalued="false" description="Maximum number of processes associated with the UID."/>
+		<Attribute name="A2460635583838380635" attribute="USOMVS_THREADSMAX" column="2118-2127" type="Number" multivalued="false" description="Maximum number of threads associated with the UID."/>
+		<Attribute name="A5281244329858370267" attribute="USOMVS_MMAPAREAMAX" column="2129-2138" type="Number" multivalued="false" description="Maximum mappable storage amount associated with the UID."/>
+		<Attribute name="A5281244329858370167" attribute="USOMVS_MEMLIMIT" column="2140-2148" type="String" multivalued="false" description="Maximum size of non-shared memory"/>
+		<Attribute name="A5281244329858370168" attribute="USOMVS_SHMEMAX" column="2150-2158" type="String" multivalued="false" description="Maximum size of shared memory"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

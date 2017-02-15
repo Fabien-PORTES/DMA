@@ -1,0 +1,444 @@
+
+
+simpleReport = Mixin {
+
+	Group {
+		layout: Layout { grab: horizontal False vertical True hint: width 1000 }
+		compact: True
+	}	
+	Text {
+		compact: True
+		layout: Layout{ indent:vertical 20 horizontal 0 hint: height 35 }
+		align: Center
+		styling: reportTitle
+
+	}
+	Table {
+		layout:Layout{grab: horizontal False vertical True indent: vertical 2 horizontal 0 hint: width 988 }
+	}
+	
+	Tree {
+		layout:Layout{grab: horizontal False vertical True indent: vertical 2 horizontal 0 hint: width 985 }
+	}
+	
+	Label {
+		styling: reportSubtitle
+	}
+	
+}
+
+reportSubtitle = Style {
+	foreground: RGB ( 71,71,71)
+	size: 14px
+}
+
+reportTitle = Style {
+	foreground: white
+	background: Color HEX (#c33c42 )
+	size: 18px
+}
+
+
+detailIcons = Mixin {
+
+	Button{
+		layout:Layout{grab:horizontal False vertical False align:vertical End horizontal Center hint:height 60  indent: horizontal 8 vertical 0}
+		presentation:Link
+	}
+	Text{
+		layout: Layout{grab:horizontal True vertical True indent: horizontal 0 vertical 0 }
+		align:Center
+		compact:True
+		styling:detailsIconLink
+		
+	}
+
+}
+
+detailsContentsColumns = Mixin {
+	Group {
+		compact:True
+		layout: Layout { hint: width 350 }
+	}
+	
+	Label {
+		styling: detailsLabel
+		break: True
+		align:Left
+		layout:Layout{indent: vertical 0 horizontal 0   } 
+	}
+	Text {
+		compact:True
+		styling: detailsText
+		align: Left
+		layout:Layout{indent: vertical 0 horizontal 0 }
+	}
+	
+	
+	Link {
+		styling: detailsLink
+	}
+	
+}
+
+detailsPage = Mixin {
+
+	Grid {
+		layout: Layout { grab: horizontal False vertical False hint: width 1400}
+		gap:0
+		insets:0
+	}
+	
+	Label {
+		styling: detailsLabel
+		break: True
+		align:Left
+		layout:Layout{indent: vertical 0 horizontal 0   } 
+	}
+	
+	Text {
+		compact:True
+		styling: detailsText
+		align: Left
+		layout:Layout{indent: vertical 0 horizontal 0 }
+	}
+	
+	Link {
+		styling: detailsLink
+	}
+	
+	Flow {
+		layout: Layout { grab: horizontal True vertical True align: horizontal Center vertical Beginning}
+		disposition: Horizontal
+	}
+	
+	Tiles {
+		layout:Layout {grab:horizontal True vertical True align:horizontal Beginning vertical Beginning hint:width 1000}
+		insets:0
+		gap: 0 
+	}
+	
+}
+
+
+
+compactDetails = Mixin {
+	Label {
+		styling: detailsLabel
+		break: True
+		align:Left
+		layout:Layout{indent: vertical 0 horizontal 0   } 
+	}
+	Text {
+		compact:True
+		styling: detailsText
+		align: Left
+		layout:Layout{indent: vertical 0 horizontal 0 }
+	}
+	
+	
+	Link {
+		styling: detailsLink
+	}
+}
+
+longDetails = Mixin {
+	Label {
+		styling: detailsLabel
+		break:False
+		align:Left
+		layout:Layout{indent: vertical 0 horizontal 0   } 
+	}
+	Text {
+		compact:True
+		styling: detailsText
+		align: Left
+		layout:Layout{indent: vertical 0 horizontal 0 }
+	}
+	Link {
+		styling: detailsLink
+	}
+}
+
+detailsNavigator = Mixin {
+	Button {
+		styling:detailsButtonsNav
+	}
+}
+
+detailsButtonsNav = Style{
+	foreground: HEX ( #515355 )
+	size: 16px
+}
+
+detailsLabel = Style {
+	foreground: HEX ( #474747 )
+	bold:True
+	size: 12px
+}
+
+detailsTitle = Style {
+	foreground: HEX ( #474747 )
+	size: 26px
+}
+
+detailsSubtitle = Style {
+	foreground: HEX ( #828587 )
+	size: 16px
+}
+
+detailsLink = Style {
+	foreground: HEX ( #474747 )
+	size: 12px
+	bold:False
+}
+
+detailsIconLink = Style {
+	foreground: HEX ( #474747 )
+	size: 14px
+	bold:False
+}
+
+detailsText = Style {
+	foreground: HEX ( #515355 )
+	size: 12px
+}
+
+
+bigTitleStyle = Style {
+	size: 16px
+}
+
+hugeTitleStyle = Style {
+	size: 32px
+}
+
+bigBlueTitleStyle = Style {
+	foreground: RGB(25, 76, 127)
+	size: 16px
+}
+
+hugeBlueTitleStyle = Style {
+	foreground: RGB(25, 76, 127)
+	size: 32px
+}
+
+bigRedTitleStyle = Style {
+	foreground: RGB(178,56,56)
+	size: 16px
+}
+
+hugeRedTitleStyle = Style {
+	foreground: RGB(178,56,56)
+	size: 32px
+}
+
+
+
+homeCategoryStyle = Style {
+	foreground: RGB(178,56,56)
+	background: Color HEX(#eceae9)
+	bold: True
+	size: 120%
+}
+
+homeLinkStyle = Style {
+	foreground: HEX(#000000)
+	size: 14px
+}
+
+dockHeaderStyle = Style {
+	background: Color HEX(#351E1F)
+	foreground: HEX(#FFFFFF)
+	bold: True
+	size: 110%
+}
+
+dockLinkStyle = Style {
+	foreground: RGB(0,0,0)
+}
+
+dockMinxin = Mixin {
+	Left Dock {
+		width: 280
+		collapsed: False
+		collapsible: True
+		background: Color HEX(#e9e7e5)
+	}
+	Right Dock {
+		width: 280
+		collapsed: False
+		collapsible: True
+		background: Color HEX(#e9e7e5)		
+	}
+}
+
+pickerMixin = Mixin {
+	ButtonGroup {
+		uniform: True
+	}
+}
+
+dockInnerMinxin = Mixin {
+	This Group {
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+	}
+	Group {
+		compact: True
+		layout: Layout {
+			grab: horizontal True vertical False
+			align: horizontal Fill vertical Beginning
+		}
+	}
+	Header {
+		styling: dockHeaderStyle
+	}
+	Link {
+		styling: dockLinkStyle
+		underline: Hover
+	}
+	ParametersEdition {
+		label-position: Top
+		allow-reset: True		
+	}
+}
+
+detailPageMixin = Mixin {
+	Group {
+		border: True
+		compact: True
+	}
+	Text {
+		compact: True
+	}
+	Link {
+		compact: True
+		underline: Hover
+		styling: activeLinkStyle
+	}
+}
+
+resultGridMixin = Mixin {
+	Table {
+		show-count: True
+		show-filter: True
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+	}
+}
+
+infoGridMixin = Mixin {
+	Text {
+		compact: True
+	}
+	Link {
+		compact: True
+		styling: activeLinkStyle 
+	}
+	Table {
+		show-count: True
+		show-filter: False
+		layout: Layout {
+			grab: horizontal True vertical False
+		}
+	}
+}
+
+warningFieldStyle = Style {
+	foreground: RGB(178,56,56)
+	bold: True
+	size: 14px
+}
+
+detailLinkStyle = Style {
+	bold: True
+	foreground: HEX(#4a4a4a)
+}
+
+
+labelStyle = Style {
+	foreground: RGB(25, 76, 127)
+}
+
+emphasizeStyle = Style {
+	bold: True
+	background: Color  RGB (255,255,204)	
+	foreground: black
+}
+
+errorStyle = Style {
+	bold: True
+	background: Color  RGB (255,128,128)	
+	foreground: black
+}
+
+controlPanelMixin = Mixin {
+	Header {
+		styling: labelStyle
+	}
+	This Grid {
+		gap: 0 10
+		fill: Horizontal
+		
+		GridRow {
+			fill: False
+			height: none
+		}
+	}
+}
+
+activeLinkStyle = Style {
+	foreground: blue
+}
+
+importantTextStyle = Style {
+	background: Color RGB(255,235,215)
+}
+
+subtitleStyle = Style {
+	bold: True
+	foreground: HEX(#4a4a4a)
+	size: 13px
+}
+
+bigButtonStyle = Style {
+	foreground: RGB(178,56,56)
+	background: Color HEX(#eceae9)
+	bold: True
+	size: 200%
+}
+
+mediumButtonStyle = Style {
+	foreground: RGB(178,56,56)
+	background: Color HEX(#eceae9)
+	bold: True
+	size: 150%
+}
+
+metricsValue = Style {
+ bold: True
+ size: 20px
+ font: "Helvetica,Arial"
+ foreground: gray
+}
+metricsLabel = Style {
+ bold: False
+ size: 14px
+ font: "Helvetica,Arial"
+ foreground: HEX(#B9272D)
+}
+
+homePageLinkStyle = Style {
+	size: 14px
+}
+
+checkboxTemplate = BooleanImageTemplate {
+	when True then "checkbox-selected.png"
+	when False then "checkbox-unselected.png"
+}
+
+
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__UserName_878_0</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Login_879_1</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__AccountIdentifier_880_2</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Repository_882_3</property>
+            <property name="value">SquareData</property>
+        </structure>
+        <structure>
+            <property name="name">Login_879_4</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">Login_879_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">Repository_882_5</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">Repository_882_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">Repository_882_expr_</property>
+            <property name="value">dataSetRow["repositoryrecorduid"]</property>
+        </structure>
+        <structure>
+            <property name="name">UserName_878_6</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">UserName_878_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">AccountIdentifier_880_7</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">AccountIdentifier_880_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_team" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="organisation" displayname="br_organisationDetail_team" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1418038771591_366" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1418038782792_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423676922051_339" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1423676924505_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1418038807363_368" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+		<ViewAttribute name="A1418038819587_369" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1418038947756_373" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

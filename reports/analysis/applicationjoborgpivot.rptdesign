@@ -1,0 +1,3305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="author">Brainwave</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.2.1.v201209101448 Build &lt;4.2.1.v20120918-1113></property>
+    <text-property name="title">Job and organisation identities pivot for a given application</text-property>
+    <html-property name="description">This report is a pivot report showing, per organization, per job title, the number of identities with an access to the applications.</html-property>
+    <list-property name="userProperties">
+        <structure>
+            <property name="name">ExcelFreezePane</property>
+            <property name="type">string</property>
+        </structure>
+        <structure>
+            <property name="name">BrainwaveRightModel</property>
+            <property name="type">string</property>
+        </structure>
+    </list-property>
+    <property name="BrainwaveRightModel">features</property>
+    <property name="ExcelFreezePane">2x5</property>
+    <simple-property-list name="includeResource">
+        <value>reports/analysis/applicationjoborgpivot</value>
+        <value>reports/resources/concepts</value>
+    </simple-property-list>
+    <list-property name="includeScripts">
+        <property>reports/scripts/common.js</property>
+        <property>reports/scripts/debugWindow.js</property>
+    </list-property>
+    <property name="units">in</property>
+    <method name="beforeFactory"><![CDATA[beforeFactory();]]></method>
+    <property name="theme">brainwave.Brainwave blue</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">reports/library/brainwave.rptlibrary</property>
+            <property name="namespace">brainwave</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="recorduid" id="829">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">12</value>
+            </simple-property-list>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="lowthreshold" id="872">
+            <text-property name="promptText" key="Report.lowthreshold">Low threshold</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">1</value>
+            </simple-property-list>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="com.brainwave.iaudit.oda.runtime" name="Brainwave ODA DataSource" id="828"
+ extends="brainwave.Brainwave ODA DataSource"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="com.brainwave.iaudit.oda.runtime.dataSet" name="applicationnbidentityjoborgpivot" id="830">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">nbidentity</property>
+                </structure>
+                <structure>
+                    <property name="columnName">jobtitlerecorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">jobtitlecode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">jobtitledisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">org_recorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">org_code</property>
+                </structure>
+                <structure>
+                    <property name="columnName">org_displayname</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">lowthreshold</property>
+                    <property name="paramName">lowthreshold</property>
+                    <property name="nativeName">lowthreshold</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">applicationrecorduid</property>
+                    <property name="paramName">recorduid</property>
+                    <property name="nativeName">applicationrecorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">nbidentity</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">jobtitlerecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">jobtitlecode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">jobtitledisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">org_recorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">org_code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">org_displayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Brainwave ODA DataSource</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">nbidentity</property>
+                    <property name="nativeName">nbidentity</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">jobtitlerecorduid</property>
+                    <property name="nativeName">jobtitlerecorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">jobtitlecode</property>
+                    <property name="nativeName">jobtitlecode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">jobtitledisplayname</property>
+                    <property name="nativeName">jobtitledisplayname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">org_recorduid</property>
+                    <property name="nativeName">org_recorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">org_code</property>
+                    <property name="nativeName">org_code</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">org_displayname</property>
+                    <property name="nativeName">org_displayname</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[br_applicationnbidentityjoborgpivot]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <DataSetParameters>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>lowthreshold</design:name>
+            <design:position>1</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>applicationrecorduid</design:name>
+            <design:position>2</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+  </DataSetParameters>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>nbidentiy</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>org_recorduid</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>org_code</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>org_displayname</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>jobtitlerecorduid</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>jobtitlecode</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>jobtitledisplayname</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="com.brainwave.iaudit.oda.runtime.dataSet" name="application" id="831">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">recorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">uid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">code</property>
+                </structure>
+                <structure>
+                    <property name="columnName">displayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositoryrecorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositoryuid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositorycode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositorydisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositorymedia</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositoryextractdate</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositorytype</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom2</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom3</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom4</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom5</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom6</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom7</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom8</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom9</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_recorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_uid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_repositoryrecorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_repositoryuid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_repositorycode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_repositorydisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_repositorymedia</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_repositoryextractdate</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_repositorytype</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_hrcode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_nickname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_givenname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_middlename</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_surname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_altname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_fullname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_mail</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_titlerecorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_titleuid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_titlecode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_titledisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_employeetyperecorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_employeetypeuid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_employeetypecode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_employeetypedisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_expertisedomainrecorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_expertisedomainuid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_expertisedomaincode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_expertisedomaindisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_jobtitlerecorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_jobtitleuid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_jobtitlecode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_jobtitledisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_arrivaldate</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_departuredate</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_internal</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_custom1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_custom2</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_custom3</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_custom4</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_custom5</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_custom6</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_custom7</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_custom8</property>
+                </structure>
+                <structure>
+                    <property name="columnName">manager_custom9</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">repositorydisplayname</property>
+                    <property name="nativeName">repositorydisplayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">repositorycode</property>
+                    <property name="nativeName">repositorycode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">recorduid</property>
+                    <property name="paramName">recorduid</property>
+                    <property name="nativeName">recorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                    <property name="position">3</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">repositoryrecorduid</property>
+                    <property name="nativeName">repositoryrecorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                    <property name="position">4</property>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">code</property>
+                    <property name="nativeName">code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                    <property name="position">5</property>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">displayname</property>
+                    <property name="nativeName">displayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                    <property name="position">6</property>
+                    <property name="isInput">true</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">recorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">uid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">displayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">repositoryrecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">repositoryuid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">repositorycode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">repositorydisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">repositorymedia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">repositoryextractdate</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">repositorytype</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">custom1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">custom2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">custom3</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">custom4</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">custom5</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">custom6</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">custom7</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">custom8</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">custom9</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
+                        <property name="name">manager_recorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">22</property>
+                        <property name="name">manager_uid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">23</property>
+                        <property name="name">manager_repositoryrecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">24</property>
+                        <property name="name">manager_repositoryuid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">25</property>
+                        <property name="name">manager_repositorycode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">26</property>
+                        <property name="name">manager_repositorydisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">27</property>
+                        <property name="name">manager_repositorymedia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">28</property>
+                        <property name="name">manager_repositoryextractdate</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">29</property>
+                        <property name="name">manager_repositorytype</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">30</property>
+                        <property name="name">manager_hrcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">31</property>
+                        <property name="name">manager_nickname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">32</property>
+                        <property name="name">manager_givenname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">33</property>
+                        <property name="name">manager_middlename</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">34</property>
+                        <property name="name">manager_surname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">35</property>
+                        <property name="name">manager_altname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">36</property>
+                        <property name="name">manager_fullname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">37</property>
+                        <property name="name">manager_mail</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">38</property>
+                        <property name="name">manager_titlerecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">39</property>
+                        <property name="name">manager_titleuid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">40</property>
+                        <property name="name">manager_titlecode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">41</property>
+                        <property name="name">manager_titledisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">42</property>
+                        <property name="name">manager_employeetyperecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">43</property>
+                        <property name="name">manager_employeetypeuid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">44</property>
+                        <property name="name">manager_employeetypecode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">45</property>
+                        <property name="name">manager_employeetypedisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">46</property>
+                        <property name="name">manager_expertisedomainrecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">47</property>
+                        <property name="name">manager_expertisedomainuid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">48</property>
+                        <property name="name">manager_expertisedomaincode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">49</property>
+                        <property name="name">manager_expertisedomaindisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">50</property>
+                        <property name="name">manager_jobtitlerecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">51</property>
+                        <property name="name">manager_jobtitleuid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">52</property>
+                        <property name="name">manager_jobtitlecode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">53</property>
+                        <property name="name">manager_jobtitledisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">54</property>
+                        <property name="name">manager_arrivaldate</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">55</property>
+                        <property name="name">manager_departuredate</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">56</property>
+                        <property name="name">manager_internal</property>
+                        <property name="dataType">boolean</property>
+                    </structure>
+                    <structure>
+                        <property name="position">57</property>
+                        <property name="name">manager_custom1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">58</property>
+                        <property name="name">manager_custom2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">59</property>
+                        <property name="name">manager_custom3</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">60</property>
+                        <property name="name">manager_custom4</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">61</property>
+                        <property name="name">manager_custom5</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">62</property>
+                        <property name="name">manager_custom6</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">63</property>
+                        <property name="name">manager_custom7</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">64</property>
+                        <property name="name">manager_custom8</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">65</property>
+                        <property name="name">manager_custom9</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Brainwave ODA DataSource</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">recorduid</property>
+                    <property name="nativeName">recorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">uid</property>
+                    <property name="nativeName">uid</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">code</property>
+                    <property name="nativeName">code</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">displayname</property>
+                    <property name="nativeName">displayname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">repositoryrecorduid</property>
+                    <property name="nativeName">repositoryrecorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">repositoryuid</property>
+                    <property name="nativeName">repositoryuid</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">repositorycode</property>
+                    <property name="nativeName">repositorycode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">repositorydisplayname</property>
+                    <property name="nativeName">repositorydisplayname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">repositorymedia</property>
+                    <property name="nativeName">repositorymedia</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">repositoryextractdate</property>
+                    <property name="nativeName">repositoryextractdate</property>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">repositorytype</property>
+                    <property name="nativeName">repositorytype</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">custom1</property>
+                    <property name="nativeName">custom1</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">custom2</property>
+                    <property name="nativeName">custom2</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">custom3</property>
+                    <property name="nativeName">custom3</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">custom4</property>
+                    <property name="nativeName">custom4</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">custom5</property>
+                    <property name="nativeName">custom5</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">custom6</property>
+                    <property name="nativeName">custom6</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">custom7</property>
+                    <property name="nativeName">custom7</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">custom8</property>
+                    <property name="nativeName">custom8</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
+                    <property name="name">custom9</property>
+                    <property name="nativeName">custom9</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">21</property>
+                    <property name="name">manager_recorduid</property>
+                    <property name="nativeName">manager_recorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">22</property>
+                    <property name="name">manager_uid</property>
+                    <property name="nativeName">manager_uid</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">23</property>
+                    <property name="name">manager_repositoryrecorduid</property>
+                    <property name="nativeName">manager_repositoryrecorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">24</property>
+                    <property name="name">manager_repositoryuid</property>
+                    <property name="nativeName">manager_repositoryuid</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">25</property>
+                    <property name="name">manager_repositorycode</property>
+                    <property name="nativeName">manager_repositorycode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">26</property>
+                    <property name="name">manager_repositorydisplayname</property>
+                    <property name="nativeName">manager_repositorydisplayname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">27</property>
+                    <property name="name">manager_repositorymedia</property>
+                    <property name="nativeName">manager_repositorymedia</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">28</property>
+                    <property name="name">manager_repositoryextractdate</property>
+                    <property name="nativeName">manager_repositoryextractdate</property>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="position">29</property>
+                    <property name="name">manager_repositorytype</property>
+                    <property name="nativeName">manager_repositorytype</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">30</property>
+                    <property name="name">manager_hrcode</property>
+                    <property name="nativeName">manager_hrcode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">31</property>
+                    <property name="name">manager_nickname</property>
+                    <property name="nativeName">manager_nickname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">32</property>
+                    <property name="name">manager_givenname</property>
+                    <property name="nativeName">manager_givenname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">33</property>
+                    <property name="name">manager_middlename</property>
+                    <property name="nativeName">manager_middlename</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">34</property>
+                    <property name="name">manager_surname</property>
+                    <property name="nativeName">manager_surname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">35</property>
+                    <property name="name">manager_altname</property>
+                    <property name="nativeName">manager_altname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">36</property>
+                    <property name="name">manager_fullname</property>
+                    <property name="nativeName">manager_fullname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">37</property>
+                    <property name="name">manager_mail</property>
+                    <property name="nativeName">manager_mail</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">38</property>
+                    <property name="name">manager_titlerecorduid</property>
+                    <property name="nativeName">manager_titlerecorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">39</property>
+                    <property name="name">manager_titleuid</property>
+                    <property name="nativeName">manager_titleuid</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">40</property>
+                    <property name="name">manager_titlecode</property>
+                    <property name="nativeName">manager_titlecode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">41</property>
+                    <property name="name">manager_titledisplayname</property>
+                    <property name="nativeName">manager_titledisplayname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">42</property>
+                    <property name="name">manager_employeetyperecorduid</property>
+                    <property name="nativeName">manager_employeetyperecorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">43</property>
+                    <property name="name">manager_employeetypeuid</property>
+                    <property name="nativeName">manager_employeetypeuid</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">44</property>
+                    <property name="name">manager_employeetypecode</property>
+                    <property name="nativeName">manager_employeetypecode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">45</property>
+                    <property name="name">manager_employeetypedisplayname</property>
+                    <property name="nativeName">manager_employeetypedisplayname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">46</property>
+                    <property name="name">manager_expertisedomainrecorduid</property>
+                    <property name="nativeName">manager_expertisedomainrecorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">47</property>
+                    <property name="name">manager_expertisedomainuid</property>
+                    <property name="nativeName">manager_expertisedomainuid</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">48</property>
+                    <property name="name">manager_expertisedomaincode</property>
+                    <property name="nativeName">manager_expertisedomaincode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">49</property>
+                    <property name="name">manager_expertisedomaindisplayname</property>
+                    <property name="nativeName">manager_expertisedomaindisplayname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">50</property>
+                    <property name="name">manager_jobtitlerecorduid</property>
+                    <property name="nativeName">manager_jobtitlerecorduid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">51</property>
+                    <property name="name">manager_jobtitleuid</property>
+                    <property name="nativeName">manager_jobtitleuid</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">52</property>
+                    <property name="name">manager_jobtitlecode</property>
+                    <property name="nativeName">manager_jobtitlecode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">53</property>
+                    <property name="name">manager_jobtitledisplayname</property>
+                    <property name="nativeName">manager_jobtitledisplayname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">54</property>
+                    <property name="name">manager_arrivaldate</property>
+                    <property name="nativeName">manager_arrivaldate</property>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="position">55</property>
+                    <property name="name">manager_departuredate</property>
+                    <property name="nativeName">manager_departuredate</property>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="position">56</property>
+                    <property name="name">manager_internal</property>
+                    <property name="nativeName">manager_internal</property>
+                    <property name="dataType">boolean</property>
+                </structure>
+                <structure>
+                    <property name="position">57</property>
+                    <property name="name">manager_custom1</property>
+                    <property name="nativeName">manager_custom1</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">58</property>
+                    <property name="name">manager_custom2</property>
+                    <property name="nativeName">manager_custom2</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">59</property>
+                    <property name="name">manager_custom3</property>
+                    <property name="nativeName">manager_custom3</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">60</property>
+                    <property name="name">manager_custom4</property>
+                    <property name="nativeName">manager_custom4</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">61</property>
+                    <property name="name">manager_custom5</property>
+                    <property name="nativeName">manager_custom5</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">62</property>
+                    <property name="name">manager_custom6</property>
+                    <property name="nativeName">manager_custom6</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">63</property>
+                    <property name="name">manager_custom7</property>
+                    <property name="nativeName">manager_custom7</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">64</property>
+                    <property name="name">manager_custom8</property>
+                    <property name="nativeName">manager_custom8</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">65</property>
+                    <property name="name">manager_custom9</property>
+                    <property name="nativeName">manager_custom9</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[br_application]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <DataSetParameters>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>repositorydisplayname</design:name>
+            <design:position>1</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>repositorycode</design:name>
+            <design:position>2</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>recorduid</design:name>
+            <design:position>3</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>repositoryrecorduid</design:name>
+            <design:position>4</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>code</design:name>
+            <design:position>5</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>displayname</design:name>
+            <design:position>6</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+  </DataSetParameters>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>recorduid</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>uid</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>code</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>displayname</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>applicationrecorduid</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>applicationuid</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>applicationcode</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>applicationdisplayname</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom1</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom2</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom3</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom4</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom5</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom6</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom7</design:name>
+              <design:position>15</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom8</design:name>
+              <design:position>16</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom9</design:name>
+              <design:position>17</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluerecorduid1</design:name>
+              <design:position>18</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvalueuid1</design:name>
+              <design:position>19</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluecode1</design:name>
+              <design:position>20</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluedisplayname1</design:name>
+              <design:position>21</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluerecorduid2</design:name>
+              <design:position>22</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvalueuid2</design:name>
+              <design:position>23</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluecode2</design:name>
+              <design:position>24</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluedisplayname2</design:name>
+              <design:position>25</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluerecorduid3</design:name>
+              <design:position>26</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvalueuid3</design:name>
+              <design:position>27</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluecode3</design:name>
+              <design:position>28</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluedisplayname3</design:name>
+              <design:position>29</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluerecorduid4</design:name>
+              <design:position>30</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvalueuid4</design:name>
+              <design:position>31</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluecode4</design:name>
+              <design:position>32</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluedisplayname4</design:name>
+              <design:position>33</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluerecorduid5</design:name>
+              <design:position>34</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvalueuid5</design:name>
+              <design:position>35</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluecode5</design:name>
+              <design:position>36</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluedisplayname5</design:name>
+              <design:position>37</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluerecorduid6</design:name>
+              <design:position>38</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvalueuid6</design:name>
+              <design:position>39</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluecode6</design:name>
+              <design:position>40</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluedisplayname6</design:name>
+              <design:position>41</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluerecorduid7</design:name>
+              <design:position>42</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvalueuid7</design:name>
+              <design:position>43</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluecode7</design:name>
+              <design:position>44</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluedisplayname7</design:name>
+              <design:position>45</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluerecorduid8</design:name>
+              <design:position>46</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvalueuid8</design:name>
+              <design:position>47</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluecode8</design:name>
+              <design:position>48</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluedisplayname8</design:name>
+              <design:position>49</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluerecorduid9</design:name>
+              <design:position>50</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvalueuid9</design:name>
+              <design:position>51</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluecode9</design:name>
+              <design:position>52</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>refvaluedisplayname9</design:name>
+              <design:position>53</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>nbaccount</design:name>
+              <design:position>54</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <cubes>
+        <tabular-cube name="Data Cube - applicationnbidentityjoborgpivot" id="876">
+            <property name="dimensions">
+                <tabular-dimension name="Group" id="879">
+                    <property name="defaultHierarchy">NewTabularHierarchy</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy" id="880">
+                            <property name="levels">
+                                <tabular-level name="jobtitledisplayname" id="881">
+                                    <property name="dataType">string</property>
+                                    <property name="levelType">dynamic</property>
+                                    <list-property name="attributes">
+                                        <structure>
+                                            <property name="name">jobtitlerecorduid</property>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">jobtitlecode</property>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="columnName">jobtitledisplayname</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="Group1" id="882">
+                    <property name="defaultHierarchy">NewTabularHierarchy1</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy1" id="883">
+                            <property name="levels">
+                                <tabular-level name="org_displayname" id="884">
+                                    <property name="dataType">string</property>
+                                    <property name="levelType">dynamic</property>
+                                    <list-property name="attributes">
+                                        <structure>
+                                            <property name="name">org_recorduid</property>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">org_code</property>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="columnName">org_displayname</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+            </property>
+            <property name="measureGroups">
+                <tabular-measure-group name="Summary Field" id="877">
+                    <property name="measures">
+                        <tabular-measure name="nbidentity" id="878">
+                            <expression name="measureExpression" type="javascript">dataSetRow["nbidentity"]</expression>
+                            <property name="dataType">integer</property>
+                        </tabular-measure>
+                    </property>
+                </tabular-measure-group>
+            </property>
+            <property name="dataSet">applicationnbidentityjoborgpivot</property>
+            <property name="autoKey">true</property>
+        </tabular-cube>
+    </cubes>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Brainwave Master Page Landscape" id="609" extends="brainwave.Brainwave Master Page Landscape">
+            <overridden-values>
+                <ref-entry baseId="611" name="NewGrid3" id="611"/>
+                <ref-entry baseId="612" id="612"/>
+                <ref-entry baseId="613" id="613"/>
+                <ref-entry baseId="614" id="614"/>
+                <ref-entry baseId="615" name="NewGrid11" id="615"/>
+                <ref-entry baseId="616" id="616"/>
+                <ref-entry baseId="617" id="617"/>
+                <ref-entry baseId="618" id="618"/>
+                <ref-entry baseId="619" id="619"/>
+                <ref-entry baseId="620" name="Brainwave logo1" id="620"/>
+                <ref-entry baseId="621" id="621"/>
+                <ref-entry baseId="622" name="NewText1" id="622"/>
+                <ref-entry baseId="623" id="623"/>
+                <ref-entry baseId="624" id="624"/>
+                <ref-entry baseId="683" name="Nouvelle grille2" id="683"/>
+                <ref-entry baseId="684" id="684"/>
+                <ref-entry baseId="685" id="685"/>
+                <ref-entry baseId="686" id="686"/>
+                <ref-entry baseId="687" id="687"/>
+                <ref-entry baseId="688" name="NewTextData1" id="688"/>
+                <ref-entry baseId="689" id="689"/>
+                <ref-entry baseId="690" name="NbPage" id="690"/>
+                <ref-entry baseId="691" id="691"/>
+                <ref-entry baseId="692" id="692"/>
+                <ref-entry baseId="693" id="693"/>
+                <ref-entry baseId="694" id="694"/>
+                <ref-entry baseId="695" id="695"/>
+                <ref-entry baseId="696" name="Nouveau texte auto2" id="696"/>
+                <ref-entry baseId="697" id="697"/>
+                <ref-entry baseId="698" name="Nouveau texte1" id="698"/>
+                <ref-entry baseId="699" id="699"/>
+                <ref-entry baseId="700" name="Nouveau texte auto11" id="700"/>
+            </overridden-values>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <list id="863">
+            <property name="dataSet">application</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">recorduid</property>
+                    <text-property name="displayName">recorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["recorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">uid</property>
+                    <text-property name="displayName">uid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["uid"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">code</property>
+                    <text-property name="displayName">code</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["code"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">displayname</property>
+                    <text-property name="displayName">displayname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["displayname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">repositoryrecorduid</property>
+                    <text-property name="displayName">repositoryrecorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositoryrecorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">repositoryuid</property>
+                    <text-property name="displayName">repositoryuid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositoryuid"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">repositorycode</property>
+                    <text-property name="displayName">repositorycode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositorycode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">repositorydisplayname</property>
+                    <text-property name="displayName">repositorydisplayname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositorydisplayname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">repositorymedia</property>
+                    <text-property name="displayName">repositorymedia</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositorymedia"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">repositoryextractdate</property>
+                    <text-property name="displayName">repositoryextractdate</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositoryextractdate"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">repositorytype</property>
+                    <text-property name="displayName">repositorytype</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositorytype"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">custom1</property>
+                    <text-property name="displayName">custom1</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["custom1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">custom2</property>
+                    <text-property name="displayName">custom2</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["custom2"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">custom3</property>
+                    <text-property name="displayName">custom3</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["custom3"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">custom4</property>
+                    <text-property name="displayName">custom4</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["custom4"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">custom5</property>
+                    <text-property name="displayName">custom5</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["custom5"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">custom6</property>
+                    <text-property name="displayName">custom6</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["custom6"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">custom7</property>
+                    <text-property name="displayName">custom7</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["custom7"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">custom8</property>
+                    <text-property name="displayName">custom8</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["custom8"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">custom9</property>
+                    <text-property name="displayName">custom9</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["custom9"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_recorduid</property>
+                    <text-property name="displayName">manager_recorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_recorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_uid</property>
+                    <text-property name="displayName">manager_uid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_uid"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_repositoryrecorduid</property>
+                    <text-property name="displayName">manager_repositoryrecorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_repositoryrecorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_repositoryuid</property>
+                    <text-property name="displayName">manager_repositoryuid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_repositoryuid"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_repositorycode</property>
+                    <text-property name="displayName">manager_repositorycode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_repositorycode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_repositorydisplayname</property>
+                    <text-property name="displayName">manager_repositorydisplayname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_repositorydisplayname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_repositorymedia</property>
+                    <text-property name="displayName">manager_repositorymedia</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_repositorymedia"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_repositoryextractdate</property>
+                    <text-property name="displayName">manager_repositoryextractdate</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_repositoryextractdate"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_repositorytype</property>
+                    <text-property name="displayName">manager_repositorytype</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_repositorytype"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_hrcode</property>
+                    <text-property name="displayName">manager_hrcode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_hrcode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_nickname</property>
+                    <text-property name="displayName">manager_nickname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_nickname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_givenname</property>
+                    <text-property name="displayName">manager_givenname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_givenname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_middlename</property>
+                    <text-property name="displayName">manager_middlename</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_middlename"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_surname</property>
+                    <text-property name="displayName">manager_surname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_surname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_altname</property>
+                    <text-property name="displayName">manager_altname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_altname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_fullname</property>
+                    <text-property name="displayName">manager_fullname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_fullname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_mail</property>
+                    <text-property name="displayName">manager_mail</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_mail"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_titlerecorduid</property>
+                    <text-property name="displayName">manager_titlerecorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_titlerecorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_titleuid</property>
+                    <text-property name="displayName">manager_titleuid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_titleuid"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_titlecode</property>
+                    <text-property name="displayName">manager_titlecode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_titlecode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_titledisplayname</property>
+                    <text-property name="displayName">manager_titledisplayname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_titledisplayname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_employeetyperecorduid</property>
+                    <text-property name="displayName">manager_employeetyperecorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_employeetyperecorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_employeetypeuid</property>
+                    <text-property name="displayName">manager_employeetypeuid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_employeetypeuid"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_employeetypecode</property>
+                    <text-property name="displayName">manager_employeetypecode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_employeetypecode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_employeetypedisplayname</property>
+                    <text-property name="displayName">manager_employeetypedisplayname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_employeetypedisplayname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_expertisedomainrecorduid</property>
+                    <text-property name="displayName">manager_expertisedomainrecorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_expertisedomainrecorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_expertisedomainuid</property>
+                    <text-property name="displayName">manager_expertisedomainuid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_expertisedomainuid"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_expertisedomaincode</property>
+                    <text-property name="displayName">manager_expertisedomaincode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_expertisedomaincode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_expertisedomaindisplayname</property>
+                    <text-property name="displayName">manager_expertisedomaindisplayname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_expertisedomaindisplayname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_jobtitlerecorduid</property>
+                    <text-property name="displayName">manager_jobtitlerecorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_jobtitlerecorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_jobtitleuid</property>
+                    <text-property name="displayName">manager_jobtitleuid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_jobtitleuid"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_jobtitlecode</property>
+                    <text-property name="displayName">manager_jobtitlecode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_jobtitlecode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_jobtitledisplayname</property>
+                    <text-property name="displayName">manager_jobtitledisplayname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_jobtitledisplayname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_arrivaldate</property>
+                    <text-property name="displayName">manager_arrivaldate</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_arrivaldate"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_departuredate</property>
+                    <text-property name="displayName">manager_departuredate</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_departuredate"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_internal</property>
+                    <text-property name="displayName">manager_internal</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_internal"]</expression>
+                    <property name="dataType">boolean</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_custom1</property>
+                    <text-property name="displayName">manager_custom1</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_custom1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_custom2</property>
+                    <text-property name="displayName">manager_custom2</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_custom2"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_custom3</property>
+                    <text-property name="displayName">manager_custom3</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_custom3"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_custom4</property>
+                    <text-property name="displayName">manager_custom4</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_custom4"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_custom5</property>
+                    <text-property name="displayName">manager_custom5</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_custom5"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_custom6</property>
+                    <text-property name="displayName">manager_custom6</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_custom6"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_custom7</property>
+                    <text-property name="displayName">manager_custom7</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_custom7"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_custom8</property>
+                    <text-property name="displayName">manager_custom8</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_custom8"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">manager_custom9</property>
+                    <text-property name="displayName">manager_custom9</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["manager_custom9"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <detail>
+                <text id="864">
+                    <property name="style">h2</property>
+                    <property name="textAlign">center</property>
+                    <property name="contentType">html</property>
+                    <text-property name="content" key="Report.title"><![CDATA["<VALUE-OF>row["displayname"]</VALUE-OF>" application pivot by job and organisation]]></text-property>
+                </text>
+            </detail>
+        </list>
+        <grid id="816">
+            <column id="817">
+                <property name="width">1070px</property>
+            </column>
+            <row id="818">
+                <cell id="819"/>
+            </row>
+        </grid>
+        <text id="610">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<br>]]></text-property>
+        </text>
+        <grid id="821">
+            <property name="width">1070px</property>
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">html</property>
+                    <expression name="valueExpr" type="javascript">true</expression>
+                </structure>
+            </list-property>
+            <column id="822">
+                <property name="width">1010px</property>
+            </column>
+            <column id="823"/>
+            <row id="824">
+                <cell id="825">
+                    <property name="verticalAlign">bottom</property>
+                </cell>
+                <cell id="826">
+                    <image id="900">
+                        <property name="source">embed</property>
+                        <property name="imageName">application_48.png</property>
+                    </image>
+                </cell>
+            </row>
+        </grid>
+        <extended-item extensionName="Crosstab" extensionVersion="2.5.0" id="874">
+            <property name="cube">Data Cube - applicationnbidentityjoborgpivot</property>
+            <property name="measures">
+                <extended-item extensionName="MeasureView" id="895">
+                    <property name="measure">nbidentity</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="896">
+                            <property name="aggregationOnRow">Group1/org_displayname</property>
+                            <property name="aggregationOnColumn">Group/jobtitledisplayname</property>
+                            <property name="content">
+                                <data name="gotoappjoborgpivotdetail" id="897">
+                                    <property name="fontSize">smaller</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="resultSetColumn">nbidentity_Group1/org_displayname_Group/jobtitledisplayname</property>
+                                    <list-property name="action">
+                                        <structure>
+                                            <property name="linkType">drill-through</property>
+                                            <property name="reportName">applicationjoborgpivotdetail.rptdesign</property>
+                                            <property name="targetWindow">_self</property>
+                                            <property name="targetFileType">report-design</property>
+                                            <list-property name="paramBindings">
+                                                <structure>
+                                                    <property name="paramName">applicationrecorduid</property>
+                                                    <simple-property-list name="expression">
+                                                        <value type="javascript">params["recorduid"].value</value>
+                                                    </simple-property-list>
+                                                </structure>
+                                                <structure>
+                                                    <property name="paramName">jobrecorduid</property>
+                                                    <simple-property-list name="expression">
+                                                        <value type="javascript">data["jobtitlerecorduid"]</value>
+                                                    </simple-property-list>
+                                                </structure>
+                                                <structure>
+                                                    <property name="paramName">orgrecorduid</property>
+                                                    <simple-property-list name="expression">
+                                                        <value type="javascript">data["org_recorduid"]</value>
+                                                    </simple-property-list>
+                                                </structure>
+                                                <structure>
+                                                    <property name="paramName">__showtitle</property>
+                                                    <simple-property-list name="expression">
+                                                        <value type="javascript">false</value>
+                                                    </simple-property-list>
+                                                </structure>
+                                            </list-property>
+                                        </structure>
+                                    </list-property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="898">
+                            <property name="style">header</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+            </property>
+            <property name="rows">
+                <extended-item extensionName="CrosstabView" id="885">
+                    <property name="views">
+                        <extended-item extensionName="DimensionView" id="886">
+                            <property name="dimension">Group1</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View" id="887">
+                                    <property name="level">Group1/org_displayname</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="888">
+                                            <property name="content">
+                                                <image id="907">
+                                                    <property name="display">inline</property>
+                                                    <list-property name="visibility">
+                                                        <structure>
+                                                            <property name="format">xls</property>
+                                                            <expression name="valueExpr" type="javascript">true</expression>
+                                                        </structure>
+                                                    </list-property>
+                                                    <property name="source">embed</property>
+                                                    <property name="imageName">organisation_16.png</property>
+                                                </image>
+                                                <data name="org_displayname" id="889">
+                                                    <property name="display">inline</property>
+                                                    <property name="resultSetColumn">org_displayname</property>
+                                                </data>
+                                            </property>
+                                            <property name="width">200px</property>
+                                            <property name="style">header</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+            </property>
+            <property name="columns">
+                <extended-item extensionName="CrosstabView" id="890">
+                    <property name="views">
+                        <extended-item extensionName="DimensionView" id="891">
+                            <property name="dimension">Group</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View1" id="892">
+                                    <property name="level">Group/jobtitledisplayname</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="893">
+                                            <property name="content">
+                                                <grid id="916">
+                                                    <property name="verticalAlign">bottom</property>
+                                                    <column id="917"/>
+                                                    <row id="918">
+                                                        <property name="verticalAlign">bottom</property>
+                                                        <cell id="919">
+                                                            <property name="textAlign">center</property>
+                                                            <extended-item extensionName="RotatedText" id="920">
+                                                                <property name="rotationAngle">90</property>
+                                                                <expression name="text">data["jobtitledisplayname"]</expression>
+                                                                <property name="wrapPoint">0in</property>
+                                                                <property name="fontFamily">"arial", "tahoma", "verdana", "helvetica", "sans-serif;"</property>
+                                                                <property name="fontSize">11pt</property>
+                                                                <property name="fontStyle">normal</property>
+                                                                <property name="fontWeight">normal</property>
+                                                                <property name="width">11pt</property>
+                                                            </extended-item>
+                                                        </cell>
+                                                    </row>
+                                                </grid>
+                                            </property>
+                                            <property name="verticalAlign">bottom</property>
+                                            <property name="style">header</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+            </property>
+            <property name="header">
+                <extended-item extensionName="CrosstabCell" id="875">
+                    <property name="style">header</property>
+                </extended-item>
+            </property>
+            <property name="hideMeasureHeader">true</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">org_displayname</property>
+                    <expression name="expression">dimension["Group1"]["org_displayname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">jobtitledisplayname</property>
+                    <expression name="expression">dimension["Group"]["jobtitledisplayname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nbidentity_Group1/org_displayname_Group/jobtitledisplayname</property>
+                    <expression name="expression">measure["nbidentity"]</expression>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>Group1/org_displayname</value>
+                        <value>Group/jobtitledisplayname</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">nbidentity_Group1/org_displayname</property>
+                    <expression name="expression">measure["nbidentity"]</expression>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>Group1/org_displayname</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">jobtitlerecorduid</property>
+                    <expression name="expression">dimension["Group"]["jobtitledisplayname"]["jobtitlerecorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">org_recorduid</property>
+                    <expression name="expression">dimension["Group1"]["org_displayname"]["org_recorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+        </extended-item>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">brainwave-logo.gif</property>
+            <property name="type">image/gif</property>
+            <property name="libReference">brainwave.brainwave-logo.gif</property>
+        </structure>
+        <structure>
+            <property name="name">account_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">account_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">empty_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.empty_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_48.png</property>
+        </structure>
+    </list-property>
+</report>

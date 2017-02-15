@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_group_hierarchy_picker" distinct="true" concept="group" displayname="Group hierarchy picker" notes="">
+	<ViewParam name="recorduid" displayname="Parent group recordUid"/>
+	<ViewParam name="paramRepository" displayname="Group repository"/>
+	<ViewSort name="sort" attribute1="A1336133784945_215" attribute2="A1336133784148_214"/>
+	<ViewAttribute name="A1336133782726_212" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336133783414_213" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336133784148_214" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336133784945_215" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1336133808398_216" kind="left" join="parentgroup">
+		<ViewAttribute name="A1336133829507_217" attribute="recorduid" alias="parent" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1336133837773_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1336133579042_186" prefix="repository" kind="left" join="repository">
+		<ViewAttribute name="1336133888214_245" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="1336133888214_246" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="1336133888214_247" attribute="code" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="1336133888214_248" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="true">
+			<ViewAttributeFilter name="F1336133661433_0" reference="paramRepository" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

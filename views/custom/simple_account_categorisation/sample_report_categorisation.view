@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sample_report_categorisation" prefix="ticket_review_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketreview" displayname="sample_report_categorisation">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1479907613385_830" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

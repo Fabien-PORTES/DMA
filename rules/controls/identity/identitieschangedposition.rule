@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitieschangedposition" operator="and" query="identity" displayname="Identities whose Position Changed" version="2">
+	<RequestCriteria name="C1331843848864_173" criteria="eqAllocationChanged">
+	</RequestCriteria>
+</Request>

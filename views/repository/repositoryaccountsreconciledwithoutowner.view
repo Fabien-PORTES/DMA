@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryaccountsreconciledwithoutowner" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="Accounts reconciled without owners for a given repository" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="repository record uid"/>
+	<ViewParam name="noownercode" displayname="noownercode"/>
+	<ViewSort name="sort" attribute1="A1322668653966_925" attribute2="A1322668653966_929"/>
+	<ViewAttribute name="A1322668653966_915" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_916" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_917" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1322668687621_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1322668653966_918" attribute="repositoryuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_919" attribute="repositorycode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_920" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_921" attribute="repositorymedia" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_922" attribute="repositoryextractdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_923" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_924" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_925" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_926" attribute="profile" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_927" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_928" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_929" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_930" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_931" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_932" attribute="lastlogindate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_933" attribute="passwordlastsetdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_934" attribute="expiredate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_935" attribute="service" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_936" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_937" attribute="locked" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_938" attribute="logincount" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_939" attribute="badpasswordcount" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_940" attribute="passwordnotrequired" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_941" attribute="passwordcantchange" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_942" attribute="notnormalaccount" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_943" attribute="dontexpirepassword" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_944" attribute="passwordexpired" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668653966_945" attribute="smartcardrequired" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668658672_946" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668659302_947" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668659838_948" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668660412_949" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668660940_950" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668661466_951" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668661938_952" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668664038_953" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322668665621_954" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewCriteria name="I1385375617330_1001" criteria="noOwnerReconciliatedAccounts">
+	</ViewCriteria>
+	<ViewJoin name="J1385410582530_359" kind="left" identitysecure="false" join="reconciliation">
+		<ViewAttribute name="A1385410597559_360" attribute="noownercode" operator="and" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1385410980468_0" reference="noownercode" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1385410601916_361" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1385410607201_362" attribute="reconciliationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1385411694709_412" attribute="noownercode" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1385411699207_0" operation="ne" ignoreifempty="false">
+				<Value name="0" data="leave"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343306434336" description=" " title="User Master Parameter ID ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7351828938605592328" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A4054817580224692316" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A5932078050321075772" attribute="parid" column="PARID" type="String" multivalued="false" persistent="false" description="Set/Get parameter ID"/>
+		<Attribute name="A3788152599369473581" attribute="parva" column="PARVA" type="String" multivalued="false" persistent="false" description="Parameter value"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343306566914" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

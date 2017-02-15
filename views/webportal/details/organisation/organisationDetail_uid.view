@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_uid" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="organisation" displayname="br_organisationDetail_uid" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1417709726320_299" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1417709861099_300" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1417709865734_301" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1417709879805_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

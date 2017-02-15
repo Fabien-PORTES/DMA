@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="actionpackApplicationowner" operator="and" query="identity" displayname="Application owner for {uid}" version="2">
+	<RequestParam name="uid" displayname="uid" query="application" criteria="eqUid" criteriaparam="uidParam">
+		<Value name="0" data=""/>
+	</RequestParam>
+	<RequestJoin name="J1415616340827_37264" operator="and" join="managedapplication">
+		<RequestCriteria name="C1415616345378_37265" criteria="eqUid">
+			<RequestCriteriaParam name="uidParam" reference="uid" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

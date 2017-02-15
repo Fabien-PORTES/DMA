@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Audit PUBLIC "-//Brainwave//DTD Audit 1.0//EN" "urn:brainwave:igrc:dtds/audit.dtd">
+<Audit version="1.0">
+	<Languages default="en">
+		<Language name="en"/>
+	</Languages>
+	<Project label="dma_AD_ID_clean" customer="dma_AD_ID_clean" truncatepolicy="truncate" truncateevent="TRUNCATED_VALUE_">
+		<Configuration default="">
+			<Variables>
+				<Variable name="importfiles" description="Import files"/>
+				<Variable name="AD_REPO" description="List of possible AD accounts repositories"/>
+			</Variables>
+		</Configuration>
+		<Customization>
+			<Entity name="account">
+				<Custom name="custom9" alias="GECOS" label="GECOS" displayname="GECOS"/>
+				<Custom name="custom4" alias="uidnumber" label="uidnumber" displayname="uidnumber"/>
+				<Custom name="custom5" alias="AD4Unix_SAM" label="AD4Unix_SAM" displayname="AD4Unix_SAM"/>
+				<Custom name="custom6" alias="NIS_in_AD4Unix" label="NIS_in_AD4Unix" displayname="NIS_in_AD4Unix"/>
+				<Custom name="custom7" alias="past_AD4UNIX_AD_dom" label="past_AD4UNIX_AD_dom" displayname="past_AD4UNIX_AD_dom"/>
+				<Custom name="custom8" alias="AD4Unix_AD_domain" label="AD4Unix_AD_domain" displayname="AD4Unix_AD_domain"/>
+				<Custom name="custom3" alias="NIS_in_AD4UNix_past" label="NIS_in_AD4UNix_past" displayname="NIS_in_AD4UNix_past"/>
+				<Custom name="custom2" alias="past_AD4UNIX_SAM" label="past_AD4UNIX_SAM" displayname="past_AD4UNIX_SAM"/>
+				<Custom name="custom1" alias="Vintella" label="Vintella" displayname="Vintella"/>
+			</Entity>
+			<Entity name="identity">
+				<Custom name="custom1" alias="identity_state" label="identity_state" displayname="identity_state"/>
+				<Custom name="custom2" alias="unique_key" label="unique_key" displayname="unique_key"/>
+				<Custom name="custom3" alias="external_uid" label="external_uid" displayname="external_uid"/>
+				<Custom name="custom5" alias="secondary_fixed_telephone" label="secondary_fixed_telephone" displayname="secondary_fixed_telephone"/>
+				<Custom name="custom6" alias="airbus_mail" label="airbus_mail" displayname="airbus_mail"/>
+				<Custom name="custom4" alias="RepositoryName" label="RepositoryName" displayname="RepositoryName"/>
+				<Custom name="custom7" alias="_ad_identifier" label="_ad_identifier" displayname="_ad_identifier"/>
+				<Custom name="custom10" alias="SERVICE" label="SERVICE" displayname="SERVCIE"/>
+				<Custom name="custom11" alias="DISABLED" label="DISABLED" displayname="DISABLED"/>
+				<Custom name="custom12" alias="object_id" label="object_id" displayname="object_id"/>
+				<Custom name="custom13" alias="uidnumber" label="uidnumber" displayname="uidnumber"/>
+				<Custom name="custom8" alias="samaccountname" label="samaccountname" displayname="samaccountname"/>
+				<Custom name="custom18"/>
+				<Custom name="custom17" alias="standard_name" label="standard_name" displayname="The samaccountname is written in a standard format"/>
+				<Custom name="custom9" alias="sam_extract" label="sam_extract" displayname="sam_extract"/>
+				<Custom name="custom14" alias="uid" label="uid" displayname="uid"/>
+				<Custom name="custom15" alias="CREATION_DATE" label="CREATION_DATE" displayname="CREATION_DATE"/>
+				<Custom name="custom16" alias="FSURNAME" label="FSURNAME" displayname="FSURNAME"/>
+				<Custom name="custom19" alias="in_AD4Unix" label="in_AD4Unix" displayname="in_AD4Unix"/>
+			</Entity>
+		</Customization>
+	</Project>
+</Audit>

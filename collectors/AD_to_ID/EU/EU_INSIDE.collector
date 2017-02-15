@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="AS" scriptfile="/collectors/AD_to_ID/AS/AS.javascript" name="P1479484963575_7" startingpoint="C1479484987983">
+		<Component name="C1479484987983" type="discoverysource" x="94" y="-30" w="200" h="64" title="users">
+			<Discovery file="/discovery/ACDS AD/users.discovery" datafile="{config.sourcefile}"/>
+		</Component>
+		<Component name="C1479485019324" type="changefilter" x="99" y="94" w="238" h="64" title="add repo and _internal">
+			<Actions>
+				<Action name="U1479485077876" action="add" attribute="_internal" type="Boolean" multivalued="false" newvalue="1" errorexist="false"/>
+				<Action name="U1479723725346" action="add" attribute="_REPOSITORYCODE" type="String" multivalued="false" newvalue="{config.repository}" errorexist="false"/>
+				<Action name="U1479734837603" action="default" attribute="_ufullname" newvalue="NULL" errorunknown="false"/>
+				<Action name="U1479738338400" action="add" attribute="_departure_date" type="Date" multivalued="false" newvalue="20000101" errorexist="false"/>
+				<Action name="U1481216281595" action="default" attribute="_ugivenname" newvalue="NULL" errorunknown="false"/>
+				<Action name="U1481216293559" action="default" attribute="_usurname" newvalue="NULL" errorunknown="false"/>
+				<Action name="U1481881049472" action="add" attribute="is_AD" type="Boolean" multivalued="false" newvalue="true" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Component name="C1479485033255" type="identity" x="107" y="406" w="200" h="64" title="ID">
+			<Mapping>
+				<Attribute name="givenname" key="false" attribute="_ugivenname"/>
+				<Attribute name="sn" attribute="_usurname" key="false"/>
+				<Attribute name="internal" attribute="_internal"/>
+				<Attribute name="fullname" attribute="_AD_FULLNAME_upper"/>
+				<Attribute name="departuredate" attribute="_departure_date"/>
+				<Attribute name="custom8" attribute="_matricule"/>
+				<Attribute name="custom10" attribute="SERVICE"/>
+				<Attribute name="custom11" attribute="_DISABLED"/>
+				<Attribute name="mail" attribute="mail"/>
+				<Attribute name="custom12" attribute="objectsid"/>
+				<Attribute name="custom13" attribute="uidnumber"/>
+				<Attribute name="custom14" attribute="uid"/>
+				<Attribute name="custom15" attribute="whencreated"/>
+				<Attribute name="custom16" attribute="_FSURNAME"/>
+				<Attribute name="custom4" attribute="_REPOSITORYCODE"/>
+				<Attribute name="custom9" attribute="samextract"/>
+				<Attribute name="custom17" attribute="standard_named"/>
+			</Mapping>
+			<Media code="_REPOSITORYCODE"/>
+			<Identity code="distinguishedname"/>
+			<Match>
+			</Match>
+			<Manager error="true" event="BOSS_NOT_FOUND" multierror="true" multievent="SEVERAL_BOSS" code="_Account_upper"/>
+		</Component>
+		<Component name="C1481040940251" type="joinfilter" x="121" y="255" w="200" h="64" title="join">
+			<Join source="C1481216303771" zeroerror="true" zeroevent="NO_JOIN_UNIQUE_KEY" severalaction="first" zerotechnical="true"/>
+			<Cache active="true" join="_Account_upper" main="_matricule"/>
+			<Attributes>
+				<Attribute name="A1481105554836" attribute="_ALIR_Unique_Key" source="_ALIR_Unique_Key" multivalued="false"/>
+			</Attributes>
+		</Component>
+		<Link name="L1481102833673" source="C1479484987983" target="C1479485019324" priority="1"/>
+		<Link name="L1481102835747" source="C1479485019324" target="C1481040940251" priority="1"/>
+		<Link name="L1481105623242" source="C1481040940251" target="C1479485033255" priority="1" expression="(! dataset.hasEvent(&apos;NO_JOIN_UNIQUE_KEY&apos;))"/>
+		<Component name="C1481216303771" type="discoverysource" x="548" y="8" w="200" h="64" title="inside">
+			<Discovery file="/discovery/INSIDE/inside.discovery"/>
+		</Component>
+		<Link name="L1481216309688" source="C1481216303771" target="C1481040940251" priority="1"/>
+		<Component name="C1479485033255_2" type="identity" x="613" y="245" w="200" h="64" title="ID no join SAM">
+			<Mapping>
+				<Attribute name="givenname" key="false" attribute="_ugivenname"/>
+				<Attribute name="sn" attribute="_usurname" key="false"/>
+				<Attribute name="internal" attribute="_internal"/>
+				<Attribute name="fullname" attribute="_AD_FULLNAME_upper"/>
+				<Attribute name="departuredate" attribute="_departure_date"/>
+				<Attribute name="custom8" attribute="_matricule"/>
+				<Attribute name="custom10" attribute="SERVICE"/>
+				<Attribute name="custom11" attribute="_DISABLED"/>
+				<Attribute name="mail" attribute="mail"/>
+				<Attribute name="custom12" attribute="objectsid"/>
+				<Attribute name="custom13" attribute="uidnumber"/>
+				<Attribute name="custom14" attribute="uid"/>
+				<Attribute name="custom15" attribute="whencreated"/>
+				<Attribute name="custom16" attribute="_FSURNAME"/>
+				<Attribute name="custom4" attribute="_REPOSITORYCODE"/>
+				<Attribute name="custom9" attribute="samextract"/>
+				<Attribute name="custom17" attribute="standard_named"/>
+			</Mapping>
+			<Media code="_REPOSITORYCODE"/>
+			<Identity code="distinguishedname"/>
+			<Match>
+			</Match>
+			<Manager error="true" event="BOSS_NOT_FOUND" multierror="true" multievent="SEVERAL_BOSS" code="_matricule"/>
+		</Component>
+		<Link name="L1481289710257" source="C1481040940251" target="C1479485033255_2" priority="2" expression="(dataset.hasEvent(&apos;NO_JOIN_UNIQUE_KEY&apos;))"/>
+		<Component name="C1479485033255_3" type="identity" x="624" y="384" w="200" h="64" title="ID no join Uniquekey">
+			<Mapping>
+				<Attribute name="givenname" key="false" attribute="_ugivenname"/>
+				<Attribute name="sn" attribute="_usurname" key="false"/>
+				<Attribute name="internal" attribute="_internal"/>
+				<Attribute name="fullname" attribute="_AD_FULLNAME_upper"/>
+				<Attribute name="departuredate" attribute="_departure_date"/>
+				<Attribute name="custom8" attribute="_matricule"/>
+				<Attribute name="custom10" attribute="SERVICE"/>
+				<Attribute name="custom11" attribute="_DISABLED"/>
+				<Attribute name="mail" attribute="mail"/>
+				<Attribute name="custom12" attribute="objectsid"/>
+				<Attribute name="custom13" attribute="uidnumber"/>
+				<Attribute name="custom14" attribute="uid"/>
+				<Attribute name="custom15" attribute="whencreated"/>
+				<Attribute name="custom16" attribute="_FSURNAME"/>
+				<Attribute name="custom4" attribute="_REPOSITORYCODE"/>
+				<Attribute name="custom9" attribute="samextract"/>
+				<Attribute name="custom17" attribute="standard_named"/>
+			</Mapping>
+			<Media code="_REPOSITORYCODE"/>
+			<Identity code="distinguishedname"/>
+			<Match>
+				<Attribute name="custom2" attribute="_AD_Unique_Key"/>
+			</Match>
+			<Manager error="true" event="BOSS_NOT_FOUND" multierror="true" multievent="SEVERAL_BOSS"/>
+		</Component>
+		<Link name="L1481896808604" source="C1479485033255_2" target="C1479485033255_3" priority="1" expression="(dataset.hasEvent(&apos;BOSS_NOT_FOUND&apos;))"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+		<Variables>
+			<Variable name="sourcefile"/>
+			<Variable name="repository"/>
+		</Variables>
+	</Configuration>
+</Provisioning>

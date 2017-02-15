@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_sharedfolderDetail_uid" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="permission" displayname="br_sharedfolderDetail_uid" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewComputedAttribute name="codestar" displayname="codestar" type="String" expression="dataset.code.get().concat(&apos;*&apos;)"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1417622475456_370" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1417622479934_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1417622488730_372" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1418312529268_321" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1418312577848_322" attribute="applicationrecorduid" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_manual_reconciliation" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="NIS_manual_reconciliation" notes="" begindate="" enddate="">
+	<ViewParam name="account_uid" displayname="account_uid">
+		<Value name="0" data="SRMANT01_1486496347766_2246153"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1486378348672_1221"/>
+	<ViewAttribute name="A1486378301270_1215" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1486378312676_0" reference="account_uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1486378321318_1217" prefix="ticket_review_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketreview">
+		<ViewAttribute name="A1486459901075_1458" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486459902880_1459" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1486378332486_1218" prefix="action_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketaction">
+			<ViewJoin name="J1486378337678_1219" prefix="actor_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="actor">
+				<ViewAttribute name="A1486378344070_1220" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1486378348672_1221" attribute="startdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1486458456126_1442" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticket">
+				<ViewAttribute name="1486460411982_1462" attribute="tickettype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1486458481024_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="MANUALRECONCILIATION"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

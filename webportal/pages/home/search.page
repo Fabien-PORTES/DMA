@@ -1,0 +1,39 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/mixins/default_mixins.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+searchPage = Page {
+	title:$searchlabel.title
+	
+	searchPages = Dataset {
+		pages: Pages {tags: "conceptsearch"}
+	}
+	
+	Tiles {
+		mixins: buttonPage
+		columns: 2
+		tile-height: 80
+		
+		Tile{
+			Button {
+				actions: GoTo Page browsing_currentorganisationhierarchy
+				image: "48/red/organisation.png"
+				text:  $searchlabel.hierarchy
+			}
+		}
+		
+		TileGroup{
+			iterate-on: searchPages
+			initial-sort: ^priority
+			Tile{
+				Button {
+					actions: GoTo Dynamic ( Current type , Current name ) 
+					image: Current largeIcon
+					text: Current description
+				}
+			}
+		}
+	}
+	
+}

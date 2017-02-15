@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissionDetail_nbidentities" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="br_permissionDetail_nbaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1376990138894_821" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1377694189372_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1376990152359_840" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewAttribute name="A1376990154138_841" attribute="code" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewAttribute name="A1376990156010_842" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewAttribute name="A1376990158757_843" attribute="permissiontype" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewJoin name="J1376990629017_998" kind="left" identitysecure="false" join="identityright">
+		<ViewAttribute name="A1376990635117_999" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

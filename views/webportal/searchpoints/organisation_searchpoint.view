@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisation_searchpoint" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="true" concept="organisation" displayname="Organisation with search point" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1423150799633_355"/>
+	<ViewAttribute name="A1423150790160_352" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423150792800_353" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1440061893966_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423150797129_354" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423150799633_355" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423150802321_356" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

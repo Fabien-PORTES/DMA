@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="fileexplorergetfileshareaccountacls" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="get file share group acls" notes="">
+	<ViewParam name="uid" displayname="uid">
+		<Value name="0" data="HOME_USERS_ABOYE_1428653660406_5321"/>
+	</ViewParam>
+	<ViewParam name="accountuid" displayname="accountuid">
+		<Value name="0" data="CN_ARTHUS_BOYE_C_1428653658478_2627"/>
+	</ViewParam>
+	<ViewParam name="identityuid" displayname="identityuid"/>
+	<ViewComputedAttribute name="BASIC_FULLCONTROL" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().like(&apos;RWXGA*PFOEMDL&apos;)?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="BASIC_MODIFY" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().like(&apos;RWXGA*F*EMDL&apos;)?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="BASIC_READEXECUTE" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().like(&apos;R*XG*F*E*&apos;)?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="BASIC_READ" displayname="BASIC_READ" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().like(&apos;R*G*F*E*&apos;)?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="BASIC_WRITE" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().like(&apos;*W*GA*M*L&apos;)?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>	
+	<ViewComputedAttribute name="WRITE_OWNER" displayname="WRITE_OWNER" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;O&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_CONTROL" displayname="READ_CONTROL" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;G&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_DATA" displayname="READ_DATA" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;R&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_EXTENDED_ATTRIBUTES" displayname="READ_EXTENDED_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;F&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="APPEND_DATA" displayname="APPEND_DATA" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;A&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_EXTENDED_ATTRIBUTES" displayname="WRITE_EXTENDED_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;M&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="EXECUTE" displayname="EXECUTE" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;X&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_DATA" displayname="WRITE_DATA" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;W&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="DELETE" displayname="DELETE" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;D&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_ATTRIBUTES" displayname="WRITE_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;L&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_ATTRIBUTES" displayname="READ_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;E&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="DELETE_CHILD" displayname="DELETE_CHILD" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;S&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_DAC" displayname="WRITE_DAC" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;P&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewSort name="sort" attribute1="A1433509028269_5022"/>
+	<ViewAttribute name="A1433497208593_4935" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1433497211514_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1433509005058_5017" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclaccount">
+		<ViewJoin name="J1433509013484_5018" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+			<ViewJoin name="J1433509018078_5019" prefix="repository" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+				<ViewAttribute name="A1433509069171_5069" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1433509069171_5070" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1433509069171_5071" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1433509069171_5072" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1433509069171_5073" attribute="media" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1433509069171_5074" attribute="extractDate" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1433509069171_5075" attribute="extractday" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1433509069171_5076" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1433509069171_5077" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1433509069171_5078" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1433509059342_5030" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5031" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1433781942357_0" reference="accountuid" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="A1433509059342_5033" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5034" attribute="sid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5035" attribute="guid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5036" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5037" attribute="profile" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5038" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5039" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5040" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5041" attribute="employeenumber" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5042" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5043" attribute="managerdata" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5044" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5045" attribute="creationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5046" attribute="lastlogindate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5047" attribute="lastloginday" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5048" attribute="passwordlastsetdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5049" attribute="passwordlastsetday" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5050" attribute="expiredate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5051" attribute="expireday" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5052" attribute="nextpwdchangedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5053" attribute="nextpwdchangeday" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5054" attribute="service" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5055" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5056" attribute="locked" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5057" attribute="logincount" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5058" attribute="badpasswordcount" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059342_5059" attribute="passwordnotrequired" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059343_5060" attribute="passwordcantchange" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059343_5061" attribute="notnormalaccount" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059343_5062" attribute="dontexpirepassword" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059343_5063" attribute="passwordexpired" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059343_5064" attribute="smartcardrequired" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059343_5065" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059343_5066" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059343_5067" attribute="groupchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1433509059343_5068" attribute="permissionchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1436174919314_1064" prefix="id" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.isEmpty(&apos;identityuid&apos;)==false" join="identityreconciliation">
+				<ViewAttribute name="A1436174952362_1157" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+					<ViewAttributeFilter name="F1436174955092_0" reference="identityuid" operation="eq" ignoreifempty="true"/>
+				</ViewAttribute>
+			</ViewJoin>
+			<ViewJoin name="J1433793619960_481" prefix="reconciliation" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+				<ViewJoin name="J1433793626006_482" prefix="identity" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+					<ViewAttribute name="1436174927999_1112" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1113" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1114" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1115" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1116" attribute="nickname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1117" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1118" attribute="middlename" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1119" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1120" attribute="altname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1121" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1122" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174927999_1123" attribute="phone" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1124" attribute="mobile" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1125" attribute="titlerecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1126" attribute="titleuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1127" attribute="titlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1128" attribute="titledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1129" attribute="employeetyperecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1130" attribute="employeetypeuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1131" attribute="employeetypecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1132" attribute="employeetypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1133" attribute="expertisedomainrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1134" attribute="expertisedomainuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1135" attribute="expertisedomaincode" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928000_1136" attribute="expertisedomaindisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1137" attribute="arrivaldate" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1138" attribute="arrivalday" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1139" attribute="departuredate" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1140" attribute="departureday" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1141" attribute="active" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1142" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1143" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1144" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1145" attribute="allocationchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1146" attribute="organisationchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1147" attribute="accountchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1436174928001_1148" attribute="permissionchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+				</ViewJoin>
+				<ViewAttribute name="1436174928001_1149" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1436174928002_1150" attribute="reconciliationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1436174928002_1151" attribute="description" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1436174928002_1152" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1436174928002_1153" attribute="noownercode" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1436174928002_1154" attribute="leavedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1436174928002_1155" attribute="reliability" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1436174928002_1156" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="A1433509026894_5020" attribute="action" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1433509027670_5021" attribute="negative" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1433509028269_5022" attribute="order" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

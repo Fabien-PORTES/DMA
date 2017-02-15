@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343583209781" title="Time Stamp for all Changes to the User " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A8049225845053691023" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A419045534465088161" attribute="username" column="USERNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A4829946405697246334" attribute="struct" column="STRUCT" type="String" multivalued="false" persistent="false" description="Table Name"/>
+		<Attribute name="A5544249630628108113" attribute="field" column="FIELD" type="String" multivalued="false" persistent="false" description="Field Name"/>
+		<Attribute name="A3793363044511421805" attribute="moddate_" column="MODDATE" type="String" multivalued="false" persistent="false" description="Modification date" hidden="true"/>
+		<Attribute name="A8580124016394794377" attribute="modtime" column="MODTIME" type="String" multivalued="false" persistent="false" description="Modification time"/>
+		<Attribute name="A275112582330476202" attribute="modifier" column="MODIFIER" type="String" multivalued="false" persistent="false" description="Modified by"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343583247574" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1343583666597" action="replace" attribute="moddate_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343583690041" action="convertdate" oldname="moddate_" attribute="moddate" type="Date" newvalue="dd.MM.yyyy" description="Modification date"/>
+		<Action name="U1343583723306" action="add" attribute="modificationstr" newvalue="{dataset.moddate_.get()} {dataset.modtime.get()}" hidden="true"/>
+		<Action name="U1343583763010" action="convertdate" oldname="modificationstr" attribute="modification" type="Date" newvalue="dd.MM.yyyy HH:mm:ss" oldvalue="01.01.1900 00:00:00" description="Modification datetime (as deducted from MODDATE and MODTIME)"/>
+	</Actions>
+</Discovery>

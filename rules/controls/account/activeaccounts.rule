@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_activeaccounts" operator="and" query="account" displayname="Active Accounts" version="6" notes="">
+	<RequestGroup name="G1331841936328_106" operator="or">
+		<RequestCriteria name="C1331840625596_10" criteria="neDisabled">
+		</RequestCriteria>
+		<RequestCriteria name="C1331841950243_108" criteria="isNullProperty">
+			<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+				<Value name="0" data="disabled"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

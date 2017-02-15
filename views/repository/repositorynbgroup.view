@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositorynbgroup" distinct="true" concept="group" displayname="# of group by repository">
+	<ViewParam name="repositoryrecorduid" displayname="Repository Record uid"/>
+	<ViewAttribute name="A1303137174621_3" attribute="recorduid" alias="nbgroup" operator="or" aggregate="COUNT"/>
+	<ViewAttribute name="A1303137174621_5" attribute="repositoryrecorduid" operator="or">
+		<ViewAttributeFilter name="F1303137249447_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1473956188491">
+	<Source file="{config.importfiles}/Extracts_AMC/PROD/ALIR/1U40_AMC_DATA_ALIR.csv" type="CSV" separator=";" textseparator="&quot;" encoding="ISO-8859-1"/>
+	<Attributes hasheader="true">
+		<Attribute name="A6062921901459595847" attribute="company_uid" column="Company UID" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4119879721825446886" attribute="company_name" column="Company name" type="String" multivalued="false" persistent="false"/>
+		</Attributes>
+	<Request expression="SELECT * FROM dataset WHERE dataset.company_uid !=&apos;&apos;"/>
+	<Checks>
+		<Check name="U1474014865811" attribute="company_uid" checktype="mandatory" event="company_uid is mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1474015055158" action="add" attribute="_organizationtype" newvalue="ou"/>
+	</Actions>
+</Discovery>

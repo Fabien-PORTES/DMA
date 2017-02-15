@@ -1,0 +1,25 @@
+layout3 = Page {
+	title:'Layouting with flows'
+	
+	Flow {
+		disposition:Vertical
+		
+		Group {
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+		Flow {
+			disposition:Horizontal
+			Group {
+				Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+			}
+			Group {
+				Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+			}
+		}
+		Group {
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+	}
+}
+
+

@@ -1,0 +1,3935 @@
+import "/webportal/pages/resources/mappings.page"
+
+report = NLS {
+
+	// Identity Printable
+	browsing_identitydetail.title [en "Printable Version" fr "Version Imprimable"]
+	
+	// Identity Browsing
+	browsing_identitydetailpermissions.title [en "Detailed Permissions" fr "Permissions Détaillées"]
+	browsing_identitydetailpermissions.directonly [en "Direct access rights only" fr "Droits d'accès direct uniquement"]
+	browsing_identityusages.title [en "Usages" fr "Usages"]
+	browsing_identityteam.title [en "Complete Team" fr "Détail de L'Equipe"]
+	
+	// Identity Review
+	analysis_accountreviewbymanager.title [en "Accounts Review (By Organisation)" fr "Revue de Comptes (Equipes D'Organisation)"]
+	analysis_accountreviewbymanager.^application [en "Filter by application" fr "Filter by application"]
+	
+	// Identity Mining
+	analysis_templateanalysis.title [en "Use as Reference to Compare Permissions" fr "Utiliser Comme Référence pour Comparer les Permissions"]
+	analysis_templateanalysis.dynamictitle [en "Use as Reference to Compare Permissions ({0})" fr "Utiliser Comme Référence pour Comparer les Permissions ({0})"]
+	analysis_templateanalysis.^recorduid [en "Reference identity" fr "Reference identity"]
+	analysis_templateanalysis.^identities [en "Select identities" fr "Sélectionner les identités à comparer"]
+	analysis_templateanalysis.^jobs [en "Select jobs" fr "Sélectionner les métiers à comparer"]
+	analysis_templateanalysis.^organisations [en "Select organisations" fr "Sélectionner les organisations à comparer"]
+	analysis_templateanalysis.^showpermissionincommon [en "Show permissions in common" fr "Afficher les  permissions en commun"]
+	analysis_identitysimilarapps.title [en "Identities with Similar Applications" fr "Identités avec des Applications Similaires"]
+	analysis_identitysimilarapps.dynamictitle [en "Identities with Similar Applications ({0})" fr "Identités avec des Applications Similaires ({0})"]
+	analysis_identitysimilarapps.^threshold [en "Similarity threshold" fr "Seuil de similarité"]
+	analysis_identitysimilarperms.title [en "Identities with Similar Permissions" fr "Identités avec des Permissions Similaires"]
+	analysis_identitysimilarperms.dynamictitle [en "Identities with Similar Permissions ({0})" fr "Identités avec des Permissions Similaires ({0})"]
+	analysis_identitysimilarperms.^threshold [en "Similarity threshold" fr "Seuil de similarité"]
+	
+	// Account Printable
+	browsing_accountdetail.title [en "Printable Version" fr "Version Imprimable"]
+	
+	// Account Browsing
+	browsing_accountallgroups.title [en "Account Groups" fr "Groupes du Compte"]
+	browsing_accountdetailpermissions.title [en "Account Permissions" fr "Permissions du Compte"]
+	browsing_accountdetailpermissions.directonly [en "Direct access rights only" fr "Droits d'accès direct uniquement"]
+	browsing_accountusages.title [en "Account Usages" fr "Usages du Compte"]
+	
+	// Permission Printable
+	browsing_permissiondetail.title [en "Printable Version" fr "Version Imprimable"]
+	
+	// Permission Browsing
+	browsing_permissionidentitylist.title [en "Identities with the Permission" fr "Identités Disposant de la Permission"]
+	browsing_permissionusages.title [en "Usages" fr "Usages"]
+	
+	// Permission Analytics 
+	analysis_permissionorphanaccounts.title [en "Orphan Accounts" fr "Comptes Orphelins"]
+	analysis_permissionorphanaccounts.dynamictitle [en "Orphan Accounts ({0})" fr "Comptes Orphelins ({0})"]
+	analysis_permissionorphanaccounts.^hidedisabledaccount [en "Hide disabled accounts" fr "Masquer les comptes désactivés"]
+	analysis_permissionjobpivot.title [en "Permission and Job Pivot" fr "Ventilation par Permission et Métier" ]
+	analysis_permissionjobpivot.dynamictitle [en "Permission and Job Pivot ({0})" fr "Ventilation par Permission et Métier ({0})" ]
+	analysis_permissionorgpivot.title  [en "Permission and Organisation Pivot" fr "Ventilation par Permission et Organisation" ]
+	analysis_permissionorgpivot.dynamictitle  [en "Permission and Organisation Pivot ({0})" fr "Ventilation par Permission et Organisation ({0})" ]
+	analysis_permissionjoborgpivot.title [en "Permission Job and Organisation Pivot" fr "Ventilation par Permission, Métier et Organisation"]
+	analysis_permissionjoborgpivot.dynamictitle [en "Permission Job and Organisation Pivot ({0})" fr "Ventilation par Permission, Métier et Organisation ({0})"]
+	analysis_permissionjoborgpivot.^lowthreshold [en "Low threshold" fr "Seuil bas de filtrage"]
+	
+	// Permission Mining 
+	analysis_permissionassociatedwith.title [en "Permissions Associated with This Permission" fr "Permissions Associées avec Cette Permission"]
+	analysis_permissionassociatedwith.dynamictitle [en "Permissions Associated with This Permission ({0})" fr "Permissions Associées avec Cette Permission ({0})"]
+	analysis_permissionassociatedwith.^threshold [en "Permission similarity threshold" fr "Seuil de similarité"]
+		
+	// Organisation Printable
+	browsing_organisationdetail.title [en "Printable Version" fr "Version Imprimable"]
+	
+	// Organisation Browsing
+	browsing_organisationidentities.title [en "Members of the Organisation" fr "Membres de l'Organisation"]
+	browsing_organisationsuborgs.title [en "Sub Departments" fr "Sous Départements"]
+	
+	// Organisation Review
+	analysis_organisationdeltareview_hrteam.title [en "Organisation Review (Differences)" fr "Revue de l'Organisation (Différences)"]
+	analysis_organisationreview_hrteam_applications.title [en "Application Review (Full)" fr "Revue des Applications (Complète)"]
+	analysis_organisationdeltareview_hrteam_applications.title [en "Application Review (Differences)" fr "Revue des Applications (Différences)"]
+	organisationreview_crosstab [en "Crosstab Review" fr "Revue en Tableau Croisé"]
+	analysis_organisationreview_hrteam_permissionsprofiles.title [en "Permission Review (Full)" fr "Revue des Permissions (Complète)"]
+	analysis_organisationreview_hrteam_permissionsprofiles.^showdefects [en "Show defects" fr "Afficher les défauts de contrôles"]
+	analysis_organisationdeltareview_hrteam_left_permissionsprofiles.title [en "Permission Review of People who Left the Organisation" fr "Revue des Permissions des Personnes qui ont Quitté l'Organisation"]
+	
+	// Organisation Analytics
+	analysis_joborganisationpivot.title [en "Job Organisation Pivot" fr "Ventilation par Métier et Organisation"]
+	analysis_joborganisationpivot.dynamictitle [en "Job Organisation Pivot ({0})" fr "Ventilation par Métier et Organisation ({0})"]
+	analysis_organisationappsuborgpivot.title [en "Applications Job Organisation Pivot" fr "Ventilation par Application et Sous Organisation"]
+	analysis_organisationappsuborgpivot.dynamictitle [en "Applications Job Organisation Pivot ({0})" fr "Ventilation par Application et Sous Organisation ({0})"]
+	analysis_organisationappjobpivotdetail.title [en "Job Application Pivot" fr "Ventilation par Métier et Application"]
+	analysis_organisationappjobpivotdetail.dynamictitle [en "Job Application Pivot ({0})" fr "Ventilation par Métier et Application ({0})"]
+	controls_SoDtopControlsFltOrg.title [en "SoD Analysis" fr "Analyse des Ecarts de SoD"]
+	controls_SoDtopControlsFltOrg.dynamictitle [en "SoD Analysis ({0})" fr "Analyse des Ecarts de SoD ({0})"]
+	controls_SoDtopControlsFltOrg.^threshold [en "Threshold on running percent" fr "Seuil sur le cumul en %"]
+	controls_SoDtopControlsFltOrg.^organisationtypes [en "Organisation type" fr "Type d'organisation"]
+	controls_SoDtopControlsFltOrg.^orgs [en "Include organisation " fr "Prendre en compte l'organisation "]
+	
+	// Organisation Mining
+	analysis_organisationreview_hrteam.title [ en "Organisation Review (Full)" fr "Revue de l'organisation (Complète)" ]
+	analysis_organisationreview_hrteam.dynamictitle [ en "Organisation Review - Full ({0})" fr "Revue de l''organisation - Complète ({0})" ]
+	
+	analysis_organisationsimilarapps.title [en "Applications Associated with this Organisation and its Sub Organisations" fr "Applications Associées à Cette Organisation et Sous Organisations"]
+	analysis_organisationsimilarapps.dynamictitle [en "Applications Associated with this Organisation and its Sub Organisations ({0})" fr "Applications Associées à Cette Organisation et Sous Organisations ({0})"]
+	analysis_organisationsimilarapps.^lowthreshold [en "Display only applications accessible to more than X% of the identities" fr "Afficher seulement les applications accessibles par plus de X% des identités"]
+	analysis_organisationdirectsimilarapps.title [en "Applications Associated with this Organisation" fr "Applications Associées à Cette Organisation"]
+	analysis_organisationdirectsimilarapps.dynamictitle [en "Applications Associated with this Organisation ({0})" fr "Applications Associées à Cette Organisation ({0})"]
+	analysis_organisationdirectsimilarapps.^lowthreshold [en "Display only applications accessible to more than X% of the identities" fr "Afficher seulement les applications accessibles par plus de X% des identités"]
+	analysis_organisationsimilarperms.title [en "Permissions Associated with this Organisation and its Sub Organisations"  fr "Permissions Associées à Cette Organisation et Sous Organisations"]
+	analysis_organisationsimilarperms.dynamictitle [en "Permissions Associated with this Organisation and its Sub Organisations ({0})"  fr "Permissions Associées à Cette Organisation et Sous Organisations ({0})"]
+	analysis_organisationsimilarperms.^lowthreshold [en "Display only permissions accessible to more than X% of the identities" fr "Afficher seulement les permissions accessibles par plus de X% des identités"]
+	analysis_organisationdirectsimilarperms.title [en "Permissions Associated with this Organisation"  fr "Permissions Associées à Cette Organisation"]
+	analysis_organisationdirectsimilarperms.dynamictitle [en "Permissions Associated with this Organisation ({0})"  fr "Permissions Associées à Cette Organisation ({0})"]
+	analysis_organisationdirectsimilarperms.^lowthreshold [en "Display only permissions accessible to more than X% of the identities" fr "Afficher seulement les permissions accessibles par plus de X% des identités"]
+	
+	// Group Printable
+	browsing_groupdetail.title [en "Printable Version" fr "Version Imprimable"]
+	
+	// Group Browsing
+	browsing_groupallaccounts.title [en "All Accounts" fr "Liste des Comptes"]
+	browsing_groupallaccounts.^reason [en "Show subgroups" fr "Show subgroups"]
+	browsing_groupdetailpermissions.title [en "Permissions" fr "Permissions"]
+	
+	// Application Printable
+	browsing_applicationdetail.title [en "Printable Version" fr "Version Imprimable"]
+	
+	// Application Browsing
+	browsing_applicationidentitylist.title [en "Identity List" fr "Liste D'Identités"]
+	browsing_permissionlistbyidentity.title [en "Permission Detailed by Identity" fr "Détail des Permissions par Identité"]
+	browsing_permissionlistbyaccount.title [en "Permissions Detailed by Account" fr "Detail des Permissions par Compte"]
+	browsing_applicationusages.title [en "Usages" fr "Usages"]
+	browsing_applicationdetailidentityproblems.title [en "People with Controls Defects" fr "Personnes avec des Défauts de Contrôle"]
+	browsing_applicationdetailidentityproblems.^recorduid [en "recorduid" fr "recorduid"]
+	browsing_applicationdetailaccountproblems.title [en "Accounts with Controls Defects" fr "Comptes avec des Défauts de Contrôle"]
+	browsing_applicationdetailaccountproblems.^recorduid [en "recorduid" fr "recorduid"]
+	
+	// Application Review
+	analysis_accountreviewbyapplication.title [en "Account Review" fr "Revue de Comptes"]
+	
+	// Application Analytics
+	analysis_applicationorphanaccounts.title [en "Orphan Accounts" fr "Comptes Orphelins"]
+	analysis_applicationorphanaccounts.dynamictitle [en "Orphan Accounts ({0})" fr "Comptes Orphelins ({0})"]
+	analysis_applicationorphanaccounts.^hidedisabledaccounts [en "Hide disabled accounts" fr "Masquer les comptes désactivés"]
+	analysis_applicationjoborgpivot.title [en "Application Job Organisation Pivot" fr "Ventilation par Application Métier et Organisations"]
+	analysis_applicationjoborgpivot.dynamictitle [en "Application Job Organisation Pivot ({0})" fr "Ventilation par Application Métier et Organisations ({0})"]
+	analysis_applicationjoborgpivot.^lowthreshold [en "Low threshold" fr "Seuil bas"]
+	analysis_permissionjobpivot_application.title [en "Permission and Job Pivot" fr "Ventilation par Permission et Métier" ]
+	analysis_permissionjobpivot_application.dynamictitle [en "Permission and Job Pivot ({0})" fr "Ventilation par Permission et Métier ({0})" ]
+	analysis_permissionorgpivot_application.title  [en "Permission and Organisation Pivot" fr "Ventilation par Permission et Organisation" ]
+	analysis_permissionorgpivot_application.dynamictitle  [en "Permission and Organisation Pivot ({0})" fr "Ventilation par Permission et Organisation ({0})" ]
+	
+	// Application Mining
+	analysis_applicationassociatedwith.title [en "Applications Associated with this Application" fr "Applications Associées avec Cette Application"]
+	analysis_applicationassociatedwith.dynamictitle [en "Applications Associated with this Application ({0})" fr "Applications Associées avec Cette Application ({0})"]
+	analysis_applicationassociatedwith.^threshold [en "Threshold" fr "Seuil"]
+	
+	// Repository Printable
+	browsing_repositorydetail.title [en "Printable Version" fr "Version Imprimable"]
+	
+	// Repository Browsing
+	browsing_accountsearch_simple.title [en "Account List" fr "Liste des Comptes du Référentiel"]
+	browsing_accountsearch_simple.^AccountIdentifier [en "Account Identifier" fr "Account Identifier"]
+	browsing_groupsearch.title [en "Group List" fr "Liste des Groupes du Référentiel"]
+	browsing_groupsearch.^code [en "Code" fr "Code"]
+	browsing_groupsearch.^displayname [en "Name" fr "Nom"]
+	browsing_groupsearch.^repository [en "Repository" fr "Référentiel"]
+	
+	// Repository Analytics
+	analysis_repositoryreconciliation.title [en "Reconciliation Statistics" fr "Synthèse sur la Reconciliation"]
+	analysis_repositoryreconciliation.dynamictitle [en "Reconciliation Statistics ({0})" fr "Synthèse sur la Reconciliation ({0})"]
+	analysis_repositoryreconciliation.^recorduid [en "Repository" fr "Référentiel"]
+	analysis_repositoryorphanaccounts.title [en "Orphan Accounts" fr "Comptes Orphelins"]
+	analysis_repositoryorphanaccounts.dynamictitle [en "Orphan Accounts ({0})" fr "Comptes Orphelins ({0})"]
+	analysis_repositoryorphanaccounts.^hidedisabledaccount [en "Hide disabled accounts" fr "Masquer les comptes désactivés"]
+	analysis_repositoryaccounttopgroups.title [en "Accounts with the most/the least Amount of Groups" fr "Comptes avec le plus/le moins de groupes"]
+	analysis_repositoryaccounttopgroups.dynamictitle [en "Accounts with the most/the least Amount of Groups ({0})" fr "Comptes avec le plus/le moins de groupes ({0})"]
+	analysis_repositorygrouptopaccounts.title [en "Groups with the most/the least Amount of Accounts" fr "Groupes Contenant le plus/le moins de Comptes"]
+	analysis_repositorygrouptopaccounts.dynamictitle [en "Groups with the most/the least Amount of Accounts ({0})" fr "Groupes Contenant le plus/le moins de Comptes ({0})"]
+	analysis_repositoryidentitiesnbperm.title [en "Identities the most/the least Amount of Permissions" fr "Identités avec le plus/le moins de Permissions"]
+	analysis_repositoryidentitiesnbperm.dynamictitle [en "Identities the most/the least Amount of Permissions ({0})" fr "Identités avec le plus/le moins de Permissions ({0})"]
+	analysis_repositoryaccountsnbperm.title [en "Accounts the most/the least Amount of Permissions" fr "Comptes avec le plus/le moins de Permissions"]
+	analysis_repositoryaccountsnbperm.dynamictitle [en "Accounts the most/the least Amount of Permissions ({0})" fr "Comptes avec le plus/le moins de Permissions ({0})"]
+
+	// Generic Controls
+	dashboard_datasources.title [en "Datafiles used to feed the Identity Ledger" fr "Fichiers utilisés pour alimenter le Grand Livre"]
+	dashboard_datasources.^nbweeks [en "# of weeks before warning" fr "# of weeks before warning"]
+	dashboard_reconciliationappsynthesis.title [en "Application Reconciliation synthesis" fr "Synthèse de la réconciliation par application"]
+	dashboard_reconciliationsynthesis.title [en "Repository Reconciliation synthesis" fr "Synthèse de réconciliation par référentiel"]
+	analysis_repositoryreconciliation_control.title [en "Reconciliation Statistics" fr "Synthèse sur la Reconciliation"]
+	analysis_repositoryreconciliation_control.^recorduid [en "Repository" fr "Référentiel"]
+	analysis_accountenabledusergone.title [en "Active accounts, identities gone" fr "Comptes actifs, identités parties"]
+	analysis_accountscreatedmodified.title [en "Accounts created/modified since the last import" fr "Comptes crées/modifiés depuis le dernier import"]
+	analysis_accountsdeleted.title [en "Accounts deleted on next import" fr "Comptes supprimés au prochain import"]
+	controls_SoDtopControlsFltOrg_control.title [en "SoD Analysis" fr "Analyse des Ecarts de SoD"]
+	controls_SoDtopControlsFltOrg_control.^threshold [en "Threshold on running percent" fr "Seuil sur le cumul en %"]
+	controls_SoDtopControlsFltOrg_control.^organisationtypes [en "Organisation type" fr "Type d'organisation"]
+	controls_SoDtopControlsFltOrg_control.^orgs [en "Include organisation " fr "Prendre en compte l'organisation "]
+	controls_SoDtopControlsNoOrg.title [en "SoD controls Top N for people W/O org" fr "Top N des contrôles de SoD pour les personnes sans organisation"]
+	controls_SoDtopControlsNoOrg.^threshold [en "Threshold on running percent" fr "Seuil sur le cumul en %"]
+	controls_identitycontrols.title [en "Identities controls" fr "Contrôles sur les identités"]
+	controls_identitycontrols.^showdescription [en "Show control description" fr "Afficher la description du contrôle"]
+	controls_accountcontrols.title [en "Accounts controls" fr "Contrôles sur les comptes"]
+	controls_accountcontrols.^showdescription [en "Show control description" fr "Afficher la description du contrôle"]
+	controls_applicationcontrols.title [en "Applications controls" fr "Contrôles sur les applications"]
+	controls_applicationcontrols.^showdescription [en "Show control description" fr "Afficher la description du contrôle"]
+	controls_permissioncontrols.title [en "Permissions controls" fr "Contrôles sur les permissions"]
+	controls_permissioncontrols.^showdescription [en "Show control description" fr "Afficher la description du contrôle"]
+	controls_organisationcontrols.title [en "Organisations controls" fr "Contrôles sur les organisations"]
+	controls_organisationcontrols.^showdescription [en "Show control description" fr "Afficher la description du contrôle"]
+	controls_assetcontrols.title [en "Assets controls" fr "Contrôles sur les actifs"]
+	controls_assetcontrols.^showdescription [en "Show control description" fr "Afficher la description du contrôle"]
+	
+	// Generic Mining
+	analysis_organisations_applications_withsubs.title [en "Application mining by organisation type (including sub organisations)" fr "Mining d'applications par type d'organisation (avec les sous organisations)"]
+	analysis_organisations_applications_withsubs.^OrganisationType [en "Organisation type" fr "Type d'organisation"]
+	analysis_organisations_applications_withsubs.^lowthreshold [en "Display only applications accessible to more than X% of the identities" fr "Afficher seulement les applications accessibles par plus de X% des identités"]
+	analysis_organisations_applications_withsubs.^min_nb_users [en "Minimum number of users in Organisation" fr "# minimum de personnes dans l'organisation"]
+	analysis_organisations_applications_nosubs.title [en "Application mining by organisation type" fr "Mining d'applications par type d'organisation"]
+	analysis_organisations_applications_nosubs.^OrganisationType [en "Organisation type" fr "Type d'organisation"]
+	analysis_organisations_applications_nosubs.^lowthreshold [en "Display only applications accessible to more than X% of the identities" fr "Afficher seulement les applications accessibles par plus de X% des identités"]
+	analysis_organisations_applications_nosubs.^min_nb_users [en "Minimum number of users in Organisation" fr "Nombre minimum de personnes dans l'organisation"]
+	analysis_jobs_applications.title [en "Application mining by job" fr "Détail des personnes avec un métier et une application donnée"]
+	analysis_jobs_applications.^lowthreshold [en "Display only applications accessible to more than X% of the identities" fr "Afficher seulement les applications accessibles par plus de X% des identités"]
+	analysis_jobs_applications.^min_nb_users [en "Minimum number of users with the job" fr "Nombre minimum d'utilisateurs avec le métier"]
+	analysis_organisations_permissions_withsubs.title [en "Permission mining by organisation type (including sub organisations)" fr "Mining de permissions par type d'organisation (avec les sous organisations)"]
+	analysis_organisations_permissions_withsubs.^OrganisationType [en "Organisation type" fr "Type d'organisation"]
+	analysis_organisations_permissions_withsubs.^lowthreshold [en "Display only permissions accessible to more than X% of the identities" fr "Afficher seulement les permissions accessibles par plus de X% des identités"]
+	analysis_organisations_permissions_withsubs.^min_nb_users [en "Minimum number of users in Organisation" fr "Nombre minimum de personnes dans l'organisation"]
+	analysis_organisations_permissions_nosubs.title [en "Permission mining by organisation type" fr "Mining de permissions par type d'organisation"]
+	analysis_organisations_permissions_nosubs.^OrganisationType [en "Organisation type" fr "Type d'organisation"]
+	analysis_organisations_permissions_nosubs.^lowthreshold [en "Display only permissions accessible to more than X% of the identities" fr "Afficher seulement les permissions accessibles par plus de X% des identités"]
+	analysis_organisations_permissions_nosubs.^min_nb_users [en "Minimum number of users in Organisation" fr "Nombre minimum de personnes dans l'organisation"]
+	analysis_jobs_permissions_detail2.title [en "Identities with a given job and without a permission" fr "Détail des personnes avec un métier et sans la permission donnée"]
+	analysis_jobs_permissions_detail1.title [en "Identities with a given job and permission" fr "Détail des personnes avec un métier et une permission donnée"]
+	analysis_jobs_permissions.title [en "Permission mining by job" fr "Détail des personnes avec un métier et une permission donnée"]
+	analysis_jobs_permissions.^lowthreshold [en "Display only permissions accessible to more than X% of the identities" fr "Afficher seulement les permissions accessibles par plus de X% des identités"]
+	analysis_jobs_permissions.^min_nb_users [en "Minimum number of users with the job" fr "Nombre minimum d'utilisateurs avec le métier"]
+	
+	// Generic Analytics
+	analysis_joborganisationpivot_generic.title [en "Job Organisation Pivot" fr "Ventilation par Métier et Organisation"]
+	
+	// Generic Browsing 
+	browsing_currentorganisationhierarchy.title [en "Organization hierarchy" fr "Hierarchie des organisations"]
+	browsing_applicationpermission.title [en "Applications and permissions" fr "Applications et permissions"]
+	
+	// Untagged Reports
+	analysis_organisationappjobpivot.title [en "Job Application Pivot" fr "Ventilation par Métier et Application"]
+	browsing_sharepointsearch.title [en "Sharepoint search" fr "Recherche Sharepoint"]
+	browsing_sharepointsearch.^permissioncode [en "Complete path" fr "Complete path"]
+	browsing_sharepointsearch.^permissionname [en "Folder name" fr "Folder name"]
+	browsing_sharepointsearch.^application [en "Application" fr "Application"]	
+	browsing_repositoryserviceaccounts.title [en "Results" fr "Résultats"]
+	analysis_organisations_applications_withsubsdetail.title [en "Identities from a given organisation (including sub organisations) with access to a given application" fr "Détail des personnes disposant de l'application (sous organisations comprises)"]
+	analysis_organisations_applications_nosubsdetail2.title [en "Identity directly attached to an organisation without access to a given application" fr "Détail des personnes ne disposant pas de l'application (appartenance directe à l'organisation)"]
+	analysis_organisations_permissions_nosubsdetail2.title [en "Identities directly belonging to a given organisation and without access to a given permission" fr "Détail des personnes ne disposant pas de la permission (appartenance directe à l'organisation)"]
+	analysis_organisations_permissions_withsubsdetail.title [en "Identities belonging to a given organisation with access to a given permission" fr "Détail des personnes disposant de la permission (sous organisations comprises)"]
+	browsing_organisationsearch.title [en "Organisation search" fr "Recherche d'organisations"]
+	browsing_organisationsearch.^organisationtype [en "Organisation type" fr "Type de structure"]
+	browsing_organisationsearch.^shortname [en "Filter by organisation short name" fr "Filtrer par le nom court de l'organisation"]
+	browsing_organisationsearch.^displayname [en "Filter by organisation name" fr "Filtrer par le nom de l'organisation"]
+	analysis_permissionjoborgpivotdetail.title [en "Details" fr "Détail"]
+	browsing_identitysearch_simple.title [en "Identity search" fr "Recherche d'identités"]
+	browsing_identitysearch_simple.^hrcode [en "Filter by HR Code" fr "Filtrer par code RH"]
+	browsing_identitysearch_simple.^surname [en "Filter by Surname" fr "Filtrer par le nom"]
+	browsing_identitysearch_simple.^givenname [en "Filter by Given name" fr "Filtrer par le prénom"]
+	analysis_organisationdeltareview_hrteam_permissionsprofiles.title [en "Permissions Review by Identities" fr "Revue des permissions des personnes"]
+	analysis_organisationdeltareview_hrteam_permissionsprofiles.^showdefects [en "Show defects" fr "Show defects"]
+	browsing_repositoryaccountswithoutowner.title [en "Results" fr "Résultats"]
+	analysis_organisations_applications_withsubsnoappdetail.title [en "Identities from an organisation (including sub organisation) without acces to a given application" fr "Détail des personnes ne disposant pas de l'application (sous organisations comprises)"]
+	browsing_repositorysearch.title [en "Repository search" fr "Recherche de référentiels"]
+	browsing_repositorysearch.^code [en "Code" fr "Code"]
+	browsing_repositorysearch.^displayname [en "Name" fr "Nom"]
+	analysis_organisations_permissions_nosubsdetail.title [en "Identities directly belonging to a given organisation and without access to a given permission" fr "Détail des personnes ne disposant pas de la permission (appartenance directe à l'organisation)"]
+	analysis_repositoryreconciliationdetail.title [en "Reconciliation details for a repository" fr "Détail de la réconciliation pour un référentiel"]
+	analysis_identitysimilarperms_permsincommon.title [en "Permissions in common" fr "Permissions en commun"]
+	analysis_organisations_applications_nosubsdetail.title [en "Identity directly attached to an organisation with access to a given application" fr "Détail des personnes disposant de l'application (appartenance directe à l'organisation)"]
+	analysis_jobs_applications_detail2.title [en "Identities with a given job and without an application" fr "Détail des personnes avec un métier et sans l'application donnée"]
+	analysis_joborganisationpivotdetail.title [en "Details" fr "Détail"]
+	browsing_applicationsearch.title [en "Application search" fr "Recherche d'application"]
+	browsing_applicationsearch.^code [en "Filter by application code" fr "Filtrer par le code"]
+	browsing_applicationsearch.^displayname [en "Filter by application name" fr "Filtrer par le nom"]
+	browsing_applicationsearch.^repositoryname [en "Repository" fr "Référentiel"]
+	controls_SoDtopControls.title [en "SoD controls Top N by # of defect" fr "Top N des contrôles de SoD par nombre d'écarts constatés"]
+	controls_SoDtopControls.^threshold [en "Inclusion threshold in %" fr "Seuil sur le cumul en %"]
+	analysis_accountreviewbyorganisation.title [en "Account review" fr "Revue de comptes"]
+	analysis_accountreviewbyorganisation.^application [en "Filter by application" fr "Filter by application"]
+	analysis_jobs_applications_detail1.title [en "Identities with a given job and application" fr "Détail des personnes avec un métier et une application donnée"]
+	controls_controlidentitysimplelist.title [en "Control results" fr "Résultats du contrôle"]
+	browsing_permissionsearch.title [en "Permission search" fr "Recherche de permissions"]
+	browsing_permissionsearch.^application [en "Select application" fr "Select application"]
+	browsing_permissionsearch.^permissioncode [en "Permission code" fr "Permission code"]
+	browsing_permissionsearch.^permissionname [en "Permission name" fr "Permission name"]
+	browsing_jobsearch.title [en "Job search" fr "Recherche de métiers"]
+	browsing_jobsearch.^jobtitlecode [en "Filter by job code" fr "Filter by job code"]
+	browsing_jobsearch.^jobtitledisplayname [en "Filter by job name" fr "Filter by job name"]
+	analysis_organisationapporgjobpivotdetail.title [en "Details" fr "Détail"]
+	analysis_applicationjoborgpivotdetail.title [en "Detail" fr "Détail"]
+	analysis_accountenabledusergonedetail.title [en "Active accounts, identities leaved the company" fr "Comptes actifs appartenant à des personnes ayant quitté l'organisation"]
+	browsing_jobdetail.title [en "Job detail" fr "Détail du métier"]
+	analysis_applicationbyorganisation.title [en "Application by organisation pivot" fr "Ventilation Application Organisation"]
+	analysis_applicationbyorganisation.^application [en "Filter by application" fr "Filter by application"]
+	analysis_applicationbyorganisation.^organisation [en "Filter by organisation" fr "Filter by organisation"]
+	analysis_repositoryreconciliationmanuallydetail.title [en "Ad-hoc reconciliation detail for" fr "Résultats"]
+	browsing_identitysearch_advanced.title [en "Identity search" fr "Recherche d'identités"]
+	browsing_identitysearch_advanced.^hrcode [en "Filter by HR Code" fr "Filtrer par code RH"]
+	browsing_identitysearch_advanced.^givenname [en "Filter by Given name" fr "Filtrer par le prénom"]
+	browsing_identitysearch_advanced.^surname [en "Filter by Surname" fr "Filtrer par le nom"]
+	browsing_identitysearch_advanced.^jobtitle [en "Filter by job title" fr "Filtrer par le métier"]
+	browsing_identitysearch_advanced.^organisation [en "Filter by organisation" fr "Filtrer par l'organisation"]
+	browsing_assetsearch.title [en "Asset search" fr "Recherche d'actifs"]
+	browsing_assetsearch.^code [en "Filter by code" fr "Filter by code"]
+	browsing_assetsearch.^displayname [en "Filter by name" fr "Filter by name"]
+	browsing_assetdetail.title [en "Asset details" fr "Détails de l'actif"]
+	analysis_organisations_permissions_withsubsdetail2.title [en "Identities belonging to a given organisation without access to a given permission" fr "Détail des personnes ne disposant pas de la permission (sous organisations comprises)"]
+	browsing_repositoryreconciledaccounts.title [en "Results" fr "Résultats"]
+	browsing_repositoryreconciledaccounts.^login [en "Filter by login" fr "Filter by login"]
+	browsing_repositoryreconciledaccounts.^hrcode [en "Filter by hrcode" fr "Filter by hrcode"]
+	browsing_organisationdetailidentityproblems.title [en "People with controls defects" fr "Personnes avec des défauts de contrôle"]
+	browsing_organisationdetailidentityproblems.^recorduid [en "recorduid" fr "recorduid"]
+	rules_permission_simplelist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_application_simplelist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_identity_simplelist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_asset_simplelist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_identity_grouplist.title [en "" fr "Résultats de la règle"]
+	rules_identity_grouplist.^group [en "Filter by group code" fr "Filter by group code"]
+	rules_account_orgjobpivot.title [en "Rule results" fr "Ventilation par métier et par organisation"]
+	rules_account_orgjobpivot.^lowthreshold [en "Low threshold" fr "Low threshold"]
+	rules_account_grouplist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_account_grouplist.^group [en "Filter by group code" fr "Filter by group code"]
+	rules_identity_orgjobpivot.title [en "Organisation and job pivot" fr "Ventilation par métier et organisation"]
+	rules_identity_orgjobpivot.^threshold [en "Low threshold" fr "Low threshold"]
+	rules_identity_permlist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_identity_groupbyorg.title [en "Rule results" fr "Résultats de la règle"]
+	rules_identity_groupbyorg.^organisation [en "Filter by organisation" fr "Filter by organisation"]
+	rules_identity_groupbyorg.^job [en "Filter by job" fr "Filter by job"]
+	rules_identity_permmining.title [en "Permission Mining" fr "Mining des permissions"]
+	rules_identity_permmining.^threshold [en "Similarity shreshold" fr "Similarity shreshold"]
+	rules_identity_permmining.^lowthreshold [en "Exclusion threshold" fr "Exclusion threshold"]
+	rules_account_identitylist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_account_permlist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_account_simplelist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_organisation_simplelist.title [en "Rule results" fr "Résultats de la règle"]
+	rules_identity_appmining.title [en "Application Mining" fr "Mining des applications"]
+	rules_identity_appmining.^threshold [en "Similarity shreshold" fr "Similarity shreshold"]
+	rules_identity_appmining.^lowthreshold [en "Exclusion threshold" fr "Exclusion threshold"]
+	rules_identity_groupbyjob.title [en "Rule results" fr "Résultats de la règle"]
+	rules_identity_groupbyjob.^organisation [en "Filter by organisation" fr "Filter by organisation"]
+	rules_identity_groupbyjob.^job [en "Filter by job" fr "Filter by job"]
+	browsing_repositoryaccountsleavers.title [en "Results"]
+	
+}
+
+reportcustom = NLS {
+	
+	// Organisation Review
+	analysis_organisationreview_hrteam_deltapermissionsprofiles.title [en "Permission Review (Differences)" fr "Revue des Permissions (Différences)"]
+	
+	// Generic control
+	custom_identity_changes.title [ en "Identity Changes" fr "Mouvements de personnes"]
+
+	// Untagged Reports
+	custom_organisationreview_crosstab.title [en "Review" fr "Revue"]
+	custom_organisationreview_crosstab.^recorduid [en "organisation recorduid" fr "organisation recorduid"]
+	custom_sod_org_camembert_detail.title [en "" fr "Résultats du contrôle"]
+	custom_identitysodcontrols.title [en "Results" fr "Résultats"]
+	custom_controlidentitydetailsod.title [en "Control results" fr "Résultats du contrôle"]
+	custom_diffprofilesbyorganisation.title [en "Permissions Review by Identities" fr "Revue des permissions des personnes"]
+}
+
+///********************************************************************************************************************
+///********************************************************************************************************************
+// Tagged Reports
+
+// Identity Printable version 
+
+browsing_identitydetail = Report {
+	report: "/reports/browsing/identitydetail.rptdesign" with ^recorduid to ^recorduid
+	feature:  browsing_identitydetail
+	title: $report.browsing_identitydetail.title
+	tags:"identity" priority 100, "byuid", "printable"
+	dynamic-title:Concat(Transform identity.hrcode using mayBeNullMapping," - ",Transform identity.fullname using mayBeNullMapping)
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Identity
+		
+	}
+	
+	identity = Record {
+		view:br_identity
+		with ^recorduid to recorduid
+	}
+}
+
+// Identity Review Reports
+
+analysis_accountreviewbymanager = Report {
+	report: "/reports/analysis/accountreviewbymanager.rptdesign" with ^recorduid to ^recorduid, ^application to ^application
+	feature: analysis_accountreviewbymanager
+	title: $report.analysis_accountreviewbymanager.title
+	tags:"identity" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Identity
+		
+	}
+	^application = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.analysis_accountreviewbymanager.^application
+		constraint: Lookup {
+			data: br_application
+			value: Current recorduid
+			text: Current displayname
+			distinct: True
+		}
+	}
+	br_application = Dataset {
+		view: br_application
+	}
+}
+
+// Identity Analytics Reports
+
+analysis_templateanalysis = Report {
+	report: "/reports/analysis/templateanalysis.rptdesign" with ^recorduid to ^recorduid, ^identities to ^identities, ^jobs to ^jobs, ^organisations to ^organisations, ^showpermissionincommon to ^showpermissionincommon
+	feature: analysis_templateanalysis
+	title: $report.analysis_templateanalysis.title
+	dynamic-title: $report.analysis_templateanalysis.dynamictitle ( identity.fullname )
+	tags:"identity" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		label: $report.analysis_templateanalysis.^recorduid
+		constraint: Lookup {
+			data: br_identity
+			value: Current recorduid
+			text: Concat( Transform Current hrcode using mayBeNullMapping," ",Current fullname)
+			distinct: True
+		}
+		recorduid-of: Identity
+	}
+	^identities = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.analysis_templateanalysis.^identities
+		constraint: Lookup {
+			data: br_identity
+			value: Current recorduid
+			text: Concat( Transform Current hrcode using mayBeNullMapping," ",Current fullname)
+			distinct: True
+		}
+	}
+	^jobs = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.analysis_templateanalysis.^jobs
+		constraint: Lookup {
+			data: br_job
+			value: Current jobtitlerecorduid
+			text: Current jobtitledisplayname
+			distinct: True
+		}
+	}
+	^organisations = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.analysis_templateanalysis.^organisations
+		constraint: Lookup {
+			data: br_organisation
+			value: Current recorduid
+			text: Concat( Transform Current shortname using mayBeNullMapping," ",Current displayname)
+			distinct: True
+		}
+	}
+	^showpermissionincommon = Parameter {
+		mandatory: True
+		hidden: False
+		type: Boolean
+		default: "true"
+		label: $report.analysis_templateanalysis.^showpermissionincommon
+	}
+	br_identity = Dataset {
+		view: br_identity
+	}
+	br_job = Dataset {
+		view: br_job
+	}
+	br_organisation = Dataset {
+		view: br_organisation
+	}
+	
+	identity =  Record { view: br_identity with ^recorduid to recorduid }
+}
+
+// Identity Mining Reports
+
+analysis_identitysimilarapps = Report {
+	report: "/reports/analysis/identitysimilarapps.rptdesign" with ^recorduid to ^recorduid, ^threshold to ^threshold
+	feature: analysis_identitysimilarapps
+	title: $report.analysis_identitysimilarapps.title
+	dynamic-title: $report.analysis_identitysimilarapps.dynamictitle ( identity.fullname )
+	tags:"identity" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Identity
+		
+	}
+	^threshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_identitysimilarapps.^threshold
+	}
+	
+	identity =  Record { view: br_identity with ^recorduid to recorduid }
+}
+
+analysis_identitysimilarperms = Report {
+	report: "/reports/analysis/identitysimilarperms.rptdesign" with ^recorduid to ^recorduid, ^threshold to ^threshold
+	feature: analysis_identitysimilarperms
+	title: $report.analysis_identitysimilarperms.title
+	dynamic-title: $report.analysis_identitysimilarperms.dynamictitle ( identity.fullname )
+	tags:"identity" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Identity
+	}
+	^threshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_identitysimilarperms.^threshold
+	}
+	
+	identity =  Record { view: br_identity with ^recorduid to recorduid }
+}
+
+// ***************************************** Concept Change *****************************************
+// Account Printable version 
+
+browsing_accountdetail = Report {
+	report: "/reports/browsing/accountdetail.rptdesign" with ^recorduid to ^recorduid
+	feature: browsing_accountdetail
+	title: $report.browsing_accountdetail.title
+	tags:"account" priority 100, "byuid", "printable"
+	dynamic-title: Concat(Transform account.login using mayBeNullMapping," - ",Transform account.username using mayBeNullMapping)
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Account
+	}
+	account = Record {
+		view: br_account
+		with ^recorduid to recorduid
+	}
+}
+
+// ***************************************** Concept Change *****************************************
+// Permission Printable version 
+
+browsing_permissiondetail = Report {
+	report: "/reports/browsing/permissiondetail.rptdesign" with ^recorduid to ^recorduid
+	feature: browsing_permissiondetail
+	title: $report.browsing_permissiondetail.title
+	tags:"permission" priority 100, "byuid", "printable"
+	dynamic-title: Concat(Transform permission.code using mayBeNullMapping, " - ",Transform permission.displayname using mayBeNullMapping)
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+	}
+	
+	permission = Record {
+		view:br_permission
+		with ^recorduid to recorduid
+	}
+}
+
+// Permission Analytics Reports
+
+analysis_permissionorphanaccounts = Report {
+	report: "/reports/analysis/permissionorphanaccounts.rptdesign" with ^recorduid to ^recorduid, ^hidedisabledaccount to ^hidedisabledaccount
+	feature: analysis_permissionorphanaccounts
+	title: $report.analysis_permissionorphanaccounts.title
+	dynamic-title: $report.analysis_permissionorphanaccounts.dynamictitle ( permission.displayname )
+	tags:"permission" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png"  
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+		
+	}
+	^hidedisabledaccount = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "False"
+		label: $report.analysis_permissionorphanaccounts.^hidedisabledaccount
+	}
+	
+	permission = Record { view: br_permission with ^recorduid to recorduid }
+}
+
+analysis_permissionjobpivot = Report {
+	report: "/reports/analysis/permissionjobpivot.rptdesign" with ^permissionrecorduid to ^permissionrecorduid unless-empty,  ^recorduid to ^permissionrecorduid unless-empty, ^applicationrecorduid to ^applicationrecorduid
+	feature: analysis_permissionjobpivot
+	title: $report.analysis_permissionjobpivot.title
+	dynamic-title: $report.analysis_permissionjobpivot.dynamictitle ( NonEmpty (application.displayname, permission.displayname) )
+	tags:"permission" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png"  
+	batched-only: True
+	
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+	}
+	
+	//Added for Compatibility
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+		
+	}
+	
+	applicationUid = Record  { view: br_applicationDetail_uid with ^applicationrecorduid to recorduid }
+	application = Record { view: br_applicationDetail with applicationUid.uid to uid }
+	permission = Record { view: br_permission with ^recorduid to recorduid }
+}
+
+analysis_permissionorgpivot = Report {
+	report: "/reports/analysis/permissionorgpivot.rptdesign" with ^permissionrecorduid to ^permissionrecorduid unless-empty,  ^recorduid to ^permissionrecorduid unless-empty,  ^applicationrecorduid to ^applicationrecorduid
+	feature: analysis_permissionorgpivot
+	title: $report.analysis_permissionorgpivot.title
+	dynamic-title: $report.analysis_permissionorgpivot.dynamictitle ( NonEmpty (application.displayname, permission.displayname) )
+	tags:"permission" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png"  
+	batched-only: True
+	
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+	}
+	
+	//Added for Compatibility
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		
+		recorduid-of: Permission
+	}
+	
+	applicationUid = Record  { view: br_applicationDetail_uid with ^applicationrecorduid to recorduid }
+	application = Record { view: br_applicationDetail with applicationUid.uid to uid }
+	permission = Record { view: br_permission with ^recorduid to recorduid }
+	
+}
+
+analysis_permissionjoborgpivot = Report {
+	report: "/reports/analysis/permissionjoborgpivot.rptdesign" with ^recorduid to ^recorduid, ^lowthreshold to ^lowthreshold
+	feature: analysis_permissionjoborgpivot
+	title: $report.analysis_permissionjoborgpivot.title
+	dynamic-title: $report.analysis_permissionjoborgpivot.dynamictitle ( permission.displayname )
+	tags:"permission" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png"  
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+		
+	}
+	^lowthreshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		
+		label: $report.analysis_permissionjoborgpivot.^lowthreshold
+	}
+	
+	permission = Record { view: br_permission with ^recorduid to recorduid }
+}
+
+// Permission Mining Reports
+
+analysis_permissionassociatedwith = Report {
+	report: "/reports/analysis/permissionassociatedwith.rptdesign" with ^recorduid to ^recorduid, ^threshold to ^threshold
+	feature: analysis_permissionassociatedwith
+	title: $report.analysis_permissionassociatedwith.title
+	dynamic-title: $report.analysis_permissionassociatedwith.dynamictitle ( permission.displayname )
+	tags:"permission" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+	}
+	^threshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_permissionassociatedwith.^threshold
+	}
+	
+	permission = Record { view:  br_permission with ^recorduid to recorduid }
+}
+
+// ***************************************** Concept Change *****************************************
+// Organisation Printable version 
+
+browsing_organisationdetail = Report {
+	report: "/reports/browsing/organisationdetail.rptdesign" with ^recorduid to ^recorduid
+	feature: browsing_organisationdetail
+	title: $report.browsing_organisationdetail.title
+	tags:"organisation" priority 100, "byuid", "printable"
+	dynamic-title: Concat(Transform organisation.shortname using mayBeNullMapping," - ",Transform organisation.displayname using mayBeNullMapping)
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	organisation = Record {
+		view: br_organisation
+		with ^recorduid to recorduid
+	}
+}
+
+// Organisation Review Reports
+
+
+analysis_organisationdeltareview_hrteam = Report {
+	report: "/reports/analysis/organisationdeltareview_hrteam.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_organisationdeltareview_hrteam
+	title: $report.analysis_organisationdeltareview_hrteam.title
+	tags:"organisation" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+}
+
+analysis_organisationreview_hrteam_applications = Report {
+	report: "/reports/analysis/organisationreview_hrteam_applications.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_organisationreview_hrteam_applications
+	title: $report.analysis_organisationreview_hrteam_applications.title
+	tags:"organisation" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+}
+
+analysis_organisationdeltareview_hrteam_applications = Report {
+	report: "/reports/analysis/organisationdeltareview_hrteam_applications.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_organisationdeltareview_hrteam_applications
+	title: $report.analysis_organisationdeltareview_hrteam_applications.title
+	tags:"organisation" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+		
+	}
+}
+
+analysis_organisationreview_crosstab = Report {
+	report:"/reports/analysis/organisationreview_crosstab.rptdesign" 
+		with recorduid to recorduid,
+		identityrecorduid to identityrecorduid,
+		applicationrecorduid to applicationrecorduid,
+		permissionrecorduid to permissionrecorduid,
+		directorganisationrecorduid to directorganisationrecorduid,
+		jobtitlerecorduid to jobtitlerecorduid
+	feature: analysis_organisationreview_crosstab
+	title: $report.organisationreview_crosstab
+	tags:"organisation" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	
+	identityrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Identity
+	}
+	
+	applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+	}
+	
+	permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+	}
+	
+	jobtitlerecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: JobTitle
+	}
+	
+	directorganisationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	
+}
+
+analysis_organisationreview_hrteam_permissionsprofiles = Report {
+	report: "/reports/analysis/organisationreview_hrteam_permissionsprofiles.rptdesign" with ^recorduid to ^recorduid, ^showdefects to ^showdefects
+	feature: analysis_organisationreview_hrteam_permissionsprofiles
+	title: $report.analysis_organisationreview_hrteam_permissionsprofiles.title
+	tags:"organisation" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	^showdefects = Parameter {
+		mandatory: True
+		hidden: False
+		type: Boolean
+		default: "True"
+		label: $report.analysis_organisationreview_hrteam_permissionsprofiles.^showdefects
+	}
+}
+
+analysis_organisationdeltareview_hrteam_left_permissionsprofiles = Report {
+	report: "/reports/analysis/organisationdeltareview_hrteam_left_permissionsprofiles.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_organisationdeltareview_hrteam_left_permissionsprofiles
+	title: $report.analysis_organisationdeltareview_hrteam_left_permissionsprofiles.title
+	tags:"organisation" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+		
+	}
+}
+
+// Organisation Analytics Reports
+
+analysis_joborganisationpivot = Report {
+	report: "/reports/analysis/joborganisationpivot.rptdesign" with ^jobrecorduid to ^jobrecorduid, ^recorduid to ^orgrecorduid unless-empty, ^orgrecorduid to ^orgrecorduid unless-empty 
+	feature: analysis_joborganisationpivot
+	title: $report.analysis_joborganisationpivot.title
+	dynamic-title: $report.analysis_joborganisationpivot.dynamictitle ( organisation.displayname )
+	tags:"organisation" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png"  
+	batched-only: True
+	
+	^jobrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: JobTitle
+	}
+	// Added for compliance with new standard
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	
+	// Kept for compatiblity
+	^orgrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+}
+
+analysis_organisationappsuborgpivot = Report {
+	report: "/reports/analysis/organisationappsuborgpivot.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_organisationappsuborgpivot
+	title: $report.analysis_organisationappsuborgpivot.title
+	dynamic-title: $report.analysis_organisationappsuborgpivot.dynamictitle ( organisation.displayname )
+	tags:"organisation" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png"  
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+}
+
+
+analysis_organisationappjobpivot_detail = Report {
+	report: "/reports/analysis/organisationappjobpivotdetail.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_organisationappjobpivot_detail
+	title: $report.analysis_organisationappjobpivotdetail.title
+	dynamic-title: $report.analysis_organisationappjobpivotdetail.dynamictitle ( organisation.displayname )
+	tags:"organisation" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png"  
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+}
+
+
+controls_SoDtopControlsFltOrg = Report {
+	report: "/reports/controls/SoDtopControlsFltOrg.rptdesign" with ^threshold to ^threshold,  recorduidMatch.shortname to ^orgs, ^orgs to ^orgs
+	feature: controls_SoDtopControlsFltOrg
+	tags:"organisation" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png"  
+	title: $report.controls_SoDtopControlsFltOrg.title
+	dynamic-title: $report.controls_SoDtopControlsFltOrg.dynamictitle ( organisation.displayname )
+	batched-only: True
+	
+	^threshold = Parameter {
+		mandatory: False // Set to false to avoid pop-up when receiving recorduid
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.controls_SoDtopControlsFltOrg.^threshold
+	}
+	^orgs = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.controls_SoDtopControlsFltOrg.^orgs
+		constraint: Lookup {
+			data: br_organisation
+			value: Current shortname
+			text: Current displayname	
+		}
+	}
+	// Added for compliance with new standard
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		default:-1
+		recorduid-of: Organisation
+	}
+	
+	br_organisation = Dataset {
+		view: br_organisation
+	}
+	
+	//Added to transform the recorduid to shortname
+	recorduidMatch = Record {
+		view: br_organisationDetail_uid  with ^recorduid to recorduid
+	}
+	
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+}
+
+// Organisation Mining Reports
+
+analysis_organisationreview_hrteam = Report {
+	report: "/reports/analysis/organisationreview_hrteam.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_organisationreview_hrteam
+	title: $report.analysis_organisationreview_hrteam.title
+	dynamic-title: $report.analysis_organisationreview_hrteam.dynamictitle ( organisation.displayname )
+	tags:"organisation" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+}
+
+analysis_organisationsimilarapps = Report {
+	report: "/reports/analysis/organisationsimilarapps.rptdesign" with ^recorduid to ^recorduid, ^lowthreshold to ^lowthreshold
+	feature: analysis_organisationsimilarapps
+	title: $report.analysis_organisationsimilarapps.title
+	dynamic-title: $report.analysis_organisationsimilarapps.dynamictitle ( organisation.displayname )
+	tags:"organisation" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	^lowthreshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_organisationsimilarapps.^lowthreshold
+	}
+	
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+	
+}
+
+analysis_organisationdirectsimilarapps = Report {
+	report: "/reports/analysis/organisationdirectsimilarapps.rptdesign" with ^recorduid to ^recorduid, ^lowthreshold to ^lowthreshold
+	feature: analysis_organisationdirectsimilarapps
+	title: $report.analysis_organisationdirectsimilarapps.title
+	dynamic-title: $report.analysis_organisationdirectsimilarapps.dynamictitle ( organisation.displayname )
+	tags:"organisation" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+		
+	}
+	^lowthreshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_organisationdirectsimilarapps.^lowthreshold
+	}
+	
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+}
+
+analysis_organisationsimilarperms = Report {
+	report: "/reports/analysis/organisationsimilarperms.rptdesign" with ^recorduid to ^recorduid, ^lowthreshold to ^lowthreshold
+	feature: analysis_organisationsimilarperms
+	title: $report.analysis_organisationsimilarperms.title
+	dynamic-title: $report.analysis_organisationsimilarperms.dynamictitle ( organisation.displayname )
+	tags:"organisation" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	^lowthreshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_organisationsimilarperms.^lowthreshold
+	}
+	
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+}
+
+analysis_organisationdirectsimilarperms = Report {
+	report: "/reports/analysis/organisationdirectsimilarperms.rptdesign" with ^recorduid to ^recorduid, ^lowthreshold to ^lowthreshold
+	feature: analysis_organisationdirectsimilarperms
+	title: $report.analysis_organisationdirectsimilarperms.title
+	dynamic-title: $report.analysis_organisationdirectsimilarperms.dynamictitle ( organisation.displayname )
+	tags:"organisation" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	^lowthreshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_organisationdirectsimilarperms.^lowthreshold
+	}
+	
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+	
+}
+
+// ***************************************** Concept Change *****************************************
+// Group Printable version 
+
+browsing_groupdetail = Report {
+	report: "/reports/browsing/groupdetail.rptdesign" with ^recorduid to ^recorduid
+	feature: browsing_groupdetail
+	title: $report.browsing_groupdetail.title
+	dynamic-title: Concat(Transform group.code using mayBeNullMapping," - ",Transform group.displayname using mayBeNullMapping)
+	tags:"group" priority 100, "byuid", "printable"
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Group
+		
+	}
+	
+	group = Record {
+		view: br_group
+		with ^recorduid to recorduid
+	}
+}
+
+// ***************************************** Concept Change *****************************************
+// Application Printable version 
+
+browsing_applicationdetail = Report {
+	report: "/reports/browsing/applicationdetail.rptdesign" with ^recorduid to ^recorduid
+	feature: browsing_applicationdetail
+	title: $report.browsing_applicationdetail.title
+	dynamic-title: Concat(Transform application.code using mayBeNullMapping," - ",Transform application.displayname using mayBeNullMapping)
+	tags:"application" priority 100, "byuid", "printable"
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+	}
+	
+	application = Record {
+		view: br_application
+		with ^recorduid to recorduid
+	}
+}
+
+// Application Review
+
+analysis_accountreviewbyapplication = Report {
+	report: "/reports/analysis/accountreviewbyapplication.rptdesign" with ^recorduid to ^recorduid, ^permission to ^permission
+	feature: analysis_accountreviewbyapplication
+	title: $report.analysis_accountreviewbyapplication.title
+	tags:"application" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+		
+	}
+	^permission = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		constraint: Lookup {
+			data: br_permission
+			value: Current applicationrecorduid
+			text: Current displayname
+			distinct: True
+		}
+	}
+	br_permission = Dataset {
+		view: br_permission
+	}
+}
+
+// Application Analytics
+
+analysis_applicationorphanaccounts = Report {
+	report: "/reports/analysis/applicationorphanaccounts.rptdesign" with ^recorduid to ^recorduid, ^hidedisabledaccounts to ^hidedisabledaccounts
+	feature: analysis_applicationorphanaccounts
+	title: $report.analysis_applicationorphanaccounts.title
+	dynamic-title: $report.analysis_applicationorphanaccounts.dynamictitle ( application.displayname )
+	tags:"application" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+	}
+	^hidedisabledaccounts = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "False"
+		label: $report.analysis_applicationorphanaccounts.^hidedisabledaccounts
+	}
+	
+	application = Record { view: br_application with ^recorduid to recorduid }
+}
+
+analysis_applicationjoborgpivot = Report {
+	report: "/reports/analysis/applicationjoborgpivot.rptdesign" with ^recorduid to ^recorduid, ^lowthreshold to ^lowthreshold
+	feature: analysis_applicationjoborgpivot
+	title: $report.analysis_applicationjoborgpivot.title
+	dynamic-title: $report.analysis_applicationjoborgpivot.dynamictitle ( application.displayname )
+	tags:"application" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+		
+	}
+	^lowthreshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		
+		label: $report.analysis_applicationjoborgpivot.^lowthreshold
+	}
+	
+	application = Record { view: br_application with ^recorduid to recorduid }
+	
+}
+
+analysis_permissionjobpivot_application = Page {
+	feature: analysis_permissionjobpivot_application
+	title: $report.analysis_permissionjobpivot_application.title
+	dynamic-title: $report.analysis_permissionjobpivot_application.dynamictitle ( application.displayname )
+	conditional-redirect: ConditionalRedirect { condition: True target:
+		Report analysis_permissionjobpivot with ^recorduid to ^applicationrecorduid 
+	}
+	tags:"application" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+
+	//Added for Compatibility
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+		
+	}
+	
+	application = Record { view: br_application with ^recorduid to recorduid }
+}
+
+analysis_permissionorgpivot_application = Page {
+	feature: analysis_permissionorgpivot_application
+	title: $report.analysis_permissionorgpivot_application.title
+	dynamic-title: $report.analysis_permissionorgpivot_application.dynamictitle ( application.displayname )
+	conditional-redirect: ConditionalRedirect { condition: True target:
+		Report analysis_permissionorgpivot with ^recorduid to ^applicationrecorduid 
+	}
+	tags:"application" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+
+	//Added for Compatibility
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+		
+	}
+	
+	application = Record { view: br_application with ^recorduid to recorduid }
+}
+
+
+// Application Mining
+
+analysis_applicationassociatedwith = Report {
+	report: "/reports/analysis/applicationassociatedwith.rptdesign" with ^recorduid to ^recorduid, ^threshold to ^threshold
+	feature: analysis_applicationassociatedwith
+	title: $report.analysis_applicationassociatedwith.title
+	dynamic-title: $report.analysis_applicationassociatedwith.dynamictitle ( application.displayname )
+	tags:"application" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+		
+	}
+	^threshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_applicationassociatedwith.^threshold
+	}
+	
+	application = Record { view: br_application with ^recorduid to recorduid }
+}
+
+// Repository Printable version 
+
+browsing_repositorydetail = Report {
+	report: "/reports/browsing/repositorydetail.rptdesign" with ^recorduid to ^recorduid
+	feature: browsing_repositorydetail
+	title: $report.browsing_repositorydetail.title
+	dynamic-title: Concat(Transform repository.repositorycode using mayBeNullMapping," - ",Transform repository.repositorydisplayname using mayBeNullMapping)
+	tags:"repository" priority 100, "byuid", "printable"
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	
+	repository = Record {
+		view: br_repository
+		with ^recorduid to repositoryrecorduid
+	}
+}
+
+// Repository Analytics
+
+analysis_repositoryreconciliation = Report {
+	report: "/reports/analysis/repositoryreconciliation.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_repositoryreconciliation
+	title: $report.analysis_repositoryreconciliation.title
+	dynamic-title: $report.analysis_repositoryreconciliation.dynamictitle ( repository.repositorydisplayname )
+	tags:"repository" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	batched-only: True
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		label: $report.analysis_repositoryreconciliation.^recorduid
+		constraint: Lookup {
+			data: br_repository
+			value: Current repositoryrecorduid
+			text: Current repositorydisplayname
+			distinct: True
+			sort:repositorydisplayname
+		}
+		recorduid-of: Repository
+	}
+	br_repository = Dataset {
+		view: br_repository
+	}
+	
+	repository = Record { view: br_repository with ^recorduid to repositoryrecorduid }
+}
+
+analysis_repositoryorphanaccounts = Report {
+	report: "/reports/analysis/repositoryorphanaccounts.rptdesign" with 
+	^recorduid to ^repositoryrecorduid unless-empty,
+	^repositoryrecorduid to ^repositoryrecorduid unless-empty,
+	^hidedisabledaccount to ^hidedisabledaccount
+	feature: analysis_repositoryorphanaccounts
+	title: $report.analysis_repositoryorphanaccounts.title
+	dynamic-title: $report.analysis_repositoryorphanaccounts.dynamictitle ( repository.repositorydisplayname )
+	tags:"repository" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	batched-only: True
+	
+	^repositoryrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	^hidedisabledaccount = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "False"
+		label: $report.analysis_repositoryorphanaccounts.^hidedisabledaccount
+	}
+	// Added for compliance
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	
+	repository = Record { view: br_repository with ^recorduid to repositoryrecorduid }
+	
+}
+
+analysis_repositoryaccounttopgroups = Report {
+	report: "/reports/analysis/repositoryaccounttopgroups.rptdesign" with 
+	^recorduid to ^repositoryrecorduid unless-empty,
+	^repositoryrecorduid to ^repositoryrecorduid unless-empty
+	feature: analysis_repositoryaccounttopgroups
+	title: $report.analysis_repositoryaccounttopgroups.title
+	dynamic-title: $report.analysis_repositoryaccounttopgroups.dynamictitle ( repository.repositorydisplayname )
+	tags:"repository" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	batched-only: True
+	
+	^repositoryrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	// Added for compliance
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	
+	repository = Record { view: br_repository with ^recorduid to repositoryrecorduid }
+}
+
+analysis_repositorygrouptopaccounts = Report {
+	report: "/reports/analysis/repositorygrouptopaccounts.rptdesign" with 
+	^recorduid to ^repositoryrecorduid unless-empty,
+	^repositoryrecorduid to ^repositoryrecorduid unless-empty
+	feature: analysis_repositorygrouptopaccounts
+	title: $report.analysis_repositorygrouptopaccounts.title
+	dynamic-title: $report.analysis_repositorygrouptopaccounts.dynamictitle ( repository.repositorydisplayname )
+	tags:"repository" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	batched-only: True
+	
+	^repositoryrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	// Added for compliance
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	
+	repository = Record { view: br_repository with ^recorduid to repositoryrecorduid }
+}
+
+analysis_repositoryidentitiesnbperm = Report {
+	report: "/reports/analysis/repositoryidentitiesnbperm.rptdesign" with 
+	^recorduid to ^repositoryrecorduid unless-empty,
+	^repositoryrecorduid to ^repositoryrecorduid unless-empty
+	feature: analysis_repositoryidentitiesnbperm
+	title: $report.analysis_repositoryidentitiesnbperm.title
+	dynamic-title: $report.analysis_repositoryidentitiesnbperm.dynamictitle ( repository.repositorydisplayname )
+	tags:"repository" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	batched-only: True
+	
+	^repositoryrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	// Added for compliance
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	
+	repository = Record { view: br_repository with ^recorduid to repositoryrecorduid }
+}
+
+analysis_repositoryaccountsnbperm = Report {
+	report: "/reports/analysis/repositoryaccountsnbperm.rptdesign" with 
+	^recorduid to ^repositoryrecorduid unless-empty,
+	^repositoryrecorduid to ^repositoryrecorduid unless-empty
+	feature: analysis_repositoryaccountsnbperm
+	title: $report.analysis_repositoryaccountsnbperm.title
+	dynamic-title: $report.analysis_repositoryaccountsnbperm.dynamictitle ( repository.repositorydisplayname )
+	tags:"repository" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	batched-only: True
+	
+	^repositoryrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	// Added for compliance
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Repository
+	}
+	
+	repository = Record { view: br_repository with ^recorduid to repositoryrecorduid }
+}
+
+// ******************************************* Generic Control Reports ************************************************
+
+dashboard_datasources = Report {
+	report: "/reports/dashboard/datasources.rptdesign" with ^nbweeks to ^nbweeks
+	feature: dashboard_datasources
+	title: $report.dashboard_datasources.title
+	tags: "generic", "control"
+	icon: "16/audit/repository_16.png"
+	
+	^nbweeks = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		label: $report.dashboard_datasources.^nbweeks
+	}
+}
+
+dashboard_reconciliationappsynthesis = Report {
+	report: "/reports/dashboard/reconciliationappsynthesis.rptdesign"
+	feature: dashboard_reconciliationappsynthesis
+	title: $report.dashboard_reconciliationappsynthesis.title
+	tags: "generic", "control"
+	icon: "16/audit/application_16.png"	
+}
+
+dashboard_reconciliationsynthesis = Report {
+	report: "/reports/dashboard/reconciliationsynthesis.rptdesign"
+	feature: dashboard_reconciliationsynthesis
+	title: $report.dashboard_reconciliationsynthesis.title
+	tags: "generic", "control"
+	icon: "16/audit/repository_16.png"
+}
+
+analysis_repositoryreconciliation_control = Report {
+	report: "/reports/analysis/repositoryreconciliationgeneral.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_repositoryreconciliation_control
+	title: $report.analysis_repositoryreconciliation_control.title
+	tags: "generic", "control"
+	icon: "16/audit/repository_16.png"
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		label: $report.analysis_repositoryreconciliation_control.^recorduid
+		constraint: Lookup {
+			data: br_repository
+			value: Current repositoryrecorduid
+			text: Current repositorydisplayname
+			distinct: True
+			sort:repositorydisplayname
+		}
+		recorduid-of: Repository
+	}
+	br_repository = Dataset {
+		view: br_repository
+	}
+}
+
+analysis_accountenabledusergone = Report {
+	report: "/reports/analysis/accountenabledusergone.rptdesign"
+	feature: analysis_accountenabledusergone
+	title: $report.analysis_accountenabledusergone.title
+	tags: "generic", "control"
+	icon: "16/audit/account_16.png"	
+}
+
+analysis_accountscreatedmodified = Report {
+	report: "/reports/analysis/accountscreatedmodified.rptdesign"
+	feature: analysis_accountscreatedmodified
+	title: $report.analysis_accountscreatedmodified.title
+	tags: "generic", "control"
+	icon: "16/audit/account_16.png"	
+}
+
+analysis_accountsdeleted = Report {
+	report: "/reports/analysis/accountsdeleted.rptdesign" with timeslotuid to timeslotuid
+	feature: analysis_accountsdeleted
+	title: $report.analysis_accountsdeleted.title
+	tags: "generic", "control"
+	icon: "16/audit/account_16.png"	
+	
+	timeslotuid = Parameter {
+		multivalued: False
+		default: PageTimeslot.UID
+		hidden: True
+	}
+}
+
+controls_SoDtopControlsNoOrg = Report {
+	report: "/reports/controls/SoDtopControlsNoOrg.rptdesign" with ^threshold to ^threshold
+	feature: controls_SoDtopControlsNoOrg
+	title: $report.controls_SoDtopControlsNoOrg.title
+	tags: "generic", "control"
+	icon: "16/audit/identity_16.png"
+	
+	^threshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.controls_SoDtopControlsNoOrg.^threshold
+	}
+}
+
+controls_identitycontrols = Report {
+	report: "/reports/controls/identitycontrols.rptdesign" with ^showdescription to ^showdescription
+	feature: controls_identitycontrols
+	title: $report.controls_identitycontrols.title
+	tags: "generic", "control"
+	icon: "16/audit/identity_16.png"
+	
+	^showdescription = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "false"
+		label: $report.controls_identitycontrols.^showdescription
+	}
+}
+
+controls_accountcontrols = Report {
+	report: "/reports/controls/accountcontrols.rptdesign" with ^showdescription to ^showdescription
+	feature: controls_accountcontrols
+	title: $report.controls_accountcontrols.title
+	tags: "generic", "control"
+	icon: "16/audit/account_16.png"	
+	
+	^showdescription = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "false"
+		label: $report.controls_accountcontrols.^showdescription
+	}
+}
+
+controls_applicationcontrols = Report {
+	report: "/reports/controls/applicationcontrols.rptdesign" with ^showdescription to ^showdescription
+	feature: controls_applicationcontrols
+	title: $report.controls_applicationcontrols.title
+	tags: "generic", "control"
+	icon: "16/audit/application_16.png"	
+	
+	^showdescription = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "false"
+		label: $report.controls_applicationcontrols.^showdescription
+	}
+}
+
+controls_permissioncontrols = Report {
+	report: "/reports/controls/permissioncontrols.rptdesign" with ^showdescription to ^showdescription
+	feature: controls_permissioncontrols
+	title: $report.controls_permissioncontrols.title
+	tags: "generic", "control"
+	icon: "16/audit/permission_16.png"	
+	
+	^showdescription = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "false"
+		label: $report.controls_permissioncontrols.^showdescription
+	}
+}
+
+controls_organisationcontrols = Report {
+	report: "/reports/controls/organisationcontrols.rptdesign" with ^showdescription to ^showdescription
+	feature: controls_organisationcontrols
+	title: $report.controls_organisationcontrols.title
+	tags: "generic", "control"
+	icon: "16/audit/organisation_16.png"
+	
+	^showdescription = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "false"
+		label: $report.controls_organisationcontrols.^showdescription
+	}
+}
+
+controls_assetcontrols = Report {
+	report: "/reports/controls/assetcontrols.rptdesign" with ^showdescription to ^showdescription
+	feature: All (controls_assetcontrols, assets_activate )
+	title: $report.controls_assetcontrols.title
+	tags: "generic", "control"
+	icon: "16/audit/asset_16.png"
+	
+	^showdescription = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "false"
+		label: $report.controls_assetcontrols.^showdescription
+	}
+}
+
+// This reports is duplicated for a different set of tags
+controls_SoDtopControlsFltOrg_control = Report {
+	report: "/reports/controls/SoDtopControlsFltOrg.rptdesign" with ^threshold to ^threshold,  ^orgs to ^orgs
+	feature: controls_SoDtopControlsFltOrg_control
+	tags:"generic","control"
+	icon: "16/audit/identity_16.png"
+	 
+	title: $report.controls_SoDtopControlsFltOrg_control.title
+	^threshold = Parameter {
+		mandatory: True 
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.controls_SoDtopControlsFltOrg_control.^threshold
+	}
+	^orgs = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.controls_SoDtopControlsFltOrg_control.^orgs
+		constraint: Lookup {
+			data: br_organisation
+			value: Current shortname
+			text: Current displayname	
+		}
+	}
+
+	br_organisation = Dataset {
+		view: br_organisation
+	}
+
+}
+
+// ******************************************* Generic Mining Reports ************************************************
+
+analysis_organisations_applications_withsubs = Report {
+	report: "/reports/analysis/organisations_applications_withsubs.rptdesign" with ^OrganisationType to ^OrganisationType, ^lowthreshold to ^lowthreshold, ^min_nb_users to ^min_nb_users
+	feature: analysis_organisations_applications_withsubs
+	title: $report.analysis_organisations_applications_withsubs.title
+	tags: "generic", "mining"
+	icon: "16/audit/organisation_16.png"
+	batched-only: True
+	
+	^OrganisationType = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		label: $report.analysis_organisations_applications_withsubs.^OrganisationType
+		constraint: Lookup {
+			data: br_organisation
+			value: Current organisationtypecode
+			text: Current organisationtypedisplayname
+			distinct: True
+		}
+	}
+	^lowthreshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_organisations_applications_withsubs.^lowthreshold
+	}
+	^min_nb_users = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "0"
+		label: $report.analysis_organisations_applications_withsubs.^min_nb_users
+	}
+	br_organisation = Dataset {
+		view: br_organisation
+	}
+}
+
+analysis_organisations_applications_nosubs = Report {
+	report: "/reports/analysis/organisations_applications_nosubs.rptdesign" with ^OrganisationType to ^OrganisationType, ^lowthreshold to ^lowthreshold, ^min_nb_users to ^min_nb_users
+	feature: analysis_organisations_applications_nosubs
+	title: $report.analysis_organisations_applications_nosubs.title
+	tags: "generic", "mining"
+	icon: "16/audit/organisation_16.png"
+	batched-only: True
+	
+	^OrganisationType = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		label: $report.analysis_organisations_applications_nosubs.^OrganisationType
+		constraint: Lookup {
+			data: br_organisation
+			value: Current organisationtypecode
+			text: Current organisationtypedisplayname
+			distinct: True
+		}
+	}
+	^lowthreshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "80"
+		label: $report.analysis_organisations_applications_nosubs.^lowthreshold
+	}
+	^min_nb_users = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "0"
+		label: $report.analysis_organisations_applications_nosubs.^min_nb_users
+	}
+	br_organisation = Dataset {
+		view: br_organisation
+	}
+}
+
+analysis_jobs_applications = Report {
+	report: "/reports/analysis/jobs_applications.rptdesign" with ^lowthreshold to ^lowthreshold, ^min_nb_users to ^min_nb_users
+	feature: analysis_jobs_applications
+	title: $report.analysis_jobs_applications.title
+	tags: "generic", "mining"
+	icon: "16/audit/job_16.png"
+	batched-only: True
+	
+	^lowthreshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_jobs_applications.^lowthreshold
+	}
+	^min_nb_users = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "0"
+		label: $report.analysis_jobs_applications.^min_nb_users
+	}
+}
+
+analysis_organisations_permissions_withsubs = Report {
+	report: "/reports/analysis/organisations_permissions_withsubs.rptdesign" with ^OrganisationType to ^OrganisationType, ^lowthreshold to ^lowthreshold, ^min_nb_users to ^min_nb_users
+	feature: analysis_organisations_permissions_withsubs
+	title: $report.analysis_organisations_permissions_withsubs.title
+	tags: "generic", "mining"
+	icon: "16/audit/organisation_16.png"
+	batched-only: True
+	
+	^OrganisationType = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		label: $report.analysis_organisations_permissions_withsubs.^OrganisationType
+		constraint: Lookup {
+			data: br_organisation
+			value: Current organisationtypecode
+			text: Current organisationtypedisplayname
+			distinct: True
+		}
+	}
+	^lowthreshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "80"
+		label: $report.analysis_organisations_permissions_withsubs.^lowthreshold
+	}
+	^min_nb_users = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "0"
+		label: $report.analysis_organisations_permissions_withsubs.^min_nb_users
+	}
+	br_organisation = Dataset {
+		view: br_organisation
+	}
+}
+
+analysis_organisations_permissions_nosubs = Report {
+	report: "/reports/analysis/organisations_permissions_nosubs.rptdesign" with ^OrganisationType to ^OrganisationType, ^lowthreshold to ^lowthreshold, ^min_nb_users to ^min_nb_users
+	feature: analysis_organisations_permissions_nosubs
+	title: $report.analysis_organisations_permissions_nosubs.title
+	tags: "generic", "mining"
+	icon: "16/audit/organisation_16.png"
+	batched-only: True
+	
+	^OrganisationType = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		label: $report.analysis_organisations_permissions_nosubs.^OrganisationType
+		constraint: Lookup {
+			data: br_organisation
+			value: Current organisationtypecode
+			text: Current organisationtypedisplayname
+			distinct: True
+		}
+	}
+	^lowthreshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "80"
+		label: $report.analysis_organisations_permissions_nosubs.^lowthreshold
+	}
+	^min_nb_users = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		label: $report.analysis_organisations_permissions_nosubs.^min_nb_users
+	}
+	br_organisation = Dataset {
+		view: br_organisation
+	}
+}
+
+analysis_jobs_permissions = Report {
+	report: "/reports/analysis/jobs_permissions.rptdesign" with ^lowthreshold to ^lowthreshold, ^min_nb_users to ^min_nb_users
+	feature: analysis_jobs_permissions
+	tags: "generic", "mining"
+	icon: "16/audit/job_16.png"
+	title: $report.analysis_jobs_permissions.title
+	batched-only: True
+	
+	^lowthreshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.analysis_jobs_permissions.^lowthreshold
+	}
+	^min_nb_users = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "0"
+		label: $report.analysis_jobs_permissions.^min_nb_users
+	}
+}
+
+// Detail report for analysis_jobs_permissions
+analysis_jobs_permissions_detail2 = Report {
+	report: "/reports/analysis/jobs_permissions_detail2.rptdesign" with ^jobrecorduid to ^jobrecorduid, ^permissionrecorduid to ^permissionrecorduid
+	title: $report.analysis_jobs_permissions_detail2.title
+	^jobrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+// Detail report for analysis_jobs_permissions
+analysis_jobs_permissions_detail1 = Report {
+	report: "/reports/analysis/jobs_permissions_detail1.rptdesign" with ^jobrecorduid to ^jobrecorduid, ^permissionrecorduid to ^permissionrecorduid
+	title: $report.analysis_jobs_permissions_detail1.title
+	^jobrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+
+// ******************************************* Generic Browsing Reports ************************************************
+
+// This page was created to always redirect to static content
+browsing_currentorganisationhierarchy = Page {
+	conditional-redirect: ConditionalRedirect { condition: True target: Static "static/hierarchy/organisation_hierarchy.html" with PageTimeslot.UID to timeslot }
+	title: $report.browsing_currentorganisationhierarchy.title
+	feature: browsing_currentorganisationhierarchy
+	tags: "generic", "browsing"
+	icon: "16/audit/organisation_16.png"
+}
+
+browsing_applicationpermission = Report {
+	report: "/reports/browsing/applicationpermission.rptdesign"
+	feature: browsing_applicationpermission
+	title: $report.browsing_applicationpermission.title
+	tags: "generic", "browsing"
+	icon: "16/audit/application_16.png"
+	
+}
+
+// ******************************************* Generic Analytics Reports ************************************************
+
+// This reports is duplicated for a different set of tags
+analysis_joborganisationpivot_generic = Report {
+	report: "/reports/analysis/joborganisationpivot.rptdesign" with ^jobrecorduid to ^jobrecorduid, ^recorduid to ^orgrecorduid unless-empty, ^orgrecorduid to ^orgrecorduid unless-empty 
+	feature: analysis_joborganisationpivot_generic
+	title: $report.analysis_joborganisationpivot_generic.title
+	tags: "generic", "analytics"
+	icon: "16/audit/organisation_16.png"
+	batched-only: True
+	
+	^jobrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: JobTitle
+	}
+	// Added for compliance with new standard
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	
+	// Kept for compatiblity
+	^orgrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+}
+
+
+// Reports migrated from custom
+
+// Organisation review
+analysis_organisationreview_hrteam_deltapermissionsprofiles = Report {
+	report: "/reports/analysis/diffprofilesbyorganisation.rptdesign" with organisation.code to code
+	feature: analysis_organisationreview_hrteam_deltapermissionsprofiles
+	title: $reportcustom.analysis_organisationreview_hrteam_deltapermissionsprofiles.title
+	tags:"organisation" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+	organisation = Record { view: br_organisation with ^recorduid to recorduid }
+}
+
+// Generic control
+custom_identity_changes = Report {
+	report: "/reports/analysis/identity_changes.rptdesign"
+	feature: custom_identity_changes
+	title: $reportcustom.custom_identity_changes.title
+	tags: "generic", "control"
+	icon: "16/audit/identity_16.png"
+}
+
+// Now Continue with the Untagged Reports
+///********************************************************************************************************************
+///********************************************************************************************************************
+// First the reports previously tagged as browsing and migrated
+
+analysis_repositoryreconciliationdetail = Report {
+	title: $report.analysis_repositoryreconciliationdetail.title
+	report: "/reports/analysis/repositoryreconciliationdetail.rptdesign" with rulename to rulename, repositoryrecorduid to  repositoryrecorduid
+	
+	
+	rulename = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	
+	repositoryrecorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+}
+
+analysis_organisationappjobpivot = Report {
+	report: "/reports/analysis/organisationappjobpivot.rptdesign" with ^recorduid to ^recorduid
+	title: $report.analysis_organisationappjobpivot.title
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png"  
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+	}
+}
+
+browsing_identitydetailpermissions = Report {
+	report: "/reports/browsing/identitydetailpermissions.rptdesign" with ^recorduid to ^recorduid, ^applicationrecorduid to ^applicationrecorduid, ^directonly to ^directonly
+	title: $report.browsing_identitydetailpermissions.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^directonly = Parameter {
+		label:$report.browsing_identitydetailpermissions.directonly
+		mandatory: True
+		hidden: False
+		default: True
+		type: Boolean
+	}
+}
+
+browsing_identityusages = Report {
+	report: "/reports/browsing/identityusages.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_identityusages.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_identityteam = Report {
+	report: "/reports/browsing/identityteam.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_identityteam.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+browsing_accountallgroups = Report {
+	report: "/reports/browsing/accountallgroups.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_accountallgroups.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+browsing_accountdetailpermissions = Report {
+	report: "/reports/browsing/accountdetailpermissions.rptdesign" with ^recorduid to ^recorduid, ^directonly to ^directonly
+	title: $report.browsing_accountdetailpermissions.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+	^directonly = Parameter {
+		label:$report.browsing_accountdetailpermissions.directonly
+		mandatory: True
+		hidden: False
+		default:True
+		type: Boolean
+	}
+}
+
+browsing_accountusages = Report {
+	report: "/reports/browsing/accountusages.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_accountusages.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+browsing_permissionidentitylist = Report {
+	report: "/reports/browsing/permissionidentitylist.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_permissionidentitylist.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_permissionusages = Report {
+	report: "/reports/browsing/permissionusages.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_permissionusages.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_organisationidentities = Report {
+	report: "/reports/browsing/organisationidentities.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_organisationidentities.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_organisationsuborgs = Report {
+	report: "/reports/browsing/organisationsuborgs.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_organisationsuborgs.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_groupallaccounts = Report {
+	report: "/reports/browsing/groupallaccounts.rptdesign" with ^recorduid to ^recorduid, ^reason to ^reason
+	title: $report.browsing_groupallaccounts.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+	^reason = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "false"
+		label: $report.browsing_groupallaccounts.^reason
+	}
+}
+
+browsing_groupdetailpermissions = Report {
+	report: "/reports/browsing/groupdetailpermissions.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_groupdetailpermissions.title
+
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_applicationidentitylist = Report {
+	report: "/reports/browsing/applicationidentitylist.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_applicationidentitylist.title
+	
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+browsing_permissionlistbyidentity = Report {
+	report: "/reports/browsing/permissionlistbyidentity.rptdesign" with ^recorduid to ^applicationrecorduid unless-empty,
+	^applicationrecorduid to ^applicationrecorduid unless-empty, ^identityrecorduid to ^identityrecorduid
+	title: $report.browsing_permissionlistbyidentity.title
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^identityrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	
+	// Added for compliance with new standard
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_permissionlistbyaccount = Report {
+	report: "/reports/browsing/permissionlistbyaccount.rptdesign" with ^recorduid to ^applicationrecorduid unless-empty,
+	^applicationrecorduid to ^applicationrecorduid unless-empty, ^accountrecorduid to ^accountrecorduid, ^permissionrecorduid to ^permissionrecorduid
+	title: $report.browsing_permissionlistbyaccount.title
+
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^accountrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	
+	// Added for compliance with new standard
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_applicationusages = Report {
+	report: "/reports/browsing/applicationusages.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_applicationusages.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+browsing_applicationdetailidentityproblems = Report {
+	report: "/reports/browsing/applicationdetailidentityproblems.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_applicationdetailidentityproblems.title
+
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		label: $report.browsing_applicationdetailidentityproblems.^recorduid
+	}
+}
+
+browsing_applicationdetailaccountproblems = Report {
+	report: "/reports/browsing/applicationdetailaccountproblems.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_applicationdetailaccountproblems.title
+
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		label: $report.browsing_applicationdetailaccountproblems.^recorduid
+	}
+}
+
+browsing_accountsearch_simple = Report {
+	report: "/reports/browsing/accountsearch_simple.rptdesign" with ^UserName to ^UserName, ^Login to ^Login, ^AccountIdentifier to ^AccountIdentifier, ^sort to ^sort,
+	^recorduid to ^Repository unless-empty,
+	^Repository to ^Repository unless-empty
+	title: $report.browsing_accountsearch_simple.title
+
+	^UserName = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: ""
+	}
+	^Login = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: ""
+	}
+	^AccountIdentifier = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: ""
+		label: $report.browsing_accountsearch_simple.^AccountIdentifier
+	}
+	^Repository = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: recorduid
+		constraint: Lookup {
+			data: br_repository
+			value: Current repositoryrecorduid
+			text: Current repositorydisplayname
+			distinct: True
+		}
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "login"
+	}
+	// Added for compliance
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer	
+	}
+	br_repository = Dataset {
+		view: br_repository
+	}
+}
+
+browsing_groupsearch = Report {
+	report: "/reports/browsing/groupsearch.rptdesign" with ^code to ^code, ^displayname to ^displayname,  ^sort to ^sort, 
+	^recorduid to ^repository unless-empty,
+	^repository to ^repository unless-empty
+	title: $report.browsing_groupsearch.title
+
+	^code = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "%"
+		label: $report.browsing_groupsearch.^code
+	}
+	^displayname = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "%"
+		label: $report.browsing_groupsearch.^displayname
+	}
+	^repository = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		label: $report.browsing_groupsearch.^repository
+		constraint: Lookup {
+			data: br_repository
+			value: Current repositoryrecorduid
+			text: Current repositorydisplayname
+			distinct: True
+		}
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "displayname"
+	}
+	// Added for compliance
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer	
+	}
+	br_repository = Dataset {
+		view: br_repository
+	}
+	
+}
+
+///********************************************************************************************************************
+
+
+browsing_repositoryaccountsleavers = Report {
+	report: "/reports/browsing/repositoryaccountsleavers.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_repositoryaccountsleavers.title
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_repositoryserviceaccounts = Report {
+	report: "/reports/browsing/repositoryserviceaccounts.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_repositoryserviceaccounts.title
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+analysis_organisations_applications_withsubsdetail = Report {
+	report: "/reports/analysis/organisations_applications_withsubsdetail.rptdesign" with ^organisationrecorduid to ^organisationrecorduid, ^applicationrecorduid to ^applicationrecorduid
+	title: $report.analysis_organisations_applications_withsubsdetail.title
+	^organisationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+analysis_organisations_applications_nosubsdetail2 = Report {
+	report: "/reports/analysis/organisations_applications_nosubsdetail2.rptdesign" with ^organisationrecorduid to ^organisationrecorduid, ^applicationrecorduid to ^applicationrecorduid
+	title: $report.analysis_organisations_applications_nosubsdetail2.title
+	^organisationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+analysis_organisations_permissions_nosubsdetail2 = Report {
+	report: "/reports/analysis/organisations_permissions_nosubsdetail2.rptdesign" with ^organisationrecorduid to ^organisationrecorduid, ^permissionrecorduid to ^permissionrecorduid
+	title: $report.analysis_organisations_permissions_nosubsdetail2.title
+	^organisationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+analysis_organisations_permissions_withsubsdetail = Report {
+	report: "/reports/analysis/organisations_permissions_withsubsdetail.rptdesign" with ^organisationrecorduid to ^organisationrecorduid, ^permissionrecorduid to ^permissionrecorduid
+	title: $report.analysis_organisations_permissions_withsubsdetail.title
+	^organisationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_organisationsearch = Report {
+	report: "/reports/browsing/organisationsearch.rptdesign" with ^organisationtype to ^organisationtype, ^shortname to ^shortname, ^displayname to ^displayname, ^sort to ^sort
+	title: $report.browsing_organisationsearch.title
+	^organisationtype = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_organisationsearch.^organisationtype
+		constraint: Lookup {
+			data: br_organisation
+			value: Current organisationtypedisplayname
+			text: Current organisationtypedisplayname
+			distinct: True
+		}
+	}
+	^shortname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_organisationsearch.^shortname
+	}
+	^displayname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_organisationsearch.^displayname
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "shortname"
+	}
+	br_organisation = Dataset {
+		view: br_organisation
+	}
+}
+
+analysis_permissionjoborgpivotdetail = Report {
+	report: "/reports/analysis/permissionjoborgpivotdetail.rptdesign" with ^permissionrecorduid to ^permissionrecorduid, ^jobrecorduid to ^jobrecorduid, ^orgrecorduid to ^orgrecorduid
+	title: $report.analysis_permissionjoborgpivotdetail.title
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^jobrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^orgrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_identitysearch_simple = Report {
+	report: "/reports/browsing/identitysearch_simple.rptdesign" with ^hrcode to ^hrcode, ^surname to ^surname, ^givenname to ^givenname, ^sort to ^sort
+	title: $report.browsing_identitysearch_simple.title
+	^hrcode = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_identitysearch_simple.^hrcode
+	}
+	^surname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_identitysearch_simple.^surname
+	}
+	^givenname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_identitysearch_simple.^givenname
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "hrcode"
+	}
+}
+
+analysis_organisationdeltareview_hrteam_permissionsprofiles = Report {
+	report: "/reports/analysis/organisationdeltareview_hrteam_permissionsprofiles.rptdesign" with ^recorduid to ^recorduid, ^showdefects to ^showdefects
+	title: $report.analysis_organisationdeltareview_hrteam_permissionsprofiles.title
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^showdefects = Parameter {
+		mandatory: True
+		hidden: False
+		type: Boolean
+		default: "True"
+		label: $report.analysis_organisationdeltareview_hrteam_permissionsprofiles.^showdefects
+	}
+}
+
+browsing_repositoryaccountswithoutowner = Report {
+	report: "/reports/browsing/repositoryaccountswithoutowner.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_repositoryaccountswithoutowner.title
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	
+}
+
+analysis_organisations_applications_withsubsnoappdetail = Report {
+	report: "/reports/analysis/organisations_applications_withsubsnoappdetail.rptdesign" with ^organisationrecorduid to ^organisationrecorduid, ^applicationrecorduid to ^applicationrecorduid
+	title: $report.analysis_organisations_applications_withsubsnoappdetail.title
+	^organisationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_repositorysearch = Report {
+	report: "/reports/browsing/repositorysearch.rptdesign" with ^code to ^code, ^displayname to ^displayname, ^sort to ^sort
+	title: $report.browsing_repositorysearch.title
+	^code = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_repositorysearch.^code
+	}
+	^displayname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_repositorysearch.^displayname
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "repositorycode"
+	}
+}
+
+analysis_organisations_permissions_nosubsdetail = Report {
+	report: "/reports/analysis/organisations_permissions_nosubsdetail.rptdesign" with ^organisationrecorduid to ^organisationrecorduid, ^permissionrecorduid to ^permissionrecorduid
+	title: $report.analysis_organisations_permissions_nosubsdetail.title
+	^organisationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+
+
+analysis_identitysimilarperms_permsincommon = Report {
+	report: "/reports/analysis/identitysimilarperms_permsincommon.rptdesign" with ^recorduid1 to ^recorduid1, ^recorduid2 to ^recorduid2
+	title: $report.analysis_identitysimilarperms_permsincommon.title
+	^recorduid1 = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+	^recorduid2 = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+analysis_organisations_applications_nosubsdetail = Report {
+	report: "/reports/analysis/organisations_applications_nosubsdetail.rptdesign" with ^organisationrecorduid to ^organisationrecorduid, ^applicationrecorduid to ^applicationrecorduid
+	title: $report.analysis_organisations_applications_nosubsdetail.title
+	^organisationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+analysis_jobs_applications_detail2 = Report {
+	report: "/reports/analysis/jobs_applications_detail2.rptdesign" with ^jobrecorduid to ^jobrecorduid, ^applicationrecorduid to ^applicationrecorduid
+	title: $report.analysis_jobs_applications_detail2.title
+	^jobrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+analysis_joborganisationpivotdetail = Report {
+	report: "/reports/analysis/joborganisationpivotdetail.rptdesign" with ^jobrecorduid to ^jobrecorduid, ^orgrecorduid to ^orgrecorduid
+	title: $report.analysis_joborganisationpivotdetail.title
+	^jobrecorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+	^orgrecorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_applicationsearch = Report {
+	report: "/reports/browsing/applicationsearch.rptdesign" with ^code to ^code, ^displayname to ^displayname, ^repositoryname to ^repositoryname, ^sort to ^sort
+	title: $report.browsing_applicationsearch.title
+	^code = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_applicationsearch.^code
+	}
+	^displayname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_applicationsearch.^displayname
+	}
+	^repositoryname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_applicationsearch.^repositoryname
+		constraint: Lookup {
+			data: br_repository
+			value: Current repositorydisplayname
+			text: Current repositorydisplayname
+			distinct: True
+		}
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "code"
+	}
+	br_repository = Dataset {
+		view: br_repository
+	}
+}
+
+controls_SoDtopControls = Report {
+	report: "/reports/controls/SoDtopControls.rptdesign" with ^threshold to ^threshold
+	title: $report.controls_SoDtopControls.title
+	^threshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.controls_SoDtopControls.^threshold
+	}
+}
+
+analysis_accountreviewbyorganisation = Report {
+	report: "/reports/analysis/accountreviewbyorganisation.rptdesign" with ^recorduid to ^recorduid, ^application to ^application
+	title: $report.analysis_accountreviewbyorganisation.title
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+	^application = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.analysis_accountreviewbyorganisation.^application
+		constraint: Lookup {
+			data: br_application
+			value: Current recorduid
+			text: Current displayname
+			distinct: True
+		}
+	}
+	br_application = Dataset {
+		view: br_application
+	}
+}
+
+
+analysis_jobs_applications_detail1 = Report {
+	report: "/reports/analysis/jobs_applications_detail1.rptdesign" with ^jobrecorduid to ^jobrecorduid, ^applicationrecorduid to ^applicationrecorduid
+	title: $report.analysis_jobs_applications_detail1.title
+	^jobrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+controls_controlidentitysimplelist = Report {
+	report: "/reports/controls/controlidentitysimplelist.rptdesign" with ^controlcode to ^controlcode, ^organisationcode to ^organisationcode
+	title: $report.controls_controlidentitysimplelist.title
+	^controlcode = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^organisationcode = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+browsing_permissionsearch = Report {
+	report: "/reports/browsing/permissionsearch.rptdesign" with ^application to ^application, ^permissioncode to ^permissioncode, ^permissionname to ^permissionname
+	title: $report.browsing_permissionsearch.title
+	^application = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		label: $report.browsing_permissionsearch.^application
+		constraint: Lookup {
+			data: br_application
+			value: Current recorduid
+			text: Current displayname
+			distinct: True
+		}
+	}
+	^permissioncode = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_permissionsearch.^permissioncode
+	}
+	^permissionname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_permissionsearch.^permissionname
+	}
+	br_application = Dataset {
+		view: br_application
+	}
+}
+
+browsing_jobsearch = Report {
+	report: "/reports/browsing/jobsearch.rptdesign" with ^jobtitlecode to ^jobtitlecode, ^jobtitledisplayname to ^jobtitledisplayname, ^sort to ^sort
+	title: $report.browsing_jobsearch.title
+	^jobtitlecode = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_jobsearch.^jobtitlecode
+	}
+	^jobtitledisplayname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_jobsearch.^jobtitledisplayname
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "jobtitlecode"
+	}
+}
+
+analysis_organisationapporgjobpivotdetail = Report {
+	report: "/reports/analysis/organisationapporgjobpivotdetail.rptdesign" with ^job to ^job, ^organisation to ^organisation, ^application to ^application
+	title: $report.analysis_organisationapporgjobpivotdetail.title
+	^job = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^organisation = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^application = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+analysis_applicationjoborgpivotdetail = Report {
+	report: "/reports/analysis/applicationjoborgpivotdetail.rptdesign" with ^applicationrecorduid to ^applicationrecorduid, ^jobrecorduid to ^jobrecorduid, ^orgrecorduid to ^orgrecorduid
+	title: $report.analysis_applicationjoborgpivotdetail.title
+	^applicationrecorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+	^jobrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^orgrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+analysis_accountenabledusergonedetail = Report {
+	report: "/reports/analysis/accountenabledusergonedetail.rptdesign" with ^Quarter to ^Quarter, ^Repository to ^Repository
+	title: $report.analysis_accountenabledusergonedetail.title
+	^Quarter = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^Repository = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+browsing_jobdetail = Report {
+	report: "/reports/browsing/jobdetail.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_jobdetail.title
+	dynamic-title: Concat(Transform job.jobtitlecode using mayBeNullMapping," - ",Transform job.jobtitledisplayname using mayBeNullMapping)
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+	
+	job = Record {
+		view: br_job
+		with ^recorduid to jobtitlerecorduid
+	}
+}
+
+analysis_applicationbyorganisation = Report {
+	report: "/reports/analysis/applicationbyorganisation.rptdesign" with ^application to ^application, ^organisation to ^organisation
+	title: $report.analysis_applicationbyorganisation.title
+	^application = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.analysis_applicationbyorganisation.^application
+		constraint: Lookup {
+			data: br_application
+			value: Current recorduid
+			text: Current displayname
+			distinct: True
+		}
+	}
+	^organisation = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.analysis_applicationbyorganisation.^organisation
+		constraint: Lookup {
+			data: br_organisation
+			value: Current recorduid
+			text: Concat(Current shortname," ",Current displayname)
+			distinct: True
+		}
+	}
+	br_application = Dataset {
+		view: br_application
+	}
+	br_organisation = Dataset {
+		view: br_organisation
+	}
+}
+
+analysis_repositoryreconciliationmanuallydetail = Report {
+	report: "/reports/analysis/repositoryreconciliationmanuallydetail.rptdesign" with ^repositoryrecorduid to ^repositoryrecorduid
+	title: $report.analysis_repositoryreconciliationmanuallydetail.title
+	^repositoryrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+browsing_identitysearch_advanced = Report {
+	report: "/reports/browsing/identitysearch_advanced.rptdesign" with ^organisationtype to ^organisationtype, ^hrcode to ^hrcode, ^givenname to ^givenname, ^surname to ^surname, ^jobtitle to ^jobtitle, ^organisation to ^organisation, ^sort to ^sort
+	title: $report.browsing_identitysearch_advanced.title
+	^organisationtype = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+		default: "*"
+	}
+	^hrcode = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_identitysearch_advanced.^hrcode
+	}
+	^givenname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_identitysearch_advanced.^givenname
+	}
+	^surname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_identitysearch_advanced.^surname
+	}
+	^jobtitle = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_identitysearch_advanced.^jobtitle
+	}
+	^organisation = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_identitysearch_advanced.^organisation
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "hrcode"
+	}
+}
+
+browsing_assetsearch = Report {
+	report: "/reports/browsing/assetsearch.rptdesign" with ^code to ^code, ^displayname to ^displayname, ^sort to ^sort
+	title: $report.browsing_assetsearch.title
+	^code = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_assetsearch.^code
+	}
+	^displayname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_assetsearch.^displayname
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "code"
+	}
+}
+
+browsing_assetdetail = Report {
+	report: "/reports/browsing/assetdetail.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_assetdetail.title
+	dynamic-title: Concat(Transform asset.code using mayBeNullMapping," - ",Transform asset.displayname using mayBeNullMapping)
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+	
+	asset = Record {
+		view: br_asset
+		with ^recorduid to recorduid
+	}
+}
+
+analysis_organisations_permissions_withsubsdetail2 = Report {
+	report: "/reports/analysis/organisations_permissions_withsubsdetail2.rptdesign" with ^organisationrecorduid to ^organisationrecorduid, ^permissionrecorduid to ^permissionrecorduid
+	title: $report.analysis_organisations_permissions_withsubsdetail2.title
+	^organisationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^permissionrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_repositoryreconciledaccounts = Report {
+	report: "/reports/browsing/repositoryreconciledaccounts.rptdesign" with ^recorduid to ^recorduid, ^login to ^login, ^hrcode to ^hrcode
+	title: $report.browsing_repositoryreconciledaccounts.title
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		
+	}
+	^login = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_repositoryreconciledaccounts.^login
+	}
+	^hrcode = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_repositoryreconciledaccounts.^hrcode
+	}
+}
+
+browsing_organisationdetailidentityproblems = Report {
+	report: "/reports/browsing/organisationdetailidentityproblems.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_organisationdetailidentityproblems.title
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		label: $report.browsing_organisationdetailidentityproblems.^recorduid
+	}
+}
+
+rules_permission_simplelist = Report {
+	report: "/reports/rules/permission/simplelist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: $report.rules_permission_simplelist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_application_simplelist = Report {
+	report: "/reports/rules/application/simplelist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: $report.rules_application_simplelist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_identity_simplelist = Report {
+	report: "/reports/rules/identity/simplelist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: $report.rules_identity_simplelist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_asset_simplelist = Report {
+	report: "/reports/rules/asset/simplelist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: $report.rules_asset_simplelist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_identity_grouplist = Report {
+	report: "/reports/rules/identity/grouplist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION, ^group to ^group
+	title: $report.rules_identity_grouplist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^group = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.rules_identity_grouplist.^group
+	}
+}
+
+rules_account_orgjobpivot = Report {
+	report: "/reports/rules/account/orgjobpivot.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION, ^lowthreshold to ^lowthreshold
+	title: $report.rules_account_orgjobpivot.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^lowthreshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "1"
+		label: $report.rules_account_orgjobpivot.^lowthreshold
+	}
+}
+
+rules_account_grouplist = Report {
+	report: "/reports/rules/account/grouplist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION, ^group to ^group
+	title: $report.rules_account_grouplist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^group = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.rules_account_grouplist.^group
+	}
+}
+
+rules_identity_orgjobpivot = Report {
+	report: "/reports/rules/identity/orgjobpivot.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION, ^threshold to ^threshold
+	title: $report.rules_identity_orgjobpivot.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^threshold = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		default: "1"
+		label: $report.rules_identity_orgjobpivot.^threshold
+	}
+}
+
+rules_account_groupbyrepository = Report {
+	report: "/reports/rules/account/groupbyrepository.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: "Grouped by repository"
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_identity_permlist = Report {
+	report: "/reports/rules/identity/permlist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: $report.rules_identity_permlist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_identity_groupbyorg = Report {
+	report: "/reports/rules/identity/groupbyorg.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION, ^organisation to ^organisation, ^job to ^job
+	title: $report.rules_identity_groupbyorg.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^organisation = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.rules_identity_groupbyorg.^organisation
+		constraint: Lookup {
+			data: br_fullidentityrule
+			value: Current org_recorduid
+			text: Current org_displayname
+			distinct: True
+		}
+	}
+	^job = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.rules_identity_groupbyorg.^job
+		constraint: Lookup {
+			data: br_fullidentityrule
+			value: Current jobtitlerecorduid
+			text: Current jobtitledisplayname
+			distinct: True
+		}
+	}
+	br_fullidentityrule = Dataset {
+		view: br_fullidentityrule
+	}
+}
+
+rules_identity_permmining = Report {
+	report: "/reports/rules/identity/permmining.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION, ^threshold to ^threshold, ^lowthreshold to ^lowthreshold
+	title: "Permission mining"
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^threshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.rules_identity_permmining.^threshold
+	}
+	^lowthreshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "5"
+		label: $report.rules_identity_permmining.^lowthreshold
+	}
+}
+
+rules_account_identitylist = Report {
+	report: "/reports/rules/account/identitylist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: $report.rules_account_identitylist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_account_permlist = Report {
+	report: "/reports/rules/account/permlist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: $report.rules_account_permlist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_account_simplelist = Report {
+	report: "/reports/rules/account/simplelist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: $report.rules_account_simplelist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_organisation_simplelist = Report {
+	report: "/reports/rules/organisation/simplelist.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION
+	title: $report.rules_organisation_simplelist.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+rules_identity_appmining = Report {
+	report: "/reports/rules/identity/appmining.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION, ^threshold to ^threshold, ^lowthreshold to ^lowthreshold
+	title: "Application mining"
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^threshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "80"
+		label: $report.rules_identity_appmining.^threshold
+	}
+	^lowthreshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		default: "5"
+		label: $report.rules_identity_appmining.^lowthreshold
+	}
+}
+
+rules_identity_groupbyjob = Report {
+	report: "/reports/rules/identity/groupbyjob.rptdesign" with ^RULENAME to ^RULENAME, ^TIMESLOT to ^TIMESLOT, ^TIMESLOTDATELABEL to ^TIMESLOTDATELABEL, ^TIMESLOTDESCRIPTION to ^TIMESLOTDESCRIPTION, ^organisation to ^organisation, ^job to ^job
+	title: $report.rules_identity_groupbyjob.title
+	^RULENAME = Parameter {
+		mandatory: True
+		hidden: True
+		type: String
+	}
+	^TIMESLOT = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDATELABEL = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^TIMESLOTDESCRIPTION = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^organisation = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.rules_identity_groupbyjob.^organisation
+		constraint: Lookup {
+			data: br_fullidentityrule
+			value: Current org_recorduid
+			text: Current org_displayname
+			distinct: True
+		}
+	}
+	^job = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $report.rules_identity_groupbyjob.^job
+		constraint: Lookup {
+			data: br_fullidentityrule
+			value: Current jobtitlerecorduid
+			text: Current jobtitledisplayname
+			distinct: True
+		}
+	}
+	br_fullidentityrule = Dataset {
+		view: br_fullidentityrule
+	}
+}
+
+
+// Untagged Reports migrated from custom
+custom_sod_org_camembert_detail = Report {
+	report: "/reports/controls/sod_org_camembert_detail.rptdesign" with ^org_recorduid to ^org_recorduid, ^org_displayname to ^org_displayname, ^risklevel to ^risklevel, ^module to ^module
+	title: $reportcustom.custom_sod_org_camembert_detail.title
+	^org_recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "38.0"
+	}
+	^org_displayname = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "Sales Division"
+	}
+	^risklevel = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "2"
+	}
+	^module = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "FI"
+	}
+}
+
+custom_identitysodcontrols = Report {
+	report: "/reports/controls/identitysodcontrols.rptdesign" with ^recorduid to ^recorduid
+	title: $reportcustom.custom_identitysodcontrols.title
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		default: "30"
+	}
+}
+
+custom_controlidentitydetailsod = Report {
+	report: "/reports/controls/controlidentitydetailsod.rptdesign" with ^controlcode to ^controlcode, ^identityrecorduid to ^identityrecorduid
+	title: $reportcustom.custom_controlidentitydetailsod.title
+	^controlcode = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "CONTROLCODE"
+	}
+	^identityrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		default: "1920"
+	}
+}
+
+custom_diffprofilesbyorganisation = Report {
+	report: "/reports/analysis/diffprofilesbyorganisation.rptdesign" with ^code to ^code
+	title: $reportcustom.custom_diffprofilesbyorganisation.title
+	^code = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "CODE"
+	}
+}

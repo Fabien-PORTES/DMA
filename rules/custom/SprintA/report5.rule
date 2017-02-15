@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="E1478608821746_41679" operator="and" query="identity" version="3">
+	<RequestJoin name="J1478608830386_41680" operator="and" countOperator="least" countNumber1="2" countNumber2="0" join="accountreconciliation">
+	</RequestJoin>
+	<RequestCriteria name="C1483454770424_533" criteria="inCustom">
+		<RequestCriteriaParam name="customNumberParam" ignoreifempty="false">
+			<Value name="0" data="4"/>
+		</RequestCriteriaParam>
+		<RequestCriteriaParam name="customValueParam" ignoreifempty="false">
+			<Value name="0" data="EU"/>
+			<Value name="1" data="EU-V"/>
+			<Value name="2" data="NA"/>
+			<Value name="3" data="NA-V"/>
+			<Value name="4" data="AS"/>
+			<Value name="5" data="AS-V"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

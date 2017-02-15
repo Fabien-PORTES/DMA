@@ -1,0 +1,880 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/resources/details_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/resources/audittrail.page"
+import "/webportal/pages/mixins/workflow_mixins.page"
+
+import "/webportal/pages/resources/services.page"
+import "/webportal/pages/resources/reconciliation_dialogs.page"
+import "/webportal/pages/custom/identity/detailsAD.page"
+
+import "/webportal/pages/workflow/manager/updateaccountmanager_start.page"
+import "/webportal/pages/custom/identity/detailsALIR.page"
+import "/webportal/pages/custom/TicketReview/details.page"
+/*Import dialog boxes for categorization and recon */
+import "/webportal/pages/custom/account_categorization/account_categorization.page"
+import "/webportal/pages/custom/recon_suggest_dialog/recon_suggest_dialog.page"
+import "/webportal/pages/custom/account_categorisation_ticket_details/account_categorisation_ticket_details.page"
+import "/webportal/pages/custom/account_reconciliation_ticket_details/account_reconciliation_ticket_details.page"
+
+emptyBooleanMapping = StringMapping {
+	when IsEmpty then 0
+	otherwise current
+}
+
+notNullTo01Mapping = StringMapping {
+	when IsEmpty then '0'
+	otherwise '1'
+}
+
+accountNISDetailsPageRecorduid = Page {
+	title: "Recorduid redirection (account)"
+	conditional-redirect: ConditionalRedirect { condition: True target: Page accountNISDetailsPage with accountUid.uid to paramAccountUid }
+	
+	recorduid = Parameter {
+		type: Integer
+		hidden: True
+		recorduid-of: Account
+		mandatory: True
+	}
+	
+	accountUid = Record {
+		view: br_accountDetail_uid with recorduid to recorduid
+	}
+}
+
+//accountDetails_commentspopup = InfoPopup {
+//	width: 400
+//	height:48
+//
+//	comment = Variable
+//	
+//	Text {
+//		compact:True
+//		lines:3
+//		value:comment
+//	}
+//}
+
+accountNISDetailsPage = Page {
+	title: $accountDetails.title
+	dynamic-title: $accountDetails.dynamictitle (account.login)
+	mixins: detailsPage
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set paramAccountUid to nonEmptyUid] when True then []}
+	
+	// Parameters Here
+	paramAccountUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: True
+	}
+	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	// Search Definition Here
+	accountSearch = SearchDefinition {
+		entity: Account
+		simple-mode-rule: br_account_simple_search 
+	}
+	
+	// Variables Here
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedAccountUid = Variable {
+		type: String
+		initial: paramAccountUid
+	}
+	
+	reconciliationResult = Variable {
+		type: String
+	}
+	
+	nbDomain = Variable { type:Integer }
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Dataset for Navigator
+	accountList = Dataset {
+		search: Search {
+			definition: accountSearch
+			view: account_searchpoint_NIS with nonEmptyUid to uid unless-empty
+		}
+	}
+	
+	// Dataset for Reports
+	relatedLinksTiles = Dataset {
+		pages: Pages{tags: "account" and "byuid" }
+	}
+	
+	// Record for concept details
+	account = Record {
+		view: accountNISDetail with selectedAccountUid to uid
+	}
+	
+	ticketReview_Record = Record{
+		view: ticket_review with selectedAccountUid to uid 
+	}
+	// All other Records and Datasets
+//	numberOfApplications = Record {
+//		view: br_accountDetail_nbapplications with account.recorduid to recorduid
+//	}
+	
+	reconciledIdentity = Record {
+		view: br_identityDetail with account.identity_uid to uid
+	}
+	
+//	accountusergone = Record {
+//		view: br_accountDetail_accountusergone with account.recorduid to recorduid
+//	}
+
+	accountnoownerinfos = Record {
+		view: br_accountDetail_noownerinfos with account.recorduid to recorduid
+	}
+	
+//	baccountDetail_manualreconinfos = Record {
+//		view: br_accountDetail_manualreconinfos with account.recorduid to recorduid
+//	}
+	
+//	accountbusinessowner = Record {
+//		view: br_accountBusinessowner with account.recorduid to recorduid
+//	}
+	
+	application = Record {
+		view: application_through_identity with account.recorduid to recorduid
+	}
+	
+	ticketReview = Dataset {
+			view: ticket_review with selectedAccountUid to uid 
+	}
+	
+	NISDomain = Dataset {
+			view: NIS_Domain_Details with account.login to login 
+	}
+	
+	manual_reconciliation = Record {
+		view: NIS_manual_reconciliation with account.uid to account_uid
+		}
+	
+	ad4unix_current_Domain = Dataset {
+			view: ad4unix_current_Domain with account.login to login 
+	}
+	
+	ad4unix_Past_Domain = Dataset {
+			view: ad4unix_Past_Domain with account.login to login 
+	}
+	
+		NIS_account_categorisation_ticket = Dataset {
+			view: NIS_account_categorisation_ticket with paramAccountUid to account_uid 
+	}
+
+	previous_reconciliation = Dataset {
+			view: NIS_manual_reconciliation with account.uid to account_uid
+			}
+
+	// Start of the Layout based on a 1-column Grid
+	Grid {
+		columns: GridColumn{}
+		
+		// Row for the Navigator
+		GridRow {
+			GridCell{
+				Group{
+					
+					layout: Layout {align: horizontal Center vertical Beginning }
+					Spacer {
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					SetNavigator {
+						data: accountList
+						column: uid
+						selection: selectedAccountUid
+						back-link: Activity Account Search with SerializeSearch accountSearch to accountSearch, paramSearchMode to paramSearchMode, selectedAccountUid to initialUid, initialIndex to paramInitialIndex
+						initial: paramAccountUid
+						initial-index: paramInitialIndex
+						selection-index: initialIndex
+						show-count: True
+						show-first: True
+						show-last: True
+						count-width: 150
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+				}
+			}
+		}
+		
+
+		// Row for content
+		
+		GridRow{
+			GridCell{
+				Group { layout: Layout { align: horizontal Beginning vertical Center }
+				Button {
+						text:"Categorize Me"
+						actions: GoTo Page account_categorization with account.uid to inaccount_uids
+						align:Left
+						}
+					}
+				Text {
+					value: account.login
+					styling:detailsTitle 
+					align: Center
+				}				
+				Flow{
+					disposition:Horizontal
+					//layout:Layout{align:horizontal Center vertical Center grab: horizontal True vertical False }
+				//NIS Repo
+				
+				
+				Group {
+						//layout: Layout {align: horizontal Center vertical Center grab: horizontal True vertical False }
+						mixins: detailIcons
+						border:False
+						hidden: IntPredicate ( Count NISDomain ) { when = 0 then True otherwise False }			
+						Tiles {
+							layout:Layout{align:horizontal Center vertical Center grab: horizontal True vertical False }
+							columns:5
+							tile-height: 20
+							TileGroup{
+								iterate-on:NISDomain
+								initial-sort: title	
+								
+								Tile{
+									hidden:False
+									Group {
+									
+									Link {
+									underline:Always
+									target:Page accountNISDetailsPage with Current uid to paramAccountUid
+									value: Current displayname
+									}
+									}
+								}
+							}
+						}
+					
+				
+				}
+				
+				}
+				}
+				}
+			
+			//Row for content
+			GridRow{
+				GridCell{
+				width: 900 
+				//background: Image "details/card_content.png"
+				Flow {
+					disposition: Horizontal
+
+					// First Column == NIS
+					
+					Group {
+						//margins: Top 20 Left 25
+						border:True
+						layout: Layout { hint: width 500}
+						title:$accountNisDetails.group_NIS
+						Grid{
+						columns: GridColumn {}
+						
+						GridRow{
+						GridCell{
+						Group{
+							
+							layout: Layout { hint: width 450}
+							Flow{
+							disposition:Horizontal
+							Group{
+							layout: Layout { hint: width 170}
+							Text {
+								value: Transform account.login using optionStringMapping
+								label: $accountNISAttributes.Login
+							}
+							Text {
+								value: Transform account.custom4 using optionStringMapping
+								label: $accountNISAttributes.custom4
+								lines:2
+							}
+							Link {
+								value: account.repository_displayname
+								label: $accountNISAttributes.repository
+								icon:"details/link_database_14.png"
+								target: Activity Repository Detail with account.repository_uid to paramRepositoryUid
+								disabled:
+									OrPredicate {
+										StringPredicate( account.repository_displayname ) { when IsEmpty then True}
+										Not FeaturePredicate accountdetails_linktorepository				
+									} 
+								}
+							Text {
+								value: Transform account.guid using optionStringMapping
+								label: $accountNISAttributes.guid
+							}
+							}
+							Group{
+							layout: Layout { hint: width 280}
+							Text {
+								value: Transform account.custom9 using optionStringMapping
+								label: $accountNISAttributes.custom9
+								lines:2
+							}
+							Text {
+								value: Transform account.username using optionStringMapping
+								label: $accountNISAttributes.username
+								lines:2
+								}
+							
+							Text {
+								value: Transform account.disabled using diabled_Mapping
+								label: $accountNISAttributes.disabled
+								lines:2
+								}
+							Text {
+								value: Transform account.managerdata using optionStringMapping
+								label: $accountNISAttributes.manager
+								lines:2
+								}
+							}
+							
+						}
+						}
+						}
+						}
+						
+						}
+						Group{
+						//AD4UNIX Current
+						layout: Layout { hint: width 450}
+						compact:True
+						Table{
+									show-count:True
+									//hide-header:True
+									data: ad4unix_current_Domain
+									layout:Layout {hint:height 120 }
+									label:'AD4Unix Current'
+									Column { column:code
+									header: $accountNISAttributes.repository
+									width:40%
+									}
+									Column { column:sid
+									header: $ad4Unix_Current.sid
+									width:20%
+									}
+									Column { column:  custom5
+									header: $ad4Unix_Current.custom5
+									width:20%
+									}
+									Column { column:  custom8
+									header: $ad4Unix_Current.custom8
+									width:20%
+									}
+									}
+						}
+						Group {
+							//AD4UNIX Past
+							compact:True
+							layout: Layout { hint: width 450}
+							//layout: Layout {hint: width 270 align:horizontal Beginning vertical Fill}
+							Table{
+									show-count:True
+									//hide-header:True
+									data: ad4unix_Past_Domain
+									layout:Layout {hint:height 120 }
+									label:'AD4Unix Past'
+									Column { column:displayname
+									header: $accountNISAttributes.repository
+									width:40%
+									}
+									Column { column:  custom2
+									header: $ad4Unix_Current.custom5
+									width:20%
+									}
+									Column { column:  custom7
+									header: $ad4Unix_Current.custom8
+									width:20%
+									}
+									}
+						}
+
+						}
+						
+						
+						
+					
+					// Second Column == Identity (AD)
+					Group {
+						
+						Flow{
+						disposition:Vertical
+						Group {
+						
+						// AD account
+						hidden: SameValuePredicate (account.identity_custom4, 'ALIR')
+						//layout: Layout { hint: width 350}
+							layout: Layout { hint: width 350}
+							margins: Top 20 Left 25
+							border:True
+							title: $accountNisDetails.group_AD
+							Link {
+								value:  Concat(Transform reconciledIdentity.custom8 using optionStringMapping, ' (',  Transform reconciledIdentity.custom4 using optionStringMapping, ')')
+								label: $accountNisDetails.reconciled_identity
+								target: Page identityDetailsADPage with reconciledIdentity.uid to paramIdentityUid
+								disabled:
+									OrPredicate {
+										StringPredicate (reconciledIdentity.uid) { when IsEmpty then True}
+										Not FeaturePredicate accountdetails_linktoidentity
+									} 
+								hidden:StringPredicate(accountnoownerinfos.noownercode) {when Not IsEmpty then True}
+	//							info-popup: accountDetails_commentspopup(baccountDetail_manualreconinfos.comment to comment)
+								icon:"details/link_profile_14.png"	
+								commands: Commands {
+									position: After
+											Command { 
+												icon: "16/filesystems/trashcan_empty_16.png"
+												tooltip: $reconciliationactions.delete
+												disabled:StringPredicate(reconciledIdentity.fullname) {when IsEmpty then True}
+												feature:recon_remove 
+												actions: 
+													Confirm Concat($reconciliationactions.delete, " ?"),
+													Call srv_reconciliation_remove (account.recorduid to accountRecordUid, reconciliationResult from result),
+													StringCase (reconciliationResult) { 
+														when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmdeleted,account.login), ReloadData (account), ReloadData (reconciledIdentity)]
+														otherwise [ Message Concat($reconciliationactions.actionerror," : ",reconciliationResult) ] 
+													}
+											}		
+											Command { 
+													icon: "16/audit/reconciliation_identity.png"
+													tooltip: $reconciliationactions.reconcilewithidentity
+													feature:recon_identity
+													actions: Dialog reconciliationIdentityDialog (account.login to inAccountLogin, account.recorduid to inAccountRecordUid, reconciliationResult from outResult),
+														StringCase (reconciliationResult) { 
+															when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmreconciled," ",account.login), ReloadData(account), ReloadData (reconciledIdentity) ]
+															otherwise [ Message Concat($reconciliationactions.actionerror," : ",reconciliationResult) ]
+														}
+												}										
+												Command { 
+													icon: "16/audit/reconciliation_leave.png"
+													tooltip: $reconciliationactions.reconcilewithleave
+													feature:recon_identity
+													actions: Dialog reconciliationLeaveDialog (account.login to inAccountLogin, account.recorduid to inAccountRecordUid, reconciliationResult from outResult),
+														StringCase (reconciliationResult) { 
+															when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmreconciled," ",account.login), ReloadData(account), ReloadData (reconciledIdentity) ]
+															otherwise [ Message Concat($reconciliationactions.actionerror, " : ",reconciliationResult) ]
+													}
+												}
+											}
+														
+							}
+							Text {
+								value: Transform account.identity_fullname using optionStringMapping
+								label: $identityAdAttributes.FullName
+							}
+							Text {
+								value: Concat (Transform account.identity_custom14 using optionStringMapping, ' / ', Transform account.identity_custom13 using optionStringMapping)
+								label: Concat ($identityAdAttributes.custom14, ' / ',  $identityAdAttributes.custom13 )
+							}
+							Text {
+								value: Transform  account.identity_custom11 using diabled_Mapping  
+								label: $identityAdAttributes.custom11
+							}
+							Text {
+								value: $accountDetails.noownervalue (Transform accountnoownerinfos.noownercode using notNullTo01Mapping, accountnoownerinfos.noownercode)
+								label: $accountDetails.noowneraccount
+	//							info-popup: accountDetails_commentspopup(accountnoownerinfos.comment to comment)
+								hidden:StringPredicate(reconciledIdentity.fullname) {when Not IsEmpty then True}
+								commands: Commands {
+									position: After
+											Command { 
+												icon: "16/filesystems/trashcan_empty_16.png"
+												tooltip: $reconciliationactions.delete
+												disabled:StringPredicate(accountnoownerinfos.noownercode) {when IsEmpty then True}
+												feature:recon_remove 
+												actions: 
+													Confirm Concat($reconciliationactions.delete, " ?"),
+													Call srv_reconciliation_remove (account.recorduid to accountRecordUid, reconciliationResult from result),
+													StringCase (reconciliationResult) { 
+														when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmdeleted,account.login), ReloadData (account), ReloadData (reconciledIdentity)]
+														otherwise [ Message Concat($reconciliationactions.actionerror," : ",reconciliationResult) ] 
+													}
+											}		
+												Command { 
+													icon: "16/audit/reconciliation_noowner.png"
+													tooltip: $reconciliationactions.reconcilewithnoowner
+													feature:recon_noowner
+													actions: Dialog reconciliationNoOwnerDialog (account.login to inAccountLogin, account.recorduid to inAccountRecordUid, reconciliationResult from outResult),
+														StringCase (reconciliationResult) { 
+															when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmreconciled," ",account.login), ReloadData(account), ReloadData (reconciledIdentity) ]
+															otherwise [ Message Concat($reconciliationactions.actionerror," : ",reconciliationResult) ]
+													}
+												}
+											}
+												
+								}
+						}
+						
+						Group{
+						//ALIR if no AD
+						hidden: Not SameValuePredicate (account.identity_custom4, 'ALIR')
+						layout: Layout { hint: width 350}
+								margins: Top 20 Left 25 Right 25 Bottom 20
+								border:True
+								title: $accountNisDetails.group_ALIR
+								Text {
+									value: Transform account.identity_hrcode using optionStringMapping
+									label: $identityALIRAttributes.hrcode
+								}
+								Link {
+									value: Transform account.identity_fullname using optionStringMapping
+									label: $identityALIRAttributes.fullName
+									target: Page identityDetailsALIRPage with account.identity_uid to paramIdentityUid
+									icon:"details/link_profile_14.png"
+									disabled:OrPredicate {
+										StringPredicate (account.identity_fullname) { when IsEmpty then True}
+										Not FeaturePredicate accountdetails_linktoidentity
+									}
+								}
+							}
+						
+						//Recon Maxime
+						ConditionalGroup {
+						StringCondition (account.reconciliation_rulename)
+						{when Not IsEmpty
+						then [
+							Group {
+								Group{
+									layout: Layout { hint: width 350}
+									margins: Top 20 Left 25
+									border:True
+									title: $accountNisDetails.group_Recon
+									Text {
+										value: Transform account.reconciliation_description using optionStringMapping
+										label: $accountNISAttributes.recon.displayname
+										lines:2
+									}
+									Text {
+										value: Transform account.reconciliation_reliability using optionStringMapping
+										label: $accountNISAttributes.recon.reliability
+										lines:2
+									}
+								}
+								Group{
+									layout: Layout { hint: width 350}
+									hidden:StringPredicate(application.code) { when IsEmpty then True}
+									margins: Top 20 Left 25
+									border:True
+									title: $accountNisDetails.group_Application
+									Text {
+										value: Transform  application.code using emptyBooleanMapping
+										label: $accountNisDetails.application_code
+									}
+								}
+							}
+						]
+					otherwise [
+						Group {
+								title: "Manual reconciliation"
+								Text {
+									value: "No manual reconciliation"
+									hidden: StringPredicate ( manual_reconciliation.actor_fullname )
+										{ when IsEmpty then False otherwise True }								
+									}
+								Text {
+									value: manual_reconciliation.actor_fullname
+									label: Concat ( "Operator"," ", $identity.fullname )
+									hidden: StringPredicate ( manual_reconciliation.actor_fullname )
+										{ when IsEmpty then True otherwise False }								
+								}
+								Text {
+									value: manual_reconciliation.action_startdate
+									label: $account.creationdate
+									hidden: StringPredicate ( manual_reconciliation.actor_fullname )
+										{ when IsEmpty then True otherwise False }
+								}
+								}
+							]
+						}
+					}
+					Group {
+							Button {
+									text:"Create a reconciliation"
+									actions: Dialog recon_suggest_dialog (account.uid to inaccount_uid) 
+									image: "16/audit/reconciliation_16.png"
+									}								
+									}	
+						}
+						Group{
+							layout: Layout { hint: width 350}
+							hidden:StringPredicate(application.code) { when IsEmpty then True}
+							margins: Top 20 Left 25
+							border:True
+							title: $accountNisDetails.group_Application
+							Text {
+								value: Transform  application.code using emptyBooleanMapping
+								label: $accountNisDetails.application_code
+							}
+						}				
+				}
+				
+					// Third Columns  == ALIR & AD4UNIX
+					Flow {
+				//	Group {
+					// ALIR
+						Group{
+						hidden: SameValuePredicate (account.identity_custom4, 'ALIR')
+						layout: Layout { hint: width 300}
+								margins: Top 20 Left 25 Right 25 Bottom 20
+								border:True
+								title: $accountNisDetails.group_ALIR
+								Text {
+									value: Transform account.manager_hrcode using optionStringMapping
+									label: $identityALIRAttributes.hrcode
+								}
+								Link {
+									value: Transform account.manager_fullname using optionStringMapping
+									label: $identityALIRAttributes.fullName
+									target: Page identityDetailsALIRPage with account.manager_uid to paramIdentityUid
+									icon:"details/link_profile_14.png"
+									disabled:OrPredicate {
+										StringPredicate (account.manager_fullname) { when IsEmpty then True}
+										Not FeaturePredicate accountdetails_linktoidentity
+									}
+								}
+							}
+												Group{
+						//PASSWORD
+						title: $accountNisDetails.group_Password
+						border:True
+						layout: Layout { hint: width 300}
+						Flow { disposition:Horizontal
+							Group {
+							layout: Layout { hint: width 150}
+							Text {
+								value: Transform account.disabled using optionStringMapping
+								label: $accountNISAttributes.disabled
+								lines:2
+								}
+							}
+							Group{
+							layout: Layout { hint: width 150}
+							Text {
+								value: Transform account.passwordexpired using optionStringMapping
+								label: $accountNISAttributes.passwordExpired
+								lines:2
+								}
+							Text {
+								value: Transform account.passwordnotrequired using optionStringMapping
+								label: $accountNISAttributes.passwordNotRequired
+								lines:2
+								}
+							}
+						}
+						}
+						Group{
+						//Category
+						//compact:True
+						margins:Left 10
+						title: $accountNisDetails.group_Category
+						border:True
+						layout: Layout { hint: width 300}
+						
+						Text {
+								value: Transform ticketReview_Record.custom1 using optionStringMapping
+								label: $ticketReviewAttributes.custom1
+								lines:2
+								}
+						Flow { disposition:Horizontal
+							Group {
+							//compact:True
+							layout: Layout { hint: width 150}
+							Text {
+								value: Transform ticketReview_Record.actorfullname using optionStringMapping
+								label: $ticketReviewAttributes.actorFullName
+								lines:1
+								}
+							}
+							Group{
+							//compact:True
+							layout: Layout { hint: width 150}
+							Text {
+								value: Transform ticketReview_Record.startdate using optionStringMapping
+								label: $ticketReviewAttributes.startDate
+								lines:1
+								}
+							}
+						}
+						}
+						}
+				}
+			}
+		}
+		
+		//row
+		GridRow{
+		GridCell{
+			//background: Image "details/card_content.png"
+			Group {
+				margins: Top 20 Left 25 Right 25 Bottom 20
+				Group{
+					margins: Top 20 Left 25
+					border:False
+					//title: $accountNisDetails.group_Ticket_Review
+					
+					Table {
+						double-click: GoTo Page details_Ticket_Review with selectedAccountUid to paramAccountUid
+						data: NIS_account_categorisation_ticket
+						layout:Layout {hint:height 200}
+						
+						label:"Account Category"
+						show-filter:True
+						persist-configuration:True
+						configurable:True
+						
+						Column {
+							header: $ticketReviewAttributes.status
+							column: ticket_review_status
+							sortable:True
+							width:100%
+						}
+						Column {
+							header:$ticketReviewAttributes.custom1
+							column: ticket_review_custom1
+							sortable:True
+							width:100%
+						}
+						Column {
+							header:$ticketReviewAttributes.startDate
+							column: ticket_action_startdate
+							sortable:True
+							width:100%
+						}
+						Column {
+							header: $ticketReviewAttributes.comment
+							column: ticket_review_comment
+							sortable:True
+							width:100%
+						}
+						Column {
+							header: $ticketReviewAttributes.custom3
+							column: ticket_review_custom3
+							sortable:True
+							width:100%
+							}
+						Column {
+							header: $ticketReviewAttributes.custom4
+							column: ticket_review_custom4
+							sortable:True
+							width:100%
+							}
+						Column {
+							header: $ticketReviewAttributes.custom5
+							column: ticket_review_custom5
+							sortable:True
+							width:100%
+							}
+						Column {
+							header: $ticketReviewAttributes.custom6
+							column: ticket_review_custom6
+							sortable:True
+							width:100%
+							}
+						Column {
+							header: $ticketReviewAttributes.actorFullName
+							column: actor_fullname
+							sortable:True
+							width:100%
+						}
+						}
+				
+					Table {
+						data: previous_reconciliation
+						layout:Layout {hint:height 200}
+						double-click: GoTo Page account_reconciliation_ticket_details with paramAccountUid to paramAccountUid
+						label:"Manual Reconciliation"
+						Column {
+							column: actor_fullname
+							header: "Operator fullname"
+							width: 33%
+							}
+						Column {
+							column: ticket_review_custom1
+							text: Transform Current ticket_review_custom1 using optionStringMapping
+							header: "Previous reconcilied identity fullname"
+							width: 33%
+							}
+						Column {
+							column: ticket_review_custom2
+							text: Transform Current ticket_review_custom2 using optionStringMapping
+							header: "Repository"
+							width: 33%
+							}
+						Column {
+							column: action_startdate
+							header: "Reconciliation date"
+							width: 33%
+							}			
+						}
+					}
+				}
+				
+			}
+		}
+		
+		
+		// Row for footer
+		GridRow{
+			GridCell{
+				//background: Image "details/card_footer.png"
+				Spacer { height: 12 }
+			}
+		}
+		
+		
+		
+		// Row for links
+//		GridRow{
+//			GridCell{
+//				Spacer { height: 20 }
+//				Tiles {
+//					columns:5
+//					tile-height:120
+//					mixins:detailIcons
+//					TileGroup {
+//						iterate-on: relatedLinksTiles
+//						initial-sort: ^priority 
+//						Tile {
+//							Button {
+//								actions: GoTo Dynamic (Current type, Current name) with account.recorduid to recorduid, account.uid to uid, SerializeSearch accountSearch to accountSearch, paramSearchMode to paramSearchMode
+//								image: Current largeIcon
+//								tooltip: Current title		
+//							}
+//							Text{
+//								value: Current title
+//								label: Label{ layout:Layout{indent: vertical 0 horizontal 0   }  }
+//								lines:2
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+	}
+		
+}

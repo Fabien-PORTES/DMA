@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityruleevol" distinct="true" concept="identity" displayname="Identity rule evolution on the last 3 months" notes="">
+	<ViewParam name="rulename" displayname="rule name"/>
+	<ViewSort name="sort" attribute1="A1303673653698_170"/>
+	<ViewAttribute name="A1303673612212_165" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT" removedfromprojection="false"/>
+	<ViewJoin name="J1303673625759_167" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1303673629470_168" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303673640098_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1303673653698_170" attribute="timeslotcommitdate" removedfromprojection="false"/>
+	<ViewAttribute name="A1303673654630_171" attribute="timeslotellapsedtime" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1303673662001_0" reference="" operation="le" ignoreifempty="false">
+			<Value name="0" data="90"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MenuItems PUBLIC "-//Brainwave//DTD MenuItems 1.0//EN" "urn:brainwave:igrc:dtds/menuitems.dtd">
+<MenuItems version="1" name="adminmenuitems" description="Separate entry for Admin menu item">
+	<MenuItem name="menuitem_admin" label="Admin" priority="4000" position="page:adminPage" feature="menu_admin" description="Admin Menu"/>
+</MenuItems>

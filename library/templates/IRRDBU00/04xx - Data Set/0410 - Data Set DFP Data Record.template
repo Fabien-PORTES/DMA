@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="Data set DFP data record" description="The Data Set DFP Data record defines the DFP information required by the System Managed Storage (SMS) facility of the Data Facility Product (DFP). There is one record per data set/DFP data combination.">
+	<Source type="FORMATTED" filter="^0410 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="DSDFP_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the Data Set DFP Data record (0410)."/>
+		<Attribute name="A4199536690768339793" attribute="DSDFP_NAME" column="6-49" type="String" multivalued="false" description="Data set name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="DSDFP_VOL" column="51-56" type="String" multivalued="false" description="Volume upon which this data set resides. Blank if the profile is generic, and *MODEL if the profile is a model profile."/>
+		<Attribute name="A7466509792483562715" attribute="DSDFP_RESOWNER_ID" column="58-65" type="String" multivalued="false" description="The resource owner of the data set."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

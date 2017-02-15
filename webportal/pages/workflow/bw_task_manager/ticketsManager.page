@@ -1,0 +1,1089 @@
+/* Import other pages here */
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+
+/* Nationalized labels here */
+ticketsManagerNLS = NLS {
+	title [en "Workflow Logs Manager" fr "Workflow Logs Manager"]
+
+	ticketdeleteconfirm1 [en "Are you sure?\n\nThis will delete this log entry and all its sub elements, including the compliance report\nThis can't be undone" 
+	fr "Etes vous sur?\n\nCeci va supprimer cette entrée de log et tous les sous elements, y compris les rapports de conformité\nCeci ne peut pas être annulé"]
+	ticketdeleteconfirm2 [en "Really? THIS CAN'T BE UNDONE" fr "Vraiment? CECI NE PEUT PAS ETRE ANNULE"]
+	ticketdeleteflash [en "Ticket is being deleted" fr "Le ticket est en train d'être supprimé"]
+	ticketdeletebutton [en "Delete entry" fr "Supprimer l'entrée"]
+	ticketdeletedebugconfirm1 [en "Are you sure?\n\nThis will delete all logs set in debug mode, including their sub elements and compliance reports\nThis can't be undone" 
+	fr "Etes vous sur?\n\nCeci va supprimer toutes les entrées de log positionnées en mode debug y compris leurs sous elements et rapports de conformité\nTCeci ne peut pas etre annulé"]
+	ticketdeletedebugconfirm2 [en "Really? THIS CAN'T BE UNDONE" fr "Vraiment? CECI NE PEUT PAS ETRE ANNULE"]
+	ticketdeletedebugflash [en "Tickets in debug mode are being deleted" fr "Les tickets en mode debug sont en train d'être supprimés"]
+	ticketdeletedebugbutton [en "Delete all debug entries" fr "Supprimer les tickets en mode debug"]
+	details [en "Ticket details" fr "Details sur le ticket"]
+	actions [en "Actions" fr "Actions"]
+	actioninfo [en "Select an action to view its review details" fr "Selectionnez une action pour voir les détails de revue"]
+	rttype [en "Review Ticket type" fr "Type de ticket de revue"]
+	rvaccount [en "account" fr "compte"]
+	rvallocation [en "allocation" fr "allocation"]
+	rvapplication [en "application" fr "application"]
+	rvgroup [en "group" fr "groupe"]
+	rvidentity [en "identity" fr "identité"]
+	rvpermission [en "permission" fr "permission"]
+	rvreconciliation [en "reconciliation" fr "reconciliation"]
+	rvrepository [en "repository" fr "référentiel"]
+	rvright [en "right" fr "droit"]
+	rvappmngt [en "application management" fr "gestion d'application"]
+	rvgroupmngt [en "group management" fr "gestion de groupe"]
+	rvorgmngt [en "organisation management" fr "gestion d'organisation"]
+	rvpermmngt [en "permission management" fr "gestion de permission"]
+	rvrepomngt [en "repository management" fr "gestion de référentiel"]
+	reviews [en "Reviews" fr "Revues"]
+	reviewsinfo [en "Select a review to view its remediation details" fr "Selectionnez une revue pour voir les détails de remédiation"]
+	remediations [en "Remediations" fr "Remediations"]
+	dwncompliance [en "Download compliance report" fr "Télécharger le rapport de conformité"]
+}
+
+bw_ticketlog = NLS {
+	recorduid [en "recorduid" fr "recorduid"]
+	debugmode [en "debug mode" fr "debug mode"]
+	tickettype [en "ticket type" fr "ticket type"]
+	ticketnumber [en "ticket number" fr "ticket number"]
+	timeslotuid [en "timeslot uid" fr "timeslot uid"]
+	submissiondate [en "submission date" fr "submission date"]
+	submissionday [en "submission day" fr "submission day"]
+	closedate [en "close date" fr "closedate"]
+	closeday [en "closeday" fr "close day"]
+	duedate [en "due date" fr "due date"]
+	dueday [en "due day" fr "due day"]
+	ticketopen [en "still running" fr "still running"]
+	status [en "status" fr "status"]
+	title [en "title" fr "title"]
+	description [en "description" fr "description"]
+	issueruid [en "issuer uid" fr "issuer uid"]
+	issuerfullname [en "issuer fullname" fr "issuer fullname"]
+	^priority [en "priority" fr "priority"]
+	processinstanceid [en "process instance id" fr "process instance id"]
+	externalreference [en "external reference" fr "external reference"]
+	custom1	[en "custom1" fr "custom1"]
+	custom2 [en "custom2" fr "custom2"]
+	custom3 [en "custom3" fr "custom3"]
+	custom4 [en "custom4" fr "custom4"]
+	custom5 [en "custom5" fr "custom5"]
+	custom6 [en "custom6" fr "custom6"]
+	custom7 [en "custom7" fr "custom7"]
+	custom8 [en "custom8" fr "custom8"]
+	custom9 [en "custom9" fr "custom9"]
+	custom10 [en "custom10" fr "custom10"]
+	custom11 [en "custom11" fr "custom11"]
+	custom12 [en "custom12" fr "custom12"]
+	custom13 [en "custom13" fr "custom13"]
+	custom14 [en "custom14" fr "custom14"]
+	custom15 [en "custom15" fr "custom15"]
+	custom16 [en "custom16" fr "custom16"]
+	custom17 [en "custom17" fr "custom17"]
+	custom18 [en "custom18" fr "custom18"]
+	custom19 [en "custom19" fr "custom19"]}
+
+bw_ticketaction = NLS {
+	recorduid [en "recorduid" fr "recorduid"]
+	taskid [en "taskid" fr "taskid"]
+	startdate [en "startdate" fr "startdate"]
+	startday [en "startday" fr "startday"]
+	enddate [en "enddate" fr "enddate"]
+	endday [en "endday" fr "endday"]
+	status [en "status" fr "status"]
+	title [en "title" fr "title"]
+	description [en "description" fr "description"]
+	actoruid [en "actoruid" fr "actoruid"]
+	actorfullname [en "actorfullname" fr "actorfullname"]
+	custom1	[en "custom1" fr "custom1"]
+	custom2 [en "custom2" fr "custom2"]
+	custom3 [en "custom3" fr "custom3"]
+	custom4 [en "custom4" fr "custom4"]
+	custom5 [en "custom5" fr "custom5"]
+	custom6 [en "custom6" fr "custom6"]
+	custom7 [en "custom7" fr "custom7"]
+	custom8 [en "custom8" fr "custom8"]
+	custom9 [en "custom9" fr "custom9"]
+	custom10 [en "custom10" fr "custom10"]
+	custom11 [en "custom11" fr "custom11"]
+	custom12 [en "custom12" fr "custom12"]
+	custom13 [en "custom13" fr "custom13"]
+	custom14 [en "custom14" fr "custom14"]
+	custom15 [en "custom15" fr "custom15"]
+	custom16 [en "custom16" fr "custom16"]
+	custom17 [en "custom17" fr "custom17"]
+	custom18 [en "custom18" fr "custom18"]
+	custom19 [en "custom19" fr "custom19"]}
+	
+bw_ticketreview = NLS {
+	recorduid [en "recorduid" fr "recorduid"]
+	status [en "status" fr "status"]
+	comment [en "comment" fr "comment"]
+	custom1	[en "custom1" fr "custom1"]
+	custom2 [en "custom2" fr "custom2"]
+	custom3 [en "custom3" fr "custom3"]
+	custom4 [en "custom4" fr "custom4"]
+	custom5 [en "custom5" fr "custom5"]
+	custom6 [en "custom6" fr "custom6"]
+	custom7 [en "custom7" fr "custom7"]
+	custom8 [en "custom8" fr "custom8"]
+	custom9 [en "custom9" fr "custom9"]
+	custom10 [en "custom10" fr "custom10"]
+	custom11 [en "custom11" fr "custom11"]
+	custom12 [en "custom12" fr "custom12"]
+	custom13 [en "custom13" fr "custom13"]
+	custom14 [en "custom14" fr "custom14"]
+	custom15 [en "custom15" fr "custom15"]
+	custom16 [en "custom16" fr "custom16"]
+	custom17 [en "custom17" fr "custom17"]
+	custom18 [en "custom18" fr "custom18"]
+	custom19 [en "custom19" fr "custom19"]}
+
+
+ticketsManager = Page {
+	title: $ticketsManagerNLS.title
+    tags: "admin"
+    feature:tlm_canaccesspage
+	
+	/* Parameters here */
+	
+	/* Variables here */
+	selectedTicketlogRecorduid = Variable
+	selectedActionrecorduid = Variable
+	filter = Variable
+	selectedReviewrecorduid = Variable
+	selectedReviewType = Variable
+	
+	/* Datasets and records here */
+	rootticketlogs = Dataset {
+		view:bw_getrootticketlogs
+	}
+	
+	ticketlogHierarchy = HierarchicalData {
+		roots-view:bw_getrootticketlogs with filter to filter
+		attribute:recorduid
+		children-view:bw_getchildticketlogs
+		parameter:parentTicketLogRecorduid 
+	}
+	
+	ticketlogDetails = Record {
+		view:bw_getticketlog with selectedTicketlogRecorduid to recorduid
+	}
+	
+	ticketActions = Dataset {
+		view:bw_getticketactions with selectedTicketlogRecorduid to ticketlogrecorduid
+	}
+	
+	ticketReviewaccounts = Dataset {
+		view:bw_getticketreviewsaccounts with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewallocations = Dataset {
+		view:bw_getticketreviewsallocations with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewapplications = Dataset {
+		view:bw_getticketreviewsapplications with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewgroups = Dataset {
+		view:bw_getticketreviewsgroups with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewidentity = Dataset {
+		view:bw_getticketreviewsidentity with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewpermissions = Dataset {
+		view:bw_getticketreviewspermissions with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewreconciliations = Dataset {
+		view:bw_getticketreviewsreconciliations with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewrepository = Dataset {
+		view:bw_getticketreviewsrepository with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewrights = Dataset {
+		view:bw_getticketreviewrights with selectedActionrecorduid to ticketactionrecorduid
+	}
+
+	ticketReviewapplicationmngt = Dataset {
+		view:bw_getticketreviewapplicationmngt with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewgroupmngt = Dataset {
+		view:bw_getticketreviewgroupmngt with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketRevieworganisationmngt = Dataset {
+		view:bw_getticketrevieworganisationmngt with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewpermissionmngt = Dataset {
+		view:bw_getticketreviewpermissionmngt with selectedActionrecorduid to ticketactionrecorduid
+	}
+	ticketReviewrepositorymngt = Dataset {
+		view:bw_getticketreviewrepositorymngt with selectedActionrecorduid to ticketactionrecorduid
+	}
+
+	ticketRemediation = Dataset {
+		view:bw_getticketremediation with selectedReviewrecorduid to ticketreviewrecorduid
+	}
+	
+	deleteticketsTask = TaskRecord(create "bw_deletetickets")
+	deletedebugticketsTask = TaskRecord(create "bw_deletedebugtickets")
+	
+	/* Page content */
+	Splitter {
+		size:33%
+		disposition:Horizontal
+		layout:Layout{grab:horizontal True vertical True}
+		
+		Group {
+			border:True
+			Edit {
+				variable:filter
+			}
+			Tree {
+				data:ticketlogHierarchy
+				layout:Layout{grab:horizontal True vertical True}
+				configurable:True
+				persist-configuration:True
+				
+				Column {
+					column:recorduid
+					hidden:True
+					selection:selectedTicketlogRecorduid
+				}
+				Column {
+					column:title
+					width:100%
+					header:$bw_ticketlog.title
+				}
+				Column {
+					column:submissiondate
+					header:$bw_ticketlog.submissiondate
+					initially-masked:True
+				}
+				Column {
+					column:duedate
+					header:$bw_ticketlog.duedate
+					initially-masked:True
+				}
+				Column {
+					column:closedate
+					header:$bw_ticketlog.closedate
+					initially-masked:True
+				}
+				Column {
+					column:ticketopen
+					header:$bw_ticketlog.ticketopen
+					initially-masked:True
+				}
+				Column {
+					column:issuerfullname
+					header:$bw_ticketlog.issuerfullname
+					initially-masked:True
+				}
+			}		
+
+			ButtonGroup {
+				Button {
+					actions:Confirm $ticketsManagerNLS.ticketdeleteconfirm1, Confirm $ticketsManagerNLS.ticketdeleteconfirm2, Set selectedTicketlogRecorduid to deleteticketsTask.ticketlog, TaskComplete deleteticketsTask wait, Flash Information $ticketsManagerNLS.ticketdeleteflash, ReloadData (ticketlogHierarchy)
+					text:$ticketsManagerNLS.ticketdeletebutton
+				    feature:tlm_canpurgetickets
+					disabled:OrPredicate {
+						BooleanPredicate (ticketlogDetails.ticketopen)
+						StringPredicate(selectedTicketlogRecorduid) { when IsEmpty then True }
+						StringPredicate(ticketlogDetails.tickettype) {when "PURGELOG-PURGE" then True}
+					}
+				}
+				Button {
+					actions:Confirm $ticketsManagerNLS.ticketdeletedebugconfirm1, Confirm $ticketsManagerNLS.ticketdeletedebugconfirm2, Set selectedTicketlogRecorduid to deleteticketsTask.ticketlog, TaskComplete deletedebugticketsTask wait, Flash Information $ticketsManagerNLS.ticketdeletedebugflash, ReloadData (ticketlogHierarchy)
+					text:$ticketsManagerNLS.ticketdeletedebugbutton
+				    feature:tlm_canpurgedebugtickets
+				}
+			}			
+		}
+		Group {
+			border:True
+			hidden:StringPredicate(selectedTicketlogRecorduid) { when IsEmpty then True }
+			TabFolder {
+				TabItem {
+					text:$ticketsManagerNLS.details
+				
+					Flow {
+						disposition:Horizontal
+						Group {
+							Text {compact:True label:$bw_ticketlog.title value:ticketlogDetails.title styling:bigTitleStyle}
+							Text {compact:True label:$bw_ticketlog.description value:ticketlogDetails.description lines:4}
+							Text {compact:True label:$bw_ticketlog.ticketnumber value:ticketlogDetails.ticketnumber}
+							Text {compact:True label:$bw_ticketlog.ticketopen value:Transform ticketlogDetails.ticketopen using booleanDisplayMapping}
+							Text {compact:True label:$bw_ticketlog.status value:ticketlogDetails.status}
+							Text {compact:True label:$bw_ticketlog.^priority value:ticketlogDetails.^priority lines:4}
+							Text {compact:True label:$bw_ticketlog.tickettype value:ticketlogDetails.tickettype}
+							Text {compact:True label:$bw_ticketlog.duedate value:ticketlogDetails.duedate}
+							Text {compact:True label:$bw_ticketlog.closedate value:ticketlogDetails.closedate}
+							Text {compact:True label:$bw_ticketlog.issuerfullname value:ticketlogDetails.issuerfullname}
+							Text {compact:True label:$bw_ticketlog.externalreference value:ticketlogDetails.externalreference}
+							Text {compact:True label:$bw_ticketlog.debugmode value:Transform ticketlogDetails.debugmode using booleanDisplayMapping}
+						}
+						Group {
+							Text {compact:True label:$bw_ticketlog.custom1 value:ticketlogDetails.custom1}
+							Text {compact:True label:$bw_ticketlog.custom2 value:ticketlogDetails.custom2}
+							Text {compact:True label:$bw_ticketlog.custom3 value:ticketlogDetails.custom3}
+							Text {compact:True label:$bw_ticketlog.custom4 value:ticketlogDetails.custom4}
+							Text {compact:True label:$bw_ticketlog.custom5 value:ticketlogDetails.custom5}
+							Text {compact:True label:$bw_ticketlog.custom6 value:ticketlogDetails.custom6}
+							Text {compact:True label:$bw_ticketlog.custom7 value:ticketlogDetails.custom7}
+							Text {compact:True label:$bw_ticketlog.custom8 value:ticketlogDetails.custom8}
+							Text {compact:True label:$bw_ticketlog.custom9 value:ticketlogDetails.custom9}
+						}
+						Group {
+							Text {compact:True label:$bw_ticketlog.custom10 value:ticketlogDetails.custom10}
+							Text {compact:True label:$bw_ticketlog.custom11 value:ticketlogDetails.custom11}
+							Text {compact:True label:$bw_ticketlog.custom12 value:ticketlogDetails.custom12}
+							Text {compact:True label:$bw_ticketlog.custom13 value:ticketlogDetails.custom13}
+							Text {compact:True label:$bw_ticketlog.custom14 value:ticketlogDetails.custom14}
+							Text {compact:True label:$bw_ticketlog.custom15 value:ticketlogDetails.custom15}
+							Text {compact:True label:$bw_ticketlog.custom16 value:ticketlogDetails.custom16}
+							Text {compact:True label:$bw_ticketlog.custom17 value:ticketlogDetails.custom17}
+							Text {compact:True label:$bw_ticketlog.custom18 value:ticketlogDetails.custom18}
+							Text {compact:True label:$bw_ticketlog.custom19 value:ticketlogDetails.custom19}				
+						}
+					}
+				}
+				TabItem {
+					text:$ticketsManagerNLS.actions
+					Table {
+						data:ticketActions
+						show-count:True
+						show-filter:True
+						persist-configuration:True
+						configurable:True
+						label:$ticketsManagerNLS.actions
+						layout:Layout  {grab:horizontal True vertical True}
+
+						Column {column: recorduid header:$bw_ticketaction.recorduid hidden:True selection:selectedActionrecorduid}
+						Column {column: taskid header:$bw_ticketaction.taskid sortable:True filterable:True initially-masked:True}
+						Column {column: startdate header:$bw_ticketaction.startdate  sortable:True filterable:True width:130px}
+						Column {column: enddate header:$bw_ticketaction.enddate  sortable:True filterable:True width:130px}
+						Column {column: status header:$bw_ticketaction.status  sortable:True filterable:True}
+						Column {column: title header:$bw_ticketaction.title  sortable:True filterable:True width:240px}
+						Column {column: description header:$bw_ticketaction.description  sortable:True filterable:True width:240px}
+						Column {column: actorfullname header:$bw_ticketaction.actorfullname  sortable:True filterable:True}
+						Column {column: custom1 header:$bw_ticketaction.custom1  sortable:True filterable:True initially-masked:True}
+						Column {column: custom2 header:$bw_ticketaction.custom2  sortable:True filterable:True initially-masked:True}
+						Column {column: custom3 header:$bw_ticketaction.custom3  sortable:True filterable:True initially-masked:True}
+						Column {column: custom4 header:$bw_ticketaction.custom4  sortable:True filterable:True initially-masked:True}
+						Column {column: custom5 header:$bw_ticketaction.custom5  sortable:True filterable:True initially-masked:True}
+						Column {column: custom6 header:$bw_ticketaction.custom6  sortable:True filterable:True initially-masked:True}
+						Column {column: custom7 header:$bw_ticketaction.custom7  sortable:True filterable:True initially-masked:True}
+						Column {column: custom8 header:$bw_ticketaction.custom8  sortable:True filterable:True initially-masked:True}
+						Column {column: custom9 header:$bw_ticketaction.custom9  sortable:True filterable:True initially-masked:True}
+						Column {column: custom10 header:$bw_ticketaction.custom10  sortable:True filterable:True initially-masked:True}
+						Column {column: custom11 header:$bw_ticketaction.custom11  sortable:True filterable:True initially-masked:True}
+						Column {column: custom12 header:$bw_ticketaction.custom12  sortable:True filterable:True initially-masked:True}
+						Column {column: custom13 header:$bw_ticketaction.custom13  sortable:True filterable:True initially-masked:True}
+						Column {column: custom14 header:$bw_ticketaction.custom14  sortable:True filterable:True initially-masked:True}
+						Column {column: custom15 header:$bw_ticketaction.custom15  sortable:True filterable:True initially-masked:True}
+						Column {column: custom16 header:$bw_ticketaction.custom16  sortable:True filterable:True initially-masked:True}
+						Column {column: custom17 header:$bw_ticketaction.custom17  sortable:True filterable:True initially-masked:True}
+						Column {column: custom18 header:$bw_ticketaction.custom18  sortable:True filterable:True initially-masked:True}
+						Column {column: custom19 header:$bw_ticketaction.custom19  sortable:True filterable:True initially-masked:True}
+					}
+					ConditionalGroup {
+						StringCondition(selectedActionrecorduid) {
+						when IsEmpty then [
+							Header {value:$ticketsManagerNLS.actioninfo}
+						]
+						otherwise [
+							Combo {
+								label:$ticketsManagerNLS.rttype
+								allow-none:False
+								variable:selectedReviewType
+								options: Static {
+									Option { text:$ticketsManagerNLS.rvaccount value: "account"}
+									Option { text:$ticketsManagerNLS.rvallocation value: "allocation"}
+									Option { text:$ticketsManagerNLS.rvapplication value: "application"}
+									Option { text:$ticketsManagerNLS.rvgroup value: "group"}
+									Option { text:$ticketsManagerNLS.rvidentity value: "identity"}
+									Option { text:$ticketsManagerNLS.rvpermission value: "permission"}
+									Option { text:$ticketsManagerNLS.rvreconciliation value: "reconciliation"}
+									Option { text:$ticketsManagerNLS.rvrepository value: "repository"}
+									Option { text:$ticketsManagerNLS.rvright value: "right"}
+
+									Option { text:$ticketsManagerNLS.rvappmngt value: "application management"}
+									Option { text:$ticketsManagerNLS.rvgroupmngt value: "group management"}
+									Option { text:$ticketsManagerNLS.rvorgmngt value: "organisation management"}
+									Option { text:$ticketsManagerNLS.rvpermmngt value: "permission management"}
+									Option { text:$ticketsManagerNLS.rvpermmngt value: "repository management"}
+								}
+							}
+							ConditionalGroup {
+								StringCondition(selectedReviewType) {
+									when "account" then [
+										Table {
+											data:ticketReviewaccounts
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: accountlogin header:$paccount.login  sortable:True filterable:True}
+											Column {column: accountusername header:$paccount.username sortable:True filterable:True}
+											Column {column: repositorycode header:$prepository.code  sortable:True filterable:True initially-masked:True}
+											Column {column: repositorydisplayname header:$prepository.displayname  sortable:True filterable:True}
+										}
+									]								
+									when "allocation" then [
+										Table {
+											data:ticketReviewallocations
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: identityhrcode header:$pidentity.hrcode sortable:True filterable:True}
+											Column {column: identityfullname header:$pidentity.fullname sortable:True filterable:True}
+											Column {column: jobtitlecode header:$identity.jobtitlecode sortable:True filterable:True initially-masked:True}
+											Column {column: jobtitledisplayname header:$identity.jobtitledisplayname sortable:True filterable:True}
+											Column {column: organisationcode header:$porganisation.code  sortable:True filterable:True initially-masked:True}
+											Column {column: organisationshortname header:$porganisation.shortname  sortable:True filterable:True initially-masked:True}
+											Column {column: organisationdisplayname header:$porganisation.displayname  sortable:True filterable:True}
+											Column {column: organisationorganisationtypecode header:$porganisation.organisationtypecode  sortable:True filterable:True initially-masked:True}
+											Column {column: organisationorganisationtypedisplayname header:$porganisation.organisationtypedisplayname  sortable:True filterable:True}
+										}
+									]								
+									when "application" then [
+										Table {
+											data:ticketReviewapplications
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: applicationcode header:$papplication.code sortable:True filterable:True initially-masked:True}
+											Column {column: applicationdisplayname header:$papplication.displayname sortable:True filterable:True}
+											Column {column: applicationapplicationtype header:$papplication.applicationtype sortable:True filterable:True initially-masked:True}
+										}
+									]								
+									when "group" then [
+										Table {
+											data:ticketReviewgroups
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: groupcode header:$pgroup.code sortable:True filterable:True}
+											Column {column: groupdisplayname header:$pgroup.displayname sortable:True filterable:True}
+											Column {column: repositorycode header:$prepository.code  sortable:True filterable:True initially-masked:True}
+											Column {column: repositorydisplayname header:$prepository.displayname  sortable:True filterable:True}
+										}
+									]								
+									when "identity" then [
+										Table {
+											data:ticketReviewidentity
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: identityhrcode header:$pidentity.hrcode sortable:True filterable:True}
+											Column {column: identityfullname header:$pidentity.fullname sortable:True filterable:True}
+										}
+									]								
+									when "permission" then [
+										Table {
+											data:ticketReviewpermissions
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: permissioncode header:$ppermission.code sortable:True filterable:True}
+											Column {column: permissiondisplayname header:$ppermission.displayname sortable:True filterable:True}
+											Column {column: permissionpermissiontype  header:$ppermission.permissiontype sortable:True filterable:True}
+											
+											Column {column: applicationcode header:$papplication.code sortable:True filterable:True initially-masked:True}
+											Column {column: applicationdisplayname header:$papplication.displayname sortable:True filterable:True}
+											Column {column: applicationapplicationtype header:$papplication.applicationtype sortable:True filterable:True initially-masked:True}
+										}
+									]								
+									when "reconciliation" then [
+										Table {
+											data:ticketReviewreconciliations
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: noownercode header:$preconciliation.noownercode  sortable:True filterable:True}
+
+											Column {column: accountlogin header:$paccount.login  sortable:True filterable:True}
+											Column {column: accountusername header:$paccount.username sortable:True filterable:True}
+											Column {column: repositorycode header:$prepository.code  sortable:True filterable:True initially-masked:True}
+											Column {column: repositorydisplayname header:$prepository.displayname  sortable:True filterable:True}
+
+											Column {column: identityhrcode header:$pidentity.hrcode sortable:True filterable:True}
+											Column {column: identityfullname header:$pidentity.fullname sortable:True filterable:True}
+										}
+									]								
+									when "repository" then [
+										Table {
+											data:ticketReviewrepository
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: repositorycode header:$prepository.code  sortable:True filterable:True initially-masked:True}
+											Column {column: repositorydisplayname header:$prepository.displayname  sortable:True filterable:True}
+										}
+									]								
+									when "right" then [
+										Table {
+											data:ticketReviewrights
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: accountlogin header:$paccount.login  sortable:True filterable:True}
+											Column {column: accountusername header:$paccount.username sortable:True filterable:True}
+											Column {column: repositorycode header:$prepository.code  sortable:True filterable:True initially-masked:True}
+											Column {column: repositorydisplayname header:$prepository.displayname  sortable:True filterable:True}
+
+											Column {column: permissioncode header:$ppermission.code sortable:True filterable:True}
+											Column {column: permissiondisplayname header:$ppermission.displayname sortable:True filterable:True}
+											Column {column: permissionpermissiontype  header:$ppermission.permissiontype sortable:True filterable:True}
+
+											Column {column: applicationcode header:$papplication.code sortable:True filterable:True initially-masked:True}
+											Column {column: applicationdisplayname header:$papplication.displayname sortable:True filterable:True}
+											Column {column: applicationapplicationtype header:$papplication.applicationtype sortable:True filterable:True initially-masked:True}
+										}
+									]								
+
+//									Option { text:"application management" value: "application management"}
+//									Option { text:"group management" value: "group management"}
+//									Option { text:"organisation management" value: "organisation management"}
+//									Option { text:"permission management" value: "permission management"}
+//									Option { text:"repository management" value: "repository management"}
+									when "application management" then [
+										Table {
+											data:ticketReviewapplicationmngt
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: expertisedomaincode header:$identity.expertisedomaincode  sortable:True filterable:True initially-masked:True}
+											Column {column: expertisedomaindisplayname header:$identity.expertisedomaindisplayname sortable:True filterable:True}
+
+											Column {column: identityhrcode header:$pidentity.hrcode sortable:True filterable:True}
+											Column {column: identityfullname header:$pidentity.fullname sortable:True filterable:True}
+
+											Column {column: applicationcode header:$papplication.code sortable:True filterable:True initially-masked:True}
+											Column {column: applicationdisplayname header:$papplication.displayname sortable:True filterable:True}
+											Column {column: applicationapplicationtype header:$papplication.applicationtype sortable:True filterable:True initially-masked:True}
+										}
+									]								
+									when "group management" then [
+										Table {
+											data:ticketReviewgroupmngt
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: expertisedomaincode header:$identity.expertisedomaincode  sortable:True filterable:True initially-masked:True}
+											Column {column: expertisedomaindisplayname header:$identity.expertisedomaindisplayname sortable:True filterable:True}
+
+											Column {column: identityhrcode header:$pidentity.hrcode sortable:True filterable:True}
+											Column {column: identityfullname header:$pidentity.fullname sortable:True filterable:True}
+
+											Column {column: groupcode header:$pgroup.code sortable:True filterable:True}
+											Column {column: groupdisplayname header:$pgroup.displayname sortable:True filterable:True}
+											Column {column: repositorycode header:$prepository.code  sortable:True filterable:True initially-masked:True}
+											Column {column: repositorydisplayname header:$prepository.displayname  sortable:True filterable:True}
+										}
+									]								
+									when "organisation management" then [
+										Table {
+											data:ticketRevieworganisationmngt
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: expertisedomaincode header:$identity.expertisedomaincode  sortable:True filterable:True initially-masked:True}
+											Column {column: expertisedomaindisplayname header:$identity.expertisedomaindisplayname sortable:True filterable:True}
+
+											Column {column: identityhrcode header:$pidentity.hrcode sortable:True filterable:True}
+											Column {column: identityfullname header:$pidentity.fullname sortable:True filterable:True}
+
+											Column {column: organisationcode header:$porganisation.code  sortable:True filterable:True initially-masked:True}
+											Column {column: organisationshortname header:$porganisation.shortname  sortable:True filterable:True initially-masked:True}
+											Column {column: organisationdisplayname header:$porganisation.displayname  sortable:True filterable:True}
+											Column {column: organisationorganisationtypecode header:$porganisation.organisationtypecode  sortable:True filterable:True initially-masked:True}
+											Column {column: organisationorganisationtypedisplayname header:$porganisation.organisationtypedisplayname  sortable:True filterable:True}
+										}
+									]								
+									when "permission management" then [
+										Table {
+											data:ticketReviewpermissionmngt
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: expertisedomaincode header:$identity.expertisedomaincode  sortable:True filterable:True initially-masked:True}
+											Column {column: expertisedomaindisplayname header:$identity.expertisedomaindisplayname sortable:True filterable:True}
+
+											Column {column: identityhrcode header:$pidentity.hrcode sortable:True filterable:True}
+											Column {column: identityfullname header:$pidentity.fullname sortable:True filterable:True}
+
+											Column {column: permissioncode header:$ppermission.code sortable:True filterable:True}
+											Column {column: permissiondisplayname header:$ppermission.displayname sortable:True filterable:True}
+											Column {column: permissionpermissiontype  header:$ppermission.permissiontype sortable:True filterable:True}
+
+											Column {column: applicationcode header:$papplication.code sortable:True filterable:True initially-masked:True}
+											Column {column: applicationdisplayname header:$papplication.displayname sortable:True filterable:True}
+											Column {column: applicationapplicationtype header:$papplication.applicationtype sortable:True filterable:True initially-masked:True}
+										}
+									]								
+									when "repository management" then [
+										Table {
+											data:ticketReviewrepositorymngt
+											show-count:True
+											show-filter:True
+											persist-configuration:True
+											configurable:True
+											label:$ticketsManagerNLS.reviews
+											layout:Layout  {grab:horizontal True vertical True}
+											
+											Column {column:recorduid hidden:True selection:selectedReviewrecorduid}
+											Column {column: status header:$bw_ticketreview.status  sortable:True filterable:True}
+											Column {column: comment header:$bw_ticketreview.comment  sortable:True filterable:True}
+											Column {column: custom1 header:$bw_ticketreview.custom1  sortable:True filterable:True initially-masked:True}
+											Column {column: custom2 header:$bw_ticketreview.custom2  sortable:True filterable:True initially-masked:True}
+											Column {column: custom3 header:$bw_ticketreview.custom3  sortable:True filterable:True initially-masked:True}
+											Column {column: custom4 header:$bw_ticketreview.custom4  sortable:True filterable:True initially-masked:True}
+											Column {column: custom5 header:$bw_ticketreview.custom5  sortable:True filterable:True initially-masked:True}
+											Column {column: custom6 header:$bw_ticketreview.custom6  sortable:True filterable:True initially-masked:True}
+											Column {column: custom7 header:$bw_ticketreview.custom7  sortable:True filterable:True initially-masked:True}
+											Column {column: custom8 header:$bw_ticketreview.custom8  sortable:True filterable:True initially-masked:True}
+											Column {column: custom9 header:$bw_ticketreview.custom9  sortable:True filterable:True initially-masked:True}
+											Column {column: custom10 header:$bw_ticketreview.custom10  sortable:True filterable:True initially-masked:True}
+											Column {column: custom11 header:$bw_ticketreview.custom11  sortable:True filterable:True initially-masked:True}
+											Column {column: custom12 header:$bw_ticketreview.custom12  sortable:True filterable:True initially-masked:True}
+											Column {column: custom13 header:$bw_ticketreview.custom13  sortable:True filterable:True initially-masked:True}
+											Column {column: custom14 header:$bw_ticketreview.custom14  sortable:True filterable:True initially-masked:True}
+											Column {column: custom15 header:$bw_ticketreview.custom15  sortable:True filterable:True initially-masked:True}
+											Column {column: custom16 header:$bw_ticketreview.custom16  sortable:True filterable:True initially-masked:True}
+											Column {column: custom17 header:$bw_ticketreview.custom17  sortable:True filterable:True initially-masked:True}
+											Column {column: custom18 header:$bw_ticketreview.custom18  sortable:True filterable:True initially-masked:True}
+											Column {column: custom19 header:$bw_ticketreview.custom19  sortable:True filterable:True initially-masked:True}
+
+											Column {column: expertisedomaincode header:$identity.expertisedomaincode  sortable:True filterable:True initially-masked:True}
+											Column {column: expertisedomaindisplayname header:$identity.expertisedomaindisplayname sortable:True filterable:True}
+
+											Column {column: identityhrcode header:$pidentity.hrcode sortable:True filterable:True}
+											Column {column: identityfullname header:$pidentity.fullname sortable:True filterable:True}
+
+											Column {column: repositorycode header:$prepository.code  sortable:True filterable:True initially-masked:True}
+											Column {column: repositorydisplayname header:$prepository.displayname  sortable:True filterable:True}
+										}
+									]								
+
+								}
+							
+							}
+						]
+						}
+					}					
+					ConditionalGroup {
+						StringCondition(selectedReviewrecorduid) {
+						when IsEmpty then [
+							Header {value:$ticketsManagerNLS.reviewsinfo}
+						]
+						otherwise [
+							Table {
+								data:ticketRemediation
+								show-count:True
+								show-filter:True
+								persist-configuration:True
+								configurable:True
+								label:$ticketsManagerNLS.remediations
+								layout:Layout  {grab:horizontal True vertical True}
+		
+								Column {column: recorduid header:$bw_ticketlog.recorduid hidden:True}
+								Column {column: debugmode header:$bw_ticketlog.debugmode sortable:True filterable:True initially-masked:True}
+								Column {column: tickettype header:$bw_ticketlog.tickettype  sortable:True filterable:True width:130px initially-masked:True}
+								Column {column: ticketnumber header:$bw_ticketlog.ticketnumber  sortable:True filterable:True width:130px}
+								Column {column: submissiondate header:$bw_ticketlog.submissiondate  sortable:True filterable:True}
+								Column {column: closedate header:$bw_ticketlog.closedate  sortable:True filterable:True width:240px}
+								Column {column: duedate header:$bw_ticketlog.duedate  sortable:True filterable:True width:240px}
+								Column {column: ticketopen header:$bw_ticketlog.ticketopen  sortable:True filterable:True}
+								Column {column: status header:$bw_ticketlog.status  sortable:True filterable:True}
+								Column {column: title header:$bw_ticketlog.title  sortable:True filterable:True}
+								Column {column: description header:$bw_ticketlog.description  sortable:True filterable:True}
+								Column {column: issuerfullname header:$bw_ticketlog.issuerfullname  sortable:True filterable:True}
+								Column {column: ^priority header:$bw_ticketlog.^priority  sortable:True filterable:True}
+								Column {column: externalreference header:$bw_ticketlog.externalreference  sortable:True filterable:True}
+								Column {column: custom1 header:$bw_ticketlog.custom1  sortable:True filterable:True initially-masked:True}
+								Column {column: custom2 header:$bw_ticketlog.custom2  sortable:True filterable:True initially-masked:True}
+								Column {column: custom3 header:$bw_ticketlog.custom3  sortable:True filterable:True initially-masked:True}
+								Column {column: custom4 header:$bw_ticketlog.custom4  sortable:True filterable:True initially-masked:True}
+								Column {column: custom5 header:$bw_ticketlog.custom5  sortable:True filterable:True initially-masked:True}
+								Column {column: custom6 header:$bw_ticketlog.custom6  sortable:True filterable:True initially-masked:True}
+								Column {column: custom7 header:$bw_ticketlog.custom7  sortable:True filterable:True initially-masked:True}
+								Column {column: custom8 header:$bw_ticketlog.custom8  sortable:True filterable:True initially-masked:True}
+								Column {column: custom9 header:$bw_ticketlog.custom9  sortable:True filterable:True initially-masked:True}
+								Column {column: custom10 header:$bw_ticketlog.custom10  sortable:True filterable:True initially-masked:True}
+								Column {column: custom11 header:$bw_ticketlog.custom11  sortable:True filterable:True initially-masked:True}
+								Column {column: custom12 header:$bw_ticketlog.custom12  sortable:True filterable:True initially-masked:True}
+								Column {column: custom13 header:$bw_ticketlog.custom13  sortable:True filterable:True initially-masked:True}
+								Column {column: custom14 header:$bw_ticketlog.custom14  sortable:True filterable:True initially-masked:True}
+								Column {column: custom15 header:$bw_ticketlog.custom15  sortable:True filterable:True initially-masked:True}
+								Column {column: custom16 header:$bw_ticketlog.custom16  sortable:True filterable:True initially-masked:True}
+								Column {column: custom17 header:$bw_ticketlog.custom17  sortable:True filterable:True initially-masked:True}
+								Column {column: custom18 header:$bw_ticketlog.custom18  sortable:True filterable:True initially-masked:True}
+								Column {column: custom19 header:$bw_ticketlog.custom19  sortable:True filterable:True initially-masked:True}
+							}
+						]
+						}
+					}
+				}
+			}
+
+			ButtonGroup {
+				Button {
+					actions:DownloadComplianceReport selectedTicketlogRecorduid
+					disabled:Not HasComplianceReportPredicate (selectedTicketlogRecorduid)
+				    feature:tlm_candownloadcompliancereport
+					text:$ticketsManagerNLS.dwncompliance
+				}
+			}			
+		}
+	
+	
+	}
+}

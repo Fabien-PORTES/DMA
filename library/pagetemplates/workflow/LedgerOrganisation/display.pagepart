@@ -1,0 +1,4 @@
+Text {
+	label: <template:variablelabel/>
+	value: <template:variablerecord/>.displayname
+}

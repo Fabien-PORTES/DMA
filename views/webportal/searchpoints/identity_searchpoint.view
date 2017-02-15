@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identity_searchpoint" errorifempty="false" distinct="true" identitysecure="true" applicationsecure="false" repositorysecure="false" searchpoint="true" concept="identity" displayname="Identity with search point" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1423221415225_481"/>
+	<ViewAttribute name="A1423132227883_686" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423133544251_744" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1440061867186_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423221415225_481" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423221417753_482" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423221420961_483" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423221427264_484" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1423232527977_733" prefix="repository_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1423232545561_734" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423232548018_735" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1423233266690_736" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233269410_737" attribute="nickname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233273538_738" attribute="middlename" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233280041_739" attribute="altname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233289946_740" attribute="phone" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233291714_741" attribute="mobile" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233301202_742" attribute="arrivaldate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233307634_743" attribute="departuredate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233314242_744" attribute="active" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233316561_745" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233324722_746" attribute="allocationchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233330778_747" attribute="organisationchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233338754_748" attribute="accountchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233343666_749" attribute="permissionchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343316962561" title="User master: Additional data " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A38000353379997095" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A3288349942533184871" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A8486340992739859046" attribute="termid" column="TERMID" type="String" multivalued="false" persistent="false" description="Terminal ID"/>
+		<Attribute name="A4418565600115839452" attribute="server" column="SERVER" type="String" multivalued="false" persistent="false" description="Server"/>
+		<Attribute name="A5284413189027641622" attribute="terminal" column="TERMINAL" type="String" multivalued="false" persistent="false" description="Terminal"/>
+		<Attribute name="A4655700416368136928" attribute="sprache" column="SPRACHE" type="String" multivalued="false" persistent="false" description="Language"/>
+		<Attribute name="A6093268942500883992" attribute="logon_date_" column="LOGON_DATE" type="String" multivalued="false" persistent="false" description="Last Logon Date" hidden="true"/>
+		<Attribute name="A9014752182989547688" attribute="logon_time" column="LOGON_TIME" type="String" multivalued="false" persistent="false" description="Last Logon Time"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343317139632" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1343317129620" action="replace" attribute="logon_date_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343317167327" action="convertdate" oldname="logon_date_" attribute="logon_date" type="Date" newvalue="dd.MM.yyyy" description="Last Logon Date" oldvalue="01.01.1900"/>
+		<Action name="U1343317199144" action="add" attribute="lastlogonstr" newvalue="{dataset.logon_date_.get()} {dataset.logon_time.get()}" hidden="true"/>
+		<Action name="U1343317239666" action="convertdate" oldname="lastlogonstr" attribute="lastlogon" type="Date" newvalue="dd.MM.yyyy HH:mm:ss" oldvalue="01.01.1900 00:00:00" description="Last logon (as deducted from LOGON_DATE and LOGON_TIME)"/>
+	</Actions>
+</Discovery>

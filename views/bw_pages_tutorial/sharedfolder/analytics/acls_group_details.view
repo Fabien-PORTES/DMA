@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="acls_group_details" prefix="element_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="acls_group_details" notes="">
+	<ViewParam name="uids" displayname="uids">
+		<Value name="0" data="ACMESOLUTIONS_SY_1443099292649_8094"/>
+		<Value name="1" data="ACCOUNTANCYSOLUT_1443099292628_8074"/>
+	</ViewParam>
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewComputedAttribute name="uid" displayname="uid" type="String" expression="dataset.group_uid.get()"/>
+	<ViewComputedAttribute name="BASIC_READ" displayname="BASIC_READ" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().like(&apos;R*G*F*E*&apos;)?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_EXTENDED_ATTRIBUTES" displayname="WRITE_EXTENDED_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;M&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_CONTROL" displayname="READ_CONTROL" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;G&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="BASIC_WRITE" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().like(&apos;*W*GA*M*L&apos;)?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_EXTENDED_ATTRIBUTES" displayname="READ_EXTENDED_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;F&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="BASIC_FULLCONTROL" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().like(&apos;RWXGA*PFOEMDL&apos;)?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="display" displayname="display" type="String" expression="dataset.group_displayname.get()"/>
+	<ViewComputedAttribute name="EXECUTE" displayname="EXECUTE" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;X&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="code" displayname="code" type="String" expression="dataset.group_code.get()"/>
+	<ViewComputedAttribute name="BASIC_MODIFY" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().like(&apos;RWXGA*F*EMDL&apos;)?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_DAC" displayname="WRITE_DAC" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;P&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_ATTRIBUTES" displayname="WRITE_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;L&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="DELETE" displayname="DELETE" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;D&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_ATTRIBUTES" displayname="READ_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;E&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="action" displayname="action" type="String" expression="dataset.groupacl_action.get()"/>
+	<ViewComputedAttribute name="READ_DATA" displayname="READ_DATA" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;R&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="APPEND_DATA" displayname="APPEND_DATA" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;A&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_DATA" displayname="WRITE_DATA" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;W&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="key" displayname="key" type="String" expression="dataset.group_uid.get()+dataset.groupacl_action.get()"/>
+	<ViewComputedAttribute name="DELETE_CHILD" displayname="DELETE_CHILD" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;S&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_OWNER" displayname="WRITE_OWNER" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().indexOf(&apos;O&apos;)!=-1?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="BASIC_READEXECUTE" type="String" expression="!dataset.isEmpty(&apos;groupacl_action&apos;) &amp;&amp; dataset.groupacl_action.get().like(&apos;R*XG*F*E*&apos;)?dataset.groupacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewSort name="sort" attribute1="A1443455233152_991" attribute2="A1443455792808_1050"/>
+	<ViewAttribute name="A1443455233152_991" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1443455251750_0" reference="uids" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1443455723664_1045" prefix="groupacl_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclgroup">
+		<ViewJoin name="J1443455731640_1046" prefix="group_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="group">
+			<ViewAttribute name="A1443455792808_1050" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1443529876677_1443" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1443529878062_1444" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1443455741032_1047" attribute="action" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443455741846_1048" attribute="negative" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443455742996_1049" attribute="order" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1443692635064_422" prefix="parent_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentpermission">
+		<ViewAttribute name="A1443692641899_423" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1443700479459_485" prefix="share_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="1443700527286_502" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1443700489607_0" reference="shares" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

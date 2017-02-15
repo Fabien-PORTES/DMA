@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User CICS TSL keys record" description="The User CICS TSL keys record defines the transaction security level (TSL) keys for a CICS user. There is one record per combination of user and CICS TSL key.">
+	<Source type="FORMATTED" filter="^0233 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USCTSL_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the User CICS TSL keys record (0233)."/>
+		<Attribute name="A4199536690768339793" attribute="USCTSL_NAME" column="6-13" type="String" multivalued="false" description="User ID as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="USCTSL_KEY" column="15-19" type="Number" multivalued="false" description="TSL key number."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

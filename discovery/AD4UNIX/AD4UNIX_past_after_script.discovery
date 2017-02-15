@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1484232667913">
+	<Source file="{config.importfiles}\Extracts_DMA\AD4UnixMappingHistory_after_script.csv" type="CSV" separator=";" multiseparator="," textseparator="&quot;" encoding="UTF-8"/>
+	<Attributes hasheader="true">
+		<Attribute name="A4108183670894545380" attribute="uid" column="uid" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2696353756218395708" attribute="date" column="date" type="String" multivalued="true" persistent="false"/>
+		<Attribute name="A974078894260906369" attribute="time" column="time" type="String" multivalued="true" persistent="false"/>
+		<Attribute name="A8297804711250089185" attribute="legacyenv_unique" column="legacyEnv_Unique" type="String" multivalued="true" persistent="false"/>
+		<Attribute name="A3846801857315102637" attribute="samaccountname_first" column="sAMAccountName_First" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3806347503279492803" attribute="samaccountname_all_unique" column="sAMAccountName_ALL_Unique" type="String" multivalued="true" persistent="false"/>
+		<Attribute name="A5023648354983923463" attribute="windomain_first" column="winDomain_First" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5269528291685008787" attribute="windomain_all_unique" column="winDomain_ALL_Unique" type="String" multivalued="true" persistent="false"/>
+		<Attribute name="A395957406231143425" attribute="users_keyid_unique" column="users_keyID_Unique" type="Number" multivalued="true" persistent="false"/>
+		<Attribute name="A3803171318003092982" attribute="users_history_keyid" column="users_history_keyID" type="Number" multivalued="true" persistent="false"/>
+	</Attributes>
+	<Request expression="SELECT * FROM dataset WHERE dataset.uid &lt;&gt; &apos;&apos;"/>
+	<Actions>
+		<Action name="U1457669552748" action="add" attribute="_DMA_NIS_DOMAINS" multivalued="true" newvalue="A350VPM"/>		
+		<Action name="U1258687552045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="A350VPM-V"/>
+		<Action name="U1235758638529" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="ADOC"/>	
+		<Action name="U1987663836245" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="AVSIM.FR"/>
+		<Action name="U1477763918129" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="BDICFAO.FR"/>		
+		<Action name="U1477863525045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="BDISC.FR"/>
+		<Action name="U1477995185129" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="CAXDOMAIN"/>	
+		<Action name="U1478063875045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="CHESTERCADDS.DOMAIN1"/>
+		<Action name="U1478163859743" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="EDGA_CAE"/>		
+		<Action name="U1478263856745" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="EV"/>
+		<Action name="U1478365852612" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="FILCADDS.ACC1"/>
+		<Action name="U1478414538599" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="FILCADDS.DEV1"/>	
+		<Action name="U1478563362045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="FILCADDS.DOMAIN1"/>		
+		<Action name="U1478663857045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="GET_NIS"/>
+		<Action name="U1478763854132" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="NTNISP"/>
+		<Action name="U1478861275045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="NZCTIFR"/>		
+		<Action name="U1478963539045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="STRESSEDSA"/>
+		<Action name="U1479063417912" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="URANUS"/>
+		<Action name="U1479163385045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="WICHITA.PRD"/>
+		<Action name="U1473263875045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="WICHITA.WIBLADE"/>
+		<Action name="U1484233246133" action="multireplace" attribute="legacyenv_unique" newvalue="{dataset.legacyenv_unique.get().toUpperCase()}"/>
+		<Action name="U1484233509271" action="multireplace" attribute="uid" newvalue="{dataset.uid.get().toUpperCase()}"/>
+		<Action name="U1484558678126" action="multireplace" attribute="samaccountname_all_unique" newvalue="{dataset.samaccountname_all_unique.get().toUpperCase()}"/>
+	</Actions>
+</Discovery>

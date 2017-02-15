@@ -1,0 +1,2426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="author">Brainwave</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.2.1.v201209101448 Build &lt;4.2.1.v20120918-1113></property>
+    <text-property name="title">Identity changes</text-property>
+    <list-property name="userProperties">
+       <structure>
+          <property name="name">BrainwaveRightModel</property>
+          <property name="type">string</property>
+       </structure>
+    </list-property>
+    <property name="BrainwaveRightModel">features</property>
+    <simple-property-list name="includeResource">
+        <value>reports/analysis/identity_changes</value>
+        <value>reports/resources/concepts</value>
+    </simple-property-list>
+    <list-property name="includeScripts">
+        <property>reports/scripts/common.js</property>
+        <property>reports/scripts/debugWindow.js</property>
+    </list-property>
+    <property name="units">in</property>
+    <method name="beforeFactory"><![CDATA[beforeFactory();]]></method>
+    <property name="theme">brainwave.Brainwave blue</property>
+    <property name="iconFile">/custom-templates/TEMPLATE search list.png</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">reports/library/brainwave.rptlibrary</property>
+            <property name="namespace">brainwave</property>
+        </structure>
+    </list-property>
+    <data-sources>
+        <oda-data-source extensionID="com.brainwave.iaudit.oda.runtime" name="Brainwave ODA DataSource" id="876"
+ extends="brainwave.Brainwave ODA DataSource"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="com.brainwave.iaudit.oda.runtime.dataSet" name="Joiners" id="937">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">recorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">uid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">hrcode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">fullname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">mail</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationrecorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationuid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationcode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationshortname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationdisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">jobtitledisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">jobtitlecode</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">recorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">uid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">hrcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">fullname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">mail</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">organisationrecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">organisationuid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">organisationcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">organisationshortname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">organisationdisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">jobtitledisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">jobtitlecode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Brainwave ODA DataSource</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">recorduid</property>
+                    <property name="nativeName">recorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">uid</property>
+                    <property name="nativeName">uid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">hrcode</property>
+                    <property name="nativeName">hrcode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">fullname</property>
+                    <property name="nativeName">fullname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">mail</property>
+                    <property name="nativeName">mail</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">organisationrecorduid</property>
+                    <property name="nativeName">organisationrecorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">organisationuid</property>
+                    <property name="nativeName">organisationuid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">organisationcode</property>
+                    <property name="nativeName">organisationcode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">organisationshortname</property>
+                    <property name="nativeName">organisationshortname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">organisationdisplayname</property>
+                    <property name="nativeName">organisationdisplayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">jobtitledisplayname</property>
+                    <property name="nativeName">jobtitledisplayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">jobtitlecode</property>
+                    <property name="nativeName">jobtitlecode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[br_identity_joiners]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>recorduid</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>uid</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>hrcode</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>fullname</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>mail</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>organisationrecorduid</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>organisationuid</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>organisationcode</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>organisationshortname</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>organisationdisplayname</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>jobtitledisplayname</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>jobtitlecode</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="com.brainwave.iaudit.oda.runtime.dataSet" name="Leavers" id="938">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">fullname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationrecorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationuid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationcode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationshortname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">organisationdisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">jobtitledisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">jobtitlecode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">recorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">uid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">hrcode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">mail</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">fullname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">organisationrecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">organisationuid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">organisationcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">organisationshortname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">organisationdisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">jobtitledisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">jobtitlecode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">recorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">uid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">hrcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">mail</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Brainwave ODA DataSource</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">fullname</property>
+                    <property name="nativeName">fullname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">organisationrecorduid</property>
+                    <property name="nativeName">organisationrecorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">organisationuid</property>
+                    <property name="nativeName">organisationuid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">organisationcode</property>
+                    <property name="nativeName">organisationcode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">organisationshortname</property>
+                    <property name="nativeName">organisationshortname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">organisationdisplayname</property>
+                    <property name="nativeName">organisationdisplayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">jobtitledisplayname</property>
+                    <property name="nativeName">jobtitledisplayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">jobtitlecode</property>
+                    <property name="nativeName">jobtitlecode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">recorduid</property>
+                    <property name="nativeName">recorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">uid</property>
+                    <property name="nativeName">uid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">hrcode</property>
+                    <property name="nativeName">hrcode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">mail</property>
+                    <property name="nativeName">mail</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[br_identity_leavers]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>fullname</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>deletedaction</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="com.brainwave.iaudit.oda.runtime.dataSet" name="Movers" id="939">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">recorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">uid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">hrcode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">fullname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">mail</property>
+                </structure>
+                <structure>
+                    <property name="columnName">allocationchanged</property>
+                </structure>
+                <structure>
+                    <property name="columnName">previous_jobtitlecode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">previous_jobtitledisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">previous_org_recorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">previous_org_uid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">previous_org_code</property>
+                </structure>
+                <structure>
+                    <property name="columnName">previous_org_shortname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">previous_org_displayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">current_jobtitlecode</property>
+                </structure>
+                <structure>
+                    <property name="columnName">current_jobtitledisplayname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">current_org_recorduid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">current_org_uid</property>
+                </structure>
+                <structure>
+                    <property name="columnName">current_org_code</property>
+                </structure>
+                <structure>
+                    <property name="columnName">current_org_shortname</property>
+                </structure>
+                <structure>
+                    <property name="columnName">current_org_displayname</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">recorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">uid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">hrcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">fullname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">mail</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">allocationchanged</property>
+                        <property name="dataType">boolean</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">previous_jobtitlecode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">previous_jobtitledisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">previous_org_recorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">previous_org_uid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">previous_org_code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">previous_org_shortname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">previous_org_displayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">current_jobtitlecode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">current_jobtitledisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">current_org_recorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">current_org_uid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">current_org_code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">current_org_shortname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">current_org_displayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Brainwave ODA DataSource</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">recorduid</property>
+                    <property name="nativeName">recorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">uid</property>
+                    <property name="nativeName">uid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">hrcode</property>
+                    <property name="nativeName">hrcode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">fullname</property>
+                    <property name="nativeName">fullname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">mail</property>
+                    <property name="nativeName">mail</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">allocationchanged</property>
+                    <property name="nativeName">allocationchanged</property>
+                    <property name="dataType">boolean</property>
+                    <property name="nativeDataType">16</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">previous_jobtitlecode</property>
+                    <property name="nativeName">previous_jobtitlecode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">previous_jobtitledisplayname</property>
+                    <property name="nativeName">previous_jobtitledisplayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">previous_org_recorduid</property>
+                    <property name="nativeName">previous_org_recorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">previous_org_uid</property>
+                    <property name="nativeName">previous_org_uid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">previous_org_code</property>
+                    <property name="nativeName">previous_org_code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">previous_org_shortname</property>
+                    <property name="nativeName">previous_org_shortname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">previous_org_displayname</property>
+                    <property name="nativeName">previous_org_displayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">current_jobtitlecode</property>
+                    <property name="nativeName">current_jobtitlecode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">current_jobtitledisplayname</property>
+                    <property name="nativeName">current_jobtitledisplayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">current_org_recorduid</property>
+                    <property name="nativeName">current_org_recorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">current_org_uid</property>
+                    <property name="nativeName">current_org_uid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">current_org_code</property>
+                    <property name="nativeName">current_org_code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">current_org_shortname</property>
+                    <property name="nativeName">current_org_shortname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
+                    <property name="name">current_org_displayname</property>
+                    <property name="nativeName">current_org_displayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[br_identity_movers]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>recorduid</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>uid</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>hrcode</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>fullname</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>mail</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>allocationchanged</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>16</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>previous_jobtitlecode</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>previous_jobtitledisplayname</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>previous_org_recorduid</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>previous_org_uid</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>previous_org_code</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>previous_org_shortname</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>previous_org_displayname</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>current_jobtitlecode</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>current_jobtitledisplayname</design:name>
+              <design:position>15</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>current_org_recorduid</design:name>
+              <design:position>16</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>current_org_uid</design:name>
+              <design:position>17</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>current_org_code</design:name>
+              <design:position>18</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>current_org_shortname</design:name>
+              <design:position>19</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>current_org_displayname</design:name>
+              <design:position>20</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Brainwave Master Page Portrait" id="7" extends="brainwave.Brainwave Master Page Portrait">
+            <overridden-values>
+                <ref-entry baseId="252" name="NewGrid" id="252"/>
+                <ref-entry baseId="253" id="253"/>
+                <ref-entry baseId="254" id="254"/>
+                <ref-entry baseId="255" id="255"/>
+                <ref-entry baseId="258" name="NewGrid1" id="258"/>
+                <ref-entry baseId="259" id="259"/>
+                <ref-entry baseId="260" id="260"/>
+                <ref-entry baseId="261" id="261"/>
+                <ref-entry baseId="262" id="262"/>
+                <ref-entry baseId="303" name="Brainwave logo" id="303"/>
+                <ref-entry baseId="264" id="264"/>
+                <ref-entry baseId="265" name="NewText" id="265"/>
+                <ref-entry baseId="304" id="304"/>
+                <ref-entry baseId="305" id="305"/>
+                <ref-entry baseId="701" name="Nouvelle grille21" id="701"/>
+                <ref-entry baseId="702" id="702"/>
+                <ref-entry baseId="703" id="703"/>
+                <ref-entry baseId="704" id="704"/>
+                <ref-entry baseId="705" id="705"/>
+                <ref-entry baseId="706" name="NewTextData11" id="706"/>
+                <ref-entry baseId="707" id="707"/>
+                <ref-entry baseId="708" name="NbPage1" id="708"/>
+                <ref-entry baseId="709" id="709"/>
+                <ref-entry baseId="710" id="710"/>
+                <ref-entry baseId="711" id="711"/>
+                <ref-entry baseId="712" id="712"/>
+                <ref-entry baseId="713" id="713"/>
+                <ref-entry baseId="714" name="Nouveau texte auto21" id="714"/>
+                <ref-entry baseId="715" id="715"/>
+                <ref-entry baseId="716" name="Nouveau texte11" id="716"/>
+                <ref-entry baseId="717" id="717"/>
+                <ref-entry baseId="718" name="Nouveau texte auto111" id="718"/>
+            </overridden-values>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="816">
+            <column id="817">
+                <property name="width">748px</property>
+            </column>
+            <row id="818">
+                <cell id="819">
+                    <label id="820">
+                        <property name="style">h2</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text" key="Report.title">Identity Changes since last import</text-property>
+                    </label>
+                </cell>
+            </row>
+        </grid>
+        <text id="610">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<br>]]></text-property>
+        </text>
+        <grid id="821">
+            <property name="width">748px</property>
+            <column id="822">
+                <property name="width">690px</property>
+            </column>
+            <column id="823"/>
+            <row id="824">
+                <cell id="825"/>
+                <cell id="826">
+                    <image id="827">
+                        <property name="source">embed</property>
+                        <property name="imageName">identity_48.png</property>
+                    </image>
+                </cell>
+            </row>
+        </grid>
+        <grid id="746">
+            <property name="marginTop">12px</property>
+            <property name="width">746px</property>
+            <column id="747"/>
+            <row id="748">
+                <cell id="749">
+                    <property name="borderBottomColor">#15428B</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">thin</property>
+                    <property name="borderLeftColor">#15428B</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">thin</property>
+                    <property name="borderRightColor">#15428B</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">thin</property>
+                    <property name="borderTopColor">#15428B</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">thin</property>
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <label id="750">
+                        <property name="style">blueGrid</property>
+                        <property name="marginBottom">6pt</property>
+                        <text-property name="text" key="Report.subtitle.joiners">Joiners</text-property>
+                    </label>
+                    <table name="list" id="855">
+                        <property name="marginTop">0pt</property>
+                        <property name="pageBreakAfter">always</property>
+                        <property name="canShrink">true</property>
+                        <property name="width">100%</property>
+                        <property name="dataSet">Joiners</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">recorduid</property>
+                                <text-property name="displayName">recorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["recorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">uid</property>
+                                <text-property name="displayName">uid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["uid"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">hrcode</property>
+                                <text-property name="displayName">hrcode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["hrcode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">fullname</property>
+                                <text-property name="displayName">fullname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["fullname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">mail</property>
+                                <text-property name="displayName">mail</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["mail"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationrecorduid</property>
+                                <text-property name="displayName">organisationrecorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationrecorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationuid</property>
+                                <text-property name="displayName">organisationuid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationuid"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationcode</property>
+                                <text-property name="displayName">organisationcode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationcode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationshortname</property>
+                                <text-property name="displayName">organisationshortname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationshortname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationdisplayname</property>
+                                <text-property name="displayName">organisationdisplayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationdisplayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">jobtitledisplayname</property>
+                                <text-property name="displayName">jobtitledisplayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["jobtitledisplayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">jobtitlecode</property>
+                                <text-property name="displayName">jobtitlecode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["jobtitlecode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="pageBreakInterval">0</property>
+                        <column id="754">
+                            <property name="width">24px</property>
+                        </column>
+                        <column id="870"/>
+                        <column id="871"/>
+                        <column id="872"/>
+                        <column id="873"/>
+                        <header>
+                            <row id="856">
+                                <cell id="751"/>
+                                <cell id="857">
+                                    <label id="940">
+                                        <text-property name="text" key="Identity.hrcode">hrcode</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="858">
+                                    <label id="942">
+                                        <text-property name="text" key="Identity.fullname">fullname</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="859">
+                                    <label id="944">
+                                        <text-property name="text" key="Identity.mail">mail</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="860">
+                                    <label id="946">
+                                        <text-property name="text" key="Identity.jobtitledisplayname">jobtitledisplayname</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <group id="948">
+                            <property name="groupName">GroupByOrg</property>
+                            <expression name="keyExpr" type="javascript">row["organisationuid"]</expression>
+                            <structure name="toc">
+                                <expression name="expressionValue" type="javascript">row["organisationdisplayname"]</expression>
+                            </structure>
+                            <property name="hideDetail">false</property>
+                            <list-property name="sort">
+                                <structure>
+                                    <expression name="key" type="javascript">row["fullname"]</expression>
+                                    <property name="direction">asc</property>
+                                    <property name="strength">-1</property>
+                                </structure>
+                            </list-property>
+                            <header>
+                                <row id="949">
+                                    <cell id="950">
+                                        <property name="colSpan">5</property>
+                                        <property name="rowSpan">1</property>
+                                        <data id="963">
+                                            <property name="fontSize">14px</property>
+                                            <property name="fontWeight">bold</property>
+                                            <property name="pageBreakAfter">avoid</property>
+                                            <property name="pageBreakInside">avoid</property>
+                                            <property name="resultSetColumn">organisationdisplayname</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </header>
+                        </group>
+                        <detail>
+                            <row id="863">
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <expression name="testExpr" type="javascript">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value type="javascript">0</value>
+                                        </simple-property-list>
+                                        <property name="style">tableAltDetail</property>
+                                    </structure>
+                                </list-property>
+                                <cell id="752">
+                                    <image id="753">
+                                        <property name="source">embed</property>
+                                        <property name="imageName">user_16.png</property>
+                                    </image>
+                                </cell>
+                                <cell id="864">
+                                    <data id="941">
+                                        <property name="resultSetColumn">hrcode</property>
+                                    </data>
+                                </cell>
+                                <cell id="865">
+                                    <data id="943">
+                                        <property name="resultSetColumn">fullname</property>
+                                        <list-property name="action">
+                                            <structure>
+                                                <property name="linkType">drill-through</property>
+                                                <property name="reportName">identity_changes.rptdesign</property>
+                                                <property name="targetWindow">_self</property>
+                                                <property name="targetFileType">report-design</property>
+                                                <list-property name="paramBindings">
+                                                    <structure>
+                                                        <property name="paramName">__overridetarget</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">"page:identityDetailsPageRecorduid"</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="paramName">recorduid</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">row["recorduid"]</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                </list-property>
+                                            </structure>
+                                        </list-property>
+                                    </data>
+                                </cell>
+                                <cell id="866">
+                                    <data id="945">
+                                        <property name="resultSetColumn">mail</property>
+                                    </data>
+                                </cell>
+                                <cell id="867">
+                                    <data id="947">
+                                        <property name="resultSetColumn">jobtitledisplayname</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+        <grid id="877">
+            <property name="marginTop">12px</property>
+            <property name="width">746px</property>
+            <column id="878"/>
+            <row id="879">
+                <cell id="880">
+                    <property name="borderBottomColor">#15428B</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">thin</property>
+                    <property name="borderLeftColor">#15428B</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">thin</property>
+                    <property name="borderRightColor">#15428B</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">thin</property>
+                    <property name="borderTopColor">#15428B</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">thin</property>
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <label id="881">
+                        <property name="style">blueGrid</property>
+                        <property name="marginBottom">6pt</property>
+                        <text-property name="text" key="Report.subtitle.leavers">Leavers</text-property>
+                    </label>
+                    <table name="list1" id="882">
+                        <property name="marginTop">0pt</property>
+                        <property name="pageBreakAfter">always</property>
+                        <property name="canShrink">true</property>
+                        <property name="width">100%</property>
+                        <property name="dataSet">Leavers</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">fullname</property>
+                                <text-property name="displayName">fullname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["fullname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationrecorduid</property>
+                                <text-property name="displayName">organisationrecorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationrecorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationuid</property>
+                                <text-property name="displayName">organisationuid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationuid"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationcode</property>
+                                <text-property name="displayName">organisationcode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationcode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationshortname</property>
+                                <text-property name="displayName">organisationshortname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationshortname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">organisationdisplayname</property>
+                                <text-property name="displayName">organisationdisplayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["organisationdisplayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">jobtitledisplayname</property>
+                                <text-property name="displayName">jobtitledisplayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["jobtitledisplayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">jobtitlecode</property>
+                                <text-property name="displayName">jobtitlecode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["jobtitlecode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">recorduid</property>
+                                <text-property name="displayName">recorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["recorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">uid</property>
+                                <text-property name="displayName">uid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["uid"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">hrcode</property>
+                                <text-property name="displayName">hrcode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["hrcode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">mail</property>
+                                <text-property name="displayName">mail</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["mail"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="pageBreakInterval">0</property>
+                        <column id="900">
+                            <property name="width">24px</property>
+                        </column>
+                        <column id="901"/>
+                        <column id="902"/>
+                        <column id="903"/>
+                        <column id="904"/>
+                        <header>
+                            <row id="883">
+                                <cell id="884"/>
+                                <cell id="885">
+                                    <label id="988">
+                                        <text-property name="text" key="Identity.hrcode">hrcode</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="886">
+                                    <label id="989">
+                                        <text-property name="text" key="Identity.fullname">fullname</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="887">
+                                    <label id="990">
+                                        <text-property name="text" key="Identity.mail">mail</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="888">
+                                    <label id="991">
+                                        <text-property name="text" key="Identity.jobtitledisplayname">jobtitledisplayname</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <group id="972">
+                            <property name="groupName">GroupByOrg</property>
+                            <expression name="keyExpr" type="javascript">row["organisationuid"]</expression>
+                            <structure name="toc">
+                                <expression name="expressionValue" type="javascript">row["organisationdisplayname"]</expression>
+                            </structure>
+                            <property name="hideDetail">false</property>
+                            <list-property name="sort">
+                                <structure>
+                                    <expression name="key" type="javascript">row["fullname"]</expression>
+                                    <property name="direction">asc</property>
+                                    <property name="strength">-1</property>
+                                </structure>
+                            </list-property>
+                            <header>
+                                <row id="973">
+                                    <cell id="974">
+                                        <property name="colSpan">5</property>
+                                        <property name="rowSpan">1</property>
+                                        <data id="987">
+                                            <property name="fontSize">14px</property>
+                                            <property name="fontWeight">bold</property>
+                                            <property name="pageBreakAfter">avoid</property>
+                                            <property name="pageBreakInside">avoid</property>
+                                            <property name="resultSetColumn">organisationdisplayname</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </header>
+                        </group>
+                        <detail>
+                            <row id="891">
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <expression name="testExpr" type="javascript">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value type="javascript">0</value>
+                                        </simple-property-list>
+                                        <property name="style">tableAltDetail</property>
+                                    </structure>
+                                </list-property>
+                                <cell id="892">
+                                    <image id="893">
+                                        <property name="source">embed</property>
+                                        <property name="imageName">user_16.png</property>
+                                    </image>
+                                </cell>
+                                <cell id="894">
+                                    <data id="965">
+                                        <property name="resultSetColumn">hrcode</property>
+                                    </data>
+                                </cell>
+                                <cell id="895">
+                                    <data id="967">
+                                        <property name="resultSetColumn">fullname</property>
+                                        <list-property name="action">
+                                            <structure>
+                                                <property name="linkType">drill-through</property>
+                                                <property name="reportName">identity_changes.rptdesign</property>
+                                                <property name="targetWindow">_self</property>
+                                                <property name="targetFileType">report-design</property>
+                                                <list-property name="paramBindings">
+                                                    <structure>
+                                                        <property name="paramName">__overridetarget</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">"page:identityDetailsPageRecorduid"</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="paramName">recorduid</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">row["recorduid"]</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                </list-property>
+                                            </structure>
+                                        </list-property>
+                                    </data>
+                                </cell>
+                                <cell id="896">
+                                    <data id="969">
+                                        <property name="resultSetColumn">mail</property>
+                                    </data>
+                                </cell>
+                                <cell id="897">
+                                    <data id="971">
+                                        <property name="resultSetColumn">jobtitledisplayname</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+        <grid id="907">
+            <property name="marginTop">12px</property>
+            <property name="width">746px</property>
+            <column id="908"/>
+            <row id="909">
+                <cell id="910">
+                    <property name="borderBottomColor">#15428B</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">thin</property>
+                    <property name="borderLeftColor">#15428B</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">thin</property>
+                    <property name="borderRightColor">#15428B</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">thin</property>
+                    <property name="borderTopColor">#15428B</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">thin</property>
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <label id="911">
+                        <property name="style">blueGrid</property>
+                        <property name="marginBottom">6pt</property>
+                        <text-property name="text" key="Report.subtitle.movers">Changes of position</text-property>
+                    </label>
+                    <table name="list2" id="912">
+                        <property name="marginTop">0pt</property>
+                        <property name="pageBreakAfter">always</property>
+                        <property name="canShrink">true</property>
+                        <property name="width">100%</property>
+                        <property name="dataSet">Movers</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">recorduid</property>
+                                <text-property name="displayName">recorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["recorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">uid</property>
+                                <text-property name="displayName">uid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["uid"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">hrcode</property>
+                                <text-property name="displayName">hrcode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["hrcode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">fullname</property>
+                                <text-property name="displayName">fullname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["fullname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">mail</property>
+                                <text-property name="displayName">mail</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["mail"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">allocationchanged</property>
+                                <text-property name="displayName">allocationchanged</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["allocationchanged"]</expression>
+                                <property name="dataType">boolean</property>
+                            </structure>
+                            <structure>
+                                <property name="name">previous_jobtitlecode</property>
+                                <text-property name="displayName">previous_jobtitlecode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["previous_jobtitlecode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">previous_jobtitledisplayname</property>
+                                <text-property name="displayName">previous_jobtitledisplayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["previous_jobtitledisplayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">previous_org_recorduid</property>
+                                <text-property name="displayName">previous_org_recorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["previous_org_recorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">previous_org_uid</property>
+                                <text-property name="displayName">previous_org_uid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["previous_org_uid"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">previous_org_code</property>
+                                <text-property name="displayName">previous_org_code</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["previous_org_code"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">previous_org_shortname</property>
+                                <text-property name="displayName">previous_org_shortname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["previous_org_shortname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">previous_org_displayname</property>
+                                <text-property name="displayName">previous_org_displayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["previous_org_displayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">current_jobtitlecode</property>
+                                <text-property name="displayName">current_jobtitlecode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["current_jobtitlecode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">current_jobtitledisplayname</property>
+                                <text-property name="displayName">current_jobtitledisplayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["current_jobtitledisplayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">current_org_recorduid</property>
+                                <text-property name="displayName">current_org_recorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["current_org_recorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">current_org_uid</property>
+                                <text-property name="displayName">current_org_uid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["current_org_uid"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">current_org_code</property>
+                                <text-property name="displayName">current_org_code</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["current_org_code"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">current_org_shortname</property>
+                                <text-property name="displayName">current_org_shortname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["current_org_shortname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">current_org_displayname</property>
+                                <text-property name="displayName">current_org_displayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["current_org_displayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="pageBreakInterval">0</property>
+                        <column id="930">
+                            <property name="width">24px</property>
+                        </column>
+                        <column id="931"/>
+                        <column id="932"/>
+                        <column id="933"/>
+                        <column id="934"/>
+                        <header>
+                            <row id="913">
+                                <cell id="914"/>
+                                <cell id="915">
+                                    <label id="1010">
+                                        <text-property name="text" key="Identity.hrcode">hrcode</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="916">
+                                    <label id="1011">
+                                        <text-property name="text" key="Identity.fullname">fullname</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="917">
+                                    <label id="1012">
+                                        <text-property name="text" key="Identity.mail">mail</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="918">
+                                    <label id="1013">
+                                        <text-property name="text" key="Identity.jobtitledisplayname">jobtitledisplayname</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <group id="1014">
+                            <property name="groupName">GroupByCurrentOrg</property>
+                            <expression name="keyExpr" type="javascript">row["current_org_uid"]</expression>
+                            <structure name="toc">
+                                <expression name="expressionValue" type="javascript">row["current_org_displayname"]</expression>
+                            </structure>
+                            <property name="hideDetail">false</property>
+                            <list-property name="sort">
+                                <structure>
+                                    <expression name="key" type="javascript">row["fullname"]</expression>
+                                    <property name="direction">asc</property>
+                                    <property name="strength">-1</property>
+                                </structure>
+                            </list-property>
+                            <header>
+                                <row id="1015">
+                                    <cell id="1016">
+                                        <property name="colSpan">5</property>
+                                        <property name="rowSpan">1</property>
+                                        <data id="1033">
+                                            <property name="fontSize">14px</property>
+                                            <property name="fontWeight">bold</property>
+                                            <property name="pageBreakAfter">avoid</property>
+                                            <property name="pageBreakBefore">always</property>
+                                            <property name="pageBreakInside">avoid</property>
+                                            <property name="resultSetColumn">current_org_displayname</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </header>
+                        </group>
+                        <detail>
+                            <row id="921">
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <expression name="testExpr" type="javascript">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value type="javascript">0</value>
+                                        </simple-property-list>
+                                        <property name="style">tableAltDetail</property>
+                                    </structure>
+                                </list-property>
+                                <cell id="922">
+                                    <image id="923">
+                                        <property name="source">embed</property>
+                                        <property name="imageName">user_16.png</property>
+                                    </image>
+                                </cell>
+                                <cell id="924">
+                                    <data id="1003">
+                                        <property name="resultSetColumn">hrcode</property>
+                                    </data>
+                                </cell>
+                                <cell id="925">
+                                    <data id="1005">
+                                        <property name="resultSetColumn">fullname</property>
+                                        <list-property name="action">
+                                            <structure>
+                                                <property name="linkType">drill-through</property>
+                                                <property name="reportName">identity_changes.rptdesign</property>
+                                                <property name="targetWindow">_self</property>
+                                                <property name="targetFileType">report-design</property>
+                                                <list-property name="paramBindings">
+                                                    <structure>
+                                                        <property name="paramName">__overridetarget</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">"page:identityDetailsPageRecorduid"</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="paramName">recorduid</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">row["recorduid"]</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                </list-property>
+                                            </structure>
+                                        </list-property>
+                                    </data>
+                                </cell>
+                                <cell id="926">
+                                    <data id="1007">
+                                        <property name="resultSetColumn">mail</property>
+                                    </data>
+                                </cell>
+                                <cell id="927">
+                                    <data id="1009">
+                                        <property name="resultSetColumn">current_jobtitledisplayname</property>
+                                    </data>
+                                </cell>
+                            </row>
+                            <row id="994">
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <expression name="testExpr" type="javascript">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value type="javascript">0</value>
+                                        </simple-property-list>
+                                        <property name="style">tableAltDetail</property>
+                                    </structure>
+                                </list-property>
+                                <cell id="995"/>
+                                <cell id="996">
+                                    <property name="colSpan">4</property>
+                                    <property name="rowSpan">1</property>
+                                    <property name="display">inline</property>
+                                    <label id="1034">
+                                        <property name="marginLeft">0pt</property>
+                                        <property name="marginRight">4pt</property>
+                                        <property name="display">inline</property>
+                                        <text-property name="text" key="Report.label.workingas">working previously as:</text-property>
+                                    </label>
+                                    <data id="1036">
+                                        <property name="fontWeight">bold</property>
+                                        <property name="marginRight">4pt</property>
+                                        <property name="display">inline</property>
+                                        <property name="resultSetColumn">previous_jobtitledisplayname</property>
+                                    </data>
+                                    <label id="1035">
+                                        <property name="marginRight">4pt</property>
+                                        <property name="textAlign">left</property>
+                                        <property name="display">inline</property>
+                                        <text-property name="text" key="Report.label.in">in:</text-property>
+                                    </label>
+                                    <data id="1037">
+                                        <property name="fontWeight">bold</property>
+                                        <property name="display">inline</property>
+                                        <property name="resultSetColumn">previous_org_displayname</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">brainwave-logo.gif</property>
+            <property name="type">image/gif</property>
+            <property name="libReference">brainwave.brainwave-logo.gif</property>
+        </structure>
+        <structure>
+            <property name="name">account_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">account_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">empty_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.empty_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_48.png</property>
+        </structure>
+    </list-property>
+</report>

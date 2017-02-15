@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_getticketremediation" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketreview" displayname="get ticket remediation" notes="">
+	<ViewParam name="ticketreviewrecorduid" displayname="ticketreviewrecorduid"/>
+	<ViewSort name="sort" attribute1="A1475594086194_2124"/>
+	<ViewJoin name="J1475594083567_2110" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="remediations">
+		<ViewAttribute name="A1475594086194_2111" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2112" attribute="debugmode" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2113" attribute="tickettype" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2114" attribute="ticketnumber" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2115" attribute="timeslotuid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2116" attribute="submissiondate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2117" attribute="submissionday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2118" attribute="closedate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2119" attribute="closeday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2120" attribute="duedate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2121" attribute="dueday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2122" attribute="ticketopen" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2123" attribute="status" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2124" attribute="title" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2125" attribute="description" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2126" attribute="issueruid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2127" attribute="issuerfullname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2128" attribute="priority" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2129" attribute="processinstanceid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2130" attribute="externalreference" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2131" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2132" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2133" attribute="custom3" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2134" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2135" attribute="custom5" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2136" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2137" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2138" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2139" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2140" attribute="custom10" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2141" attribute="custom11" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2142" attribute="custom12" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2143" attribute="custom13" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2144" attribute="custom14" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2145" attribute="custom15" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2146" attribute="custom16" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2147" attribute="custom17" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2148" attribute="custom18" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475594086194_2149" attribute="custom19" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1475594104810_2150" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1475594106530_0" reference="ticketreviewrecorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

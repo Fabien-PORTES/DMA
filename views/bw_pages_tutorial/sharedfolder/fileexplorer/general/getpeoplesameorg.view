@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_getpeoplesameorg" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_getpeoplesameorg" notes="">
+	<ViewParam name="uid" displayname="uid">
+		<Value name="0" data="FINANCE_1444207451776_10205"/>
+	</ViewParam>
+	<ViewParam name="organisationrecorduid" displayname="organisationrecorduid">
+		<Value name="0" data="42"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1406802189047_889" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1435944051474_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1406802214404_891" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="right">
+		<ViewAttribute name="A1406802219636_892" attribute="action" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewJoin name="J1406802234595_893" prefix="account" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+			<ViewAttribute name="A1406802251440_932" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false"/>
+			<ViewJoin name="J1433793619960_481" prefix="reconciliation" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+				<ViewJoin name="J1433793626006_482" prefix="identity_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+					<ViewAttribute name="A1433793634907_484" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewJoin name="J1433794068743_652" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="allocation">
+						<ViewAttribute name="A1433794073612_653" attribute="jobtitlecode" operator="or" removedfromprojection="true" globalfilter="false"/>
+						<ViewJoin name="J1433794076917_655" prefix="organisation" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="organisation">
+							<ViewAttribute name="A1433794084854_657" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewJoin name="J1444730388923_365" prefix="parent_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="uporganisation">
+								<ViewAttribute name="A1444730393448_366" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+									<ViewAttributeFilter name="F1444730396133_0" reference="organisationrecorduid" operation="eq" ignoreifempty="false"/>
+								</ViewAttribute>
+							</ViewJoin>
+							<ViewAttribute name="A1444730480230_369" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+						</ViewJoin>
+					</ViewJoin>
+				</ViewJoin>
+				<ViewAttribute name="A1433793664753_550" attribute="type" operator="or" removedfromprojection="true" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

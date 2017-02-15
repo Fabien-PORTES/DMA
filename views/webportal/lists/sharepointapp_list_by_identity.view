@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_sharepointapp_list_by_identity" distinct="true" concept="application" displayname="Sharepointapp list by identity" notes="">
+	<ViewParam name="uid" displayname="identity uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1344346465688_168" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344346465688_169" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344346465688_170" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344346465688_171" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344346465688_172" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1344346472956_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Sharepoint"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1344346465688_173" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344346465688_174" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344346465688_175" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1344329105508_11" kind="inner" join="permission">
+		<ViewJoin name="J1344329123492_12" kind="inner" join="accountright">
+			<ViewAttribute name="1344346491081_182" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1344329138306_0" operation="isNull" ignoreifempty="false"/>
+				<ViewAttributeFilter name="F1344329143399_1" operation="isFalse" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewJoin name="J1344329152915_15" kind="inner" join="identityreconciliation">
+				<ViewAttribute name="1344346491096_183" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1344329170182_0" reference="uid" operation="eq" ignoreifempty="true"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

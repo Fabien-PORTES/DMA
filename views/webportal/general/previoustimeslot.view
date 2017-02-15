@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_previoustimeslot" errorifempty="false" distinct="true" identitysecure="false" concept="importlog" displayname="br_previoustimeslot">
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1379325447077_1051" kind="left" identitysecure="false" join="parent">
+		<ViewAttribute name="A1379325469200_1052" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1379325473445_1053" attribute="importdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1379325475770_1054" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1379325480170_1055" attribute="status" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1379325567553_1062" attribute="commitdate" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="Group TME role record" description="The Group TME Data record identifies ROLE profiles in which the group is referenced. There is one record per group/role combination.">
+	<Source type="FORMATTED" filter="^0141 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GPTME_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the Group TME Data record (0141)."/>
+		<Attribute name="A4199536690768339793" attribute="GPTME_NAME" column="6-13" type="String" multivalued="false" description="Group name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GPTME_ROLE" column="15-260" type="String" multivalued="false" description="Role profile name."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

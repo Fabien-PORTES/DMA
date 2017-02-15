@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sample_report_account_search" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="sample_report_account_search">
+	<ViewAttribute name="A1479727346141_431" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479727347037_432" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479727366881_433" attribute="login" removedfromprojection="false" globalfilter="false"/>
+</View>

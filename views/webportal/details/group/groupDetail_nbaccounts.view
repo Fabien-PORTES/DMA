@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_groupDetail_nbaccounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="br_groupDetail_nbaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1377763684133_289" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.isEmpty(&quot;isDirectLink&quot;) || param.isDirectLink.get() == false" join="upgroup">
+		<ViewAttribute name="A1377763721280_294" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377763731391_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1423141595304_355" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1423141650726_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1377764177369_302" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1377765359732_304" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="(!param.isEmpty(&quot;isDirectLink&quot;)) &amp;&amp; param.isDirectLink.get() == true" join="group">
+		<ViewAttribute name="1377765372402_306" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377763731391_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1423141598900_356" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1423141659193_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

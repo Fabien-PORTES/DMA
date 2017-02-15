@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_graphnbproblemsorg" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="applicationDetail_graphnbproblemsorg" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="organisationtype" displayname="organisationtype"/>
+	<ViewSort name="sort" attribute1="1383239183617_16412" direction1="DESC"/>
+	<ViewAttribute name="1383239183617_16412" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1367574965217_172" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewAttribute name="1383239190851_16417" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1383239190853_16418" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1383239190855_16419" attribute="organisationtypedisplayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1367574992001_0" reference="organisationtype" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1383239242836_16426" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383239256364_16427" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383239260820_16428" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383239263355_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1383239314123_16431" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383239321276_16432" kind="inner" identitysecure="false" join="application">
+				<ViewAttribute name="1383239334009_16434" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1367574251067_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

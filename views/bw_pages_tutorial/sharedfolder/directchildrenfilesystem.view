@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_directchildrenfilesystem" prefix="server_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="br_directchildrenfilesystem" notes="">
+	<ViewParam name="serverrecorduid" displayname="serverrecorduid"/>
+	<ViewParam name="serveruid" displayname="serveruid"/>
+	<ViewParam name="currentuid" displayname="currentuid"/>
+	<ViewParam name="currentrecorduid" displayname="currentrecorduid"/>
+	<ViewComputedAttribute name="shortcode" displayname="shortcode" type="String" expression="dataset.child_code.get().lastIndexOf(dataset.parent_code.get(),0)==0? dataset.child_code.get().substring(dataset.parent_code.get().length()+1)   :dataset.child_code.get()"/>
+	<ViewComputedAttribute name="haschildren" displayname="haschildren" type="Integer" expression="dataset.sub_children.get()&gt;0?1:0"/>
+	<ViewSort name="sort" attribute1="A1434535144100_739" direction1="DESC"/>
+	<ViewAttribute name="A1434474838659_668" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1434474841018_0" reference="serverrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1434474839270_669" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1434474848437_0" reference="serveruid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1434475037817_679" prefix="parent_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="A1434475091725_680" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1434475095345_0" reference="currentrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1434475092351_681" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1434475102910_0" reference="currentuid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewJoin name="J1434475202819_685" prefix="child_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="childpermission">
+			<ViewAttribute name="A1434475259193_686" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1434475259919_687" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1434475260639_688" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1434475261254_689" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1434475261865_690" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1434535127922_738" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="childpermission">
+				<ViewAttribute name="A1434535144100_739" attribute="uid" alias="sub_children" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewJoin name="J1434556378571_1045" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityright">
+				<ViewAttribute name="A1434556387221_1046" attribute="uid" alias="users" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="A1434550568150_1014" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

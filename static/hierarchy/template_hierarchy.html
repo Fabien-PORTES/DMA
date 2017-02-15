@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Navigation hi&eacute;rarchique</title>
+
+		<link type="text/css" href="hierarchy_base.css" rel="stylesheet" />
+
+		<script>
+			HConf = {
+				viewName: '...',
+				startCond: '_startwithattr=...&_startwithop=...&_startwithvalue=...',
+				continueCond: '_startwithattr=...&_startwithop=...&_startwithvalue=',
+				connection: '_connectbyprior=...&_connectby=...',
+				columns: '...(id),...(name),...(data....),...',
+				maxLevel: 3,
+				createLabelHtml : function(node, style) {
+					var html = node.name;
+					html += '<span class="tooltip"><ul>';
+					html += '<li><b>...: </b>' + node.data.... + '</li>';
+					html += '</ul><br/><center>';
+					html += '<a name="...=' + node.data.... + '" class="reportlink" report="..." href="#">VIEW ...</a>';
+					html += '</center></span>';
+					return html;
+				}
+			};
+		</script>
+		<!--[if IE]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+		<script language="javascript" type="text/javascript" src="jx.js"></script>
+		<script language="javascript" type="text/javascript" src="jit.js"></script>
+		<script language="javascript" type="text/javascript" src="hierarchy_tree.js"></script>
+	</head>
+	<body onload="init();">
+		<div id="container">
+			<div id="center-container">
+				<div id="content"></div>
+			</div>
+			<div id="log"></div>
+		</div>
+	</body>
+</html>

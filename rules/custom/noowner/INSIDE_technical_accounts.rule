@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="INSIDE_technical_accounts" operator="and" query="account" displayname="Technical account (not reconcilied) declared in INSIDE" version="3">
+	<RequestJoin name="J1477403591227_383" operator="and" join="management">
+		<RequestJoin name="J1477403595889_384" operator="and" join="identity">
+		</RequestJoin>
+		<RequestCriteria name="C1477403779858_386" criteria="eqExpertiseDomain">
+			<RequestCriteriaParam name="expertiseDomainParam" ignoreifempty="false">
+				<Value name="0" data="owner"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+	<RequestCriteria name="C1477403579975_381" criteria="notReconciliatedAccounts">
+	</RequestCriteria>
+</Request>

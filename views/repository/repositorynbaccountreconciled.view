@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositorynbaccountreconciled" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="# of accounts reconciled by repository" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="Repository record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1321624932603_7987" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321624936670_7988" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1321624951773_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewCriteria name="I1385375641537_1017" criteria="reconciliatedAccounts">
+	</ViewCriteria>
+</View>

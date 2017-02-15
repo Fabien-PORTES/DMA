@@ -1,0 +1,60 @@
+<Request name="NAV_ADGECOS_SAM_Lastname_EQ_Fsurname_Firstname" operator="and" query="identity" displayname="ADGECOS [SAM, Lastname] EQ [Fsurname, Firstname]" version="3" notes="">
+	<RequestParam name="recordUid" displayname="account unique internal identifier" query="account" criteria="eqRecordUid" criteriaparam="recordUidParam"/>
+	<RequestParam name="uid" displayname="account internal permanent identifier" query="account" criteria="eqUid" criteriaparam="uidParam"/>
+	<RequestParam name="identifier" displayname="account identifier" query="account" criteria="eqIdentifier" criteriaparam="identifierParam"/>
+	<RequestParam name="sid" displayname="SID" query="account" criteria="eqSid" criteriaparam="sidParam"/>
+	<RequestParam name="guid" displayname="GUID" query="account" criteria="eqGuid" criteriaparam="guidParam"/>
+	<RequestParam name="login" displayname="account login" query="account" criteria="eqLogin" criteriaparam="loginParam"/>
+	<RequestParam name="profile" displayname="account application profile(s)" query="account" criteria="eqProfile" criteriaparam="profileParam"/>
+	<RequestParam name="givenName" displayname="account user given name" query="account" criteria="eqGivenName" criteriaparam="givenNameParam"/>
+	<RequestParam name="flatGivenName" displayname="account user normalized given name (no accentuation)" query="account" criteria="likeGivenName" criteriaparam="givenNameParam"/>
+	<RequestParam name="surname" displayname="account user surname" query="account" criteria="eqSurname" criteriaparam="surnameParam"/>
+	<RequestParam name="flatSurName" displayname="account user normalized surname (no accentuation)" query="account" criteria="likeSurname" criteriaparam="surnameParam"/>
+	<RequestParam name="userName" displayname="account user full name" query="account" criteria="eqUserName" criteriaparam="userNameParam"/>
+	<RequestParam name="flatUserName" displayname="account user normalized full name (no accentuation)" query="account" criteria="likeUserName" criteriaparam="userNameParam"/>
+	<RequestParam name="employeeNumber" displayname="account user HR code" query="account" criteria="eqEmployeeNumber" criteriaparam="employeeNumberParam"/>
+	<RequestParam name="mail" displayname="account user email" query="account" criteria="eqMail" criteriaparam="mailParam"/>
+	<RequestParam name="creationDate" displayname="account creation date" query="account" criteria="ltCreationDate" criteriaparam="creationDateParam"/>
+	<RequestParam name="lastLoginDate" displayname="account last login date" query="account" criteria="ltLastLoginDate" criteriaparam="lastLoginDateParam"/>
+	<RequestParam name="passwordLastSetDate" displayname="account password last set date" query="account" criteria="ltPasswordLastSetDate" criteriaparam="passwordLastSetDateParam"/>
+	<RequestParam name="expireDate" displayname="account expiration date" query="account" criteria="ltExpireDate" criteriaparam="expireDateParam"/>
+	<RequestParam name="loginCount" displayname="account login count" query="account" criteria="eqLoginCount" criteriaparam="loginCountParam"/>
+	<RequestParam name="badPasswordCount" displayname="account bad password count" query="account" criteria="eqBadPasswordCount" criteriaparam="badPasswordCountParam"/>
+	<RequestParam name="custom1" displayname="account custom field 1" query="account" criteria="eqCustom" criteriaparam="customValueParam"/>
+	<RequestParam name="custom2" displayname="account custom field 2" query="account" criteria="eqCustom" criteriaparam="customValueParam"/>
+	<RequestParam name="custom3" displayname="account custom field 3" query="account" criteria="eqCustom" criteriaparam="customValueParam"/>
+	<RequestParam name="custom4" displayname="account custom field 4" query="account" criteria="eqCustom" criteriaparam="customValueParam"/>
+	<RequestParam name="custom5" displayname="account custom field 5" query="account" criteria="eqCustom" criteriaparam="customValueParam"/>
+	<RequestParam name="custom6" displayname="account custom field 6" query="account" criteria="eqCustom" criteriaparam="customValueParam"/>
+	<RequestParam name="custom7" displayname="account custom field 7" query="account" criteria="eqCustom" criteriaparam="customValueParam"/>
+	<RequestParam name="custom8" displayname="account custom field 8" query="account" criteria="eqCustom" criteriaparam="customValueParam"/>
+	<RequestParam name="custom9" displayname="account custom field 9" query="account" criteria="eqCustom" criteriaparam="customValueParam"/>
+	<RequestParam name="FSURNAME" displayname="FSURNAME" query="identity" criteria="eqCustom" criteriaparam="customValueParam">
+		<Value name="0" data="{dataset.flatGivenName.get().substr(0,1)}{dataset.flatSurName.get()}"/>
+	</RequestParam>
+	<RequestTags name="tags">
+		<Tag name="family" content="Lastname"/>
+		<Tag name="type" content="AD"/>
+	</RequestTags>
+	<RequestCriteria name="C1481446643896_1113" criteria="likeCustom">
+		<RequestCriteriaParam name="customNumberParam" ignoreifempty="false">
+			<Value name="0" data="8"/>
+		</RequestCriteriaParam>
+		<RequestCriteriaParam name="customValueParam" reference="FSURNAME" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1482787084069_744" criteria="likeSurname">
+		<RequestCriteriaParam name="surnameParam" reference="flatGivenName" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1482844632191_730" criteria="likeCustom">
+		<RequestCriteriaParam name="customNumberParam" ignoreifempty="false">
+			<Value name="0" data="4"/>
+		</RequestCriteriaParam>
+		<RequestCriteriaParam name="customValueParam" ignoreifempty="false">
+			<Value name="0" data="NA-V"/>
+			</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

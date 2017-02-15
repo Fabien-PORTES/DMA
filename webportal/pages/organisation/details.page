@@ -1,0 +1,314 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/details_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/reports/standard.page"
+
+organisationDetailsPageRecorduid = Page {
+	title: "Recorduid redirection (organisation)"
+	conditional-redirect: ConditionalRedirect { condition: True target: Page organisationDetailsPage with organisationUid.uid to paramOrganisationUid }
+	
+	recorduid = Parameter {
+		type: Integer
+		hidden: True
+		recorduid-of: Organisation
+		mandatory: True
+	}
+	
+	organisationUid = Record {
+		view: br_organisationDetail_uid with recorduid to recorduid
+	}
+}
+
+organisationDetailsPage = Page {
+	title: $organisationDetails.title
+	dynamic-title:  $organisationDetails.dynamictitle (organisation.displayname)
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set paramOrganisationUid to nonEmptyUid] when True then []}, TransferData teamFirsts(fullname) to (teamJoin) 
+	mixins: detailsPage
+	
+	// Parameters Here
+	paramOrganisationUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: True
+	}
+	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	// Search Definition Here
+	organisationSearch = SearchDefinition {
+		entity: Organisation
+		simple-mode-rule: br_organisation_simple_search
+	}
+	
+	// Variables Here
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedOrganisationUid = Variable {
+		type: String
+		initial: paramOrganisationUid
+	}
+	teamJoin = Variable {
+		type:String
+		multivalued: True
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Dataset for Navigator
+	organisationList = Dataset {
+		search: Search {
+			definition: organisationSearch
+			view: br_organisation_searchpoint with nonEmptyUid to uid unless-empty 
+		}
+	}
+	
+	// Dataset for Reports
+	relatedLinksTiles = Dataset {
+		pages: Pages{tags: "organisation" and "byuid" }
+	}
+	
+	// Record for concept details
+	organisation = Record {
+		view: br_organisationDetail with selectedOrganisationUid to uid
+	}
+	
+	// All other Records and Datasets
+	organisationTreeFlat = Record {
+		view: br_organisationDetail_parentorganisations_flat with selectedOrganisationUid to uid
+	}
+	
+	organisationDirectMemberCount = Record {
+		view: br_organisationDetail_nbidentities with organisation.recorduid to recorduid , True to isDirectLink
+	}
+	
+	organisationMemberCount = Record {
+		view: br_organisationDetail_nbidentities with organisation.recorduid to recorduid  , False to isDirectLink
+	}
+	
+	organisationDirectChildrenCount = Record {
+		view: br_organisationDetail_nbchildorganisations with organisation.recorduid to recorduid , True to isDirectLink 
+	}
+	
+	organisationChildrenCount = Record {
+		view: br_organisationDetail_nbchildorganisations with organisation.recorduid to recorduid , False to isDirectLink 
+	}
+	
+	managers = Dataset {
+		view: br_organisationmanagers with organisation.recorduid to recorduid
+	}
+	
+	
+	// queries to get 3 team members and the number of the rest.
+	teamFirsts = Dataset {
+		view: br_organisationDetail_team with organisation.recorduid to recorduid
+		limit:3
+	}
+	
+	teamCount = Dataset {
+		view: br_organisationDetail_team with organisation.recorduid to recorduid
+	}
+	
+	// Start of the Layout based on a 1-column Grid
+	Grid {
+		columns: GridColumn{}
+		
+		// Row for the Navigator
+		GridRow {
+			GridCell{
+				Group{
+					layout: Layout {align: horizontal Center vertical Beginning }
+					Spacer {
+						height: 5
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					SetNavigator {
+						data: organisationList
+						column: uid
+						selection: selectedOrganisationUid
+						back-link: Activity Organisation Search with SerializeSearch organisationSearch to organisationSearch, paramSearchMode to paramSearchMode, selectedOrganisationUid to initialUid, initialIndex to paramInitialIndex
+						initial: paramOrganisationUid
+						initial-index: paramInitialIndex
+						selection-index: initialIndex
+						show-count: True
+						show-first: True
+						show-last: True
+						count-width: 150
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					Spacer{
+						height:10
+					}
+				}
+			}
+		}
+		
+		// Row for header
+		GridRow{
+			GridCell{
+				background: Image "details/card_header.png"
+				Spacer { height: 67 }
+			}
+		}
+		
+		// Row for content
+		GridRow{
+			GridCell{
+				background: Image "details/card_content.png"
+				
+				Spacer { height:10 }
+				
+				Text {
+					value: organisation.displayname
+					styling:detailsTitle
+					align: Center
+				}
+				
+				Text {
+					value: organisationTreeFlat.flat
+					styling: detailsSubtitle
+					align:Center
+				}
+				
+				Spacer { height:5 }
+				
+				Flow {
+					disposition: Horizontal
+
+					// First Column
+					Group {
+						layout: Layout { hint: width 290}
+						Image {
+							image: "details/organisation.png"
+							align: Center
+						}
+					}
+					
+					// Second Column
+					Group {
+						layout: Layout { hint: width 310}
+						margins: Top 20 Left 25
+						Text {
+							label: $organisation.displayname
+							value: Transform organisation.displayname using optionStringMapping
+							lines: 2
+						}
+						
+						Text {
+							label: $organisationDetails.number_members
+							value: $organisationDetails.number_members.response (organisationDirectMemberCount.count, organisationMemberCount.count)
+						}
+						
+						Text {
+							label: $organisationDetails.number_children
+							value: $organisationDetails.number_children.response (organisationDirectChildrenCount.count, organisationChildrenCount.count)
+						}
+					}
+					
+					// Third Column
+					Group {
+						layout: Layout { hint: width 390}
+						margins: Top 20 Left 25
+						Text {
+							label: $organisation.organisationtypedisplayname
+							value: Transform organisation.organisationtypedisplayname  using optionStringMapping
+							lines: 2
+						}
+						
+						
+						// If at least one manager
+						Link {
+							iterate-on: managers
+							value: Transform Current manager_display using optionStringMapping
+							hidden: IntPredicate ( Count managers )  { when <= 0 then True }
+							disabled: 
+							OrPredicate {	
+									StringPredicate( Current manager_display ) { when IsEmpty then True }
+									Not FeaturePredicate organisationdetails_linktomanager
+								}	
+							label:  $organisationDetails.manager_fullname
+							target: Activity Identity Detail with Current manager_uid to paramIdentityUid
+							icon:"details/link_profile_14.png"		
+							layout: Layout { grab: horizontal True vertical True}		
+						}
+						
+						// If no manager
+						Text {
+							hidden: IntPredicate ( Count managers )  { when < 1 then False otherwise True }
+							value: Transform "" using optionStringMapping							
+							label:  $organisationDetails.manager_fullname
+						}
+						
+						
+					}
+				}
+				// Row with single column
+				Flow {
+					disposition: Horizontal
+					hidden: IntPredicate (Count teamCount) { when =0 then True }
+					Group {
+						layout: Layout { hint: width 820}
+						
+						Text {		
+							value: Concat ( Join teamJoin using ", " , $organisationDetails.team.response.others ( Difference(Count teamCount , 3 )) )
+							label: $organisationDetails.team.title 
+							hidden: IntPredicate (Count teamCount) { when =0 then True }
+						}
+					}
+				}
+				Spacer { height: 20 }
+			}
+		}
+		
+		// Row for footer
+		GridRow{
+			GridCell{
+				background: Image "details/card_footer.png"
+				Spacer { height: 12 }
+			}
+		}
+		
+		// Row for links
+		GridRow{
+			GridCell{
+				Spacer { height: 20 }
+				Tiles {
+					columns:5
+					tile-height:120
+					mixins:detailIcons
+					TileGroup {
+						iterate-on: relatedLinksTiles
+						initial-sort: ^priority 
+						Tile {
+							Button {
+								actions: GoTo Dynamic (Current type, Current name) with organisation.recorduid to recorduid, organisation.uid to uid, SerializeSearch organisationSearch to organisationSearch, paramSearchMode to paramSearchMode
+								image: Current largeIcon
+								tooltip: Current title		
+							}
+							Text{
+								value: Current title
+								label: Label{ layout:Layout{indent: vertical 0 horizontal 0   }  }
+								lines:2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

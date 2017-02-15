@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountorgjobpivot" distinct="false" concept="account" displayname="# of account by organisation and job for a given rule">
+	<ViewParam name="rulename" displayname="Rule name"/>
+	<ViewParam name="lowthreshold" displayname="low threshold"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1300899996480_2" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false">
+		<ViewAttributeFilter name="F1303588327451_0" reference="lowthreshold" operation="ge" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1300900222216_78" prefix="identity_" kind="left" join="identityreconciliation">
+		<ViewAttribute name="A1303588266586_836" attribute="jobtitlerecorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303588267573_837" attribute="jobtitlecode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303588268960_838" attribute="jobtitledisplayname" operator="or" removedfromprojection="false"/>
+		<ViewJoin name="J1303588272008_839" prefix="org_" kind="left" join="organisation">
+			<ViewAttribute name="A1303588277944_840" attribute="recorduid" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303588278936_841" attribute="code" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303588280175_842" attribute="displayname" operator="or" removedfromprojection="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1300964667795_496" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1300964674739_497" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1300964676787_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

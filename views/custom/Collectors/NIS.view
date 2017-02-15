@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS" prefix="NIS_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="NIS">
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1484927658078_602" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1484927664194_603" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1484927867339_604" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486462717296_426" attribute="passwordexpired" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486462719887_427" attribute="passwordnotrequired" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486462725464_428" attribute="locked" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486541453684_69631" attribute="managerdata" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486974812253_370" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1487060531210_75678" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1487089566289_585" attribute="refvalueuid1" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1487089574545_586" attribute="refvaluerecorduid1" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1487089587729_587" attribute="refvaluecode1" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1487089589106_588" attribute="refvaluedisplayname1" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1487089665297_589" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1487089667497_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="true"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1487089745073_591" attribute="smartcardrequired" removedfromprojection="false" globalfilter="false"/>
+</View>

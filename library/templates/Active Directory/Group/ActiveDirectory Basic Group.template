@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="L1318929417157" title="ActiveDirectory Group" description="Basic attributes for an Active Directory group">
+	<Source encoding="ISO-8859-1" type="LDIF" objectclass="group"/>
+	<Attributes>
+		<Attribute name="A2720653729268931305" attribute="cn" column="cn" type="String" multivalued="false" hint="groupdisplayname" description="The name that represents an object. Used to perform searches"/>
+		<Attribute name="A2720653729268931306" attribute="createtimestamp" column="createtimestamp" type="Date" multivalued="false" hint="groupcreationdate" description="The date when this object was created. This value is replicated"/>
+		<Attribute name="A2720653729268931307" attribute="description" column="description" type="String" multivalued="false" hint="groupcomment" description="Contains the description to display for an object"/>
+		<Attribute name="A2720653729268931308" attribute="displayname" column="displayname" type="String" multivalued="false" description="The display name for an object"/>
+		<Attribute name="A2720653729268931311" attribute="dn" column="dn" type="String" multivalued="false" hint="groupcode" description="Contains unique name for an object"/>
+		<Attribute name="A2720653729268931312" attribute="extensionattribute1" column="extensionattribute1" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931313" attribute="extensionattribute2" column="extensionattribute2" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931314" attribute="extensionattribute3" column="extensionattribute3" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931315" attribute="extensionattribute4" column="extensionattribute4" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931316" attribute="extensionattribute5" column="extensionattribute5" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931317" attribute="extensionattribute6" column="extensionattribute6" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931318" attribute="extensionattribute7" column="extensionattribute7" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931319" attribute="extensionattribute8" column="extensionattribute8" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931320" attribute="extensionattribute9" column="extensionattribute9" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931321" attribute="extensionattribute10" column="extensionattribute10" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931322" attribute="extensionattribute11" column="extensionattribute11" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931323" attribute="extensionattribute12" column="extensionattribute12" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931324" attribute="extensionattribute13" column="extensionattribute13" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931325" attribute="extensionattribute14" column="extensionattribute14" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931326" attribute="extensionattribute15" column="extensionattribute15" type="String" multivalued="false" description="An attribute for any text without having to extend Microsoft Active Directory"/>
+		<Attribute name="A2720653729268931327" attribute="grouptype" column="grouptype" type="Number" multivalued="false" hint="groupgrouptype" description="This attribute contains a set of flags that define the type and scope of a group object"/>
+		<Attribute name="A2720653729268931328" attribute="info" column="info" type="String" multivalued="false" description="Information for this group"/>
+		<Attribute name="A2720653729268931331" attribute="mail" column="mail" type="String" multivalued="true" description="This attribute specifies the list of e-mail addresses for a contact"/>
+		<Attribute name="A2720653729268931333" attribute="managedby" column="managedby" type="String" multivalued="false" hint="groupmanageraccount" description="The distinguished name of the user that is assigned to manage this object"/>
+		<Attribute name="A2720653729268931334" attribute="member" column="member" type="String" multivalued="true" hint="groupemembers" description="The list of users that belong to the group"/>
+		<Attribute name="A2720653729268931336" attribute="modifytimestamp" column="modifytimestamp" type="Date" multivalued="false" hint="groupmodificationdate" description="This attribute specifies the date when this object was last changed. This value is replicated"/>
+		<Attribute name="A2720653729268931337" attribute="name" column="name" type="String" multivalued="false" description="This attribute specifies the relative distinguished name of an object"/>
+		<Attribute name="A2720653729268931339" attribute="objectcategory" column="objectcategory" type="String" multivalued="false" description="This attribute specifies an object class name used to group objects of this or derived classes"/>
+		<Attribute name="A2720653729268931340" attribute="objectclass" column="objectclass" type="String" multivalued="true" description="This attribute specifies the list of classes of which this object is an instance"/>
+		<Attribute name="A2720653729268931344" attribute="samaccountname" column="samaccountname" type="String" multivalued="false" description="The logon name used to support clients and servers running earlier versions of the operating system, such as Windows NT 4.0, Windows 95, Windows 98, and LAN Manager"/>
+		<Attribute name="A2720653729268932952" attribute="samaccounttype" column="samaccounttype" type="Number" multivalued="false" description="This attribute contains information about every account type object. You can enumerate a list of account types or you can use the Display Information API to create a list. Because computers, normal user accounts, and trust accounts can also be enumerated as user objects, the values for these accounts must be a contiguous range"/>
+		<Attribute name="A2720653729268931348" attribute="whenchanged" column="whenchanged" type="Date" multivalued="false" hint="groupmodificationdate" description="The date when this object was last changed. This value is not replicated and exists in the global catalog"/>
+		<Attribute name="A2720653729268931349" attribute="whencreated" column="whencreated" type="Date" multivalued="false" hint="groupcreationdate" description="The date when this object was created. This value is replicated and is in the global catalog"/>
+	</Attributes>
+	<Actions>
+		<Action name="U1318941577590" action="add" attribute="securitygroup" type="Boolean" newvalue="{(dataset.grouptype.get() &amp; 0x80000000) == 0x80000000}" description="TRUE if group is a security group" condition="! dataset.isEmpty(&quot;grouptype&quot;)"/>
+	</Actions>
+</Discovery>

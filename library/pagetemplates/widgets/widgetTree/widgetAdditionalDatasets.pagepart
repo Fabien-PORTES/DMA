@@ -1,0 +1,5 @@
+<template:widgetdatasetname/> = HierarchicalData {
+		view: getidentityorganisations
+		initial: parentuid IsNull
+		connect: parent uid to child parentuid
+}

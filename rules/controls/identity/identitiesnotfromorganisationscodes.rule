@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesnotfromorganisationscodes" operator="and" query="identity" displayname="Identities not from organisations codes {organisationscodes} (including sub organisations)" version="2">
+	<RequestParam name="organisationscodes" displayname="organisations codes" query="organisation" criteria="inCode" criteriaparam="codeParam"/>
+	<RequestGroup name="G1332849465547_19" operator="and" inverse="true">
+		<RequestJoin name="J1332848465119_59" operator="and" join="uporganisation">
+			<RequestCriteria name="C1332848763980_82" criteria="inCode">
+				<RequestCriteriaParam name="codeParam" reference="organisationscodes" ignoreifempty="false"/>
+			</RequestCriteria>
+		</RequestJoin>
+	</RequestGroup>
+</Request>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_internalidentities" operator="and" query="identity" displayname="Internal Identities" version="2">
+	<RequestCriteria name="C1331842568141_145" criteria="eqInternal">
+	</RequestCriteria>
+</Request>

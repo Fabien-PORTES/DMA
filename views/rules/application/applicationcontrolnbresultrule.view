@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationcontrolnbresultrule" distinct="true" concept="application" displayname="# of results for each application control">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303798037982_486" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	<ViewJoin name="J1303798053245_488" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1303798064749_489" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303798075342_0" operation="ilike" ignoreifempty="false">
+				<Value name="0" data="control_%"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1303798064749_490" attribute="ruleentity" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303798090271_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Application"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1303798064749_491" attribute="ruledisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303798064749_492" attribute="ruledescription" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303798064749_493" attribute="rulenotes" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1316337311965_5728" attribute="applicationtype" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1316337316198_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Profile"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__OrganisationType_880_0</property>
+            <property name="value">Direction</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__lowthreshold_882_1</property>
+            <property name="value">60</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__min_nb_users_1030_2</property>
+            <property name="value">10</property>
+        </structure>
+        <structure>
+            <property name="name">OrganisationType_880_3</property>
+            <property name="value">Direction</property>
+        </structure>
+        <structure>
+            <property name="name">OrganisationType_880_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">min_nb_users_1030_4</property>
+            <property name="value">10</property>
+        </structure>
+        <structure>
+            <property name="name">min_nb_users_1030_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">lowthreshold_882_5</property>
+            <property name="value">60</property>
+        </structure>
+        <structure>
+            <property name="name">lowthreshold_882_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

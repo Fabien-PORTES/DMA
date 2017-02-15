@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="ActiveUnixAccount_Inactive_AD" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="controllogv2" displayname="ActiveUnixAccount_Inactive_AD">
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1478611642992_41895" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="controldiscrepancy">
+		<ViewJoin name="J1477575093881_399" prefix="NIS_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+			<ViewAttribute name="1478611731408_41968" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1478611731408_41969" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1478613503718_42250" prefix="NIS_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+				<ViewAttribute name="A1478613509970_42251" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewJoin name="J1478613529041_42252" prefix="AD_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+				<ViewAttribute name="A1478613632486_42263" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1483518537620_411" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1483518557380_412" attribute="givenname" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1483518565724_413" attribute="surname" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1483518743016_414" attribute="custom11" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1483523008373_416" prefix="AD_" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+					<ViewAttribute name="A1483523016750_417" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+				</ViewJoin>
+			</ViewJoin>
+			<ViewJoin name="J1478614126548_42349" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+				<ViewAttribute name="A1478614130072_42350" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1479137308570_777" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1483519604488_415" attribute="login" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1478611651973_41896" attribute="controldisplayname" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1478611656640_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="ActiveUnixAccount_Inactive_AD"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

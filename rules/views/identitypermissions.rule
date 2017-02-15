@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="identitypermissions" operator="and" query="permission" displayname="permissions for identity {recorduid}" version="2" notes="">
+	<RequestParam name="recorduid" displayname="recorduid" query="identity" criteria="eqRecordUid" criteriaparam="recordUidParam"/>
+	<RequestJoin name="J1384698050526_440" operator="and" join="accountright">
+		<RequestGroup name="G1384698055189_441" operator="or">
+			<RequestCriteria name="C1384698062601_442" criteria="neDisabled">
+			</RequestCriteria>
+			<RequestCriteria name="C1384698070472_443" criteria="isNullProperty">
+				<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+					<Value name="0" data="disabled"/>
+				</RequestCriteriaParam>
+			</RequestCriteria>
+		</RequestGroup>
+		<RequestJoin name="J1384698086684_445" operator="and" join="identityreconciliation">
+			<RequestCriteria name="C1384698091633_446" criteria="eqRecordUid">
+				<RequestCriteriaParam name="recordUidParam" reference="recorduid" ignoreifempty="false">
+					<Value name="0"/>
+				</RequestCriteriaParam>
+			</RequestCriteria>
+		</RequestJoin>
+	</RequestJoin>
+</Request>

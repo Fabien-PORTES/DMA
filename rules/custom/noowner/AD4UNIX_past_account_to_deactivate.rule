@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="AD4UNIX_past_account_to_deactivate" operator="and" query="account" displayname="NIS account to deactivate (not reconcilied and appaears in AD4UNIX past)" version="14" notes="">
+	<RequestTags name="tags">
+		<Tag name="custom1" content="to deactivate"/>
+		<Tag name="type" content="AD4UNIX_Historic"/>
+	</RequestTags>
+	<RequestCriteria name="C1484576460763_614" criteria="notReconciliatedAccounts">
+	</RequestCriteria>
+	<RequestCriteria name="C1485792622951_900" criteria="eqCustom">
+		<RequestCriteriaParam name="customNumberParam" ignoreifempty="false">
+			<Value name="0" data="3"/>
+		</RequestCriteriaParam>
+		<RequestCriteriaParam name="customValueParam" ignoreifempty="false">
+			<Value name="0" data="true"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1485792653096_905" criteria="eqCustom">
+		<RequestCriteriaParam name="customNumberParam" ignoreifempty="false">
+			<Value name="0" data="6"/>
+		</RequestCriteriaParam>
+		<RequestCriteriaParam name="customValueParam" ignoreifempty="false">
+			<Value name="0" data="false"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

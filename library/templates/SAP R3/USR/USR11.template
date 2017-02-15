@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343307347326" title="User Master Texts for Profiles (USR10) " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A5960749352161381426" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A7608446515859886310" attribute="langu" column="LANGU" type="String" multivalued="false" persistent="false" description="Language Key"/>
+		<Attribute name="A5612765899258818672" attribute="profn" column="PROFN" type="String" multivalued="false" persistent="false" description="Auth. profile in user master maintenance"/>
+		<Attribute name="A4992301259525607586" attribute="aktps" column="AKTPS" type="String" multivalued="false" persistent="false" description="Active or maintenance version"/>
+		<Attribute name="A2739118967057055313" attribute="ptext" column="PTEXT" type="String" multivalued="false" persistent="false" description="Texts in user master/authorizations"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343307389368" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_directchildrenfilesystemroot" prefix="server_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="br_directchildrenfilesystemroot" notes="">
+	<ViewParam name="serverrecorduid" displayname="serverrecorduid"/>
+	<ViewParam name="serveruid" displayname="serveruid"/>
+	<ViewComputedAttribute name="shortcode" displayname="shortcode" type="String" expression="dataset.child_code.get()"/>
+	<ViewComputedAttribute name="haschildren" displayname="haschildren" type="Integer" expression="dataset.sub_children.get()&gt;0?1:0"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1434474838659_668" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1434474841018_0" reference="serverrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1434474839270_669" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1434474848437_0" reference="serveruid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1434474859088_672" prefix="child_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewCriteria name="I1434474876167_673" criteria="eqRoot">
+		</ViewCriteria>
+		<ViewAttribute name="A1434475025618_674" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434475026561_675" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434475027515_676" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434475028485_677" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434475029399_678" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1434535127922_738" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="childpermission">
+			<ViewAttribute name="1434535175239_743" attribute="uid" alias="sub_children" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1434556430251_1060" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityright">
+			<ViewAttribute name="A1434556432971_1061" attribute="uid" alias="users" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

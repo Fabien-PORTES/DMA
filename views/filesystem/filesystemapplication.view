@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_filesystemapplication" distinct="true" concept="application" displayname="Filesystem application list or picker" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="code" displayname="code"/>
+	<ViewSort name="sort" attribute1="A1305896071277_4"/>
+	<ViewAttribute name="A1305896071277_2" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1305896129778_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1305896071277_3" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896071277_4" attribute="code" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1305896137808_0" reference="code" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1305896071277_5" attribute="displayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896071277_6" attribute="repositoryrecorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896071277_7" attribute="repositoryuid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896071277_8" attribute="repositorycode" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896071277_9" attribute="repositorydisplayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896071277_10" attribute="repositorymedia" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896071277_11" attribute="repositoryextractdate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896071277_12" attribute="repositorytype" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896084669_13" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896085501_14" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896086181_15" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896086869_16" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896087518_17" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896088325_18" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896089190_19" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896090045_20" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1305896090869_21" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1316332907886_2308" attribute="applicationtype" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1316332913028_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

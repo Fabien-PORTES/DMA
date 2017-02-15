@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identitysimilarsharedfolders" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="Find identities with similar shared folders from a given identity" notes="identity mining">
+	<ViewParam name="recorduid" displayname="Record uid">
+		<Value name="0" data="1170"/>
+	</ViewParam>
+	<ViewSort name="sort" direction1="ASC"/>
+	<ViewAttribute name="A1303235689670_217" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1303235778749_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1303235697664_218" kind="inner" identitysecure="false" join="accountreconciliation">
+		<ViewJoin name="J1303235701941_219" kind="inner" identitysecure="false" join="right">
+			<ViewJoin name="J1303235705491_220" kind="inner" identitysecure="false" join="permission">
+				<ViewJoin name="J1303235715801_221" kind="inner" identitysecure="false" join="right">
+					<ViewJoin name="J1303235721335_222" kind="inner" identitysecure="false" join="account">
+						<ViewJoin name="J1303235726777_223" prefix="identity_" kind="inner" identitysecure="false" join="identityreconciliation">
+							<ViewAttribute name="A1303235758065_226" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_227" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_228" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_229" attribute="repositoryuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_230" attribute="repositorycode" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_231" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_232" attribute="repositorymedia" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_233" attribute="repositoryextractdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_234" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_235" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_236" attribute="nickname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_237" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_238" attribute="middlename" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_239" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_240" attribute="altname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_241" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_242" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_243" attribute="titlerecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_244" attribute="titleuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_245" attribute="titlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_246" attribute="titledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_247" attribute="employeetyperecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_248" attribute="employeetypeuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_249" attribute="employeetypecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_250" attribute="employeetypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_251" attribute="expertisedomainrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758065_252" attribute="expertisedomainuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_253" attribute="expertisedomaincode" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_254" attribute="expertisedomaindisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_255" attribute="jobtitlerecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_256" attribute="jobtitleuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_257" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_258" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_259" attribute="arrivaldate" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_260" attribute="departuredate" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_261" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_262" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_263" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_264" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_265" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_266" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_267" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_268" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_269" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewAttribute name="A1303235758066_270" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+							<ViewJoin name="J1303314722604_91" prefix="org_" kind="left" identitysecure="false" join="organisation">
+								<ViewAttribute name="A1303314729982_92" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+								<ViewAttribute name="A1303314731236_93" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+								<ViewAttribute name="A1303314731988_94" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+								<ViewAttribute name="A1303314732683_95" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+								<ViewAttribute name="A1303314741004_96" attribute="organisationtyperecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+								<ViewAttribute name="A1303314741837_97" attribute="organisationtypeuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+								<ViewAttribute name="A1303314742765_98" attribute="organisationtypecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+								<ViewAttribute name="A1303314743661_99" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+							</ViewJoin>
+						</ViewJoin>
+						<ViewAttribute name="1382688503422_5408" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+							<ViewAttributeFilter name="F1382688196313_0" operation="isNull" ignoreifempty="false"/>
+							<ViewAttributeFilter name="F1382688198391_1" operation="isFalse" ignoreifempty="false"/>
+						</ViewAttribute>
+					</ViewJoin>
+				</ViewJoin>
+				<ViewAttribute name="A1303235740202_224" attribute="recorduid" alias="nbperms" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false">
+					<ViewAttributeFilter name="F1303898639317_0" operation="gt" ignoreifempty="false">
+						<Value name="0" data="0"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+				<ViewJoin name="J1304087008855_13407" kind="inner" identitysecure="false" join="application">
+					<ViewAttribute name="A1316333349294_3386" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1316333353548_0" operation="eq" ignoreifempty="false">
+							<Value name="0" data="Filesystem"/>
+						</ViewAttributeFilter>
+					</ViewAttribute>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="1382688501672_5406" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382688196313_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382688198391_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,66 @@
+/* Import other pages here */
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+
+/* Nationalized labels here */
+account_categorization_automationNLS = NLS {
+	title [en "Account Categorization Automation" fr "Account Categorization Automation"]
+	flash [en "Account categorization submited" fr "Account categorization submited"] 
+}
+
+account_categorization_automation = Dialog {
+	title: $account_categorization_automationNLS.title
+	width: 750
+	height: 150
+	
+	buttons: [
+	OkButton {
+		disabled: StringPredicate (selected_category) {
+			when IsEmpty then True
+			otherwise False
+		}
+		actions: Set selected_category to task.category, TaskComplete task, Flash $account_categorization_automationNLS.flash
+	}
+	CancelButton
+	]
+	
+	/* variables here */
+	selected_category = Variable {
+		type: String
+		initial: $account_categorizationNLS.option1
+	}
+	
+	/* Datasets and records here */
+	
+task = TaskRecord (create "account_categorization_automation")	
+	/* dialog page content */
+		Combo {
+			variable: selected_category
+			label:$account_categorizationNLS.dialog.combo
+			allow-none: False
+			options: Static {
+					Option {text: $account_categorizationNLS.option1 value:$account_categorizationNLS.option1}
+					Option {text: $account_categorizationNLS.option2 value:$account_categorizationNLS.option2}	
+					Option {text: $account_categorizationNLS.option3  value:$account_categorizationNLS.option3}
+					Option {text: $account_categorizationNLS.option4  value:$account_categorizationNLS.option4}	
+					Option {text: $account_categorizationNLS.option5  value:$account_categorizationNLS.option5}
+					Option {text: $account_categorizationNLS.option6  value:$account_categorizationNLS.option6}
+					Option {text: $account_categorizationNLS.option7  value:$account_categorizationNLS.option7}
+					Option {text: $account_categorizationNLS.option8  value:$account_categorizationNLS.option8}	
+					Option {text: $account_categorizationNLS.option9  value:$account_categorizationNLS.option9}
+					Option {text: $account_categorizationNLS.option10 value:$account_categorizationNLS.option10}	
+					Option {text: $account_categorizationNLS.option11 value:$account_categorizationNLS.option11}
+					Option {text: $account_categorizationNLS.option12 value:$account_categorizationNLS.option12}
+					Option {text: $account_categorizationNLS.option13 value:$account_categorizationNLS.option13}
+					Option {text: $account_categorizationNLS.option14 value:$account_categorizationNLS.option14}	
+					Option {text: $account_categorizationNLS.option15 value:$account_categorizationNLS.option15}
+					Option {text: $account_categorizationNLS.option16 value:$account_categorizationNLS.option16}	
+					Option {text: $account_categorizationNLS.option17 value:$account_categorizationNLS.option17}
+					Option {text: $account_categorizationNLS.option18 value:$account_categorizationNLS.option18}						
+					Option {text: $account_categorizationNLS.option19 value:$account_categorizationNLS.option19}
+					Option {text: $account_categorizationNLS.option20  value:$account_categorizationNLS.option20}						
+						}
+				}
+}

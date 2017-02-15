@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_permissionsinlonyoneidentity" operator="and" query="permission" displayname="Permissions that belong to {ReferenceRecordUID} but not {ComparisonRecordUID}" notes="">
+	<RequestParam name="ReferenceRecordUID" displayname="Reference Record UID" query="identity" criteria="eqRecordUid" criteriaparam="recordUidParam"/>
+	<RequestParam name="ComparisonRecordUID" displayname="Comparison Record UID" query="identity" criteria="eqRecordUid" criteriaparam="recordUidParam"/>
+	<RequestJoin name="J1303824234568_215" operator="and" join="right">
+		<RequestJoin name="J1303824237405_216" operator="and" join="account">
+			<RequestJoin name="J1303824240115_217" operator="and" join="identityreconciliation">
+				<RequestCriteria name="C1303916992532_179" criteria="eqRecordUid">
+					<RequestCriteriaParam name="recordUidParam" reference="ReferenceRecordUID" ignoreifempty="false"/>
+				</RequestCriteria>
+			</RequestJoin>
+		</RequestJoin>
+	</RequestJoin>
+	<RequestGroup name="G1303824337224_226" operator="and" inverse="true">
+		<RequestJoin name="J1303824306797_220" operator="and" join="right">
+			<RequestJoin name="J1303824309914_221" operator="and" join="account">
+				<RequestJoin name="J1303824314434_222" operator="and" join="identityreconciliation">
+					<RequestCriteria name="C1303916946944_177" criteria="eqRecordUid">
+						<RequestCriteriaParam name="recordUidParam" reference="ComparisonRecordUID" ignoreifempty="false"/>
+					</RequestCriteria>
+				</RequestJoin>
+			</RequestJoin>
+		</RequestJoin>
+	</RequestGroup>
+</Request>

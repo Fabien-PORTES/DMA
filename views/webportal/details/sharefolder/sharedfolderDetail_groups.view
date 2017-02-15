@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_sharedfolderDetail_groups" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_sharedfolderDetail_groups" notes="">
+	<ViewParam name="recorduid" displayname="Filesystem record uid"/>
+	<ViewParam name="code" displayname="Filesystem code"/>
+	<ViewParam name="applicationrecorduid" displayname="Application record uid"/>
+	<ViewParam name="displayname" displayname="Filesystem display name"/>
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1304342281973_4" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1304342636101_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1304342281973_5" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1418301948445_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1305892929272_7049" prefix="application" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="A1305895471631_21" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1305895476751_0" reference="applicationrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1316332966090_2313" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1316332970301_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1433355155736_334" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="groups">
+		<ViewAttribute name="1433355163368_339" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433355163368_340" attribute="grouptype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433355163368_341" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433355163368_342" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

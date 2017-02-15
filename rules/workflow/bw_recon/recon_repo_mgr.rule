@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="bw_recon_repo_mgr" operator="and" query="identity" displayname="Recon - Repository Manager for repo {repouid}" version="2">
+	<RequestParam name="repouid" displayname="Repository Uid" query="repository" criteria="eqUid" criteriaparam="uidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestJoin name="J1423499512914_17001" operator="and" join="managedrepository">
+		<RequestCriteria name="C1423499523947_17002" criteria="eqUid">
+			<RequestCriteriaParam name="uidParam" reference="repouid" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

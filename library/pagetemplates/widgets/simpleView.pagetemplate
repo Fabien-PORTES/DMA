@@ -1,0 +1,34 @@
+/* Import other pages here */
+
+/* Nationalized labels here */
+<template:pageNLSname/> = NLS {
+<template:additionalNLS/>
+}
+
+<template:pagename/> = Page {
+	title: <template:pagetitle/>
+
+/* Parameters here */
+
+/* Variables here */
+<template:additionalvariables/>
+/* Datasets and records here */
+viewDataset = Dataset {
+	view: <template:viewname/>
+}
+<template:additionaldatasets/>
+
+/* Page content */
+	Table {
+		data: viewDataset
+		show-filter: True
+		show-count: True
+		hide-header: False
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+	
+<template:tablecolumns/>
+	}	
+}
+

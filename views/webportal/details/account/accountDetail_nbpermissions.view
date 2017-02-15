@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountDetail_nbpermissions" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="br_accountDetail_nbpermissions" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378138366884_571" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378138358084_570" kind="inner" identitysecure="false" join="accountright">
+		<ViewAttribute name="1378192384963_493" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378138227978_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource ICTX data record" description="The General Resource ICTX record contains the configuration options used to control the behavior of the ICTX identity cache.">
+	<Source type="FORMATTED" filter="^05D0 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRICTX_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the general resource ICTX segment record (05D0)."/>
+		<Attribute name="A4199536690768339793" attribute="GRICTX_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRICTX_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRICTX_USEMAP" column="262-265" type="Boolean" multivalued="false" description="Should the identity cache store an application provided identity mapping?"/>
+		<Attribute name="A3188661801656117613" attribute="GRICTX_DOMAP" column="267-270" type="Boolean" multivalued="false" description="Should the identity cache determine and store the identity mapping?"/>
+		<Attribute name="A4037269903301147695" attribute="GRICTX_MAPREQ" column="272-275" type="Boolean" multivalued="false" description="Is an identity mapping required?"/>
+		<Attribute name="A7863438466300294503" attribute="GRICTX_MAP_TIMEOUT" column="277-281" type="Number" multivalued="false" description="How long the identity cache should store an identity mapping."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

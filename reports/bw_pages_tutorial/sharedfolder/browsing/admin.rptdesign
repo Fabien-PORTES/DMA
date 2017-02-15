@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="author">Brainwave</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.0.v201405191524 Build &lt;4.4.0.v20140606-1451></property>
+    <text-property name="title">Brainwave Template</text-property>
+    <simple-property-list name="includeResource">
+        <value>reports/resources/concepts</value>
+    </simple-property-list>
+    <list-property name="includeScripts">
+        <property>reports/scripts/common.js</property>
+        <property>reports/scripts/debugWindow.js</property>
+    </list-property>
+    <property name="units">in</property>
+    <method name="beforeFactory"><![CDATA[beforeFactory();]]></method>
+    <property name="theme">brainwave.Brainwave blue</property>
+    <property name="iconFile">/custom-templates/TEMPLATE search list.png</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">reports/library/brainwave.rptlibrary</property>
+            <property name="namespace">brainwave</property>
+        </structure>
+    </list-property>
+    <data-sources>
+        <oda-data-source extensionID="com.brainwave.iaudit.oda.runtime" name="Brainwave ODA DataSource" id="876"
+ extends="brainwave.Brainwave ODA DataSource"/>
+    </data-sources>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Brainwave Master Page Portrait" id="7" extends="brainwave.Brainwave Master Page Portrait">
+            <overridden-values>
+                <ref-entry baseId="252" name="NewGrid" id="252"/>
+                <ref-entry baseId="253" id="253"/>
+                <ref-entry baseId="254" id="254"/>
+                <ref-entry baseId="255" id="255"/>
+                <ref-entry baseId="258" name="NewGrid1" id="258"/>
+                <ref-entry baseId="259" id="259"/>
+                <ref-entry baseId="260" id="260"/>
+                <ref-entry baseId="261" id="261"/>
+                <ref-entry baseId="262" id="262"/>
+                <ref-entry baseId="303" name="Brainwave logo" id="303"/>
+                <ref-entry baseId="264" id="264"/>
+                <ref-entry baseId="265" name="NewText" id="265"/>
+                <ref-entry baseId="304" id="304"/>
+                <ref-entry baseId="305" id="305"/>
+                <ref-entry baseId="701" name="Nouvelle grille21" id="701"/>
+                <ref-entry baseId="702" id="702"/>
+                <ref-entry baseId="703" id="703"/>
+                <ref-entry baseId="704" id="704"/>
+                <ref-entry baseId="705" id="705"/>
+                <ref-entry baseId="706" name="NewTextData11" id="706"/>
+                <ref-entry baseId="707" id="707"/>
+                <ref-entry baseId="708" name="NbPage1" id="708"/>
+                <ref-entry baseId="709" id="709"/>
+                <ref-entry baseId="710" id="710"/>
+                <ref-entry baseId="711" id="711"/>
+                <ref-entry baseId="712" id="712"/>
+                <ref-entry baseId="713" id="713"/>
+                <ref-entry baseId="714" name="Nouveau texte auto21" id="714"/>
+                <ref-entry baseId="715" id="715"/>
+                <ref-entry baseId="716" name="Nouveau texte11" id="716"/>
+                <ref-entry baseId="717" id="717"/>
+                <ref-entry baseId="718" name="Nouveau texte auto111" id="718"/>
+            </overridden-values>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <label id="820">
+            <property name="style">h2</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">Roles and features</text-property>
+        </label>
+        <label id="877">
+            <text-property name="text">This report list all the roles and the features of the current user</text-property>
+        </label>
+        <label id="884">
+            <text-property name="text">Use this information for debugging purposes while fine tuning the access rights</text-property>
+        </label>
+        <text id="610">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<br>]]></text-property>
+        </text>
+        <label id="880">
+            <property name="fontSize">14px</property>
+            <property name="fontWeight">bold</property>
+            <text-property name="text">User roles</text-property>
+        </label>
+        <text-data id="878">
+            <expression name="valueExpr">context.getSession().getAttribute('USER_ROLES');</expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <label id="881">
+            <property name="fontSize">14px</property>
+            <property name="fontWeight">bold</property>
+            <text-property name="text">User features</text-property>
+        </label>
+        <text-data id="883">
+            <expression name="valueExpr">context.getSession().getAttribute('USER_FEATURES');</expression>
+            <property name="contentType">html</property>
+        </text-data>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">brainwave-logo.gif</property>
+            <property name="type">image/gif</property>
+            <property name="libReference">brainwave.brainwave-logo.gif</property>
+        </structure>
+        <structure>
+            <property name="name">account_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">account_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">empty_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.empty_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_48.png</property>
+        </structure>
+    </list-property>
+</report>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="actionpackRepositoryowner" operator="and" query="identity" displayname="Manager of repository {uid}" version="2">
+	<RequestParam name="uid" displayname="uid" query="repository" criteria="eqUid" criteriaparam="uidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestJoin name="J1415609372227_37247" operator="and" join="managedrepository">
+		<RequestCriteria name="C1415609378664_37248" criteria="eqUid">
+			<RequestCriteriaParam name="uidParam" reference="uid" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

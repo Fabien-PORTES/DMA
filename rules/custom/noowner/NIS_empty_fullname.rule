@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="NIS_empty_fullname" operator="and" query="account" displayname="NIS_empty_fullname" version="3">
+	<RequestCriteria name="C1477404368009_412" criteria="isNullProperty">
+		<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+			<Value name="0" data="userName"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestJoin name="J1477404344107_409" operator="and" join="repository">
+		<RequestCriteria name="C1477404348460_410" criteria="eqRepositoryType">
+			<RequestCriteriaParam name="repositoryTypeParam" ignoreifempty="false">
+				<Value name="0" data="NIS"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

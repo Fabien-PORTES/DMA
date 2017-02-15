@@ -1,0 +1,168 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+
+diabled_Mapping = StringMapping {
+	when 'true' then 'Inactive'
+	when 'false' then 'Active'
+	otherwise 'No Value'
+}
+
+isEmptyMapping = StringMapping {
+	when IsEmpty then 1
+	otherwise 0
+}
+
+isEmptyInverseMapping = StringMapping {
+	when IsEmpty then 0
+	otherwise 1
+}
+
+amountDetection = IntMapping {
+	when >1 then 2 // multiple
+	when =1 then 1 // single
+	otherwise 0 // empty
+}
+
+mapInternalIdentity = BooleanMapping {
+	when True then $identity.internallabel
+	when False then $identity.contractorlabel
+}
+
+mapControlType = StringMapping {
+	when "1" then $control.type1
+	when "2" then $control.type2
+	when "3" then $control.type3
+	when "4" then $control.type4
+	when "5" then $control.type5
+	when "6" then $control.type6
+	when "7" then $control.type7
+	when "8" then $control.type8
+}
+
+optionStringMapping = StringMapping {
+	when IsEmpty then $global.novalue
+	otherwise current
+}
+
+AD4UNIX_Current = StringMapping {
+	when 'true' then 'UID/Domain in AD4UNIX current'
+	when 'false' then 'UID in AD4UNIX current but Domain is not'
+	otherwise 'UID in AD4UNIX current'
+}
+
+AD4UNIX_Current_reversed = StringMapping {
+	when 'UID/Domain in' then 'true'
+	when 'UID in but Domain is not in' then 'false'
+	when 'UID in' then ''
+}
+
+AD4UNIX_Past = StringMapping {
+	when 'true' then 'UID/Domain in AD4UNIX Past'
+	when 'false' then 'UID in AD4UNIX Past'
+}
+
+
+booleanAlwaysShow = StringMapping{
+	when IsEmpty then "False"
+	when IsNull then "False"
+	otherwise current
+}
+
+booleanDisplayMapping = StringMapping {
+	when "true" then $global.yes
+	when "True" then $global.yes
+	when "1" then $global.yes
+	when "false" then $global.no
+	when "False" then $global.no
+	when "0" then $global.no
+	when IsEmpty then ""
+	otherwise current	
+}
+
+inverseBooleanDisplayMapping = StringMapping {
+	when "true" then $global.no
+	when "True" then $global.no
+	when "1" then $global.no
+	when "false" then $global.yes
+	when "False" then $global.yes
+	when "0" then $global.yes
+	when IsEmpty then ""
+	otherwise current	
+}
+
+reconciliationStatusMapping = StringMapping {
+	when "orphan" then $reconciliation.status.orphan
+	when "reconciled" then $reconciliation.status.reconciled
+	when "leave" then $reconciliation.status.leave
+	when "noowner" then $reconciliation.status.noowner
+	otherwise current
+}
+
+nullToZeroMapping = IntMapping {
+	when InvalidInteger then 0
+	otherwise current
+}
+
+mayBeNullMapping = StringMapping {
+  when IsNull then ""
+  otherwise current
+}
+
+/**
+ * Used to display the 1st value if not null, the 2nd value otherwise
+ * Used in the 'text:' attribute in tables with a syntax such as:
+ * 
+ * $utilsNLS.showifnotnull(Transform Current col1 using notnullMapping, Current col1, Current col2)
+ */
+utilsNLS = NLS {
+	showifnotnull [en "{0,choice,0#{2}|1#{1}}"]
+}
+
+notnullMapping = StringMapping {
+  when IsEmpty then 0
+  otherwise 1
+}
+
+studioIconMapping = StringImageTemplate { 
+	when "audit" then "16/studio/bookmark.png"
+	when "roles" then "16/studio/role.png"
+	when "discovery" then "16/studio/filter.png"
+	when "activity" then "16/studio/box.png"
+	when "component" then "16/studio/box.png"
+	when "control" then "16/studio/kweather.png"
+	when "criteria" then "16/studio/brick.png"
+	when "facet" then "16/studio/brick.png"
+	when "configuration" then "16/studio/configuration.png"
+	when "configvariables" then "16/studio/configvariables.png"
+	when "indexes" then "16/studio/indexes.png"
+	when "javascript" then "16/studio/javascript.gif"
+	when "modelpolicy" then "16/studio/kllckety.png"
+	when "managerpolicy" then "16/studio/manager.png"
+	when "notifyrule" then "16/studio/notifyrule.png"
+	when "connector" then "16/studio/connector.png"
+	when "silo" then "16/studio/silo.png"
+	when "page" then "16/studio/page.png"
+	when "reconpolicy" then "16/studio/proxy.png"
+	when "rptdesign" then "16/studio/report.png"
+	when "rule" then "16/studio/rule.png"
+	when "reconrule" then "16/studio/rule.png"
+	when "modelrule" then "16/studio/rule.png"
+	when "managerrule" then "16/studio/rule.png"
+	when "scenario" then "16/studio/xine.png"
+	when "capture" then "16/studio/camera.png"
+	when "captureresult" then "16/studio/rosette.png"
+	when "view" then "16/studio/kexi.png"
+	when "logview" then "16/studio/kexi.png"
+	when "workflow" then "16/studio/workflow.png"
+	when "collector" then "16/studio/fifteenpieces.png"
+	when "featuresets" then "16/studio/3d.png"
+	when "features" then "16/studio/ksame.png"
+	when "menuitems" then "16/studio/kmenuedit.png"
+	when "identityvisualizations" then "16/studio/identityvisualization.png"
+	when "temporalcriteria" then "16/studio/temporalcriteria.png"
+	when "reconciliation" then "16/studio/link.png"
+	when "search" then "16/studio/database_find.png"
+	otherwise "16/studio/file_doc.png"
+}

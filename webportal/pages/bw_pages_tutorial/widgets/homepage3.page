@@ -1,0 +1,12 @@
+
+
+
+homepage3 = Page {
+	title:"A featured home page with a priority level"
+	homepage-for:Any (organisationmanager_dashboard_homepage) priority 11
+
+	Header {
+		value:"This is a home page for 'organisationmanager_dashboard_homepage' feature with a priority of 11"
+	}
+}
+

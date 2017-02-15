@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Navigation hi&eacute;rarchique</title>
+
+		<style>
+html, body {
+    margin:0;
+    padding:0;
+    font-family: "Lucida Grande", Verdana;
+    font-size: 0.9em;
+    text-align: center;
+    background-color:#F9F7f6;
+}
+
+input, select {
+    font-size:0.9em;
+}
+
+table {
+    margin-top:-10px;
+    margin-left:7px;
+}
+
+myLabel {
+	text-align: center;
+
+	width: 120px;
+	height: 25px;
+    font-size: 70px;
+
+	padding-top: 3px;
+	padding-bottom: 3px;	
+	background-color: #000000;
+	border: 1px;
+}
+
+h4 {
+    font-size:10pt;
+    text-decoration:none;
+    font-weight:bold;
+    color:#C3C4FF;
+}
+
+a {
+    color:#23A4FF;
+}
+
+#container {
+    margin:0 auto;
+    position:relative;
+	/* new */
+	width:100%;
+	height:100%;
+}
+
+#left-container, 
+#right-container, 
+#center-container {
+    position:absolute;
+    top:0;
+}
+
+
+#center-container {
+    background-color:#F9F7f6;
+    color:#333;
+}
+
+#right-container {
+	left:1000px;
+    width:200px;
+	background-color: #AA2222;
+	height:600px;
+}
+
+#right-container h4{
+    text-indent:8px;
+}
+#inner-details {
+    font-size:0.8em;
+    list-style:none;
+    margin:7px;
+	text-align: left;
+	color: #FFFFFF;
+	height:600px;
+}
+
+
+.text {
+    margin: 7px;
+}
+
+#log {
+    position:absolute;
+    top:10px;
+    font-size:1.0em;
+    font-weight:bold;
+    color:#23A4FF;
+}
+
+#logo {
+	position: absolute;
+	top: 3px;
+	left: 30px;
+	width: 212px;
+	height: 73px;
+	background-image: url('logo_brainwave_transparence.png');
+	display: block;
+}
+
+#content {
+	position:relative;
+    width:1px;
+    height:1px;
+    margin:auto;
+    overflow:hidden;
+}
+
+/*TOOLTIPS*/
+.tip {
+    color: #111;
+    width: 139px;
+    background-color: white;
+    border:1px solid #ccc;
+    -moz-box-shadow:#555 2px 2px 8px;
+    -webkit-box-shadow:#555 2px 2px 8px;
+    -o-box-shadow:#555 2px 2px 8px;
+    box-shadow:#555 2px 2px 8px;
+    opacity:0.9;
+    filter:alpha(opacity=90);
+    font-size:10px;
+    font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+    padding:7px;
+}
+
+/* Bubble tooltips*/
+div.node span{ display: none; }
+
+div.node {
+    background-color: white;
+    border:1px solid #ccc;
+    -moz-box-shadow:#555 2px 2px 8px;
+    -webkit-box-shadow:#555 2px 2px 8px;
+    -o-box-shadow:#555 2px 2px 8px;
+    box-shadow:#555 2px 2px 8px;
+	padding: 3px;
+}
+/*background:; ie hack, something must be changed in a for ie to execute it*/
+div.node:hover{ z-index:25; color: #aaaaff; background:;}
+div.node:hover span.tooltip{
+    color: #111;
+    display:block;
+    position:absolute;
+    top:20px; left:15px;
+	padding: 3px;
+	width:250px;
+    background-color: white;
+    border:1px solid #ccc;
+    -moz-box-shadow:#555 2px 2px 8px;
+    -webkit-box-shadow:#555 2px 2px 8px;
+    -o-box-shadow:#555 2px 2px 8px;
+    box-shadow:#555 2px 2px 8px;
+    opacity:0.9;
+    filter:alpha(opacity=90);
+	text-align: left;
+	font-size:10px;
+	font-weight: normal;
+}
+div.node:hover span.tooltip ul{
+	padding:0px;
+	border:none;
+	margin:0px 0px 0px 20px;
+}
+		</style>
+		
+		<script>
+			HConf = {
+				viewName: 'br_organisationtreeview',
+				startCond: '_startwithattr=parent_code&_startwithop=isnull&_startwithvalue=none',
+				continueCond: '_startwithattr=code&_startwithop=eq&_startwithvalue=',
+				connection: '_connectbyprior=recorduid&_connectby=parent_recorduid',
+				columns: 'code(id),displayname(name),organisationtypecode(data.type),recorduid(data.recorduid),uid(data.uid),managerrecorduid(data.managerrecorduid),manageruid(data.manageruid),managerfullname(data.managerfullname)',
+				maxLevel: 8,
+				createLabelHtml : function(node, style) {
+					var html = node.name;
+					html += '<span class="tooltip"><ul>';
+					html += '<li><b>Code: </b>' + node.id + '</li>';
+					html += '<li><b>Type: </b>' + node.data.type + '</li>';
+					html += '<li><b>Name: </b>' + node.name + '</li>';
+					if(node.data.managerrecorduid != null) {
+						// manager exists
+						html += '<li><b>Manager: </b> <a target="_top" href="../../../permalink?startPosition=page%3AidentityDetailsPage%3AparamIdentityUid%3D' + node.data.manageruid + '">'  + node.data.managerfullname + '</a></li>';					
+					}
+					html += '</ul><br/><center>';
+					html += '<a target="_top" href="../../../permalink?startPosition=page%3AorganisationDetailsPage%3AparamOrganisationUid%3D'+node.data.uid+'">Organisation detail</a>';
+					html += '</center></span>';
+					return html;
+				}
+			};
+			
+			// get URL GET parameter by name
+			function getParameterByName(name) {
+			    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+			    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+			}
+			
+			// update ajax urls with timeslot uid
+			function updateConf() {
+				var startCode = getParameterByName('code');
+				if (startCode != null) {
+					HConf.startCond = '_startwithattr=code&_startwithop=eq&_startwithvalue=' + startCode;
+				}
+			    var timeslot = getParameterByName('timeslot');
+			    if (timeslot != null) {
+			     HConf.startCond = '_timeslot=' + timeslot + '&' + HConf.startCond;
+			     HConf.continueCond = '_timeslot=' + timeslot + '&' + HConf.continueCond;
+			    }
+			}
+
+			// compute size to fulfill the entire space
+			function getRightSize() {				
+				document.getElementById("content").style.height = document.documentElement.clientHeight+"px";
+				document.getElementById("content").style.width = document.documentElement.clientWidth+"px";
+			}
+
+			
+		</script>
+		<!--[if IE]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+		<script language="javascript" type="text/javascript" src="jx.js"></script>
+		<script language="javascript" type="text/javascript" src="jit.js"></script>
+		<script language="javascript" type="text/javascript" src="hierarchy_tree.js"></script>
+	</head>
+	<body onload="updateConf();getRightSize(); init();">
+		<div id="container">
+			<div id="center-container">
+				<div id="content"></div>
+			</div>
+			<div id="log"></div>
+		</div>		
+	</body>
+</html>

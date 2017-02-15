@@ -1,0 +1,146 @@
+/* Import other pages here */
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/audittrail.page"
+
+/* Nationalized labels here */
+updateapplicationmanager_startNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation ?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process ?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Update application manager" fr "Mettre à jour le responsable d''application"]
+	dynamictitle [en "Update application manager for \"{0}\"" fr "Mettre à jour le reponsable de l''application \"{0}\""]
+	managerhrcode [en "Current manager HR code" fr "Matricule du responsable actuel"]
+	managerfullname [en "Current manager fullname" fr "Nom du responsable actuel"]
+	newmanagerconfirm [en "Are you sure that you want to assign {0}-{1}\nas the manager of the {2} application?" fr "Etes vous sur de vouloir positionner {0}-{1} en tant que responsable\nde l''application {2}"]
+	newmanagerremove [en "Are you sure that you want to remove {0}-{1}\nas the manager of the {2} application?" fr "Etes vous sur de vouloir supprimer {0}-{1} en tant que responsable\nde l''application {2}"]
+	confirmupdate [en "Your request to assign a new manager as been registered successfully" fr "Votre demande a bien été prise en compte"]
+	removeupdate [en "Your request to remove the current manager as been registered successfully" fr "Votre demande a bien été prise en compte"]
+	
+	setmanager [en "Set a manager for this application" fr "Assigner un responsable pour cette application"]
+	removemanager [en "Remove the current manager" fr "Supprimer le responsable actuel"]
+	
+	manageraudittrail [en "Browse modifications audit trail" fr "Voir l'historique des modifications"]
+}
+
+updateapplicationmanager_start = Page {
+	title: $updateapplicationmanager_startNLS.title
+	dynamic-title: $updateapplicationmanager_startNLS.dynamictitle(application.displayname)
+	mixins: workflowDefaultMixin
+	
+	/* Parameters here */
+	paramApplicationUid = Parameter {type:String multivalued:False}
+	
+	/* variables here */
+	newmanagerUid = Variable {type:String multivalued:False}
+
+	
+	/* Datasets and records here */
+	// Record for concept details
+	application = Record {
+		view: br_applicationDetail with paramApplicationUid to uid
+	}
+	
+	newManager = Record {
+		view: br_identityDetail with newmanagerUid to uid
+	}
+
+	applicationbusinessowner = Record {
+		view: br_applicationBusinessowner with paramApplicationUid to uid
+	}
+
+	task = TaskRecord (create "updateapplicationmanager")
+	
+	
+	/* Page content */
+	Grid {
+		columns:GridColumn{width:64px}, GridColumn{width:320px}, GridColumn{width:320px}, GridColumn{width:grow}
+		GridRow {
+			height:96
+			GridCell {
+				Image {
+					image: "48/red/application.png"
+					align: Center
+				}
+			}
+			GridCell {
+				Text{
+					label:   $application.concept 
+					value: Transform application.displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $updateapplicationmanager_startNLS.managerhrcode
+					value: Transform applicationbusinessowner.hrcode using optionStringMapping
+					lines: 2
+				}
+
+				Text {
+					label: $updateapplicationmanager_startNLS.managerfullname
+					value: Transform applicationbusinessowner.fullname using optionStringMapping
+					lines: 2
+				}
+			}
+			GridCell {
+			}
+			GridCell {
+			}
+		}
+
+		GridRow {
+			GridCell {
+				span:4
+				Header {
+					value:"What do you want to do?"
+				}
+			}
+		}
+		GridRow {
+			height:grow
+			GridCell {
+				span:4
+				ButtonGroup {
+						Button {
+							actions:Dialog identityPicker(newmanagerUid from outUid), 
+									Confirm $updateapplicationmanager_startNLS.newmanagerconfirm(Transform newManager.hrcode using mayBeNullMapping, newManager.fullname, application.displayname),
+									Flash Information $updateapplicationmanager_startNLS.confirmupdate,
+									Set paramApplicationUid to task.application,
+									Set newmanagerUid to task.manager,
+									StringCase(applicationbusinessowner.fullname) { when IsEmpty then [Set 'create' to task.action] otherwise [Set 'modify' to task.action] },
+									TaskComplete task wait,
+									GoTo Activity Application Detail with paramApplicationUid to paramApplicationUid
+							text:$updateapplicationmanager_startNLS.setmanager
+							layout:Layout{hint:width 320 height 128}
+						}					
+						Button {
+							actions:Confirm $updateapplicationmanager_startNLS.newmanagerremove(Transform applicationbusinessowner.hrcode using mayBeNullMapping, applicationbusinessowner.fullname, application.displayname),
+									Flash Information $updateapplicationmanager_startNLS.removeupdate,
+									Set paramApplicationUid to task.application,
+									Set 'delete' to task.action,
+									TaskComplete task wait,
+									GoTo Activity Application Detail with paramApplicationUid to paramApplicationUid
+							text:$updateapplicationmanager_startNLS.removemanager
+							layout:Layout{hint:width 320 height 128}
+							disabled:StringPredicate(applicationbusinessowner.fullname) {when IsEmpty then True}
+						}					
+						Button {
+							actions:Dialog entityDetailsManagerAuditDialog("Application" to type, paramApplicationUid to entity) 
+						                        feature:applicationdetails_auditmanager
+							                       
+							text:$updateapplicationmanager_startNLS.manageraudittrail
+						}
+				}		
+			}
+		}
+	}
+}
+

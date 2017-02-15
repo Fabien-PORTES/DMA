@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbaccountsidentityback" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="applicationDetail_nbaccountsidentitymoved">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1366622995776_184" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1366623007326_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1375891002979_517" kind="inner" identitysecure="false" join="account">
+		<ViewAttribute name="1375891007545_519" attribute="recorduid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1375891012184_521" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1366622114598_0" operation="isFalse" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1366622118370_1" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1366623398978_211" kind="inner" identitysecure="false" join="identityreconciliation">
+			<ViewAttribute name="A1379341607358_441" attribute="importaction" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1379341615738_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="R"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

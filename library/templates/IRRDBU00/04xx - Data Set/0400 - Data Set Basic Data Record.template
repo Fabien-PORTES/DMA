@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="Data set basic data record" description="The Data Set Basic Data record defines the basic information for a data set. There is one record per data set profile.">
+	<Source type="FORMATTED" filter="^0400 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="DSBD_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the Data Set Basic Data record (0400)."/>
+		<Attribute name="A4199536690768339793" attribute="DSBD_NAME" column="6-49" type="String" multivalued="false" description="Data set name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="DSBD_VOL" column="51-56" type="String" multivalued="false" description="Volume upon which this data set resides. Blank if the profile is generic, and *MODEL if the profile is a model profile."/>
+		<Attribute name="A7466509792483562715" attribute="DSBD_GENERIC" column="58-61" type="Boolean" multivalued="false" description="Is this a generic profile?"/>
+		<Attribute name="A3188661801656117613" attribute="DSBD_CREATE_DATE" column="63-72" type="Date" multivalued="false" description="Date the profile was created."/>
+		<Attribute name="A4037269903301147695" attribute="DSBD_OWNER_ID" column="74-81" type="String" multivalued="false" description="The user ID or group name that owns the profile."/>
+		<Attribute name="A7863438466300294503" attribute="DSBD_LASTREF_DATE" column="83-92" type="Date" multivalued="false" description="The date that the data set was last referenced."/>
+		<Attribute name="A8801039954934473602" attribute="DSBD_LASTCHG_DATE" column="94-103" type="Date" multivalued="false" description="The date that the data set was last changed."/>
+		<Attribute name="A2460635583838380635" attribute="DSBD_ALTER_CNT" column="105-109" type="Number" multivalued="false" description="The number of times that the data set was accessed with ALTER authority."/>
+		<Attribute name="A5281244329858370167" attribute="DSBD_CONTROL_CNT" column="111-115" type="Number" multivalued="false" description="The number of times that the data set was accessed with CONTROL authority."/>
+		<Attribute name="A5281244329858370168" attribute="DSBD_UPDATE_CNT" column="117-121" type="Number" multivalued="false" description="The number of times that the data set was accessed with UPDATE authority."/>
+		<Attribute name="A5281244329858370169" attribute="DSBD_READ_CNT" column="123-127" type="Number" multivalued="false" description="The number of times that the data set was accessed with READ authority."/>
+		<Attribute name="A5281244329858370170" attribute="DSBD_UACC" column="129-136" type="String" multivalued="false" description="The universal access of this data set. Valid values are NONE, EXECUTE, READ, UPDATE, CONTROL, and ALTER."/>
+		<Attribute name="A5281244329858370171" attribute="DSBD_GRPDS" column="138-141" type="Boolean" multivalued="false" description="Is this a group data set?"/>
+		<Attribute name="A5281244329858370172" attribute="DSBD_AUDIT_LEVEL" column="143-150" type="String" multivalued="false" description="Indicates the level of resource-owner-specified auditing that is performed. Valid values are ALL, SUCCESS, FAIL, and NONE."/>
+		<Attribute name="A5281244329858370173" attribute="DSBD_GRP_ID" column="152-159" type="String" multivalued="false" description="The connect group of the user who created this data set."/>
+		<Attribute name="A5281244329858370174" attribute="DSBD_DS_TYPE" column="161-168" type="String" multivalued="false" description="The type of the data set. Valid values are VSAM, NONVSAM, TAPE, and MODEL."/>
+		<Attribute name="A5281244329858370175" attribute="DSBD_LEVEL" column="170-172" type="Number" multivalued="false" description="The level of the data set."/>
+		<Attribute name="A5281244329858370176" attribute="DSBD_DEVICE_NAME" column="174-181" type="String" multivalued="false" description="The EBCDIC name of the device type on which the data set resides."/>
+		<Attribute name="A5281244329858370177" attribute="DSBD_GAUDIT_LEVEL" column="183-190" type="String" multivalued="false" description="Indicates the level of auditor-specified auditing that is performed. Valid values are ALL, SUCCESS, FAIL, and NONE."/>
+		<Attribute name="A5281244329858370178" attribute="DSBD_INSTALL_DATA" column="192-446" type="String" multivalued="false" description="Installation-defined data."/>
+		<Attribute name="A5281244329858370179" attribute="DSBD_AUDIT_OKQUAL" column="448-455" type="String" multivalued="false" description="The resource-owner-specified successful access audit qualifier. This is set to blanks if AUDIT_LEVEL is NONE. Otherwise, it is set to either READ, UPDATE, CONTROL, or ALTER."/>
+		<Attribute name="A5281244329858370180" attribute="DSBD_AUDIT_FAQUAL" column="457-464" type="String" multivalued="false" description="The resource-owner-specified failing access audit qualifier. This is set to blanks if AUDIT_LEVEL is NONE. Otherwise, it is set to either READ, UPDATE, CONTROL, or ALTER."/>
+		<Attribute name="A5281244329858370181" attribute="DSBD_GAUDIT_OKQUAL" column="466-473" type="String" multivalued="false" description="The auditor-specified successful access audit qualifier. This is set to blanks if GAUDIT_LEVEL is NONE. Otherwise, it is set to either READ, UPDATE, CONTROL, or ALTER."/>
+		<Attribute name="A5281244329858370182" attribute="DSBD_GAUDIT_FAQUAL" column="475-482" type="String" multivalued="false" description="The auditor-specified failing access audit qualifier. This is set to blanks if GAUDIT_LEVEL is NONE. Otherwise, it is set to either READ, UPDATE, CONTROL, or ALTER."/>
+		<Attribute name="A5281244329858370183" attribute="DSBD_WARNING" column="484-487" type="Boolean" multivalued="false" description="Does this data set have the WARNING attribute?"/>
+		<Attribute name="A5281244329858370184" attribute="DSBD_SECLEVEL" column="489-491" type="Number" multivalued="false" description="The data set security level."/>
+		<Attribute name="A5281244329858370185" attribute="DSBD_NOTIFY_ID" column="493-500" type="String" multivalued="false" description="User ID that is notified when violations occur."/>
+		<Attribute name="A5281244329858370186" attribute="DSBD_RETENTION" column="502-506" type="Number" multivalued="false" description="Retention period of the data set."/>
+		<Attribute name="A5281244329858370187" attribute="DSBD_ERASE" column="508-511" type="Boolean" multivalued="false" description="For a DASD data set, is this data set scratched when the data set is deleted?"/>
+		<Attribute name="A5281244329858370188" attribute="DSBD_SECLABEL" column="513-520" type="String" multivalued="false" description="Security label of the data set."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+	<Checks>
+		<Check name="U1314367823667" attribute="DSBD_UACC" checktype="regexp" checkvalue="^NONE|EXECUTE|READ|UPDATE|CONTROL|ALTER$" event="Invalid UACC"/>
+		<Check name="U1314367823668" attribute="DSBD_AUDIT_LEVEL" checktype="regexp" checkvalue="^ALL|SUCCESS|FAIL|NONE$" event="Invalid audit level"/>
+		<Check name="U1314367823669" attribute="DSBD_DS_TYPE" checktype="regexp" checkvalue="^VSAM|NONVSAM|TAPE|MODEL$" event="Invalid DataSet Type"/>
+		<Check name="U1314367823670" attribute="DSBD_GAUDIT_LEVEL" checktype="regexp" checkvalue="^ALL|SUCCESS|FAIL|NONE$" event="Invalid gaudit level"/>
+		<Check name="U1314367823671" attribute="DSBD_AUDIT_OKQUAL" checktype="regexp" checkvalue="^READ|UPDATE|CONTROL|ALTER$" event="Invalid audit okqual"/>
+		<Check name="U1314367823672" attribute="DSBD_AUDIT_FAQUAL" checktype="regexp" checkvalue="^READ|UPDATE|CONTROL|ALTER$" event="Invalid audit faqual"/>
+		<Check name="U1314367823673" attribute="DSBD_GAUDIT_OKQUAL" checktype="regexp" checkvalue="^READ|UPDATE|CONTROL|ALTER$" event="Invalid gaudit okqual"/>
+		<Check name="U1314367823674" attribute="DSBD_GAUDIT_FAQUAL" checktype="regexp" checkvalue="^READ|UPDATE|CONTROL|ALTER$" event="Invalid gaudit faqual"/>
+	</Checks>
+</Discovery>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identity_movers" errorifempty="false" distinct="true" identitysecure="true" concept="identity" displayname="identity_movers">
+	<ViewAttribute name="A1382524229491_1799" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382524230473_1800" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382524240271_1801" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382524242267_1802" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382524246437_1803" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382524259515_1804" attribute="allocationchanged" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1382524262037_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1382524272647_1806" kind="left" identitysecure="false" join="timeslotidentities">
+		<ViewAttribute name="A1382524277374_1807" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382524280593_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1382524306035_1809" prefix="previous_" kind="left" identitysecure="false" join="allocation">
+			<ViewAttribute name="1382524449518_1827" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1382524449518_1828" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1382524318129_1812" prefix="previous_org_" kind="left" identitysecure="false" join="organisation">
+				<ViewAttribute name="1382524449520_1829" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1382524449520_1830" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1382524449521_1831" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1382524449522_1832" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1382524449522_1833" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1382524306035_1809" prefix="current_" kind="left" identitysecure="false" join="allocation">
+		<ViewAttribute name="A1382524313786_1810" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1382524314469_1811" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1382524318129_1812" prefix="current_org_" kind="left" identitysecure="false" join="organisation">
+			<ViewAttribute name="A1382524325734_1813" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1382524440978_1814" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1382524442356_1815" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1382524443144_1816" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1382524443910_1817" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

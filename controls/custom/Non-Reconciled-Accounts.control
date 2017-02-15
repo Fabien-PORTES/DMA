@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Control PUBLIC "-//Brainwave//DTD Control Type 1 1.0//EN" "urn:brainwave:igrc:dtds/control_t1.dtd">
+<Control type="1" version="2" code="678bcb26-ef94-4862-9c3b-81d7ae7311ea" name="NonReconciliedAccounts" displayname="Non-Reconcilied-Accounts" executionplan="true" risklevel="3" riskinfo="medium level">
+	<ControlType1 name="t1" permissionimpact="false">
+		<ControlRule name="rule" rule="NonReconciledAccounts"/>
+	</ControlType1>
+	<ControlMetrics name="metrics">
+		<Metric name="count" enabled="true"/>
+		<Metric name="ratio" enabled="false"/>
+	</ControlMetrics>
+	<ControlTags name="tags">
+		<Tag name="application" content="DMA"/>
+	</ControlTags>
+</Control>

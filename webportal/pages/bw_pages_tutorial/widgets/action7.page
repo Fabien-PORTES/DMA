@@ -1,0 +1,28 @@
+action7 = Page {
+	title:'Adding icon commands to an edit widget'	
+	
+	myvariable = Variable{type:String multivalued:False initial:'This edit field has some action icons attached to it'}
+
+	Edit {
+		label:'My edit field'
+		variable:myvariable
+		commands:Commands {
+			position:After
+			presentation:Icon
+			Command {
+				actions:Message 'command 1'
+				icon:"16/audit/identity_16.png"
+			}
+			Command {
+				actions:Message 'command 1'
+				icon:"16/audit/application_16.png"
+			}
+			Command {
+				actions:Message 'command 1'
+				icon:"16/audit/account_16.png"
+			}
+		}
+	}
+}
+
+

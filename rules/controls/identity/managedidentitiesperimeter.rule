@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_managedidentitiesperimeter" operator="and" query="identity" displayname="Identity perimeter for organisation manager {principalUid}" version="3">
+	<RequestParam name="principalUid" displayname="principalUid" query="identity" criteria="eqUid" criteriaparam="uidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestJoin name="J1381502206438_550" operator="and" join="organisation">
+		<RequestJoin name="J1381502212033_551" operator="and" join="downmanager">
+			<RequestCriteria name="C1381502218652_552" criteria="eqUid">
+				<RequestCriteriaParam name="uidParam" reference="principalUid" ignoreifempty="false">
+					<Value name="0"/>
+				</RequestCriteriaParam>
+			</RequestCriteria>
+		</RequestJoin>
+	</RequestJoin>
+</Request>

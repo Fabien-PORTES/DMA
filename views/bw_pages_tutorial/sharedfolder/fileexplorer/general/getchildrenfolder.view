@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_getchildrenfolder" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_getchildrenfolder" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1436781780350_512" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1436781784455_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1436781910127_515" prefix="child_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="downpermission">
+		<ViewJoin name="J1436781937808_516" prefix="subchildren_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="downpermission">
+			<ViewAttribute name="A1436781947994_517" attribute="uid" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="true">
+				<ViewAttributeFilter name="F1436781957403_0" operation="gt" ignoreifempty="false">
+					<Value name="0" data="0"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewAttribute name="A1436781988034_519" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436781988926_520" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436781989678_521" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436781990506_522" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

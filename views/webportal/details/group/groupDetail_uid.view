@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_groupDetail_uid" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="group" displayname="br_groupDetail_uid" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1418221727723_397" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1418221732549_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1418221728497_398" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+</View>

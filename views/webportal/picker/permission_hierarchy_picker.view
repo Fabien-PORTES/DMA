@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permission_hierarchy_picker" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="Permission hierarchy picker" notes="">
+	<ViewParam name="applicationUid" displayname="applicationUid"/>
+	<ViewParam name="recorduid" displayname="Parent permission recordUid"/>
+	<ViewComputedAttribute name="relativename" displayname="Relative file name" type="String" expression="(Math.max(dataset.displayname.get(0).lastIndexOf(&apos;/&apos;), dataset.displayname.get(0).lastIndexOf(&apos;\\&apos;)) != -1) ? dataset.displayname.get(0).substring(Math.max(dataset.displayname.get(0).lastIndexOf(&apos;/&apos;), dataset.displayname.get(0).lastIndexOf(&apos;\\&apos;)) + 1) : dataset.displayname.get(0)"/>
+	<ViewSort name="sort" attribute1="A1336123021367_56" attribute2="A1336122235645_40"/>
+	<ViewAttribute name="A1336122233145_37" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336122233989_38" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336122234833_39" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336122235645_40" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1336122250411_41" kind="left" identitysecure="false" join="parentpermission">
+		<ViewAttribute name="A1336122262145_42" attribute="recorduid" alias="parent" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1336122291801_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1336122617177_52" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="A1336122623818_53" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1336122628193_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+			<ViewAttributeFilter name="F1336122646943_1" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Sharepoint"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1336123021367_56" attribute="displayname" alias="applicationdisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1379492203083_386" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1379492241354_0" reference="applicationUid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="ticketReviewList" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="ticketReviewList" notes="">
+	<ViewParam name="uid" displayname="Uid"/>
+	<ViewSort name="sort" attribute1="A1486480378733_828" direction1="DESC"/>
+	<ViewJoin name="J1486479157349_778" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketreview">
+		<ViewAttribute name="A1486479164189_779" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486480357157_825" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486480362822_826" attribute="comment" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1486480372933_827" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketaction">
+			<ViewAttribute name="A1486480378733_828" attribute="startdate" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1486480403101_829" attribute="actorfullname" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1486479171133_780" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486479180053_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486479442989_782" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1486479464637_784" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1486479469253_785" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1486479482389_786" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486479490653_787" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486479492533_788" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486479494781_789" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486479506805_790" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

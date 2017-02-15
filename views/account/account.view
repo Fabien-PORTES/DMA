@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_account" distinct="true" concept="account" displayname="Account list or picker" notes="">
+	<ViewParam name="repositorycode" displayname="Repository Code"/>
+	<ViewParam name="username" displayname="User Name"/>
+	<ViewParam name="recorduid" displayname="Record UID"/>
+	<ViewParam name="repositoryrecorduid" displayname="Repository Record UID"/>
+	<ViewParam name="login" displayname="Login"/>
+	<ViewParam name="identifier" displayname="Identifier"/>
+	<ViewSort name="sort" attribute1="A1302120212862_12" attribute2="A1302120212862_11"/>
+	<ViewAttribute name="A1302120212862_2" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302120330472_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302120212862_3" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_4" attribute="repositoryrecorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302120343669_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302120212862_5" attribute="repositoryuid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_6" attribute="repositorycode" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302120386647_0" reference="repositorycode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302120212862_7" attribute="repositorydisplayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_8" attribute="repositorymedia" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_9" attribute="repositoryextractdate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_10" attribute="repositorytype" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_11" attribute="identifier" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302120402341_0" reference="identifier" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302120212862_12" attribute="login" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302120422668_0" reference="login" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302120212862_13" attribute="profile" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_14" attribute="username" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302120439204_0" reference="username" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302120212862_15" attribute="mail" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_16" attribute="creationdate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_17" attribute="lastlogindate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_18" attribute="passwordlastsetdate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_19" attribute="service" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_20" attribute="disabled" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_21" attribute="locked" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_22" attribute="logincount" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_23" attribute="badpasswordcount" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_24" attribute="passwordnotrequired" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_25" attribute="passwordcantchange" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_26" attribute="notnormalaccount" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_27" attribute="dontexpirepassword" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_28" attribute="passwordexpired" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_29" attribute="smartcardrequired" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_30" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_31" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_32" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_33" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_34" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_35" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_36" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_37" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302120212862_38" attribute="custom9" operator="or" removedfromprojection="false"/>
+</View>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryDetail_nbgroupsnopermission" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="br_repositoryDetail_nbgroupsnopermission" notes="">
+	<ViewParam name="uid" displayname="uid">
+		<Value name="0" data="OPENLDAP_1375864334305_2033"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378797945606_710" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378797947432_711" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1378797951769_712" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1378797963722_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewCriteria name="I1378798007237_715" criteria="noRightGroup">
+	</ViewCriteria>
+</View>

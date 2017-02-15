@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryDetail_nbemptygroups" errorifempty="false" distinct="true" identitysecure="false" concept="repository" displayname="br_repositoryDetail_nbgroups">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1376492487808_220" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1376896846454_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1376492506286_228" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376492499108_226" attribute="type" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1376493607269_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="A"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1376492502525_227" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376492495019_224" attribute="extractDate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376492497423_225" attribute="extractday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376492493365_223" attribute="media" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376492491351_222" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376492489603_221" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376492485593_219" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1376900734174_571" kind="left" identitysecure="false" join="group">
+		<ViewAttribute name="A1376900743146_573" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewCriteria name="I1377272885066_398" criteria="noChild">
+		</ViewCriteria>
+		<ViewCriteria name="I1377272887843_399" criteria="noAccount">
+		</ViewCriteria>
+	</ViewJoin>
+</View>

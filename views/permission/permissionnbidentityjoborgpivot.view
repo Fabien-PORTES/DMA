@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissionnbidentityjoborgpivot" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="Count for a given permission the # of identities by job and org" notes="">
+	<ViewParam name="permissionrecorduid" displayname="permission record uid"/>
+	<ViewParam name="lowthreshold" displayname="Low threshold">
+		<Value name="0" data="1"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303543911063_2" attribute="recorduid" alias="nbidentiy" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1303545762240_0" reference="lowthreshold" operation="ge" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1303543923499_3" prefix="org_" kind="left" identitysecure="false" join="organisation">
+		<ViewAttribute name="A1303543937719_4" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1303543939548_5" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1303543941158_6" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1303543991273_9" kind="inner" identitysecure="false" join="accountreconciliation">
+		<ViewJoin name="J1303543995217_10" kind="inner" identitysecure="false" join="right">
+			<ViewJoin name="J1303543998302_11" kind="inner" identitysecure="false" join="permission">
+				<ViewAttribute name="A1303544001699_12" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1303544025275_0" reference="permissionrecorduid" operation="eq" ignoreifempty="true"/>
+				</ViewAttribute>
+				<ViewJoin name="J1304087572600_15415" kind="inner" identitysecure="false" join="application">
+					<ViewAttribute name="A1316334014989_4933" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1316334018535_0" operation="eq" ignoreifempty="false">
+							<Value name="0" data="Profile"/>
+						</ViewAttributeFilter>
+					</ViewAttribute>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="1382793551836_2067" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382787435042_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382787439277_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1303544052081_14" attribute="jobtitlerecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303544053570_15" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303544054858_16" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

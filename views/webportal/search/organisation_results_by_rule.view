@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisation_results_by_rule" distinct="true" concept="organisation" displayname="Organisation results by rule" notes="">
+	<ViewParam name="ruleName" displayname="Rule name"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1347628302341_539" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_540" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_541" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_542" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_543" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_544" attribute="organisationtyperecorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_545" attribute="organisationtypeuid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_546" attribute="organisationtypecode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_547" attribute="organisationtypedisplayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_548" attribute="importaction" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347628302341_549" attribute="deletedaction" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1347628307560_550" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1347628326701_551" attribute="rulename" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1347628329286_0" reference="ruleName" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1347628340801_553" attribute="ruleentity" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1347628343072_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Organisation"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

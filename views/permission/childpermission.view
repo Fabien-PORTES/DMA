@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="childpermission" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="child permission" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1399024315538_1574" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1399024413798_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1399024327958_1575" prefix="child_" kind="inner" identitysecure="false" join="childpermissionlink">
+		<ViewAttribute name="A1399024338228_1576" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024338228_1577" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024338228_1578" attribute="code" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024338228_1579" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024338228_1580" attribute="permissiontype" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024338228_1581" attribute="applicationrecorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024338228_1582" attribute="importaction" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024338228_1583" attribute="deletedaction" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1399024477728_1655" prefix="account_" kind="left" identitysecure="false" join="accountright">
+			<ViewAttribute name="A1399024495218_1656" attribute="recorduid" alias="nbaccounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

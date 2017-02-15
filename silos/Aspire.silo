@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Silo PUBLIC "-//Brainwave//DTD Silo 1.0//EN" "urn:brainwave:igrc:dtds/silo.dtd">
+<Silo version="1" name="Aspire" displayname="Aspire" type="theoretical" collector="/collectors/ASPIRE/aspire_LOADALL.collector">
+	<Repository name="repository" repositorycode="ASPIRE" repositorydisplayname="ASPIRE"/>
+</Silo>

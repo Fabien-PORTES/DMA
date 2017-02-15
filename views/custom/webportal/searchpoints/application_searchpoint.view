@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="application_searchpoint" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="true" repositorysecure="false" searchpoint="true" concept="application" displayname="Application with search point" notes="" begindate="" enddate="">
+	<ViewParam name="applicationtype" displayname="applicationtype"/>
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="displayname" displayname="Displayname"/>
+	<ViewParam name="BO_Login" displayname="BO_Login"/>
+	<ViewParam name="BO_mail" displayname="BO_Mail"/>
+	<ViewParam name="BO_FullName" displayname="BO_FullName"/>
+	<ViewParam name="manager_Login" displayname="App Manager Login"/>
+	<ViewParam name="manager_mail" displayname="App Manager Mail"/>
+	<ViewParam name="manager_FullName" displayname="App Manager Full Name"/>
+	<ViewParam name="manager_delegate_FullName" displayname="App Manager Delegate Full Name"/>
+	<ViewParam name="manager_delegate_Login" displayname="App Manager Delegate Login"/>
+	<ViewParam name="manager_delegate_Mail" displayname="App Manager Delegate Mail"/>
+	<ViewSort name="sort" attribute1="A1423217977766_377"/>
+	<ViewAttribute name="A1423217966320_375" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423217970814_376" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1440061825084_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423217977766_377" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423217979878_378" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570630680_0" reference="displayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1423218011871_380" prefix="repository_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1423218023294_381" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423218034246_382" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1423583267773_566" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1423583270846_0" reference="applicationtype" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486565521878_81004" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570639422_0" reference="BO_Login" aliasreference="" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486565524198_81008" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570647006_0" reference="BO_mail" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486565525686_81010" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570707606_0" reference="BO_FullName" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486565527190_81014" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570715358_0" reference="manager_Login" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486565528526_81017" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570723526_0" reference="manager_mail" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486565530022_81026" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570729670_0" reference="manager_FullName" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486565547502_81054" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570736430_0" reference="manager_delegate_Login" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486565548702_81059" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570747174_0" reference="manager_delegate_Mail" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486565549830_81063" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486570757182_0" reference="manager_delegate_FullName" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

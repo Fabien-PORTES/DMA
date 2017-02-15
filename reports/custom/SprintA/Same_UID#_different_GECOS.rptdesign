@@ -1,0 +1,1154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="author">Brainwave</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.0.v201405191524 Build &lt;4.4.0.v20140606-1451></property>
+    <text-property name="title">Brainwave Template</text-property>
+    <simple-property-list name="includeResource">
+        <value>reports/resources/concepts</value>
+    </simple-property-list>
+    <list-property name="includeScripts">
+        <property>reports/scripts/common.js</property>
+        <property>reports/scripts/debugWindow.js</property>
+    </list-property>
+    <property name="units">in</property>
+    <method name="beforeFactory"><![CDATA[beforeFactory();
+reportContext.getAppContext().put("MAX_PAGE_BREAK_INTERVAL",10000000);]]></method>
+    <property name="theme">brainwave.Brainwave blue</property>
+    <property name="iconFile">/custom-templates/TEMPLATE empty.png</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">reports/library/brainwave.rptlibrary</property>
+            <property name="namespace">brainwave</property>
+        </structure>
+    </list-property>
+    <data-sources>
+        <oda-data-source extensionID="com.brainwave.iaudit.oda.runtime" name="Brainwave ODA DataSource" id="828"
+ extends="brainwave.Brainwave ODA DataSource"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="com.brainwave.iaudit.oda.runtime.dataSet" name="Data Set" id="1155">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">identifier</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">sid</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">guid</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">login</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">givenname</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">surname</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">username</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">disabled</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">service</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom1</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">Vintella</text-property>
+                    <text-property name="heading">Vintella</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom4</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">uidnumber</text-property>
+                    <text-property name="heading">uidnumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom5</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">AD4Unix_SAM</text-property>
+                    <text-property name="heading">AD4Unix_SAM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">custom9</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">GECOS</text-property>
+                    <text-property name="heading">GECOS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">code</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">displayname</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">type</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">identifier</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">sid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">guid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">login</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">givenname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">surname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">username</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">disabled</property>
+                        <property name="dataType">boolean</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">service</property>
+                        <property name="dataType">boolean</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">custom1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">custom4</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">custom5</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">custom9</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">displayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">type</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Brainwave ODA DataSource</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">identifier</property>
+                    <property name="nativeName">identifier</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">sid</property>
+                    <property name="nativeName">sid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">guid</property>
+                    <property name="nativeName">guid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">login</property>
+                    <property name="nativeName">login</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">givenname</property>
+                    <property name="nativeName">givenname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">surname</property>
+                    <property name="nativeName">surname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">username</property>
+                    <property name="nativeName">username</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">disabled</property>
+                    <property name="nativeName">disabled</property>
+                    <property name="dataType">boolean</property>
+                    <property name="nativeDataType">16</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">service</property>
+                    <property name="nativeName">service</property>
+                    <property name="dataType">boolean</property>
+                    <property name="nativeDataType">16</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">custom1</property>
+                    <property name="nativeName">custom1</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">custom4</property>
+                    <property name="nativeName">custom4</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">custom5</property>
+                    <property name="nativeName">custom5</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">custom9</property>
+                    <property name="nativeName">custom9</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">code</property>
+                    <property name="nativeName">code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">displayname</property>
+                    <property name="nativeName">displayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">type</property>
+                    <property name="nativeName">type</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[NIS_Details]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>identifier</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>sid</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>guid</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>login</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>givenname</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>surname</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>username</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>disabled</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>16</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>service</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>16</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom1</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>Vintella</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>Vintella</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom4</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>uidnumber</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>uidnumber</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom5</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>AD4Unix_SAM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>AD4Unix_SAM</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>custom9</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>GECOS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>GECOS</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>code</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>displayname</design:name>
+              <design:position>15</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>type</design:name>
+              <design:position>16</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Brainwave Master Page Portrait" id="7" extends="brainwave.Brainwave Master Page Portrait">
+            <overridden-values>
+                <ref-entry baseId="958" name="NewGrid21" id="958"/>
+                <ref-entry baseId="959" id="959"/>
+                <ref-entry baseId="960" id="960"/>
+                <ref-entry baseId="961" id="961"/>
+                <ref-entry baseId="962" id="962"/>
+                <ref-entry baseId="963" id="963"/>
+                <ref-entry baseId="964" id="964"/>
+                <ref-entry baseId="965" name="NewLabel411" id="965"/>
+                <ref-entry baseId="966" id="966"/>
+                <ref-entry baseId="967" name="NewGrid11" id="967"/>
+                <ref-entry baseId="968" id="968"/>
+                <ref-entry baseId="969" id="969"/>
+                <ref-entry baseId="970" id="970"/>
+                <ref-entry baseId="971" id="971"/>
+                <ref-entry baseId="972" id="972"/>
+                <ref-entry baseId="973" name="NewText11" id="973"/>
+                <ref-entry baseId="974" id="974"/>
+                <ref-entry baseId="975" name="NewTextData1" id="975"/>
+                <ref-entry baseId="976" id="976"/>
+                <ref-entry baseId="977" name="NewGrid31" id="977"/>
+                <ref-entry baseId="978" id="978"/>
+                <ref-entry baseId="979" id="979"/>
+                <ref-entry baseId="980" id="980"/>
+                <ref-entry baseId="981" id="981"/>
+                <ref-entry baseId="982" id="982"/>
+                <ref-entry baseId="983" name="NewAutoText2" id="983"/>
+                <ref-entry baseId="984" id="984"/>
+                <ref-entry baseId="985" name="NewText2" id="985"/>
+                <ref-entry baseId="986" id="986"/>
+                <ref-entry baseId="987" name="NewAutoText11" id="987"/>
+            </overridden-values>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="816">
+            <property name="width">7.758333333333334in</property>
+            <column id="817">
+                <property name="width">7.758333333333334in</property>
+            </column>
+            <row id="818">
+                <cell id="819">
+                    <label name="sheetname" id="820">
+                        <property name="style">Dark_Blue</property>
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="fontSize">18px</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="color">#FFFFFF</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">NIS Accounts With Same UID# and Different Full Name</text-property>
+                    </label>
+                </cell>
+            </row>
+        </grid>
+        <text id="610">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<br>]]></text-property>
+        </text>
+        <grid id="821">
+            <property name="width">7.775in</property>
+            <column id="822">
+                <property name="width">7.775in</property>
+            </column>
+            <row id="824">
+                <cell id="825">
+                    <table id="1089">
+                        <property name="dataSet">Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">identifier</property>
+                                <text-property name="displayName">identifier</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["identifier"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">sid</property>
+                                <text-property name="displayName">sid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["sid"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">guid</property>
+                                <text-property name="displayName">guid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["guid"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">login</property>
+                                <text-property name="displayName">login</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["login"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">givenname</property>
+                                <text-property name="displayName">givenname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["givenname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">surname</property>
+                                <text-property name="displayName">surname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["surname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">username</property>
+                                <text-property name="displayName">username</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["username"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">disabled</property>
+                                <text-property name="displayName">disabled</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["disabled"]</expression>
+                                <property name="dataType">boolean</property>
+                            </structure>
+                            <structure>
+                                <property name="name">service</property>
+                                <text-property name="displayName">service</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["service"]</expression>
+                                <property name="dataType">boolean</property>
+                            </structure>
+                            <structure>
+                                <property name="name">custom1</property>
+                                <text-property name="displayName">Vintella</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["custom1"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">custom4</property>
+                                <text-property name="displayName">uidnumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["custom4"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">custom9</property>
+                                <text-property name="displayName">GECOS</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["custom9"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">code</property>
+                                <text-property name="displayName">code</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["code"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">displayname</property>
+                                <text-property name="displayName">displayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["displayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">type</property>
+                                <text-property name="displayName">type</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["type"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">CountDistinct FullName</property>
+                                <text-property name="displayName">CountDistinct FullName</text-property>
+                                <property name="dataType">integer</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>UID</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">COUNTDISTINCT</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["username"]</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">UID count distinct</property>
+                                <property name="dataType">integer</property>
+                                <property name="aggregateFunction">COUNTDISTINCT</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["custom4"]</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <property name="pageBreakInterval">1000000</property>
+                        <list-property name="sort">
+                            <structure>
+                                <expression name="key" type="javascript">row["NISAccount_login"]</expression>
+                                <property name="direction">asc</property>
+                                <property name="strength">-1</property>
+                            </structure>
+                            <structure>
+                                <expression name="key" type="javascript">row["displayname"]</expression>
+                                <property name="direction">asc</property>
+                                <property name="strength">15</property>
+                            </structure>
+                            <structure>
+                                <expression name="key" type="javascript">row["NISAccount_custom4"]</expression>
+                                <property name="direction">asc</property>
+                                <property name="strength">15</property>
+                            </structure>
+                            <structure>
+                                <expression name="key" type="javascript">row["NISAccount_custom9"]</expression>
+                                <property name="direction">asc</property>
+                                <property name="strength">15</property>
+                            </structure>
+                        </list-property>
+                        <list-property name="filter">
+                            <structure>
+                                <property name="operator">ge</property>
+                                <expression name="expr" type="javascript">row["CountDistinct FullName"]</expression>
+                                <simple-property-list name="value1">
+                                    <value>2</value>
+                                </simple-property-list>
+                                <property name="updateAggregation">true</property>
+                            </structure>
+                        </list-property>
+                        <column id="1105"/>
+                        <column id="1106"/>
+                        <column id="1107"/>
+                        <column id="1108"/>
+                        <column id="1178"/>
+                        <header>
+                            <row id="1117">
+                                <cell id="1118">
+                                    <property name="style">Dark_Blue</property>
+                                </cell>
+                                <cell id="1119">
+                                    <property name="style">Dark_Blue</property>
+                                    <text id="1122">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[Total number of impacted UID#:]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="1120">
+                                    <property name="style">Dark_Blue</property>
+                                    <data id="1181">
+                                        <property name="resultSetColumn">UID count distinct</property>
+                                    </data>
+                                </cell>
+                                <cell id="1121">
+                                    <property name="style">Dark_Blue</property>
+                                </cell>
+                                <cell id="1174">
+                                    <property name="style">Dark_Blue</property>
+                                </cell>
+                            </row>
+                            <row id="1090">
+                                <cell id="1091">
+                                    <property name="style">Dark_Blue</property>
+                                    <label id="1109">
+                                        <text-property name="text">UID</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="1092">
+                                    <property name="style">Dark_Blue</property>
+                                    <label id="1111">
+                                        <text-property name="text">UID#</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="1093">
+                                    <property name="style">Dark_Blue</property>
+                                    <label id="1113">
+                                        <text-property name="text">NIS Domain</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="1094">
+                                    <property name="style">Dark_Blue</property>
+                                    <label id="1115">
+                                        <text-property name="text">GECOS</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="1175">
+                                    <property name="style">Dark_Blue</property>
+                                    <label id="1179">
+                                        <text-property name="text">Full Name</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <group id="1156">
+                            <property name="groupName">UID</property>
+                            <expression name="keyExpr" type="javascript">row["custom4"]</expression>
+                            <structure name="toc">
+                                <expression name="expressionValue" type="javascript">row["custom4"]</expression>
+                            </structure>
+                            <property name="hideDetail">false</property>
+                            <footer>
+                                <row id="1163">
+                                    <cell id="1164"/>
+                                    <cell id="1165"/>
+                                    <cell id="1166"/>
+                                    <cell id="1167"/>
+                                    <cell id="1177"/>
+                                </row>
+                            </footer>
+                        </group>
+                        <detail>
+                            <row id="1095">
+                                <cell id="1096">
+                                    <text-data id="1170">
+                                        <expression name="valueExpr">row["login"]</expression>
+                                        <property name="contentType">html</property>
+                                    </text-data>
+                                </cell>
+                                <cell id="1097">
+                                    <text-data id="1171">
+                                        <expression name="valueExpr">row["custom4"]</expression>
+                                        <property name="contentType">html</property>
+                                    </text-data>
+                                </cell>
+                                <cell id="1098">
+                                    <text-data id="1172">
+                                        <expression name="valueExpr">row["displayname"]</expression>
+                                        <property name="contentType">html</property>
+                                    </text-data>
+                                </cell>
+                                <cell id="1099">
+                                    <text-data id="1173">
+                                        <expression name="valueExpr">row["custom9"]</expression>
+                                        <property name="contentType">html</property>
+                                    </text-data>
+                                </cell>
+                                <cell id="1176">
+                                    <text-data id="1180">
+                                        <expression name="valueExpr">row["username"]</expression>
+                                        <property name="contentType">html</property>
+                                    </text-data>
+                                </cell>
+                            </row>
+                        </detail>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">brainwave-logo.gif</property>
+            <property name="type">image/gif</property>
+            <property name="libReference">brainwave.brainwave-logo.gif</property>
+        </structure>
+        <structure>
+            <property name="name">account_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">account_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">empty_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.empty_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_48.png</property>
+        </structure>
+    </list-property>
+</report>

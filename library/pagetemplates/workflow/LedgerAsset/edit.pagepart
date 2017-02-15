@@ -1,0 +1,9 @@
+Text {
+	label: <template:variablelabel/>
+	value: <template:variablerecord/>.displayname
+	mixins: workflowTextWithCommandMixin
+	commands: Command { 
+		actions: Dialog assetPicker(<template:taskvariablename/> from outUid)
+		icon: "16/audit/asset_16.png"
+	}
+}

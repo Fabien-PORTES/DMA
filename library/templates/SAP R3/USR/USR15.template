@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343308341414" title="External User Name (Replaced By Table USRACL) " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A5830323485608388709" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A7534770491495789327" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A7534770491495789328" attribute="authname" column="AUTHNAME" type="String" multivalued="false" persistent="false" description="Unique user key of external security systems"/>
+		<Attribute name="A7534770491495789320" attribute="longname" column="LONGNAME" type="String" multivalued="false" persistent="false" description="Long user name (for ext. security systems)"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343308434211" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

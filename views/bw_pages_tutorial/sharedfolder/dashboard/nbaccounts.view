@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_nbaccounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_nbaccounts">
+	<ViewJoin name="J1438776435124_712" prefix="share_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="1438777057563_761" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438776448378_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1438777066277_762" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewJoin name="J1438777076469_764" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="directaccountright">
+		<ViewAttribute name="A1438777084855_765" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438777086534_0" operation="isFalse" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1438777090840_1" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1438777101603_768" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="1438865971657_805" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438776475148_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="D"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

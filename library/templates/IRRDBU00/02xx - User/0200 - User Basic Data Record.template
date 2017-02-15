@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User basic data record" description="The User Basic Data record defines the basic information about a user. There is one record per user.">
+	<Source type="FORMATTED" filter="^0200 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USBD_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the User Basic Data record (0200)."/>
+		<Attribute name="A4199536690768339793" attribute="USBD_NAME" column="6-13" type="String" multivalued="false" description="User ID as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="USBD_CREATE_DATE" column="15-24" type="Date" multivalued="false" description="The date that the profile was created."/>
+		<Attribute name="A7466509792483562715" attribute="USBD_OWNER_ID" column="26-33" type="String" multivalued="false" description="The user ID or group name that owns the profile."/>
+		<Attribute name="A3188661801656117613" attribute="USBD_ADSP" column="35-38" type="String" multivalued="false" description="Does the user have the ADSP attribute?"/>
+		<Attribute name="A4037269903301147695" attribute="USBD_SPECIAL" column="40-43" type="Boolean" multivalued="false" description="Does the user have the SPECIAL attribute?"/>
+		<Attribute name="A7863438466300294503" attribute="USBD_OPER" column="45-48" type="Boolean" multivalued="false" description="Does the user have the OPERATIONS attribute?"/>
+		<Attribute name="A8801039954934473602" attribute="USBD_REVOKE" column="50-53" type="Boolean" multivalued="false" description="Is the user REVOKEd?"/>
+		<Attribute name="A2460635583838380635" attribute="USBD_GRPACC" column="55-58" type="Boolean" multivalued="false" description="Does the user have the GRPACC attribute?"/>
+		<Attribute name="A5281244329858370167" attribute="USBD_PWD_INTERVAL" column="60-62" type="Number" multivalued="false" description="The number of days that the user's password can be used."/>
+		<Attribute name="A5281244329858370168" attribute="USBD_PWD_DATE" column="64-73" type="Date" multivalued="false" description="The date that the password was last changed."/>
+		<Attribute name="A5281244329858370169" attribute="USBD_PROGRAMMER" column="75-94" type="String" multivalued="false" description="The name associated with the user ID."/>
+		<Attribute name="A5281244329858370170" attribute="USBD_DEFGRP_ID" column="96-103" type="String" multivalued="false" description="The default group associated with the user."/>
+		<Attribute name="A5281244329858370171" attribute="USBD_LASTJOB_TIME" column="105-112" type="String" multivalued="false" description="The time that the user last entered the system."/>
+		<Attribute name="A5281244329858370172" attribute="USBD_LASTJOB_DATE" column="114-123" type="String" multivalued="false" description="The date that the user last entered the system."/>
+		<Attribute name="A5281244329858370173" attribute="USBD_INSTALL_DATA" column="125-379" type="String" multivalued="false" description="Installation-defined data."/>
+		<Attribute name="A5281244329858370174" attribute="USBD_UAUDIT" column="381-384" type="Boolean" multivalued="false" description="Do all RACHECK and RACDEF SVCs cause logging?"/>
+		<Attribute name="A5281244329858370175" attribute="USBD_AUDITOR" column="386-389" type="Boolean" multivalued="false" description="Does this user have the AUDITOR attribute?"/>
+		<Attribute name="A5281244329858370176" attribute="USBD_NOPWD" column="391-394" type="String" multivalued="false" description="'YES' indicates that this user ID can logon without a password using OID card. 'NO' indicates that this user must specify a password. 'PRO' indicates a protected user ID. 'PHR' indicates that the user has a password phrase."/>
+		<Attribute name="A5281244329858370177" attribute="USBD_OIDCARD" column="396-399" type="Boolean" multivalued="false" description="Does this user have OIDCARD data?"/>
+		<Attribute name="A5281244329858370178" attribute="USBD_PWD_GEN" column="401-403" type="Number" multivalued="false" description="The current password generation number."/>
+		<Attribute name="A5281244329858370179" attribute="USBD_REVOKE_CNT" column="405-407" type="Number" multivalued="false" description="The number of unsuccessful logon attempts."/>
+		<Attribute name="A5281244329858370180" attribute="USBD_MODEL" column="409-452" type="String" multivalued="false" description="The data set model profile name."/>
+		<Attribute name="A5281244329858370181" attribute="USBD_SECLEVEL" column="454-456" type="Number" multivalued="false" description="The user's security level."/>
+		<Attribute name="A5281244329858370182" attribute="USBD_REVOKE_DATE" column="458-467" type="Date" multivalued="false" description="The date that the user will be revoked."/>
+		<Attribute name="A5281244329858370183" attribute="USBD_RESUME_DATE" column="469-478" type="Date" multivalued="false" description="The date that the user will be resumed."/>
+		<Attribute name="A5281244329858370184" attribute="USBD_ACCESS_SUN" column="480-483" type="Boolean" multivalued="false" description="Can the user access the system on Sunday?"/>
+		<Attribute name="A5281244329858370185" attribute="USBD_ACCESS_MON" column="485-488" type="Boolean" multivalued="false" description="Can the user access the system on Monday?"/>
+		<Attribute name="A5281244329858370186" attribute="USBD_ACCESS_TUE" column="490-493" type="Boolean" multivalued="false" description="Can the user access the system on Tuesday?"/>
+		<Attribute name="A5281244329858370187" attribute="USBD_ACCESS_WED" column="495-498" type="Boolean" multivalued="false" description="Can the user access the system on Wednesday?"/>
+		<Attribute name="A5281244329858370188" attribute="USBD_ACCESS_THU" column="500-503" type="Boolean" multivalued="false" description="Can the user access the system on Thursday?"/>
+		<Attribute name="A5281244329858370189" attribute="USBD_ACCESS_FRI" column="505-508" type="Boolean" multivalued="false" description="Can the user access the system on Friday?"/>
+		<Attribute name="A5281244329858370190" attribute="USBD_ACCESS_SAT" column="510-513" type="Boolean" multivalued="false" description="Can the user access the system on Saturday?"/>
+		<Attribute name="A5281244329858370191" attribute="USBD_START_TIME" column="515-522" type="String" multivalued="false" description="After what time can the user logon?"/>
+		<Attribute name="A5281244329858370192" attribute="USBD_END_TIME" column="524-531" type="String" multivalued="false" description="After what time can the user not logon?"/>
+		<Attribute name="A5281244329858370193" attribute="USBD_SECLABEL" column="533-540" type="String" multivalued="false" description="The user's default security label."/>
+		<Attribute name="A5281244329858370194" attribute="USBD_ATTRIBS" column="542-549" type="String" multivalued="false" description="Other user attributes (RSTD for users with RESTRICTED attribute)."/>
+		<Attribute name="A5281244329858370195" attribute="USBD_PWDENV_EXISTS" column="551-554" type="Boolean" multivalued="false" description="Has a PKCS#7 envelope been created for the user's current password?"/>
+		<Attribute name="A5281244329858370196" attribute="USBD_PWD_ASIS" column="556-559" type="Boolean" multivalued="false" description="Should the password be evaluated in the case entered?"/>
+		<Attribute name="A5281244329858370197" attribute="USBD_PHR_DATE" column="561-570" type="Date" multivalued="false" description="The date the password phrase was last changed."/>
+		<Attribute name="A5281244329858370198" attribute="USBD_PHR_GEN" column="572-574" type="Number" multivalued="false" description="The current password phrase generation number."/>
+		<Attribute name="A5281244329858370199" attribute="USBD_CERT_SEQN" column="576-585" type="Number" multivalued="false" description="Sequence number that is incremented whenever a certificate for the user is added, deleted, or altered."/>
+		<Attribute name="A5281244329858370200" attribute="USBD_USBD_PPHENV_EXISTS" column="587-590" type="Boolean" multivalued="false" description="Has the user's current password phrase been PKCS#7 enveloped for possible retrieval?"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+	<Checks>
+		<Check name="U1314367823667" attribute="USBD_NOPWD" checktype="regexp" checkvalue="^YES|NO|PRO|PHR$" event="Invalid NOPWD policy"/>
+	</Checks>
+	<Actions>
+		<Action name="U1314370755980" action="add" attribute="USBD_LASTJOB_SDATETIME" newvalue="{!dataset.isEmpty(&apos;USBD_LASTJOB_DATE&apos;) &amp;&amp; !dataset.isEmpty(&apos;USBD_LASTJOB_TIME&apos;) ? dataset.USBD_LASTJOB_DATE.get()+&apos; &apos;+dataset.USBD_LASTJOB_TIME.get():&apos;&apos;}" condition="true" hidden="true"/>
+		<Action name="U1314370806790" action="convertdate" oldname="USBD_LASTJOB_SDATETIME" attribute="USBD_LASTJOB_DATETIME" type="Date" newvalue="yyyy-MM-dd HH:mm:ss"/>
+	</Actions>
+</Discovery>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bwfs_accountuidsfrompeoplewholeft" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="account uids from people who left the company" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1442852767765_11930" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1442852783096_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1442852770513_11931" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1442852772960_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1442852798304_11934" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountreconciliation">
+		<ViewAttribute name="A1442852801662_11935" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

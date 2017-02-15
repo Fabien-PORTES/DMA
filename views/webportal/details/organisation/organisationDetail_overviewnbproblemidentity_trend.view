@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_overviewnbproblemidentity_trend" errorifempty="false" distinct="true" identitysecure="false" concept="controllogv2" displayname="organisationDetail_overviewnbproblemidentity_trend" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1383245068504_17663"/>
+	<ViewAttribute name="A1383245054916_17661" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1383245058208_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1383245068504_17663" attribute="timeslotcommitdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383245069472_17664" attribute="timeslotellapsedtime" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1383245073513_0" operation="lt" ignoreifempty="false">
+			<Value name="0" data="180"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1383245089379_17666" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383245092530_17667" kind="inner" identitysecure="false" join="identity">
+			<ViewAttribute name="1383245103513_17669" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1367156971044_2807" kind="inner" identitysecure="false" join="uporganisation">
+				<ViewAttribute name="1383245168302_17689" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1380731909379_0" reference="uid" operation="eq" ignoreifempty="true"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_deleted_identity_picker" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="Identity Picker" notes="">
+	<ViewSort name="sort" attribute1="A1347981801179_4461" attribute2="A1347981800289_4460"/>
+	<ViewAttribute name="A1335978485390_30" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347979175239_351" attribute="deletedaction" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1347979177881_0" operation="isTrue" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1347979212959_353" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewAttribute name="A1347981800289_4460" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347981801179_4461" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347981812210_4462" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1379661497317_545" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+</View>

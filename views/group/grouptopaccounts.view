@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_grouptopaccounts" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="Groups who have the most # of accounts" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="repository record uid"/>
+	<ViewSort name="sort" attribute1="A1322078507449_27" direction1="DESC"/>
+	<ViewAttribute name="A1322078469553_2" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_3" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_4" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1322078588096_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1322078469553_5" attribute="repositoryuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_6" attribute="repositorycode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_7" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_8" attribute="repositorymedia" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_9" attribute="repositoryextractdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_10" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_11" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_12" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_13" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_14" attribute="grouptype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_15" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078469553_16" attribute="modificationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078482255_17" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078483717_18" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078485054_19" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078486409_20" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078487749_21" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078489177_22" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078490607_23" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078492007_24" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1322078493327_25" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1322078500056_26" kind="inner" identitysecure="false" join="upaccount">
+		<ViewAttribute name="A1322078507449_27" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1382688230335_3867" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382688196313_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382688198391_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

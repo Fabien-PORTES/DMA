@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_filesystemgroupacls" distinct="true" concept="permission" displayname="Group ACLs for a given file share" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort" attribute1="A1328704705492_221"/>
+	<ViewJoin name="J1328704688660_209" kind="inner" join="aclgroup">
+		<ViewJoin name="J1328704696140_210" prefix="groupacl_" kind="inner" join="group">
+			<ViewAttribute name="A1328704705492_211" attribute="recorduid" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_212" attribute="uid" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_213" attribute="repositoryrecorduid" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_214" attribute="repositoryuid" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_215" attribute="repositorycode" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_216" attribute="repositorydisplayname" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_217" attribute="repositorymedia" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_218" attribute="repositoryextractdate" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_219" attribute="repositorytype" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_220" attribute="code" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_221" attribute="displayname" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_222" attribute="comment" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_223" attribute="grouptype" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_224" attribute="creationdate" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_225" attribute="modificationdate" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_226" attribute="importaction" removedfromprojection="false"/>
+			<ViewAttribute name="A1328704705492_227" attribute="deletedaction" removedfromprojection="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1328705288574_268" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1328705292078_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

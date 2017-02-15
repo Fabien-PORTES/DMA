@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343306773864" title="User master authorization profiles " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A4147298291733812991" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A1767718438098761328" attribute="profn" column="PROFN" type="String" multivalued="false" persistent="false" description="Auth. profile in user master maintenance"/>
+		<Attribute name="A6118873808868790923" attribute="aktps" column="AKTPS" type="String" multivalued="false" persistent="false" description="Active or maintenance version"/>
+		<Attribute name="A1430748872512764544" attribute="modda_" column="MODDA" type="String" multivalued="false" persistent="false" description="Modification date" hidden="true"/>
+		<Attribute name="A4443971427198022692" attribute="modti" column="MODTI" type="String" multivalued="false" persistent="false" description="Modification time"/>
+		<Attribute name="A5150185431534627792" attribute="modbe" column="MODBE" type="String" multivalued="false" persistent="false" description="Last changed by"/>
+		<Attribute name="A5311135342899567427" attribute="divis" column="DIVIS" type="String" multivalued="false" persistent="false" description="Department"/>
+		<Attribute name="A6824657063311394441" attribute="typ" column="TYP" type="String" multivalued="false" persistent="false" description="Type of Profile (Composite or Single)"/>
+		<Attribute name="A8245804106841230479" attribute="nraut" column="NRAUT" type="Number" multivalued="false" persistent="false" description="Number of profiles or authorizations"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343306874510" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1343306967097" action="replace" attribute="modda_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343306997081" action="convertdate" oldname="modda_" attribute="modda" type="Date" newvalue="dd.MM.yyyy" description="Modification date"/>
+		<Action name="U1343307147939" action="add" attribute="lastmodifiedstr" newvalue="{dataset.modda_.get()} {dataset.modti.get()}" hidden="true"/>
+		<Action name="U1343307199625" action="convertdate" oldname="lastmodifiedstr" attribute="lastmodified" type="Date" newvalue="dd.MM.yyyy HH:mm:ss" oldvalue="01.01.1900 00:00:00" description="Last modified (as deducted from MODDA and MODTI attributes)"/>
+	</Actions>
+</Discovery>

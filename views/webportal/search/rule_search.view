@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_rule_search" distinct="true" concept="searchlog" displayname="Rule search">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1347623528835_136" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_137" attribute="ruleentity" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_138" attribute="ruledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_139" attribute="ruledescription" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_140" attribute="rulenotes" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_141" attribute="ruletagtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_142" attribute="ruletagscope" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_143" attribute="ruletagfamily" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_144" attribute="ruletagapplication" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_145" attribute="ruletagpermission" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_146" attribute="ruletagcustom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_147" attribute="ruletagcustom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_148" attribute="ruletagcustom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_149" attribute="ruletagcustom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_150" attribute="ruletagcustom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_151" attribute="ruletagcustom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_152" attribute="ruletagcustom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_153" attribute="ruletagcustom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347623528835_154" attribute="ruletagcustom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

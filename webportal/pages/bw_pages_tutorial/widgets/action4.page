@@ -1,0 +1,28 @@
+import "/webportal/pages/resources/pickers.page"
+
+action4 = Page {
+	title:'A simple picker example'	
+
+	defaultsurname = Variable{initial:'BOU%'}
+	selectedIdentityUID = Variable
+	selectedIdentityFullname = Variable
+
+	Button {
+		text:'Pick an identity'
+		actions: Dialog identityPicker(defaultsurname to localSurname,
+		                               defaultsurname to localSurnameEdit, 
+		                               selectedIdentityUID from outUid,
+		                               selectedIdentityFullname from outDisplayname)
+	}
+	
+	Text {
+		label:'Selected identity UID'
+		value:selectedIdentityUID	
+	}
+	Text {
+		label:'Selected identity name'
+		value:selectedIdentityFullname	
+	}
+}
+
+

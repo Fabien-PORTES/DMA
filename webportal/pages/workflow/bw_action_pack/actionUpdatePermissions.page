@@ -1,0 +1,232 @@
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+import "/webportal/pages/resources/concepts_nls.page"
+
+actionUpdatePermissionsNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel current edition ?" fr "Annuler l'édition en cours ?"]
+	complete.buttontext [en "Task completed" fr "Tâche terminée"]
+	complete.confirm [en "Complete current task ?" fr "Terminer la tâche en cours ?"]
+	complete.flashmessage [en "Task completed" fr "Tâche terminée"]
+	title [en "Update permissions" fr "Update permissions"]
+	subtitle1 [en "Replace permissions by those one for an individual" fr "Replace permissions by those one for an individual"]
+	grouptitle1 [en "Beneficiary" fr "Beneficiary"]
+	_identityhrcode [en "identity hrcode" fr "identity hrcode"]
+	_identityfullname [en "identity fullname" fr "identity fullname"]
+	_applicationname [en "application name" fr "application name"]
+	_comments [en "comments" fr "comments"]
+	_accountlogins [en "account logins" fr "account logins"]
+	_accountusernames [en "account usernames" fr "account usernames"]
+	_accountrepositories [en "account repositories" fr "account repositories"]
+	accountloginsjointeditiontitle [en "Accounts" fr "Accounts"]
+	_permissioncodes [en "permission codes" fr "permission codes"]
+	_permissionnames [en "permission names" fr "permission names"]
+	permissioncodesjointeditiontitle [en "Permissions to add" fr "Permissions to add"]
+	_result [en "result" fr "result"]
+	result.value0 [en "ok" fr "ok"]
+	result.value1 [en "error" fr "error"]
+	_resultdescription [en "Additional action description that you want to push  back to the requester" fr "Additional action description that you want to push  back to the requester"]
+	_refererinfos [en "Referer" fr "Référant"]
+	_refererprofiles [en "Referer profile(s)" fr "Profil(s) du référant"]
+}
+
+
+actionUpdatePermissions = Page {
+	title: $actionUpdatePermissionsNLS.title
+	mixins: workflowDefaultMixin
+	
+	taskId = Parameter {
+		type: String
+		mandatory: True
+	}
+	
+	task = TaskRecord(taskId)
+	
+	accounts = Dataset {
+		columns:task.accountlogins, task.accountusernames, task.accountrepositories
+	}
+	permissions = Dataset {
+		columns:task.permissioncodes, task.permissionnames
+	}
+	refererdetails = Record {
+		view:actionpackIdentitypicker with task.referer to uid
+	}
+	refererprofiles = Dataset {
+		view:actionpackIdentityProfiles with task.referer to uid, task.application to applicationuids
+	}
+	
+	Header {
+		mixins: workflowTitleMixin
+		value: $actionUpdatePermissionsNLS.subtitle1
+	}
+	Group {
+		title: $actionUpdatePermissionsNLS.grouptitle1
+		Grid {
+			columns: GridColumn { group: a }, GridColumn { group: a }
+			
+			GridRow {
+				GridCell {
+					Text {
+						label: $actionUpdatePermissionsNLS._identityhrcode
+						value: task.identityhrcode
+					}
+					Text {
+						label: $actionUpdatePermissionsNLS._identityfullname
+						value: task.identityfullname
+					}
+				}
+			}
+		}
+	}
+	Text {
+		label: $actionUpdatePermissionsNLS._applicationname
+		value: task.applicationname
+	}
+	Text {
+		label: $actionUpdatePermissionsNLS._comments
+		value: task.comments
+	}
+	ConditionalGroup {
+		StringCondition (task.referer) {
+		when IsEmpty then [
+			Grid {
+				columns: GridColumn { group: a }, GridColumn { group: a }
+				
+				GridRow {
+					GridCell {
+						Table {
+							mixins: workflowJointEditionMixin
+							label: $actionUpdatePermissionsNLS.accountloginsjointeditiontitle
+							data: accounts
+							Column {
+								header:$account.login
+								column:task_accountlogins
+							}
+							Column {
+								header:$account.username
+								column:task_accountusernames
+							}
+							Column {
+								header:$repository.concept
+								column:task_accountrepositories
+							}
+						}
+					}
+					GridCell {
+						Table {
+							mixins: workflowJointEditionMixin
+							label: $actionUpdatePermissionsNLS.permissioncodesjointeditiontitle
+							data: permissions
+							Column {
+								header:$permission.code
+								column:task_permissioncodes
+							}
+							Column {
+								header:$permission.displayname
+								column:task_permissionnames
+							}
+						}
+					}
+				}
+			}
+		]
+		otherwise [
+				Flow {
+					disposition:Horizontal
+					Group {
+						title:$actionUpdatePermissionsNLS._refererinfos
+						Text {
+							label:$identity.hrcode
+							value:refererdetails.hrcode
+						}
+						Text {
+							label:$identity.hrcode
+							value:refererdetails.fullname
+						}
+						Text {
+							label:$identity.internal
+							value:refererdetails.internal
+						}
+						Text {
+							label:$identity.jobtitledisplayname
+							value:refererdetails.jobtitledisplayname
+						}
+						Text {
+							label:$organisation.concept
+							value:refererdetails.organisationcode
+						}
+						Text {
+							label:$organisation.concept
+							value:refererdetails.organisationdisplayname
+						}
+					}
+					Group {
+						title:$actionUpdatePermissionsNLS._refererprofiles
+						Table {
+							data:refererprofiles
+							layout:Layout { grab:horizontal True vertical True}
+							Column {
+								column:permissioncode
+								header:$permission.code
+								sortable:True
+							}
+							Column {
+								column:permissiondisplayname
+								header:$permission.displayname
+								width:100%
+								sortable:True
+							}
+						
+						}
+					}
+				}
+		]
+		}
+	}
+	
+	Combo {
+		label: Concat($actionUpdatePermissionsNLS._result,"*")
+		variable: task.result
+		options: Static {
+			Option {
+				value: "ok"
+				text: $actionUpdatePermissionsNLS.result.value0
+			}
+			Option {
+				value: "error"
+				text: $actionUpdatePermissionsNLS.result.value1
+			}
+		}
+	}
+	Edit {
+		label: $actionUpdatePermissionsNLS._resultdescription
+		variable: task.resultdescription
+	}
+	
+	Header {
+		value: $actionUpdatePermissionsNLS.mandatoryfields
+	}
+	
+	Group {
+		title: $actionUpdatePermissionsNLS.actionsection
+		mixins: workflowActionsMixin
+		
+		ButtonGroup {
+			Button { 
+				text: $actionUpdatePermissionsNLS.cancel.buttontext
+				actions: Confirm $actionUpdatePermissionsNLS.cancel.confirm, TaskCancel task, GoTo HomePage
+			}
+			Button { 
+				disabled: StringPredicate (task.result) { when IsEmpty then True }
+				
+				text: $actionUpdatePermissionsNLS.complete.buttontext
+				actions:  Confirm $actionUpdatePermissionsNLS.complete.confirm, TaskComplete task, Flash Information $actionUpdatePermissionsNLS.complete.flashmessage, GoTo HomePage
+			}
+		}
+	}
+}
+

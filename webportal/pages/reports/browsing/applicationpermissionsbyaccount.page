@@ -1,0 +1,177 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/reports/standard.page"
+
+reportDetails = NLS {
+	browsing_application_permissionsbyaccount.pagetitle [en "Permissions Detailed by Account" fr "Detail des Permissions par Compte"]
+	browsing_application_permissionsbyaccount.title [en "Permissions Detailed by Account" fr "Detail des Permissions par Compte"]
+	browsing_application_permissionsbyaccount.subtitle [en "Permissions - Application <<{0}>>" fr "Permissions - Application <<{0}>>"]
+	browsing_application_permissionsbyaccount.columns.permissiontype [en "Permission Type" fr "Type de Permission"]
+	browsing_application_permissionsbyaccount.columns.code [en "Permission Code" fr "Code de la Permission"]
+	browsing_application_permissionsbyaccount.columns.account_login [ en "Account login" fr "Login du compte" ]
+	browsing_application_permissionsbyaccount.columns.account_username [ en "Username" fr "Nom du compte"]
+	browsing_application_permissionsbyaccount.columns.identity_fullname [ en "Identity" fr "Identité" ]
+}
+
+browsing_application_permissionsbyaccount = Page {
+
+	title: $reportDetails.browsing_application_permissionsbyaccount.pagetitle
+	tags: "application" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: browsing_application_permissionsbyaccount
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	applicationSearch = SearchDefinition {
+		entity: Application
+		simple-mode-rule: br_application_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentApplication = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	applicationList = Dataset {
+		search: Search {
+			definition: applicationSearch
+			view: br_application_searchpoint with "Profile" to applicationtype , nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_applicationDetail with currentApplication to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_permissionbyaccount with conceptData.recorduid to applicationrecorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: applicationList
+			column: uid
+			selection: currentApplication
+			back-link: Activity Application Detail with currentApplication to paramApplicationUid , SerializeSearch applicationSearch to applicationSearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_application_permissionsbyaccount.title	
+		}		
+		
+		Link {
+			icon: "32/details/printable_32_gray.png"
+			target: Report browsing_permissionlistbyaccount with conceptData.recorduid to recorduid
+			value: ""
+			compact: True 
+			layout: Layout { grab: horizontal False vertical False  indent: horizontal 0 vertical 0  align: horizontal End vertical Center}
+			align: Right 
+		}
+		
+		Text {
+			value: $reportDetails.browsing_application_permissionsbyaccount.subtitle( conceptData.displayname )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			double-click: GoTo Activity Permission Detail with selectedUid to paramPermissionUid
+			show-filter: True
+			show-count: True
+			
+			Column {
+				column: recorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: uid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: permissiontype
+				header: $reportDetails.browsing_application_permissionsbyaccount.columns.permissiontype
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: code
+				header: $reportDetails.browsing_application_permissionsbyaccount.columns.code
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: account_login
+				header: $reportDetails.browsing_application_permissionsbyaccount.columns.account_login
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: account_username
+				header: $reportDetails.browsing_application_permissionsbyaccount.columns.account_username
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: identity_fullname
+				header: $reportDetails.browsing_application_permissionsbyaccount.columns.identity_fullname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+		}
+		
+		Button {
+			actions:  GoTo Activity Permission Detail with selectedUid to paramPermissionUid
+			layout: Layout { align: horizontal End vertical Beginning grab: horizontal False vertical False hint: width 200}
+			disabled: StringPredicate(selectedUid) { when IsEmpty then True }
+			text: $search_page.showdetails
+		}
+	}
+}

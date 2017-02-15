@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_repository" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="applicationDetail_repository" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1366822392692_19" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1366822408649_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1366822430630_21" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1366822435923_22" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366822435924_23" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366822435924_24" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366822435924_25" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366822435924_26" attribute="media" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366822435924_27" attribute="extractDate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366822435924_28" attribute="extractday" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366822435924_29" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366822435924_30" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366822435924_31" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

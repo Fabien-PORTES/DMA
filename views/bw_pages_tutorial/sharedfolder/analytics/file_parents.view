@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="file_parents" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="file_parents" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1443717894432_707" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1443717897396_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1443717909054_710" prefix="parent_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="uppermission">
+		<ViewAttribute name="A1443717919534_711" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443717920254_712" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443717920934_713" attribute="code" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443717921638_714" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

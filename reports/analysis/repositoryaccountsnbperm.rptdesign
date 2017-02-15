@@ -1,0 +1,3223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="author">Brainwave</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.0.v201405191524 Build &lt;4.4.0.v20140606-1451></property>
+    <text-property name="title">Accounts with huge/low # of permissions</text-property>
+    <list-property name="userProperties">
+        <structure>
+            <property name="name">BrainwaveRightModel</property>
+            <property name="type">string</property>
+        </structure>
+    </list-property>
+    <property name="BrainwaveRightModel">features</property>
+    <simple-property-list name="includeResource">
+        <value>reports/analysis/repositoryaccountsnbperm</value>
+        <value>reports/resources/concepts</value>
+    </simple-property-list>
+    <list-property name="includeScripts">
+        <property>reports/scripts/common.js</property>
+        <property>reports/scripts/debugWindow.js</property>
+    </list-property>
+    <property name="units">in</property>
+    <method name="beforeFactory"><![CDATA[beforeFactory();]]></method>
+    <property name="theme">brainwave.Brainwave blue</property>
+    <property name="iconFile">/custom-templates/TEMPLATE search list.png</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">reports/library/brainwave.rptlibrary</property>
+            <property name="namespace">brainwave</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="repositoryrecorduid" id="878">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">1</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="com.brainwave.iaudit.oda.runtime" name="Brainwave ODA DataSource" id="876"
+ extends="brainwave.Brainwave ODA DataSource"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="com.brainwave.iaudit.oda.runtime.dataSet" name="permissionaccountnbperms" id="893">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">median</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">MEDIAN</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value">row["nbpermission"]</expression>
+                        </structure>
+                    </list-property>
+                </structure>
+                <structure>
+                    <property name="name">percentile95</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">PERCENTILE</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value">row["nbpermission"]</expression>
+                        </structure>
+                        <structure>
+                            <property name="name">percentage</property>
+                            <expression name="value">0.95</expression>
+                        </structure>
+                    </list-property>
+                </structure>
+                <structure>
+                    <property name="name">percentile05</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">PERCENTILE</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value">row["nbpermission"]</expression>
+                        </structure>
+                        <structure>
+                            <property name="name">percentage</property>
+                            <expression name="value">0.05</expression>
+                        </structure>
+                    </list-property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">recorduid</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">login</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositorycode</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">givenname</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">surname</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">username</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">mail</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nbpermission</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">disabled</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositoryrecorduid</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">repositoryrecorduid</property>
+                    <property name="nativeName">repositoryrecorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">recorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">login</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">repositorycode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">givenname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">surname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">username</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">mail</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">nbpermission</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">disabled</property>
+                        <property name="dataType">boolean</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">repositoryrecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">median</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">percentile95</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">percentile05</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Brainwave ODA DataSource</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">recorduid</property>
+                    <property name="nativeName">recorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">login</property>
+                    <property name="nativeName">login</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">repositorycode</property>
+                    <property name="nativeName">repositorycode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">givenname</property>
+                    <property name="nativeName">givenname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">surname</property>
+                    <property name="nativeName">surname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">username</property>
+                    <property name="nativeName">username</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">mail</property>
+                    <property name="nativeName">mail</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">nbpermission</property>
+                    <property name="nativeName">nbpermission</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">disabled</property>
+                    <property name="nativeName">disabled</property>
+                    <property name="dataType">boolean</property>
+                    <property name="nativeDataType">16</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">repositoryrecorduid</property>
+                    <property name="nativeName">repositoryrecorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[accountsnbperm]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <DataSetParameters>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>repositoryrecorduid</design:name>
+            <design:position>1</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+  </DataSetParameters>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>recorduid</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>login</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>repositorycode</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>givenname</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>surname</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>username</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>mail</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>nbpermission</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>disabled</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>16</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>repositoryrecorduid</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="com.brainwave.iaudit.oda.runtime.dataSet" name="repository" id="993">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">repositoryrecorduid</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositoryuid</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositorycode</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositorydisplayname</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositorymedia</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositoryextractdate</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">repositorytype</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nbaccount</property>
+                    <property name="analysis">measure</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">repositorydisplayname</property>
+                    <property name="nativeName">repositorydisplayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">repositorycode</property>
+                    <property name="nativeName">repositorycode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">repositoryrecorduid</property>
+                    <property name="paramName">repositoryrecorduid</property>
+                    <property name="nativeName">repositoryrecorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                    <property name="position">3</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">repositoryrecorduid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">repositoryuid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">repositorycode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">repositorydisplayname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">repositorymedia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">repositoryextractdate</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">repositorytype</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">nbaccount</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Brainwave ODA DataSource</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">repositoryrecorduid</property>
+                    <property name="nativeName">repositoryrecorduid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">repositoryuid</property>
+                    <property name="nativeName">repositoryuid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">repositorycode</property>
+                    <property name="nativeName">repositorycode</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">repositorydisplayname</property>
+                    <property name="nativeName">repositorydisplayname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">repositorymedia</property>
+                    <property name="nativeName">repositorymedia</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">repositoryextractdate</property>
+                    <property name="nativeName">repositoryextractdate</property>
+                    <property name="dataType">date</property>
+                    <property name="nativeDataType">91</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">repositorytype</property>
+                    <property name="nativeName">repositorytype</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">nbaccount</property>
+                    <property name="nativeName">nbaccount</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[br_repository]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <DataSetParameters>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>repositorydisplayname</design:name>
+            <design:position>1</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>repositorycode</design:name>
+            <design:position>2</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name>repositoryrecorduid</design:name>
+            <design:position>3</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+          <design:precision>-1</design:precision>
+          <design:scale>-1</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+  </DataSetParameters>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>repositoryrecorduid</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>repositoryuid</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>repositorycode</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>repositorydisplayname</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>repositorymedia</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>repositoryextractdate</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>repositorytype</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>nbaccount</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Brainwave Master Page Portrait" id="7" extends="brainwave.Brainwave Master Page Portrait">
+            <overridden-values>
+                <ref-entry baseId="958" name="NewGrid21" id="958"/>
+                <ref-entry baseId="959" id="959"/>
+                <ref-entry baseId="960" id="960"/>
+                <ref-entry baseId="961" id="961"/>
+                <ref-entry baseId="962" id="962"/>
+                <ref-entry baseId="963" id="963"/>
+                <ref-entry baseId="964" id="964"/>
+                <ref-entry baseId="965" name="NewLabel411" id="965"/>
+                <ref-entry baseId="966" id="966"/>
+                <ref-entry baseId="967" name="NewGrid11" id="967"/>
+                <ref-entry baseId="968" id="968"/>
+                <ref-entry baseId="969" id="969"/>
+                <ref-entry baseId="970" id="970"/>
+                <ref-entry baseId="971" id="971"/>
+                <ref-entry baseId="972" id="972"/>
+                <ref-entry baseId="973" name="NewText11" id="973"/>
+                <ref-entry baseId="974" id="974"/>
+                <ref-entry baseId="975" name="NewTextData1" id="975"/>
+                <ref-entry baseId="976" id="976"/>
+                <ref-entry baseId="977" name="NewGrid31" id="977"/>
+                <ref-entry baseId="978" id="978"/>
+                <ref-entry baseId="979" id="979"/>
+                <ref-entry baseId="980" id="980"/>
+                <ref-entry baseId="981" id="981"/>
+                <ref-entry baseId="982" id="982"/>
+                <ref-entry baseId="983" name="NewAutoText2" id="983"/>
+                <ref-entry baseId="984" id="984"/>
+                <ref-entry baseId="985" name="NewText2" id="985"/>
+                <ref-entry baseId="986" id="986"/>
+                <ref-entry baseId="987" name="NewAutoText11" id="987"/>
+            </overridden-values>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="816">
+            <column id="817">
+                <property name="width">748px</property>
+            </column>
+            <row id="818">
+                <cell id="819">
+                    <label id="820">
+                        <property name="style">h2</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text" key="Report.title">Accounts with huge # of permission (top 100)</text-property>
+                    </label>
+                </cell>
+            </row>
+        </grid>
+        <text id="610">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<br>]]></text-property>
+        </text>
+        <grid id="821">
+            <property name="width">748px</property>
+            <column id="991">
+                <property name="width">90px</property>
+            </column>
+            <column id="822">
+                <property name="width">600px</property>
+            </column>
+            <column id="823"/>
+            <row id="824">
+                <cell id="990">
+                    <text id="995">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[ ]]></text-property>
+                    </text>
+                    <label id="992">
+                        <property name="fontSize">14px</property>
+                        <property name="fontWeight">bold</property>
+                        <text-property name="text" key="Repository.concept"></text-property>
+                    </label>
+                </cell>
+                <cell id="825">
+                    <text id="996">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[ ]]></text-property>
+                    </text>
+                    <text-data id="994">
+                        <property name="fontSize">14px</property>
+                        <property name="textAlign">left</property>
+                        <property name="dataSet">repository</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">repositorydisplayname</property>
+                                <text-property name="displayName">repositorydisplayname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["repositorydisplayname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <expression name="valueExpr">row["repositorydisplayname"]</expression>
+                        <property name="contentType">html</property>
+                    </text-data>
+                </cell>
+                <cell id="826">
+                    <image id="892">
+                        <property name="source">embed</property>
+                        <property name="imageName">account_48.png</property>
+                    </image>
+                    <text id="997">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[ ]]></text-property>
+                    </text>
+                </cell>
+            </row>
+        </grid>
+        <list id="896">
+            <property name="dataSet">permissionaccountnbperms</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">recorduid</property>
+                    <text-property name="displayName">recorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["recorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">login</property>
+                    <text-property name="displayName">login</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["login"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">repositorycode</property>
+                    <text-property name="displayName">repositorycode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositorycode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">givenname</property>
+                    <text-property name="displayName">givenname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["givenname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">surname</property>
+                    <text-property name="displayName">surname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["surname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">username</property>
+                    <text-property name="displayName">username</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["username"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">mail</property>
+                    <text-property name="displayName">mail</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["mail"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nbpermission</property>
+                    <text-property name="displayName">nbpermission</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nbpermission"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">disabled</property>
+                    <text-property name="displayName">disabled</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["disabled"]</expression>
+                    <property name="dataType">boolean</property>
+                </structure>
+                <structure>
+                    <property name="name">repositoryrecorduid</property>
+                    <text-property name="displayName">repositoryrecorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositoryrecorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">median</property>
+                    <text-property name="displayName">median</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["median"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">percentile95</property>
+                    <text-property name="displayName">percentile95</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["percentile95"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">percentile05</property>
+                    <text-property name="displayName">percentile05</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["percentile05"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+            </list-property>
+            <header>
+                <text-data id="890">
+                    <expression name="valueExpr">reportContext.setPersistentGlobalVariable('median', ''+Math.floor(row["median"]));&#13;
+reportContext.setPersistentGlobalVariable('percentile95', ''+Math.floor(row["percentile95"]));&#13;
+reportContext.setPersistentGlobalVariable('percentile05', ''+Math.floor(row["percentile05"]));</expression>
+                    <property name="contentType">html</property>
+                </text-data>
+            </header>
+            <footer>
+                <text id="989">
+                    <property name="contentType">auto</property>
+                    <text-property name="content"><![CDATA[ ]]></text-property>
+                </text>
+            </footer>
+        </list>
+        <extended-item extensionName="Chart" id="897">
+            <xml-property name="xmlRepresentation"><![CDATA[<model:ChartWithAxes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:attribute="http://www.birt.eclipse.org/ChartModelAttribute" xmlns:data="http://www.birt.eclipse.org/ChartModelData" xmlns:layout="http://www.birt.eclipse.org/ChartModelLayout" xmlns:model="http://www.birt.eclipse.org/ChartModel" xmlns:type="http://www.birt.eclipse.org/ChartModelType">
+  <Version>2.5.1</Version>
+  <Type>Area Chart</Type>
+  <SubType>Overlay</SubType>
+  <Block>
+    <Children xsi:type="layout:TitleBlock">
+      <Bounds>
+        <Left>0.0</Left>
+        <Top>0.0</Top>
+        <Width>0.0</Width>
+        <Height>0.0</Height>
+      </Bounds>
+      <Insets>
+        <Top>3.0</Top>
+        <Left>3.0</Left>
+        <Bottom>3.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Row>-1</Row>
+      <Column>-1</Column>
+      <Rowspan>-1</Rowspan>
+      <Columnspan>-1</Columnspan>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </Outline>
+      <Visible>false</Visible>
+      <Label>
+        <Caption>
+          <Value>Area Chart Title</Value>
+          <Font>
+            <Size>16.0</Size>
+            <Bold>true</Bold>
+            <Alignment>
+              <horizontalAlignment>Center</horizontalAlignment>
+              <verticalAlignment>Center</verticalAlignment>
+            </Alignment>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>true</Visible>
+      </Label>
+    </Children>
+    <Children xsi:type="layout:Plot">
+      <Bounds>
+        <Left>0.0</Left>
+        <Top>0.0</Top>
+        <Width>0.0</Width>
+        <Height>0.0</Height>
+      </Bounds>
+      <Insets>
+        <Top>3.0</Top>
+        <Left>3.0</Left>
+        <Bottom>3.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Row>-1</Row>
+      <Column>-1</Column>
+      <Rowspan>-1</Rowspan>
+      <Columnspan>-1</Columnspan>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </Outline>
+      <Visible>true</Visible>
+      <HorizontalSpacing>5</HorizontalSpacing>
+      <VerticalSpacing>5</VerticalSpacing>
+      <ClientArea>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>0</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>0.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>0.0</Right>
+        </Insets>
+      </ClientArea>
+    </Children>
+    <Children xsi:type="layout:Legend">
+      <Bounds>
+        <Left>0.0</Left>
+        <Top>0.0</Top>
+        <Width>0.0</Width>
+        <Height>0.0</Height>
+      </Bounds>
+      <Insets>
+        <Top>3.0</Top>
+        <Left>3.0</Left>
+        <Bottom>3.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Row>-1</Row>
+      <Column>-1</Column>
+      <Rowspan>-1</Rowspan>
+      <Columnspan>-1</Columnspan>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </Outline>
+      <Visible>false</Visible>
+      <ClientArea>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>0</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </Outline>
+        <Insets>
+          <Top>2.0</Top>
+          <Left>2.0</Left>
+          <Bottom>2.0</Bottom>
+          <Right>2.0</Right>
+        </Insets>
+      </ClientArea>
+      <Text>
+        <Value></Value>
+        <Font>
+          <Alignment/>
+        </Font>
+      </Text>
+      <Orientation>Vertical</Orientation>
+      <Direction>Top_Bottom</Direction>
+      <Separator>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+        <Visible>true</Visible>
+      </Separator>
+      <Position>Right</Position>
+      <ItemType>Series</ItemType>
+      <Title>
+        <Caption>
+          <Value></Value>
+          <Font>
+            <Alignment/>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>false</Visible>
+      </Title>
+      <TitlePosition>Above</TitlePosition>
+    </Children>
+    <Bounds>
+      <Left>0.0</Left>
+      <Top>0.0</Top>
+      <Width>212.0</Width>
+      <Height>130.0</Height>
+    </Bounds>
+    <Insets>
+      <Top>3.0</Top>
+      <Left>3.0</Left>
+      <Bottom>3.0</Bottom>
+      <Right>3.0</Right>
+    </Insets>
+    <Row>-1</Row>
+    <Column>-1</Column>
+    <Rowspan>-1</Rowspan>
+    <Columnspan>-1</Columnspan>
+    <Outline>
+      <Style>Solid</Style>
+      <Thickness>1</Thickness>
+      <Color>
+        <Transparency>255</Transparency>
+        <Red>0</Red>
+        <Green>0</Green>
+        <Blue>0</Blue>
+      </Color>
+      <Visible>false</Visible>
+    </Outline>
+    <Visible>true</Visible>
+  </Block>
+  <Dimension>Two_Dimensional</Dimension>
+  <Script>&#xD;
+/**&#xD;
+ * Called before drawing each marker line in an Axis.&#xD;
+ * &#xD;
+ * @param axis&#xD;
+ *            Axis&#xD;
+ * @param markerLine&#xD;
+ *            MarkerLine&#xD;
+ * @param icsc&#xD;
+ *            IChartScriptContext&#xD;
+ */&#xD;
+&#xD;
+function beforeDrawMarkerLine( axis, markerLine, icsc )&#xD;
+{&#xD;
+importPackage(Packages.org.eclipse.birt.chart.model.data.impl);&#xD;
+importPackage(Packages.org.eclipse.birt.chart.model.component.impl);&#xD;
+&#xD;
+var reportContext = icsc.getExternalContext().getScriptable();&#xD;
+&#xD;
+if(markerLine.getLabel().getCaption().getValue().equals('median')) {&#xD;
+var median = parseInt(reportContext.getPersistentGlobalVariable('median'));&#xD;
+&#xD;
+    var label = 'Median : '+median;&#xD;
+    markerLine.getLabel().getCaption().setValue(label);&#xD;
+markerLine.setValue(NumberDataElementImpl.create(median));&#xD;
+}&#xD;
+else if(markerLine.getLabel().getCaption().getValue().equals('percentile95')) {&#xD;
+var percentile = parseInt(reportContext.getPersistentGlobalVariable('percentile95'));&#xD;
+&#xD;
+    var label = '95 Percentile : '+percentile;&#xD;
+    markerLine.getLabel().getCaption().setValue(label);&#xD;
+markerLine.setValue(NumberDataElementImpl.create(percentile));&#xD;
+}&#xD;
+else if(markerLine.getLabel().getCaption().getValue().equals('percentile05')) {&#xD;
+var percentile = parseInt(reportContext.getPersistentGlobalVariable('percentile05'));&#xD;
+&#xD;
+    var label = '5 Percentile : '+percentile;&#xD;
+    markerLine.getLabel().getCaption().setValue(label);&#xD;
+markerLine.setValue(NumberDataElementImpl.create(percentile));&#xD;
+}&#xD;
+}&#xD;
+&#xD;
+&#xD;
+</Script>
+  <Units>Points</Units>
+  <SeriesThickness>10.0</SeriesThickness>
+  <ExtendedProperties>
+    <Name>enable.area.alt</Name>
+    <Value>false</Value>
+  </ExtendedProperties>
+  <SampleData>
+    <BaseSampleData>
+      <DataSetRepresentation>6,4,12,8,10</DataSetRepresentation>
+    </BaseSampleData>
+    <OrthogonalSampleData>
+      <DataSetRepresentation>6,4,12,8,10</DataSetRepresentation>
+      <SeriesDefinitionIndex>0</SeriesDefinitionIndex>
+    </OrthogonalSampleData>
+  </SampleData>
+  <Interactivity/>
+  <EmptyMessage>
+    <Caption>
+      <Value>This chart contains no data.</Value>
+      <Font>
+        <Alignment>
+          <horizontalAlignment>Center</horizontalAlignment>
+          <verticalAlignment>Center</verticalAlignment>
+        </Alignment>
+      </Font>
+    </Caption>
+    <Background xsi:type="attribute:ColorDefinition">
+      <Transparency>64</Transparency>
+      <Red>127</Red>
+      <Green>127</Green>
+      <Blue>127</Blue>
+    </Background>
+    <Outline>
+      <Color>
+        <Transparency>128</Transparency>
+        <Red>127</Red>
+        <Green>127</Green>
+        <Blue>127</Blue>
+      </Color>
+      <Visible>true</Visible>
+    </Outline>
+    <Insets>
+      <Top>10.0</Top>
+      <Left>10.0</Left>
+      <Bottom>10.0</Bottom>
+      <Right>10.0</Right>
+    </Insets>
+    <Visible>false</Visible>
+  </EmptyMessage>
+  <Axes>
+    <Type>Linear</Type>
+    <Title>
+      <Caption>
+        <Value>Report.xtitle=Identities ordered by # of permissions</Value>
+        <Font>
+          <Size>10.0</Size>
+          <Bold>true</Bold>
+          <Alignment>
+            <horizontalAlignment>Center</horizontalAlignment>
+            <verticalAlignment>Center</verticalAlignment>
+          </Alignment>
+        </Font>
+      </Caption>
+      <Background xsi:type="attribute:ColorDefinition">
+        <Transparency>0</Transparency>
+        <Red>255</Red>
+        <Green>255</Green>
+        <Blue>255</Blue>
+      </Background>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+      </Outline>
+      <Insets>
+        <Top>0.0</Top>
+        <Left>2.0</Left>
+        <Bottom>0.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Visible>true</Visible>
+    </Title>
+    <TitlePosition>Below</TitlePosition>
+    <AssociatedAxes>
+      <Type>Linear</Type>
+      <Title>
+        <Caption>
+          <Value>Report.ytitle=# of permissions</Value>
+          <Font>
+            <Size>10.0</Size>
+            <Bold>true</Bold>
+            <Alignment>
+              <horizontalAlignment>Center</horizontalAlignment>
+              <verticalAlignment>Center</verticalAlignment>
+            </Alignment>
+            <Rotation>90.0</Rotation>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>true</Visible>
+      </Title>
+      <TitlePosition>Left</TitlePosition>
+      <SeriesDefinitions>
+        <Query>
+          <Definition></Definition>
+        </Query>
+        <SeriesPalette>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>166</Green>
+            <Blue>218</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>242</Red>
+            <Green>88</Green>
+            <Blue>106</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>232</Red>
+            <Green>172</Green>
+            <Blue>57</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>64</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>170</Red>
+            <Green>85</Green>
+            <Blue>85</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>192</Red>
+            <Green>192</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>192</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>7</Red>
+            <Green>146</Green>
+            <Blue>94</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>64</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>240</Green>
+            <Blue>120</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>0</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+        </SeriesPalette>
+        <Series xsi:type="type:AreaSeries">
+          <Visible>true</Visible>
+          <Label>
+            <Caption>
+              <Value></Value>
+              <Font>
+                <Alignment/>
+              </Font>
+            </Caption>
+            <Background xsi:type="attribute:ColorDefinition">
+              <Transparency>0</Transparency>
+              <Red>255</Red>
+              <Green>255</Green>
+              <Blue>255</Blue>
+            </Background>
+            <Outline>
+              <Style>Solid</Style>
+              <Thickness>1</Thickness>
+              <Color>
+                <Transparency>255</Transparency>
+                <Red>0</Red>
+                <Green>0</Green>
+                <Blue>0</Blue>
+              </Color>
+              <Visible>false</Visible>
+            </Outline>
+            <Insets>
+              <Top>0.0</Top>
+              <Left>2.0</Left>
+              <Bottom>0.0</Bottom>
+              <Right>3.0</Right>
+            </Insets>
+            <Visible>false</Visible>
+          </Label>
+          <DataDefinition>
+            <Definition>row[&quot;nbpermission&quot;]</Definition>
+            <Grouping>
+              <GroupType>Text</GroupType>
+              <AggregateExpression>Sum</AggregateExpression>
+            </Grouping>
+          </DataDefinition>
+          <SeriesIdentifier>Series 1</SeriesIdentifier>
+          <DataPoint>
+            <Components>
+              <Type>Orthogonal_Value</Type>
+            </Components>
+            <Separator>, </Separator>
+          </DataPoint>
+          <LabelPosition>Above</LabelPosition>
+          <Stacked>false</Stacked>
+          <Translucent>true</Translucent>
+          <Markers>
+            <Type>Box</Type>
+            <Size>4</Size>
+            <Visible>false</Visible>
+            <Outline>
+              <Visible>true</Visible>
+            </Outline>
+          </Markers>
+          <LineAttributes>
+            <Style>Solid</Style>
+            <Thickness>1</Thickness>
+            <Color>
+              <Transparency>255</Transparency>
+              <Red>0</Red>
+              <Green>0</Green>
+              <Blue>255</Blue>
+            </Color>
+            <Visible>true</Visible>
+          </LineAttributes>
+        </Series>
+        <Grouping>
+          <GroupType>Text</GroupType>
+          <AggregateExpression>Sum</AggregateExpression>
+        </Grouping>
+      </SeriesDefinitions>
+      <Orientation>Vertical</Orientation>
+      <LineAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Visible>true</Visible>
+      </LineAttributes>
+      <Label>
+        <Caption>
+          <Value></Value>
+          <Font>
+            <Alignment/>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>true</Visible>
+      </Label>
+      <LabelPosition>Left</LabelPosition>
+      <MarkerLines>
+        <LineAttributes>
+          <Style>Dashed</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>128</Blue>
+          </Color>
+          <Visible>true</Visible>
+        </LineAttributes>
+        <Value xsi:type="data:NumberDataElement">
+          <Value>0.0</Value>
+        </Value>
+        <Label>
+          <Caption>
+            <Value>median</Value>
+            <Font>
+              <Alignment/>
+            </Font>
+          </Caption>
+          <Background xsi:type="attribute:ColorDefinition">
+            <Transparency>0</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Background>
+          <Outline>
+            <Style>Solid</Style>
+            <Thickness>1</Thickness>
+            <Color>
+              <Transparency>255</Transparency>
+              <Red>0</Red>
+              <Green>0</Green>
+              <Blue>0</Blue>
+            </Color>
+          </Outline>
+          <Insets>
+            <Top>0.0</Top>
+            <Left>2.0</Left>
+            <Bottom>0.0</Bottom>
+            <Right>3.0</Right>
+          </Insets>
+          <Visible>true</Visible>
+        </Label>
+        <LabelAnchor>North_East</LabelAnchor>
+        <FormatSpecifier xsi:type="attribute:NumberFormatSpecifier">
+          <Prefix>Median : </Prefix>
+          <Suffix></Suffix>
+          <FractionDigits>2</FractionDigits>
+        </FormatSpecifier>
+      </MarkerLines>
+      <MarkerLines>
+        <LineAttributes>
+          <Style>Dashed</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+          <Visible>true</Visible>
+        </LineAttributes>
+        <Value xsi:type="data:NumberDataElement">
+          <Value>0.0</Value>
+        </Value>
+        <Label>
+          <Caption>
+            <Value>percentile95</Value>
+            <Font>
+              <Alignment/>
+            </Font>
+          </Caption>
+          <Background xsi:type="attribute:ColorDefinition">
+            <Transparency>0</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Background>
+          <Outline>
+            <Style>Solid</Style>
+            <Thickness>1</Thickness>
+            <Color>
+              <Transparency>255</Transparency>
+              <Red>0</Red>
+              <Green>0</Green>
+              <Blue>0</Blue>
+            </Color>
+          </Outline>
+          <Insets>
+            <Top>0.0</Top>
+            <Left>2.0</Left>
+            <Bottom>0.0</Bottom>
+            <Right>3.0</Right>
+          </Insets>
+          <Visible>true</Visible>
+        </Label>
+        <LabelAnchor>North_West</LabelAnchor>
+      </MarkerLines>
+      <MarkerLines>
+        <LineAttributes>
+          <Style>Dashed</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+          <Visible>true</Visible>
+        </LineAttributes>
+        <Value xsi:type="data:NumberDataElement">
+          <Value>0.0</Value>
+        </Value>
+        <Label>
+          <Caption>
+            <Value>percentile05</Value>
+            <Font>
+              <Alignment/>
+            </Font>
+          </Caption>
+          <Background xsi:type="attribute:ColorDefinition">
+            <Transparency>0</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Background>
+          <Outline>
+            <Style>Solid</Style>
+            <Thickness>1</Thickness>
+            <Color>
+              <Transparency>255</Transparency>
+              <Red>0</Red>
+              <Green>0</Green>
+              <Blue>0</Blue>
+            </Color>
+          </Outline>
+          <Insets>
+            <Top>0.0</Top>
+            <Left>2.0</Left>
+            <Bottom>0.0</Bottom>
+            <Right>3.0</Right>
+          </Insets>
+          <Visible>true</Visible>
+        </Label>
+        <LabelAnchor>North_West</LabelAnchor>
+      </MarkerLines>
+      <MajorGrid>
+        <LineAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>196</Red>
+            <Green>196</Green>
+            <Blue>196</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </LineAttributes>
+        <TickStyle>Across</TickStyle>
+        <TickAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>196</Red>
+            <Green>196</Green>
+            <Blue>196</Blue>
+          </Color>
+          <Visible>true</Visible>
+        </TickAttributes>
+      </MajorGrid>
+      <MinorGrid>
+        <LineAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>225</Red>
+            <Green>225</Green>
+            <Blue>225</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </LineAttributes>
+        <TickStyle>Across</TickStyle>
+        <TickAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>225</Red>
+            <Green>225</Green>
+            <Blue>225</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </TickAttributes>
+      </MinorGrid>
+      <Scale>
+        <MinorGridsPerUnit>5</MinorGridsPerUnit>
+      </Scale>
+      <Origin>
+        <Type>Value</Type>
+        <Value xsi:type="data:NumberDataElement">
+          <Value>0.0</Value>
+        </Value>
+      </Origin>
+      <PrimaryAxis>true</PrimaryAxis>
+      <Percent>false</Percent>
+    </AssociatedAxes>
+    <SeriesDefinitions>
+      <Query>
+        <Definition></Definition>
+      </Query>
+      <SeriesPalette>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>80</Red>
+          <Green>166</Green>
+          <Blue>218</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>242</Red>
+          <Green>88</Green>
+          <Blue>106</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>232</Red>
+          <Green>172</Green>
+          <Blue>57</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>255</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>64</Red>
+          <Green>128</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>170</Red>
+          <Green>85</Green>
+          <Blue>85</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>0</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>192</Red>
+          <Green>192</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>192</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>7</Red>
+          <Green>146</Green>
+          <Blue>94</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>128</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>128</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>0</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>64</Green>
+          <Blue>64</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>64</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>80</Red>
+          <Green>240</Green>
+          <Blue>120</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>64</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>0</Green>
+          <Blue>64</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>0</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>64</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>64</Green>
+          <Blue>0</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>0</Blue>
+        </Entries>
+      </SeriesPalette>
+      <Series>
+        <Visible>true</Visible>
+        <Label>
+          <Caption>
+            <Value></Value>
+            <Font>
+              <Alignment/>
+            </Font>
+          </Caption>
+          <Background xsi:type="attribute:ColorDefinition">
+            <Transparency>0</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Background>
+          <Outline>
+            <Style>Solid</Style>
+            <Thickness>1</Thickness>
+            <Color>
+              <Transparency>255</Transparency>
+              <Red>0</Red>
+              <Green>0</Green>
+              <Blue>0</Blue>
+            </Color>
+            <Visible>false</Visible>
+          </Outline>
+          <Insets>
+            <Top>0.0</Top>
+            <Left>2.0</Left>
+            <Bottom>0.0</Bottom>
+            <Right>3.0</Right>
+          </Insets>
+          <Visible>false</Visible>
+        </Label>
+        <DataDefinition>
+          <Definition>row[&quot;recorduid&quot;]</Definition>
+        </DataDefinition>
+        <SeriesIdentifier></SeriesIdentifier>
+        <DataPoint>
+          <Components>
+            <Type>Orthogonal_Value</Type>
+          </Components>
+          <Separator>, </Separator>
+        </DataPoint>
+        <LabelPosition>Outside</LabelPosition>
+        <Stacked>false</Stacked>
+      </Series>
+      <Grouping>
+        <Enabled>true</Enabled>
+        <GroupType>Numeric</GroupType>
+        <AggregateExpression>Sum</AggregateExpression>
+      </Grouping>
+      <Sorting>Ascending</Sorting>
+      <SortKey>
+        <Definition>row[&quot;nbpermission&quot;]</Definition>
+      </SortKey>
+    </SeriesDefinitions>
+    <Orientation>Horizontal</Orientation>
+    <LineAttributes>
+      <Style>Solid</Style>
+      <Thickness>1</Thickness>
+      <Visible>true</Visible>
+    </LineAttributes>
+    <Label>
+      <Caption>
+        <Value></Value>
+        <Font>
+          <Alignment/>
+        </Font>
+      </Caption>
+      <Background xsi:type="attribute:ColorDefinition">
+        <Transparency>0</Transparency>
+        <Red>255</Red>
+        <Green>255</Green>
+        <Blue>255</Blue>
+      </Background>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+      </Outline>
+      <Insets>
+        <Top>0.0</Top>
+        <Left>2.0</Left>
+        <Bottom>0.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Visible>false</Visible>
+    </Label>
+    <LabelPosition>Below</LabelPosition>
+    <MajorGrid>
+      <LineAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>196</Red>
+          <Green>196</Green>
+          <Blue>196</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </LineAttributes>
+      <TickStyle>Across</TickStyle>
+      <TickAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>196</Red>
+          <Green>196</Green>
+          <Blue>196</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </TickAttributes>
+    </MajorGrid>
+    <MinorGrid>
+      <LineAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>225</Red>
+          <Green>225</Green>
+          <Blue>225</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </LineAttributes>
+      <TickStyle>Across</TickStyle>
+      <TickAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>225</Red>
+          <Green>225</Green>
+          <Blue>225</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </TickAttributes>
+    </MinorGrid>
+    <Scale>
+      <MinorGridsPerUnit>5</MinorGridsPerUnit>
+    </Scale>
+    <Origin>
+      <Type>Min</Type>
+      <Value xsi:type="data:NumberDataElement">
+        <Value>0.0</Value>
+      </Value>
+    </Origin>
+    <PrimaryAxis>true</PrimaryAxis>
+    <CategoryAxis>true</CategoryAxis>
+    <Percent>false</Percent>
+  </Axes>
+  <Orientation>Vertical</Orientation>
+  <UnitSpacing>50.0</UnitSpacing>
+  <Rotation/>
+</model:ChartWithAxes>
+]]></xml-property>
+            <property name="outputFormat">PNG</property>
+            <property name="inheritColumns">true</property>
+            <property name="height">2.46875in</property>
+            <property name="width">7.770833333333333in</property>
+            <property name="dataSet">permissionaccountnbperms</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">recorduid</property>
+                    <text-property name="displayName">recorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["recorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">login</property>
+                    <text-property name="displayName">login</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["login"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">repositorycode</property>
+                    <text-property name="displayName">repositorycode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositorycode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">givenname</property>
+                    <text-property name="displayName">givenname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["givenname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">surname</property>
+                    <text-property name="displayName">surname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["surname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">username</property>
+                    <text-property name="displayName">username</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["username"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">mail</property>
+                    <text-property name="displayName">mail</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["mail"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nbpermission</property>
+                    <text-property name="displayName">nbpermission</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nbpermission"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">disabled</property>
+                    <text-property name="displayName">disabled</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["disabled"]</expression>
+                    <property name="dataType">boolean</property>
+                </structure>
+                <structure>
+                    <property name="name">repositoryrecorduid</property>
+                    <text-property name="displayName">repositoryrecorduid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repositoryrecorduid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">median</property>
+                    <text-property name="displayName">median</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["median"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">percentile95</property>
+                    <text-property name="displayName">percentile95</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["percentile95"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">percentile05</property>
+                    <text-property name="displayName">percentile05</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["percentile05"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+            </list-property>
+        </extended-item>
+        <text id="988">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <grid id="746">
+            <property name="marginTop">12px</property>
+            <property name="width">746px</property>
+            <column id="747"/>
+            <row id="748">
+                <cell id="749">
+                    <property name="borderBottomColor">#15428B</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">thin</property>
+                    <property name="borderLeftColor">#15428B</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">thin</property>
+                    <property name="borderRightColor">#15428B</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">thin</property>
+                    <property name="borderTopColor">#15428B</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">thin</property>
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <label id="750">
+                        <property name="style">blueGrid</property>
+                        <property name="marginBottom">6pt</property>
+                        <text-property name="text" key="Report.subtitle1">Results (top 100)</text-property>
+                    </label>
+                    <table name="list" id="855">
+                        <property name="marginTop">0pt</property>
+                        <property name="canShrink">true</property>
+                        <property name="width">100%</property>
+                        <property name="dataSet">permissionaccountnbperms</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">recorduid</property>
+                                <text-property name="displayName">recorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["recorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">login</property>
+                                <text-property name="displayName">login</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["login"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">repositorycode</property>
+                                <text-property name="displayName">repositorycode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["repositorycode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">givenname</property>
+                                <text-property name="displayName">givenname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["givenname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">surname</property>
+                                <text-property name="displayName">surname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["surname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">username</property>
+                                <text-property name="displayName">username</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["username"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">mail</property>
+                                <text-property name="displayName">mail</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["mail"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">nbpermission</property>
+                                <text-property name="displayName">nbpermission</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["nbpermission"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">disabled</property>
+                                <text-property name="displayName">disabled</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["disabled"]</expression>
+                                <property name="dataType">boolean</property>
+                            </structure>
+                            <structure>
+                                <property name="name">repositoryrecorduid</property>
+                                <text-property name="displayName">repositoryrecorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["repositoryrecorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                        </list-property>
+                        <list-property name="sort">
+                            <structure>
+                                <expression name="key" type="javascript">row["nbpermission"]</expression>
+                                <property name="direction">desc</property>
+                                <property name="strength">-1</property>
+                            </structure>
+                        </list-property>
+                        <column id="754">
+                            <property name="width">24px</property>
+                        </column>
+                        <column id="870"/>
+                        <column id="871"/>
+                        <column id="872"/>
+                        <column id="873"/>
+                        <column id="874"/>
+                        <header>
+                            <row id="856">
+                                <cell id="751"/>
+                                <cell id="857">
+                                    <label id="880">
+                                        <text-property name="text" key="Account.login">login</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="858">
+                                    <label id="895">
+                                        <text-property name="text" key="Account.surname">surname</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="859">
+                                    <label id="882">
+                                        <text-property name="text" key="Account.givenname">givenname</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="860">
+                                    <label id="886">
+                                        <text-property name="text" key="Account.mail">mail</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="861">
+                                    <label id="888">
+                                        <text-property name="text" key="Report.nbperm"># of permissions</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <detail>
+                            <row id="863">
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <expression name="testExpr" type="javascript">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value type="javascript">0</value>
+                                        </simple-property-list>
+                                        <property name="style">tableAltDetail</property>
+                                    </structure>
+                                </list-property>
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">row["nbpermission"]&lt;=reportContext.getPersistentGlobalVariable('percentile95');</expression>
+                                    </structure>
+                                </list-property>
+                                <cell id="752">
+                                    <image id="891">
+                                        <property name="source">embed</property>
+                                        <property name="imageName">account_16.png</property>
+                                    </image>
+                                </cell>
+                                <cell id="864">
+                                    <data id="881">
+                                        <list-property name="highlightRules">
+                                            <structure>
+                                                <property name="operator">is-true</property>
+                                                <property name="color">#808080</property>
+                                                <property name="textLineThrough">line-through</property>
+                                                <expression name="testExpr" type="javascript">row["disabled"]</expression>
+                                            </structure>
+                                        </list-property>
+                                        <property name="resultSetColumn">login</property>
+                                        <list-property name="action">
+                                            <structure>
+                                                <property name="linkType">drill-through</property>
+                                                <property name="reportName">repositoryaccountsnbperm.rptdesign</property>
+                                                <property name="targetWindow">_self</property>
+                                                <property name="targetFileType">report-design</property>
+                                                <list-property name="paramBindings">
+                                                    <structure>
+                                                        <property name="paramName">__overridetarget</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">"page:accountDetailsPageRecorduid"</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="paramName">recorduid</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">row["recorduid"]</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                </list-property>
+                                            </structure>
+                                        </list-property>
+                                    </data>
+                                </cell>
+                                <cell id="865">
+                                    <data id="894">
+                                        <list-property name="highlightRules">
+                                            <structure>
+                                                <property name="operator">is-true</property>
+                                                <property name="color">#808080</property>
+                                                <property name="textLineThrough">line-through</property>
+                                                <expression name="testExpr" type="javascript">row["disabled"]</expression>
+                                            </structure>
+                                        </list-property>
+                                        <property name="resultSetColumn">surname</property>
+                                        <list-property name="action">
+                                            <structure>
+                                                <property name="linkType">drill-through</property>
+                                                <property name="reportName">repositoryaccountsnbperm.rptdesign</property>
+                                                <property name="targetWindow">_self</property>
+                                                <property name="targetFileType">report-design</property>
+                                                <list-property name="paramBindings">
+                                                    <structure>
+                                                        <property name="paramName">__overridetarget</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">"page:accountDetailsPageRecorduid"</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="paramName">recorduid</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">row["recorduid"]</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                </list-property>
+                                            </structure>
+                                        </list-property>
+                                    </data>
+                                </cell>
+                                <cell id="866">
+                                    <data id="883">
+                                        <list-property name="highlightRules">
+                                            <structure>
+                                                <property name="operator">is-true</property>
+                                                <property name="color">#808080</property>
+                                                <property name="textLineThrough">line-through</property>
+                                                <expression name="testExpr" type="javascript">row["disabled"]</expression>
+                                            </structure>
+                                        </list-property>
+                                        <property name="resultSetColumn">givenname</property>
+                                        <list-property name="action">
+                                            <structure>
+                                                <property name="linkType">none</property>
+                                            </structure>
+                                        </list-property>
+                                    </data>
+                                </cell>
+                                <cell id="867">
+                                    <data id="887">
+                                        <list-property name="highlightRules">
+                                            <structure>
+                                                <property name="operator">is-true</property>
+                                                <property name="color">#808080</property>
+                                                <property name="textLineThrough">line-through</property>
+                                                <expression name="testExpr" type="javascript">row["disabled"]</expression>
+                                            </structure>
+                                        </list-property>
+                                        <property name="resultSetColumn">mail</property>
+                                    </data>
+                                </cell>
+                                <cell id="868">
+                                    <data id="889">
+                                        <property name="resultSetColumn">nbpermission</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+        <grid id="898">
+            <property name="marginTop">12px</property>
+            <property name="pageBreakBefore">always</property>
+            <property name="width">746px</property>
+            <column id="899"/>
+            <row id="900">
+                <cell id="901">
+                    <property name="borderBottomColor">#15428B</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">thin</property>
+                    <property name="borderLeftColor">#15428B</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">thin</property>
+                    <property name="borderRightColor">#15428B</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">thin</property>
+                    <property name="borderTopColor">#15428B</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">thin</property>
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <label id="902">
+                        <property name="style">blueGrid</property>
+                        <property name="marginBottom">6pt</property>
+                        <text-property name="text" key="Report.subtitle2">Results (top 100)</text-property>
+                    </label>
+                    <table name="list1" id="903">
+                        <property name="marginTop">0pt</property>
+                        <property name="canShrink">true</property>
+                        <property name="width">100%</property>
+                        <property name="dataSet">permissionaccountnbperms</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">recorduid</property>
+                                <text-property name="displayName">recorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["recorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">login</property>
+                                <text-property name="displayName">login</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["login"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">repositorycode</property>
+                                <text-property name="displayName">repositorycode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["repositorycode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">givenname</property>
+                                <text-property name="displayName">givenname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["givenname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">surname</property>
+                                <text-property name="displayName">surname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["surname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">username</property>
+                                <text-property name="displayName">username</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["username"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">mail</property>
+                                <text-property name="displayName">mail</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["mail"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">nbpermission</property>
+                                <text-property name="displayName">nbpermission</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["nbpermission"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">disabled</property>
+                                <text-property name="displayName">disabled</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["disabled"]</expression>
+                                <property name="dataType">boolean</property>
+                            </structure>
+                            <structure>
+                                <property name="name">repositoryrecorduid</property>
+                                <text-property name="displayName">repositoryrecorduid</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["repositoryrecorduid"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                        </list-property>
+                        <list-property name="sort">
+                            <structure>
+                                <expression name="key" type="javascript">row["nbpermission"]</expression>
+                                <property name="direction">asc</property>
+                                <property name="strength">-1</property>
+                            </structure>
+                        </list-property>
+                        <column id="929">
+                            <property name="width">24px</property>
+                        </column>
+                        <column id="930"/>
+                        <column id="931"/>
+                        <column id="932"/>
+                        <column id="933"/>
+                        <column id="934"/>
+                        <header>
+                            <row id="904">
+                                <cell id="905"/>
+                                <cell id="906">
+                                    <label id="907">
+                                        <text-property name="text" key="Account.login">login</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="908">
+                                    <label id="909">
+                                        <text-property name="text" key="Account.surname">surname</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="910">
+                                    <label id="911">
+                                        <text-property name="text" key="Account.givenname">givenname</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="912">
+                                    <label id="913">
+                                        <text-property name="text" key="Account.mail">mail</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="914">
+                                    <label id="915">
+                                        <text-property name="text" key="Report.nbperm"># of permissions</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <detail>
+                            <row id="916">
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <expression name="testExpr" type="javascript">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value type="javascript">0</value>
+                                        </simple-property-list>
+                                        <property name="style">tableAltDetail</property>
+                                    </structure>
+                                </list-property>
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">!(row["nbpermission"]&lt;=reportContext.getPersistentGlobalVariable('percentile05'));</expression>
+                                    </structure>
+                                </list-property>
+                                <cell id="917">
+                                    <image id="918">
+                                        <property name="source">embed</property>
+                                        <property name="imageName">account_16.png</property>
+                                    </image>
+                                </cell>
+                                <cell id="919">
+                                    <data id="920">
+                                        <list-property name="highlightRules">
+                                            <structure>
+                                                <property name="operator">is-true</property>
+                                                <property name="color">#808080</property>
+                                                <property name="textLineThrough">line-through</property>
+                                                <expression name="testExpr" type="javascript">row["disabled"]</expression>
+                                            </structure>
+                                        </list-property>
+                                        <property name="resultSetColumn">login</property>
+                                        <list-property name="action">
+                                            <structure>
+                                                <property name="linkType">drill-through</property>
+                                                <property name="reportName">repositoryaccountsnbperm.rptdesign</property>
+                                                <property name="targetWindow">_self</property>
+                                                <property name="targetFileType">report-design</property>
+                                                <list-property name="paramBindings">
+                                                    <structure>
+                                                        <property name="paramName">__overridetarget</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">"page:accountDetailsPageRecorduid"</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="paramName">recorduid</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">row["recorduid"]</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                </list-property>
+                                            </structure>
+                                        </list-property>
+                                    </data>
+                                </cell>
+                                <cell id="921">
+                                    <data id="922">
+                                        <list-property name="highlightRules">
+                                            <structure>
+                                                <property name="operator">is-true</property>
+                                                <property name="color">#808080</property>
+                                                <property name="textLineThrough">line-through</property>
+                                                <expression name="testExpr" type="javascript">row["disabled"]</expression>
+                                            </structure>
+                                        </list-property>
+                                        <property name="resultSetColumn">surname</property>
+                                        <list-property name="action">
+                                            <structure>
+                                                <property name="linkType">drill-through</property>
+                                                <property name="reportName">repositoryaccountsnbperm.rptdesign</property>
+                                                <property name="targetWindow">_self</property>
+                                                <property name="targetFileType">report-design</property>
+                                                <list-property name="paramBindings">
+                                                    <structure>
+                                                        <property name="paramName">__overridetarget</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">"page:accountDetailsPageRecorduid"</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="paramName">recorduid</property>
+                                                        <simple-property-list name="expression">
+                                                            <value type="javascript">row["recorduid"]</value>
+                                                        </simple-property-list>
+                                                    </structure>
+                                                </list-property>
+                                            </structure>
+                                        </list-property>
+                                    </data>
+                                </cell>
+                                <cell id="923">
+                                    <data id="924">
+                                        <list-property name="highlightRules">
+                                            <structure>
+                                                <property name="operator">is-true</property>
+                                                <property name="color">#808080</property>
+                                                <property name="textLineThrough">line-through</property>
+                                                <expression name="testExpr" type="javascript">row["disabled"]</expression>
+                                            </structure>
+                                        </list-property>
+                                        <property name="resultSetColumn">givenname</property>
+                                        <list-property name="action">
+                                            <structure>
+                                                <property name="linkType">none</property>
+                                            </structure>
+                                        </list-property>
+                                    </data>
+                                </cell>
+                                <cell id="925">
+                                    <data id="926">
+                                        <list-property name="highlightRules">
+                                            <structure>
+                                                <property name="operator">is-true</property>
+                                                <property name="color">#808080</property>
+                                                <property name="textLineThrough">line-through</property>
+                                                <expression name="testExpr" type="javascript">row["disabled"]</expression>
+                                            </structure>
+                                        </list-property>
+                                        <property name="resultSetColumn">mail</property>
+                                    </data>
+                                </cell>
+                                <cell id="927">
+                                    <data id="928">
+                                        <property name="resultSetColumn">nbpermission</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">brainwave-logo.gif</property>
+            <property name="type">image/gif</property>
+            <property name="libReference">brainwave.brainwave-logo.gif</property>
+        </structure>
+        <structure>
+            <property name="name">account_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">account_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.account_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">application_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.application_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">asset_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.asset_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">group_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.group_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">identity_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.identity_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">manager_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.manager_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.organisation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">permission_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.permission_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">reconciliation_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.reconciliation_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">repository_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.repository_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">right_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.right_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">usage_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.usage_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">user_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.user_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">empty_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.empty_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">search_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.search_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">job_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.job_48.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_16.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_16.png</property>
+        </structure>
+        <structure>
+            <property name="name">alert_48.png</property>
+            <property name="type">image/png</property>
+            <property name="libReference">brainwave.alert_48.png</property>
+        </structure>
+    </list-property>
+</report>

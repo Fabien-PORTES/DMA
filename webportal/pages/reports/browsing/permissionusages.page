@@ -1,0 +1,153 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/reports/standard.page"
+
+reportDetails = NLS {
+	browsing_permission_usages.pagetitle [ en "Usages" fr "Usages" ]
+	browsing_permission_usages.title [ en "Usages" fr "Usages" ]
+	browsing_permission_usages.subtitle [ en "Usages - Permission <<{0}>>" fr "Usages - Permission <<{0}>>" ]
+	browsing_permission_usages.columns.identityfullname [ en "Identity" fr "Identité" ]
+	browsing_permission_usages.columns.accountlogin [ en "Account login" fr "Login du compte" ]
+	browsing_permission_usages.columns.applicationdisplayname [ en "Application" fr "Application" ]
+	browsing_permission_usages.columns.counter [ en "Usage count" fr "Compteur d'usage" ]
+}
+
+browsing_permission_usages = Page {
+
+	title: $reportDetails.browsing_permission_usages.pagetitle
+	tags: "permission" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: browsing_permission_usages
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	permissionSearch = SearchDefinition {
+		entity: Permission
+		simple-mode-rule: br_permission_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentPermission = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	permissionList = Dataset {
+		search: Search {
+			definition: permissionSearch
+			view: br_permission_searchpoint with "Profile" to applicationtype , nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_permissionDetail with currentPermission to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_usage with conceptData.recorduid to permissionrecorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: permissionList
+			column: uid
+			selection: currentPermission
+			back-link: Activity Permission Detail with currentPermission to paramPermissionUid , SerializeSearch permissionSearch to permissionSearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_permission_usages.title	
+		}		
+		
+		Link {
+			icon: "32/details/printable_32_gray.png"
+			target: Report browsing_permissionusages with conceptData.recorduid to recorduid
+			value: ""
+			compact: True 
+			layout: Layout { grab: horizontal False vertical False  indent: horizontal 0 vertical 0  align: horizontal End vertical Center}
+			align: Right 
+		}
+		
+		Text {
+			value: $reportDetails.browsing_permission_usages.subtitle( conceptData.code )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			show-filter: True
+			show-count: True
+			
+			Column{
+				column: identityfullname
+				header: $reportDetails.browsing_permission_usages.columns.identityfullname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: accountlogin
+				header: $reportDetails.browsing_permission_usages.columns.accountlogin
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: applicationdisplayname
+				header: $reportDetails.browsing_permission_usages.columns.applicationdisplayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: counter
+				header: $reportDetails.browsing_permission_usages.columns.counter
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+		}
+		
+	}
+}

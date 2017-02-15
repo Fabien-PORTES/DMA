@@ -1,0 +1,28 @@
+chart1 = Page {
+	title:'A simple Chart example'
+
+	chartorgs = Dataset {
+		values: [(col1 -> "DCOM",col2->17),
+				(col1 -> "DFIN",col2->35),
+				(col1 -> "DG",col2->78),
+				(col1 -> "DTECH",col2->5),
+				(col1 -> "DMARK",col2->96),
+				(col1 -> "DRH",col2->65),
+				(col1 -> "DSI",col2->50)
+				]
+	}
+
+
+		Chart {
+			file: "charts/histogram"
+			data:chartorgs
+			series: (Current col1) as String in "category", (Current col2) as Double in "value"
+			label: Label {
+				break: True
+			}
+			layout: Layout {
+				grab: horizontal True vertical True
+			}
+		}
+
+}

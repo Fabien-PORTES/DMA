@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1474287568054">
+	<Source file="{config.importfiles}\Extracts_AMC\PROD\ACDS_AD\export----NA.csv" type="CSV" separator="#" multiseparator="|" textseparator="&quot;" encoding="UTF-8"/>
+	<Attributes hasheader="true">
+		<Attribute name="A8254233354513740864" attribute="mail" column="mail" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5703665462365706632" attribute="ai_corporateid" column="ai-corporateid" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A366743027379125015" attribute="objectsid" column="objectsid" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A261575166974101736" attribute="loginshell" column="loginshell" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1188794763310828709" attribute="unixhomedirectory" column="UnixHomeDirectory" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A555746791238409564" attribute="samaccounttype" column="samaccounttype" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A7371210551061098099" attribute="givenname" column="givenname" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5415378265885834777" attribute="distinguishedname" column="distinguishedname" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7397384972349173457" attribute="membernisnetgroup" column="MemberNisNetgroup" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1782677788690589615" attribute="memberof" column="memberof" type="String" multivalued="true" persistent="false"/>
+		<Attribute name="A6809762544125781818" attribute="gecos" column="gecos" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4786317759820237028" attribute="gidnumber" column="gidnumber" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4146434915285446127" attribute="uidnumber" column="uidnumber" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2067459992275895935" attribute="useraccountcontrol" column="useraccountcontrol" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A9209550287918462458" attribute="ai_uniquekey" column="ai-uniquekey" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A307639051866296150" attribute="accountexpires" column="accountexpires" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5787709140187403409" attribute="objectclass" column="objectclass" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2076940039745438974" attribute="logoncount" column="logoncount" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A3218327400101793781" attribute="primarygroupid" column="primarygroupid" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A1938516156574175859" attribute="employeenumber" column="employeenumber" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A6307163546209983364" attribute="company" column="company" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3983373504731423214" attribute="sn" column="sn" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2403975729089095023" attribute="cn" column="cn" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5091276754908573349" attribute="displayname" column="displayname" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A9068140613159131557" attribute="whencreated" column="whencreated" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1021691460362492619" attribute="objectguid" column="objectguid" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A8433329697126449613" attribute="samaccountname" column="samaccountname" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A11793673882355582" attribute="objectcategory" column="objectcategory" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A8247090311690308876" attribute="uid" column="UID" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2036397976407562158" attribute="department" column="department" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1937667783047977460" attribute="name" column="name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1810005627110397352" attribute="userprincipalname" column="userprincipalname" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="1485532622365_362" column="SAMextract" attribute="samextract"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1469202920602" attribute="distinguishedname" checktype="mandatory" event="Empty account key"/>
+	</Checks>
+	<Actions>
+		<Action name="U1468940956147" action="booleanvalue" oldname="useraccountcontrol" attribute="_DISABLED" type="Boolean" oldvalue="512&#xA;520&#xA;528&#xA;536&#xA;544&#xA;552&#xA;560&#xA;568&#xA;66048&#xA;66080" newvalue="false" description="userAccountControl = 512 ou 544 ou 66048 ou 66080 actif,  &#xA;inactif (514 ou 546) "/>
+		<Action name="U1468941162271" action="add" attribute="_firstname" newvalue="{dataset.givenname.get().toUpperCase()}"/>
+		<Action name="U1468941212031" action="add" attribute="_surname" newvalue="{dataset.sn.get().toUpperCase()}"/>
+		<Action name="U1483959417008" action="default" attribute="samaccountname" newvalue="{dataset.distinguishedname.get().toUpperCase()}"/>
+		<Action name="U1468941467014" action="add" attribute="_matricule" newvalue="{dataset.samaccountname.get().toUpperCase()}"/>
+		<Action name="U1468943626754" action="add" attribute="SERVICE" type="Boolean" newvalue="false" description="Forced to false (should check later if we can &#xA;apply rules to spot the service accounts)"/>
+		<Action name="U1468947392151" action="add" attribute="_ugivenname" newvalue="{dataset._firstname.get().replaceAll(&quot;s/\x00//g&quot;,&quot;&quot;).trim()}" description="PostgreSQL doesn&apos;t support storing &#xA;NULL (\0x00)&#xA;Removing them with the regex"/>
+		<Action name="U1468947336215" action="add" attribute="_usurname" newvalue="{dataset._surname.get().replaceAll(&quot;s/\x00//g&quot;,&quot;&quot;).trim()}"/>
+		<Action name="U1468947334516" action="add" attribute="_ufullname" newvalue="{dataset._usurname.get() + &apos; &apos; + dataset._ugivenname.get()}"/>
+		<Action name="U1480077036870" action="add" attribute="_login_extract" newvalue="{dataset._matricule.get().substring(dataset._matricule.get().search(&apos;[A-Z][A-Z_1-9]{4,20}&apos;), dataset._matricule.get().search(&apos;[A-Z][A-Z_1-9]{4,20}&apos;) + dataset._matricule.get().substring(dataset._matricule.get().search(&apos;[A-Z][A-Z_1-9]{4,20}&apos;)).search(&apos;-&apos;))}"/>
+		<Action name="U1481099491845" action="add" attribute="_AD_Unique_Key" newvalue="{dataset.ai_uniquekey.get().toUpperCase()}"/>
+		<Action name="U1481099595360" action="add" attribute="_AD_FULLNAME_upper" newvalue="{dataset._ufullname.get().toUpperCase()}"/>
+		<Action name="U1481297869205" action="add" attribute="_FSURNAME" newvalue="{dataset._ugivenname.get().substr(0,1)}{dataset._usurname.get()}" condition="(dataset._usurname.get().length &gt; 3)"/>
+		<Action name="U1482073384271" action="multireplace" attribute="uid" newvalue="{dataset.uid.get().toUpperCase()}"/>
+		<Action name="U1482769920314" action="multireplace" attribute="objectsid" newvalue="{dataset.objectsid.get().toUpperCase()}" condition="{dataset.objectsid.get().trim().length &gt; 0}"/>
+		<Action name="U1484325135813" action="add" attribute="standard_named" type="Boolean" newvalue="{dataset.samaccountname.get().search(&apos;[A-Z][A-Z0-9][0-9][A-Z0-9]{2,20}&apos;) != -1}"/>
+		<Action name="U1486120434745" action="default" attribute="_DISABLED" newvalue="true"/>
+		<Action name="U1486120621566" action="multireplace" attribute="_DISABLED" newvalue="true" condition="(dataset.contains(&apos;distinguishedname&apos;, &apos;Deactivated&apos;, false, true))"/>
+	</Actions>
+</Discovery>

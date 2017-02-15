@@ -1,0 +1,226 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+
+
+
+permissionSearchPage = Page {
+	title: $search.permission.title
+	tags: "permission", "conceptsearch" priority 300
+	icon: "16/audit/permission_16.png"
+	large-icon: "48/red/permission.png"
+	description: $searchlabel.permission
+
+	initialUid = Parameter {
+		type: String
+		hidden: True
+	}
+	
+	useNavigatorMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: True
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	permissionSearch = SearchDefinition {
+		entity: Permission		
+		simple-mode-rule: br_permission_simple_search
+	}
+	
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedPermissionUid = Variable {
+		type: String
+	}
+
+	showAnalytics = Variable {type:String initial:'0'}
+	uids =  Variable {type:String multivalued:True}
+	permissionanalytics = Dataset {
+		pages: Pages{tags: "permission" and "byuids" }
+	}
+
+	permissionData = Dataset {
+		search: Search {
+			definition: permissionSearch
+			view: br_permission_searchpoint with "Profile" to applicationtype
+		}
+	}
+
+
+
+
+	Grid {
+		columns:GridColumn{width:grow}, GridColumn
+		GridRow {
+		GridCell {
+			// Search section
+			Group {
+				layout: Layout { grab: horizontal True vertical False indent: horizontal 5 vertical 0 }
+				SearchEdition {
+					definition: permissionSearch
+					layout: Layout { grab: horizontal True vertical False }
+					simple-mode-columns: 2
+					simple-mode-layout: SimpleModeLayout {
+						code { label: $permission.code },
+						name { label: $permission.displayname },
+						type { label: $permission.permissiontype },
+						application { label: $papplication.code }
+					}
+				}
+			}
+			Group {
+				layout: Layout { grab: horizontal True vertical True }
+				Table {
+					data: permissionData
+					show-count: True
+					double-click: GoTo Activity Permission Detail with selectedPermissionUid to paramPermissionUid, SerializeSearch permissionSearch to permissionSearch, useNavigatorMode to paramSearchMode, initialIndex to paramInitialIndex
+					layout: Layout { grab: horizontal True vertical True }
+					configurable: True
+					persist-configuration: True
+					initial-selection: initialUid using uid
+					initial-selection-index: paramInitialIndex
+					selection-index: initialIndex
+					
+					Column {
+						column: uid
+						hidden: True
+						selection: selectedPermissionUid
+					}
+					Column {
+						column: code
+						header: $permission.code
+						width: 100%
+						
+						initially-masked: False
+					}
+					Column {
+						column: displayname
+						header: $permission.displayname
+						width: 100%
+						
+						initially-masked: False
+					}
+					Column {
+						column: permissiontype
+						header: $permission.permissiontype
+						width: 100%
+						
+						initially-masked: False
+					}
+					Column {
+						column: application_code
+						header: $papplication.code
+						width: 100%
+						
+						initially-masked: False
+					}
+					Column {
+						column: application_displayname
+						header: $papplication.displayname
+						width: 100%
+						
+						initially-masked: True
+					}
+				}
+			}
+			
+
+			Group{
+				layout: Layout {align: horizontal End vertical Beginning grab: horizontal True vertical False }
+				ButtonGroup {
+					uniform:True
+					
+					Button {
+						actions:StringCase(showAnalytics) { when "0" then [Set "1" to showAnalytics] when "1" then [Set "0" to showAnalytics]}  
+						layout: Layout { grab: horizontal False vertical False hint: width 200}
+						feature:permissionsearch_analytics
+						hidden: IntPredicate ( Count permissionanalytics )  { when = 0 then True otherwise False }
+						text: Transform showAnalytics using search_page_analyticsSectionMapping
+					}
+					Button {
+						actions: GoTo Activity Permission Detail with selectedPermissionUid to paramPermissionUid, SerializeSearch permissionSearch to permissionSearch, useNavigatorMode to paramSearchMode
+						layout: Layout { grab: horizontal False vertical False hint: width 200}
+					
+						disabled: StringPredicate(selectedPermissionUid) { when IsEmpty then True }
+						text: $search_page.showdetails
+					}
+				}
+			}
+
+			
+			Spacer {
+				height:10
+			}
+		}
+		GridCell {
+			// Analytics section
+			Group {
+				hidden:StringPredicate(showAnalytics) { when '0' then True}
+				layout:Layout{hint:width 320}
+	
+				Header {
+					value:$search_page.analyticsreport
+					styling:bigRedTitleStyle
+					layout:Layout{align:horizontal Center vertical Center}
+					tooltip:$search_page.analyticsreporttooltip
+				}
+				TemplateTable {
+					data:permissionanalytics
+					layout:Layout{grab: horizontal True vertical True}
+					row-height:82
+					initial-sort:^priority
+					pagination:6
+					disabled:IntPredicate(Count permissionData) {when =0 then True when >2001 then True}  //MAX AS OF SQL SERVER : 2100 parameters in Hibernate request
+					show-filter:True			
+					double-click:TransferData permissionData(uid) to (uids), 
+								 GoTo Dynamic (Current type, Current name) with uids to uids
+					
+					ImageCell {
+						image:Current largeIcon
+						top:0
+						height:48
+						left:136
+						width:48
+						on-click:
+								TransferData permissionData(uid) to (uids), 
+								GoTo Dynamic (Current type, Current name) with uids to uids					
+						}
+					TextCell {
+						column:title
+						top:50
+						height:32
+						left:0
+						width:320
+						horizontal-align:Center
+						filterable:True
+						on-click:
+								TransferData permissionData(uid) to (uids), 
+								GoTo Dynamic (Current type, Current name) with uids to uids
+						/*
+								TransferData identityData(uid) to (uids), 
+									MultivaluedDistinct uids, MultivaluedRemove all '' from uids,
+										IntCase(SizeOf uids) { 
+											when =0 then [Message $search_page.analyticsreportnoentries]
+											when <2001 then [GoTo Dynamic (Current type, Current name) with uids to uids] //MAX AS OF SQL SERVER : 2100 parameters in Hibernate request
+											otherwise [Message $search_page.analyticsreporttoomanyentries]
+										}
+										*/
+					
+					}
+				
+				}
+			}
+		}	
+		}
+		}
+}

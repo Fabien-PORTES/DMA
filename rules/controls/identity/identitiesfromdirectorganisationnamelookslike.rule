@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesfromdirectorganisationnamelookslike" operator="and" query="identity" displayname="Identities from direct organisation name which looks like {organisationname}" version="2">
+	<RequestParam name="organisationname" displayname="organisation name" query="organisation" criteria="eqDisplayName" criteriaparam="displayNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestJoin name="J1331844191072_179" operator="and" join="organisation">
+		<RequestCriteria name="C1332850423495_109" criteria="likeDisplayName">
+			<RequestCriteriaParam name="displayNameParam" reference="organisationname" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

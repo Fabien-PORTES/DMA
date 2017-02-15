@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbproblembyorg" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="organisationDetail_nbproblembyorg" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="directrecorduid" displayname="directrecorduid"/>
+	<ViewSort name="sort" attribute1="A1383241962549_16892" direction1="DESC"/>
+	<ViewJoin name="J1367158868052_3096" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewJoin name="J1367158880513_3097" kind="inner" identitysecure="false" join="parentorganisation">
+			<ViewAttribute name="1383241910194_16883" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1367158899088_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewAttribute name="1383241910194_16884" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1367158909089_3100" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;directrecorduid&apos;)" join="organisation">
+		<ViewAttribute name="1383241916965_16887" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1367158919596_0" reference="directrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1383241933673_16888" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383241943438_16889" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383241946761_16890" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383241950537_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="A1383241962549_16892" attribute="controlcode" alias="nbdefects" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1383242005653_16894" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383242012689_16895" kind="inner" identitysecure="false" join="permission">
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

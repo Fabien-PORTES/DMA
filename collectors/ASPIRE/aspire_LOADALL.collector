@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition scriptfile="collectors/ASPIRE/aspire_LOADALL.javascript" label="inside_LOADALL" name="P1475595878518_1" startingpoint="C1475595895625">
+		<Component name="C1475595895625" type="library/components/start.component" x="358" y="30" w="200" h="50" title="start aspire"/>
+		<Component name="C1475595909319" type="changefilter" x="359" y="120" w="200" h="50" title="domain">
+			<Actions>
+				<Action name="U1475596084351" action="add" attribute="_OWNER_REF" type="String" multivalued="false" newvalue="owner" errorexist="false"/>
+				<Action name="U1475602364357" action="add" attribute="_APPMANAGER_REF" type="String" multivalued="false" newvalue="applicationmanager" errorexist="false"/>
+				<Action name="U1475602386064" action="add" attribute="_APPMANAGER_DELEGATE_REF" type="String" multivalued="false" newvalue="delegate" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Component name="C1475595916453" type="references" x="354" y="211" w="200" h="50" title="owner">
+			<Domain check="true" code="_OWNER_REF" label="_OWNER_REF"/>
+		</Component>
+		<Component name="C1475595924677" type="callfilter" x="351" y="577" w="200" h="64" title="aspire">
+			<Line provisioningfile="/collectors/ASPIRE/aspire_without_link.collector"/>
+		</Component>
+		<Link name="L1475595938163" source="C1475595895625" target="C1475595909319" priority="1"/>
+		<Link name="L1475595945045" source="C1475595916453" target="C1475595916453_1" priority="1"/>
+		<Link name="L1475595952614" source="C1475595909319" target="C1475595916453" priority="1"/>
+		<Component name="C1475595916453_1" type="references" x="352" y="311" w="200" h="64" title="app manager">
+			<Domain check="true" label="_APPMANAGER_REF" code="_APPMANAGER_REF"/>
+		</Component>
+		<Link name="L1475596051694" source="C1475595916453_1" target="C1475595916453_2" priority="1"/>
+		<Component name="C1475595916453_2" type="references" x="362" y="403" w="200" h="64" title="app manager delegate">
+			<Domain check="true" label="_APPMANAGER_DELEGATE_REF" code="_APPMANAGER_DELEGATE_REF"/>
+		</Component>
+		<Link name="L1475602454801" source="C1475595916453_2" target="C1475602545999" priority="1"/>
+		<Component name="C1475602545999" type="repository" x="354" y="496" w="200" h="50" title="dummy">
+			<Media type="A" code="_REPOSITORY_CODE_" label="_REPOSITORY_CODE_"/>
+		</Component>
+		<Link name="L1475602553479" source="C1475602545999" target="C1475595924677" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

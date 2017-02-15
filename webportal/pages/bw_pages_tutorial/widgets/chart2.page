@@ -1,0 +1,21 @@
+chart2 = Page {
+	title:'A simple Chart example'
+
+	nbpeoplebyorg = Dataset {
+		view:training_nbpeoplebyorg
+	}
+
+
+		Chart {
+			file: "charts/mypie"
+			data:nbpeoplebyorg
+			series: (Current displayname) as String in "category", (Current nbidentity) as Double in "value"
+			label: Label {
+				break: True
+			}
+			layout: Layout {
+				grab: horizontal True vertical True
+			}
+		}
+
+}

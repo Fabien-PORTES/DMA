@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbchildorganisations" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="organisation" displayname="br_organisationDetail_nbchildorganisations" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378481047950_256" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378709863562_239" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.isDirectLink.get()" join="parentorganisation">
+		<ViewAttribute name="1378709872871_242" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378480890401_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1423147637428_395" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1423147650332_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378709866839_240" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="!param.isDirectLink.get()" join="uporganisation">
+		<ViewAttribute name="1378709874058_244" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378480890401_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1423147633365_394" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1423147660049_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

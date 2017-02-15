@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource installation data record" description="The General Resource Installation Data record defines the user data associated with a general resource. There is one record per general resource/data combination. This record type contains data stored in the USRCNT repeat group, which is a field in the RACF database that is reserved for your installation’s use. None of the RACF commands manipulate this field. Do not confuse this field with the GRBD_INSTALL_DATA field which you enter into the database using the RDEFINE and RALTER commands.">
+	<Source type="FORMATTED" filter="^0506 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRINSTD_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the General Resource Installation Data record (0506)."/>
+		<Attribute name="A4199536690768339793" attribute="GRINSTD_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRINSTD_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRINSTD_USR_NAME" column="262-269" type="String" multivalued="false" description="The name of the installation-defined field."/>
+		<Attribute name="A3188661801656117613" attribute="GRINSTD_USR_DATA" column="271-525" type="String" multivalued="false" description="The data for the installation-defined field."/>
+		<Attribute name="A4037269903301147695" attribute="GRINSTD_USR_FLAG" column="527-534" type="String" multivalued="false" description="The flag for the installation-defined field in the form X&lt;nn&gt;."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

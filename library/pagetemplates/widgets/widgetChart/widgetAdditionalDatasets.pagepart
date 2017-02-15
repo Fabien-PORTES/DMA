@@ -1,0 +1,3 @@
+<template:widgetdatasetname/> = Dataset {
+	view: br_organisationDetail_nbproblems with 1 to recorduid
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationtypes" distinct="true" concept="organisation" displayname="Organisation types" notes="">
+	<ViewSort name="sort" attribute1="A1336747148922_458"/>
+	<ViewAttribute name="A1336747147244_456" attribute="organisationtyperecorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336747147962_457" attribute="organisationtypeuid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336747148922_458" attribute="organisationtypecode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336747149576_459" attribute="organisationtypedisplayname" removedfromprojection="false" globalfilter="false"/>
+</View>

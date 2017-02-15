@@ -1,0 +1,29 @@
+
+decorator5 = Page {
+	title:'A compact text with a static value and a BulletSparkline decorator'
+	
+	mybulletrange = Variable { type:Integer multivalued:True initial:[5,13,55,76] }
+	
+	staticDataset = Dataset {
+		values: [(col1 -> "key1",col2->17,col3->"new york"),
+				(col1 -> "key2",col2->19,col3->"new york"),
+				(col1 -> "key3",col2->33,col3->"new york"),
+				(col1 -> "key4",col2->37,col3->"texas"),
+				(col1 -> "key5",col2->39,col3->"texas")
+				]
+	}
+
+		Text {
+			label:"label"
+			value:"A compact text with a static value and a BulletSparkline decorator"
+			compact:True
+			decorator:Decorator{
+							after:BulletSparkline{width:64 performance-value:33 target-value:50 range-values:mybulletrange }
+							width:Fill
+					  }
+		}
+}
+
+
+
+

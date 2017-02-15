@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_extensionsfilesystem" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_extensionsfilesystem" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewComputedAttribute name="extension" displayname="extension" type="String" expression="dataset.child_code.get().lastIndexOf(&quot;.&quot;)&gt;0?dataset.child_code.get().substring(dataset.child_code.get().lastIndexOf(&quot;.&quot;)+1):&apos;&apos;"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1434561842119_1329" prefix="child_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="downpermission">
+		<ViewAttribute name="A1434561854571_1330" attribute="code" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434562733832_1331" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1434563130362_1332" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1434563134058_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

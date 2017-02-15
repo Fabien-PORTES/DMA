@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1342904708466" title="Role definition " description="Roles description ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7220767436147139162" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client ID of Current User"/>
+		<Attribute name="A4227905082424040799" attribute="agr_name" column="AGR_NAME" type="String" multivalued="false" persistent="false" description="Role Name"/>
+		<Attribute name="A7524425118079896367" attribute="parent_agr" column="PARENT_AGR" type="String" multivalued="false" persistent="false" description="Name of imparting role"/>
+		<Attribute name="A8424943175436225214" attribute="create_usr" column="CREATE_USR" type="String" multivalued="false" persistent="false" description="User Name"/>
+		<Attribute name="A3339754498178318612" attribute="create_dat" column="CREATE_DAT" type="String" multivalued="false" persistent="false" description="Date of menu generation"/>
+		<Attribute name="A2050501186899335615" attribute="create_tim" column="CREATE_TIM" type="String" multivalued="false" persistent="false" description="Time when the menu was generated last"/>
+		<Attribute name="A8779331700070638974" attribute="create_tmp" column="CREATE_TMP" type="String" multivalued="false" persistent="false" description="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+		<Attribute name="A7008709147626121101" attribute="change_usr" column="CHANGE_USR" type="String" multivalued="false" persistent="false" description="User Name"/>
+		<Attribute name="A3956778702781555345" attribute="change_dat" column="CHANGE_DAT" type="String" multivalued="false" persistent="false" description="Date of menu generation"/>
+		<Attribute name="A2390683323228244938" attribute="change_tim" column="CHANGE_TIM" type="String" multivalued="false" persistent="false" description="Time when the menu was generated last"/>
+		<Attribute name="A2138683851659084887" attribute="change_tmp" column="CHANGE_TMP" type="String" multivalued="false" persistent="false" description="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+		<Attribute name="A5884873281490980805" attribute="attributes" column="ATTRIBUTES" type="String" multivalued="false" persistent="false" description="Attributes of the menu"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1342904740087" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

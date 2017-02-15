@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identitycount" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="br_identitycount">
+	<ViewAttribute name="A1376993886336_1154" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesnotwithjob" operator="and" query="identity" displayname="Identities without job {job}" version="2">
+	<RequestParam name="job" displayname="job" query="identity" criteria="eqJobTitle" criteriaparam="jobTitleParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestGroup name="G1332851657862_144" operator="and" inverse="true">
+		<RequestCriteria name="C1331843763219_170" criteria="eqJobTitle">
+			<RequestCriteriaParam name="jobTitleParam" reference="job" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

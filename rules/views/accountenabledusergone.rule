@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_accountenabledusergone" operator="and" query="account" displayname="Active accounts, users gone" version="6">
+	<RequestJoin name="J1323767743111_5" operator="and" join="identityreconciliation">
+		<RequestCriteria name="C1326377865633_30" criteria="neEmployed">
+		</RequestCriteria>
+	</RequestJoin>
+	<RequestGroup name="G1326377920347_33" operator="or">
+		<RequestCriteria name="C1323767730475_2" criteria="neDisabled">
+		</RequestCriteria>
+		<RequestCriteria name="C1326377956437_35" criteria="isNullProperty">
+			<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+				<Value name="0" data="disabled"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

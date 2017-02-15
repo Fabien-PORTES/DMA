@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="org_access" prefix="share_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="org_access" notes="">
+	<ViewParam name="sensitivity" displayname="sensitivity"/>
+	<ViewParam name="rightfilter" displayname="rightfilter"/>
+	<ViewParam name="filetype" displayname="filetype"/>
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewParam name="managed" displayname="managed" type="Boolean"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1438851861646_326" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438851865107_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1438851944909_329" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="A1438852074071_359" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewJoin name="J1438852126628_365" prefix="right_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="directpermright">
+			<ViewAttribute name="A1438852448994_383" attribute="action" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1438852474591_0" reference="rightfilter" operation="ilike" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewJoin name="J1438865384475_665" prefix="account_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+				<ViewAttribute name="A1438865395096_666" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1438865397189_0" operation="isNull" ignoreifempty="false"/>
+					<ViewAttributeFilter name="F1438865400393_1" operation="isFalse" ignoreifempty="false"/>
+				</ViewAttribute>
+				<ViewJoin name="J1438865413909_669" prefix="id_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+					<ViewAttribute name="1438865499369_671" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+					<ViewJoin name="J1438852228773_376" prefix="org_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="organisation">
+						<ViewAttribute name="1438865501049_674" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					</ViewJoin>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="1438852568838_389" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438852604416_0" reference="filetype" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewJoin name="J1444063219197_1157" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+			<ViewAttribute name="1444064865787_3574" attribute="sensitivitylevel" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063325208_0" reference="sensitivity" operation="in" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="1444064865787_3575" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063353561_0" reference="managed" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1438852078746_361" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438856336628_0" reference="shares" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

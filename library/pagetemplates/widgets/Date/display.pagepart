@@ -1,0 +1,5 @@
+Text {
+	compact: True
+	label: $<template:pageNLSname/>.<template:detailnlsname/>.<template:detailcolumnnlsname/>
+	value: DateLDAP(detailViewRecord.<template:detailcolumnattribute/>).value
+}

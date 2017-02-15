@@ -1,0 +1,4 @@
+Checkbox {
+	label: <template:widgetlabel/>
+	variable: <template:widgetvariablename/>
+}

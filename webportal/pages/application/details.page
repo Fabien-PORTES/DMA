@@ -1,0 +1,534 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/details_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/resources/audittrail.page"
+import "/webportal/pages/mixins/workflow_mixins.page"
+
+
+applicationDetailsMetadata_Dialog = Dialog {
+	title: $applicationDetailsMetadata_Dialog_NLS.title
+	mixins: workflowDefaultMixin
+	buttons:[
+	
+		OkButton {
+			disabled:StringPredicate(changed) {when '1' then False otherwise True}
+			actions:Set description to task.description,
+					Set paramApplicationUid to task.application,
+					TaskComplete task wait,
+					Flash $applicationDetailsMetadata_Dialog_NLS.done
+		} 
+	
+		CancelButton
+	]
+	
+	width:800
+	height:300
+	
+	/* Parameters here */
+	paramApplicationUid = Variable {type:String multivalued:False}
+
+	description = Variable
+	sensitivityreason = Variable
+	category = Variable
+	tags = Variable {type:String multivalued:True}
+	
+	selecteddescription = Variable
+	
+	changed = Variable{type:String initial:'0'}
+
+	application = Record {
+		view: br_applicationDetail with paramApplicationUid to uid
+	}
+
+
+	task = TaskRecord (create "updateapplicationmetadata")
+
+	Header {
+		value:$applicationDetailsMetadata_Dialog_NLS.description
+		styling:subtitleStyle
+	}
+	Separator
+	Edit {
+		variable:description
+		label:$applicationDetails.description
+		multi-lines:True
+		layout:Layout{grab: horizontal True vertical False hint:height 64}
+		modify-event:Set '1' to changed
+	}	
+}
+applicationDetailsManager_Dialog = Dialog {
+	title: $applicationDetailsManager_Dialog_NLS.title
+	mixins: workflowDefaultMixin
+	buttons:OkButton
+	width:800
+	height:300
+	
+	/* Parameters here */
+	paramApplicationUid = Variable {type:String multivalued:False}
+	
+	// can be either businessowner or technicalowner, default to businessowner
+	paramManagertype = Variable {type:String multivalued:False initial:'businessowner'}
+
+	/* variables here */
+	newmanagerUid = Variable {type:String multivalued:False}
+
+	
+	/* Datasets and records here */
+	// Record for concept details
+	application = Record {
+		view: br_applicationDetail with paramApplicationUid to uid
+	}
+	
+	newManager = Record {
+		view: br_identityDetail with newmanagerUid to uid
+	}
+
+	applicationowner = Record {
+		view: br_applicationowner with paramApplicationUid to uid, paramManagertype to expertisedomain
+	}
+
+	audittrailstatus = Record {
+		view:br_updatemanagerstatus with paramApplicationUid to uid, Transform "Application" using entityDetailsManagerTicketTypeMapping to tickettype
+	}
+
+	task = TaskRecord (create "updateapplicationmanager")
+	
+	
+	/* Page content */
+	Grid {
+		columns:GridColumn{width:64px}, GridColumn{width:320px}, GridColumn{width:320px}, GridColumn{width:grow}
+		GridRow {
+			height:96
+			GridCell {
+				Image {
+					image: "48/red/application.png"
+					align: Center
+				}
+			}
+			GridCell {
+				Text{
+					label:   $application.concept 
+					value: Transform application.displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $applicationDetailsManager_Dialog_NLS.managerhrcode
+					value: Transform applicationowner.hrcode using optionStringMapping
+					lines: 2
+				}
+
+				Text {
+					label: $applicationDetailsManager_Dialog_NLS.managerfullname
+					value: Transform applicationowner.fullname using optionStringMapping
+					lines: 2
+				}
+
+				Text{
+					label:   $applicationDetailsManager_Dialog_NLS.managertype 
+					value: paramManagertype
+					lines: 2
+				}
+			}
+			GridCell {
+			}
+			GridCell {
+			}
+		}
+		GridRow {
+			GridCell {
+				span:4
+				Header {
+					value:$applicationDetailsManager_Dialog_NLS.question
+				}
+				Header {
+					value:$applicationDetailsManager_Dialog_NLS.changeinprogress
+					styling:warningFieldStyle
+					hidden:
+							Not AndPredicate {
+								StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+								StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+							}
+				}
+			}
+		}
+		GridRow {
+			height:grow
+			GridCell {
+				span:4
+				ButtonGroup {
+						Button {
+							actions:Dialog identityPicker(newmanagerUid from outUid), 
+									Confirm $applicationDetailsManager_Dialog_NLS.newmanagerconfirm(Transform newManager.hrcode using mayBeNullMapping, newManager.fullname, application.displayname),
+									Flash Information $applicationDetailsManager_Dialog_NLS.confirmupdate,
+									Set paramManagertype to task.managertype,
+									Set paramApplicationUid to task.application,
+									Set newmanagerUid to task.manager,
+									StringCase(applicationowner.fullname) { when IsEmpty then [Set 'create' to task.action] otherwise [Set 'modify' to task.action] },
+									TaskComplete task wait,
+									ReloadData (applicationowner, audittrailstatus)
+							text:$applicationDetailsManager_Dialog_NLS.setmanager
+							disabled:
+								AndPredicate {
+									StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+									StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Confirm $applicationDetailsManager_Dialog_NLS.newmanagerremove(Transform applicationowner.hrcode using mayBeNullMapping, applicationowner.fullname, application.displayname),
+									Flash Information $applicationDetailsManager_Dialog_NLS.removeupdate,
+									Set paramManagertype to task.managertype,
+									Set paramApplicationUid to task.application,
+									Set '' to task.manager,
+									Set 'delete' to task.action,
+									TaskComplete task wait,
+									ReloadData (applicationowner, audittrailstatus)
+							text:$applicationDetailsManager_Dialog_NLS.removemanager
+							disabled:
+								OrPredicate {
+									AndPredicate {
+										StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+										StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+									}
+								StringPredicate(applicationowner.fullname) {when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Dialog entityDetailsManagerAuditDialog("Application" to type, paramApplicationUid to entity) 
+						                        feature:applicationdetails_auditmanager
+							                       
+							text:$applicationDetailsManager_Dialog_NLS.manageraudittrail
+						}
+				}		
+			}
+		}
+	}
+}
+
+
+
+applicationDetailsPageRecorduid = Page {
+	title: "Recorduid redirection (application)"
+	conditional-redirect: ConditionalRedirect { condition: True target: Page applicationDetailsPage with applicationUid.uid to paramApplicationUid }
+	
+	recorduid = Parameter {
+		type: Integer
+		hidden: True
+		recorduid-of: Application
+		mandatory: True
+	}
+	
+	applicationUid = Record {
+		view: br_applicationDetail_uid with recorduid to recorduid
+	}
+}
+
+applicationDetailsPage = Page {
+	title: $applicationDetails.title
+	dynamic-title: $applicationDetails.dynamictitle(application.displayname)
+	mixins: detailsPage
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set paramApplicationUid to nonEmptyUid] when True then []}
+	
+	// Parameters Here
+	paramApplicationUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: True
+	}
+	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	// Search Definition Here
+	applicationSearch = SearchDefinition {
+		entity: Application
+		simple-mode-rule: br_application_simple_search
+	}
+	
+	// Variables Here
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedApplicationUid = Variable {
+		type: String
+		initial: paramApplicationUid
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Dataset for Navigator
+	applicationList = Dataset {
+		search: Search {
+			definition: applicationSearch
+			view: br_application_searchpoint with "Profile" to applicationtype , nonEmptyUid to uid unless-empty
+		}
+	}
+	
+	// Dataset for Reports
+	relatedLinksTiles = Dataset {
+		pages: Pages{tags: "application" and "byuid" }
+	}
+	
+	// Record for concept details
+	application = Record {
+		view: br_applicationDetail with selectedApplicationUid to uid
+	}
+	
+	applicationext = Record {
+		view: br_applicationDetailExtended with selectedApplicationUid to uid
+	}
+	
+	// All other Records and Datasets
+	applicationcountaccount = Record{
+		view: br_applicationDetail_nbaccounts with application.recorduid to recorduid, True to  activeaccount
+	}
+	
+	applicationcountserviceaccount = Record{
+		view: br_applicationDetail_nbaccounts with application.recorduid to recorduid, True to  activeaccount, True to serviceaccount
+	}
+	
+	applicationcountorphanaccount = Record{
+		view: br_applicationDetail_nbaccounts with application.recorduid to recorduid, True to  activeaccount, True to orphanaccount
+	}
+	
+	applicationcountidentity = Record {
+		view: br_applicationDetail_nbidentities with application.recorduid to recorduid
+	}
+
+	applicationbusinessowner = Record {
+		view: br_applicationBusinessowner with selectedApplicationUid to uid
+	}
+
+	applicationtechnicalowner = Record {
+		view: br_applicationTechnicalowner with selectedApplicationUid to uid
+	}
+	
+	// Start of the Layout based on a 1-column Grid
+	Grid {
+		columns: GridColumn{}
+		
+		// Row for the Navigator
+		GridRow {
+			GridCell{
+				Group{
+					layout: Layout {align: horizontal Center vertical Beginning }
+					Spacer {
+						height: 5
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					SetNavigator {
+						data: applicationList
+						column: uid
+						selection: selectedApplicationUid
+						back-link: Activity Application Search with SerializeSearch applicationSearch to applicationSearch, paramSearchMode to paramSearchMode, selectedApplicationUid to initialUid, initialIndex to paramInitialIndex
+						initial: paramApplicationUid
+						initial-index: paramInitialIndex
+						selection-index: initialIndex
+						show-count: True
+						show-first: True
+						show-last: True
+						count-width: 150
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					Spacer{
+						height:10
+					}
+				}
+			}
+		}
+		
+		// Row for header
+		GridRow{
+			GridCell{
+				background: Image "details/card_header.png"
+				Spacer { height: 67 }
+			}
+		}
+		
+		// Row for content
+		GridRow{
+			GridCell{
+				background: Image "details/card_content.png"
+				
+				Spacer { height:10 }
+				
+				Text {
+					value: application.displayname
+					styling:detailsTitle
+					align: Center
+				}
+				
+				
+				Spacer { height:5 }
+				
+				Flow {
+					disposition: Horizontal
+
+					// First Column
+					Group {
+						layout: Layout { hint: width 290}
+						Image {
+							image: "details/application.png"
+							align: Center
+						}
+					}
+					
+					// Second Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Text {
+							label: $application.code
+							value: Transform application.code using optionStringMapping
+							lines: 2
+						}
+						
+						Text {
+							label: $application.displayname
+							value: Transform application.displayname using optionStringMapping
+							lines: 2
+						}
+						
+						Text {
+							label: $applicationDetails.number_identities
+							value: Transform  applicationcountidentity.count using nullToZeroMapping
+						}
+						
+						Text {
+							label: $applicationDetails.number_accounts
+							value: Transform applicationcountaccount.count using nullToZeroMapping
+						}
+						Link {
+							label: Transform $applicationDetails.repository_displayname using optionStringMapping
+							value: Transform application.repositorydisplayname using optionStringMapping
+							icon:"details/link_database_14.png"
+							target: Activity Repository Detail with application.repositoryuid to paramRepositoryUid
+							disabled:Not FeaturePredicate applicationdetails_linktorepository
+						}
+					}
+					
+					// Third Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						/* DEPRECATED
+						Link {
+							value: Transform application.managerfullname using optionStringMapping
+							disabled: StringPredicate(application.managerfullname) { when IsEmpty then True }	
+							label: $application.manager
+							target: Activity Identity Detail with application.manageruid to paramIdentityUid
+							icon:"details/link_profile_14.png"		
+						}
+						*/
+
+						Text {
+							label: $applicationDetails.description
+							value: Transform applicationext.description  using optionStringMapping
+							lines:4
+							commands:Commands { position: Before orientation: Horizontal 
+											Command{actions:Dialog applicationDetailsMetadata_Dialog(selectedApplicationUid to paramApplicationUid), ReloadData (applicationext)
+							                        icon:'16/red/edit_16.png' feature:applicationdetails_updatemetadata tooltip:$applicationDetails.updatemetadata
+							                       }
+							                  }
+						}
+						Link {
+							label: $businessowner.concept
+							value: Concat(Transform applicationbusinessowner.hrcode using optionStringMapping, ' / ',Transform applicationbusinessowner.fullname using optionStringMapping)
+							target:Activity Identity Detail with applicationbusinessowner.uid to paramIdentityUid
+							disabled:
+							OrPredicate {
+								StringPredicate(applicationbusinessowner.uid) { when IsEmpty then True}
+								Not FeaturePredicate applicationdetails_linktobusinessowner				
+							}
+							commands:Commands { position: Before orientation: Horizontal 
+											Command{actions:Dialog applicationDetailsManager_Dialog(selectedApplicationUid to paramApplicationUid), ReloadData (applicationbusinessowner)
+							                        icon:'16/red/edit_16.png' feature:applicationdetails_updatemanager tooltip:$applicationDetails.updatemanager
+							                       }
+							                  }
+						}
+
+						Link {
+							label: $technicalowner.concept
+							value: Concat(Transform applicationtechnicalowner.hrcode using optionStringMapping, ' / ',Transform applicationtechnicalowner.fullname using optionStringMapping)
+							target:Activity Identity Detail with applicationtechnicalowner.uid to paramIdentityUid
+							disabled:
+							OrPredicate {
+								StringPredicate(applicationtechnicalowner.uid) { when IsEmpty then True}
+								Not FeaturePredicate applicationdetails_linktotechnicalowner						
+							}
+							commands:Commands { position: Before orientation: Horizontal 
+											Command{actions:Dialog applicationDetailsManager_Dialog('technicalowner' to paramManagertype, selectedApplicationUid to paramApplicationUid), ReloadData (applicationtechnicalowner)
+							                        icon:'16/red/edit_16.png' feature:applicationdetails_updatemanager tooltip:$applicationDetails.updatemanager
+							                       }
+							                  }
+						}
+						
+						Text {
+							label: $applicationDetails.number_service_accounts
+							value: Transform applicationcountserviceaccount.count using nullToZeroMapping
+							
+						}
+						
+						Text {
+							label: $applicationDetails.number_orphan_accounts
+							value: Transform applicationcountorphanaccount.count using nullToZeroMapping
+							
+						}
+					}
+				}
+				Spacer { height: 20 }
+			}
+		}
+		
+		// Row for footer
+		GridRow{
+			GridCell{
+				background: Image "details/card_footer.png"
+				Spacer { height: 12 }
+			}
+		}
+		
+		// Row for links
+		GridRow{
+			GridCell{
+				Spacer { height: 20 }
+				Tiles {
+					columns:5
+					tile-height:120
+					mixins:detailIcons
+					TileGroup {
+						iterate-on: relatedLinksTiles
+						initial-sort: ^priority 
+						Tile {
+							Button {
+								actions: GoTo Dynamic (Current type, Current name) with application.recorduid to recorduid, application.uid to uid, SerializeSearch applicationSearch to applicationSearch, paramSearchMode to paramSearchMode
+								image: Current largeIcon
+								tooltip: Current title		
+							}
+							Text{
+								value: Current title
+								label: Label{ layout:Layout{indent: vertical 0 horizontal 0   }  }
+								lines:2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

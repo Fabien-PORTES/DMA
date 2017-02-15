@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="updateaccountmanagerstart" operator="and" query="identity" displayname="People who can start an update on an account manager workflow" version="2">
+</Request>

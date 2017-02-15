@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343306085867" title="User master authorizations " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A6326639478415588867" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A1722408836769715051" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A5820201620728404075" attribute="modda_" column="MODDA" type="String" multivalued="false" persistent="false" description="Modification date" hidden="true"/>
+		<Attribute name="A3811268066935746688" attribute="modti" column="MODTI" type="String" multivalued="false" persistent="false" description="Modification time"/>
+		<Attribute name="A1466737730237927166" attribute="modbe" column="MODBE" type="String" multivalued="false" persistent="false" description="Last changed by"/>
+		<Attribute name="A4039890743970960644" attribute="nrpro" column="NRPRO" type="Number" multivalued="false" persistent="false" description="Number of profiles or authorizations"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343306152740" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1343306246147" action="replace" attribute="modda_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343306279232" action="convertdate" oldname="modda_" attribute="modda" type="Date" newvalue="dd.MM.yyyy" description="Modification date"/>
+		<Action name="U1343306305097" action="add" attribute="lastmodifiedstr" newvalue="{dataset.modda_.get()} {dataset.modti.get()}" hidden="true"/>
+		<Action name="U1343306361264" action="convertdate" oldname="lastmodifiedstr" attribute="lastmodified" type="Date" newvalue="dd.MM.yyyy HH:mm:ss" description="Last modified date (as deducted from MODDA and MODTI attributes)"/>
+	</Actions>
+</Discovery>

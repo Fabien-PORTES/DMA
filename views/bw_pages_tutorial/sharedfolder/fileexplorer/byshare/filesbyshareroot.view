@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_filesbyshareroot" prefix="share_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="br_filesbyshareroot" notes="">
+	<ViewParam name="countaccountacls" displayname="count account acls instead of group acls"/>
+	<ViewParam name="shareuid" displayname="shareuid">
+		<Value name="0" data="SHAREA_1440095224152_71097"/>
+	</ViewParam>
+	<ViewComputedAttribute name="nbacls" displayname="nbacls" type="Integer" expression="!dataset.isEmpty(&apos;nbgroupacls&apos;)?dataset.nbgroupacls.get():dataset.nbaccountacls.get()"/>
+	<ViewSort name="sort" attribute1="A1406802019109_886" direction1="ASC"/>
+	<ViewJoin name="J1406802013383_884" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="A1406802017498_885" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1406802019109_886" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1406802021761_887" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1406816329532_1258" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1433752668007_1687" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.isEmpty(&apos;countaccountacls&apos;) || !param.countaccountacls.get().equals(&apos;1&apos;)" join="aclgroup">
+			<ViewAttribute name="1433752934632_1692" attribute="recorduid" alias="nbgroupacls" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1433833825065_699" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="!param.isEmpty(&apos;countaccountacls&apos;) &amp;&amp; param.countaccountacls.get().equals(&apos;1&apos;)" join="aclaccount">
+			<ViewAttribute name="A1433833828524_700" attribute="recorduid" alias="nbaccountacls" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1437740290261_351" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1437740298090_354" attribute="folderdepth" alias="depth" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1438013841608_406" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="directaccountright">
+			<ViewAttribute name="A1438015065539_457" attribute="recorduid" alias="nbaccounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1438019625920_532" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1438019629978_0" operation="isNull" ignoreifempty="false"/>
+				<ViewAttributeFilter name="F1438019633972_1" operation="isFalse" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewCriteria name="I1441045302858_577" criteria="eqRoot">
+		</ViewCriteria>
+		<ViewJoin name="J1444065941373_5568" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+			<ViewAttribute name="1444065966070_5606" attribute="sensitivityreason" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065966070_5607" attribute="sensitivitylevel" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065966070_5608" attribute="description" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065966070_5609" attribute="managed" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065966070_5610" attribute="sensitivityreasonorigin" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065966070_5611" attribute="descriptionorigin" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065966070_5612" attribute="managedorigin" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1437740115470_340" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1437740120144_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1437741771162_642" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1437741774647_0" reference="shareuid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

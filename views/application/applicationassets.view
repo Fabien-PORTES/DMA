@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationassets" distinct="true" concept="application" displayname="List of assets for a given application" notes="">
+	<ViewParam name="recorduid" displayname="Record UID"/>
+	<ViewSort name="sort" attribute1="A1303213960707_63" attribute2="A1303213960707_64"/>
+	<ViewJoin name="J1303213944635_59" kind="inner" join="permission">
+		<ViewJoin name="J1303213952436_60" prefix="asset_" kind="inner" join="asset">
+			<ViewAttribute name="A1303213960707_61" attribute="recorduid" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_62" attribute="uid" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_63" attribute="code" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_64" attribute="displayname" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_65" attribute="categoryrecorduid" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_66" attribute="categoryuid" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_67" attribute="categorycode" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_68" attribute="categorydisplayname" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_69" attribute="custom1" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_70" attribute="custom2" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_71" attribute="custom3" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_72" attribute="custom4" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_73" attribute="custom5" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960707_74" attribute="custom6" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960708_75" attribute="custom7" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960708_76" attribute="custom8" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1303213960708_77" attribute="custom9" operator="or" removedfromprojection="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1304097275389_21569" attribute="recorduid" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1304097283556_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1316330871641_794" attribute="applicationtype" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1316330877403_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Profile"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

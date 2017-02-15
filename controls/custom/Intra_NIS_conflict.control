@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Control PUBLIC "-//Brainwave//DTD Control Type 1 1.0//EN" "urn:brainwave:igrc:dtds/control_t1.dtd">
+<Control type="1" version="3" code="a5cef778-02ff-4ef3-928b-287d30df7b86" name="Intra_NIS_conflict" displayname="Intra_NIS_conflict" executionplan="true">
+	<ControlType1 name="t1">
+		<ControlRule name="rule" rule="Intra_NIS_Conflicts"/>
+	</ControlType1>
+	<ControlMetrics name="metrics">
+		<Metric name="count" enabled="true"/>
+		<Metric name="ratio" enabled="false"/>
+	</ControlMetrics>
+</Control>

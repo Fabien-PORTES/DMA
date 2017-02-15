@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbpeople_trend" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="organisation detail nbpeople" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewComputedAttribute name="p1percent" displayname="p1percent" type="Integer" expression="dataset.nbidentity.get()&gt;0 &amp;&amp; dataset.nbidentity.get()/100&gt;0?dataset.nbidentity.get()/100:1"/>
+	<ViewComputedAttribute name="p5percent" displayname="p5percent" type="Integer" expression="dataset.nbidentity.get()&gt;0 &amp;&amp; dataset.nbidentity.get()/20&gt;0?dataset.nbidentity.get()/20:1"/>
+	<ViewComputedAttribute name="p10percent" displayname="p10percent" type="Integer" expression="dataset.nbidentity.get()&gt;0 &amp;&amp; dataset.nbidentity.get()/10&gt;0?dataset.nbidentity.get()/10:1"/>
+	<ViewSort name="sort" attribute1="A1380971759529_841"/>
+	<ViewJoin name="J1365600503078_25" kind="inner" identitysecure="false" join="upidentity">
+		<ViewAttribute name="A1365600505712_26" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1380971733896_838" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1380971736718_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1380971759529_841" attribute="timeslotcommitdate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1380971761476_842" attribute="timeslotellapsedtime" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1380971765186_0" operation="lt" ignoreifempty="false">
+			<Value name="0" data="180"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

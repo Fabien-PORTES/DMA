@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationrule" distinct="false" concept="application" displayname="Applications corresponding to a given rule" notes="">
+	<ViewParam name="rulename" displayname="Rule name"/>
+	<ViewSort name="sort" attribute1="A1300959739888_209" attribute2="A1300959739888_210"/>
+	<ViewAttribute name="A1300959739888_207" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739888_208" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739888_209" attribute="code" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739888_210" attribute="displayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739888_211" attribute="repositoryrecorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739888_212" attribute="repositoryuid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739888_213" attribute="repositorycode" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739888_214" attribute="repositorydisplayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739888_215" attribute="repositorymedia" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_216" attribute="repositoryextractdate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_217" attribute="repositorytype" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_220" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_221" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_222" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_223" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_224" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_225" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_226" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_227" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959739889_228" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1300964639722_493" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1300964644899_494" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1300964647811_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1316337291175_5725" attribute="applicationtype" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1316337294199_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Profile"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,9 @@
+Text {
+	label: <template:variablelabel/>
+	value: <template:variablerecord/>.displayname
+	mixins: workflowTextWithCommandMixin
+	commands: Command { 
+		actions: Dialog identityPicker(<template:taskvariablevaluelist/> to inUidList,<template:taskvariablename/> from outUid)
+		icon: "16/audit/identity_16.png"
+	}
+}

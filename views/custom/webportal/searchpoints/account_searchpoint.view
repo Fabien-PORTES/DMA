@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="account_searchpoint_NIS" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="true" concept="account" displayname="Accounts with search point" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1423218840110_408"/>
+	<ViewAttribute name="A1423147288616_336" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423147290485_337" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1440061802814_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423218840110_408" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423218845799_409" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423218854897_410" attribute="lastlogindate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1423218887590_412" prefix="repository_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1423218911263_413" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423219118486_441" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1423218953391_417" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423218959502_418" attribute="profile" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423218964823_419" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423218969095_420" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423218971119_421" attribute="employeenumber" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423218980511_422" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423218988023_423" attribute="managerdata" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423218993431_424" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219005951_425" attribute="passwordlastsetdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219010926_426" attribute="expiredate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219017927_427" attribute="nextpwdchangedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219025983_428" attribute="service" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219032646_429" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219036551_430" attribute="locked" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219040399_431" attribute="logincount" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219045302_432" attribute="badpasswordcount" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219055815_433" attribute="passwordnotrequired" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219065686_434" attribute="passwordcantchange" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219071615_435" attribute="notnormalaccount" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219078823_436" attribute="dontexpirepassword" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219088599_437" attribute="passwordexpired" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219096495_438" attribute="smartcardrequired" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219104199_439" attribute="groupchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423219108663_440" attribute="permissionchanged" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1423219163646_442" prefix="recon_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="A1423219197103_443" attribute="noownercode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423219217535_444" attribute="reconciliationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423219223310_445" attribute="description" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423219230567_446" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423219236943_447" attribute="reliability" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423219243239_448" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423219250383_449" attribute="leavedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1423219328182_452" prefix="identity_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+			<ViewAttribute name="A1423219346358_453" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219352151_454" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219357272_455" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219363422_456" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219367280_457" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219374767_458" attribute="phone" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219379951_459" attribute="mobile" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219395543_460" attribute="arrivaldate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219401407_461" attribute="departuredate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219408695_462" attribute="active" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1423219415702_463" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1485278676873_1803" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1485277633176_1789" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485277639510_1790" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485277641197_1791" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485277642591_1792" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485277644750_1793" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485277646038_1794" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485277647246_1795" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485277721909_1796" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

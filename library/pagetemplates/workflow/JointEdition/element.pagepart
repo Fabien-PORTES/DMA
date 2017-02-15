@@ -1,0 +1,7 @@
+Element {
+	variable: <template:taskvariablename/>
+	header: <template:variablelabel/>
+	filterable: True
+	width: 1%
+	<template:jointeditionelementdisplay/>
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_repository_simple_search" operator="and" query="repository" displayname="Simple repository search ({code}, {name})" version="2">
+	<RequestParam name="code" displayname="Code" query="repository" criteria="likeCode" criteriaparam="codeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="name" displayname="Name" query="repository" criteria="likeDisplayName" criteriaparam="displayNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1423228245790_591" criteria="likeCode">
+		<RequestCriteriaParam name="codeParam" reference="code" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423228269014_592" criteria="likeDisplayName">
+		<RequestCriteriaParam name="displayNameParam" reference="name" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

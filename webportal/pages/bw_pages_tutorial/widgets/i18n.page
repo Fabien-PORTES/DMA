@@ -1,0 +1,13 @@
+i18nlabels_NLS = NLS { 
+	title [en "My nationalized page" fr "Ma page nationalisée"]
+	text1 [en "My text value in english" fr "Ma valeur de texte en français"]
+}
+
+i18n = Page {
+	title:$i18nlabels_NLS.title
+	
+	Text {
+		value:$i18nlabels_NLS.text1
+	}
+}
+

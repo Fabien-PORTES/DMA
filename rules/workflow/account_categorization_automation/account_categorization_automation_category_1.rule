@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="account_categorization_automation_category_1" operator="and" query="account" displayname="1-Already Mapped, UID# Matches (ID OK)" version="3">
+	<RequestJoin name="J1486739187840_484" operator="and" join="identityreconciliation">
+		<RequestCriteria name="C1486739352707_490" criteria="eqProperty">
+			<RequestCriteriaParam name="firstPropertyParam" ignoreifempty="false">
+				<Value name="0" data="custom13"/>
+			</RequestCriteriaParam>
+			<RequestCriteriaParam name="secondPropertyParam" ignoreifempty="false">
+				<Value name="0" data="root.custom4"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

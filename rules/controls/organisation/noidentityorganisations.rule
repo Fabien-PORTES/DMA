@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_noidentityorganisations" operator="and" query="organisation" displayname="Organisations with no identity" version="2">
+	<RequestJoin name="J1331844649322_191" operator="and" countOperator="exact" countNumber1="0" countNumber2="0" join="identity">
+	</RequestJoin>
+</Request>

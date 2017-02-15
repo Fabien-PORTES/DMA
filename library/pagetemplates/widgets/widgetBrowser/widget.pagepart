@@ -1,0 +1,6 @@
+Browser {
+	static:"/static/mypage.html"
+	layout: Layout {
+		grab:horizontal True vertical True
+	}
+}

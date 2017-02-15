@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesnotfromorganisationcodelookslike" operator="and" query="identity" displayname="Identities not from organisation code which looks like {organisationcode} (including sub organisations)" version="2">
+	<RequestParam name="organisationcode" displayname="organisation code" query="organisation" criteria="eqCode" criteriaparam="codeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestGroup name="G1332849525608_22" operator="and" inverse="true">
+		<RequestJoin name="J1332848465119_59" operator="and" join="uporganisation">
+			<RequestCriteria name="C1332848872163_90" criteria="likeCode">
+				<RequestCriteriaParam name="codeParam" reference="organisationcode" ignoreifempty="false">
+					<Value name="0"/>
+				</RequestCriteriaParam>
+			</RequestCriteria>
+		</RequestJoin>
+	</RequestGroup>
+</Request>

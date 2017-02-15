@@ -1,0 +1,146 @@
+/* Import other pages here */
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/audittrail.page"
+
+/* Nationalized labels here */
+updaterepositorymanager_startNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation ?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process ?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Update repository manager" fr "Mettre à jour le responsable de référentiel"]
+	dynamictitle [en "Update repository manager for \"{0}\"" fr "Mettre à jour le reponsable du référentiel \"{0}\""]
+	managerhrcode [en "Current manager HR code" fr "Matricule du responsable actuel"]
+	managerfullname [en "Current manager fullname" fr "Nom du responsable actuel"]
+	newmanagerconfirm [en "Are you sure that you want to assign {0}-{1}\nas the manager of the {2} repository?" fr "Etes vous sur de vouloir positionner {0}-{1} en tant que responsable\ndu référentiel {2}"]
+	newmanagerremove [en "Are you sure that you want to remove {0}-{1}\nas the manager of the {2} repository?" fr "Etes vous sur de vouloir supprimer {0}-{1} en tant que responsable\ndu référentiel {2}"]
+	confirmupdate [en "Your request to assign a new manager as been registered successfully" fr "Votre demande a bien été prise en compte"]
+	removeupdate [en "Your request to remove the current manager as been registered successfully" fr "Votre demande a bien été prise en compte"]
+	
+	setmanager [en "Set a manager for this repository" fr "Assigner un responsable pour ce référentiel"]
+	removemanager [en "Remove the current manager" fr "Supprimer le responsable actuel"]
+	
+	manageraudittrail [en "Browse modifications audit trail" fr "Voir l'historique des modifications"]
+}
+
+updaterepositorymanager_start = Page {
+	title: $updaterepositorymanager_startNLS.title
+	dynamic-title: $updaterepositorymanager_startNLS.dynamictitle(repository.displayname)
+	mixins: workflowDefaultMixin
+	
+	/* Parameters here */
+	paramRepositoryUid = Parameter {type:String multivalued:False}
+	
+	/* variables here */
+	newmanagerUid = Variable {type:String multivalued:False}
+
+	
+	/* Datasets and records here */
+	// Record for concept details
+	repository = Record {
+		view: br_repositoryDetail with paramRepositoryUid to uid
+	}
+	
+	newManager = Record {
+		view: br_identityDetail with newmanagerUid to uid
+	}
+
+	repositorybusinessowner = Record {
+		view: br_repositoryBusinessowner with paramRepositoryUid to uid
+	}
+
+	task = TaskRecord (create "updaterepositorymanager")
+	
+	
+	/* Page content */
+	Grid {
+		columns:GridColumn{width:64px}, GridColumn{width:320px}, GridColumn{width:320px}, GridColumn{width:grow}
+		GridRow {
+			height:96
+			GridCell {
+				Image {
+					image: "48/red/repository.png"
+					align: Center
+				}
+			}
+			GridCell {
+				Text{
+					label:   $repository.concept 
+					value: Transform repository.displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $updaterepositorymanager_startNLS.managerhrcode
+					value: Transform repositorybusinessowner.hrcode using optionStringMapping
+					lines: 2
+				}
+
+				Text {
+					label: $updaterepositorymanager_startNLS.managerfullname
+					value: Transform repositorybusinessowner.fullname using optionStringMapping
+					lines: 2
+				}
+			}
+			GridCell {
+			}
+			GridCell {
+			}
+		}
+
+		GridRow {
+			GridCell {
+				span:4
+				Header {
+					value:"What do you want to do?"
+				}
+			}
+		}
+		GridRow {
+			height:grow
+			GridCell {
+				span:4
+				ButtonGroup {
+						Button {
+							actions:Dialog identityPicker(newmanagerUid from outUid), 
+									Confirm $updaterepositorymanager_startNLS.newmanagerconfirm(Transform newManager.hrcode using mayBeNullMapping, newManager.fullname, repository.displayname),
+									Flash Information $updaterepositorymanager_startNLS.confirmupdate,
+									Set paramRepositoryUid to task.repository,
+									Set newmanagerUid to task.manager,
+									StringCase(repositorybusinessowner.fullname) { when IsEmpty then [Set 'create' to task.action] otherwise [Set 'modify' to task.action] },
+									TaskComplete task wait,
+									GoTo Activity Repository Detail with paramRepositoryUid to paramRepositoryUid
+							text:$updaterepositorymanager_startNLS.setmanager
+							layout:Layout{hint:width 320 height 128}
+						}					
+						Button {
+							actions:Confirm $updaterepositorymanager_startNLS.newmanagerremove(Transform repositorybusinessowner.hrcode using mayBeNullMapping, repositorybusinessowner.fullname, repository.displayname),
+									Flash Information $updaterepositorymanager_startNLS.removeupdate,
+									Set paramRepositoryUid to task.repository,
+									Set 'delete' to task.action,
+									TaskComplete task wait,
+									GoTo Activity Repository Detail with paramRepositoryUid to paramRepositoryUid
+							text:$updaterepositorymanager_startNLS.removemanager
+							layout:Layout{hint:width 320 height 128}
+							disabled:StringPredicate(repositorybusinessowner.fullname) {when IsEmpty then True}
+						}					
+						Button {
+							actions:Dialog entityDetailsManagerAuditDialog("Repository" to type, paramRepositoryUid to entity) 
+						                        feature:repositorydetails_auditmanager
+							                       
+							text:$updaterepositorymanager_startNLS.manageraudittrail
+						}
+				}		
+			}
+		}
+	}
+}
+

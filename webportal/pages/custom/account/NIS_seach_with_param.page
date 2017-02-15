@@ -1,0 +1,196 @@
+/* Import other pages here */
+import "/webportal/pages/mixins/default_mixins.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+/* Nationalized labels here */
+
+/*MJA NLS temporaire */
+
+/*MJA NLS temporaire */
+NIS_seach_with_param = Page {
+	title: $NIS_Search_Param.title
+//	tags: "DMA_homepage"
+	icon: "48/red/account.png"
+
+	/* Parameters here */
+repository_picker = Parameter {
+		constraint: Picker { picker: repositoryMultiPicker returning outUid 
+								display: Display { value: Current repository_displayname data: NIS_domains match repository_uid }
+							}
+		label: $picker.repository.title
+		multivalued: True
+		tooltip: "Select at least one repository"
+	}
+				
+	/* Variables here */
+selected_account_uid = Variable {
+						type: String
+							}	
+	/* Datasets and records here */
+NIS_domains = Dataset {
+	view: NIS_search_with_param_domains
+	}	
+NIS_result = Dataset {
+	view: NIS_search_with_param_result with repository_picker to repository_uids
+				}	
+	/* Page content */
+Splitter {
+	disposition: Horizontal
+	size: 30%
+	Group {
+			layout: Layout {
+				grab: horizontal True vertical False
+					}
+				Grid {
+					columns: GridColumn {}
+					 GridRow {
+					 	GridCell {
+					 		span: 2
+							ParametersEdition {
+											allow-reset: True
+											label-position: Left
+											outline-position: Top
+											mixins: homePageMixin
+											parameters: repository_picker
+											}
+									}
+							}
+	
+						}
+		}
+	Group {
+		PaginatedTable {
+			data: NIS_result
+			page-size: 50
+			hide-header: False
+			configurable: True
+			double-click: GoTo Activity Account Detail with selected_account_uid to paramAccountUid
+			layout: Layout {
+				grab: horizontal True vertical True
+			}
+			
+			Column {
+				column: recorduid
+				header: $NIS_Search_Param.viewtable.recorduid
+				sortable: True
+				hidden: True
+				width: 5%
+			}
+			Column {
+				column: uid
+				header: $NIS_Search_Param.viewtable.uid
+				sortable: True
+				hidden: True
+				selection: selected_account_uid
+				width: 5%
+			}
+			Column {
+				column: custom2
+				header: $accountNISAttributes.custom2
+				sortable: True
+				initially-masked: True
+				width: 5%
+			}
+			Column {
+				column: custom3
+				header: $accountNISAttributes.custom3
+				sortable: True
+				initially-masked: True			
+				width: 5%
+			}
+			Column {
+				column: custom4
+				header: $accountNISAttributes.custom4
+				sortable: True
+				initially-masked: True			
+				width: 5%
+			}
+			Column {
+				column: custom5
+				header: $accountNISAttributes.custom5
+				sortable: True
+				initially-masked: True			
+				width: 5%
+			}
+			Column {
+				column: custom6
+				header: $accountNISAttributes.custom6
+				sortable: True
+				initially-masked: True			
+				width: 5%
+			}
+			Column {
+				column: custom7
+				header: $accountNISAttributes.custom7
+				sortable: True
+				initially-masked: True			
+				width: 5%
+			}
+			Column {
+				column: custom8
+				header: $accountNISAttributes.custom8
+				sortable: True
+				initially-masked: True			
+				width: 5%
+			}
+			Column {
+				column: custom9
+				header: $accountNISAttributes.custom9
+				sortable: True
+				initially-masked: True			
+				width: 5%
+			}
+			Column {
+				column: repository_code
+				header: $accountNISAttributes.repository
+				sortable: True
+				initially-masked: True			
+				width: 5%
+			}
+			Column {
+				column: identifier
+				header: $accountNISAttributes.hrcode
+				sortable: True
+				width: 5%
+			}
+			Column {
+				column: login
+				header: $accountNISAttributes.Login
+				sortable: True
+				width: 5%
+			}
+			Column {
+				column: givenname
+				header: $accountNISAttributes.givenname
+				sortable: True
+				width: 5%
+			}
+			Column {
+				column: surname
+				header: $accountNISAttributes.surname
+				sortable: True
+				width: 5%
+			}
+			Column {
+				column: username
+				header: $accountNISAttributes.username
+				sortable: True
+				width: 5%
+			}
+			Column {
+				column: mail
+				header: $accountNISAttributes.mail
+				sortable: True
+				width: 5%
+			}
+			Column {
+				column: custom1
+				header: $accountNISAttributes.custom1
+				sortable: True
+				initially-masked: True			
+				width: 5%
+			}
+		}
+		}
+	}		
+}

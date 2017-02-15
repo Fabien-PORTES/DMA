@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_application_searchpoint" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="true" repositorysecure="false" searchpoint="true" concept="application" displayname="Application with search point" notes="">
+	<ViewParam name="applicationtype" displayname="applicationtype"/>
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1423217977766_377"/>
+	<ViewAttribute name="A1423217966320_375" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423217970814_376" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1440061825084_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423217977766_377" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423217979878_378" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1423218011871_380" prefix="repository_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1423218023294_381" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423218034246_382" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1423583267773_566" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1423583270846_0" reference="applicationtype" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

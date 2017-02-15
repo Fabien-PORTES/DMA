@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1342792734004" title="User master record">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7817364923401629829" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A7198292497313168007" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A8400657459047989388" attribute="stcod" column="STCOD" type="String" multivalued="false" persistent="false" description="Start menu (old, replaced by XUSTART)"/>
+		<Attribute name="A5228871963432346312" attribute="spld" column="SPLD" type="String" multivalued="false" persistent="false" description="Spool: Output device"/>
+		<Attribute name="A8779885127269781404" attribute="splg" column="SPLG" type="String" multivalued="false" persistent="false" description="Print parameter 1"/>
+		<Attribute name="A6120611848132113164" attribute="spdb" column="SPDB" type="String" multivalued="false" persistent="false" description="Print parameter 2"/>
+		<Attribute name="A2686608704588830625" attribute="spda" column="SPDA" type="String" multivalued="false" persistent="false" description="Print parameter 3"/>
+		<Attribute name="A6493435782928603632" attribute="datfm" column="DATFM" type="String" multivalued="false" persistent="false" description="Date format"/>
+		<Attribute name="A3205155835000875325" attribute="dcpfm" column="DCPFM" type="String" multivalued="false" persistent="false" description="Decimal notation"/>
+		<Attribute name="A837198166653283817" attribute="hdest" column="HDEST" type="String" multivalued="false" persistent="false" description="Host destination"/>
+		<Attribute name="A738625423644969250" attribute="hmand" column="HMAND" type="String" multivalued="false" persistent="false" description="Default host client"/>
+		<Attribute name="A439562589513310788" attribute="hname" column="HNAME" type="String" multivalued="false" persistent="false" description="Default host user name"/>
+		<Attribute name="A2713606952659528927" attribute="menon" column="MENON" type="String" multivalued="false" persistent="false" description="Automatic Start"/>
+		<Attribute name="A1309267816530815562" attribute="menue" column="MENUE" type="String" multivalued="false" persistent="false" description="Menu name"/>
+		<Attribute name="A6561063558127984548" attribute="strtt" column="STRTT" type="String" multivalued="false" persistent="false" description="Start menu (old, replaced by XUSTART)"/>
+		<Attribute name="A1835254739510274416" attribute="langu" column="LANGU" type="String" multivalued="false" persistent="false" description="Language"/>
+		<Attribute name="A8294603448922063039" attribute="cattkennz" column="CATTKENNZ" type="String" multivalued="false" persistent="false" description="CATT: Test status"/>
+		<Attribute name="A1656406656394208040" attribute="timefm" column="TIMEFM" type="String" multivalued="false" persistent="false" description="Time Format (12-/24-Hour Specification)"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1342794111123" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="accountNIS_Type" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="accountNIS_Type" notes="">
+	<ViewSort name="sort" attribute1="A1486378657856_78056"/>
+	<ViewAttribute name="A1486378657856_78056" attribute="managerdata" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486563119822_0" operation="isNotNull" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

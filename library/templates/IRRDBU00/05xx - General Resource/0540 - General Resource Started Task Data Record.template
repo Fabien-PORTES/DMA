@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource started task data record" description="The General Resource Started Task Data Record defines the information associated with the definition of a started task in the STARTED general resource class.">
+	<Source type="FORMATTED" filter="^0540 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRST_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type (0540)."/>
+		<Attribute name="A4199536690768339793" attribute="GRST_NAME" column="6-251" type="String" multivalued="false" description="Profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRST_CLASS_NAME" column="253-260" type="String" multivalued="false" description="The class name, STARTED."/>
+		<Attribute name="A7466509792483562715" attribute="GRST_USER_ID" column="262-269" type="String" multivalued="false" description="User ID assigned."/>
+		<Attribute name="A3188661801656117613" attribute="GRST_GROUP_ID" column="271-278" type="String" multivalued="false" description="Group name assigned."/>
+		<Attribute name="A4037269903301147695" attribute="GRST_TRUSTED" column="280-283" type="Boolean" multivalued="false" description="Is process to run trusted?"/>
+		<Attribute name="A7863438466300294503" attribute="GRST_PRIVILEGED" column="285-288" type="Boolean" multivalued="false" description="Is process to run privileged?"/>
+		<Attribute name="A8801039954934473602" attribute="GRST_TRACE" column="290-293" type="Boolean" multivalued="false" description="Is entry to be traced?"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

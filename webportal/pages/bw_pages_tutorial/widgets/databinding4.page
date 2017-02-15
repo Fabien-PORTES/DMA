@@ -1,0 +1,28 @@
+databinding4 = Page {
+	title:'Dataset with a parameter and dynamic update'
+	
+	surnamefilterpattern = Variable{type:String multivalued:False initial:'BOU%'}
+	
+	identities = Dataset {
+		view:br_identity with surnamefilterpattern to surname
+	}
+
+	Edit {
+		label:'fullname filter'
+		variable:surnamefilterpattern
+	}
+	Table {
+		data:identities
+		layout:Layout{grab: horizontal True vertical True}
+		Column {
+			column:hrcode
+		}
+		Column {
+			column:fullname
+		}
+	}
+}
+
+
+
+

@@ -1,0 +1,25 @@
+layout7 = Page {
+	title:'Layouting with tab folders'
+	
+	TabFolder {
+		TabItem {
+			text:'My tab 1'
+			Button {actions:Message 'hello' text:'hello 1' layout:Layout{grab:horizontal True vertical True}}
+		}
+		TabItem {
+			text:'My tab 2'
+			Button {actions:Message 'hello' text:'hello 1' layout:Layout{grab:horizontal True vertical True}}
+			Button {actions:Message 'hello' text:'hello 2' layout:Layout{grab:horizontal True vertical True}}
+		}
+		TabItem {
+			text:'My tab 3'
+			icon:'16/famfamfam_silk_icons_v013/help.png'
+			Button {actions:Message 'hello' text:'hello 1' layout:Layout{grab:horizontal True vertical True}}
+			Button {actions:Message 'hello' text:'hello 2' layout:Layout{grab:horizontal True vertical True}}
+			Button {actions:Message 'hello' text:'hello 3' layout:Layout{grab:horizontal True vertical True}}
+		}
+	
+	}
+}
+
+

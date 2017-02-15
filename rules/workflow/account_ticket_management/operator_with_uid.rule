@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="operator_with_uid" operator="and" query="identity" displayname="Operator with {uid}" version="3">
+	<RequestParam name="uid" displayname="uid" query="identity" criteria="eqUid" criteriaparam="uidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1486558984639_2277" criteria="eqUid">
+		<RequestCriteriaParam name="uidParam" reference="uid" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

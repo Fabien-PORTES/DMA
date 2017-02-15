@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_permission_simple_search_1" operator="and" query="permission" displayname="Simple permission search ({code}, {name}, {type}, {application})" version="1">
+	<RequestParam name="code" displayname="Code" query="permission" criteria="likeCode" criteriaparam="codeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="type" displayname="Type" query="permission" criteria="likePermissionType" criteriaparam="permissionTypeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="name" displayname="Name" query="permission" criteria="likeDisplayName" criteriaparam="displayNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="application" displayname="Application" query="application" criteria="likeCode" criteriaparam="codeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1423230052736_603" criteria="likeCode">
+		<RequestCriteriaParam name="codeParam" reference="code" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423230066936_604" criteria="likePermissionType">
+		<RequestCriteriaParam name="permissionTypeParam" reference="type" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423230099296_605" criteria="likeDisplayName">
+		<RequestCriteriaParam name="displayNameParam" reference="name" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestJoin name="J1423230138968_606" operator="and" join="application">
+		<RequestCriteria name="C1423230149855_607" criteria="likeCode">
+			<RequestCriteriaParam name="codeParam" reference="application" ignoreifempty="true">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

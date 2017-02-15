@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="Full_Name_Equality_In" operator="and" query="identity" displayname="Full Name Equality_In {accountFullName}" version="3">
+	<RequestParam name="accountFullName" displayname="accountFullName" query="identity" criteria="likeFullName" criteriaparam="fullNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1486981560188_391" criteria="likeFullName">
+		<RequestCriteriaParam name="fullNameParam" reference="accountFullName" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User certificate name record" description="The User Certificate Name record defines the names of the certificate profiles in the DIGTCERT class that are associated with this user ID. Note that RACF does not unload all fields in profiles in the DIGTCERT class. The digital certificate itself is not readable text and is the only field in the CERTDATA segment. Therefore, RACF bypasses the unloading of the CERTDATA segment of general resource profiles.">
+	<Source type="FORMATTED" filter="^0207 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USCERT_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the Certificate name record (0207)."/>
+		<Attribute name="A4199536690768339793" attribute="USCERT_NAME" column="6-13" type="String" multivalued="false" description="User ID as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="USCERT_CERT_NAME" column="15-260" type="String" multivalued="false" description="Digital Certificate name."/>
+		<Attribute name="A7466509792483562715" attribute="USCERT_CERTLABL" column="262-293" type="String" multivalued="false" description="Digital Certificate label."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

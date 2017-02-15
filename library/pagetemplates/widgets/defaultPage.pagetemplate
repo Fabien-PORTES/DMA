@@ -1,0 +1,21 @@
+/* Import other pages here */
+
+/* Nationalized labels here */
+<template:pageNLSname/> = NLS {
+<template:additionalNLS/>
+}
+
+<template:pagename/> = Page {
+	title: <template:pagetitle/>
+
+/* Parameters here */
+
+/* Variables here */
+<template:additionalvariables/>
+/* Datasets and records here */
+<template:additionaldatasets/>
+
+/* Page content */
+<template:editcomponents/>
+}
+

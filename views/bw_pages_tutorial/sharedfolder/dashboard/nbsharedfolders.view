@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_nbsharedfolders" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_nbsharedfolders">
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1438776435124_712" prefix="share_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="A1438776442025_713" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438776448378_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1438776463250_719" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438776475148_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="D"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1438776490938_723" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

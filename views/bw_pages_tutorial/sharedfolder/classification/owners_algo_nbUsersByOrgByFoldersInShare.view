@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sfod_nbUsersOfFoldersByOrg_inShare" errorifempty="false" distinct="false" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="count of users per permissions" notes="">
+	<ViewParam name="share_uid" displayname="Share UID" type="String"/>
+	<ViewParam name="rights_mask" displayname="Rights Pattern" type="String" defaultvalue="%">
+		<Value name="0" data="%R%"/>
+	</ViewParam>
+	<ViewParam name="share_code" displayname="Share Code">
+		<Value name="0" data="SHAREA"/>
+	</ViewParam>
+	<ViewParam name="folder_uid" displayname="folder uid"/>
+	<ViewComputedAttribute name="algo" displayname="discovery algo" type="String" expression="&quot;rights&quot;"/>
+	<ViewComputedAttribute name="rate" displayname="usage rate (ranking)" type="String" expression="(&quot;  &quot;+( dataset.orgsize.get() == 0 ? 0 : dataset.nbusers.get() * 100 / dataset.orgsize.get())).right(3) "/>
+	<ViewComputedAttribute name="comment" displayname="Comment" type="String" expression="dataset.owner_fullname.get()+ &quot; is manager of &quot;+dataset.org_displayname.get()+ &quot; where &quot;+ dataset.nbusers.get()+ &quot; out of &quot;+dataset.orgsize.get()+&quot; (&quot;+(dataset.nbusers.get() * 100 / dataset.orgsize.get())+ &quot;%) member(s) have &quot;+(param.rights_mask.get()==&quot;%W%&quot;?&quot;write&quot;:&quot;read&quot;)+&quot; access to this folder&quot;"/>
+	<ViewSort name="sort" attribute1="A1436538222683_684" direction1="ASC" attribute2="A1435760036879_1089" direction2="DESC"/>
+	<ViewJoin name="J1435737772177_663" prefix="app_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="A1435737793618_664" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1435737952898_0" reference="share_uid" aliasreference="" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1436197885048_1137" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1436197923997_0" reference="share_code" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1435756645565_945" prefix="right_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="right">
+		<ViewJoin name="J1435757462350_967" prefix="user_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+			<ViewAttribute name="A1435760036879_1089" attribute="uid" alias="nbusers" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1435758439038_973" prefix="org_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="organisation">
+				<ViewAttribute name="A1435758443542_974" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1435758446301_975" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1435760689521_1098" prefix="owner_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="manager">
+					<ViewAttribute name="A1435760704056_1100" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="A1435772370209_1163" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+						<ViewAttributeFilter name="F1442352007773_0" operation="isNotNull" ignoreifempty="false"/>
+					</ViewAttribute>
+				</ViewJoin>
+				<ViewAttribute name="A1441990614798_395" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1442388274269_389" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="upidentity">
+					<ViewAttribute name="A1442388281544_390" attribute="recorduid" alias="orgsize" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="A1435756666428_947" attribute="action" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1435760283336_0" reference="rights_mask" operation="ilike" ignoreifempty="true">
+				<Value name="0" data=""/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1436538222683_684" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1441990747438_0" reference="folder_uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1444065277912_4156" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+		<ViewAttribute name="A1444065281872_4157" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1444065284832_0" operation="isTrue" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

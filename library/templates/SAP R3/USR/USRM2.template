@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343582037846" title="User Settings for the Material Master: Logical Screens " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A3814211244182478786" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A3712798320033985743" attribute="uname" column="UNAME" type="String" multivalued="false" persistent="false" description="User name"/>
+		<Attribute name="A13232902808875874" attribute="bilds" column="BILDS" type="String" multivalued="false" persistent="false" description="Screen Sequence Number"/>
+		<Attribute name="A394496783374757136" attribute="auswg" column="AUSWG" type="String" multivalued="false" persistent="false" description="Logical screen (within a screen sequence)"/>
+		<Attribute name="A2596585397060890891" attribute="kzsel" column="KZSEL" type="String" multivalued="false" persistent="false" description="Checkbox"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343582072962" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

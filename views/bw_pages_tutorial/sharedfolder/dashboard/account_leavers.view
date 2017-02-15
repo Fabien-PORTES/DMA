@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="account_leavers" prefix="share_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="account_leavers" notes="">
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewParam name="managed" displayname="managed" type="Boolean"/>
+	<ViewParam name="filetype" displayname="filetype"/>
+	<ViewParam name="sensitivity" displayname="sensitivity"/>
+	<ViewParam name="rightfilter" displayname="rightfilter"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1439201850352_464" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438856336628_0" reference="shares" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="1439201850353_465" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438851865107_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1439199661707_391" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="1439201854682_478" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438852604416_0" reference="filetype" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewJoin name="J1439201866395_481" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="directpermright">
+			<ViewAttribute name="A1439201890043_482" attribute="action" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1439201891808_0" reference="rightfilter" operation="ilike" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewJoin name="J1439201904016_484" prefix="account_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+				<ViewAttribute name="1439201906920_487" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1438865397189_0" operation="isNull" ignoreifempty="false"/>
+					<ViewAttributeFilter name="F1438865400393_1" operation="isFalse" ignoreifempty="false"/>
+				</ViewAttribute>
+				<ViewCriteria name="I1439201923787_489" criteria="leaverReconciliatedAccounts">
+				</ViewCriteria>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="1439211675368_1071" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1444063219197_1157" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+			<ViewAttribute name="1444064896219_3631" attribute="sensitivitylevel" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063325208_0" reference="sensitivity" operation="in" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="1444064896219_3632" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063353561_0" reference="managed" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

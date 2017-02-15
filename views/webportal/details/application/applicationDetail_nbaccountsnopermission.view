@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbaccountsnopermission" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_applicationDetail_nbaccountsnopermission" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1378815194518_1416" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378806463710_1172" kind="inner" identitysecure="false" join="applicationright">
+		<ViewAttribute name="1378815206063_1419" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1378806479610_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewCriteria name="I1378815210291_1420" criteria="noRight">
+	</ViewCriteria>
+</View>

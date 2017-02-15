@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bwfs_accountuidsfrompeople" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="bwfs_accountuidsfrompeople" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1444752958881_433" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1444752961497_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1444752976786_435" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountreconciliation">
+		<ViewAttribute name="A1444752995637_436" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

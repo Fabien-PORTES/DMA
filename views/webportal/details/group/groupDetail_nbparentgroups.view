@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_groupDetail_nbparentgroups" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="br_groupDetail_nbparentgroups">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1377766649224_420" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1377766664610_425" kind="inner" identitysecure="false" enabled="param.isDirectLink.get()" join="childgroup">
+		<ViewAttribute name="1379073053516_262" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377766679060_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1377766668355_426" kind="inner" identitysecure="false" enabled="!param.isDirectLink.get()" join="downgroup">
+		<ViewAttribute name="1379073053531_263" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377766679060_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permission_search" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="br_permission_search" notes="">
+	<ViewParam name="childPermissionDisplayname" displayname="childPermissionDisplayname"/>
+	<ViewParam name="permissionDisplayname" displayname="permissionDisplayname"/>
+	<ViewParam name="acl" displayname="acl"/>
+	<ViewParam name="groupCode" displayname="groupCode"/>
+	<ViewParam name="allocated" displayname="allocated"/>
+	<ViewParam name="identityFullname" displayname="identityFullname"/>
+	<ViewParam name="used" displayname="used"/>
+	<ViewParam name="withProblems" displayname="Identities identified in controls results"/>
+	<ViewParam name="applicationDisplayname" displayname="applicationDisplayname"/>
+	<ViewParam name="accountIdentifier" displayname="accountIdentifier"/>
+	<ViewParam name="organisationDisplayname" displayname="Organisation display name"/>
+	<ViewParam name="parentPermissionDisplayname" displayname="parentPermissionDisplayname"/>
+	<ViewParam name="permissionCode" displayname="permissionCode"/>
+	<ViewParam name="groupCodeDirect" displayname="groupCodeDirect"/>
+	<ViewParam name="permissionType" displayname="permissionType"/>
+	<ViewSort name="sort" attribute1="A1376982900254_575" attribute2="A1376982050201_536"/>
+	<ViewAttribute name="A1376982046145_534" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376982048267_535" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376982050201_536" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1378997587803_0" reference="permissionCode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1376982056364_537" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1378997597118_0" reference="permissionDisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1376982843435_571" prefix="application_" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="A1376982900254_575" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1376983911330_0" reference="applicationDisplayname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1379510009494_574" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1380617002412_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Profile"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1376983945434_597" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;accountIdentifier&apos;)" join="accountright">
+		<ViewAttribute name="A1376983952346_598" attribute="identifier" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1376983956904_0" reference="accountIdentifier" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1376984205538_601" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;identityFullname&apos;)" join="identityright">
+		<ViewAttribute name="A1376984222716_603" attribute="fullname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1376984242656_0" reference="identityFullname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewJoin name="J1381588101851_974" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;organisationDisplayname&apos;)" join="uporganisation">
+			<ViewAttribute name="A1381588105873_975" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1381588108483_0" reference="organisationDisplayname" operation="ilike" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1377621514221_393" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1378997606667_0" reference="permissionType" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1378720935393_667" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;groupCodeDirect&apos;)" join="groups">
+		<ViewAttribute name="A1378720944427_668" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378720957924_0" reference="groupCodeDirect" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378728958676_794" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;groupCode&apos;)" join="downgroups">
+		<ViewAttribute name="A1378728970831_795" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378728975014_0" reference="groupCode" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewCriteria name="I1378818922192_1542" enabled="param.allocated.get() == &apos;U&apos;" criteria="noRight">
+	</ViewCriteria>
+	<ViewCriteria name="I1378818924159_1543" enabled="param.allocated.get() == &apos;P&apos;" criteria="hasRight">
+	</ViewCriteria>
+	<ViewJoin name="J1379314435266_284" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;parentPermissionDisplayname&apos;)" join="parentpermission">
+		<ViewAttribute name="A1379314469372_286" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1379314485568_0" reference="parentPermissionDisplayname" operation="ilike" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1379314439308_285" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;childPermissionDisplayname&apos;)" join="childpermission">
+		<ViewAttribute name="A1379314471978_287" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1379314576757_0" reference="childPermissionDisplayname" operation="ilike" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewCriteria name="I1379321164381_1013" enabled="param.used.get() == &apos;U&apos;" criteria="noUsage">
+	</ViewCriteria>
+	<ViewCriteria name="I1379321166301_1014" enabled="param.used.get() ==&apos;P&apos;" criteria="hasUsage">
+	</ViewCriteria>
+	<ViewCriteria name="I1379509620850_568" enabled="param.acl.get() == &apos;N&apos;" criteria="noAclAccount">
+	</ViewCriteria>
+	<ViewCriteria name="I1379509623816_570" enabled="param.acl.get() == &apos;N&apos;" criteria="noAclGroup">
+	</ViewCriteria>
+	<ViewCriteria name="I1379509652226_572" enabled="param.acl.get() == &apos;C&apos;" criteria="hasAclAccount">
+	</ViewCriteria>
+	<ViewCriteria name="I1379509654333_573" enabled="param.acl.get() == &apos;G&apos;" criteria="hasAclGroup">
+	</ViewCriteria>
+	<ViewJoin name="J1381587391215_930" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;withProblems&apos;) &amp;&amp;  (param.withProblems.get().equalsIgnoreCase(&apos;Y&apos;) || param.withProblems.get().equalsIgnoreCase(&apos;yes&apos;) || param.withProblems.get().equalsIgnoreCase(&apos;1&apos;))" join="rootcause">
+		<ViewAttribute name="A1381587424528_931" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1381587456105_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="1"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

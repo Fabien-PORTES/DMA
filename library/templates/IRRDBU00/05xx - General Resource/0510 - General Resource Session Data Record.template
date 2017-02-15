@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource session data record" description="The General Resource Session Data record defines the session data associated with a general resource. There is one record per APPCLU profile.">
+	<Source type="FORMATTED" filter="^0510 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRSES_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the General Resources Session Data record (0510)."/>
+		<Attribute name="A4199536690768339793" attribute="GRSES_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRSES_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs, namely APPCLU."/>
+		<Attribute name="A7466509792483562715" attribute="GRSES_SESSION_KEY" column="262-269" type="String" multivalued="false" description="The key associated with the APPC session."/>
+		<Attribute name="A3188661801656117613" attribute="GRSES_LOCKED" column="271-274" type="Boolean" multivalued="false" description="Is the profile locked?"/>
+		<Attribute name="A4037269903301147695" attribute="GRSES_KEY_DATE" column="276-285" type="Date" multivalued="false" description="Last date that the session key was changed."/>
+		<Attribute name="A4037269903301147696" attribute="GRSES_KEY_INTERVAL" column="287-291" type="Number" multivalued="false" description="Number of days that the key is valid."/>
+		<Attribute name="A4037269903301147697" attribute="GRSES_SLS_FAIL" column="293-297" type="Number" multivalued="false" description="Current number of failed attempts."/>
+		<Attribute name="A4037269903301147698" attribute="GRSES_MAX_FAIL" column="299-303" type="Number" multivalued="false" description="Number of failed attempts before lockout."/>
+		<Attribute name="A4037269903301147699" attribute="GRSES_CONVSEC" column="305-312" type="String" multivalued="false" description="Specifies the security checking performed when sessions are established. Valid values are NONE, CONVSEC, PERSISTV, ALREADYV, and AVPV."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

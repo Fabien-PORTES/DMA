@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1474905602698">
+	<Source file="{config.importfiles}/Extracts_DMA/20160830_AD4UnixEffectiveMapping.csv" type="CSV" separator="," multiseparator=";" textseparator="&quot;" encoding="ISO-8859-1"/>
+	<Attributes hasheader="true">
+		<Attribute name="A1154657953257864514" attribute="users_keyid" column="users_keyID" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A231369272762237358" attribute="uid" column="uid" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A814536941992997290" attribute="uidnumber" column="uidNumber" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A4879719418747345678" attribute="gidnumber" column="gidNumber" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A4699860605082949667" attribute="gecos_from_ad4unix" column="gecos" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4346941572627276620" attribute="unixhomedirectory" column="unixHomeDirectory" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2068307692395851236" attribute="loginshell" column="loginShell" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A681341239821406488" attribute="comments" column="comments" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2932525547432753835" attribute="nis_domain" column="legacyEnv" type="String" multivalued="true" persistent="false"/>
+		<Attribute name="A1676557745814067297" attribute="samaccountname" column="sAMAccountName" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7692688439954748848" attribute="windomain" column="winDomain" type="String" multivalued="true" persistent="false"/>
+		<Attribute name="A7228079982035223070" attribute="autohome" column="autohome" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Request expression="SELECT * FROM dataset WHERE dataset.uid &lt;&gt; &apos;&apos;"/>
+	<Checks>
+	</Checks>
+	<Actions>
+		<Action name="U1477669552748" action="add" attribute="_DMA_NIS_DOMAINS" multivalued="true" newvalue="A350VPM"/>
+		<Action name="U1477687552045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="A350VPM-V"/>		
+		<Action name="U1477758638529" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="ADOC"/>
+		<Action name="U1477663836245" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="AVSIM.FR"/>	
+		<Action name="U1477663918129" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="BDICFAO.FR"/>
+		<Action name="U1477663525045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="BDISC.FR"/>		
+		<Action name="U1477695185129" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="CAXDOMAIN"/>
+		<Action name="U1477663875045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="CHESTERCADDS.DOMAIN1"/>	
+		<Action name="U1477663859743" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="EDGA_CAE"/>
+		<Action name="U1477663856745" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="EV"/>		
+		<Action name="U1477665852612" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="FILCADDS.ACC1"/>
+		<Action name="U1477614538599" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="FILCADDS.DEV1"/>
+		<Action name="U1477663362045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="FILCADDS.DOMAIN1"/>	
+		<Action name="U1477663857045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="GET_NIS"/>		
+		<Action name="U1477663854132" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="NTNISP"/>
+		<Action name="U1477661275045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="NZCTIFR"/>
+		<Action name="U1477663539045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="STRESSEDSA"/>		
+		<Action name="U1477663417912" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="URANUS"/>
+		<Action name="U1477663385045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="WICHITA.PRD"/>
+		<Action name="U1473263875045" action="multiadd" attribute="_DMA_NIS_DOMAINS" newvalue="WICHITA.WIBLADE"/>
+		<Action name="U1474907472324" action="multireplace" attribute="nis_domain" newvalue="{dataset.nis_domain.get().toUpperCase()}"/>
+		<Action name="U1474908008190" action="multireplace" attribute="samaccountname" newvalue="{dataset.samaccountname.get().toUpperCase()}"/>
+		<Action name="U1474908448171" action="add" attribute="firstname" newvalue="{dataset.gecos_from_ad4unix.get().replace(&quot;\\..*@.*&quot;,&quot;&quot;).normalize()}" condition="dataset.gecos_from_ad4unix.get().indexOf(&apos;@&apos;)&gt;0"/>
+		<Action name="U1474908606495" action="add" attribute="lastname" newvalue="{dataset.gecos_from_ad4unix.get().substring(dataset.gecos_from_ad4unix.get().indexOf(&quot;.&quot;)+1).replace(&quot;@.*&quot;,&quot;&quot;).normalize().replace(&quot; EXTERNAL&quot;,&quot;&quot;)}" condition="dataset.gecos_from_ad4unix.get().indexOf(&apos;@&apos;)&gt;0"/>
+		<Action name="U1474975644077" action="multireplace" attribute="firstname" newvalue="{dataset.gecos_from_ad4unix.get().replace(&quot;_.*&quot;,&quot;&quot;).normalize()}" condition="dataset.lastname.get()==&quot;COM&quot; &amp;&amp; dataset.gecos_from_ad4unix.get().indexOf(&quot;_&quot;)&gt;0"/>
+		<Action name="U1474975504083" action="multireplace" attribute="lastname" newvalue="{dataset.gecos_from_ad4unix.get().substring(dataset.gecos_from_ad4unix.get().indexOf(&quot;_&quot;)+1).replace(&quot;@.*&quot;,&quot;&quot;).normalize()}" condition="dataset.lastname.get()==&quot;COM&quot; &amp;&amp; dataset.gecos_from_ad4unix.get().indexOf(&quot;_&quot;)&gt;0"/>
+		<Action name="U1474975800858" action="multireplace" attribute="firstname" newvalue="" condition="dataset.lastname.get()==&quot;COM&quot;"/>
+		<Action name="U1474975877282" action="multireplace" attribute="lastname" newvalue="{dataset.gecos_from_ad4unix.get().replace(&quot;@.*&quot;,&quot;&quot;).substring(1).normalize()}" condition="dataset.lastname.get()==&quot;COM&quot;"/>
+		<Action name="U1474976185670" action="add" attribute="email" newvalue="{dataset.gecos_from_ad4unix.get().toUpperCase()}" condition="dataset.gecos_from_ad4unix.get().indexOf(&quot;@&quot;)&gt;0"/>
+		<Action name="U1475488545162" action="add" attribute="_NISACCOUNTS" multivalued="true"/>
+		<Action name="U1475488604135" action="multiadd" attribute="_NISACCOUNTS" oldname="nis_domain" condition=""/>
+		<Action name="U1475488690153" action="multiclean" attribute="_NISACCOUNTS" emptyvalues="true"/>
+		<Action name="U1475488724777" action="multireplace" attribute="_NISACCOUNTS" newvalue="{dataset._NISACCOUNTS.get()+&quot;\\&quot;+dataset.uid.get()}"/>
+		<Action name="U1475488838943" action="add" attribute="_ADACCOUNTS" multivalued="true"/>
+		<Action name="U1475488888358" action="multiadd" attribute="_ADACCOUNTS" oldname="windomain"/>
+		<Action name="U1475488895602" action="multiclean" attribute="_ADACCOUNTS" emptyvalues="true"/>
+		<Action name="U1475488940605" action="multireplace" attribute="_ADACCOUNTS" newvalue="{dataset._ADACCOUNTS.get()+&quot;\\&quot;+dataset.samaccountname.get()}"/>
+		<Action name="U1475489020345" action="multiclean" attribute="_NISACCOUNTS" duplicates="true"/>
+		<Action name="U1475489082625" action="multiadd" attribute="_NISACCOUNTS" oldname="_ADACCOUNTS" description="We consolidate all the NIS and AD accounts in a single list&#xA;"/>
+		<Action name="U1481185087915" action="add" attribute="_AD4UNIX_UID_upper" newvalue="{dataset.uid.get().toUpperCase()}"/>
+		<Action name="U1481186806975" action="add" attribute="_AD4Unix_SAM_upper" newvalue="{dataset.samaccountname.get().toUpperCase()}"/>
+		<Action name="U1481186972645" action="add" attribute="_AD4Unix_FIRST_Windomain" newvalue="{dataset.windomain.get(0).toUpperCase()}"/>
+		<Action name="U1481324393605" action="add" attribute="_NIS_DOMAIN_Upper" multivalued="true" newvalue="{dataset.nis_domain.get().toUpperCase()}"/>
+	</Actions>
+</Discovery>

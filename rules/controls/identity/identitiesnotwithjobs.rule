@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesnotwithjobs" operator="and" query="identity" displayname="Identities with job which is not one of {jobs}" version="2">
+	<RequestParam name="jobs" displayname="jobs names" query="identity" criteria="inJobTitle" criteriaparam="jobTitleParam"/>
+	<RequestGroup name="G1332851593723_140" operator="and" inverse="true">
+		<RequestCriteria name="C1332848218562_48" criteria="inJobTitle">
+			<RequestCriteriaParam name="jobTitleParam" reference="jobs" ignoreifempty="false"/>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

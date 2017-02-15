@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permission_manageraudittrail" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketlog" displayname="manager audit trail" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="tickettype" displayname="ticket type">
+		<Value name="0" data="PERMISSIONMANAGER"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1436275017231_540" direction1="DESC"/>
+	<ViewAttribute name="A1436275017231_534" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_535" attribute="debugmode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_536" attribute="tickettype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1436275070688_0" reference="tickettype" operation="eq" ignoreifempty="false">
+			<Value name="0" data=""/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1436275017231_537" attribute="ticketnumber" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_538" attribute="submissiondate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_539" attribute="submissionday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_540" attribute="closedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_541" attribute="closeday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_542" attribute="duedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_543" attribute="dueday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_544" attribute="ticketopen" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_545" attribute="status" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_546" attribute="title" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_547" attribute="description" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_548" attribute="issueruid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_549" attribute="issuerfullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_550" attribute="priority" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_551" attribute="processinstanceid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_552" attribute="externalreference" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275054365_573" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1436275061442_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1436275055164_574" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275055675_575" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275056256_576" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275056808_577" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275057486_578" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275058006_579" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275058767_580" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275059300_581" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1436275106042_587" prefix="actor" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="issuer">
+		<ViewAttribute name="A1436275117574_625" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436275118484_626" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436275120228_627" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436275121046_628" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

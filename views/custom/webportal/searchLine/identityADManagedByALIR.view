@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="identityADManagedByALIR" prefix="ALIR_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="identityADManagedByALIR" notes="" begindate="" enddate="">
+	<ViewParam name="recorduid" displayname="Recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1485874249200_91692" prefix="AD_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="downgenericteam">
+		<ViewAttribute name="A1485874303420_91750" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485874307321_91755" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485874309001_91757" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485874972435_92391" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485875663351_92939" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1485875765442_93022" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1485875765452_93023" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1485875765452_93025" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486562127294_78690" attribute="custom11" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486562898646_78692" attribute="custom14" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1485874260078_91703" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485874261518_91706" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1485875699550_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1485874281372_91722" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485874969944_92388" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

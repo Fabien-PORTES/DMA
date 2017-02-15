@@ -1,0 +1,44 @@
+
+masterdetail1 = Page {
+	title:'Master detail sample'
+
+	currentIdentity = Variable{type:Integer initial:-1}
+
+	identities = Dataset {
+		view:br_identity
+	}
+	
+	identity = Record {
+		view:br_identity with currentIdentity to recorduid
+	}
+	identityAccounts = Dataset {
+		view:br_accountsbyidentity with currentIdentity to identityrecorduid
+	}
+
+	Group {
+		title:'Master'
+		Table {
+			data:identities
+			layout:Layout{grab: horizontal True vertical True}
+			Column {
+				column:recorduid
+				selection:currentIdentity
+			}
+			Column {column:hrcode}
+			Column {column:fullname}
+		}
+	}
+	
+	Group {
+		title:'Details'
+		Text {label:'HR Code' value:identity.hrcode}
+		Text {label:'Fullname' value:identity.fullname}
+		Table {
+			data:identityAccounts
+			layout:Layout{grab: horizontal True vertical True}
+			Column {column:repositorycode}
+			Column {column:login}
+		}
+	}
+}
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryDetail_nbnewgroups" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="br_repositoryDetail_nbnewgroups" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1379514173245_768" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1379514183402_770" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1379514186210_771" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1379514192139_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1379514209488_773" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1379514212188_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="C"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

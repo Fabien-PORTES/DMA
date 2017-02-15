@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountsearch" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_accountsearch" notes="">
+	<ViewParam name="repositoryDisplayname" displayname="repositoryDisplayname"/>
+	<ViewParam name="permissionDisplayname" displayname="permissionDisplayname"/>
+	<ViewParam name="activationchange" displayname="activationchange"/>
+	<ViewParam name="noPermissionAccount" displayname="noPermissionAccount"/>
+	<ViewParam name="accountLogin" displayname="accountLogin"/>
+	<ViewParam name="ownerchange" displayname="ownerchange"/>
+	<ViewParam name="groupCode" displayname="groupCode"/>
+	<ViewParam name="identityFullname" displayname="identityFullname"/>
+	<ViewParam name="permissionchange" displayname="permissionchange"/>
+	<ViewParam name="withProblems" displayname="Identities identified in controls results"/>
+	<ViewParam name="reconciliation" displayname="reconciliation"/>
+	<ViewParam name="applicationDisplayname" displayname="applicationDisplayname"/>
+	<ViewParam name="accountIdentifier" displayname="accountIdentifier"/>
+	<ViewParam name="importaction" displayname="importaction"/>
+	<ViewParam name="manuallyReconciled" displayname="manuallyReconciled"/>
+	<ViewParam name="privileged" displayname="privileged"/>
+	<ViewParam name="groupCodeDirect" displayname="groupCodeDirect"/>
+	<ViewParam name="noownercode" displayname="noownercode"/>
+	<ViewParam name="activation" displayname="activation"/>
+	<ViewSort name="sort" attribute1="A1377787308543_857"/>
+	<ViewAttribute name="A1377787302832_855" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1377787305263_856" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1377787308543_857" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1378996553710_0" reference="accountIdentifier" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1377787311336_858" attribute="login" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1378996565832_0" reference="accountLogin" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1377787326679_859" prefix="repository_" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1377787332192_860" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1377787333968_861" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1377787335696_862" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1377787775620_0" reference="repositoryDisplayname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1377787793469_895" kind="inner" identitysecure="true" enabled="!param.isEmpty(&apos;identityFullname&apos;) || (param.ownerchange.get()==&apos;M&apos; || param.ownerchange.get()==&apos;B&apos;)" join="identityreconciliation">
+		<ViewAttribute name="A1377788289962_906" attribute="fullname" operator="or" removedfromprojection="true" globalfilter="false" enabled="!param.isEmpty(&apos;identityFullname&apos;)">
+			<ViewAttributeFilter name="F1377788292969_0" reference="identityFullname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="1379339986876_416" attribute="importaction" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.ownerchange.get() == &apos;B&apos;">
+			<ViewAttributeFilter name="F1379339149203_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="R"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="1379340233936_419" attribute="organisationchanged" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.ownerchange.get() == &apos;M&apos;">
+			<ViewAttributeFilter name="F1366623411277_0" operation="isTrue" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1377787892356_896" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;applicationDisplayname&apos;)" join="applicationright">
+		<ViewAttribute name="A1377787986931_899" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377787999723_0" reference="applicationDisplayname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1377787904427_897" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;groupCode&apos;)" join="upgroup">
+		<ViewAttribute name="A1377788257673_902" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377788259937_0" reference="groupCode" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1377787959371_898" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;permissionDisplayname&apos;)" join="permissionright">
+		<ViewAttribute name="A1377788274161_904" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377788277233_0" reference="permissionDisplayname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewCriteria name="I1375709741881_237" enabled="param.reconciliation.get() == &apos;O&apos;" criteria="notReconciliatedAccounts">
+	</ViewCriteria>
+	<ViewAttribute name="1377790296268_1075" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1377790322935_1077" attribute="notnormalaccount" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1375709575392_0" reference="privileged" operation="eqBoolean" ignoreifempty="true">
+			<Value name="0" data=""/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewCriteria name="I1378110413763_246" enabled="param.reconciliation.get() == &apos;L&apos;" criteria="leaverReconciliatedAccounts">
+	</ViewCriteria>
+	<ViewCriteria name="I1378110419551_247" enabled="param.reconciliation.get() == &apos;N&apos;" criteria="noOwnerReconciliatedAccounts">
+	</ViewCriteria>
+	<ViewCriteria name="I1378110441767_248" enabled="param.reconciliation.get() == &apos;R&apos;" criteria="reconciliatedAccounts">
+	</ViewCriteria>
+	<ViewJoin name="J1378113737228_249" kind="inner" identitysecure="false" enabled="param.reconciliation.get() == &apos;N&apos; || !param.isEmpty(&apos;noownercode&apos;) || param.manuallyReconciled.get() == &apos;N&apos; || param.manuallyReconciled.get() == &apos;M&apos;" join="reconciliation">
+		<ViewAttribute name="A1378113742971_250" attribute="noownercode" operator="or" removedfromprojection="true" globalfilter="false" enabled=" !param.isEmpty(&apos;noownercode&apos;)">
+			<ViewAttributeFilter name="F1378113746904_0" reference="noownercode" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1378113966374_253" attribute="noownercode" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.reconciliation.get( )== &apos;N&apos;">
+			<ViewAttributeFilter name="F1378113970370_0" operation="ne" ignoreifempty="true">
+				<Value name="0" data="leave"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1378720485763_561" attribute="rulename" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.manuallyReconciled.get() == &apos;N&apos;">
+			<ViewAttributeFilter name="F1378720494984_0" operation="isNotNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1378821333347_1665" attribute="rulename" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.manuallyReconciled.get() == &apos;M&apos;">
+			<ViewAttributeFilter name="F1378821342381_0" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378718000374_481" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;groupCodeDirect&apos;)" join="group">
+		<ViewAttribute name="A1378718034964_482" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378718037851_0" reference="groupCodeDirect" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewCriteria name="I1378798639829_746" enabled="param.noPermissionAccount.get() == &apos;N&apos;" criteria="noRight">
+	</ViewCriteria>
+	<ViewCriteria name="I1378798642731_747" enabled="param.noPermissionAccount.get() == &apos;P&apos;" criteria="hasRights">
+	</ViewCriteria>
+	<ViewAttribute name="1379339029915_379" attribute="permissionchanged" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.permissionchange.get() == &apos;N&apos;">
+		<ViewAttributeFilter name="F1379338113215_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="1379339029930_380" attribute="permissionchanged" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.permissionchange.get() == &apos;P&apos;">
+		<ViewAttributeFilter name="F1379338295012_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="1379339619066_400" attribute="importaction" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.importaction.get() == &apos;C&apos; || param.importaction.get() == &apos;D&apos; || param.importaction.get() == &apos;R&apos;">
+		<ViewAttributeFilter name="F1366622619213_0" reference="importaction" operation="eq" ignoreifempty="true">
+			<Value name="0" data=""/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1379340427996_420" kind="inner" identitysecure="false" enabled="param.activationchange.get() == &apos;D&apos; || param.activationchange.get() == &apos;R&apos;" join="timeslotaccounts">
+		<ViewAttribute name="A1379340433756_421" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1379340437811_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1379340472507_423" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.activationchange.get() == &apos;D&apos;">
+			<ViewAttributeFilter name="F1379340487548_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="0"/>
+			</ViewAttributeFilter>
+			<ViewAttributeFilter name="F1379340497267_1" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1379340483475_424" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.activationchange.get() == &apos;R&apos;">
+			<ViewAttributeFilter name="F1379340543913_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="1"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="1379340628879_430" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.activationchange.get() == &apos;R&apos; || param.activation.get() == &apos;N&apos;">
+		<ViewAttributeFilter name="F1379340487548_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+		<ViewAttributeFilter name="F1379340497267_1" operation="isNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="1379340628879_431" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.activationchange.get() == &apos;D&apos; ||param.activation.get() == &apos;D&apos;">
+		<ViewAttributeFilter name="F1379340543913_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1381585953656_864" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;withProblems&apos;) &amp;&amp;  (param.withProblems.get().equalsIgnoreCase(&apos;Y&apos;) || param.withProblems.get().equalsIgnoreCase(&apos;yes&apos;) || param.withProblems.get().equalsIgnoreCase(&apos;1&apos;))" join="controlresult">
+		<ViewAttribute name="A1381585960245_865" attribute="controlresulttype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1381585961192_866" attribute="controlentity" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1381585963176_867" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;permissionDisplayname&apos;) || !param.isEmpty(&apos;applicationDisplayname&apos;)" join="rootcause">
+			<ViewJoin name="J1381585970489_868" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;applicationDisplayname&apos;)" join="application">
+				<ViewAttribute name="1381586083274_876" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1377787999723_0" reference="applicationDisplayname" operation="ilike" ignoreifempty="true"/>
+				</ViewAttribute>
+			</ViewJoin>
+			<ViewAttribute name="1381586074605_874" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1377788277233_0" reference="permissionDisplayname" operation="ilike" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

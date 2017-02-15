@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_activepeoplebydate" operator="or" query="identity" displayname="Returns all active people (check the departure date)" version="4">
+	<RequestCriteria name="C1337183275679_1546" criteria="eqEmployed">
+	</RequestCriteria>
+</Request>

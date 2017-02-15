@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_nbidentityrule" distinct="false" concept="identity" displayname="# of Identities corresponding to a given rule result">
+	<ViewParam name="rulename" displayname="Rule name"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1300964574593_486" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1300964581881_487" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1300964584736_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1303402316541_612" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT" removedfromprojection="false"/>
+</View>

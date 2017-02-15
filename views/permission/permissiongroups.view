@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissiongroups" distinct="true" concept="permission" displayname="all groups which give access to a given permission" notes="">
+	<ViewParam name="recorduid" displayname="permission record uid"/>
+	<ViewSort name="sort" attribute1="A1338551349363_7"/>
+	<ViewJoin name="J1338551196075_2" prefix="group_" kind="inner" join="directgroups">
+		<ViewAttribute name="A1338551349363_4" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_5" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_6" attribute="repositoryrecorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_7" attribute="code" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_8" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_9" attribute="comment" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_10" attribute="grouptype" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_11" attribute="creationdate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_12" attribute="creationday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_13" attribute="modificationdate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_14" attribute="modificationday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_15" attribute="importaction" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551349363_16" attribute="deletedaction" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551357949_17" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551358883_18" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551359987_19" attribute="custom3" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551360616_20" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551361433_21" attribute="custom5" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551362007_22" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551362903_23" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551363664_24" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1338551364681_25" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1338551404573_26" prefix="grouprepository_" kind="inner" join="repository">
+			<ViewAttribute name="A1338551416759_27" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1338551416759_28" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1338551416759_29" attribute="code" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1338551416759_30" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1338551416759_31" attribute="media" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1338551416759_32" attribute="extractDate" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1338551416759_33" attribute="extractday" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1338551416759_34" attribute="type" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1338551416759_35" attribute="importaction" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1338551416759_36" attribute="deletedaction" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1338551344038_3" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1338551481592_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

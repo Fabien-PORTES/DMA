@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_nbmanaged" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_nbmanaged" notes="">
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewParam name="sensitivity" displayname="sensitivity"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1438776435124_712" prefix="share_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="A1438776442025_713" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438776448378_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1438872222070_1409" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438872235317_0" reference="shares" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1438776463250_719" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438776475148_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="D"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1438776490938_723" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1444063219197_1157" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+		<ViewAttribute name="1444064766187_3514" attribute="sensitivitylevel" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1444063325208_0" reference="sensitivity" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="1444064766187_3515" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1444063353561_0" reference="managed" operation="isTrue" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

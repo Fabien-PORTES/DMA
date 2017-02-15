@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_unusedaccounts" operator="and" query="account" displayname="Unused Accounts" version="3">
+	<RequestGroup name="G1331842383975_140" operator="and" inverse="true">
+		<RequestJoin name="J1331842386190_141" operator="and" countOperator="least" countNumber1="1" countNumber2="0" join="usage">
+		</RequestJoin>
+	</RequestGroup>
+</Request>

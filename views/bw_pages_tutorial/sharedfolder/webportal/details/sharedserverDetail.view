@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_sharedserverDetail" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="br_sharedserverDetail" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1434461621039_344" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1434461625593_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1434461671793_346" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1434461674467_0" reference="uid" aliasreference="" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1434461686545_348" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1434461687477_349" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1434461688564_350" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1434461697844_351" prefix="repository_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1434461707985_352" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434461708891_353" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434461709651_354" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434461710635_355" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434461712817_356" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1434461775117_359" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1434461778073_360" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1444122327115_8335" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="applicationinfo">
+		<ViewAttribute name="A1444122332224_8337" attribute="sensitivityreason" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122332224_8338" attribute="sensitivitylevel" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122332224_8339" attribute="description" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122332224_8340" attribute="category" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122332224_8341" attribute="sensitivityreasonorigin" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122332224_8342" attribute="descriptionorigin" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122332224_8343" attribute="categoryorigin" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

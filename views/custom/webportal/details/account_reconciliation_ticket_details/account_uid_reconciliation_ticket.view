@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="account_uid_reconciliation_ticket" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="account_uid_reconciliation_ticket" notes="" begindate="" enddate="">
+	<ViewParam name="account_uids" displayname="account_uids"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1486479171133_780" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486650389953_0" reference="account_uids" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486479442989_782" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_search_conflicts_domains" prefix="repository_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="repository" displayname="NIS_search_conflicts_domains">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1485273599885_24322" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485276390182_24348" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485276408989_24349" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NonReconciliedAccounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="controllogv2" displayname="Non-Reconcilied-Accounts">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1477573987646_372" attribute="controldisplayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1477573992779_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Non-Reconcilied-Accounts"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1477574057191_374" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="controldiscrepancy">
+		<ViewJoin name="J1477574101449_375" prefix="NISAccount_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+			<ViewAttribute name="A1477574116597_377" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1478273453599_744" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1478273457062_745" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+				<ViewAttribute name="A1478273464675_746" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1478684208991_814" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1483542401708_446" attribute="login" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

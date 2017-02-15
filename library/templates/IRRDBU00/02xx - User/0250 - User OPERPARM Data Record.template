@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User OPERPARM data record" description="The User OPERPARM Data record defines the operator characteristics for the user. There is one record per user/OPERPARM data combination.">
+	<Source type="FORMATTED" filter="^0250 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USOPR_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the User OPERPARM Data record (0250)."/>
+		<Attribute name="A4199536690768339793" attribute="USOPR_NAME" column="6-13" type="String" multivalued="false" description="User ID as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="USOPR_STORAGE" column="15-19" type="Number" multivalued="false" description="The number of megabytes of storage that can be used for message queuing."/>
+		<Attribute name="A7466509792483562715" attribute="USOPR_MASTERAUTH" column="21-24" type="Boolean" multivalued="false" description="Does this user have MASTER console authority?"/>
+		<Attribute name="A3188661801656117613" attribute="USOPR_ALLAUTH" column="26-29" type="Boolean" multivalued="false" description="Does this user have ALL console authority?"/>
+		<Attribute name="A4037269903301147695" attribute="USOPR_SYSAUTH" column="31-34" type="Boolean" multivalued="false" description="Does this user have SYSAUTH console authority?"/>
+		<Attribute name="A7863438466300294503" attribute="USOPR_IOAUTH" column="36-39" type="Boolean" multivalued="false" description="Does this user have I/O console authority?"/>
+		<Attribute name="A8801039954934473602" attribute="USOPR_CONSAUTH" column="41-44" type="Boolean" multivalued="false" description="Does this user have CONS console authority?"/>
+		<Attribute name="A2460635583838380635" attribute="USOPR_INFOAUTH" column="46-49" type="Boolean" multivalued="false" description="Does this user have INFO console authority?"/>
+		<Attribute name="A5281244329858370167" attribute="USOPR_TIMESTAMP" column="51-54" type="Boolean" multivalued="false" description="Do console messages contain a timestamp?"/>
+		<Attribute name="A5281244329858370168" attribute="USOPR_SYSTEMID" column="56-59" type="Boolean" multivalued="false" description="Do console messages contain a system ID?"/>
+		<Attribute name="A5281244329858370169" attribute="USOPR_JOBID" column="61-64" type="Boolean" multivalued="false" description="Do console messages contain a job ID?"/>
+		<Attribute name="A5281244329858370170" attribute="USOPR_MSGID" column="66-69" type="Boolean" multivalued="false" description="Do console messages contain a message ID?"/>
+		<Attribute name="A5281244329858370171" attribute="USOPR_X" column="71-74" type="Boolean" multivalued="false" description="Are the job name and system name to be suppressed for messages issued from the JES3 global processor?"/>
+		<Attribute name="A5281244329858370172" attribute="USOPR_WTOR" column="76-79" type="Boolean" multivalued="false" description="Does the console receive WTOR messages?"/>
+		<Attribute name="A5281244329858370173" attribute="USOPR_IMMEDIATE" column="81-84" type="Boolean" multivalued="false" description="Does the console receive immediate messages?"/>
+		<Attribute name="A5281244329858370174" attribute="USOPR_CRITICAL" column="86-89" type="Boolean" multivalued="false" description="Does the console receive critical event messages?"/>
+		<Attribute name="A5281244329858370175" attribute="USOPR_EVENTUAL" column="91-94" type="Boolean" multivalued="false" description="Does the console receive eventual event messages?"/>
+		<Attribute name="A5281244329858370176" attribute="USOPR_INFO" column="96-99" type="Boolean" multivalued="false" description="Does the console receive informational messages?"/>
+		<Attribute name="A5281244329858370177" attribute="USOPR_NOBRODCAST" column="101-104" type="Boolean" multivalued="false" description="Are broadcast messages to this console suppressed?"/>
+		<Attribute name="A5281244329858370178" attribute="USOPR_ALL" column="106-109" type="Boolean" multivalued="false" description="Does the console receive all messages?"/>
+		<Attribute name="A5281244329858370179" attribute="USOPR_JOBNAMES" column="111-114" type="Boolean" multivalued="false" description="Are job names monitored?"/>
+		<Attribute name="A5281244329858370180" attribute="USOPR_JOBNAMEST" column="116-119" type="Boolean" multivalued="false" description="Are job names monitored with timestamps displayed?"/>
+		<Attribute name="A5281244329858370181" attribute="USOPR_SESS" column="121-124" type="Boolean" multivalued="false" description="Are user IDs displayed with each TSO initiation and termination?"/>
+		<Attribute name="A5281244329858370182" attribute="USOPR_SESST" column="126-129" type="Boolean" multivalued="false" description="Are user IDs and timestamps displayed with each TSO initiation and termination?"/>
+		<Attribute name="A5281244329858370183" attribute="USOPR_STATUS" column="131-134" type="Boolean" multivalued="false" description="Are data set names and dispositions displayed with each data set that is freed?"/>
+		<Attribute name="A5281244329858370184" attribute="USOPR_ROUTECODE001" column="136-139" type="Boolean" multivalued="false" description="Is this console enabled for route code 001?"/>
+		<Attribute name="A5281244329858370185" attribute="USOPR_ROUTECODE002" column="141-144" type="Boolean" multivalued="false" description="Is this console enabled for route code 002?"/>
+		<Attribute name="A5281244329858370186" attribute="USOPR_ROUTECODE003" column="146-149" type="Boolean" multivalued="false" description="Is this console enabled for route code 003?"/>
+		<Attribute name="A5281244329858370187" attribute="USOPR_ROUTECODE004" column="151-154" type="Boolean" multivalued="false" description="Is this console enabled for route code 004?"/>
+		<Attribute name="A5281244329858370188" attribute="USOPR_ROUTECODE005" column="156-159" type="Boolean" multivalued="false" description="Is this console enabled for route code 005?"/>
+		<Attribute name="A5281244329858370189" attribute="USOPR_ROUTECODE006" column="161-164" type="Boolean" multivalued="false" description="Is this console enabled for route code 006?"/>
+		<Attribute name="A5281244329858370190" attribute="USOPR_ROUTECODE007" column="166-169" type="Boolean" multivalued="false" description="Is this console enabled for route code 007?"/>
+		<Attribute name="A5281244329858370191" attribute="USOPR_ROUTECODE008" column="171-174" type="Boolean" multivalued="false" description="Is this console enabled for route code 008?"/>
+		<Attribute name="A5281244329858370192" attribute="USOPR_ROUTECODE009" column="176-179" type="Boolean" multivalued="false" description="Is this console enabled for route code 009?"/>
+		<Attribute name="A5281244329858370193" attribute="USOPR_ROUTECODE010" column="181-184" type="Boolean" multivalued="false" description="Is this console enabled for route code 010?"/>
+		<Attribute name="A5281244329858370194" attribute="USOPR_ROUTECODE011" column="186-189" type="Boolean" multivalued="false" description="Is this console enabled for route code 011?"/>
+		<Attribute name="A5281244329858370195" attribute="USOPR_ROUTECODE012" column="191-194" type="Boolean" multivalued="false" description="Is this console enabled for route code 012?"/>
+		<Attribute name="A5281244329858370196" attribute="USOPR_ROUTECODE013" column="196-199" type="Boolean" multivalued="false" description="Is this console enabled for route code 013?"/>
+		<Attribute name="A5281244329858370197" attribute="USOPR_ROUTECODE014" column="201-204" type="Boolean" multivalued="false" description="Is this console enabled for route code 014?"/>
+		<Attribute name="A5281244329858370198" attribute="USOPR_ROUTECODE015" column="206-209" type="Boolean" multivalued="false" description="Is this console enabled for route code 015?"/>
+		<Attribute name="A5281244329858370199" attribute="USOPR_ROUTECODE016" column="211-214" type="Boolean" multivalued="false" description="Is this console enabled for route code 016?"/>
+		<Attribute name="A5281244329858370200" attribute="USOPR_ROUTECODE017" column="216-219" type="Boolean" multivalued="false" description="Is this console enabled for route code 017?"/>
+		<Attribute name="A5281244329858370201" attribute="USOPR_ROUTECODE018" column="221-224" type="Boolean" multivalued="false" description="Is this console enabled for route code 018?"/>
+		<Attribute name="A5281244329858370202" attribute="USOPR_ROUTECODE019" column="226-229" type="Boolean" multivalued="false" description="Is this console enabled for route code 019?"/>
+		<Attribute name="A5281244329858370203" attribute="USOPR_ROUTECODE020" column="231-234" type="Boolean" multivalued="false" description="Is this console enabled for route code 020?"/>
+		<Attribute name="A5281244329858370204" attribute="USOPR_ROUTECODE021" column="236-239" type="Boolean" multivalued="false" description="Is this console enabled for route code 021?"/>
+		<Attribute name="A5281244329858370205" attribute="USOPR_ROUTECODE022" column="241-244" type="Boolean" multivalued="false" description="Is this console enabled for route code 022?"/>
+		<Attribute name="A5281244329858370206" attribute="USOPR_ROUTECODE023" column="246-249" type="Boolean" multivalued="false" description="Is this console enabled for route code 023?"/>
+		<Attribute name="A5281244329858370207" attribute="USOPR_ROUTECODE024" column="251-254" type="Boolean" multivalued="false" description="Is this console enabled for route code 024?"/>
+		<Attribute name="A5281244329858370208" attribute="USOPR_ROUTECODE025" column="256-259" type="Boolean" multivalued="false" description="Is this console enabled for route code 025?"/>
+		<Attribute name="A5281244329858370209" attribute="USOPR_ROUTECODE026" column="261-264" type="Boolean" multivalued="false" description="Is this console enabled for route code 026?"/>
+		<Attribute name="A5281244329858370210" attribute="USOPR_ROUTECODE027" column="266-269" type="Boolean" multivalued="false" description="Is this console enabled for route code 027?"/>
+		<Attribute name="A5281244329858370211" attribute="USOPR_ROUTECODE028" column="271-274" type="Boolean" multivalued="false" description="Is this console enabled for route code 028?"/>
+		<Attribute name="A5281244329858370212" attribute="USOPR_ROUTECODE029" column="276-279" type="Boolean" multivalued="false" description="Is this console enabled for route code 029?"/>
+		<Attribute name="A5281244329858370213" attribute="USOPR_ROUTECODE030" column="281-284" type="Boolean" multivalued="false" description="Is this console enabled for route code 030?"/>
+		<Attribute name="A5281244329858370214" attribute="USOPR_ROUTECODE031" column="286-289" type="Boolean" multivalued="false" description="Is this console enabled for route code 031?"/>
+		<Attribute name="A5281244329858370215" attribute="USOPR_ROUTECODE032" column="291-294" type="Boolean" multivalued="false" description="Is this console enabled for route code 032?"/>
+		<Attribute name="A5281244329858370216" attribute="USOPR_ROUTECODE033" column="296-299" type="Boolean" multivalued="false" description="Is this console enabled for route code 033?"/>
+		<Attribute name="A5281244329858370217" attribute="USOPR_ROUTECODE034" column="301-304" type="Boolean" multivalued="false" description="Is this console enabled for route code 034?"/>
+		<Attribute name="A5281244329858370218" attribute="USOPR_ROUTECODE035" column="306-309" type="Boolean" multivalued="false" description="Is this console enabled for route code 035?"/>
+		<Attribute name="A5281244329858370219" attribute="USOPR_ROUTECODE036" column="311-314" type="Boolean" multivalued="false" description="Is this console enabled for route code 036?"/>
+		<Attribute name="A5281244329858370220" attribute="USOPR_ROUTECODE037" column="316-319" type="Boolean" multivalued="false" description="Is this console enabled for route code 037?"/>
+		<Attribute name="A5281244329858370221" attribute="USOPR_ROUTECODE038" column="321-324" type="Boolean" multivalued="false" description="Is this console enabled for route code 038?"/>
+		<Attribute name="A5281244329858370222" attribute="USOPR_ROUTECODE039" column="326-329" type="Boolean" multivalued="false" description="Is this console enabled for route code 039?"/>
+		<Attribute name="A5281244329858370223" attribute="USOPR_ROUTECODE040" column="331-334" type="Boolean" multivalued="false" description="Is this console enabled for route code 040?"/>
+		<Attribute name="A5281244329858370224" attribute="USOPR_ROUTECODE041" column="336-339" type="Boolean" multivalued="false" description="Is this console enabled for route code 041?"/>
+		<Attribute name="A5281244329858370225" attribute="USOPR_ROUTECODE042" column="341-344" type="Boolean" multivalued="false" description="Is this console enabled for route code 042?"/>
+		<Attribute name="A5281244329858370226" attribute="USOPR_ROUTECODE043" column="346-349" type="Boolean" multivalued="false" description="Is this console enabled for route code 043?"/>
+		<Attribute name="A5281244329858370227" attribute="USOPR_ROUTECODE044" column="351-354" type="Boolean" multivalued="false" description="Is this console enabled for route code 044?"/>
+		<Attribute name="A5281244329858370228" attribute="USOPR_ROUTECODE045" column="356-359" type="Boolean" multivalued="false" description="Is this console enabled for route code 045?"/>
+		<Attribute name="A5281244329858370229" attribute="USOPR_ROUTECODE046" column="361-364" type="Boolean" multivalued="false" description="Is this console enabled for route code 046?"/>
+		<Attribute name="A5281244329858370230" attribute="USOPR_ROUTECODE047" column="366-369" type="Boolean" multivalued="false" description="Is this console enabled for route code 047?"/>
+		<Attribute name="A5281244329858370231" attribute="USOPR_ROUTECODE048" column="371-374" type="Boolean" multivalued="false" description="Is this console enabled for route code 048?"/>
+		<Attribute name="A5281244329858370232" attribute="USOPR_ROUTECODE049" column="376-379" type="Boolean" multivalued="false" description="Is this console enabled for route code 049?"/>
+		<Attribute name="A5281244329858370233" attribute="USOPR_ROUTECODE050" column="381-384" type="Boolean" multivalued="false" description="Is this console enabled for route code 050?"/>
+		<Attribute name="A5281244329858370234" attribute="USOPR_ROUTECODE051" column="386-389" type="Boolean" multivalued="false" description="Is this console enabled for route code 051?"/>
+		<Attribute name="A5281244329858370235" attribute="USOPR_ROUTECODE052" column="391-394" type="Boolean" multivalued="false" description="Is this console enabled for route code 052?"/>
+		<Attribute name="A5281244329858370236" attribute="USOPR_ROUTECODE053" column="396-399" type="Boolean" multivalued="false" description="Is this console enabled for route code 053?"/>
+		<Attribute name="A5281244329858370237" attribute="USOPR_ROUTECODE054" column="401-404" type="Boolean" multivalued="false" description="Is this console enabled for route code 054?"/>
+		<Attribute name="A5281244329858370238" attribute="USOPR_ROUTECODE055" column="406-409" type="Boolean" multivalued="false" description="Is this console enabled for route code 055?"/>
+		<Attribute name="A5281244329858370239" attribute="USOPR_ROUTECODE056" column="411-414" type="Boolean" multivalued="false" description="Is this console enabled for route code 056?"/>
+		<Attribute name="A5281244329858370240" attribute="USOPR_ROUTECODE057" column="416-419" type="Boolean" multivalued="false" description="Is this console enabled for route code 057?"/>
+		<Attribute name="A5281244329858370241" attribute="USOPR_ROUTECODE058" column="421-424" type="Boolean" multivalued="false" description="Is this console enabled for route code 058?"/>
+		<Attribute name="A5281244329858370242" attribute="USOPR_ROUTECODE059" column="426-429" type="Boolean" multivalued="false" description="Is this console enabled for route code 059?"/>
+		<Attribute name="A5281244329858370243" attribute="USOPR_ROUTECODE060" column="431-434" type="Boolean" multivalued="false" description="Is this console enabled for route code 060?"/>
+		<Attribute name="A5281244329858370244" attribute="USOPR_ROUTECODE061" column="436-439" type="Boolean" multivalued="false" description="Is this console enabled for route code 061?"/>
+		<Attribute name="A5281244329858370245" attribute="USOPR_ROUTECODE062" column="441-444" type="Boolean" multivalued="false" description="Is this console enabled for route code 062?"/>
+		<Attribute name="A5281244329858370246" attribute="USOPR_ROUTECODE063" column="446-449" type="Boolean" multivalued="false" description="Is this console enabled for route code 063?"/>
+		<Attribute name="A5281244329858370247" attribute="USOPR_ROUTECODE064" column="451-454" type="Boolean" multivalued="false" description="Is this console enabled for route code 064?"/>
+		<Attribute name="A5281244329858370248" attribute="USOPR_ROUTECODE065" column="456-459" type="Boolean" multivalued="false" description="Is this console enabled for route code 065?"/>
+		<Attribute name="A5281244329858370249" attribute="USOPR_ROUTECODE066" column="461-464" type="Boolean" multivalued="false" description="Is this console enabled for route code 066?"/>
+		<Attribute name="A5281244329858370250" attribute="USOPR_ROUTECODE067" column="466-469" type="Boolean" multivalued="false" description="Is this console enabled for route code 067?"/>
+		<Attribute name="A5281244329858370251" attribute="USOPR_ROUTECODE068" column="471-474" type="Boolean" multivalued="false" description="Is this console enabled for route code 068?"/>
+		<Attribute name="A5281244329858370252" attribute="USOPR_ROUTECODE069" column="476-479" type="Boolean" multivalued="false" description="Is this console enabled for route code 069?"/>
+		<Attribute name="A5281244329858370253" attribute="USOPR_ROUTECODE070" column="481-484" type="Boolean" multivalued="false" description="Is this console enabled for route code 070?"/>
+		<Attribute name="A5281244329858370254" attribute="USOPR_ROUTECODE071" column="486-489" type="Boolean" multivalued="false" description="Is this console enabled for route code 071?"/>
+		<Attribute name="A5281244329858370255" attribute="USOPR_ROUTECODE072" column="491-494" type="Boolean" multivalued="false" description="Is this console enabled for route code 072?"/>
+		<Attribute name="A5281244329858370256" attribute="USOPR_ROUTECODE073" column="496-499" type="Boolean" multivalued="false" description="Is this console enabled for route code 073?"/>
+		<Attribute name="A5281244329858370257" attribute="USOPR_ROUTECODE074" column="501-504" type="Boolean" multivalued="false" description="Is this console enabled for route code 074?"/>
+		<Attribute name="A5281244329858370258" attribute="USOPR_ROUTECODE075" column="506-509" type="Boolean" multivalued="false" description="Is this console enabled for route code 075?"/>
+		<Attribute name="A5281244329858370259" attribute="USOPR_ROUTECODE076" column="511-514" type="Boolean" multivalued="false" description="Is this console enabled for route code 076?"/>
+		<Attribute name="A5281244329858370260" attribute="USOPR_ROUTECODE077" column="516-519" type="Boolean" multivalued="false" description="Is this console enabled for route code 077?"/>
+		<Attribute name="A5281244329858370261" attribute="USOPR_ROUTECODE078" column="521-524" type="Boolean" multivalued="false" description="Is this console enabled for route code 078?"/>
+		<Attribute name="A5281244329858370262" attribute="USOPR_ROUTECODE079" column="526-529" type="Boolean" multivalued="false" description="Is this console enabled for route code 079?"/>
+		<Attribute name="A5281244329858370263" attribute="USOPR_ROUTECODE080" column="531-534" type="Boolean" multivalued="false" description="Is this console enabled for route code 080?"/>
+		<Attribute name="A5281244329858370264" attribute="USOPR_ROUTECODE081" column="536-539" type="Boolean" multivalued="false" description="Is this console enabled for route code 081?"/>
+		<Attribute name="A5281244329858370265" attribute="USOPR_ROUTECODE082" column="541-544" type="Boolean" multivalued="false" description="Is this console enabled for route code 082?"/>
+		<Attribute name="A5281244329858370266" attribute="USOPR_ROUTECODE083" column="546-549" type="Boolean" multivalued="false" description="Is this console enabled for route code 083?"/>
+		<Attribute name="A5281244329858370267" attribute="USOPR_ROUTECODE084" column="551-554" type="Boolean" multivalued="false" description="Is this console enabled for route code 084?"/>
+		<Attribute name="A5281244329858370268" attribute="USOPR_ROUTECODE085" column="556-559" type="Boolean" multivalued="false" description="Is this console enabled for route code 085?"/>
+		<Attribute name="A5281244329858370269" attribute="USOPR_ROUTECODE086" column="561-564" type="Boolean" multivalued="false" description="Is this console enabled for route code 086?"/>
+		<Attribute name="A5281244329858370270" attribute="USOPR_ROUTECODE087" column="566-569" type="Boolean" multivalued="false" description="Is this console enabled for route code 087?"/>
+		<Attribute name="A5281244329858370271" attribute="USOPR_ROUTECODE088" column="571-574" type="Boolean" multivalued="false" description="Is this console enabled for route code 088?"/>
+		<Attribute name="A5281244329858370272" attribute="USOPR_ROUTECODE089" column="576-579" type="Boolean" multivalued="false" description="Is this console enabled for route code 089?"/>
+		<Attribute name="A5281244329858370273" attribute="USOPR_ROUTECODE090" column="581-584" type="Boolean" multivalued="false" description="Is this console enabled for route code 090?"/>
+		<Attribute name="A5281244329858370274" attribute="USOPR_ROUTECODE091" column="586-589" type="Boolean" multivalued="false" description="Is this console enabled for route code 091?"/>
+		<Attribute name="A5281244329858370275" attribute="USOPR_ROUTECODE092" column="591-594" type="Boolean" multivalued="false" description="Is this console enabled for route code 092?"/>
+		<Attribute name="A5281244329858370276" attribute="USOPR_ROUTECODE093" column="596-599" type="Boolean" multivalued="false" description="Is this console enabled for route code 093?"/>
+		<Attribute name="A5281244329858370277" attribute="USOPR_ROUTECODE094" column="601-604" type="Boolean" multivalued="false" description="Is this console enabled for route code 094?"/>
+		<Attribute name="A5281244329858370278" attribute="USOPR_ROUTECODE095" column="606-609" type="Boolean" multivalued="false" description="Is this console enabled for route code 095?"/>
+		<Attribute name="A5281244329858370279" attribute="USOPR_ROUTECODE096" column="611-614" type="Boolean" multivalued="false" description="Is this console enabled for route code 096?"/>
+		<Attribute name="A5281244329858370280" attribute="USOPR_ROUTECODE097" column="616-619" type="Boolean" multivalued="false" description="Is this console enabled for route code 097?"/>
+		<Attribute name="A5281244329858370281" attribute="USOPR_ROUTECODE098" column="621-624" type="Boolean" multivalued="false" description="Is this console enabled for route code 098?"/>
+		<Attribute name="A5281244329858370282" attribute="USOPR_ROUTECODE099" column="626-629" type="Boolean" multivalued="false" description="Is this console enabled for route code 099?"/>
+		<Attribute name="A5281244329858370283" attribute="USOPR_ROUTECODE100" column="631-634" type="Boolean" multivalued="false" description="Is this console enabled for route code 100?"/>
+		<Attribute name="A5281244329858370284" attribute="USOPR_ROUTECODE101" column="636-639" type="Boolean" multivalued="false" description="Is this console enabled for route code 101?"/>
+		<Attribute name="A5281244329858370285" attribute="USOPR_ROUTECODE102" column="641-644" type="Boolean" multivalued="false" description="Is this console enabled for route code 102?"/>
+		<Attribute name="A5281244329858370286" attribute="USOPR_ROUTECODE103" column="646-649" type="Boolean" multivalued="false" description="Is this console enabled for route code 103?"/>
+		<Attribute name="A5281244329858370287" attribute="USOPR_ROUTECODE104" column="651-654" type="Boolean" multivalued="false" description="Is this console enabled for route code 104?"/>
+		<Attribute name="A5281244329858370288" attribute="USOPR_ROUTECODE105" column="656-659" type="Boolean" multivalued="false" description="Is this console enabled for route code 105?"/>
+		<Attribute name="A5281244329858370289" attribute="USOPR_ROUTECODE106" column="661-664" type="Boolean" multivalued="false" description="Is this console enabled for route code 106?"/>
+		<Attribute name="A5281244329858370290" attribute="USOPR_ROUTECODE107" column="666-669" type="Boolean" multivalued="false" description="Is this console enabled for route code 107?"/>
+		<Attribute name="A5281244329858370291" attribute="USOPR_ROUTECODE108" column="671-674" type="Boolean" multivalued="false" description="Is this console enabled for route code 108?"/>
+		<Attribute name="A5281244329858370292" attribute="USOPR_ROUTECODE109" column="676-679" type="Boolean" multivalued="false" description="Is this console enabled for route code 109?"/>
+		<Attribute name="A5281244329858370293" attribute="USOPR_ROUTECODE110" column="681-684" type="Boolean" multivalued="false" description="Is this console enabled for route code 110?"/>
+		<Attribute name="A5281244329858370294" attribute="USOPR_ROUTECODE111" column="686-689" type="Boolean" multivalued="false" description="Is this console enabled for route code 111?"/>
+		<Attribute name="A5281244329858370295" attribute="USOPR_ROUTECODE112" column="691-694" type="Boolean" multivalued="false" description="Is this console enabled for route code 112?"/>
+		<Attribute name="A5281244329858370296" attribute="USOPR_ROUTECODE113" column="696-699" type="Boolean" multivalued="false" description="Is this console enabled for route code 113?"/>
+		<Attribute name="A5281244329858370297" attribute="USOPR_ROUTECODE114" column="701-704" type="Boolean" multivalued="false" description="Is this console enabled for route code 114?"/>
+		<Attribute name="A5281244329858370298" attribute="USOPR_ROUTECODE115" column="706-709" type="Boolean" multivalued="false" description="Is this console enabled for route code 115?"/>
+		<Attribute name="A5281244329858370299" attribute="USOPR_ROUTECODE116" column="711-714" type="Boolean" multivalued="false" description="Is this console enabled for route code 116?"/>
+		<Attribute name="A5281244329858370300" attribute="USOPR_ROUTECODE117" column="716-719" type="Boolean" multivalued="false" description="Is this console enabled for route code 117?"/>
+		<Attribute name="A5281244329858370301" attribute="USOPR_ROUTECODE118" column="721-724" type="Boolean" multivalued="false" description="Is this console enabled for route code 118?"/>
+		<Attribute name="A5281244329858370302" attribute="USOPR_ROUTECODE119" column="726-729" type="Boolean" multivalued="false" description="Is this console enabled for route code 119?"/>
+		<Attribute name="A5281244329858370303" attribute="USOPR_ROUTECODE120" column="731-734" type="Boolean" multivalued="false" description="Is this console enabled for route code 120?"/>
+		<Attribute name="A5281244329858370304" attribute="USOPR_ROUTECODE121" column="736-739" type="Boolean" multivalued="false" description="Is this console enabled for route code 121?"/>
+		<Attribute name="A5281244329858370305" attribute="USOPR_ROUTECODE122" column="741-744" type="Boolean" multivalued="false" description="Is this console enabled for route code 122?"/>
+		<Attribute name="A5281244329858370306" attribute="USOPR_ROUTECODE123" column="746-749" type="Boolean" multivalued="false" description="Is this console enabled for route code 123?"/>
+		<Attribute name="A5281244329858370307" attribute="USOPR_ROUTECODE124" column="751-754" type="Boolean" multivalued="false" description="Is this console enabled for route code 124?"/>
+		<Attribute name="A5281244329858370308" attribute="USOPR_ROUTECODE125" column="756-759" type="Boolean" multivalued="false" description="Is this console enabled for route code 125?"/>
+		<Attribute name="A5281244329858370309" attribute="USOPR_ROUTECODE126" column="761-764" type="Boolean" multivalued="false" description="Is this console enabled for route code 126?"/>
+		<Attribute name="A5281244329858370310" attribute="USOPR_ROUTECODE127" column="766-769" type="Boolean" multivalued="false" description="Is this console enabled for route code 127?"/>
+		<Attribute name="A5281244329858370311" attribute="USOPR_ROUTECODE128" column="771-774" type="Boolean" multivalued="false" description="Is this console enabled for route code 128?"/>
+		<Attribute name="A5281244329858370312" attribute="USOPR_LOGCMDRESP" column="776-783" type="String" multivalued="false" description="Specifies the logging of command responses received by the extended operator. Valid values are SYSTEM, NO, and blank."/>
+		<Attribute name="A5281244329858370313" attribute="USOPR_MIGRATIONID" column="785-788" type="Boolean" multivalued="false" description="Is this extended operator to receive a migration ID?"/>
+		<Attribute name="A5281244329858370314" attribute="USOPR_DELOPERMSG" column="790-797" type="String" multivalued="false" description="Does this extended operator receive delete operator messages? Valid values are NORMAL, ALL, and NONE."/>
+		<Attribute name="A5281244329858370315" attribute="USOPR_RETRIEVE_KEY" column="799-806" type="String" multivalued="false" description="Specifies a retrieval key used for searching. A null value is indicated by NONE."/>
+		<Attribute name="A5281244329858370316" attribute="USOPR_CMDSYS" column="808-815" type="String" multivalued="false" description="The name of the system that the extended operator is connected to for command processing."/>
+		<Attribute name="A5281244329858370317" attribute="USOPR_UD" column="817-820" type="Boolean" multivalued="false" description="Is this operator to receive undeliverable messages?"/>
+		<Attribute name="A5281244329858370318" attribute="USOPR_ALTGRP_ID" column="822-829" type="String" multivalued="false" description="The default group associated with this operator."/>
+		<Attribute name="A5281244329858370319" attribute="USOPR_AUTO" column="831-834" type="Boolean" multivalued="false" description="Is this operator to receive messages automated within the sysplex?"/>
+		<Attribute name="A5281244329858370320" attribute="USOPR_HC" column="836-839" type="Boolean" multivalued="false" description="Is this operator to receive messages that are directed to hard copy?"/>
+		<Attribute name="A5281244329858370321" attribute="USOPR_INT" column="841-844" type="Boolean" multivalued="false" description="Is this operator to receive messages that are directed to console ID zero?"/>
+		<Attribute name="A5281244329858370322" attribute="USOPR_UNKN" column="846-849" type="Boolean" multivalued="false" description="Is this operator to receive messages which are directed to unknown console IDs?"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

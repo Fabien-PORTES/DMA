@@ -1,0 +1,504 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/details_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/resources/audittrail.page"
+import "/webportal/pages/mixins/workflow_mixins.page"
+
+permissionDetailsMetadata_Dialog = Dialog {
+	title: $permissionDetailsMetadata_Dialog_NLS.title
+	mixins: workflowDefaultMixin
+	buttons:[
+	
+		OkButton {
+			disabled:StringPredicate(changed) {when '1' then False otherwise True}
+			actions:Set description to task.description,
+					Set paramPermissionUid to task.permission,
+					TaskComplete task wait,
+					Flash $permissionDetailsMetadata_Dialog_NLS.done
+		} 
+	
+		CancelButton
+	]
+	
+	width:800
+	height:300
+	enter-event:
+		Set permission.description to description
+		
+	/* Parameters here */
+	paramPermissionUid = Variable {type:String multivalued:False}
+
+	description = Variable
+	sensitivityreason = Variable 
+	manageable = Variable
+	tags = Variable {type:String multivalued:True}
+	
+	selecteddescription = Variable
+	
+	changed = Variable{type:String initial:'0'}
+
+	permission = Record {
+		view: br_permissionDetail with paramPermissionUid to uid
+	}
+
+	task = TaskRecord (create "updatepermissionmetadata")
+
+	Header {
+		value:$permissionDetailsMetadata_Dialog_NLS.description
+		styling:subtitleStyle
+	}
+	Separator
+	Edit {
+		variable:description
+		label:$permissionDetails.description
+		multi-lines:True
+		layout:Layout{grab: horizontal True vertical False hint:height 64}
+		modify-event:Set '1' to changed
+	}	
+	
+}
+
+permissionDetailsManager_Dialog = Dialog {
+	title: $permissionDetailsManager_Dialog_NLS.title
+	mixins: workflowDefaultMixin
+	buttons:OkButton
+	width:800
+	height:300
+	
+	/* Parameters here */
+	paramPermissionUid = Variable {type:String multivalued:False}
+	
+	/* variables here */
+	newmanagerUid = Variable {type:String multivalued:False}
+
+	
+	/* Datasets and records here */
+	// Record for concept details
+	permission = Record {
+		view: br_permissionDetail with paramPermissionUid to uid
+	}
+	
+	newManager = Record {
+		view: br_identityDetail with newmanagerUid to uid
+	}
+
+	permissionbusinessowner = Record {
+		view: br_permissionBusinessowner with paramPermissionUid to uid
+	}
+
+	audittrailstatus = Record {
+		view:br_updatemanagerstatus with paramPermissionUid to uid, Transform "Permission" using entityDetailsManagerTicketTypeMapping to tickettype
+	}
+	
+
+	task = TaskRecord (create "updatepermissionmanager")
+	
+	
+	/* Page content */
+	Grid {
+		columns:GridColumn{width:64px}, GridColumn{width:320px}, GridColumn{width:320px}, GridColumn{width:grow}
+		GridRow {
+			height:96
+			GridCell {
+				Image {
+					image: "48/red/permission.png"
+					align: Center
+				}
+			}
+			GridCell {
+				Text {
+					label: $permission.code
+					value: Transform permission.code using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $permission.displayname
+					value: Transform permission.displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text{
+					label: $permission.permissiontype
+					value:  Transform permission.permissiontype using optionStringMapping
+				}
+			}
+			GridCell {
+				Text{
+					label:   $permission.applicationdisplayname 
+					value: Transform permission.application_displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $permissionDetailsManager_Dialog_NLS.managerhrcode
+					value: Transform permissionbusinessowner.hrcode using optionStringMapping
+					lines: 2
+				}
+
+				Text {
+					label: $permissionDetailsManager_Dialog_NLS.managerfullname
+					value: Transform permissionbusinessowner.fullname using optionStringMapping
+					lines: 2
+				}
+			}
+			GridCell {
+			}
+		}
+		GridRow {
+			GridCell {
+				span:4
+				Header {
+					value:$permissionDetailsManager_Dialog_NLS.question
+				}
+				Header {
+					value:$permissionDetailsManager_Dialog_NLS.changeinprogress
+					styling:warningFieldStyle
+					hidden:
+							Not AndPredicate {
+								StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+								StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+							}
+				}
+			}
+		}
+		GridRow {
+			height:grow
+			GridCell {
+				span:4
+				ButtonGroup {
+						Button {
+							actions:Dialog identityPicker(newmanagerUid from outUid), 
+									Confirm $permissionDetailsManager_Dialog_NLS.newmanagerconfirm(Transform newManager.hrcode using mayBeNullMapping, newManager.fullname, permission.displayname, permission.application_displayname),
+									Flash Information $permissionDetailsManager_Dialog_NLS.confirmupdate,
+									Set paramPermissionUid to task.permission,
+									Set newmanagerUid to task.manager,
+									StringCase(permissionbusinessowner.fullname) { when IsEmpty then [Set 'create' to task.action] otherwise [Set 'modify' to task.action] },
+									TaskComplete task wait,
+									ReloadData (permissionbusinessowner, audittrailstatus)
+							text:$permissionDetailsManager_Dialog_NLS.setmanager
+							disabled:
+								AndPredicate {
+									StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+									StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Confirm $permissionDetailsManager_Dialog_NLS.newmanagerremove(Transform permissionbusinessowner.hrcode using mayBeNullMapping, permissionbusinessowner.fullname, permission.displayname, permission.application_displayname),
+									Flash Information $permissionDetailsManager_Dialog_NLS.removeupdate,
+									Set paramPermissionUid to task.permission,
+									Set '' to task.manager,
+									Set 'delete' to task.action,
+									TaskComplete task wait,
+									ReloadData (permissionbusinessowner, audittrailstatus)
+							text:$permissionDetailsManager_Dialog_NLS.removemanager
+							disabled:
+								OrPredicate {
+									AndPredicate {
+										StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+										StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+									}
+								StringPredicate(permissionbusinessowner.fullname) {when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Dialog entityDetailsManagerAuditDialog("Permission" to type, paramPermissionUid to entity) 
+						                        feature:permissiondetails_auditmanager
+							                       
+							text:$permissionDetailsManager_Dialog_NLS.manageraudittrail
+						}
+				}		
+			}
+		}
+	}
+}
+
+
+
+permissionDetailsPageRecorduid = Page {
+	title: "Recorduid redirection (permission)"
+	conditional-redirect: ConditionalRedirect { condition: True target: Page permissionDetailsPage with permissionUid.uid to paramPermissionUid }
+	
+	recorduid = Parameter {
+		type: Integer
+		hidden: True
+		recorduid-of: Permission
+		mandatory: True
+	}
+	
+	permissionUid = Record {
+		view: br_permissionDetail_uid with recorduid to recorduid
+	}
+}
+
+permissionDetailsPage = Page {
+	title: $permissionDetails.title
+	dynamic-title: $permissionDetails.dynamictitle ($permissionDetails.detailtitle(Transform permission.displayname using isEmptyMapping, permission.displayname, permission.code ))
+	mixins: detailsPage
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set paramPermissionUid to nonEmptyUid] when True then []}
+	
+	// Parameters Here
+	paramPermissionUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: True
+	}
+	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	// Search Definition Here
+	permissionSearch = SearchDefinition {
+		entity: Permission
+		simple-mode-rule: br_permission_simple_search
+	}
+	
+	// Variables Here
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedPermissionUid = Variable {
+		type: String
+		initial: paramPermissionUid
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Dataset for Navigator
+	permissionList = Dataset {
+		search: Search {
+			definition: permissionSearch
+			view: br_permission_searchpoint with "Profile" to applicationtype, nonEmptyUid to uid unless-empty
+		}
+	}
+	
+	// Dataset for Reports
+	relatedLinksTiles = Dataset {
+		pages: Pages{tags: "permission" and "byuid" }
+	}
+	
+	// Record for concept details
+	permission = Record {
+		view: br_permissionDetail with selectedPermissionUid to uid
+	}
+	permissionext = Record {
+		view: br_permissionDetailExtended with selectedPermissionUid to uid
+	}
+	
+	// All other Records and Datasets
+	numberOfAccounts = Record {
+		view: br_permissionDetail_nbaccounts with selectedPermissionUid to uid
+	}
+	
+	numberOfIdentities = Record {
+		view: br_permissionDetail_nbidentities with selectedPermissionUid to uid
+	}
+	
+	permissionbusinessowner = Record {
+		view: br_permissionBusinessowner with selectedPermissionUid to uid
+	}
+	
+	// Start of the Layout based on a 1-column Grid
+	Grid {
+		columns: GridColumn{}
+		
+		// Row for the Navigator
+		GridRow {
+			GridCell{
+				Group{
+					layout: Layout {align: horizontal Center vertical Beginning }
+					Spacer {
+						height: 5
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					SetNavigator {
+						data: permissionList
+						column: uid
+						selection: selectedPermissionUid
+						back-link: Activity Permission Search with SerializeSearch permissionSearch to permissionSearch, paramSearchMode to paramSearchMode, selectedPermissionUid to initialUid, initialIndex to paramInitialIndex
+						initial: paramPermissionUid
+						initial-index: paramInitialIndex
+						selection-index: initialIndex
+						show-count: True
+						show-first: True
+						show-last: True
+						count-width: 150
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					Spacer{
+						height:10
+					}
+				}
+			}
+		}
+		
+		// Row for header
+		GridRow{
+			GridCell{
+				background: Image "details/card_header.png"
+				Spacer { height: 67 }
+			}
+		}
+		
+		// Row for content
+		GridRow{
+			GridCell{
+				background: Image "details/card_content.png"
+				
+				Spacer { height:10 }
+				
+				Text {
+					value: $permissionDetails.detailtitle (Transform permission.displayname using isEmptyMapping, permission.displayname, permission.code )
+					styling:detailsTitle
+					align: Center
+				}
+				
+				Text {
+					value: $permissionDetails.subtitle ( permission.application_displayname ) 
+					hidden: IntPredicate ( Transform  permission.application_displayname using isEmptyMapping )
+					{
+						when =1 then True
+					}
+					styling: detailsSubtitle
+					align:Center
+				}
+				
+				Spacer { height:5 }
+				
+				Flow {
+					disposition: Horizontal
+
+					// First Column
+					Group {
+						layout: Layout { hint: width 290}
+						Image {
+							image: "details/permission.png"
+							align: Center
+						}
+					}
+					
+					// Second Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Text {
+							label: $permission.code
+							value: Transform permission.code using optionStringMapping
+							lines: 2
+						}
+													
+						Text {
+							label: $permission.displayname
+							value: Transform permission.displayname using optionStringMapping
+							lines: 2
+						}
+													
+						Text{
+							label: $permission.permissiontype
+							value:  Transform permission.permissiontype using optionStringMapping
+						}
+
+						Link{
+							label:   $permission.applicationdisplayname 
+							value: Transform permission.application_displayname using optionStringMapping
+							target:Activity Application Detail with permission.application_uid to paramApplicationUid
+						}
+					}
+					
+					// Third Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Text {
+							label: $permissionDetails.description
+							value: Transform permissionext.description  using optionStringMapping
+							lines:4
+							commands:Commands { position: Before orientation: Horizontal 
+											Command{actions:Dialog permissionDetailsMetadata_Dialog(permissionext.description to description, selectedPermissionUid to paramPermissionUid), ReloadData (permissionext) 
+							                        icon:'16/red/edit_16.png' feature:permissiondetails_updatemetadata tooltip:$permissionDetails.updatemetadata
+							                       }
+							                  }
+						}
+						Text{
+							label: $permissionDetails.number_accounts
+							value:  numberOfAccounts.count
+						}
+													
+						Text{
+							label: $permissionDetails.number_identities
+							value:  numberOfIdentities.count
+						}
+
+						Link {
+							label: $businessowner.concept
+							value: Concat(Transform permissionbusinessowner.hrcode using optionStringMapping, ' / ', Transform permissionbusinessowner.fullname using optionStringMapping)
+							target:Activity Identity Detail with permissionbusinessowner.uid to paramIdentityUid
+							disabled:
+							OrPredicate {
+								StringPredicate(permissionbusinessowner.uid) { when IsEmpty then True}
+								Not FeaturePredicate permissiondetails_linktobusinessowner		
+							}
+							commands:Commands { position: Before orientation: Horizontal 
+											Command{actions:Dialog permissionDetailsManager_Dialog(selectedPermissionUid to paramPermissionUid), ReloadData (permissionbusinessowner) 
+							                        icon:'16/red/edit_16.png' feature:permissiondetails_updatemanager tooltip:$permissionDetails.updatemanager
+							                       }
+							                  }
+						}
+					}
+				}
+				Spacer { height: 20 }
+			}
+		}
+		
+		// Row for footer
+		GridRow{
+			GridCell{
+				background: Image "details/card_footer.png"
+				Spacer { height: 12 }
+			}
+		}
+		
+		// Row for links
+		GridRow{
+			GridCell{
+				Spacer { height: 20 }
+				Tiles {
+					columns:5
+					tile-height:120
+					mixins:detailIcons
+					TileGroup {
+						iterate-on: relatedLinksTiles
+						initial-sort: ^priority 
+						Tile {
+							Button {
+								actions: GoTo Dynamic (Current type, Current name) with permission.recorduid to recorduid, permission.uid to uid, SerializeSearch permissionSearch to permissionSearch, paramSearchMode to paramSearchMode
+								image: Current largeIcon
+								tooltip: Current title		
+							}
+							Text{
+								value: Current title
+								label: Label{ layout:Layout{indent: vertical 0 horizontal 0   }  }
+								lines:2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

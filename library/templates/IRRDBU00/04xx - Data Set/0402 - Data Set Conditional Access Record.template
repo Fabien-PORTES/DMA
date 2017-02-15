@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="Data set conditional access record" description="The Data Set Conditional Access record defines the data sets that have conditional access permissions. There is one record per data set/access combination.">
+	<Source type="FORMATTED" filter="^0402 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="DSCACC_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the Data Set Conditional Access record (0402)."/>
+		<Attribute name="A4199536690768339793" attribute="DSCACC_NAME" column="6-49" type="String" multivalued="false" description="Data set name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="DSCACC_VOL" column="51-56" type="String" multivalued="false" description="Volume upon which this data set resides. Blank if the profile is generic, and *MODEL if the profile is a model profile."/>
+		<Attribute name="A7466509792483562715" attribute="DSCACC_CATYPE" column="58-65" type="String" multivalued="false" description="The type of conditional access checking that is being performed. Valid values are APPCPORT, PROGRAM, CONSOLE, TERMINAL, JESINPUT, and SERVAUTH."/>
+		<Attribute name="A3188661801656117613" attribute="DSCACC_CANAME" column="67-74" type="String" multivalued="false" description="The name of a conditional access element that is permitted access."/>
+		<Attribute name="A4037269903301147695" attribute="DSCACC_AUTH_ID" column="76-83" type="String" multivalued="false" description="The user ID or group name that is authorized to the data set."/>
+		<Attribute name="A7863438466300294503" attribute="DSCACC_ACCESS" column="85-92" type="String" multivalued="false" description="The access of the conditional access element/user combination. Valid values are NONE, EXECUTE, READ, UPDATE, CONTROL, and ALTER."/>
+		<Attribute name="A8801039954934473602" attribute="DSCACC_ACCESS_CNT" column="94-98" type="Number" multivalued="false" description="The number of times that the data set was accessed."/>
+		<Attribute name="A2460635583838380635" attribute="DSCACC_NET_ID" column="100-107" type="String" multivalued="false" description="The network name when DSCACC_CATYPE is APPCPORT."/>
+		<Attribute name="A2460635583838380645" attribute="DSCACC_CACRITERIA" column="109-352" type="String" multivalued="false" description="The IP name when DSCACC_CATYPE is SERVAUTH."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+	<Checks>
+		<Check name="U1314367823667" attribute="DSCACC_CATYPE" checktype="regexp" checkvalue="^APPCPORT|PROGRAM|CONSOLE|TERMINAL|JESINPUT|SERVAUTH$" event="Invalid Conditional Access Type"/>
+		<Check name="U1314367823668" attribute="DSCACC_ACCESS" checktype="regexp" checkvalue="^EXECUTE|READ|UPDATE|CONTROL|ALTER$" event="Invalid Access Value"/>
+	</Checks>
+</Discovery>

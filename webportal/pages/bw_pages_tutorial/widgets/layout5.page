@@ -1,0 +1,33 @@
+layout5 = Page {
+	title:'Layouting with splitter'
+	
+	Group {
+		title:'Horizontal splitter'
+		Splitter {
+			disposition:Horizontal
+			size:30%
+			Group {
+				Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+			}
+			Group {
+				Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+			}
+		}
+	}
+
+
+	Group {
+		title:'Vertical splitter'
+		Splitter {
+			disposition:Vertical
+			size:30%
+			Group {
+				Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+			}
+			Group {
+				Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+			}
+		}
+	}
+}
+

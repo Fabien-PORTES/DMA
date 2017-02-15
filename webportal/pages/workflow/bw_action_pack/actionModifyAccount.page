@@ -1,0 +1,917 @@
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+import "/webportal/pages/resources/concepts_nls.page"
+
+actionModifyAccountNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel current edition ?" fr "Annuler l'édition en cours ?"]
+	complete.buttontext [en "Task completed" fr "Tâche terminée"]
+	complete.confirm [en "Complete current task ?" fr "Terminer la tâche en cours ?"]
+	complete.flashmessage [en "Task completed" fr "Tâche terminée"]
+	title [en "Modify Account" fr "Modifier le compte"]
+	subtitle1 [en "Please modify the following account" fr "Prière de modifier le compte suivant"]
+	grouptitle1 [en "Account informations" fr "Informations sur le compte"]
+	_result [en "Action Status" fr "Statut du compte"]
+	result.value0 [en "ok" fr "ok"]
+	result.value1 [en "error" fr "error"]
+	_resultdescription [en "Additional action description that you want to push  back to the requester" fr "Informations supplémentaires que vous voulez pousser au demandeur"]
+	result [en "Result" fr "Résultat"]
+	modification [en "Modification" fr "Modification"]
+	accountInfo [en "Account Information" fr "Informations sur le compte"]
+	modificationAttribute [en "Attribute to modify" fr "Attribut à modifier"]
+	newvalue [en "New value" fr "Nouvelle valeur"]
+	oldvalue [en "Previous value" fr "Valeur précédente"]
+	unknownValue [en "" fr ""]
+	unknown [en "Unknown attribute" fr "Attribut inconnu"]
+	empty [en "None" fr "Aucune"]
+	cValues [en "Current Values" fr "Valeurs actuelles"]
+	nValues [en "New Values" fr "Nouvelles Valeurs"]
+}
+
+actionModifyAccount = Page {
+	title: $actionModifyAccountNLS.title
+	mixins: workflowDefaultMixin
+	enter-event:
+		Set account.passwordlastsetdate to rpasswordlastsetdate,
+		Set account.nextpwdchangedate to rnextpwdchangedate,
+		Set account.lastlogindate to rlastlogindate,
+		Set account.expiredate to rexpiredate,
+		Set account.creationdate to rcreationdate,
+		Set task.acc_passwordlastsetdate to tpasswordlastsetdate,
+		Set task.acc_nextpwdchangedate to tnextpwdchangedate,
+		Set task.acc_lastlogindate to tlastlogindate,
+		Set task.acc_expiredate to texpiredate,
+		Set task.acc_creationdate to tcreationdate,
+		Set task.acc_badpasswordcount to tbadpasswordcount,
+		Set task.acc_logincount to tlogincount
+	
+	taskId = Parameter {
+		type: String
+		mandatory: True
+	}
+	
+	// Date variables for ledger account (record)
+	rpasswordlastsetdate = Variable { type: Date }
+	rnextpwdchangedate = Variable { type: Date }
+	rlastlogindate = Variable { type: Date }
+	rexpiredate = Variable { type: Date }
+	rcreationdate = Variable { type: Date }
+	
+	// Date variables for task account
+	tpasswordlastsetdate = Variable { type: Date }
+	tnextpwdchangedate = Variable { type: Date }
+	tlastlogindate = Variable { type: Date }
+	texpiredate = Variable { type: Date }
+	tcreationdate = Variable { type: Date }
+	tbadpasswordcount = Variable { type: Integer }
+	tlogincount  = Variable { type: Integer }
+	
+	task = TaskRecord(taskId)
+	
+	account = Record {
+		view: actionpackAccountpickerFull with task.account to uid
+	}
+	
+	Header {
+		mixins: workflowTitleMixin
+		value: $actionModifyAccountNLS.subtitle1
+	}
+	// Action buttons (OK, cancel)
+	Group {
+		title: $actionModifyAccountNLS.actionsection
+		mixins: workflowActionsMixin
+		layout: Layout { grab: horizontal True vertical False }
+		ButtonGroup {
+			align: Left
+			Button { 
+				text: $actionModifyAccountNLS.cancel.buttontext
+				actions: Confirm $actionModifyAccountNLS.cancel.confirm, TaskCancel task, GoTo HomePage
+			}
+			Button { 
+				disabled: StringPredicate (task.result) { when IsEmpty then True }
+				
+				text: $actionModifyAccountNLS.complete.buttontext
+				actions:  Confirm $actionModifyAccountNLS.complete.confirm, TaskComplete task, Flash Information $actionModifyAccountNLS.complete.flashmessage, GoTo HomePage
+			}
+		}
+	}
+	// Account info
+	Group {
+		title: $actionModifyAccountNLS.accountInfo
+		layout: Layout { grab: horizontal True vertical False }
+		Text {
+			label: Concat ( $account.concept, ' ', $account.login )
+			value: task.login
+		}
+		Text {
+			label: Concat ( $account.concept, ' ', $account.identifier )
+			value: task.account
+		}
+		Text {
+			label: Concat ( $account.concept, ' ', $account.username )
+			value: account.username
+		}
+		Text {
+			label: Concat ( $repository.concept, ' ', $repository.displayname )
+			value: task.repositoryName
+		}
+	}
+	// Result
+	Group {
+		title: $actionModifyAccountNLS.result
+		layout: Layout { grab: horizontal True vertical False }
+		Combo {
+			label: Concat($actionModifyAccountNLS._result,"*")
+			variable: task.result
+			options: Static {
+				Option {
+					value: "ok"
+					text: $actionModifyAccountNLS.result.value0
+				}
+				Option {
+					value: "error"
+					text: $actionModifyAccountNLS.result.value1
+				}
+			}
+		}
+		Edit {
+			label: $actionModifyAccountNLS._resultdescription
+			variable: task.resultdescription
+		}
+	}
+	Header {
+		value: $actionModifyAccountNLS.mandatoryfields
+	}
+	// Modifications requested
+	Group {
+		title: $actionModifyAccountNLS.modification
+		layout: Layout { grab: horizontal True vertical False }
+	
+		Splitter {
+			size: 50%
+			disposition: Horizontal
+			// Current values from ledger (record)
+			Group {
+				title: $actionModifyAccountNLS.cValues
+				Text {
+					label: Concat ( $account.concept, ' ', $account.badpasswordcount )
+					value: account.badpasswordcount
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.creationdate )
+					variable: rcreationdate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( account.creationdate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.creationdate )
+					value: $actionModifyAccountNLS.unknown
+					hidden:
+						StringPredicate ( account.creationdate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom1 )
+					value: account.custom1
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom2 )
+					value: account.custom2
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom3 )
+					value: account.custom3
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom4 )
+					value: account.custom4
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom5 )
+					value: account.custom5
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom6 )
+					value: account.custom6
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom7 )
+					value: account.custom7
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom8 )
+					value: account.custom8
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom9 )
+					value: account.custom9
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.disabled )
+					value: account.disabled
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.dontexpirepassword )
+					value: account.dontexpirepassword
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.employeenumber )
+					value: account.employeenumber
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.expiredate )
+					variable: rexpiredate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( account.expiredate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.expiredate )
+					value: $actionModifyAccountNLS.unknown
+					hidden:
+						StringPredicate ( account.expiredate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.givenname )
+					value: account.givenname
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.identifier )
+					value: account.identifier
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.lastlogindate )
+					variable: rlastlogindate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( account.lastlogindate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.lastlogindate )
+					value: $actionModifyAccountNLS.unknown
+					hidden:
+						StringPredicate ( account.lastlogindate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.locked )
+					value: account.locked
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.login )
+					value: account.login
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.logincount )
+					value: account.logincount
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.mail )
+					value: account.mail
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.nextpwdchangedate )
+					variable: rnextpwdchangedate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( account.nextpwdchangedate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.nextpwdchangedate )
+					value: $actionModifyAccountNLS.unknown
+					hidden:
+						StringPredicate ( account.nextpwdchangedate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.notnormalaccount )
+					value: account.notnormalaccount
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordcantchange )
+					value: account.passwordcantchange
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordexpired )
+					value: account.passwordexpired
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.passwordlastsetdate )
+					variable: rpasswordlastsetdate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( account.passwordlastsetdate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordlastsetdate )
+					value: $actionModifyAccountNLS.unknown
+					hidden:
+						StringPredicate ( account.passwordlastsetdate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordnotrequired )
+					value: account.passwordnotrequired
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.profile )
+					value: account.profile
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.service )
+					value: account.service
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.smartcardrequired )
+					value: account.smartcardrequired
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.surname )
+					value: account.surname
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.username )
+					value: account.username
+				}
+			}
+			// New values (from task)
+			Group {
+				title: $actionModifyAccountNLS.nValues
+				Text {
+					label: Concat ( $account.concept, ' ', $account.badpasswordcount )
+					value: tbadpasswordcount
+					hidden:
+						StringPredicate ( tbadpasswordcount ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.badpasswordcount )
+					value: ''
+					hidden:
+						StringPredicate ( tbadpasswordcount ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.creationdate )
+					variable: tcreationdate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( task.acc_creationdate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.creationdate )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_creationdate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom1 )
+					value: task.acc_custom1
+					hidden:
+						StringPredicate ( task.acc_custom1 ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom1 )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_custom1 ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom2 )
+					value: task.acc_custom2
+					hidden:
+						StringPredicate ( task.acc_custom2 ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom2 )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_custom2 ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom3 )
+					value: task.acc_custom3
+					hidden:
+						StringPredicate ( task.acc_custom3 ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom3 )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_custom3 ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom4 )
+					value: task.acc_custom4
+					hidden:
+						StringPredicate ( task.acc_custom4 ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom4 )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_custom4 ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom5 )
+					value: task.acc_custom5
+					hidden:
+						StringPredicate ( task.acc_custom5 ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom5 )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_custom5 ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom6 )
+					value: task.acc_custom6
+					hidden:
+						StringPredicate ( task.acc_custom6 ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom6 )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_custom6 ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom7 )
+					value: task.acc_custom7
+					hidden:
+						StringPredicate ( task.acc_custom7 ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom7 )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_custom7 ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom8 )
+					value: task.acc_custom8
+					hidden:
+						StringPredicate ( task.acc_custom8 ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom8 )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_custom8 ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom9 )
+					value: task.acc_custom9
+					hidden:
+						StringPredicate ( task.acc_custom9 ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.custom9 )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_custom9 ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.disabled )
+					value: task.acc_disabled
+					hidden:
+						StringPredicate ( task.acc_disabled ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.disabled )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_disabled ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.dontexpirepassword )
+					value: task.acc_dontexpirepassword
+					hidden:
+						StringPredicate ( task.acc_dontexpirepassword ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.dontexpirepassword )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_dontexpirepassword ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.employeenumber )
+					value: task.acc_employeenumber
+					hidden:
+						StringPredicate ( task.acc_employeenumber ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.employeenumber )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_employeenumber ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.expiredate )
+					variable: texpiredate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( task.acc_expiredate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.expiredate )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_expiredate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.givenname )
+					value: task.acc_givenname
+					hidden:
+						StringPredicate ( task.acc_givenname ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.givenname )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_givenname ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.identifier )
+					value: task.acc_identifier
+					hidden:
+						StringPredicate ( task.acc_identifier ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.identifier )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_identifier ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.lastlogindate )
+					variable: tlastlogindate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( task.acc_lastlogindate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.lastlogindate )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_lastlogindate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.locked )
+					value: task.acc_locked
+					hidden:
+						StringPredicate ( task.acc_locked ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.locked )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_locked ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.login )
+					value: task.acc_login
+					hidden:
+						StringPredicate ( task.acc_login ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.login )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_login ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.logincount )
+					value: tlogincount
+					hidden:
+						StringPredicate ( tlogincount ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.logincount )
+					value: ''
+					hidden:
+						StringPredicate ( tlogincount ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.mail )
+					value: task.acc_mail
+					hidden:
+						StringPredicate ( task.acc_mail ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.mail )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_mail ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.nextpwdchangedate )
+					variable: tnextpwdchangedate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( task.acc_nextpwdchangedate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.nextpwdchangedate )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_nextpwdchangedate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.notnormalaccount )
+					value: task.acc_notnormalaccount
+					hidden:
+						StringPredicate ( task.acc_notnormalaccount ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.notnormalaccount )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_notnormalaccount ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordcantchange )
+					value: task.acc_passwordcantchange
+					hidden:
+						StringPredicate ( task.acc_passwordcantchange ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordcantchange )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_passwordcantchange ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordexpired )
+					value: task.acc_passwordexpired
+					hidden:
+						StringPredicate ( task.acc_passwordexpired ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordexpired )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_passwordexpired ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				DateTime {
+					type: Date
+					label: Concat ( $account.concept, ' ', $account.passwordlastsetdate )
+					variable: tpasswordlastsetdate
+					format: "yyyyMMddHHmmss"
+					disabled: True
+					hidden: 
+						StringPredicate ( task.acc_passwordlastsetdate ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordlastsetdate )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_passwordlastsetdate ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordnotrequired )
+					value: task.acc_passwordnotrequired
+					hidden:
+						StringPredicate ( task.acc_passwordnotrequired ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.passwordnotrequired )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_passwordnotrequired ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.profile )
+					value: task.acc_profile
+					hidden:
+						StringPredicate ( task.acc_profile ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.profile )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_profile ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.service )
+					value: task.acc_service
+					hidden:
+						StringPredicate ( task.acc_service ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.service )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_service ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.smartcardrequired )
+					value: task.acc_smartcardrequired
+					hidden:
+						StringPredicate ( task.acc_smartcardrequired ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.smartcardrequired )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_smartcardrequired ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.surname )
+					value: task.acc_surname
+					hidden:
+						StringPredicate ( task.acc_surname ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.surname )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_surname ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.username )
+					value: task.acc_username
+					hidden:
+						StringPredicate ( task.acc_username ) {
+							when IsEmpty then True
+						}
+				}
+				Text {
+					label: Concat ( $account.concept, ' ', $account.username )
+					value: ''
+					hidden:
+						StringPredicate ( task.acc_username ) {
+							when IsEmpty then False otherwise True
+						}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbmoveout" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="organisation detail nbmoveout">
+	<ViewParam name="code" displayname="code">
+		<Value name="0" data="DFIN"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewRule name="I1365951415883_112" rule="control_identitiesnotfromorganisationcode">
+		<ViewRuleParam name="organisationcode" reference="code" ignoreifempty="false">
+			<Value name="0"/>
+		</ViewRuleParam>
+	</ViewRule>
+	<ViewAttribute name="1365951436953_120" attribute="uid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1365951450931_122" kind="inner" identitysecure="false" join="timeslotidentities">
+		<ViewAttribute name="1365951465285_126" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1365934623291_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1365951469007_127" kind="inner" identitysecure="false" join="uporganisation">
+			<ViewAttribute name="A1365951472232_128" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1365951474886_0" reference="code" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

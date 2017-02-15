@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_counts_ts" errorifempty="false" distinct="true" identitysecure="false" concept="importlog" displayname="br_applicationDetail_counts_ts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="orphan" displayname="orphan"/>
+	<ViewParam name="disabled" displayname="disabled"/>
+	<ViewSort name="sort" attribute1="A1381175175485_1366"/>
+	<ViewJoin name="J1377509139333_735" kind="inner" identitysecure="false" join="application">
+		<ViewJoin name="J1375884656707_213" kind="inner" identitysecure="false" join="account">
+			<ViewAttribute name="1377509236271_752" attribute="recorduid" alias="nbaccounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1377509236271_753" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1375884828426_0" reference="disabled" operation="eqBoolean" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewCriteria name="I1377509488294_760" enabled="param.orphan != null &amp;&amp; param.orphan.get() == true" criteria="notReconciliatedAccounts">
+			</ViewCriteria>
+		</ViewJoin>
+		<ViewAttribute name="A1377510159772_764" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377510175748_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1381175175485_1366" attribute="commitdate" removedfromprojection="false" globalfilter="false"/>
+</View>

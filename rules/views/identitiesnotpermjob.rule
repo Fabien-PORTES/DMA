@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_identitiesnotpermjob" operator="and" query="identity" displayname="Identities  who don&apos;t have access to a given permission {permissionrecorduid}" version="6" notes="">
+	<RequestParam name="permissionrecorduid" displayname="permission record uid" query="permission" criteria="eqRecordUid" criteriaparam="recordUidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestGroup name="G1325600874633_3476" operator="and" inverse="true">
+		<RequestJoin name="J1325600882117_3477" operator="and" join="accountreconciliation">
+			<RequestJoin name="J1453224696864_492" operator="and" join="permissionright">
+				<RequestCriteria name="C1453224592443_490" criteria="eqRecordUid">
+					<RequestCriteriaParam name="recordUidParam" reference="permissionrecorduid" ignoreifempty="false">
+						<Value name="0"/>
+					</RequestCriteriaParam>
+				</RequestCriteria>
+			</RequestJoin>
+		</RequestJoin>
+	</RequestGroup>
+</Request>

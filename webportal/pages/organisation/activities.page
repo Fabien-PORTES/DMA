@@ -1,0 +1,15 @@
+import "/webportal/pages/organisation/search.page"
+import "/webportal/pages/organisation/details.page"
+import "/webportal/pages/reports/standard.page"
+
+Activity {
+	concept: Organisation
+	kind: Search
+	to: Page organisationSearchPage
+}
+
+Activity {
+	concept: Organisation
+	kind: Detail
+	to: Page organisationDetailsPage
+}

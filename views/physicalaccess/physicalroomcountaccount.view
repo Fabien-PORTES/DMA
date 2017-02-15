@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_physicalroomcountaccount" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="Count the number of accounts for a given application" notes="">
+	<ViewParam name="recorduid" displayname="Record UID"/>
+	<ViewParam name="disabledaccount" displayname="Disabled account"/>
+	<ViewParam name="serviceaccount" displayname="Service account"/>
+	<ViewParam name="lockedaccount" displayname="Locked account"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1302171308886_516" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1302171542677_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1316336852162_5635" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1316336856289_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Physical"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1382793688076_2757" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+		<ViewAttribute name="1382793703393_2762" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1382793703404_2764" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1302171434105_0" reference="disabledaccount" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="1382793703410_2765" attribute="locked" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1302171442138_0" reference="lockedaccount" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewJoin name="J1428502381328_4629" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.isEmpty(&apos;serviceaccount&apos;)==false &amp;&amp; param.serviceaccount.get()==true" join="reconciliation">
+			<ViewAttribute name="A1428502394446_4630" attribute="noownercode" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1428502396768_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="service"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

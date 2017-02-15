@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="fake_Identity" scriptfile="/collectors/fake_Identity/fake_Identity.javascript" name="P1486995362577" startingpoint="C1486995369500">
+		<Component name="C1486995369500" type="library/components/start.component" x="307" y="97" w="200" h="50" title="start"/>
+		<Component name="C1486995375820" type="changefilter" x="302" y="242" w="200" h="64" title="create fake">
+			<Actions>
+				<Action name="U1486995484873" action="add" attribute="fakeID" type="String" multivalued="false" newvalue="Pending Reconciliation Accounts" errorexist="false"/>
+				<Action name="U1486995496917" action="add" attribute="repo" type="String" multivalued="false" newvalue="FAKE" errorexist="false"/>
+				<Action name="U1486995612919" action="add" attribute="givenName" type="String" multivalued="false" newvalue="Fake ID" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1486995379132" source="C1486995369500" target="C1486995375820" priority="1"/>
+		<Component name="C1486995504467" type="repository" x="610" y="246" w="200" h="64" title="fake Repo">
+			<Media type="I" code="repo" label="repo" repositorytype="repo"/>
+		</Component>
+		<Link name="L1486995508379" source="C1486995375820" target="C1486995504467" priority="1"/>
+		<Component name="C1486995536123" type="identity" x="725" y="433" w="200" h="50" title="fake ID creation">
+			<Mapping>
+				<Attribute name="givenname" attribute="givenName"/>
+				<Attribute name="sn" attribute="givenName"/>
+				<Attribute name="internal" attribute="fakeID"/>
+				<Attribute name="fullname" attribute="fakeID"/>
+				<Attribute name="custom4" attribute="repo"/>
+			</Mapping>
+			<Identity code="fakeID"/>
+			<Media code="repo"/>
+		</Component>
+		<Link name="L1486995539626" source="C1486995504467" target="C1486995536123" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

@@ -1,0 +1,3 @@
+<template:variabledataset/> = Dataset {
+	view: workflow_identitydisplayname with <template:taskvariablename/> to uid
+}

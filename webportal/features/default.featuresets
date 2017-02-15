@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FeatureSets PUBLIC "-//Brainwave//DTD FeatureSets 1.0//EN" "urn:brainwave:igrc:dtds/featuresets.dtd">
+<FeatureSets version="1" name="default" description="default">
+	<FeatureSet name="I1442245270138" featureset="defaultmenu" description="Gives access to see and use the default menu" r0="true" r1424271252593="true"/>
+	<FeatureSet name="I1380729683151" featureset="organisationmanagerfeatureset" description="Organisation manager Feature Set" r1="true"/>
+	<FeatureSet name="I1381155432501" featureset="applicationmanagerfeatureset" description="Application manager feature set" r2="true"/>
+	<FeatureSet name="I1461662021624" featureset="showanalyticspanels" description="Activates the analytics panels in the search pages" r0="true"/>
+	<FeatureSet name="I1461662095246" featureset="detaillinks" description="Activates links from detail pages to other elements" r0="true"/>
+	<FeatureSet name="I1381320469071" featureset="accountreconciliation" description="Gives the right to reconcile orphan accounts and to change account reconciliation status" r2="false" r0="true"/>
+	<FeatureSet name="I1461691630357" featureset="editmetadata" description="Gives the right to edit the description of applications and permissions"/>
+	<FeatureSet name="I1460990255554" featureset="ownersmanagement" description="Gives the right to manage the business and technical owners"/>
+	<FeatureSet name="I1461662047454" featureset="ownersmanagementaudit" description="Gives the right to see the history of changes in business and technical owners"/>
+	<FeatureSet name="I1461167279669" featureset="assetsfeatureset" description="Activates the pages related to the assets concept"/>
+	<FeatureSet name="I1433774381308" featureset="igrcadmin" description="Gives access to see and use the admin menu" r0="false" r1433773804308="true"/>
+	<FeatureSet name="I1461691837653" featureset="projectupdatemanager" description="Gives access to project update manager"/>
+</FeatureSets>

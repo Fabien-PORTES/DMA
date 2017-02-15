@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_graphnbproblemsjob" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="applicationDetail_graphnbproblemsjob" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="organisationtype" displayname="organisationtype"/>
+	<ViewSort name="sort" attribute1="1383238897684_16361" direction1="DESC"/>
+	<ViewAttribute name="1383238897684_16361" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1367575686427_205" kind="inner" identitysecure="false" join="allocation">
+		<ViewAttribute name="1383238906366_16365" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1383238906368_16366" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1383238918967_16367" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383238930190_16368" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383238935015_16369" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383238938070_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1383238965558_16372" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383238969798_16373" kind="inner" identitysecure="false" join="application">
+				<ViewAttribute name="1383239019220_16385" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1367574251067_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

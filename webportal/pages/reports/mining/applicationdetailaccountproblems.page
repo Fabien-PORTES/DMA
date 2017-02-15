@@ -1,0 +1,187 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/reports/standard.page"
+
+reportDetails = NLS {
+	browsing_application_detailaccountproblems.pagetitle [ en "Accounts with Controls Defects" fr "Comptes avec des Défauts de Contrôle" ]
+	browsing_application_detailaccountproblems.title [ en "Accounts with Controls Defects" fr "Comptes avec des Défauts de Contrôle" ]
+	browsing_application_detailaccountproblems.subtitle [ en "Accounts with Control Defects - Application <<{0}>>" fr "Comptes avec des Défauts de Contrôle - Application <<{0}>>" ]
+	browsing_application_detailaccountproblems.columns.accountlogin [ en "Account login" fr "Login du compte" ]
+	browsing_application_detailaccountproblems.columns.accountusername [ en "Account username" fr "Nom du compte" ]
+	browsing_application_detailaccountproblems.columns.identityhrcode [ en "Identity HR code" fr "Matricule de l'identité" ]
+	browsing_application_detailaccountproblems.columns.identityfullname [ en "Identity" fr "I'identité" ]
+	browsing_application_detailaccountproblems.columns.organisationdisplayname [ en "Organisation" fr "Organisation" ]
+	browsing_application_detailaccountproblems.columns.permissioncode [ en "Permission key" fr "Clé de la permission" ]
+}
+
+browsing_application_detailaccountproblems = Page {
+
+	title: $reportDetails.browsing_application_detailaccountproblems.pagetitle
+	tags: "application" priority 500, "byuid" , "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png"
+	feature: browsing_application_detailaccountproblems
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	applicationSearch = SearchDefinition {
+		entity: Application
+		simple-mode-rule: br_application_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentApplication = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	applicationList = Dataset {
+		search: Search {
+			definition: applicationSearch
+			view: br_application_searchpoint with "Profile" to applicationtype , nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_applicationDetail with currentApplication to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_applicationaccountproblems with conceptData.recorduid to recorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: applicationList
+			column: uid
+			selection: currentApplication
+			back-link: Activity Application Detail with currentApplication to paramApplicationUid , SerializeSearch applicationSearch to applicationSearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_application_detailaccountproblems.title	
+		}		
+		
+		Link {
+			icon: "32/details/printable_32_gray.png"
+			target: Report browsing_applicationdetailaccountproblems with conceptData.recorduid to recorduid
+			value: ""
+			compact: True 
+			layout: Layout { grab: horizontal False vertical False  indent: horizontal 0 vertical 0  align: horizontal End vertical Center}
+			align: Right 
+		}
+		
+		Text {
+			value: $reportDetails.browsing_application_detailaccountproblems.subtitle( conceptData.displayname )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			double-click: GoTo Activity Account Detail with selectedUid to paramAccountUid
+			show-filter: True
+			show-count: True
+			
+			Column {
+				column: accountrecorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: accountuid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: accountlogin
+				header: $reportDetails.browsing_application_detailaccountproblems.columns.accountlogin
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: accountusername
+				header: $reportDetails.browsing_application_detailaccountproblems.columns.accountusername
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: identityhrcode
+				header: $reportDetails.browsing_application_detailaccountproblems.columns.identityhrcode
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: identityfullname
+				header: $reportDetails.browsing_application_detailaccountproblems.columns.identityfullname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: organisationdisplayname
+				header: $reportDetails.browsing_application_detailaccountproblems.columns.organisationdisplayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: permissioncode
+				header: $reportDetails.browsing_application_detailaccountproblems.columns.permissioncode
+				sortable: True
+				filterable: True
+				width:100%
+			}
+		}
+		
+		Button {
+			actions:  GoTo Activity Account Detail with selectedUid to paramAccountUid
+			layout: Layout { align: horizontal End vertical Beginning grab: horizontal False vertical False hint: width 200}
+			disabled: StringPredicate(selectedUid) { when IsEmpty then True }
+			text: $search_page.showdetails
+		}
+	}
+}

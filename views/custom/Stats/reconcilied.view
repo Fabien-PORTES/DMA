@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="reconcilied" prefix="NIS_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="reconcilied">
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1481816385927_4358" prefix="AD_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+		<ViewAttribute name="1482310550772_36048" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1482310550772_36049" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1482310550772_36050" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1481816839951_4389" prefix="AD_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+			<ViewAttribute name="1482310550772_36051" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1482310557416_36054" attribute="username" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1482310571627_36056" attribute="identifier" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1482310593068_36061" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1482310601083_36062" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1482310615837_36063" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="A1482310624768_36064" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1482310627456_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="AD_SAM_match_NIS_SURNAME"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

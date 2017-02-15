@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbproblembyapplication" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="organisationDetail_nbproblembyapplication" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="directrecorduid" displayname="directrecorduid"/>
+	<ViewSort name="sort" attribute1="1383241297930_16792" direction1="DESC"/>
+	<ViewJoin name="J1366190310726_46" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;directrecorduid&apos;)" join="organisation">
+		<ViewAttribute name="1383241208848_16779" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1366190387625_0" reference="directrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1367160119771_3436" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewAttribute name="1383241215135_16782" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1367160127308_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1383241220439_16783" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383241226928_16784" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383241230875_16785" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383241232795_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1383241250081_16788" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383241257771_16789" prefix="application" kind="inner" identitysecure="false" join="application">
+				<ViewAttribute name="A1383241275821_16790" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="1383241297930_16792" attribute="recorduid" alias="nbdefects" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+</View>

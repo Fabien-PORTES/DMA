@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesfromorganisationmanagedby" operator="and" query="identity" displayname="Identities assigned to an organisation hierarchically managed by {principalUid}" version="4">
+	<RequestParam name="principalUid" displayname="principalUid" query="identity" criteria="eqUid" criteriaparam="uidParam">
+		<Value name="0" data="ID0000027_1382105942658_192"/>
+	</RequestParam>
+	<RequestJoin name="J1382118545975_439" operator="and" join="uporganisation">
+		<RequestJoin name="J1382118549883_440" operator="and" join="manager">
+			<RequestCriteria name="C1382110373800_727" criteria="eqUid">
+				<RequestCriteriaParam name="uidParam" reference="principalUid" ignoreifempty="false">
+					<Value name="0"/>
+				</RequestCriteriaParam>
+			</RequestCriteria>
+		</RequestJoin>
+	</RequestJoin>
+</Request>

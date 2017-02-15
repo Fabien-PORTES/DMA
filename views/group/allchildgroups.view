@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_allchildgroups" distinct="true" concept="group" displayname="List of all children of a group" notes="">
+	<ViewParam name="parentgrouprecorduid" displayname="Parent group record uid"/>
+	<ViewSort name="sort" attribute1="A1303137509046_102" attribute2="A1303137509046_103"/>
+	<ViewAttribute name="A1303137174621_3" attribute="recorduid" alias="parentgrouprecorduid" operator="or">
+		<ViewAttributeFilter name="F1303137224439_0" reference="parentgrouprecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1303137505791_92" kind="inner" join="downgroup">
+		<ViewAttribute name="A1303137509046_93" attribute="recorduid" operator="or"/>
+		<ViewAttribute name="A1303137509046_94" attribute="uid" operator="or"/>
+		<ViewAttribute name="A1303137509046_95" attribute="repositoryrecorduid" operator="or"/>
+		<ViewAttribute name="A1303137509046_96" attribute="repositoryuid" operator="or"/>
+		<ViewAttribute name="A1303137509046_97" attribute="repositorycode" operator="or"/>
+		<ViewAttribute name="A1303137509046_98" attribute="repositorydisplayname" operator="or"/>
+		<ViewAttribute name="A1303137509046_99" attribute="repositorymedia" operator="or"/>
+		<ViewAttribute name="A1303137509046_100" attribute="repositoryextractdate" operator="or"/>
+		<ViewAttribute name="A1303137509046_101" attribute="repositorytype" operator="or"/>
+		<ViewAttribute name="A1303137509046_102" attribute="code" operator="or"/>
+		<ViewAttribute name="A1303137509046_103" attribute="displayname" operator="or"/>
+		<ViewAttribute name="A1303137509046_104" attribute="comment" operator="or"/>
+	</ViewJoin>
+</View>

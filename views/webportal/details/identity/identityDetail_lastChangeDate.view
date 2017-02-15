@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityDetail_lastChangeDate" errorifempty="false" distinct="true" identitysecure="false" concept="importlog" displayname="br_identityDetail_lastChangeDate">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="attribute" displayname="attribute"/>
+	<ViewSort name="sort" attribute1="A1378222804645_1525" direction1="DESC"/>
+	<ViewJoin name="J1378222798513_1524" kind="inner" identitysecure="false" join="identity">
+		<ViewAttribute name="A1378222820497_1526" attribute="allocationchanged" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.attribute.get() == &apos;allocation&apos;">
+			<ViewAttributeFilter name="F1378222992042_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="1"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1378222823602_1527" attribute="accountchanged" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.attribute.get() == &apos;account&apos;">
+			<ViewAttributeFilter name="F1378223026458_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="1"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1378222825553_1528" attribute="permissionchanged" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.attribute.get() == &apos;permission&apos;">
+			<ViewAttributeFilter name="F1378223052932_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="1"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1378301531959_347" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378301539309_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1378222804645_1525" attribute="importdate" alias="modificationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

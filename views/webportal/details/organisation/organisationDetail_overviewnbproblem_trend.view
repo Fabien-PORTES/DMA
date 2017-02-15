@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_overviewnbproblem_trend" errorifempty="false" distinct="true" identitysecure="false" concept="controllogv2" displayname="organisationDetail_overviewnbproblem_trend" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1383242866762_17309"/>
+	<ViewAttribute name="A1383242809413_17307" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1383242813065_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1383242866762_17309" attribute="timeslotcommitdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383242874531_17310" attribute="timeslotellapsedtime" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1383242884673_0" operation="lt" ignoreifempty="false">
+			<Value name="0" data="180"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1383242912865_17313" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383242917982_17314" kind="inner" identitysecure="false" join="identity">
+			<ViewAttribute name="1383242927342_17316" attribute="recorduid" alias="nbdefects" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1367156391709_2622" kind="inner" identitysecure="false" join="uporganisation">
+				<ViewAttribute name="1383243000164_17326" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1380726706142_0" reference="uid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewJoin name="J1383243007901_17327" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383243018416_17328" kind="inner" identitysecure="false" join="permission">
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

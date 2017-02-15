@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_nomanageridentities" operator="and" query="identity" displayname="Identities without Manager" version="2">
+	<RequestJoin name="J1331842865606_158" operator="and" countOperator="exact" countNumber1="0" countNumber2="0" join="boss">
+	</RequestJoin>
+</Request>

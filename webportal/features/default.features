@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Features PUBLIC "-//Brainwave//DTD Features 1.0//EN" "urn:brainwave:igrc:dtds/features.dtd">
+<Features version="1" name="default" description="default features" include="true">
+	<Feature name="organisationmanager_dashboard_homepage" description="Starts the application with the organisation manager&apos;s dashboard home page">
+		<FeatureSet name="I1380729683151"/>
+	</Feature>
+	<Feature name="applicationmanager_dashboard_homepage" description="Starts the application with the application manager&apos;s dashboard home page">
+		<FeatureSet name="I1381155432501"/>
+	</Feature>
+	<Feature name="recon_identity" description="Can reconcile accounts with identities">
+		<FeatureSet name="I1381320469071"/>
+	</Feature>
+	<Feature name="recon_noowner" description="Can reconcile accounts as no owners">
+		<FeatureSet name="I1381320469071"/>
+	</Feature>
+	<Feature name="recon_remove" description="Can remove account reconciliation">
+		<FeatureSet name="I1381320469071"/>
+	</Feature>
+	<Feature name="menu_search" description="Search menu entry">
+		<FeatureSet name="I1442245270138"/>
+	</Feature>
+	<Feature name="menu_admin" description="Access to the Admin menu">
+		<FeatureSet name="I1433774381308"/>
+	</Feature>
+	<Feature name="assets_activate" description="Activates pages and reports for the assets concept">
+		<FeatureSet name="I1461167279669"/>
+	</Feature>
+</Features>

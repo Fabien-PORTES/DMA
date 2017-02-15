@@ -1,0 +1,5 @@
+Image {
+	label: <template:widgetlabel/>
+	image: "48/audit/account_48.png"
+	image-size: 48 48
+}

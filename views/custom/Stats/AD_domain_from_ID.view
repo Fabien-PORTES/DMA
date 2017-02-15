@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="AD_domain_from_ID" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="AD_domain_from_ID">
+	<ViewAttribute name="A1482068740870_405" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1482068748537_0" operation="ne" ignoreifempty="false">
+			<Value name="0" data="ALIR"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1482068785285_407" attribute="hrcode" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="id_filesbusinessowner" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="id_filesbusinessowner" notes="">
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewParam name="sensitivity" displayname="sensitivity"/>
+	<ViewParam name="managed" displayname="managed" type="Boolean">
+		<Value name="0" data="true"/>
+	</ViewParam>
+	<ViewParam name="filetype" displayname="filetype">
+		<Value name="0" data="D"/>
+	</ViewParam>
+	<ViewParam name="totaldirs" displayname="totaldirs" type="Integer">
+		<Value name="0" data="700"/>
+	</ViewParam>
+	<ViewComputedAttribute name="nbwithout" displayname="nbwithout" type="Integer" expression="param.totaldirs.get()-dataset.nbelements.get()"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1438871480046_1194" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438866867257_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="1438871480046_1195" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438866971360_0" reference="shares" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1438851944909_329" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="1438871538151_1257" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438852604416_0" reference="filetype" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1438871623784_1265" attribute="uid" alias="nbelements" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1435681607961_990" prefix="management" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="management">
+			<ViewAttribute name="1438871657606_1398" attribute="expertisedomaincode" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1435681632166_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="businessowner"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewJoin name="J1438871681930_1400" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+				<ViewAttribute name="A1438871685790_1401" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewJoin name="J1444063219197_1157" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+			<ViewAttribute name="1444064649380_3461" attribute="sensitivitylevel" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063325208_0" reference="sensitivity" operation="in" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="1444064649380_3462" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063353561_0" reference="managed" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

@@ -1,0 +1,46 @@
+/**
+ * Pages Tutorial
+ * 
+ * Copyright Brainwave 2014
+ */
+
+/*
+ * A custom style declared for this page.
+ * The style ID is global to the whole project, it means that it have to be unique 
+ */
+mytitlestyle = Style {
+	bold:True
+	size:38px
+	foreground:RGB(255,64,64)
+}
+
+/*
+ * A Page is declared with the "Page" keyword, its id (myfirstpage) is a global ID which means that it has to be unique for the whole project.
+ * Once a page is declared, it can be called by any other pages of the project.
+ * 
+ * Don't hesitate to type "Ctrl+Space" for auto-completion during the Pages files edition. 
+ */
+myfirstpage = Page {
+	title:"My first page" // The title of the page
+	homepage-for:All priority 1
+	
+	Header {  // A header field with a custom style 
+		value:"Hello world ;-)"
+		styling:mytitlestyle // the style ID refers to the style bloc declared on the upper part of this sample
+	}
+	
+	Text { // A multi-line text field
+		value:"Welcome to your very first Page, this sample illustrates the basic concepts of the Pages technology. Open the 'myfirstpage.page' file to browse the sample" 
+		lines:10
+		compact:True // if set to false, the widget is surrounded by a square
+		layout:Layout {hint:height 128} // basic layouting to fix the height of the widget
+	}
+	
+	Button { // The button widget
+		text:"I am done with it"
+		image:"16/famfamfam_silk_icons_v013/accept.png" // images are located within your /reports/icons/ project subdirectory
+		actions:Message "goodbye!", GoTo HomePage // defines a series of action whenever we click on the button
+	} 	
+}
+
+

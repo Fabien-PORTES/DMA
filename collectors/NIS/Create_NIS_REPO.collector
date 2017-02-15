@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="Create_NIS_REPO" scriptfile="/collectors/NIS/Create_NIS_REPO.javascript" name="P1482533574405" startingpoint="C1482533583664">
+		<Component name="C1482533583664" type="library/components/start.component" x="454" y="49" w="200" h="50" title="start"/>
+		<Component name="C1482533588361" type="changefilter" x="423" y="192" w="200" h="64" title="nis">
+			<Actions>
+				<Action name="U1482533616771" action="add" attribute="NIS_DOMAIN" type="String" multivalued="true" newvalue="ADOC" errorexist="false"/>
+				<Action name="U1482533638283" action="multiadd" attribute="NIS_DOMAIN" newvalue="AVSIM.FR" duplicates="false"/>
+				<Action name="U1482533659127" action="multiadd" attribute="NIS_DOMAIN" newvalue="BDICFAO.FR" duplicates="false"/>
+				<Action name="U1482533682486" action="multiadd" attribute="NIS_DOMAIN" newvalue="BDISC.FR" duplicates="false"/>
+				<Action name="U1482533698216" action="multiadd" attribute="NIS_DOMAIN" newvalue="CAXDOMAIN" duplicates="false"/>
+				<Action name="U1482533713374" action="multiadd" attribute="NIS_DOMAIN" newvalue="CHESTERCADDS.DOMAIN1" duplicates="false"/>
+				<Action name="U1482533727222" action="multiadd" attribute="NIS_DOMAIN" newvalue="EDGA_CAE" duplicates="false"/>
+				<Action name="U1482533736813" action="multiadd" attribute="NIS_DOMAIN" newvalue="EV" duplicates="false"/>
+				<Action name="U1482533749325" action="multiadd" attribute="NIS_DOMAIN" newvalue="FILCADDS.ACC1" duplicates="false"/>
+				<Action name="U1482533761887" action="multiadd" attribute="NIS_DOMAIN" newvalue="FILCADDS.DEV1" duplicates="false"/>
+				<Action name="U1482533773954" action="multiadd" attribute="NIS_DOMAIN" newvalue="FILCADDS.DOMAIN1" duplicates="false"/>
+				<Action name="U1482533787986" action="multiadd" attribute="NIS_DOMAIN" newvalue="GET_NIS" duplicates="false"/>
+				<Action name="U1482533799481" action="multiadd" attribute="NIS_DOMAIN" newvalue="NTNISP" duplicates="false"/>
+				<Action name="U1482533816292" action="multiadd" attribute="NIS_DOMAIN" newvalue="NZCTIFR" duplicates="false"/>
+				<Action name="U1482533827447" action="multiadd" attribute="NIS_DOMAIN" newvalue="STRESSEDSA" duplicates="false"/>
+				<Action name="U1482533837167" action="multiadd" attribute="NIS_DOMAIN" newvalue="URANUS" duplicates="false"/>
+				<Action name="U1482533848653" action="multiadd" attribute="NIS_DOMAIN" newvalue="WICHITA.PRD" duplicates="false"/>
+				<Action name="U1482533866125" action="multiadd" attribute="NIS_DOMAIN" newvalue="WICHITA.WIBLADE" duplicates="false"/>
+				<Action name="U1482533923371" action="add" attribute="TYPE" type="String" multivalued="false" newvalue="NIS" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1482533590918" source="C1482533583664" target="C1482533588361" priority="1"/>
+		<Component name="C1482533880655" type="enumfilter" x="512" y="319" w="200" h="50" title="sur les nis">
+			<Multivalued>
+				<Value name="M1482533891833" attribute="NIS_DOMAIN"/>
+			</Multivalued>
+		</Component>
+		<Link name="L1482533884237" source="C1482533588361" target="C1482533880655" priority="1"/>
+		<Component name="C1482533896192" type="repository" x="580" y="473" w="200" h="50" title="create nis">
+			<Media type="A" code="NIS_DOMAIN" label="NIS_DOMAIN" repositorytype="TYPE"/>
+		</Component>
+		<Link name="L1482533898982" source="C1482533880655" target="C1482533896192" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

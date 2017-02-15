@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NotifyRule PUBLIC "-//Brainwave//DTD Notify Rule 1.0//EN" "urn:brainwave:igrc:dtds/notifyrule.dtd">
+<NotifyRule version="1" name="taskinquiry" displayname="Task inquiry" description="Send an email on behalf of a task candidate">
+	<Mail recipientview="br_identity" recipientfullnameattribute="fullname" recipientmailattribute="mail" recipientuidattribute="uid" subject="Brainwave - {param.title.get()}" body="{image.header}&#xA;&lt;pre&gt;&#xA;{param.message.get()}&#xA;&lt;/pre&gt;&#xA;&lt;pre&gt;&#xA;&#xA;&#xA;Task :{param.taskname.get()}&#xA;Task due date:{param.taskduedate.get()}&#xA;Task creation date:{param.taskcreationdate.get()}&#xA;Task complete date:{param.taskcompletedate.get()}&#xA;Related process:{param.processname.get()}&#xA;Related process due date:{param.processduedate.get()}&#xA;Related process creation date:{param.processcreationdate.get()}&#xA;Related process complete date:{param.processcompletedate.get()}&#xA;Related process created by:{param.processcreatorname.get()}&#xA;&lt;/pre&gt;&#xA;&lt;pre&gt;&#xA;Sent by Brainwave Workflow engine on behalf of {param.sendername.get()} ({param.sendermail.get()})&#xA;Please do not answer to this email&#xA;&lt;/pre&gt;" sendername="IS Security" sendermail="issecurity@acme.com" cc="{param.sendermail.get()}">
+		<MailParams>
+			<MailParam name="sendermail" displayname="sender mail"/>
+			<MailParam name="sendername" displayname="sender name"/>
+			<MailParam name="title" displayname="title"/>
+			<MailParam name="message" displayname="message"/>
+			<MailParam name="processname" displayname="process name"/>
+			<MailParam name="processcreationdate" displayname="process creation date"/>
+			<MailParam name="processduedate" displayname="process due date"/>
+			<MailParam name="taskname" displayname="task name"/>
+			<MailParam name="taskcreationdate" displayname="task creation date"/>
+			<MailParam name="taskduedate" displayname="task due date"/>
+			<MailParam name="processcreatorname" displayname="process creator name"/>
+			<MailParam name="processcompletedate" displayname="process complete date"/>
+			<MailParam name="taskcompletedate" displayname="task complete date"/>
+		</MailParams>
+		<Embeddeds>
+			<Embedded name="I1392478216302" embeddedimage="header" embeddedfile="/reports/icons/various/mailheader.png"/>
+		</Embeddeds>
+	</Mail>
+</NotifyRule>

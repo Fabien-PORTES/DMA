@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User CICS data record" description="The User CICS Data record defines the data required by the Customer Information Control System (CICS). There is one record per user/CICS data combination.">
+	<Source type="FORMATTED" filter="^0230 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USCICS_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the User CICS Data record (0230)."/>
+		<Attribute name="A4199536690768339793" attribute="USCICS_NAME" column="6-13" type="String" multivalued="false" description="User ID as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="USCICS_OPIDENT" column="15-17" type="String" multivalued="false" description="The CICS operator identifier."/>
+		<Attribute name="A7466509792483562715" attribute="USCICS_OPPRTY" column="19-23" type="Number" multivalued="false" description="The CICS operator priority."/>
+		<Attribute name="A3188661801656117613" attribute="USCICS_NOFORCE" column="25-28" type="Boolean" multivalued="false" description="Is the extended recovery facility (XRF) NOFORCE option in effect?"/>
+		<Attribute name="A4037269903301147695" attribute="USCICS_TIMEOUT" column="30-34" type="String" multivalued="false" description="The terminal time-out value. Expressed in hh:mm"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

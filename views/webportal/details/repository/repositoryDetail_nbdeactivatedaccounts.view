@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryDetail_nbdeactivatedaccounts" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_repositoryDetail_nbdeactivatedaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1379514391312_803" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="1379514401081_807" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1379513936651_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1379514474736_813" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1379514479854_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1379514418635_809" kind="inner" identitysecure="false" join="timeslotaccounts">
+		<ViewAttribute name="A1379514435312_810" attribute="timeslotuid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1379514439478_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1379514471537_812" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1379514494271_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="0"/>
+			</ViewAttributeFilter>
+			<ViewAttributeFilter name="F1379514499543_1" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="1379515020451_892" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+</View>

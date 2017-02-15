@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbaccountchanged" distinct="true" concept="organisation" displayname="organisationDetail_nbaccountchanged">
+	<ViewParam name="code" displayname="code">
+		<Value name="0" data="DCOM"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1365935005436_134"/>
+	<ViewJoin name="J1365934431777_4" kind="inner" join="upidentity">
+		<ViewAttribute name="A1365935005436_134" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1366823497538_136" attribute="accountchanged" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1366823516955_0" operation="isTrue" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1365934604336_9" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1365934607374_0" reference="code" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

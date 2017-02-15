@@ -1,0 +1,132 @@
+/* Import other pages here */
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+/* Nationalized labels here */
+
+details_Ticket_Review_Old = Page {
+	title: $ticketReviewDetails.title
+	/* Parameters here */
+	paramAccountUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: True
+	}
+	/* Variables here */
+	selectionVariable = Variable {
+		type: String
+	}
+	
+	/* Datasets and records here */
+	masterViewDataset = Dataset {
+		view: ticketReviewList with paramAccountUid to uid
+	}
+	detailViewRecord = Record {
+		view: ticket_review with selectionVariable to ticket_UID
+	}
+
+	/* Page content */
+	Splitter {
+		disposition: Horizontal
+		Group {
+			Table {
+				data: masterViewDataset
+				show-filter: True
+				show-count: True
+				hide-header: False
+				layout: Layout {
+					grab: horizontal True vertical True
+				}
+				Column {
+					column: recorduid
+					selection: selectionVariable
+					hidden: True
+				}
+				Column {
+					column: startdate
+					header: $ticketReviewAttributes.startdate
+					sortable: True
+					filterable: True
+					width: 20%
+				}
+				Column {
+					column: custom1
+					header: $ticketReviewAttributes.custom1
+					sortable: True
+					filterable: True
+					width: 30%
+				}
+				Column {
+					column: comment
+					header: $ticketReviewAttributes.comment
+					sortable: True
+					filterable: True
+					width: 20%
+				}
+			}
+		}
+		Group {
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.startdate
+				value: DateLDAP(detailViewRecord.startdate).value
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.custom1
+				value: detailViewRecord.custom1
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.comment
+				value: detailViewRecord.comment
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.actorFullName
+				value: detailViewRecord.identity_fullname
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.custom3
+				value: detailViewRecord.custom3
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.custom4
+				value: detailViewRecord.custom4
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.custom5
+				value: detailViewRecord.custom5
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.custom6
+				value: detailViewRecord.custom6
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.title
+				value: detailViewRecord.title
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.id_hrcode
+				value: detailViewRecord.identity_hrcode
+			}
+
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.status
+				value: detailViewRecord.status
+			}
+			Text {
+				compact: True
+				label: $ticketReviewAttributes.custom2
+				value: detailViewRecord.custom2
+			}
+			
+		}
+	}
+}

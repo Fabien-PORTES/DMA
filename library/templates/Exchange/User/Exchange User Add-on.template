@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="L1318929417146" title="ActiveDirectory User" description="Attributes for an Active Directory user">
+	<Source encoding="ISO-8859-1" type="LDIF" objectclass="user"/>
+	<Attributes>
+		<Attribute name="A2720653729268933047" attribute="altrecipient" column="altrecipient" type="String" multivalued="false" description="Delivers to this recipient if a specified recipient cannot be delivered to"/>
+		<Attribute name="A2720653729268933039" attribute="authorig" column="authorig" type="String" multivalued="true" description="The users who are allowed to send mail to this recipient"/>
+		<Attribute name="A2720653729268933062" attribute="autoreplymessage" column="autoreplymessage" type="String" multivalued="false" description="Contains Internet Locator Service (ILS) settings in the form SERVER/ACCOUNT"/>
+		<Attribute name="A2720653729268933054" attribute="deleteditemflags" column="deleteditemflags" type="Number" multivalued="false" description="Controls deleted item retention settings"/>
+		<Attribute name="A2720653729268933040" attribute="delivcontlength" column="delivcontlength" type="Number" multivalued="false" description="Amount of data, in kilobyte (KB), that you are allowed to receive"/>
+		<Attribute name="A2720653729268933045" attribute="deliverandredirect" column="deliverandredirect" type="Boolean" multivalued="false" description="Used with ms-Exch-Alt-Recipient Attribute. If True, delivers to the mailbox and also redirects"/>
+		<Attribute name="A2720653729268932899" attribute="distinguishedname" column="distinguishedname" type="String" multivalued="false" description="Same as the Distinguished Name for an object. Used by Exchange"/>
+		<Attribute name="A2720653729268933042" attribute="dlmemrejectperms" column="dlmemrejectperms" type="String" multivalued="true" description="Used in place of unAuthOrig when using security group's to indicate senders to reject"/>
+		<Attribute name="A2720653729268933043" attribute="dlmemsubmitperms" column="dlmemsubmitperms" type="String" multivalued="true" description="Used in place of authOrig when using security group's to indicates senders to approve"/>
+		<Attribute name="A2720653729268933053" attribute="garbagecollperiod" column="garbagecollperiod" type="Number" multivalued="false" description="This attribute is located on the CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,... object. It represents the time, in hours, between DS garbage collection runs"/>
+		<Attribute name="A2720653729268933070" attribute="homemdb" column="homemdb" type="String" multivalued="false" description="The distinguished name of the message database (MDB) for this mailbox"/>
+		<Attribute name="A2720653729268933069" attribute="homemta" column="homemta" type="String" multivalued="false" description="Points to the message transfer agent (MTA) that services this object"/>
+		<Attribute name="A2720653729268932873" attribute="labeleduri" column="labeleduri" type="String" multivalued="true" description="A Uniform Resource Identifier followed by a label. The label is used to describe the resource to which the URI points, and is intended as a display name that is human-readable"/>
+		<Attribute name="A2720653729268932878" attribute="legacyexchangedn" column="legacyexchangedn" type="String" multivalued="false" description="The distinguished name previously used by Exchange"/>
+		<Attribute name="A2720653729268933037" attribute="mailnickname" column="mailnickname" type="String" multivalued="false"/>
+		<Attribute name="A2720653729268933063" attribute="mapirecipient" column="mapirecipient" type="Boolean" multivalued="false"/>
+		<Attribute name="A2720653729268933049" attribute="mdboverhardquotalimit" column="mdboverhardquotalimit" type="Number" multivalued="false" description="The default size limit after which messages can no longer be sent or received"/>
+		<Attribute name="A2720653729268933050" attribute="mdboverquotalimit" column="mdboverquotalimit" type="Number" multivalued="false"/>
+		<Attribute name="A2720653729268933051" attribute="mdbstoragequota" column="mdbstoragequota" type="Number" multivalued="false"/>
+		<Attribute name="A2720653729268933052" attribute="mdbusedefaults" column="mdbusedefaults" type="Boolean" multivalued="false"/>
+		<Attribute name="A2720653729268932892" attribute="mhsoraddress" column="mhsoraddress" type="String" multivalued="true" description="X.400 address"/>
+		<Attribute name="A2720653729268933072" attribute="msexchadcglobalnames" column="msexchadcglobalnames" type="String" multivalued="true"/>
+		<Attribute name="A2720653729268933065" attribute="msexchalobjectversion" column="msexchalobjectversion" type="Number" multivalued="false"/>
+		<Attribute name="A2720653729268933060" attribute="msexchhidefromaddresslists" column="msexchhidefromaddresslists" type="String" multivalued="false" description="Hide object from the global address list"/>
+		<Attribute name="A2720653729268933064" attribute="msexchhomeservername" column="msexchhomeservername" type="String" multivalued="false"/>
+		<Attribute name="A2720653729268933056" attribute="msexchomaadminwirelessenable" column="msexchomaadminwirelessenable" type="Number" multivalued="false" description="Global (container) and local (user) notifications shutoff. Bit 0: OMA Push, Bit 1: OMA Browse, Bit 2: OMA Sync, Bit 3: Secure Push, Bit 31: SMTP Addressing Enable (global only)"/>
+		<Attribute name="A2720653729268933068" attribute="msexchmailboxguid" column="msexchmailboxguid" type="String" multivalued="false" description="The globally unique identifier (GUID) of the user's mailbox"/>
+		<Attribute name="A2720653729268933066" attribute="msexchmailboxsecuritydescriptor" column="msexchmailboxsecuritydescriptor" type="String" multivalued="false" description="The security descriptor of the user's mailbox"/>
+		<Attribute name="A2720653729268933059" attribute="msexchpoliciesexcluded" column="msexchpoliciesexcluded" type="String" multivalued="true"/>
+		<Attribute name="A2720653729268933058" attribute="msexchpoliciesincluded" column="msexchpoliciesincluded" type="String" multivalued="true"/>
+		<Attribute name="A2720653729268933048" attribute="msexchreciplimit" column="msexchreciplimit" type="Number" multivalued="false" description="The maximum number of recipients this user may send to, or a global maximum for the organization"/>
+		<Attribute name="A2720653729268933044" attribute="msexchrequireauthtosendto" column="msexchrequireauthtosendto" type="String" multivalued="false" description="Allows distribution groups to only receive e-mail messages from authenticated users"/>
+		<Attribute name="A2720653729268933067" attribute="msexchuseraccountcontrol" column="msexchuseraccountcontrol" type="Number" multivalued="false"/>
+		<Attribute name="A2720653729268932896" attribute="nonsecuritymemberbl" column="nonsecuritymemberbl" type="String" multivalued="true" description="List of nonsecurity-members for an Exchange distribution list"/>
+		<Attribute name="A2720653729268933057" attribute="protocolsettings" column="protocolsettings" type="String" multivalued="true" description="Microsoft Exchange Internet protocol settings"/>
+		<Attribute name="A2720653729268932938" attribute="proxyaddresses" column="proxyaddresses" type="String" multivalued="true" description="A proxy address is the address by which a Microsoft Exchange Server recipient object is recognized in a foreign mail system. Proxy addresses are required for all recipient objects, such as custom recipients and distribution lists"/>
+		<Attribute name="A2720653729268933046" attribute="publicdelegates" column="publicdelegates" type="String" multivalued="true" description="The distinguished name (DN) of other mailboxes that can send on behalf of this mailbox"/>
+		<Attribute name="A2720653729268933071" attribute="replicationsignature" column="replicationsignature" type="String" multivalued="false" description="Signature used for replication purposes by the Active Directory Connector"/>
+		<Attribute name="A2720653729268933061" attribute="securityprotocol" column="securityprotocol" type="String" multivalued="true"/>
+		<Attribute name="A2720653729268932968" attribute="showinaddressbook" column="showinaddressbook" type="String" multivalued="true" description="This attribute is used to indicate in which MAPI address books an object will appear. It is usually maintained by the Exchange Recipient Update Service"/>
+		<Attribute name="A2720653729268933041" attribute="submissioncontlength" column="submissioncontlength" type="Number" multivalued="false" description="Contains the maximum size message allowed to be submitted, either globally or by this user"/>
+		<Attribute name="A2720653729268933055" attribute="targetaddress" column="targetaddress" type="String" multivalued="false" description="Contains the destination address for this object"/>
+		<Attribute name="A2720653729268932986" attribute="textencodedoraddress" column="textencodedoraddress" type="String" multivalued="false" description="This attribute is used to support X.400 addresses in a text format"/>
+		<Attribute name="A2720653729268932989" attribute="tokengroupsglobalanduniversal" column="tokengroupsglobalanduniversal" type="String" multivalued="true" description="Token groups for Exchange"/>
+		<Attribute name="A2720653729268933038" attribute="unauthorig" column="unauthorig" type="String" multivalued="true" description="Contains objects that may not send to this recipient"/>
+	</Attributes>
+</Discovery>

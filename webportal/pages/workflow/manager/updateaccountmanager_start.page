@@ -1,0 +1,178 @@
+/* Import other pages here */
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/audittrail.page"
+
+/* Nationalized labels here */
+updateaccountmanager_startNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation ?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process ?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Update account manager" fr "Mettre à jour le responsable du compte"]
+	dynamictitle [en "Update account manager for \"{0}\"" fr "Mettre à jour le reponsable du compte \"{0}\""]
+	managerhrcode [en "Current manager HR code" fr "Matricule du responsable actuel"]
+	managerfullname [en "Current manager fullname" fr "Nom du responsable actuel"]
+	newmanagerconfirm [en "Are you sure that you want to assign {0}-{1}\nas the manager of the {2} account?" fr "Etes vous sur de vouloir positionner {0}-{1} en tant que responsable\ndu compte {2}"]
+	newmanagerremove [en "Are you sure that you want to remove {0}-{1}\nas the manager of the {2} account?" fr "Etes vous sur de vouloir supprimer {0}-{1} en tant que responsable\ndu compte {2}"]
+	confirmupdate [en "Your request to assign a new manager as been registered successfully" fr "Votre demande a bien été prise en compte"]
+	removeupdate [en "Your request to remove the current manager as been registered successfully" fr "Votre demande a bien été prise en compte"]
+
+	noowneraccountype [en "No owner account type" fr "Type de compte sans propriétaire"]
+	noowneraccountcomments [en "Comments" fr "Commentaires"]
+	
+	setmanager [en "Set a manager for this account" fr "Assigner un responsable pour ce compte"]
+	removemanager [en "Remove the current manager" fr "Supprimer le responsable actuel"]
+	
+	manageraudittrail [en "Browse modifications audit trail" fr "Voir l'historique des modifications"]
+}
+
+updateaccountmanager_start = Page {
+	title: $updateaccountmanager_startNLS.title
+	dynamic-title: $updateaccountmanager_startNLS.dynamictitle(account.login)
+	mixins: workflowDefaultMixin
+	
+	/* Parameters here */
+	paramAccountUid = Parameter {type:String multivalued:False}
+	
+	/* variables here */
+	newmanagerUid = Variable {type:String multivalued:False}
+
+	
+	/* Datasets and records here */
+	// Record for concept details
+	account = Record {
+		view: br_accountDetail with paramAccountUid to uid
+	}
+
+	accountnoownerinfos = Record {
+		view: br_accountDetail_noownerinfos with account.recorduid to recorduid
+	}
+	
+	newManager = Record {
+		view: br_identityDetail with newmanagerUid to uid
+	}
+
+	accountbusinessowner = Record {
+		view: br_accountBusinessowner with paramAccountUid to uid
+	}
+
+	task = TaskRecord (create "updateaccountmanager")
+	
+	
+	/* Page content */
+	Grid {
+		columns:GridColumn{width:64px}, GridColumn{width:320px}, GridColumn{width:320px}, GridColumn{width:grow}
+		GridRow {
+			height:96
+			GridCell {
+				Image {
+					image: "48/red/account.png"
+					align: Center
+				}
+			}
+			GridCell {
+				Text{
+					label:   $account.login 
+					value: Transform account.login using optionStringMapping
+					lines: 2
+				}
+				Text{
+					label:   $account.username 
+					value: Transform account.username using optionStringMapping
+					lines: 2
+				}
+				Text{
+					label:   $updateaccountmanager_startNLS.noowneraccountype
+					value: Transform accountnoownerinfos.noownercode using optionStringMapping
+					lines: 2
+				}
+				Text{
+					label:   $updateaccountmanager_startNLS.noowneraccountcomments
+					value: Transform accountnoownerinfos.comment using optionStringMapping
+					lines: 2
+				}
+											
+			}
+			GridCell {
+				Text{
+					label:   $account.repositorycode 
+					value: Transform account.repository_code using optionStringMapping
+					lines: 2
+				}
+				Text{
+					label:   $account.repositorydisplayname 
+					value: Transform account.repository_displayname using optionStringMapping
+					lines: 2
+				}
+				Text {
+					label: $updateaccountmanager_startNLS.managerhrcode
+					value: Transform accountbusinessowner.hrcode using optionStringMapping
+					lines: 2
+				}
+
+				Text {
+					label: $updateaccountmanager_startNLS.managerfullname
+					value: Transform accountbusinessowner.fullname using optionStringMapping
+					lines: 2
+				}
+			}
+			GridCell {
+			}
+		}
+
+		GridRow {
+			GridCell {
+				span:4
+				Header {
+					value:"What do you want to do?"
+				}
+			}
+		}
+		GridRow {
+			height:grow
+			GridCell {
+				span:4
+				ButtonGroup {
+						Button {
+							actions:Dialog identityPicker(newmanagerUid from outUid), 
+									Confirm $updateaccountmanager_startNLS.newmanagerconfirm(Transform newManager.hrcode using mayBeNullMapping, newManager.fullname, account.login),
+									Flash Information $updateaccountmanager_startNLS.confirmupdate,
+									Set paramAccountUid to task.account,
+									Set newmanagerUid to task.manager,
+									StringCase(accountbusinessowner.fullname) { when IsEmpty then [Set 'create' to task.action] otherwise [Set 'modify' to task.action] },
+									TaskComplete task wait,
+									GoTo Activity Account Detail with paramAccountUid to paramAccountUid
+							text:$updateaccountmanager_startNLS.setmanager
+							layout:Layout{hint:width 320 height 128}
+						}					
+						Button {
+							actions:Confirm $updateaccountmanager_startNLS.newmanagerremove(Transform accountbusinessowner.hrcode using mayBeNullMapping, accountbusinessowner.fullname, account.login),
+									Flash Information $updateaccountmanager_startNLS.removeupdate,
+									Set paramAccountUid to task.account,
+									Set 'delete' to task.action,
+									TaskComplete task wait,
+									GoTo Activity Account Detail with paramAccountUid to paramAccountUid
+							text:$updateaccountmanager_startNLS.removemanager
+							layout:Layout{hint:width 320 height 128}
+							disabled:StringPredicate(accountbusinessowner.fullname) {when IsEmpty then True}
+						}					
+						Button {
+							actions:Dialog entityDetailsManagerAuditDialog("Account" to type, paramAccountUid to entity) 
+						                        feature:accountdetails_auditmanager
+							                       
+							text:$updateaccountmanager_startNLS.manageraudittrail
+						}
+				}		
+			}
+		}
+	}
+}
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationappjobpivot" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="Count the # of identities by job and application for a given organisation and suborganisations" notes="">
+	<ViewParam name="rootorgrecorduid" displayname="Root organisation record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1306158512986_12267" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1306158524482_12269" prefix="rootorg_" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewAttribute name="A1306158529018_12270" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1306158552579_0" reference="rootorgrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1306158632430_12272" attribute="jobtitlerecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1306158633470_12273" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1306158634375_12274" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1306158658415_12280" kind="inner" identitysecure="false" join="accountreconciliation">
+		<ViewAttribute name="1382787623475_1007" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382787435042_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382787439277_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1382787627852_1008" prefix="app_" kind="inner" identitysecure="false" join="applicationright">
+			<ViewAttribute name="1382787647508_1013" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1382787647514_1014" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1382787647521_1015" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1382787647528_1016" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1316333837735_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="Profile"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

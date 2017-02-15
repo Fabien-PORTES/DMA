@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbmoveoutpopup" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="organisation detail nbmoveoutpopup" notes="">
+	<ViewParam name="code" displayname="code">
+		<Value name="0" data="DFIN"/>
+	</ViewParam>
+	<ViewComputedAttribute name="organisationlabel" displayname="organisationlabel" type="String" expression="!dataset.isEmpty(&apos;organisationshortname&apos;)?dataset.organisationshortname.get()+&apos; - &apos;+dataset.organisationdisplayname.get():!dataset.isEmpty(&apos;organisationdisplayname&apos;)?dataset.organisationdisplayname.get():&apos;&apos;"/>
+	<ViewComputedAttribute name="label" displayname="label" type="String" expression="!dataset.isEmpty(&apos;hrcode&apos;)?dataset.hrcode.get()+&apos; - &apos;+dataset.fullname.get():dataset.fullname.get()"/>
+	<ViewSort name="sort"/>
+	<ViewRule name="I1365951415883_112" rule="control_identitiesnotfromorganisationcode">
+		<ViewRuleParam name="organisationcode" reference="code" ignoreifempty="false">
+			<Value name="0"/>
+		</ViewRuleParam>
+	</ViewRule>
+	<ViewAttribute name="1365951436943_118" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1365951436948_119" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1365951436953_120" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1365951450931_122" kind="inner" identitysecure="false" join="timeslotidentities">
+		<ViewAttribute name="1365951465285_126" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1365934623291_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1365951469007_127" kind="inner" identitysecure="false" join="uporganisation">
+			<ViewAttribute name="A1365951472232_128" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1365951474886_0" reference="code" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1365952461370_247" kind="left" identitysecure="false" join="allocation">
+		<ViewJoin name="J1365952465293_248" prefix="organisation" kind="left" identitysecure="false" join="organisation">
+			<ViewAttribute name="A1365952475357_250" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1365952476261_251" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1365952470628_249" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

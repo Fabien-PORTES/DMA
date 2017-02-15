@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityDetail_groups" prefix="group_" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="br_identityDetail_groups" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378216543310_1390" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378216544901_1391" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378216548365_1392" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378216550191_1393" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378216553156_1394" prefix="repository_" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1378216556496_1395" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1378301481587_231" kind="inner" identitysecure="false" join="upaccount">
+		<ViewJoin name="J1378301486128_232" kind="inner" identitysecure="false" join="identityreconciliation">
+			<ViewAttribute name="A1378301569094_349" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1378301575929_0" reference="uid" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

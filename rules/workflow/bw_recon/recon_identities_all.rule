@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="bw_recon_identities_all" operator="or" query="identity" displayname="Recon Identities for hrcode {hrcode}, fullname {fullname}, surname {surname}, givenname {givenname}, email {mail} with fuzzy set to {fuzzynb}" version="4" notes="">
+	<RequestParam name="hrcode" displayname="HR Code" query="identity" criteria="likeHrCode" criteriaparam="hrCodeParam">
+		<Value name="0" data="dsf"/>
+	</RequestParam>
+	<RequestParam name="fullname" displayname="Fullname" query="identity" criteria="likeFullName" criteriaparam="fullNameParam">
+		<Value name="0" data="sdf"/>
+	</RequestParam>
+	<RequestParam name="fuzzynb" displayname="Fuzzy nb" query="identity" criteria="fuzzyFullName" criteriaparam="distanceParam">
+		<Value name="0" data="2"/>
+	</RequestParam>
+	<RequestParam name="givenname" displayname="Givenname" query="identity" criteria="likeGivenName" criteriaparam="givenNameParam">
+		<Value name="0" data="asd"/>
+	</RequestParam>
+	<RequestParam name="surname" displayname="Surname" query="identity" criteria="likeSurname" criteriaparam="surnameParam">
+		<Value name="0" data="asd"/>
+	</RequestParam>
+	<RequestParam name="mail" displayname="Mail" query="identity" criteria="likeMail" criteriaparam="mailParam">
+		<Value name="0" data="ad"/>
+	</RequestParam>
+	<RequestGroup name="G1423071599471_1726" operator="and">
+		<RequestImport name="I1423071596579_1725" request="bw_recon_identities_fullname">
+			<RequestImportParam name="fullname" reference="fullname" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestImportParam>
+			<RequestImportParam name="fuzzynb" reference="fuzzynb" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestImportParam>
+		</RequestImport>
+	</RequestGroup>
+	<RequestGroup name="G1423071610626_1729" operator="and">
+		<RequestImport name="I1423071696261_1730" request="bw_recon_identities_givenname">
+			<RequestImportParam name="givenname" reference="givenname" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestImportParam>
+			<RequestImportParam name="fuzzynb" reference="fuzzynb" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestImportParam>
+		</RequestImport>
+	</RequestGroup>
+	<RequestGroup name="G1423071698696_1731" operator="and">
+		<RequestImport name="I1423071704825_1732" request="bw_recon_identities_surname">
+			<RequestImportParam name="surname" reference="surname" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestImportParam>
+			<RequestImportParam name="fuzzynb" reference="fuzzynb" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestImportParam>
+		</RequestImport>
+	</RequestGroup>
+	<RequestGroup name="G1423071707317_1733" operator="and">
+		<RequestImport name="I1423071717198_1734" request="bw_recon_identities_mail">
+			<RequestImportParam name="mail" reference="mail" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestImportParam>
+			<RequestImportParam name="mail2" reference="mail" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestImportParam>
+		</RequestImport>
+	</RequestGroup>
+</Request>

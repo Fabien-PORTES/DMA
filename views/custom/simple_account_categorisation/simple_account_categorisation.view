@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="simple_account_categorisation" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="simple_account_categorisation" notes="" begindate="" enddate="">
+	<ViewParam name="account_uid" displayname="account_uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1479892575763_391" prefix="ticket_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketreview">
+		<ViewAttribute name="A1479892583202_393" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1479892580115_392" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1479892620123_0" reference="account_uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

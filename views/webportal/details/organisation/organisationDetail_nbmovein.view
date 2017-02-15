@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbmovein" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="organisation detail nbmovein" notes="">
+	<ViewParam name="code" displayname="code">
+		<Value name="0" data="DCOM"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1365935005436_134"/>
+	<ViewJoin name="J1365934431777_4" kind="inner" identitysecure="false" join="upidentity">
+		<ViewAttribute name="A1365934687136_41" attribute="organisationchanged" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1365934701616_0" operation="isTrue" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1365935005436_134" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1399037677276_588" attribute="importaction" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1365601274054_0" operation="ne" ignoreifempty="false">
+				<Value name="0" data="C"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1365934604336_9" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1365934607374_0" reference="code" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

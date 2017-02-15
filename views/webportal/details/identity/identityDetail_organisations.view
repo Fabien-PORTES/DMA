@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityDetail_organisations" prefix="organisation_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="organisation" displayname="br_identityDetail_organisations" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="managedOrgUid" displayname="managedOrgUid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378209921133_1326" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378209966641_1328" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378210046678_1333" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1416333218082_0" reference="managedOrgUid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1378210048412_1334" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1416326840189_1053" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.isEmpty(&apos;managedOrgUid&apos;)" join="identity">
+		<ViewAttribute name="1416326931363_1055" attribute="expertisedomaindisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1416326934871_1057" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378209910259_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

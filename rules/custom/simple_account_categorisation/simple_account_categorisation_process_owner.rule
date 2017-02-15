@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="simple_account_categorisation_process_owner" operator="and" query="identity" displayname="simple_account_categorisation_process_owner" version="2">
+	<RequestCriteria name="C1479895572357_435" criteria="eqFullName">
+		<RequestCriteriaParam name="fullNameParam" ignoreifempty="false">
+			<Value name="0" data="ADKINS Jack"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

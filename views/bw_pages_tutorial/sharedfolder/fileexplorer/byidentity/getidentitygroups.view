@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="fileexplorergetidentitygroups" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="fileexplorergetidentitygroups">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1436175292822_1289" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1436175307330_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1436175393906_1292" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountreconciliation">
+		<ViewAttribute name="A1436175403234_1293" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewJoin name="J1436175421665_1295" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="upgroup">
+			<ViewAttribute name="A1436175433118_1296" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1436175433876_1297" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1436175434596_1298" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1441024438982_36422" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+				<ViewAttribute name="A1441024444831_36423" attribute="repositorytype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1441024458268_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="AD"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="A1436195582205_2375" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1436195584188_0" operation="isFalse" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1436195584408_1" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationruleevol" distinct="true" concept="application" displayname="Application rule evolution on the last 3 months" notes="">
+	<ViewParam name="rulename" displayname="rule name"/>
+	<ViewSort name="sort" attribute1="A1303673419955_151"/>
+	<ViewAttribute name="A1303673274975_146" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT" removedfromprojection="false"/>
+	<ViewJoin name="J1303673313791_148" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1303673321295_149" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303673325009_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1303673419955_151" attribute="timeslotcommitdate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303673421167_152" attribute="timeslotellapsedtime" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1303673430841_0" operation="le" ignoreifempty="false">
+			<Value name="0" data="90"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1316337238431_5723" attribute="applicationtype" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1316337245308_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Profile"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

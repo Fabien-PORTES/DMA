@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FeatureSets PUBLIC "-//Brainwave//DTD FeatureSets 1.0//EN" "urn:brainwave:igrc:dtds/featuresets.dtd">
+<FeatureSets version="1" name="sharedfolderspages" description="sharedfolderspages">
+	<FeatureSet name="I1441300070662" featureset="sf_secu_op_it_layout" description="Security Operator IT" r1433773804308="false" r0="false" r1441300265628="true" r1441301524428="true"/>
+	<FeatureSet name="I1442316872240" featureset="sf_manager_layout" r1442316925495="true" description="Business Manager"/>
+	<FeatureSet name="I1442854955031" featureset="sf_explorers" r1441300265628="true" r1441301524428="true"/>
+	<FeatureSet name="I1442855626411" featureset="sf_metadata_edit" r1441300265628="true"/>
+	<FeatureSet name="I1442855642805" featureset="sf_access_edit" r1441300265628="true"/>
+	<FeatureSet name="I1442855836592" featureset="sf_analytics" r1441300265628="true" r1441301524428="true"/>
+	<FeatureSet name="I1442915083193" featureset="sf_managerreports" description="manager reports" r1442316925495="true"/>
+	<FeatureSet name="I1442915083194" featureset="sf_default" description="default features (should be assigned to all users)" r1441300265628="true" r1441301524428="true" r1442316925495="true"/>
+	<FeatureSet name="I1442915083195" featureset="sf_all_reports" description="All the reports (should ne assigned to power users only)" r1441301524428="true" r1441300265628="true"/>
+</FeatureSets>

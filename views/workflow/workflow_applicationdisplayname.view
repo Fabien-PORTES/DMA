@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="workflow_applicationdisplayname" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="workflow_applicationdisplayname" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1383638939961_287"/>
+	<ViewAttribute name="A1383638937630_286" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1383638950554_0" reference="uid" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1383638939961_287" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,5 @@
+Edit {
+	label: <template:variablelabel/>
+	variable: <template:taskvariablename/>
+	<template:variableconstraints/>
+}

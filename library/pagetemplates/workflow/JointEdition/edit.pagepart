@@ -1,0 +1,9 @@
+MultiEdit {
+	mixins: workflowJointEditionMixin
+	label: <template:jointeditiontitle/>
+	hide-remove: <template:jointeditionhideremove/>
+	multi-selection: <template:jointeditionhasmultiple/>
+	<template:jointeditionadddialogcall/>
+	<template:jointeditioneditdialogcall/>
+	<template:jointeditionelements/>
+}

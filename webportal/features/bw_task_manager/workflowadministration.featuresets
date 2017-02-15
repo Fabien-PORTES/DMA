@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FeatureSets PUBLIC "-//Brainwave//DTD FeatureSets 1.0//EN" "urn:brainwave:igrc:dtds/featuresets.dtd">
+<FeatureSets version="1" name="workflowadministration" description="Workflow administration featuresset">
+	<FeatureSet name="I1390642494571" featureset="workflowtechadmin" description="Workflow technical administrator (all features are enabled)" r9="true" r0="false"/>
+	<FeatureSet name="I1390642526645" featureset="workflowfuncadmin" description="Workflow functional administrator (all features are enabled, except the errors management features, as well as the stop and suspend process features)" r10="true" r0="false"/>
+	<FeatureSet name="I1390642567392" featureset="workflowauditor" description="Workflow auditor (gives an access to the workflow administration interfaces in read-only mode)" r11="true" r0="false"/>
+</FeatureSets>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="parentpermission" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="parent permission" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1399023804355_19586" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1399023811253_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1399023983542_19588" prefix="parent_" kind="inner" identitysecure="false" join="parentpermissionlink">
+		<ViewAttribute name="A1399024054843_19589" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024054843_19590" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024054843_19591" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024054843_19592" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024054843_19593" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024054843_19594" attribute="applicationrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024054843_19595" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1399024054843_19596" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1399024568788_1692" kind="left" identitysecure="false" join="accountright">
+			<ViewAttribute name="A1399024573188_1693" attribute="recorduid" alias="nbaccounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

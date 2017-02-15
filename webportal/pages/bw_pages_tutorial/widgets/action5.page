@@ -1,0 +1,114 @@
+action5 = Page {
+	title:'Playing with variables'	
+
+	variable1 = Variable {type:String multivalued:False initial:'a value'}
+	variable2 = Variable {type:String multivalued:False initial:''}
+
+	mvarhrcodes = Variable {type:String multivalued:True initial:['ID0055','ID0088']}
+
+	// this dataset is actually binded to the multi valued variable in order to display the results in a Table widget
+	myvariableset = Dataset {
+		columns:mvarhrcodes as hrcode
+	}
+	identities = Dataset {
+		view:br_identity
+	}
+	
+	Tiles {
+		columns:2
+		tile-height:32
+	
+		Tile {
+			Button {
+				text:'Put a static value to a mono valued variable value'
+				actions: Set "This is a new static value" to variable1
+			}
+		}
+		Tile {
+			Button {
+				text:'Put a static value to a multi valued variable'
+				actions: Set ['ID0001','ID0002','ID0003','ID0004'] to mvarhrcodes
+			}
+		}
+		Tile {
+			Button {
+				text:'Remove all values from a multi valued variable value'
+				actions: Set [] to mvarhrcodes
+			}
+		}
+		Tile {
+			Button {
+				text:'Copy a mono valued variable value'
+				actions: Set variable1 to variable2
+			}
+		}
+		Tile {
+			Button {
+				text:'Append a value on a multivalued variable'
+				actions: MultivaluedAdd "ID999" to mvarhrcodes 
+			} 
+		}
+		Tile {
+			Button {
+				text:'Insert a value on a multivalued variable'
+				actions: MultivaluedAdd "ID999" to mvarhrcodes at top
+			} 
+		}
+		Tile {
+			Button {
+				text:'Update multivalued variable (only the first ID999 element)'
+				actions: MultivaluedSet "UPDATED" to mvarhrcodes where mvarhrcodes is "ID999"
+			} 
+		}
+		Tile {
+			Button {
+				text:'Update multivalued variable (all ID999 elements)'
+				actions: MultivaluedSet "UPDATED" to mvarhrcodes where all mvarhrcodes is "ID999"
+			} 
+		}
+		Tile {
+			Button {
+				text:'Deduplicate a multivalued variable value '
+				actions: MultivaluedDistinct mvarhrcodes 
+			} 
+		}
+		Tile {
+			Button {
+				text:'Remove multivalued variable value based on a condition (only the first ID999 element)'
+				actions: MultivaluedRemove "ID999" from mvarhrcodes
+			} 
+		}
+		Tile {
+			Button {
+				text:'Remove multivalued variable value based on a condition (all ID999 elements)'
+				actions: MultivaluedRemove all "ID999" from mvarhrcodes
+			} 
+		}
+		Tile {
+			Button {
+				text:'Transfer data from the Identity Ledger to the attribute'
+				actions: TransferData identities(hrcode) to (mvarhrcodes)
+			}
+		}
+	}
+
+	// display the results
+	
+	Text {
+		label:'variable 1'
+		value:variable1
+	}
+	Text {
+		label:'variable 2'
+		value:variable2
+	}
+	Table {
+		data:myvariableset
+		layout:Layout {grab: horizontal True vertical True}
+		Column {
+			column:hrcode
+		}
+	}
+}
+
+

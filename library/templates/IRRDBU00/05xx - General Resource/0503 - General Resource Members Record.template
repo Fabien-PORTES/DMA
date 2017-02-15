@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource members record" description="The General Resource Members record defines the members of a general resource profile group. There is one record per general resource/member combination. Note that RACF creates a member HWM for the SECDATA CATEGORY profile, which is reserved for IBM’s use. The HWM member and a corresponding 0503 record exist if you have added any categories to the SECDATA CATEGORY profile.">
+	<Source type="FORMATTED" filter="^0503 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRMEM_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the General Resource Members record (0503)."/>
+		<Attribute name="A4199536690768339793" attribute="GRMEM_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRMEM_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRMEM_MEMBER" column="262-516" type="String" multivalued="false" description="Member value for this general resource. For VMXEVENT profiles, this is the element that is being audited. For PROGRAM profiles, this is the name of the data set which contains the program. For GLOBAL profiles, this is the name of the resource for which a global access applies. For SECDATA security level (SECLEVEL) profiles, this is the level name. For SECDATA CATEGORY profiles, this is the category name. For NODES profiles, this is the user ID, group name, and security label translation data. For SECLABEL profiles, this is a 4-byte SMF ID."/>
+		<Attribute name="A3188661801656117613" attribute="GRMEM_GLOBAL_ACC" column="518-525" type="String" multivalued="false" description="If this is a GLOBAL profile, this is the access that is allowed. Valid values are NONE, READ, UPDATE, CONTROL, and ALTER."/>
+		<Attribute name="A4037269903301147695" attribute="GRMEM_PADS_DATA" column="527-534" type="String" multivalued="false" description="If this is a PROGRAM profile, this field contains the Program Access to Data Set (PADS) information for the profile. Valid values are PADCHK and NOPADCHK."/>
+		<Attribute name="A7863438466300294503" attribute="GRMEM_VOL_NAME" column="536-541" type="String" multivalued="false" description="If this is a PROGRAM profile, this field defines the volume upon which the program resides."/>
+		<Attribute name="A8801039954934473602" attribute="GRMEM_VMEVENT_DATA" column="543-547" type="String" multivalued="false" description="If this is a VMXEVENT profile, this field defines the level of auditing that is being performed. Valid values are CTL, AUDIT, and NOCTL."/>
+		<Attribute name="A2460635583838380635" attribute="GRMEM_SECLEVEL" column="549-553" type="Number" multivalued="false" description="If this is a SECLEVEL profile in the SECDATA class, this is the numeric security level that is associated with the SECLEVEL."/>
+		<Attribute name="A5281244329858370167" attribute="GRMEM_CATEGORY" column="555-559" type="Number" multivalued="false" description="If this is a CATEGORY profile in the SECDATA class, this is the numeric category that is associated with the CATEGORY."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+	<Checks>
+		<Check name="U1314367823667" attribute="GRMEM_GLOBAL_ACC" checktype="regexp" checkvalue="^NONE|READ|UPDATE|CONTROL|ALTER$" event="Invalid Global ACC" description=""/>
+		<Check name="U1314367823668" attribute="GRMEM_PADS_DATA" checktype="regexp" checkvalue="^PADCHK|NOPADCHK$" event="Invalid PADS Data" description=""/>
+		<Check name="U1314367823670" attribute="GRMEM_VMEVENT_DATA" checktype="regexp" checkvalue="^CTL|AUDIT|NOCTL$" event="Invalid VMevent Data" description=""/>
+	</Checks>
+</Discovery>

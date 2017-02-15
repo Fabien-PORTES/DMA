@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountnbresultrule" distinct="true" concept="account" displayname="# of accounts in rule result" notes="">
+	<ViewParam name="rulename" displayname="rule name"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303676832391_227" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT" removedfromprojection="false"/>
+	<ViewJoin name="J1300964667795_496" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1300964674739_497" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1300964676787_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

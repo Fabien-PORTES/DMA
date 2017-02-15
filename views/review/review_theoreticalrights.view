@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_review_theoreticalrights" prefix="application" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="permissions with associated theoretical rights" notes="">
+	<ViewComputedAttribute name="isintheoretical" displayname="is in theoretical" type="Boolean" expression="true"/>
+	<ViewComputedAttribute name="key" displayname="key" type="String" expression="&apos;&apos;+dataset.permissionrecorduid.get()+&apos;$$&apos;+dataset.applicationrecorduid.get()"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1380984167083_919" prefix="permission" kind="inner" identitysecure="false" join="permission">
+		<ViewJoin name="J1380984182941_920" kind="inner" identitysecure="false" join="theoricalpermission">
+		</ViewJoin>
+		<ViewAttribute name="A1380984426717_943" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1380984424510_942" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+</View>

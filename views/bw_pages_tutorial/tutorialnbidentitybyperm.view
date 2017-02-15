@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="tutorialnbidentitybyperm" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="permission" displayname="nb identities by dpt with an access to the given permission" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1418737483105_643" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1418737493398_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1418737518952_645" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="accountright">
+		<ViewAttribute name="A1418737527492_646" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1418737529663_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1418737532269_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1418737544416_648" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="identityreconciliation">
+			<ViewJoin name="J1418737548702_649" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="organisation">
+				<ViewAttribute name="A1418737555990_650" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1418737558872_651" attribute="recorduid" alias="nbidentities" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

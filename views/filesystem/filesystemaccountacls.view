@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_filesystemaccountacls" distinct="true" concept="permission" displayname="Account ACLs on a given file share" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort" attribute1="A1328705028605_241"/>
+	<ViewJoin name="J1328705015804_229" kind="inner" join="aclaccount">
+		<ViewJoin name="J1328705019753_230" prefix="accountacl_" kind="inner" join="account">
+			<ViewAttribute name="A1328705028605_231" attribute="recorduid" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_232" attribute="uid" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_233" attribute="repositoryrecorduid" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_234" attribute="repositoryuid" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_235" attribute="repositorycode" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_236" attribute="repositorydisplayname" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_237" attribute="repositorymedia" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_238" attribute="repositoryextractdate" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_239" attribute="repositorytype" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_240" attribute="identifier" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_241" attribute="login" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_242" attribute="profile" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_243" attribute="givenname" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_244" attribute="surname" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_245" attribute="username" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_246" attribute="employeenumber" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_247" attribute="mail" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_248" attribute="managerdata" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_249" attribute="creationdate" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_250" attribute="lastlogindate" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_251" attribute="passwordlastsetdate" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_252" attribute="expiredate" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_253" attribute="service" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_254" attribute="disabled" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_255" attribute="locked" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_256" attribute="logincount" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_257" attribute="badpasswordcount" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_258" attribute="passwordnotrequired" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_259" attribute="passwordcantchange" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_260" attribute="notnormalaccount" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_261" attribute="dontexpirepassword" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_262" attribute="passwordexpired" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_263" attribute="smartcardrequired" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_264" attribute="importaction" removedfromprojection="false"/>
+			<ViewAttribute name="A1328705028605_265" attribute="deletedaction" removedfromprojection="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1328705032292_266" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1328705042218_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissionDetail_nbchildpermissions" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="br_permissionDetail_nbchildpermissions" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1379315101238_293" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1379315123799_295" kind="inner" identitysecure="false" join="parentpermission">
+		<ViewAttribute name="A1379315134346_296" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1379315138107_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="X1320414873136" title="tomcat-users.xml MemoryRealm file">
+	<Source type="XML" itempath="/tomcat-users/user"/>
+	<Attributes>
+		<Attribute name="A6605762520966017302" attribute="username" column="@username" type="String" multivalued="false" hint="accountlogin,accountidentifier" description="Username this user must log on with."/>
+		<Attribute name="A7719688144450703624" attribute="roles_" column="@roles" type="String" multivalued="false" hidden="true"/>
+		<Attribute name="A3359506211184472973" attribute="password" column="@password" type="String" multivalued="false" description="Password this user must log on with (in clear text if the digest attribute was not set on the &lt;Realm&gt; element, or digested appropriately otherwise)."/>
+	</Attributes>
+	<Actions>
+		<Action name="U1320415368205" action="splitvalue" oldname="roles_" attribute="roles" multivalued="true" oldvalue="," description="Comma-delimited list of the role names associated with this user."/>
+	</Actions>
+</Discovery>

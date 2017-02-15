@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="workflow_groupdisplayname_all" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="workflow_groupdisplayname" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1383638873006_280"/>
+	<ViewAttribute name="A1383638863903_278" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383638873006_280" attribute="code" alias="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

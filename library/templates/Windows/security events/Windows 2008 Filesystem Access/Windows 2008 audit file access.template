@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1321539139053" title="Windows 2008 filesystem audit (access logs)" description="This template analysis filesystems access audits on windows 2008 and windows 7.&#xA;The event analysed is Event #4656 (A handle to an object was requested). It is filtered and parsed upon the security event log.&#xA;The event_result attribute is equals to SUCCESS is the account is granted to access the file, it is equals to FAILURE otherwise.&#xA;Events are grouped by buckets of 10 minutes in order to minimize the size of the result.&#xA;&#xA;Read the readme.txt file for information on how to extract filesystem audit access logs in CSV format from the Windows event viewer.">
+	<Source type="CSV" separator="," encoding="ISO-8859-15"/>
+	<Attributes hasheader="false">
+		<Attribute name="A1217702764436108191" attribute="event_number" column="1" type="String" multivalued="false" hidden="true"/>
+		<Attribute name="A1217702764433132191" attribute="event_family" column="2" type="String" multivalued="false" hidden="true"/>
+		<Attribute name="A1217702764436165477" attribute="event_source" column="3" type="String" multivalued="false" description="Source of the audit trail" hidden="true"/>
+		<Attribute name="A1217702764436108988" attribute="event_result" column="4" type="String" multivalued="false" description="Result of the audit trail : SUCCESS if permissions are granted, FAILURE if permissions are not granted"/>
+		<Attribute name="A1217702764436103699" attribute="server" column="5" type="String" multivalued="false" description="Computer name on which the event occured"/>
+		<Attribute name="A1217702764436177777" attribute="date_time" column="6" type="Date" multivalued="false" description="Date and time when the event occured"/>
+		<Attribute name="A1217702764436102222" attribute="event_id" column="7" type="String" multivalued="false" description="Event ID (see Microsoft documentation for details)" hidden="false"/>
+		<Attribute name="A1217702764436106666" attribute="info" column="8" type="String" multivalued="false" hidden="true"/>
+		<Attribute name="A1255555555436108191" attribute="texte" column="9" type="String" multivalued="false" hidden="true"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="dd/MM/yyyy HH:mm:ss"/>
+	<Checks>
+		<Check name="U1321539368271" attribute="event_number" checktype="regexp" checkvalue="^[0-9]+$"/>
+	</Checks>
+	<Actions>
+		<Action name="U1321539952879" action="validsql" condition="dataset.event_id in (&apos;4656&apos;)"/>
+		<Action name="U1321540636109" action="add" attribute="event_label" newvalue="{dataset.event_id.get()}" description="Event ID corresponding label"/>
+		<Action name="U1321540659966" action="replace" attribute="event_label" oldvalue="4656" newvalue="A handle to an object was requested"/>
+		<Action name="U1321541172971" action="add" attribute="description" newvalue="{dataset.texte.get()}" hidden="true" description="Full text description (useful for debugging)"/>
+		<Action name="U1321541295155" action="consumesep" oldvalue=":" oldname="texte" attribute="t1" hidden="true"/>
+		<Action name="U1321541317043" action="consumesep" oldvalue=":" oldname="texte" attribute="t2" hidden="true"/>
+		<Action name="U1321541369953" action="consumesep" oldvalue=":  " oldname="texte" attribute="t3" hidden="true"/>
+		<Action name="U1321541408890" action="consumesep" oldvalue=" " oldname="texte" attribute="account_name" description="Microsoft Windows account name"/>
+		<Action name="U1321541476334" action="consumesep" oldvalue=":  " oldname="texte" attribute="t5" hidden="true"/>
+		<Action name="U1321541499579" action="consumesep" oldvalue=" " oldname="texte" attribute="account_domain" description="Microsoft Windows account domain"/>
+		<Action name="U1321541562014" action="validsql" condition="dataset.account_name not like &apos;%$&apos;"/>
+		<Action name="U1321612916643" action="consumesep" oldvalue=":" oldname="texte" attribute="t6" hidden="true"/>
+		<Action name="U1321612925694" action="consumesep" oldvalue=":" oldname="texte" attribute="t7" hidden="true"/>
+		<Action name="U1321612952654" action="consumesep" oldvalue=":  " oldname="texte" attribute="t8" hidden="true"/>
+		<Action name="U1321612984571" action="consumesep" oldvalue=" " oldname="texte" attribute="object_type" hidden="true"/>
+		<Action name="U1321613043921" action="validsql" condition="dataset.object_type=&apos;File&apos;"/>
+		<Action name="U1321613074981" action="consumesep" oldvalue=":  " oldname="texte" attribute="t9" hidden="true"/>
+		<Action name="U1321613109872" action="consumesep" oldvalue="   " oldname="texte" attribute="path" description="Complete path to the file accessed"/>
+		<Action name="U1321613967868" action="add" attribute="uniquekey" newvalue="{dataset.event_result.get()+&apos;::&apos;+dataset.path.get()+&apos;::&apos;+dataset.account_domain.get()+&apos;/&apos;+dataset.account_name.get()+&apos;::&apos;+dataset.date_time.get().toTimeString().substring(0,15)}" description="Used to filter file events by buckets of 10 minutes" hidden="true"/>
+		<Action name="U1321614363109" action="uniqueness" oldname="uniquekey"/>
+	</Actions>
+</Discovery>
+

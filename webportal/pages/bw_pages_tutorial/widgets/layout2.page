@@ -1,0 +1,23 @@
+layout2 = Page {
+	title:'Layouting with Groups'
+	
+	Flow {
+		disposition:Vertical
+		
+		Group {
+			Button {actions:Message 'hello' text:'default group' layout:Layout{grab:horizontal True vertical True}}
+		}
+		Group {
+			title:'my group title'
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+		Group {
+			title:'a group with several elements'
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+	}
+}
+
+

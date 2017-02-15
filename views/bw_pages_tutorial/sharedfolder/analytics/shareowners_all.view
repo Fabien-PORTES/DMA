@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="shareowners_all" prefix="share_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="shareowners_all" notes="">
+	<ViewParam name="codes" displayname="codes"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1439406314290_326" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="management">
+		<ViewAttribute name="A1439406321850_327" attribute="expertisedomaincode" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1439407491164_0" reference="codes" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1439406322691_328" attribute="expertisedomainuid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="A1439406351743_329" attribute="expertisedomaindisplayname" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="A1439406359081_330" attribute="expertisedomainrecorduid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewJoin name="J1439407515409_485" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+			<ViewAttribute name="A1439407521642_486" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1439407528766_487" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1439407504036_484" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

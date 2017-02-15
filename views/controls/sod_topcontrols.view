@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sod_topcontrols" distinct="true" concept="identity" displayname="SOD on Identities : Controls who appears the most" notes="">
+	<ViewSort name="sort" attribute1="A1324371861173_36433" direction1="DESC"/>
+	<ViewJoin name="J1324371855744_36348" kind="inner" join="controlresult">
+		<ViewAttribute name="A1324372036254_38002" attribute="controltagtype" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1324372092803_38682" attribute="controlcode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1324372095472_38683" attribute="controldisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1324372119151_38943" attribute="controltype" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1324373546835_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="6"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1324372959244_48090" attribute="controlnotes" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1324371861173_36433" attribute="recorduid" alias="nbdefect" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+</View>

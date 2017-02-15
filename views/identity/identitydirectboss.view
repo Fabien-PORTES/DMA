@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identitydirectboss" distinct="true" concept="identity" displayname="Retrieve the direct boss for a given identity" notes="">
+	<ViewParam name="recorduid" displayname="identity record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1322400628015_2" attribute="recorduid" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1322400693660_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1322400643319_3" prefix="manager_" kind="inner" join="boss">
+		<ViewAttribute name="A1322400659730_4" attribute="recorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_5" attribute="uid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_6" attribute="repositoryrecorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_7" attribute="repositoryuid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_8" attribute="repositorycode" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_9" attribute="repositorydisplayname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_10" attribute="repositorymedia" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_11" attribute="repositoryextractdate" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_12" attribute="repositorytype" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_13" attribute="hrcode" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_14" attribute="nickname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_15" attribute="givenname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_16" attribute="middlename" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_17" attribute="surname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_18" attribute="altname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_19" attribute="fullname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_20" attribute="mail" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_21" attribute="titlerecorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_22" attribute="titleuid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659730_23" attribute="titlecode" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_24" attribute="titledisplayname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_25" attribute="employeetyperecorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_26" attribute="employeetypeuid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_27" attribute="employeetypecode" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_28" attribute="employeetypedisplayname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_29" attribute="expertisedomainrecorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_30" attribute="expertisedomainuid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_31" attribute="expertisedomaincode" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_32" attribute="expertisedomaindisplayname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_33" attribute="jobtitlerecorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_34" attribute="jobtitleuid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_35" attribute="jobtitlecode" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_36" attribute="jobtitledisplayname" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_37" attribute="arrivaldate" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_38" attribute="departuredate" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400659745_39" attribute="internal" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400671227_40" attribute="custom1" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400672288_41" attribute="custom2" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400673349_42" attribute="custom3" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400674316_43" attribute="custom4" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400675673_44" attribute="custom5" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400679511_45" attribute="custom6" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400680571_46" attribute="custom7" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400681461_47" attribute="custom8" removedfromprojection="false"/>
+		<ViewAttribute name="A1322400682381_48" attribute="custom9" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

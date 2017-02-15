@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1475240027295">
+	<Source file="{config.importfiles}/Extracts_DMA/NIS_A350VPM/export--VPM--EU.csv" type="CSV" separator="#" textseparator="&quot;" encoding="UTF-8"/>
+	<Attributes hasheader="true">
+		<Attribute name="A8084017105168541222" attribute="vintela_sidbl" column="vintela-sidbl" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2528173535452269978" attribute="objectguid" column="objectguid" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A8905937756127449682" attribute="UID" column="uid" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5644718578660143979" attribute="objectcategory" column="objectcategory" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A7636727959060807275" attribute="managedby" column="managedBy" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1367507474707963399" attribute="GECOS" column="gecos" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A6637163599683172494" attribute="objectclass" column="objectclass" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A1466457978771291204" attribute="unixhomedirectory" column="unixhomedirectory" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7936668342185489115" attribute="whenchanged" column="whenchanged" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A3497302711635232383" attribute="ai_uniquekey" column="ai-uniquekey" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A6232100600955221782" attribute="loginshell" column="loginshell" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5240579044888326910" attribute="distinguishedname" column="distinguishedname" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1890343949073272353" attribute="whencreated" column="whencreated" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A2478755589878708606" attribute="GID" column="gidnumber" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A4410090610508545318" attribute="name" column="name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2371525952951460802" attribute="ai_corporateid" column="ai-corporateid" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A2165882723738247716" attribute="cn" column="cn" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A6502759953401780396" attribute="UID number" column="uidnumber" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A9004497884545095442" attribute="adspath" column="adspath" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Request expression="SELECT * FROM dataset WHERE dataset.UID !=&apos;&apos;"/>
+	<Actions>
+		<Action name="U1478261379611" action="add" attribute="_EMAIL" newvalue="{dataset.GECOS.get().replace(&quot;AEROCITY[ \\-]*&quot;,&quot;&quot;).toUpperCase()}" condition="(dataset.contains(&apos;GECOS&apos;, &apos;@&apos;, false, true))" description="From Gecos - when contains a @&#xA;and remove aerocity if present"/>
+		<Action name="U1475240113982" action="add" attribute="_REPOSITORY" newvalue="A350VPM"/>
+		<Action name="U1475240358241" action="convertdate" oldname="whencreated" attribute="_CREATION_DATE" type="Date" newvalue="d/M/y h:m:s"/>
+		<Action name="U1475240432371" action="convertdate" oldname="whenchanged" attribute="_MODIFIED_DATE" type="Date" newvalue="d/M/y h:m:s"/>
+		<Action name="U1475241202159" action="add" attribute="_FULLNAME"/>
+		<Action name="U1475241208083" action="add" attribute="_FIRSTNAME"/>
+		<Action name="U1475241213362" action="add" attribute="_LASTNAME"/>
+		<Action name="U1480583127919" action="add" attribute="_FSURNAME" newvalue=""/>
+		<Action name="U1480587521857" action="add" attribute="_UID_UpperCase" newvalue="{dataset.UID.get().toUpperCase()}"/>
+		<Action name="U1482765956078" action="multireplace" attribute="vintela_sidbl" newvalue="{dataset.vintela_sidbl.get().toUpperCase()}" condition="{dataset.vintela_sidbl.get().trim().length &gt; 0}"/>
+		<Action name="U1484385472708" action="add" attribute="standard_name" newvalue="{dataset._UID_UpperCase.get().search(&apos;[A-Z][A-Z0-9][0-9][A-Z0-9]{2,20}&apos;) != -1}"/>
+		<Action name="U1484928996979" action="add" attribute="UID_A350" newvalue="{dataset.UID.get()}"/>
+	</Actions>
+</Discovery>

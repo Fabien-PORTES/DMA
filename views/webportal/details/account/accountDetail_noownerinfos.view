@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountDetail_noownerinfos" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="Account details no owner infos" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1436172735766_1312" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1436172742591_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1436172736476_1313" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1436172748874_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1436172761024_1316" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="A1436172764995_1317" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1318" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1319" attribute="accountrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1320" attribute="identityrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1321" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1322" attribute="reconciliationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1323" attribute="reconciliationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1324" attribute="description" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1325" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1326" attribute="noownercode" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1436172774579_0" operation="isNotNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1436172764995_1327" attribute="leavedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1328" attribute="leaveday" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1329" attribute="reliability" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1436172764995_1330" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

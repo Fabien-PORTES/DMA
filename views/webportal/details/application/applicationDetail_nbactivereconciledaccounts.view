@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbactivereconciledaccounts" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_applicationDetail_nbactivereconciledaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1378806781191_1263" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1378806781191_1264" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1377505573808_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+		<ViewAttributeFilter name="F1377505580236_1" operation="isNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1378806463710_1172" kind="inner" identitysecure="false" join="applicationright">
+		<ViewAttribute name="1378806791410_1267" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1378806479610_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378806804048_1269" kind="inner" identitysecure="false" join="identityreconciliation">
+	</ViewJoin>
+</View>

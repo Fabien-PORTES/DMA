@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bwfs_searchshareformanager" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="searchshareformanager" notes="">
+	<ViewParam name="query" displayname="query"/>
+	<ViewParam name="businessowneruid" displayname="businessowneruid"/>
+	<ViewComputedAttribute name="description" displayname="description" type="String" expression="dataset.displayname.get()+&apos; (&apos;+dataset.code.get()+&apos;)&apos;"/>
+	<ViewSort name="sort" attribute1="A1441636925674_776"/>
+	<ViewJoin name="J1441636807395_749" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="management">
+		<ViewAttribute name="1441636917380_772" attribute="expertisedomaincode" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1441636615256_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="businessowner"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewJoin name="J1441636555175_668" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+			<ViewAttribute name="1441636917382_773" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1441636605694_0" reference="businessowneruid" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1441636924516_774" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1441636925044_775" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1441636925674_776" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1441636926328_777" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1441637005961_0" reference="query" operation="ilike" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1441636927024_778" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1441636931403_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

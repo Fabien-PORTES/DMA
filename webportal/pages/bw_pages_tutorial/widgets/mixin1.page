@@ -1,0 +1,26 @@
+
+mixin1_titleStyle = Style {
+	size: 16px
+	background: Color gray
+	foreground: white
+}
+
+mixin1_mixin = Mixin {
+	Header {
+		layout: Layout {
+			grab: horizontal True vertical False
+			align: horizontal Fill vertical Beginning
+		}
+		styling: mixin1_titleStyle
+	}
+}
+
+mixin1 = Page {
+	title:'A simple mixin example'
+
+	Header {
+		mixins: mixin1_mixin
+		value: 'This is a header layouted thanks to a mixin'
+	}
+}
+

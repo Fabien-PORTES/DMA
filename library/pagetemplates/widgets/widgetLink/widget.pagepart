@@ -1,0 +1,6 @@
+Link {
+	target: HomePage
+	label: <template:widgetlabel/>
+	value: "<template:widgetname/>"
+	compact: True
+}

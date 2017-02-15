@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="bw_recon_identities" operator="or" query="identity" displayname="Recon Identities for hrcode {hrcode}, fullname {fullname}, surname {surname}, givenname {givenname}, email {mail} with fuzzy set to {fuzzynb}" version="9" notes="">
+	<RequestParam name="hrcode" displayname="HR Code" query="identity" criteria="likeHrCode" criteriaparam="hrCodeParam">
+		<Value name="0" data="{dataset.hrcode.get()}"/>
+	</RequestParam>
+	<RequestParam name="fullname" displayname="Fullname" query="identity" criteria="likeFullName" criteriaparam="fullNameParam">
+		<Value name="0" data="Ambre BURLOT"/>
+		<Value name="1" data="{dataset.fullname.get()}"/>
+	</RequestParam>
+	<RequestParam name="fuzzynb" displayname="Fuzzy nb" query="identity" criteria="fuzzyFullName" criteriaparam="distanceParam">
+		<Value name="0" data="2"/>
+		<Value name="1" data="{dataset.fuzzynb.get()}"/>
+	</RequestParam>
+	<RequestParam name="givenname" displayname="Givenname" query="identity" criteria="likeGivenName" criteriaparam="givenNameParam">
+		<Value name="0" data="{dataset.givenname.get()}"/>
+	</RequestParam>
+	<RequestParam name="surname" displayname="Surname" query="identity" criteria="likeSurname" criteriaparam="surnameParam">
+		<Value name="0" data="{dataset.surname.get()}"/>
+	</RequestParam>
+	<RequestParam name="mail" displayname="Mail" query="identity" criteria="likeMail" criteriaparam="mailParam">
+		<Value name="0" data="{dataset.mail.get()}"/>
+	</RequestParam>
+	<RequestGroup name="G1423068892892_1507" operator="and">
+		<RequestCriteria name="C1423067530802_1325" criteria="likeHrCode">
+			<RequestCriteriaParam name="hrCodeParam" reference="hrcode" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+		<RequestCriteria name="C1423068930345_1511" criteria="hasHrCode">
+		</RequestCriteria>
+	</RequestGroup>
+	<RequestGroup name="G1423068903966_1509" operator="or">
+		<RequestCriteria name="C1423067571515_1327" criteria="likeFullName">
+			<RequestCriteriaParam name="fullNameParam" reference="fullname" ignoreifempty="true">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+		<RequestCriteria name="C1423067597245_1329" criteria="eqFlatFullName">
+			<RequestCriteriaParam name="flatFullNameParam" reference="fullname" ignoreifempty="true">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+	<RequestGroup name="G1423069004109_1512" operator="or">
+		<RequestCriteria name="C1423068203347_1338" criteria="likeGivenName">
+			<RequestCriteriaParam name="givenNameParam" reference="givenname" ignoreifempty="true">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+	<RequestGroup name="G1423069100048_1517" operator="or">
+		<RequestCriteria name="C1423068205724_1339" criteria="likeSurname">
+			<RequestCriteriaParam name="surnameParam" reference="surname" ignoreifempty="true">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+	<RequestGroup name="G1423069109141_1520" operator="and">
+		<RequestCriteria name="C1423068334988_1349" criteria="likeMail">
+			<RequestCriteriaParam name="mailParam" reference="mail" ignoreifempty="true">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

@@ -1,0 +1,360 @@
+class;event;description
+1;1;Authentification sur clé / carte à puce... Succès - Identifiant X No de série X
+1;2;Echec d'authentification sur clé / carte à puce - Identifiant X No de série X
+1;3;Authentification Windows : Succès X
+1;4;Audit non utilisé
+1;5;Audit non utilisé
+1;6;Audit non utilisé
+1;7;Audit non utilisé
+1;8;Audit non utilisé
+1;9;Déconnexion SSOX
+1;10;Déconnexion Windows
+1;11;Tentative de connexion avec une clé / carte à puce en liste noire - Identifiant X No de série X
+1;12;Audit non utilisé
+1;13;Retrait d'une clé / carte à puce - No de série X
+1;14;Validation du code PIN d'une clé / carte à puce - No de série X
+1;16;Validation du Mot de Passe Windows : SUCCES 
+1;18;Connexion du moteur SSOX à partir d'une clé / carte à puce - No de série X
+1;19;Connexion transparente du moteur SSOX à partir d'une clé / carte à puce - No de série X
+1;20;Connexion du moteur SSOX à partir d'un cache de connexion
+1;21;Connexion transparente du moteur SSOX à partir d'un cache de connexion
+1;22;Audit non utilisé
+1;23;Audit non utilisé
+1;24;L'utilisateur a été déconnecté par un administrateur
+1;25;La clé / carte à puce est bloquée - No de série X
+1;26;Connexion LDAP pour l'utilisateur X
+1;28;Connexion par cache de connexion pour l'utilisateur X
+1;30;Connexion par challenge / response de l'utilisateur X
+1;32;Connexion LDAP transparente de l'utilisateur X
+1;34;Auto-apprentissage du compte LDAP de l'utilisateur X
+1;35;Génération d'un cache de connexion LDAP pour l'utilisateur X
+1;36;Génération d'un cache de challenge / response pour une clé / carte à puce - Identifiant X No de série X
+1;37;Mise à jour du profil de l'utilisateur X - No de série X
+1;38;Test de la clé / carte à puce utilisateur : SUCCESS - No de série X
+1;40;Changement du mot de passe LDAP
+1;41;audit non utilisé
+1;42;Changement du mot de passe du cache de connexion LDAP
+1;43;Changement de code pin d'une clé / carte à puce - No de série X
+1;48;Auto-Apprentissage du compte Windows X
+1;49;Création du nouveau service X
+1;50;Suppression du service X
+1;51;Modification du login / mot de passe du service X - Login X
+1;52;Changement du mot de passe windows par l’utilisateur via la GINA
+1;53;Changement automatique du mot de passe windows via la GINA
+1;54;Connexion par un cache de questions / réponses pour l'utilisateur X
+1;55;Ecriture d'un token de session sur une clé / carte à puce - No de série X
+1;56;Ecriture des crédentiels de l'utilisateur sur une clé / carte à puce - No de série X
+1;57;Récupération des crédentiels de l'utilisateur X depuis Sign N Go
+1;58;Création du fichier de groupe Kiosk X
+1;59;Lecture du fichier de groupe Kiosk X
+1;60;Echec d'authentification Windows
+1;61;Echec de changement du code pin d'une clé / carte à puce - No de série X
+1;62;Echec de connexion LDAP pour l'utilisateur X
+1;63;Echec de connexion de l'utilisateur X par cache de connexion
+1;64;Echec de connexion par un cache de questions / réponses pour l'utilisateur X
+1;65;Modification des questions / réponses
+1;100;Clé / carte à puce débloquée par challenge / response - No de série X
+1;102;audit non utilisé
+1;103;Délégation du service X à l'utilisateur X
+1;105;Arrêt de la délégation pour le service X
+1;108;Initialisation d'une clé / carte à puce - No de série X
+1;109;Verrouillage de la session de l'utilisateur X
+1;110;Déverrouillage de la session par l'utilisateur X
+1;111;Démarrage du mode kiosque en mode manuel
+1;112;Démarrage du mode kiosque en mode automatique
+1;113;Verrouillage de la session générique
+1;114;Déverrouillage de la session générique
+1;115;Authentification par jeton de session
+1;116;Authentification par questions / réponses
+1;117;Echec d'authentification par questions / réponses
+1;118;Authentification par identifiant / mot de passe
+1;119;Modification des questions / réponses
+1;120;Visualisation du mot de passe du service X
+1;121;Activation du SSO sur l'application X
+1;122;Désactivation du SSO sur l'application X
+1;122;audit non utilisé
+1;130;generation du container SSOX
+2;1;Lecture des questions / réponses de l'utilisateur X
+2;2;Lecture du nombre de tentatives d'authentification restantes pour l'utilisateur X
+2;3;Modification du nombre d'essais de la politique de questions / réponses de l'utilisateur X
+2;4;Déblocage de la clé / carte à puce X No de série X de l'utilisateur X
+2;5;Changement du mot de passe primaire de l'utilisateur X
+2;6;Récupération du mot de passe windows de l'utilisateur X
+2;7;Génération d'un jeton de session pour l'utilisateur X
+2;8;Mis à jour du mot de passe primaire de l'utilisateur X
+2;9;Synchronisation des mots de passe primaire de l'utilisateur X
+2;10;Dévérouillage de l'ordinateur par l'utilisateur X
+2;11;Réponse correcte aux questions de l'utilisateur X
+2;12;Authentification par certificat de l'utilisateur X
+2;13;Démarrage d'une nouvelle session QNA
+2;14;Fin d'une session QNA
+2;15;Remise à zero du nombre d'essais de la politique de questions / réponses de l'utilisateur X
+2;16;Autorisation automatique de délégation du service X pour l'utilisateur X
+2;17;Démarrage du service d'authentification
+2;18;attente des dernieres requetes en cours service d'authentification
+2;19;Arret du service d'authentification
+2;20;Arret forcé du service d'authentification
+3;1;Authentification de l’utilisateur X
+3;2;Echec d’authentification de l’utilisateur X
+4;1;Impossible de contacter le service d'audit
+4;2;Impossible de lire la clé publique de l'utilisateur de destination de la délégation - Identifiant X
+4;3;Droits d'accès insuffisants pour sauvegarder le container de l'utilisateur X
+4;4;Echec de lecture du mot de passe de la clé privée de l'utilisateur X
+4;5;Echec de lecture des clés de l'utilisateur X
+4;6;Echec d'extraction de la clé publique de l'utilisateur X
+4;7;Echec de lecture de la cle publique de SSOX 
+4;8;Echec de chiffrement de la clé de chiffrement des questions / réponses avec la clé publique
+4;9;Echec d'import de la clé publique de l'utilisateur X
+4;10;Echec de chiffrement des questions / réponses de l'utilisateur
+4;11;Echec d'écriture des questions / réponses dans l'annuaire
+4;12;Echec d'import de la clé privée de l'utilisateur X
+4;13;Echec de déchiffrement de la clé de chiffrement des questions / réponses
+4;14;Echec de génération de la clé publique / privée de l'utilisateur X - Domaine X
+4;15;Echec d'écriture de la clé publique / privée de l'utilisateur X
+4;16;Impossible de sauver le mot de passe de la clé privée de l'utilisateur X
+4;18;Les clés des différents containers de l'utilisateur ne sont pas identiques
+4;19;Impossible de récupérer les secrets d'administration à partir de l'annuaire - Domaine X
+4;21;Erreur lors de la génération de la liste noire - Domaine X
+4;22;Impossible de modifier la liste noire - Domaine X
+4;23;Impossible de créer / modifier l'objet X - Domaine X
+4;24;Impossible de supprimer l'objet X - Domaine X
+4;25;Impossible de charger le fichier X dans l'objet l'objet X - Domaine X
+4;26;Impossible de lire le service X de l'utilisateur X - Domaine X
+4;27;Impossible de lire le paramètre X du service X de l'utilisateur X - Domaine X
+4;28;Impossible de créer / modifier le service X de l'utilisateur X - Domaine X
+4;29;Impossible de créer / modifier le paramètre X du service X de l'utilisateur X - Domaine X
+4;30;Impossible de supprimer le service X pour l'utilisateur X - Domaine X
+4;31;Impossible d'ajouter l'utilisateur X au container partagé X - Domaine X
+4;32;Impossible de retirer l'utilisateur X du container partagé X - Domaine X
+4;34;Impossible de changer la politique de SOPIN pour la clé / carte à puce X No de série X - Domaine X
+4;35;Impossible de mettre à jour l'objet de configuration X - Domaine X
+4;36;Impossible d'exporter l'objet de configuration X dans X - Domaine X
+4;37;Impossible de déplacer l'objet X vers X - Domaine X
+4;38;Impossible de générer un container pour l'utilisateur X - Domaine X
+4;39;Impossible de changer le mot de passe de l'utilisateur X - Domaine X
+4;40;Impossible de modifier les propriétées de l'utilisateur X - Domaine X
+4;41;Impossible de modifier les groupes de l'utilisateur X - Domaine X
+4;42;Impossible de changer la politique de SSO pour l'utilisateur X - Domaine X
+4;43;Impossible d'autoriser la délégation pour le service X de l'utilisateur X - Domaine X
+4;44;Impossible de modifer la politique de questions / réponses de l'utilisateur X - Domaine X
+4;45;Impossible de modifier les attributs SSOX de l'utilisateur X - Domaine X
+4;46;Impossible de modifier les attributs d'administration de l'utilisateur X - Domaine X
+4;47;Impossible de générer une clé / carte à puce pour l'utilisateur X - No de série X Domaine X
+4;48;Impossible de générer une clé / carte à puce depuis un container de backup pour l'utilisateur X - No de série X - Domaine X
+4;49;Impossible de débloquer une clé / carte à puce - No de série X Domaine X
+4;50;Impossible d'effacer une clé / carte à puce - No de série X Domaine X
+4;51;Impossible de créer l'utilisateur X - Domaine X
+4;52;Impossible de generer un challenge / response pour une clé / carte à puce - Domaine X
+4;53;Impossible de bloquer l'utilisateur X - Domaine X
+4;54;Impossible de débloquer l'utilisateur X - Domaine X
+4;55;Impossible de récupérer l'état des ACLs de l'utilisateur X - Domaine X
+4;56;Impossible de créer l'utilisateur LDAP X - Domaine X
+4;57;Impossible de modifier la configuration globale - Domaine X
+4;58;Impossible de copier le contenu de la clé / carte à puce X dans la clé / carte à puce X - Domaine X
+4;59;Echec lors de la création d'un administrateur : Identifiant X Clé / carte à puce X - Domaine X
+4;60;Erreur lors de l'accès aux données de la clé / carte à puce X - Domaine X
+4;61;Impossible de lire la clé privée de l'administrateur - Domaine X
+4;62;Erreur lors de l’écriture de la licence SSOX – Domaine X
+4;63;Impossible de générer la base SSOX - Domaine X
+4;64;Erreur lors du listage de la liste noire - Domaine X
+4;65;Impossible de vérifier la licence SSOX - Domaine X
+4;66;Impossible de générer un challenge / response pour l'utilisateur X - Domaine X
+4;67;Echec de connexion à l'annuaire - Domaine X
+4;68;Impossible de modifier le SOPIN de la clé / carte à puce X - Domaine X
+4;69;Impossible d'importer la clé à partir du fichier X
+4;70;Impossible de lire les questions / réponses de l'utilisateur X - Domaine X
+4;71;Impossible de récupérer la politique de questions / réponses de l'utilisateur X - Domaine X
+4;72;Impossible de récupérer le DN de l'utilisateur X - Domaine X
+4;73;La clé / carte à puce X n'appartient pas à l'utilisateur X
+4;74;Impossible de récupérer le mot de passe windows de l'utilisateur X
+4;75;Impossible de générer un token de session pour l'utilisateur X
+4;76;Echec de mis à jour du mot de passe windows de l'utilisateur X
+4;77;Impossible de synchroniser les mots de passe primaires de l'utilisateur X
+4;78;L'utilisateur X n'a pas pu dévérouiller l'ordinateur
+4;79;Erreur de réponses aux questions de l'utilisateur X
+4;80;Erreur lors de la vérification des attributs du certificat de l'utilisateur X
+4;81;Erreur dans la configuration de SSOX
+4;82;Echec de vérification du certificat X
+4;83;Echec de vérification de la signature du certificat de l'utilisateur X
+4;84;Echec de conversion du certificat de l'utilisateur X
+4;85;Echec de connexion au proxy
+4;86;Echec de validation du code PIN d'une clé / carte à puce - No de série X
+4;87;Echec de validation du mot de passe windows
+4;88;Echec de connexion par un cache de challenge / response pour l'utilisateur X
+4;89;Echec de connexion LDAP transparente de l'utilisateur X
+4;90;Echec du test de la clé / carte à puce utilisateur - No de série X
+4;91;Echec de déblocage d'une clé / carte à puce par challenge / response - No de série X
+4;92;Echec de délégation du service X à l'utilisateur X
+4;93;Echec d'arrêt de la délégation pour le service X
+4;94;Echec d'initialisation d'une clé  / carte à puce - No de série X
+4;95;Impossible de récupérer le profil d'administration de l'utilisateur X
+4;96;Echec d'auto-apprentissage du compte windows de l'utilisateur X
+4;97;Echec d'auto-apprentissage du compte LDAP X
+4;98;Impossible de récupérer les questions de l'utilisateur X à partir du cache de questions / réponses X
+4;99;Impossible de lire le cache de challenge / response X de l'utilisateur X
+4;100;Impossible d'autoriser automatiquement la délégation pour le service X de l'utilisateur X
+4;101;Echec d'initilisation du driver P11
+4;102;Echec de signature sur une clé / carte à puce X
+4;103;Echec d'initilisation de l'agent Sign N Go
+4;104;Echec d'écriture un jeton de session sur une clé / carte à puce - No de série X
+4;105;Impossible de récupérer un jeton de session sur une clé / carte à puce - No de série X
+4;106;Impossible de récupérer un jeton de session depuis Sign N Go pour l'utilisateur X
+4;107;Impossible de récupérer les crédentiels de l'utilisateur X depuis Sign N Go
+4;108;Echec de l'initialisation Sign N Go de l'utilisateur X
+4;109;Impossible d'extraire la clé privée depuis une clé / carte à puce - No de série X
+4;110;Impossible d'extraire le certificat depuis une clé / carte à puce - No de série X
+4;111;Le certificat de la clé / carte à puce X ne correspond pas à une autorité de certification de confiance
+4;112;Echec d'authentification par certificat pour l'utilisateur X
+4;113;Echec de modification de la base de registre
+4;114;Echec de création du fichier de groupe kiosk X
+4;115;Echec de lecture du fichier de groupe kiosk X
+4;116;Echec d'extension du schéma de l'annuaire
+4;117;Echecn de génération des secrets d'administration dans l'annuaire
+4;118;Echec de génération des secrets d'administration sur une clé / carte à puce - Identifiant X No de série X
+4;119;Echec de création / modification des objets par défaut dans l'annuaire
+4;120;Echec de positionnement des ACLs SSOX
+4;121;Echec de modification des questions / réponses de l'utilisateur
+5;1;Création d'un utilisateur : Identifiant X - Domaine X
+5;2;Modification de la configuration globale - Domaine X
+5;3;Suppression d'un utilisateur : Identifiant X - Domaine X
+5;4;Clé / carte à puce mise en liste noire X No de série X - Domaine X
+5;5;Clé / carte à puce enlevée de la liste noire X No de série X - Domaine X
+5;6;Authentification LDAP : Succès - Identifiant X Domaine X
+5;7;Déconnexion : Identifiant X
+5;8;Suppression de la clé / carte à puce X - Domaine X
+5;9;Génération de la liste noire - Domaine X
+5;10;Audit non utilisé
+5;11;Audit non utilisé
+5;12;Création / Modification du profil X - Domaine X
+5;13;audit déprécié
+5;14;Audit déprécié
+5;15;Audit déprécié
+5;16;audit déprécié
+5;17;Copie de la clé d'administration - Nouvelle clé : Identifiant X No de série X - Clé d'origine : Identifiant X No de série X - Domaine X
+5;18;Création d'un administrateur : Identifiant X Clé / carte à puce X - Domaine X
+5;19;Déblocage de la clé / carte à puce X - Domaine X
+5;20;Génération d'une clé / carte à puce depuis un Container de Backup : Identifiant X No de série X - Domaine X
+5;21;Création du noeud X - Domaine X
+5;22;Suppression de l'objet X - Domaine X
+5;23;Génération d'un Challenge / Response pour l'utilisateur X - Domaine X
+5;24;Audit non utilisé
+5;25;Audit non utilisé
+5;26;Audit non utilisé
+5;27;Changement des paramètres de l'utilisateur X - Domaine X
+5;28;Changement du mot de passe de l'utilisateur X - Domaine X
+5;29;Génération d'un container pour l'utilisateur X - Domaine X
+5;30;Génération d'une clé / carte à puce : Identifiant X No de série X - Domaine X
+5;31;Chargement du fichier X dans l'objet de configuration X - Domaine X
+5;32;Création d'une clé / carte à puce dans X : No de série X - Domaine X
+5;33;Lecture du service X de l'utilisateur X - Domaine X
+5;34;Lecture du paramètre X du service X de l'utilisateur X - Domaine X
+5;35;Création \ Modification du service X de l'utilisateur X - Domaine X
+5;36;Création \ Modification du paramètre X du service X de l'utilisateur X - Domaine X
+5;37;audit déprécié
+5;38;Remise à zero du nombre d'essais de la politique de questions/réponses de l'utilisateur X - Domaine X
+5;39;Suppression des questions / réponses de l'utilisateur X - Domaine X
+5;40;Erreur d'authentification de l'utilisateur X sur l'annuaire - Domaine X
+5;41;Authentification sur clé / carte à puce : Succès - Identifiant X No de série X
+5;42;Modification du SOPIN pour la clé / carte à puce X - Domaine X
+5;43;Changement de la politique de SOPIN pour la clé / carte à puce X No de série X - Domaine X
+5;44;Modification de la clé / carte à puce  X No de série X - Domaine X
+5;45;Mis à jour de l'objet de configuration X - Domaine X
+5;46;Changement du profil de l'utilisateur X par X - Domaine X
+5;47;Changement du fichier de configuration de l'utilisateur X par X - Domaine X
+5;48;Changement du profil administrateur de l'utilisateur X par X - Domaine X
+5;49;Génération d'un challenge / response de deblocage d'une clé / carte à puce - Domaine X
+5;50;Création d'un utilisateur LDAP : DN X - Domaine X
+5;51;Récupération de l'état des ACLs pour l'utilisateur X - Domaine X
+5;52;Exportation de la configuration X dans le fichier X : Succès - Domaine X
+5;53;Création ou modification d'un profil d'administration X - Domaine X
+5;54;Création de l'alias X - Domaine X
+5;55;Modification de l'alias X : nouveau profil X - Domaine X
+5;56;Création ou modification de la politique de questions / réponses X – Domaine X
+5;57;audit déprécié
+5;58;audit déprécié
+5;59;audit déprécié
+5;60;audit déprécié
+5;61;audit déprécié
+5;62;audit déprécié
+5;63;Création d'un nouveau container partagé X - Domaine X
+5;64;Ajout de l'utilisateur X au container partagé X - Domaine X
+5;65;Suppression de l'utilisateur X du container partagé X - Domaine X
+5;66;Autorisation du SSO par login/mot de passe pour l'utilisateur X - Domaine X
+5;67;Interdiction du SSO par login/mot de passe pour l'utilisateur X - Domaine X
+5;68;Suppression du service X de l'utilisateur X - Domaine X
+5;69;Changement de la politique de questions / réponses de l'utilisateur X par X - Domaine X
+5;70;Blocage des questions / réponses de l'utilisateur X - Domaine X
+5;71;Blocage de l'utilisateur X - Domaine X
+5;72;Déblocage de l'utilisateur X - Domaine X
+5;73;Lecture des questions / réponses de l'utilisateur X - Domaine X
+5;74;Modification du nombre d'éssais de la politique de questions / réponses de l'utilisateur X - Domaine X
+5;75;Echec d'authentification sur une clé - Identifiant X No de série X Domaine X
+5;76;Extension du schéma de l'annuaire
+5;77;Génération des secrets d'administration dans l'annuaire
+5;78;Génération des secrets d'administration sur une clé / carte à puce - Identifiant X No de série X
+5;79;Création / modification des objets par défaut dans l'annuaire
+5;80;Positionnement des ACLs SSOX
+5;109;Autorisation de délégation pour du service X pour l'utilisateur X - Domaine X
+5;110;audit non utilisé
+5;111;Déplacement de l'objet X vers X - Domaine X
+5;112;audit déprécié
+5;113;Retrait de l'utilisateur X du groupe X - Domaine X
+5;114;audit déprécié
+5;115;Ajout de l'utilisateur X au groupe X - Domaine X
+5;116;audit déprécié
+5;117;Audit déprécié
+5;119;Création ou modification de l'objet de configuration X - Domaine X
+5;120; Impression d'une Carte Personalisee (APC)
+7;1;Demande de déverrouillage (manuel) de la session X du poste X
+7;2;Demande de déverrouillage (auto) de la session X du poste X
+7;3;Demande de verrouillage (manuel)de la session X du poste X
+7;4;Demande de verrouillage (auto) de la session X du poste X
+7;5;Demande de fermeture de session (manuel) de la session X du poste X
+7;6;Demande de fermeture de session (auto) de la session X du poste X
+7;7;Demande d'ouverture de session (manuel) d'une session X sur le poste X
+7;8;Demande d'ouverture de session (auto) d'une session X sur le poste X
+7;9;Demande d'arret (manuel) en tant que X du poste X
+7;10;Demande d'arret (auto) en tant que X du poste X
+7;11;Demande de redemarrage (manuel) en tant que X du poste X
+7;12;Déverrouillage du poste effectué par X depuis le poste maitre X
+7;13;Echec de la tentative de déverrouillage par X depuis le poste maître X
+7;14;Verrouillage du poste effectué par X depuis le poste maître X
+7;15;Echec de la tentative de verrouillage par X depuis le poste maître X
+7;16;Fermeture de la session effectué par X depuis le poste maître X
+7;17;Echec de la tentative de fermeture de la session par X depuis le poste maître X
+7;18;Ouverture de la session effectué par X depuis le poste maitre X
+7;19;Echec de la tentative d'ouverture de session par X depuis le poste maître X
+7;20;Arret du poste effectué par X depuis le poste maître X
+7;21;Echec de la tentative d'arrêt du poste par X depuis le poste maître X
+7;22;Redemarrage du poste effectué par X depuis le poste maître X
+7;23;Echec de la tentative de redemarrage du poste par X depuis le poste maître X
+7;24;Echec de la tentative de déverrouillage (auto) de la session X du poste X
+7;25;Echec de la tentative de verrouillage (auto) de la session X du poste X
+8;1;Connexion à l'interface WEB de Self service par Identifiant / mot de passe - Domain X
+8;2;Echec de connexion à l'interface WEB de Self service par Identifiant / mot de passe - Domain X
+8;3;Connexion à l'interface WEB de Self service par Questions / réponses - Domain X
+8;4;Ecehc de connexion à l'interface WEB de Self service par Questions / réponses - Domain X
+8;5;Connexion à l'interface WEB de HelpDesk - Domain X
+8;6;Echec de Connexion à l'interface WEB de HelpDesk - Domain X
+8;7;Changement de mot de passe depuis l'interface WEB de Self service - Domain X
+8;8;Echec de changement de mot de passe depuis l'interface WEB de Selfservice - Domain X
+8;9;Changement du mot de passe de l'utilisateur X depuis l'interface WEB de helpdesk - Domain X
+8;10;Echec de Changement du mot de passe de l'utilisateur X depuis l'interface WEB de helpdesk - Domain X
+8;11;Authentification de l'utilisateur X par questions / réponses - Domain X
+8;12;Echec d'Authentification de l'utilisateur X par questions / réponses - Domain X
+8;13;Modification des questions / réponses - Domain X
+8;14;Echec de Modification des questions / réponses - Domain X
+9;1;Connexion à l'interface de pages jaunes / pages blanches
+9;2;Echec de connexion à l'interface de pages jaunes / pages blanches
+9;3;Modification de la fiche personnelle
+9;4;Echec de modification de la fiche personnelle
+10;1;Recyclage de la carte X
+10;2;Echec recyclage de la carte X
+10;3;Import du certificat p12 X sur la carte X
+10;4;Echec de l'Import du certificat p12 X sur la carte X
+10;5;Modification du SOPIN de la carte X
+10;6;Echec de modification du SOPIN de la carte X
+10;7;Import du certificat X sur la carte X
+10;8;Echec de l'Import du certificat X sur la carte X
+10;9;Génération d'une requête de renouvellement pour le certificat X sur la carte X
+10;10;Echec de génération d'une requête de renouvellement pour le certificat X sur la carte X

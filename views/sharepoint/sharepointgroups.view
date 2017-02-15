@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_sharepointgroups" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="all groups which give access to a given permission" notes="">
+	<ViewParam name="recorduid" displayname="permission record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1338551344038_3" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1338551481592_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1433240082290_523" prefix="group_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="groups">
+		<ViewAttribute name="1433240101693_546" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101695_547" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101698_548" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101701_549" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101703_550" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101706_551" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101709_552" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101712_553" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101716_554" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101721_555" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101724_556" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101727_557" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101732_558" attribute="modificationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101737_559" attribute="modificationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101742_560" attribute="creationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101746_561" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101749_562" attribute="grouptype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101752_563" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101755_564" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101759_565" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101763_566" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433240101767_567" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1433240112403_568" prefix="grouprepository_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+			<ViewAttribute name="1433240129170_579" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1433240129176_580" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1433240129180_581" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1433240129184_582" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1433240129188_583" attribute="media" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1433240129193_584" attribute="extractDate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1433240129198_585" attribute="extractday" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1433240129203_586" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1433240129206_587" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1433240129210_588" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_graphnbproblemspermission" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="applicationDetail_graphnbproblemspermission" notes="">
+	<ViewParam name="permissiontype" displayname="permissiontype"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewComputedAttribute name="label" displayname="label" type="String" expression="dataset.code.get()+(dataset.displayname.get()!=null?&apos; - &apos;+dataset.displayname.get():&apos;&apos;)"/>
+	<ViewSort name="sort" attribute1="A1383239638809_16486" direction1="DESC"/>
+	<ViewAttribute name="A1383239489546_16468" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383239490218_16469" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1383239547805_16476" attribute="permissiontype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1367576338422_0" reference="permissiontype" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1367574219387_23" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="1383239557679_16479" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1367574251067_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1383239593625_16480" kind="inner" identitysecure="false" join="controlrootcause">
+		<ViewJoin name="J1383239598106_16481" kind="inner" identitysecure="false" join="controldiscrepancy">
+			<ViewJoin name="J1383239602562_16482" kind="inner" identitysecure="false" join="controllog">
+				<ViewAttribute name="A1383239615858_16483" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1383239618089_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="1"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+				<ViewAttribute name="A1383239638809_16486" attribute="controlcode" alias="nbresult" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

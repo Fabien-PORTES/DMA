@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_detailShare_uid" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="br_detailShare_uid" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1435315294059_521" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435315304668_523" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1436434108382_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1435315305530_524" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435315306279_525" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435315307008_526" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1435315310785_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1435315325524_528" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435315326088_529" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435315327315_530" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1444122189649_8216" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="applicationinfo">
+		<ViewAttribute name="A1444122195091_8218" attribute="sensitivityreason" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122195091_8219" attribute="sensitivitylevel" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122195091_8220" attribute="description" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122195091_8221" attribute="category" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122195091_8222" attribute="sensitivityreasonorigin" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122195091_8223" attribute="descriptionorigin" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122195091_8224" attribute="categoryorigin" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

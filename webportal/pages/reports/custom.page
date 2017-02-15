@@ -1,0 +1,25 @@
+/* DECLARE YOUR CUSTOMS REPORTS HERE
+  
+ 	mycustomreportNLS = NLS {
+  		mycustomreport.title [en "Title" fr "Titre"]
+  	}
+  
+  	// Example of a custom report that will be displayed in the identity detail page
+  	// Using tags identity byuid and review
+  
+ 	mycustomreport = Report {
+  		report: "/reports/custom/mycustomreport.rptdesign" with uid to reportParamUid
+  		feature: mycustomreport_feature
+  		title: $mycustomreportNLS.mycustomreport.title
+  		tags:"identity" priority 300, "byuid", "review"
+  		icon: "16/details/review_16.png" large-icon: "48/details/review_48.png"
+  
+  		uid = Parameter {
+  			mandatory: True
+  			hidden: True
+  			type: String
+  		}
+  	}
+  
+  
+ */

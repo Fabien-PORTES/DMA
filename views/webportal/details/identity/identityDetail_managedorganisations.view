@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityDetail_managedorganisations" prefix="organisation_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="organisation" displayname="br_identityDetail_managedorganisations" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378209921133_1326" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378209966641_1328" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378210046678_1333" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378210048412_1334" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378211129954_1339" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="manager">
+		<ViewAttribute name="1378211135992_1342" attribute="expertisedomaindisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1378211136008_1343" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378209910259_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

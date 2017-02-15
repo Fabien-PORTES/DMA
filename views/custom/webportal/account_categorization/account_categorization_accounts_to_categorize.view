@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="account_categorization_accounts_to_categorize" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="account_categorization_accounts_to_categorize" notes="" begindate="" enddate="">
+	<ViewParam name="account_uids" displayname="account_uids"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1486390283601_1223" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486390293393_0" reference="account_uids" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486390326577_1225" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486390332448_1226" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486390369963_1228" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486461175056_1469" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1486992001856_422" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1486992009170_423" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486992012610_424" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1486992023594_425" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486992030714_426" attribute="username" removedfromprojection="false" globalfilter="false"/>
+</View>

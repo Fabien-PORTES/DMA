@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissionDetail_nbaccounts" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="br_permissionDetail_nbaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1376990138894_821" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1376990238533_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1376990152359_840" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewAttribute name="A1376990154138_841" attribute="code" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewAttribute name="A1376990156010_842" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewAttribute name="A1376990158757_843" attribute="permissiontype" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewJoin name="J1376990168882_844" kind="left" identitysecure="false" join="accountright">
+		<ViewAttribute name="A1376990213037_860" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1377696375404_726" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377696270355_0" operation="isFalse" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1377696278483_1" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

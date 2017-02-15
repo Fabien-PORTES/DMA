@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="acls_account_only" prefix="element_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="acls_account_only" notes="">
+	<ViewParam name="uids" displayname="uids"/>
+	<ViewComputedAttribute name="uid" displayname="uid" type="String" expression="dataset.account_uid.get()"/>
+	<ViewComputedAttribute name="BASIC_READ" displayname="BASIC_READ" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().like(&apos;R*G*F*E*&apos;)?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_EXTENDED_ATTRIBUTES" displayname="WRITE_EXTENDED_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;M&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_CONTROL" displayname="READ_CONTROL" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;G&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="BASIC_WRITE" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().like(&apos;*W*GA*M*L&apos;)?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_EXTENDED_ATTRIBUTES" displayname="READ_EXTENDED_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;F&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="BASIC_FULLCONTROL" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().like(&apos;RWXGA*PFOEMDL&apos;)?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="display" displayname="display" type="String" expression="dataset.account_login.get()"/>
+	<ViewComputedAttribute name="EXECUTE" displayname="EXECUTE" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;X&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="code" displayname="code" type="String" expression="dataset.account_identifier.get()"/>
+	<ViewComputedAttribute name="BASIC_MODIFY" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().like(&apos;RWXGA*F*EMDL&apos;)?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_DAC" displayname="WRITE_DAC" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;P&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_ATTRIBUTES" displayname="WRITE_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;L&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="DELETE" displayname="DELETE" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;D&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_ATTRIBUTES" displayname="READ_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;E&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="action" displayname="action" type="String" expression="dataset.accountacl_action.get()"/>
+	<ViewComputedAttribute name="READ_DATA" displayname="READ_DATA" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;R&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="APPEND_DATA" displayname="APPEND_DATA" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;A&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_DATA" displayname="WRITE_DATA" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;W&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="key" displayname="key" type="String" expression="dataset.account_uid.get()+dataset.accountacl_action.get()"/>
+	<ViewComputedAttribute name="BASIC_READEXECUTE" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().like(&apos;R*XG*F*E*&apos;)?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_OWNER" displayname="WRITE_OWNER" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;O&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="DELETE_CHILD" displayname="DELETE_CHILD" type="String" expression="!dataset.isEmpty(&apos;accountacl_action&apos;) &amp;&amp; dataset.accountacl_action.get().indexOf(&apos;S&apos;)!=-1?dataset.accountacl_negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewSort name="sort" attribute1="A1443455233152_991" attribute2="A1443455432899_1003"/>
+	<ViewAttribute name="A1443455233152_991" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1443455251750_0" reference="uids" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1443455369310_993" prefix="accountacl_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclaccount">
+		<ViewAttribute name="A1443455391504_994" attribute="action" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443455392200_995" attribute="negative" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443455393092_996" attribute="order" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1443455394936_997" prefix="account_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+			<ViewAttribute name="A1443455432899_1003" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1443529865802_1434" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1443529995590_1445" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1443692616930_410" prefix="parent_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentpermission">
+		<ViewAttribute name="A1443692624147_411" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

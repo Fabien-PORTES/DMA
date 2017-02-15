@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Silo PUBLIC "-//Brainwave//DTD Silo 1.0//EN" "urn:brainwave:igrc:dtds/silo.dtd">
+<Silo version="1" name="Identity" displayname="Identity silo" type="hr" parentsilo="Organization" collector="/collectors/identity _ ALIR/000_Identities_LOADALL.collector">
+	<Repository name="repository" repositorycode="ALIR" repositorydisplayname="ALIR"/>
+	<Validation name="validation">
+	</Validation>
+</Silo>

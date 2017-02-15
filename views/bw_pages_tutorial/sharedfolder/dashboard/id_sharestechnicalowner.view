@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="id_sharestechnicalowner" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="id_sharestechnicalowner" notes="">
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewParam name="totalshares" displayname="totalshares" type="Integer"/>
+	<ViewParam name="sensitivity" displayname="sensitivity"/>
+	<ViewComputedAttribute name="nbwithout" displayname="nbwithout" type="Integer" expression="param.totalshares.get()-dataset.nbshares.get()"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1438866864397_941" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438866867257_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1438866968745_961" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438866971360_0" reference="shares" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1438867463249_1055" attribute="uid" alias="nbshares" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1438867888691_1075" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="management">
+		<ViewAttribute name="1438868223658_1087" attribute="expertisedomaincode" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1435681632166_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="technicalowner"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1444122127213_8184" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="applicationinfo">
+		<ViewAttribute name="A1444122133975_8185" attribute="sensitivitylevel" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1444122136823_0" reference="sensitivity" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

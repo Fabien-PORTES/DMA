@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343581044073" title="CUA: Field Selection Groups " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A578469917926341869" attribute="borobject" column="BOROBJECT" type="String" multivalued="false" persistent="false" description="Object Type"/>
+		<Attribute name="A3681290321457317738" attribute="log_field" column="LOG_FIELD" type="String" multivalued="false" persistent="false" description="Logical field ID for ALE distribution field selection"/>
+		<Attribute name="A4976751601109578551" attribute="fieldgroup" column="FIELDGROUP" type="String" multivalued="false" persistent="false" description="Group assignment field selection"/>
+		<Attribute name="A8470115846470444631" attribute="fieldnr" column="FIELDNR" type="Number" multivalued="false" persistent="false" description="Natural Number"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343581077967" attribute="borobject" checktype="mandatory"/>
+	</Checks>
+</Discovery>

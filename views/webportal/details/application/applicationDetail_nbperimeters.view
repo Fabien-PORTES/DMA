@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbperimeters" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="applicationDetail_nbperimeters">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1366623503563_223" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1366623512463_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1366623525553_225" kind="inner" identitysecure="false" join="permission">
+		<ViewJoin name="J1366623547530_226" kind="inner" identitysecure="false" join="right">
+			<ViewJoin name="J1366623553528_227" kind="inner" identitysecure="false" join="account">
+				<ViewAttribute name="1366623562634_229" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1366622114598_0" operation="isFalse" ignoreifempty="false"/>
+					<ViewAttributeFilter name="F1366622118370_1" operation="isNull" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+			<ViewAttribute name="A1366623648498_246" attribute="perimetercode" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

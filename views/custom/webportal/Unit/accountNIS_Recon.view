@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="accountNIS_Recon" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="accountNIS_Recon" notes="">
+	<ViewComputedAttribute name="test" displayname="test" type="String" expression="dataset.description.get().split(&apos; &apos;)"/>
+	<ViewComputedAttribute name="rec_type" displayname="Reconciliation type" type="String" expression="dataset.description.get().substr(0, dataset.description.get().indexOf(&apos; &apos;))"/>
+	<ViewComputedAttribute name="ad0" displayname="First AD param" type="String" expression="dataset.description.get().substr(dataset.description.get().indexOf(&apos; &apos;)+1, dataset.description.get().indexOf(&apos; &apos;, dataset.description.get().indexOf(&apos; &apos;)+1))"/>
+	<ViewSort name="sort" attribute1="A1486378413444_77819"/>
+	<ViewJoin name="J1486378401366_77811" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="A1486378413444_77819" attribute="description" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1486478566685_0" operation="isNotNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1486478510966_664" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

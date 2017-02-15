@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sod_topcontrols_fltorg_noorg" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="SOD on Identities : Controls who appears the most" notes="">
+	<ViewSort name="sort" attribute1="A1324371861173_36433" direction1="DESC"/>
+	<ViewAttribute name="A1324371861173_36433" attribute="recorduid" alias="nbdefect" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewCriteria name="I1336750060161_573" criteria="noOrganisation">
+	</ViewCriteria>
+	<ViewJoin name="J1399035236236_568" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1399035242832_569" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1399035250038_570" attribute="controltagtype" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1399035254081_571" attribute="controlcode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1399035255285_572" attribute="controldisplayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1399035257024_573" attribute="controltype" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1399035261897_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="6"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="A1399035258557_574" attribute="controlnotes" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

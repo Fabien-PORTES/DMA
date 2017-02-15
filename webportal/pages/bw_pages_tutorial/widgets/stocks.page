@@ -1,0 +1,77 @@
+
+stocks = Page {
+	title: "Stocks"
+	
+	dock-left: Dock {
+		collapsible: True
+		
+		ParametersEdition {
+			allow-reset: True
+			label-position: Top
+			parameters: stockparam
+			
+		}
+	}
+	
+	stockparam = Parameter {
+		type: String
+		mandatory: False
+		multivalued: True
+		label: "Stocks"
+		constraint: Lookup {
+			data: all_stocks
+			text: Current name
+			value: Current code
+		} 
+	}
+
+	all_stocks = Dataset {
+		values: [
+			(code -> "YHOO", name -> "Yahoo"),
+			(code -> "OPWR", name -> "Opower"),
+			(code -> "ORCL", name -> "Oracle"),
+			(code -> "FDO", name -> "Family Dollar Stores"),
+			(code -> "FEI", name -> "FEI Company"),
+			(code -> "UBS", name -> "UBS"),
+			(code -> "UBP", name -> "UBP"),
+			(code -> "PAM", name -> "Pampa Energia S.A."),
+			(code -> "PAQ", name -> "PAQ International"),
+			(code -> "PBY", name -> "The Pep Boys"),
+			(code -> "CBS", name -> "CBS"),
+			(code -> "CCE", name -> "Coca-Cola Enterprises"),
+			(code -> "IBM", name -> "IBM")
+		]
+	}
+	
+	stocklist = Dataset {
+		columns: stockparam
+	}
+	
+	Tiles {
+		columns: 4
+		tile-height: 150
+		TileGroup {
+			iterate-on: stocklist
+			initial-sort: stockparam ascending
+			Tile {
+				Group {
+					// yahoo stock chart 
+					// http://ichart.yahoo.com/t?s=MYSTOCKCODE
+					// t for intraday
+					// v for 5 days
+
+					compact: True
+					title: Current stockparam
+					//OpenURL{text: "Const "url: Concat("http://ichart.yahoo.com/v?s=",Current stockparam) }
+					Browser {	
+						label: Label {break: True}
+						layout: Layout {grab: horizontal True vertical True}			
+						url: "http://ichart.yahoo.com/v"  with Current stockparam to s
+					}
+				}
+			}
+		}
+	
+	}
+
+}

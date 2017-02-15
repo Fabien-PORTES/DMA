@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1342904173556" title="Assignment of roles to users " description="relation users &lt;----&gt; Roles ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A1110853647636993323" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client ID of Current User"/>
+		<Attribute name="A981013974951299102" attribute="agr_name" column="AGR_NAME" type="String" multivalued="false" persistent="false" description="Role Name"/>
+		<Attribute name="A443349863281809064" attribute="uname" column="UNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A1584800934250158765" attribute="from_dat" column="FROM_DAT" type="Date" multivalued="false" persistent="false" description="Date of validity (start date)"/>
+		<Attribute name="A2692611854720433040" attribute="to_dat" column="TO_DAT" type="Date" multivalued="false" persistent="false" description="Date of validity (end date)"/>
+		<Attribute name="A668023696101578029" attribute="exclude" column="EXCLUDE" type="String" multivalued="false" persistent="false" description="Exclusive"/>
+		<Attribute name="A9145626677587456334" attribute="change_dat" column="CHANGE_DAT" type="Date" multivalued="false" persistent="false" description="Date of menu generation"/>
+		<Attribute name="A7587076265147359235" attribute="change_tim" column="CHANGE_TIM" type="String" multivalued="false" persistent="false" description="Time when the menu was generated last"/>
+		<Attribute name="A2949004332013336624" attribute="change_tst" column="CHANGE_TST" type="String" multivalued="false" persistent="false" description="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+		<Attribute name="A7144453573470151712" attribute="org_flag" column="ORG_FLAG" type="Boolean" multivalued="false" persistent="false" description="Flag: Assignment Comes From HR Organization Management"/>
+		<Attribute name="A5602463523747379666" attribute="col_flag" column="COL_FLAG" type="Boolean" multivalued="false" persistent="false" description="Flag: Assignment from composite role"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="dd.MM.yyyy" booleanvalues="X"/>
+	<Checks>
+		<Check name="U1342904217517" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1342904402190" action="default" attribute="org_flag" newvalue="false"/>
+		<Action name="U1342904408680" action="default" attribute="col_flag" newvalue="false"/>
+	</Actions>
+</Discovery>

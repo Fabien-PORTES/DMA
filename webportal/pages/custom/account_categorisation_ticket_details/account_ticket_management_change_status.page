@@ -1,0 +1,56 @@
+/* Import other pages here */
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/resources/mappings.page"
+/* Nationalized labels here */
+account_ticket_management_change_statusNLS = NLS {
+	title  [en "Change ticket(s) status" fr "Change ticket(s) status"]
+	flash	[en "Change ticket(s) status submited" fr "Change ticket(s) status submited"]
+	status_closed [en "CLOSED" fr "CLOSED"]
+	status_closed_label [en "Change to \"closed\"" fr "Change to \"closed\""]
+	status_in_progress [en "IN PROGRESS" fr "IN PROGRESS"]
+	status_in_progress_label [en "Change to \"in progress\"" fr "Change to \"in progress\""]
+	status_canceled [en "CANCELED" fr "CANCELED"]
+	status_canceled_label [en "Change to \"canceled\"" fr "Change to \"canceled\""]
+	option_empty [en "" fr ""]
+}
+
+account_ticket_management_change_status = Dialog {
+	title: $account_ticket_management_change_statusNLS.title
+	width: 350
+	height: 150
+
+	buttons: [
+	OkButton {
+		disabled: StringPredicate (selected_status) {
+			when IsEmpty then True
+			otherwise False
+		}
+		actions: Set inselected_tickets to task_account_ticket_management.ticket_review_recorduids,
+		Set selected_status to task_account_ticket_management.ticket_status, 
+		TaskComplete task_account_ticket_management wait,
+		Flash $account_ticket_management_change_statusNLS.flash	}
+	CancelButton
+	]		
+	/* variables here */
+	inselected_tickets = Variable {
+		type: String
+		multivalued: True
+		}
+	selected_status = Variable {
+		type: String
+		multivalued: False
+		}		
+	/* Datasets and records here */
+task_account_ticket_management = TaskRecord ( create "account_ticket_management_campaign" )		
+	/* dialog page content */
+Combo {
+	variable: selected_status
+	options: Static {
+			Option {text: Transform $account_ticket_management_change_statusNLS.option_empty using optionStringMapping  value:$account_categorizationNLS.option_empty}
+			Option {value: $account_ticket_management_change_statusNLS.status_in_progress text:$account_ticket_management_change_statusNLS.status_in_progress_label}
+			Option {value: $account_ticket_management_change_statusNLS.status_closed text:$account_ticket_management_change_statusNLS.status_closed_label}
+			Option {value: $account_ticket_management_change_statusNLS.status_canceled text:$account_ticket_management_change_statusNLS.status_canceled_label}
+		}
+	allow-none: False	
+	}
+}

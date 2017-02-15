@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_physicalaccessDetail_uid" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_physicalaccessDetail_uid">
+	<ViewParam name="recorduid" displayname="permision record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1306930384003_20" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1306930485510_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1306930384003_21" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

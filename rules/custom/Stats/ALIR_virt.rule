@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="ALIR_virt" operator="and" query="identity" displayname="ALIR_virt" version="2">
+	<RequestCriteria name="C1479391887221_833" criteria="ltDeparturePeriod">
+		<RequestCriteriaParam name="departureDatePeriodParam" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestGroup name="G1479391945357_839" operator="and" inverse="true">
+		<RequestJoin name="J1479391924786_837" operator="and" join="accountreconciliation">
+			<RequestJoin name="J1479391933467_838" operator="and" join="repository">
+				<RequestCriteria name="C1479391964010_842" criteria="eqRepositoryType">
+					<RequestCriteriaParam name="repositoryTypeParam" ignoreifempty="false">
+						<Value name="0" data="AD"/>
+					</RequestCriteriaParam>
+				</RequestCriteria>
+			</RequestJoin>
+		</RequestJoin>
+	</RequestGroup>
+</Request>

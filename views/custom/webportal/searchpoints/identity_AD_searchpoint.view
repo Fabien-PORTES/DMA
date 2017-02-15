@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identity_AD_searchpoint" errorifempty="false" distinct="true" identitysecure="true" applicationsecure="false" repositorysecure="false" searchpoint="true" concept="identity" displayname="Identity with search point" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1423221415225_481"/>
+	<ViewAttribute name="A1423132227883_686" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423133544251_744" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1440061867186_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423221415225_481" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423221417753_482" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423221420961_483" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423221427264_484" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1423232527977_733" prefix="repository_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1423232548018_735" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1423232545561_734" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1423233266690_736" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233289946_740" attribute="phone" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233314242_744" attribute="active" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423233316561_745" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485271978743_1528" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485272209447_1531" attribute="custom11" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485272222671_1532" attribute="custom13" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485272234735_1533" attribute="custom12" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485272241167_1534" attribute="custom15" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485790261920_885" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1485790267463_0" operation="in" ignoreifempty="false">
+			<Value name="0" data="EU"/>
+			<Value name="1" data="EU-V"/>
+			<Value name="2" data="NA"/>
+			<Value name="3" data="NA-V"/>
+			<Value name="4" data="AS"/>
+			<Value name="5" data="AS-V"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

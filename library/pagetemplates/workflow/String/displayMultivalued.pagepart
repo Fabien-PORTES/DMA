@@ -1,0 +1,5 @@
+Text {
+	label: <template:variablelabel/>
+	value: Current displayname
+	iterate-on: <template:variabledataset/>
+}

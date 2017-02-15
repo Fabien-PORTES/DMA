@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="021_NIS_A350VPM_STATIC" scriptfile="/collectors/NIS/global.javascript" name="P1475224617048_19" startingpoint="C1475224623988">
+		<Component name="C1475224623988" type="library/components/start.component" x="282" y="60" w="200" h="50" title="A350VPM-V"/>
+		<Component name="C1475224649710" type="changefilter" x="280" y="168" w="200" h="64" title="Add repository">
+			<Actions>
+				<Action name="U1475224703654" action="add" attribute="_REPOSITORY" type="String" multivalued="false" newvalue="A350VPM-V" errorexist="false"/>
+				<Action name="U1475224738965" action="add" attribute="_CUSTOM_TYPE" type="String" multivalued="false" newvalue="NIS" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1475224661486" source="C1475224623988" target="C1475224649710" priority="1"/>
+		<Component name="C1475224672903" type="repository" x="282" y="287" w="200" h="50" title="Create repository">
+			<Media type="A" code="_REPOSITORY" label="_REPOSITORY" repositorytype="_CUSTOM_TYPE"/>
+		</Component>
+		<Link name="L1475224676999" source="C1475224649710" target="C1475224672903" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+		<Variables>
+		</Variables>
+	</Configuration>
+</Provisioning>

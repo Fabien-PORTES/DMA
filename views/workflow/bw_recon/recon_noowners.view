@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_recon_noowners" prefix="acc_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="Reconciliation : no owner codes" notes="">
+	<ViewParam name="repouid" displayname="Repository Uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1423064776657_1277" prefix="repo_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1423064791244_1278" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1423064793318_0" reference="repouid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1423064800418_1280" prefix="recon_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="1462296973460_3093" attribute="noownercode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1462209109483_2539" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+			<ViewAttribute name="1462296973461_3094" attribute="uid" operator="or" removedfromprojection="false" globalfilter="true">
+				<ViewAttributeFilter name="F1462296956624_0" operation="isNull" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

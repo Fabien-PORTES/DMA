@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_assetrule" distinct="false" concept="asset" displayname="Assets corresponding to a given rule" notes="">
+	<ViewParam name="rulename" displayname="Rule name"/>
+	<ViewSort name="sort" attribute1="A1300959337971_96" attribute2="A1300959337971_97"/>
+	<ViewAttribute name="A1300959337970_94" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337971_95" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337971_96" attribute="code" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337971_97" attribute="displayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337971_98" attribute="categoryrecorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337971_99" attribute="categoryuid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337971_100" attribute="categorycode" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337971_101" attribute="categorydisplayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337972_102" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337972_103" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337972_104" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337972_105" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337972_106" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337972_107" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337972_108" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337972_109" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300959337972_110" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1300964613971_490" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1300964620114_491" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1300964622457_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

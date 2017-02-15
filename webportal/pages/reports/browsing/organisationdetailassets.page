@@ -1,0 +1,152 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+reportDetails = NLS {
+	browsing_organisation_detailassets.pagetitle [ en "Associated Assets" fr "Actifs Associés"]
+	browsing_organisation_detailassets.title [ en "List of Assets" fr "Liste des Actifs"]
+	browsing_organisation_detailassets.subtitle [ en "Assets - Organisation <<{0}>>" fr "Actifs - Organisation <<{0}>>"]
+	browsing_organisation_detailassets.columns.asset_code [ en "Key" fr "Clé"]
+	browsing_organisation_detailassets.columns.asset_displayname [en "Name" fr "Nom"]
+	browsing_organisation_detailassets.columns.asset_categorycode [ en "Category Code" fr "Code de la Catégorie"]
+	browsing_organisation_detailassets.columns.asset_categorydisplayname [en "Category" fr "Catégorie"]
+}
+
+browsing_organisation_detailassets = Page {
+
+	title: $reportDetails.browsing_organisation_detailassets.pagetitle
+	tags: "organisation" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: All ( browsing_organisation_detailassets, assets_activate )
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	organisationSearch = SearchDefinition {
+		entity: Organisation
+		simple-mode-rule: br_organisation_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentOrganisation = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	organisationList = Dataset {
+		search: Search {
+			definition: organisationSearch
+			view: br_organisation_searchpoint with nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_organisationDetail with currentOrganisation to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_organisationassets with conceptData.recorduid to recorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: organisationList
+			column: uid
+			selection: currentOrganisation
+			back-link: Activity Organisation Detail with currentOrganisation to paramOrganisationUid , SerializeSearch organisationSearch to organisationSearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_organisation_detailassets.title	
+		}		
+		
+		Text {
+			value: $reportDetails.browsing_organisation_detailassets.subtitle( conceptData.displayname )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			show-filter: True
+			show-count: True
+			
+			Column {
+				column: asset_recorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: asset_uid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: asset_code
+				header: $reportDetails.browsing_organisation_detailassets.columns.asset_code
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: asset_displayname
+				header: $reportDetails.browsing_organisation_detailassets.columns.asset_displayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: asset_categorycode
+				header: $reportDetails.browsing_organisation_detailassets.columns.asset_categorycode
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: asset_categorydisplayname
+				header: $reportDetails.browsing_organisation_detailassets.columns.asset_categorydisplayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+		}
+		
+	}
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition scriptfile="/collectors/ASPIRE/aspire.javascript" label="aspire" name="P1475597072505" startingpoint="C1475597147433">
+		<Component name="C1475597147433" type="discoverysource" x="306" y="14" w="200" h="50" title="aspire">
+			<Discovery file="/discovery/ASPIRE/aspire.discovery"/>
+		</Component>
+		<Component name="C1475595909319_2" type="changefilter" x="310" y="128" w="200" h="64" title="domain">
+			<Actions>
+				<Action name="U1475596084351" action="add" attribute="_OWNER_REF" type="String" multivalued="false" newvalue="owner" errorexist="false"/>
+				<Action name="U1475602364357" action="add" attribute="_APPMANAGER_REF" type="String" multivalued="false" newvalue="applicationmanager" errorexist="false"/>
+				<Action name="U1475602386064" action="add" attribute="_APPMANAGER_DELEGATE_REF" type="String" multivalued="false" newvalue="delegate" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Component name="C1475602499552" type="manager" x="167" y="361" w="200" h="64" title="app manager" managertarget="A">
+			<Application code="application_code"/>
+			<Domain domain="_APPMANAGER_REF"/>
+			<Match>
+				<Attribute name="fullname" attribute="_APPMANAGER_FULLNAME"/>
+				<Attribute name="mail" attribute="appmanager_mail"/>
+				<Attribute name="param1" attribute="appmanager_logon"/>
+				<Attribute name="ruletype" attribute="_REPOSITORY_CODE_"/>
+			</Match>
+			<Manager code="appbusinessowner_logon"/>
+		</Component>
+		<Component name="C1475602501920" type="manager" x="709" y="362" w="200" h="64" title="app manager delegate" managertarget="A">
+			<Application code="application_code"/>
+			<Domain domain="_APPMANAGER_DELEGATE_REF"/>
+			<Match>
+				<Attribute name="fullname" attribute="_DELEGATE_FULLNAME"/>
+				<Attribute name="mail" attribute="appmanagerdelegate_mail"/>
+				<Attribute name="param1" attribute="appmanagerdelegate_logon"/>
+				<Attribute name="ruletype" attribute="_REPOSITORY_CODE_"/>
+			</Match>
+		</Component>
+		<Component name="C1475602516682" type="application" x="308" y="228" w="200" h="50" title="app + owner">
+			<Application key="application_code" type="Profile">
+				<Attribute name="displayname" attribute="applicationname"/>
+				<Attribute name="custom1" attribute="appbusinessowner_logon"/>
+				<Attribute name="custom2" attribute="appbusinessowner_mail"/>
+				<Attribute name="custom3" attribute="appbusinessowner_name"/>
+				<Attribute name="custom4" attribute="appmanager_logon"/>
+				<Attribute name="custom5" attribute="appmanager_mail"/>
+				<Attribute name="custom6" attribute="appmanager_name"/>
+				<Attribute name="custom7" attribute="appmanagerdelegate_logon"/>
+				<Attribute name="custom8" attribute="appmanagerdelegate_mail"/>
+				<Attribute name="custom9" attribute="appmanagerdelegate_name"/>
+			</Application>
+			<Media code="_REPOSITORY_CODE_"/>
+			<Manager domain="_OWNER_REF"/>
+			<Match>
+				<Attribute name="fullname" attribute="_OWNER_FULLNAME"/>
+				<Attribute name="mail" attribute="appbusinessowner_mail"/>
+				<Attribute name="param1" attribute="appbusinessowner_logon"/>
+			</Match>
+		</Component>
+		<Link name="L1475603033099" source="C1475597147433" target="C1475595909319_2" priority="1"/>
+		<Link name="L1475603034178" source="C1475595909319_2" target="C1475602516682" priority="1"/>
+		<Link name="L1475603035531" source="C1475602516682" target="C1475602499552" priority="1" expression="(! dataset.isEmpty(&apos;_APPMANAGER_FULLNAME&apos;)) || (! dataset.isEmpty(&apos;appmanager_mail&apos;)) || (! dataset.isEmpty(&apos;appmanager_logon&apos;))" labelcustom="true" label="If criteras not empty"/>
+		<Link name="L1475603036629" source="C1475602516682" target="C1475602501920" priority="2" expression="(! dataset.isEmpty(&apos;_DELEGATE_FULLNAME&apos;)) || (! dataset.isEmpty(&apos;appmanagerdelegate_mail&apos;)) || (! dataset.isEmpty(&apos;appmanagerdelegate_logon&apos;))" labelcustom="true" label="If criteras not empty"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

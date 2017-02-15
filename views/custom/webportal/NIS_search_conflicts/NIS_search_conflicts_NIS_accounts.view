@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_search_conflicts_NIS_accounts" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="NIS_search_conflicts_NIS_accounts" notes="" begindate="" enddate="">
+	<ViewParam name="uid_number" displayname="uid_number"/>
+	<ViewParam name="uid" displayname="uid">
+		<Value name="0" data="5252"/>
+	</ViewParam>
+	<ViewParam name="GECOS" displayname="GECOS"/>
+	<ViewParam name="repository_uid" displayname="repository_uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1485341371325_418" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1485341512176_0" reference="uid" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1485341376224_419" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1485341523999_0" reference="GECOS" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1485341380140_420" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1485341530967_0" reference="uid_number" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1485341385241_421" prefix="repository_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1485341391702_422" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485350918554_454" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1485350927770_0" reference="repository_uid" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1485341505497_433" attribute="username" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485341508023_434" attribute="mail" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485353224411_472" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+</View>

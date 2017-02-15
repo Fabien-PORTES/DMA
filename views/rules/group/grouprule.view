@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_grouprule" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="group" displayname="br_grouprule" notes="">
+	<ViewParam name="rulename" displayname="rulename"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1455810440719_381" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ruleresult">
+		<ViewAttribute name="A1455810478179_397" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1455810480949_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1455810460929_382" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_383" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_384" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_385" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_386" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_387" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_388" attribute="grouptype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_389" attribute="dynamic" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_390" attribute="filter" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_391" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_392" attribute="creationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_393" attribute="modificationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_394" attribute="modificationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_395" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455810460929_396" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1455873972032_394" prefix="repo_" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1455873996979_395" attribute="code" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1455873998710_396" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1455874002340_397" attribute="type" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

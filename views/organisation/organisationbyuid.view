@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="getorganisation" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="Organisation picker by uid">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1385284515860_3111" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385284515860_3112" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1385284525344_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1385284515860_3113" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385284515860_3114" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385284515860_3115" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385284515860_3116" attribute="organisationtyperecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385284515860_3117" attribute="organisationtypeuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385284515860_3118" attribute="organisationtypecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385284515860_3119" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385284515860_3120" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385284515860_3121" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

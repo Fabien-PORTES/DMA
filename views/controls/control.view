@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_control" errorifempty="false" distinct="true" identitysecure="false" concept="controllogv2" displayname="Control list or picker" notes="">
+	<ViewParam name="controlcode" displayname="control code"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1383234058569_15276" attribute="controlcode" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1383234160712_0" reference="controlcode" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1383234062465_15277" attribute="controlresulttype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234063137_15278" attribute="controltype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234067944_15279" attribute="controlentity" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234068568_15280" attribute="controldisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234081217_15281" attribute="controlnotes" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234085768_15282" attribute="controltagtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234091433_15283" attribute="controltagscope" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234092081_15284" attribute="controltagfamily" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234092921_15285" attribute="controltagapplication" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234100344_15286" attribute="controltagpermission" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234100984_15287" attribute="controltagcustom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234101600_15288" attribute="controltagcustom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234102313_15289" attribute="controltagcustom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234103104_15290" attribute="controltagcustom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234104328_15291" attribute="controltagcustom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234105056_15292" attribute="controltagcustom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234105817_15293" attribute="controltagcustom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234106561_15294" attribute="controltagcustom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383234108529_15295" attribute="controltagcustom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

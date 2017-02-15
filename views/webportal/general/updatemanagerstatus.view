@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_updatemanagerstatus" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketlog" displayname="manager audit trail" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="tickettype" displayname="ticket type">
+		<Value name="0" data="PERMISSIONMANAGER"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1436275017231_540" direction1="DESC"/>
+	<ViewAttribute name="A1436275017231_534" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_536" attribute="tickettype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1436275070688_0" reference="tickettype" operation="eq" ignoreifempty="false">
+			<Value name="0" data=""/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1436275017231_540" attribute="closedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275017231_545" attribute="status" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1436275054365_573" attribute="custom1" alias="entity" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1436275061442_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

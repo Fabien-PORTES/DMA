@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="ActiveNISAccounts_1" operator="and" query="account" executionplan="true" displayname="ActiveNISAccounts" version="20" notes="">
+	<RequestJoin name="J1483454724473_531" operator="and" join="identityreconciliation">
+		<RequestCriteria name="C1483454770424_533" criteria="inCustom">
+			<RequestCriteriaParam name="customNumberParam" ignoreifempty="false">
+				<Value name="0" data="4"/>
+			</RequestCriteriaParam>
+			<RequestCriteriaParam name="customValueParam" ignoreifempty="false">
+				<Value name="0" data="EU"/>
+				<Value name="1" data="EU-V"/>
+				<Value name="2" data="NA"/>
+				<Value name="3" data="NA-V"/>
+				<Value name="4" data="AS"/>
+				<Value name="5" data="AS-V"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+		<RequestCriteria name="C1484565807419_498" criteria="eqCustom">
+			<RequestCriteriaParam name="customNumberParam" ignoreifempty="false">
+				<Value name="0" data="11"/>
+			</RequestCriteriaParam>
+			<RequestCriteriaParam name="customValueParam" ignoreifempty="false">
+				<Value name="0" data="true"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

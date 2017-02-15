@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_organisationsfromtype" operator="and" query="organisation" displayname="Organisations from Type {type}" version="3">
+	<RequestParam name="type" displayname="type" query="organisation" criteria="eqOrgType" criteriaparam="orgTypeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1331844439830_185" criteria="eqOrgType">
+		<RequestCriteriaParam name="orgTypeParam" reference="type" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343249073566" title="Logon Data (Kernel-Side Use) " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A6669863174292234923" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A9221048295092429522" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A9182834804584735032" attribute="bcode" column="BCODE" type="String" multivalued="false" persistent="false" description="Password Hash Key"/>
+		<Attribute name="A5337550164061578576" attribute="gltgv_" column="GLTGV" type="String" multivalued="false" persistent="false" description="User valid from" hidden="true"/>
+		<Attribute name="A6161906675524509987" attribute="gltgb_" column="GLTGB" type="String" multivalued="false" persistent="false" description="User valid to" hidden="true"/>
+		<Attribute name="A3746743594771873490" attribute="ustyp" column="USTYP" type="String" multivalued="false" persistent="false" description="User Type (A = Dialog, B = System User (Internal RFC and Background Processing), C = Communication User (External RFC), L = Reference User, S = Service User)"/>
+		<Attribute name="A1332627118955734174" attribute="class" column="CLASS" type="String" multivalued="false" persistent="false" description="User group in user master maintenance"/>
+		<Attribute name="A5218619288820809930" attribute="locnt" column="LOCNT" type="Number" multivalued="false" persistent="false" description="Users with Incorrect Logon Attempts"/>
+		<Attribute name="A7054820614797548986" attribute="uflag" column="UFLAG" type="String" multivalued="false" persistent="false" description="User Lock Status (0 = User not locked, 32 (Hex 20) = Locked by CUA central administrator, 64 (Hex 40) = Locked by administrator, 128 (Hex 80) = Locked after failed logon)"/>
+		<Attribute name="A5795452767858055086" attribute="accnt" column="ACCNT" type="String" multivalued="false" persistent="false" description="Account ID"/>
+		<Attribute name="A9190388661300279371" attribute="aname" column="ANAME" type="String" multivalued="false" persistent="false" description="Creator of the User Master Record"/>
+		<Attribute name="A5559261257163130517" attribute="erdat_" column="ERDAT" type="String" multivalued="false" persistent="false" description="Creation Date of the User Master Record" hidden="true"/>
+		<Attribute name="A505456639219793611" attribute="trdat_" column="TRDAT" type="String" multivalued="false" persistent="false" description="Last Logon Date" hidden="true"/>
+		<Attribute name="A8624360471791651694" attribute="ltime" column="LTIME" type="String" multivalued="false" persistent="false" description="Last Logon Time"/>
+		<Attribute name="A158150665084174408" attribute="ocod1" column="OCOD1" type="String" multivalued="false" persistent="false" description="Password Hash Key"/>
+		<Attribute name="A733712072511170994" attribute="bcda1_" column="BCDA1" type="String" multivalued="false" persistent="false" description="Date of Last Password Change" hidden="true"/>
+		<Attribute name="A4045438216783946788" attribute="codv1" column="CODV1" type="String" multivalued="false" persistent="false" description="Code Version of Password Hash Algorithm (Old Systems)"/>
+		<Attribute name="A1031284121003495071" attribute="ocod2" column="OCOD2" type="String" multivalued="false" persistent="false" description="Password Hash Key"/>
+		<Attribute name="A8842163328964573989" attribute="bcda2_" column="BCDA2" type="String" multivalued="false" persistent="false" description="Date of Last Password Change" hidden="true"/>
+		<Attribute name="A1389863715055772941" attribute="codv2" column="CODV2" type="String" multivalued="false" persistent="false" description="Code Version of Password Hash Algorithm (Old Systems)"/>
+		<Attribute name="A7878500327029461502" attribute="ocod3" column="OCOD3" type="String" multivalued="false" persistent="false" description="Password Hash Key"/>
+		<Attribute name="A7038265523264160016" attribute="bcda3_" column="BCDA3" type="String" multivalued="false" persistent="false" description="Date of Last Password Change" hidden="true"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="dd.MM.yyyy" booleanvalues="X"/>
+	<Checks>
+		<Check name="U1343249522677" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1343250363341" action="replace" attribute="bcda3_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343250391461" action="replace" attribute="bcda2_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343250407761" action="replace" attribute="bcda1_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343250470114" action="replace" attribute="gltgv_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343250497976" action="replace" attribute="gltgb_" oldvalue="00.00.0000" newvalue="31.12.2099"/>
+		<Action name="U1343250901634" action="replace" attribute="trdat_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343250848812" action="add" attribute="lastlogonstr" newvalue="{dataset.trdat_.get()} {dataset.ltime.get()}" hidden="true"/>
+		<Action name="U1343251014951" action="convertdate" oldname="lastlogonstr" attribute="lastlogon" type="Date" newvalue="dd.MM.yyyy HH:mm:ss" oldvalue="02.01.1900 00:00:00" description="Last logon date (as deducted from TRDAT and LTIME)"/>
+		<Action name="U1343251117406" action="replace" attribute="erdat_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343251227677" action="convertdate" oldname="gltgv_" attribute="gltgv" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="User valid from"/>
+		<Action name="U1343251277828" action="convertdate" oldname="gltgb_" attribute="gltgb" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="User valid to"/>
+		<Action name="U1343251335159" action="convertdate" oldname="erdat_" attribute="erdat" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="Creation Date of the User Master Record"/>
+		<Action name="U1343251365516" action="convertdate" oldname="trdat_" attribute="trdat" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="Last Logon Date"/>
+		<Action name="U1343251403767" action="convertdate" oldname="bcda1_" attribute="bcda1" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="Date of Last Password Change"/>
+		<Action name="U1343251436731" action="convertdate" oldname="bcda2_" attribute="bcda2" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="Date of Last Password Change"/>
+		<Action name="U1343251454266" action="convertdate" oldname="bcda3_" attribute="bcda3" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="Date of Last Password Change"/>
+		<Action name="U1343251565437" action="booleanvalue" oldname="uflag" attribute="locked" type="Boolean" oldvalue="0" newvalue="false" description="Account locked (as deducted from UFLAG)"/>
+		<Action name="U1343251750447" action="add" attribute="disabled" type="Boolean" newvalue="{dataset.gltgv.get().getTime()&lt;Date.now &amp;&amp;  dataset.gltgb.get().getTime()&gt;Date.now?false:true}" description="Account disabled (as deducted from the GLTGV and GLTGB dates)"/>
+		<Action name="U1343252289360" action="add" attribute="service" type="Boolean" newvalue="{dataset.ustyp.get()==&apos;A&apos; || dataset.ustyp.get()==&apos;C&apos;?false:true}" description="Service account, as deducted from the USTYP value (only types A and C are considered as User accounts)"/>
+	</Actions>
+</Discovery>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_noownercodes" errorifempty="false" distinct="true" identitysecure="false" concept="reconciliation" displayname="br_noownercodes">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1379663943775_556" attribute="noownercode" operator="and" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1347897775684_0" operation="isNotNull" ignoreifempty="false"/>
+		<ViewAttributeFilter name="F1347897782684_1" operation="ne" ignoreifempty="false">
+			<Value name="0" data="service"/>
+		</ViewAttributeFilter>
+		<ViewAttributeFilter name="F1347897797027_2" operation="ne" ignoreifempty="false">
+			<Value name="0" data="leave"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

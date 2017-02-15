@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="acls_closestparent_uid" prefix="element_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="acls_closestparent_uid" notes="">
+	<ViewParam name="elementuid" displayname="elementuid"/>
+	<ViewComputedAttribute name="acls_total" type="Integer" expression="dataset.acls_account.get() + dataset.acls_group.get()"/>
+	<ViewSort name="sort" attribute1="A1443516643002_1254" direction1="DESC"/>
+	<ViewJoin name="J1443516623487_1250" prefix="parent_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="uppermission">
+		<ViewAttribute name="A1443516637268_1251" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443516637853_1252" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443516638552_1253" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443516643002_1254" attribute="folderdepth" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443516649018_1255" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1443444765384_779" prefix="account_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclaccount">
+			<ViewAttribute name="1443516730288_1272" attribute="uid" alias="acls_account" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1443444766056_780" prefix="group_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclgroup">
+			<ViewAttribute name="1443516734034_1275" attribute="uid" alias="acls_group" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1443776401727_797" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1443776405114_0" reference="elementuid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

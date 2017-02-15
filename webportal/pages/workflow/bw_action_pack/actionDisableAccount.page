@@ -1,0 +1,104 @@
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+
+actionDisableAccountNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel current edition ?" fr "Annuler l'édition en cours ?"]
+	complete.buttontext [en "Task completed" fr "Tâche terminée"]
+	complete.confirm [en "Complete current task ?" fr "Terminer la tâche en cours ?"]
+	complete.flashmessage [en "Task completed" fr "Tâche terminée"]
+	title [en "Disable account" fr "Disable account"]
+	subtitle1 [en "Please disable the following account" fr "Please disable the following account"]
+	grouptitle1 [en "Account informations" fr "Account informations"]
+	_accountLogin [en "accountLogin" fr "accountLogin"]
+	_accountIdentifier [en "accountIdentifier" fr "accountIdentifier"]
+	_accountUsername [en "accountUsername" fr "accountUsername"]
+	_accountRepository [en "accountRepository" fr "accountRepository"]
+	_result [en "Action status" fr "Action status"]
+	result.value0 [en "ok" fr "ok"]
+	result.value1 [en "error" fr "error"]
+	_resultdescription [en "Additional action description that you want to push  back to the requester" fr "Additional action description that you want to push  back to the requester"]
+}
+
+
+actionDisableAccount = Page {
+	title: $actionDisableAccountNLS.title
+	mixins: workflowDefaultMixin
+	
+	taskId = Parameter {
+		type: String
+		mandatory: True
+	}
+	
+	task = TaskRecord(taskId)
+	
+	
+	Header {
+		mixins: workflowTitleMixin
+		value: $actionDisableAccountNLS.subtitle1
+	}
+	Group {
+		title: $actionDisableAccountNLS.grouptitle1
+		Text {
+			label: $actionDisableAccountNLS._accountLogin
+			value: task.accountLogin
+		}
+		Text {
+			label: $actionDisableAccountNLS._accountIdentifier
+			value: task.accountIdentifier
+		}
+		Text {
+			label: $actionDisableAccountNLS._accountUsername
+			value: task.accountUsername
+		}
+		Text {
+			label: $actionDisableAccountNLS._accountRepository
+			value: task.accountRepository
+		}
+	}
+	Combo {
+		label: Concat($actionDisableAccountNLS._result,"*")
+		variable: task.result
+		options: Static {
+			Option {
+				value: "ok"
+				text: $actionDisableAccountNLS.result.value0
+			}
+			Option {
+				value: "error"
+				text: $actionDisableAccountNLS.result.value1
+			}
+		}
+	}
+	Edit {
+		label: $actionDisableAccountNLS._resultdescription
+		variable: task.resultdescription
+	}
+	
+	Header {
+		value: $actionDisableAccountNLS.mandatoryfields
+	}
+	
+	Group {
+		title: $actionDisableAccountNLS.actionsection
+		mixins: workflowActionsMixin
+		
+		ButtonGroup {
+			Button { 
+				text: $actionDisableAccountNLS.cancel.buttontext
+				actions: Confirm $actionDisableAccountNLS.cancel.confirm, TaskCancel task, GoTo HomePage
+			}
+			Button { 
+				disabled: StringPredicate (task.result) { when IsEmpty then True }
+				
+				text: $actionDisableAccountNLS.complete.buttontext
+				actions:  Confirm $actionDisableAccountNLS.complete.confirm, TaskComplete task, Flash Information $actionDisableAccountNLS.complete.flashmessage, GoTo HomePage
+			}
+		}
+	}
+}
+

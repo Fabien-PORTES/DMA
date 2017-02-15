@@ -1,0 +1,7 @@
+Column {
+	column: <template:tablecolumnattribute/>
+	header: $<template:pageNLSname/>.<template:tablenlsname/>.<template:tablecolumnnlsname/>
+	sortable: True
+	filterable: True
+	width: <template:tablecolumnwidth/>%
+}

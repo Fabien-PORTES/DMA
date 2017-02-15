@@ -1,0 +1,8 @@
+MultiEdit {
+	label: <template:variablelabel/>
+	hide-remove: True
+	Element {
+		variable: <template:taskvariablename/>
+		filterable: True
+	}
+}

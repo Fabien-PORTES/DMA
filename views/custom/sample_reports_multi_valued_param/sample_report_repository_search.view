@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sample_report_repository_search" prefix="repository_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="repository" displayname="sample_report_repository_search">
+	<ViewAttribute name="A1479727215533_424" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479727218937_425" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479727220797_426" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479727227919_427" attribute="type" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1479727229522_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="A"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1479742528164_396" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+</View>

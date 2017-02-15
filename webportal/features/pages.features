@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Features PUBLIC "-//Brainwave//DTD Features 1.0//EN" "urn:brainwave:igrc:dtds/features.dtd">
+<Features version="1" name="pages" description="Pages features, mostly related to navigation" include="true">
+	<Feature name="identitysearch_analytics" description="Show the analytics panel in the search view">
+		<FeatureSet name="I1461662021624"/>
+	</Feature>
+	<Feature name="accountsearch_analytics" description="Show the analytics panel in the search view">
+		<FeatureSet name="I1461662021624"/>
+	</Feature>
+	<Feature name="applicationsearch_analytics" description="Show the analytics panel in the search view">
+		<FeatureSet name="I1461662021624"/>
+	</Feature>
+	<Feature name="groupsearch_analytics" description="Show the analytics panel in the search view">
+		<FeatureSet name="I1461662021624"/>
+	</Feature>
+	<Feature name="organisationsearch_analytics" description="Show the analytics panel in the search view">
+		<FeatureSet name="I1461662021624"/>
+	</Feature>
+	<Feature name="permissionsearch_analytics" description="Show the analytics panel in the search view">
+		<FeatureSet name="I1461662021624"/>
+	</Feature>
+	<Feature name="repositorysearch_analytics" description="Show the analytics panel in the search view">
+		<FeatureSet name="I1461662021624"/>
+	</Feature>
+	<Feature name="permissiondetails_updatemanager" description="Can update the manager of a given permission in the permission details page (add, modify, delete)">
+		<FeatureSet name="I1460990255554"/>
+	</Feature>
+	<Feature name="applicationdetails_updatemanager" description="Can update the manager of a given application in the application details page (add, modify, delete)">
+		<FeatureSet name="I1460990255554"/>
+	</Feature>
+	<Feature name="groupdetails_updatemanager" description="Can update the manager of a given group in the application details page (add, modify, delete)">
+		<FeatureSet name="I1460990255554"/>
+	</Feature>
+	<Feature name="repositorydetails_updatemanager" description="Can update the manager of a given repository in the repository details page (add, modify, delete)">
+		<FeatureSet name="I1460990255554"/>
+	</Feature>
+	<Feature name="accountdetails_updatemanager" description="Can update the manager of a given account in the repository details page (add, modify, delete)">
+		<FeatureSet name="I1460990255554"/>
+	</Feature>
+	<Feature name="permissiondetails_auditmanager" description="Can see the manager audit trail in the permission details page (add, modify, delete)">
+		<FeatureSet name="I1461662047454"/>
+	</Feature>
+	<Feature name="applicationdetails_auditmanager" description="Can see the manager audit trail in the application details page (add, modify, delete)">
+		<FeatureSet name="I1461662047454"/>
+	</Feature>
+	<Feature name="groupdetails_auditmanager" description="Can see the manager audit trail in the group details page (add, modify, delete)">
+		<FeatureSet name="I1461662047454"/>
+	</Feature>
+	<Feature name="repositorydetails_auditmanager" description="Can see the manager audit trail in the repository details page (add, modify, delete)">
+		<FeatureSet name="I1461662047454"/>
+	</Feature>
+	<Feature name="accountdetails_auditmanager" description="Can see the manager audit trail in the account details page (add, modify, delete)">
+		<FeatureSet name="I1461662047454"/>
+	</Feature>
+	<Feature name="identitydetails_linktomanager" description="Enable an hyperlink to the manager detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="identitydetails_linktoorganisation" description="Enable an hyperlink to the organisation detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="identitydetails_linktoteam" description="Enable an hyperlink to the team list within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="organisationdetails_linktomanager" description="Enable an hyperlink to the manager detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="accountdetails_linktorepository" description="Enable an hyperlink to the repository detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="accountdetails_linktoidentity" description="Enable an hyperlink to the identity detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="accountdetails_linkto_noownermanager" description="Enable an hyperlink to the no owner manager details of the account within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="applicationdetails_linktorepository" description="Enable an hyperlink to the repository detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="applicationdetails_linktobusinessowner" description="Enable an hyperlink to the business owner details within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="applicationdetails_linktotechnicalowner" description="Enable an hyperlink to the technical owner details within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="groupdetails_linktorepository" description="Enable an hyperlink to the repositroy detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="groupdetails_linktobusinessowner" description="Enable an hyperlink to the business owner detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="permissiondetails_linktobusinessowner" description="Enable an hyperlink to the business owner detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="repositorydetails_linktobusinessowner" description="Enable an hyperlink to the business owner detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="repositorydetails_linktotechnicalowner" description="Enable an hyperlink to the technical owner detail within the page">
+		<FeatureSet name="I1461662095246"/>
+	</Feature>
+	<Feature name="permissiondetails_updatemetadata" description="Can update the permission description in the permission details">
+		<FeatureSet name="I1461691630357"/>
+	</Feature>
+	<Feature name="applicationdetails_updatemetadata" description="Can update the application description in the application details">
+		<FeatureSet name="I1461691630357"/>
+	</Feature>
+	<Feature name="projectupdatemanager_page" description="Access to admin page project update manager">
+		<FeatureSet name="I1461691837653"/>
+	</Feature>
+</Features>

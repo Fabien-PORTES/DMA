@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="fileexplorergetgrouproot" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="group" displayname="get group root" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1433517350425_5550" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5551" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1433517362196_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1433517350425_5552" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5553" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5554" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5555" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5556" attribute="grouptype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5557" attribute="dynamic" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5558" attribute="filter" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5559" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5560" attribute="creationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5561" attribute="modificationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5562" attribute="modificationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5563" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517350425_5564" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

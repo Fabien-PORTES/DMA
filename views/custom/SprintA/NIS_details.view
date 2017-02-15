@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_Details" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="NIS_Details">
+	<ViewJoin name="J1485967116298_377" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1485967122413_388" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485967123911_392" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485967241226_583" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1485967127093_397" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967128700_399" attribute="sid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967130073_401" attribute="guid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967131695_403" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967135720_410" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967137248_413" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967138918_414" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967147513_425" attribute="service" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967148823_429" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967158776_446" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967162738_453" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485967166404_464" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486732025115_430" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486732027838_431" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486732029391_432" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486732031171_433" attribute="custom5" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486732033163_434" attribute="custom3" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486732035381_435" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+</View>

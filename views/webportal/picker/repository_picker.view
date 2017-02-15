@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repository_picker" errorifempty="false" distinct="true" identitysecure="false" concept="repository" displayname="Repository picker" notes="">
+	<ViewParam name="paramDisplayname" displayname="paramDisplayname"/>
+	<ViewParam name="paramNotUid" displayname="Repository excluded uid"/>
+	<ViewParam name="paramUid" displayname="Repository uid"/>
+	<ViewParam name="paramCode" displayname="paramCode"/>
+	<ViewSort name="sort" attribute1="A1336068725823_581" attribute2="A1336068725026_580"/>
+	<ViewAttribute name="A1336068723479_578" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336068725026_580" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1376918529180_0" reference="paramCode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1336068725823_581" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1376918575666_0" reference="paramDisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1336068727791_582" attribute="media" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336068729823_583" attribute="extractDate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336068732166_584" attribute="type" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1336069804411_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="A"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1384264661128_897" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1384264668570_0" reference="paramNotUid" operation="notIn" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1384264662759_898" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1384264676101_0" reference="paramUid" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

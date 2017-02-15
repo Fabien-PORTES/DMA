@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1484306908885">
+	<Source file="D:\Users\FPORTES\Documents\DMA\workspace\data_dma\FULL\Extracts_DMA\NIS_NISPlus_LDAP\CAXDOMAIN\CAXDOMAIN.passwd" type="CSV" separator=":" textseparator="&quot;" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A7860986809268124436" attribute="c1" column="1" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1341339222109666503" attribute="c2" column="2" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4612070456653916980" attribute="c3" column="3" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A4355713319667497535" attribute="c4" column="4" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A3977172623381088933" attribute="c5" column="5" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5413969736358057131" attribute="c6" column="6" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A6119352951721347627" attribute="c7" column="7" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+</Discovery>

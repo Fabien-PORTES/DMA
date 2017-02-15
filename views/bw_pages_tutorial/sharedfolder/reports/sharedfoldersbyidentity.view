@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bwfs_sharedfoldersbyidentity" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="shared folders by identity" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewComputedAttribute name="compactaction" displayname="compactaction" type="String" expression="dataset.action.get().indexOf(&apos;RW&apos;)==0?&apos;RW&apos;:dataset.action.get().indexOf(&apos;W&apos;)!=-1?&apos;W&apos;:dataset.action.get().indexOf(&apos;R&apos;)!=-1?&apos;R&apos;:&apos;?&apos;"/>
+	<ViewSort name="sort" attribute1="A1442925878880_345" attribute2="A1442925873933_339"/>
+	<ViewAttribute name="A1442925771194_326" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1442925780733_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1442925791618_329" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountreconciliation">
+		<ViewAttribute name="A1442925799332_330" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1442925806135_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1442925811995_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1442925823061_333" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="right">
+			<ViewJoin name="J1442925826789_334" prefix="permission" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+				<ViewJoin name="J1442925829903_335" prefix="application" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+					<ViewAttribute name="A1442925877454_342" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="A1442925877932_343" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="A1442925878405_344" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="A1442925878880_345" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="A1442925880222_346" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1442925883393_0" operation="eq" ignoreifempty="false">
+							<Value name="0" data="Filesystem"/>
+						</ViewAttributeFilter>
+					</ViewAttribute>
+				</ViewJoin>
+				<ViewAttribute name="A1442925872283_337" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1442925873415_338" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1442925873933_339" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1442925874451_340" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1442925874939_341" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1444066177234_6487" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+					<ViewAttribute name="1444066291231_6865" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1444066182733_0" operation="isTrue" ignoreifempty="false"/>
+					</ViewAttribute>
+				</ViewJoin>
+			</ViewJoin>
+			<ViewAttribute name="A1442925913628_350" attribute="action" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="account_noexppass" prefix="share_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="account_noexppass" notes="">
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewParam name="managed" displayname="managed" type="Boolean"/>
+	<ViewParam name="filetype" displayname="filetype"/>
+	<ViewParam name="sensitivity" displayname="sensitivity"/>
+	<ViewParam name="rightfilter" displayname="rightfilter"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1439202172880_514" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438856336628_0" reference="shares" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="1439202172881_515" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438851865107_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1439199661707_391" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="1439202188298_530" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438852604416_0" reference="filetype" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewJoin name="J1439201866395_481" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="directpermright">
+			<ViewAttribute name="1439202188298_531" attribute="action" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1439201891808_0" reference="rightfilter" operation="ilike" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewJoin name="J1439201904016_484" prefix="account_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+				<ViewAttribute name="1439202188299_532" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1438865397189_0" operation="isNull" ignoreifempty="false"/>
+					<ViewAttributeFilter name="F1438865400393_1" operation="isFalse" ignoreifempty="false"/>
+				</ViewAttribute>
+				<ViewAttribute name="A1439202469275_537" attribute="nextpwdchangedate" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1439202476156_0" operation="isNull" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="1439211697224_1087" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1444063219197_1157" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+			<ViewAttribute name="1444064903059_3649" attribute="sensitivitylevel" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063325208_0" reference="sensitivity" operation="in" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="1444064903059_3650" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063353561_0" reference="managed" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

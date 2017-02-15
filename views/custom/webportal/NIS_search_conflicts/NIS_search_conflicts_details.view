@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_search_conflicts_details" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="NIS_search_conflicts_details">
+	<ViewJoin name="J1485339972414_401" prefix="repository_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1485339977322_402" attribute="repositorytype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1485339979497_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="NIS"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1485339996223_404" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1485340001511_405" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485340005914_406" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485340044207_407" attribute="identifier" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485340058653_408" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+</View>

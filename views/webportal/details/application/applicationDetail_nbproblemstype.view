@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbproblemstype" errorifempty="false" distinct="true" identitysecure="false" concept="controllogv2" displayname="applicationDetail_nbproblemstype" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1383240926636_16727" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1383239780936_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1383239742441_16502" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383239746673_16503" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383239749224_16504" kind="inner" identitysecure="false" join="application">
+				<ViewAttribute name="1383240970958_16734" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1375956414422_0" reference="uid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1383753700934_401" attribute="controltype" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+</View>

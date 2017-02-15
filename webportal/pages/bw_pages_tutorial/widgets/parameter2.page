@@ -1,0 +1,124 @@
+
+
+parameter2 = Page {
+	title:'Parameters with associated constraints'
+	
+	
+	mychoiceparameter = Parameter {
+		type:String
+		label:'Choice parameter'
+		constraint:Choice {values:["val1" : "label1","val2" : "label2"]}
+		mandatory:True
+	}
+
+	mychoiceparameter2 = Parameter {
+		type:String
+		multivalued:True
+		label:'Choice parameter'
+		constraint:Choice {values:["val1" : "label1",
+		                           "val2" :"label2",
+		                           "val3" : "label3",
+		                           "val4" : "label4",
+		                           "val5" : "label5"]}
+		default:'val1'
+	}
+	
+	mydatetimeparameter = Parameter {
+		type:Date
+		label:'Date time parameter'
+		constraint:Date{type:DateTime}
+	}
+
+	mydateparameter = Parameter {
+		type:Date
+		label:'Date parameter'
+		constraint:Date{type:Date}
+	}
+
+	mytimeparameter = Parameter {
+		type:Date
+		label:'Time parameter'
+		constraint:Date{type:Time}
+	}
+
+	myintparameter = Parameter {
+		type:Integer
+		label:'My int parameter'
+		constraint:Int { min:10 max: 1000}
+	}
+	
+	mytextparameter1 = Parameter {
+		type:String
+		label:'my text parameter with a regex constraint'
+		constraint:Text{match:"^[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}$"}
+	}
+
+	mytextparameter2 = Parameter {
+		type:String
+		label:'my text parameter with Ctrl+Space proposal'
+		constraint:Text{proposal:Identity.fullName}
+	}
+
+	mytextparameter3 = Parameter {
+		type:String
+		label:'my text parameter with min/max size'
+		constraint:Text{min-size:5 max-size: 32}
+	}
+	
+	
+	
+	// ----------------------------------------
+	
+	
+	
+	mydatetime = Variable {type:Date initial:mydatetimeparameter}
+	mydate = Variable {type:Date initial:mydateparameter}
+	mytime = Variable {type:Date initial:mytimeparameter}
+	mychoicedataset2 = Dataset{columns:mychoiceparameter2}
+	
+	Text {
+		label:'Choice parameter'
+		value:mychoiceparameter
+	}
+
+	Text {
+		label:'Multi-valued choice parameter'
+		value:Current mychoiceparameter2
+		iterate-on:mychoicedataset2
+	}
+	
+	DateTime {
+		label:'Date time'
+		variable:mydatetime
+		disabled:True
+		type:DateTime
+	}
+	DateTime {
+		label:'Date'
+		variable:mydate
+		disabled:True
+		type:Date
+	}
+	DateTime {
+		label:'Time'
+		variable:mytime
+		disabled:True
+		type:Time
+	}
+	Text {
+		label:'integer'
+		value:myintparameter
+	}
+	Text {
+		label:'my text parameter with a regex constraint'
+		value:mytextparameter1
+	}
+	Text {
+		label:'my text parameter with Ctrl+Space proposal'
+		value:mytextparameter2
+	}
+	Text {
+		label:'my text parameter with min/max size'
+		value:mytextparameter3
+	}
+}

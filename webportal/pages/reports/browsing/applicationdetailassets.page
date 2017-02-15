@@ -1,0 +1,152 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+reportDetails = NLS {
+	browsing_application_detailassets.pagetitle [ en "Associated Assets" fr "Actifs Associés"]
+	browsing_application_detailassets.title [ en "List of Assets" fr "Liste des Actifs"]
+	browsing_application_detailassets.subtitle [ en "Assets - Application <<{0}>>" fr "Actifs - Application <<{0}>>"]
+	browsing_application_detailassets.columns.asset_code [ en "Key" fr "Clé"]
+	browsing_application_detailassets.columns.asset_displayname [en "Name" fr "Nom"]
+	browsing_application_detailassets.columns.asset_categorycode [ en "Category Code" fr "Code de la Catégorie"]
+	browsing_application_detailassets.columns.asset_categorydisplayname [en "Category" fr "Catégorie"]
+}
+
+browsing_application_detailassets = Page {
+
+	title: $reportDetails.browsing_application_detailassets.pagetitle
+	tags: "application" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: All (browsing_application_detailassets, assets_activate )
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	applicationSearch = SearchDefinition {
+		entity: Application
+		simple-mode-rule: br_application_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentApplication = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	applicationList = Dataset {
+		search: Search {
+			definition: applicationSearch
+			view: br_application_searchpoint with "Profile" to applicationtype , nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_applicationDetail with currentApplication to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_applicationassets with conceptData.recorduid to recorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: applicationList
+			column: uid
+			selection: currentApplication
+			back-link: Activity Application Detail with currentApplication to paramApplicationUid , SerializeSearch applicationSearch to applicationSearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_application_detailassets.title	
+		}		
+		
+		Text {
+			value: $reportDetails.browsing_application_detailassets.subtitle( conceptData.displayname )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			show-filter: True
+			show-count: True
+			
+			Column {
+				column: asset_recorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: asset_uid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: asset_code
+				header: $reportDetails.browsing_application_detailassets.columns.asset_code
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: asset_displayname
+				header: $reportDetails.browsing_application_detailassets.columns.asset_displayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: asset_categorycode
+				header: $reportDetails.browsing_application_detailassets.columns.asset_categorycode
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: asset_categorydisplayname
+				header: $reportDetails.browsing_application_detailassets.columns.asset_categorydisplayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+		}
+		
+	}
+}

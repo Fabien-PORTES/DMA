@@ -1,0 +1,199 @@
+calculatriceResult = Style {
+	size: 24px
+	bold: True
+}
+calculatriceButtons = Style {
+	size: 18px
+	bold: True
+}
+calculatrice = Mixin {
+	Grid {
+		background: Color silver
+		GridColumn {
+			width: 40
+		}
+		GridRow {
+			height: 40
+		}
+	}
+	Button {
+		layout: Layout {grab: horizontal True vertical True}
+		styling: calculatriceButtons
+	}
+	Text {
+		layout: Layout {grab: horizontal True vertical True}
+		styling: calculatriceResult
+
+	}
+}
+
+calculator = Page {
+	title: 'Calculator'
+	
+	display = Variable {
+		type: String 
+		initial: "0"
+	}
+	
+	buffer = Variable {
+		type: Integer
+		initial: 0
+	}
+	
+	lastop = Variable {
+		type: String
+		initial: ""
+	}
+	
+	newNumber = Variable {
+		type: Boolean
+		initial: True
+	}
+	
+	Group {
+		title: "Calculator"
+		mixins: calculatrice
+		Grid {
+			columns: GridColumn {}, GridColumn {}, GridColumn {}, GridColumn {}
+			layout: Layout {grab: horizontal False vertical False}
+			GridRow {
+				GridCell {
+					span: 4
+					Text {
+						value: display
+						align: Right
+					}
+				}
+			}
+			GridRow {
+				GridCell {
+					span: 4
+					Button {
+						layout: Layout {grab: vertical True horizontal True}
+						actions: Set "0" to display, Set 0 to buffer, Set True to newNumber, Set "" to lastop
+						text: "C"
+					}
+				}
+
+			}
+			GridRow {
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "7" to display, Set False to newNumber] when False then [Set Concat(display, "7") to display] }
+						text: "7"
+					}
+				}
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "8" to display, Set False to newNumber] when False then [Set Concat(display, "8") to display] }
+						text: "8"
+					}
+				}
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "9" to display, Set False to newNumber] when False then [Set Concat(display, "9") to display] }
+						text: "9"
+					}
+				}
+				GridCell {
+					Button {
+						actions: IntCase(buffer) { when = 0 then [Set display to buffer] otherwise [Set Product(buffer,display) to buffer, Set buffer to display]}, Set "X" to lastop, Set True to newNumber 
+						text: "x"
+					}
+				}
+			}
+			GridRow {
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "4" to display, Set False to newNumber] when False then [Set Concat(display, "4") to display] }
+						text: "4"
+					}
+				}
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "5" to display, Set False to newNumber] when False then [Set Concat(display, "5") to display] }
+						text: "5"
+					}
+				}
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "6" to display, Set False to newNumber] when False then [Set Concat(display, "6") to display] } 
+						text: "6"
+					}
+				}
+				GridCell {
+					Button {
+						actions:  IntCase(buffer) { when = 0 then [Set display to buffer] otherwise [Set Ratio(buffer,display) to buffer, Set buffer to display]}, Set "/" to lastop, Set True to newNumber 
+						text: "/"
+					}
+				}
+			}	
+			GridRow {
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "1" to display, Set False to newNumber] when False then [Set Concat(display, "1") to display] }
+						text: "1"
+					}
+				}
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "2" to display, Set False to newNumber] when False then [Set Concat(display, "2") to display] } 
+						text: "2"
+					}
+				}
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "3" to display, Set False to newNumber] when False then [Set Concat(display, "3") to display] } 
+						text: "3"
+					}
+				}
+				GridCell {
+					Button {
+						actions:  IntCase(buffer) { when = 0 then [Set display to buffer] otherwise [Set Difference(buffer,display) to buffer, Set buffer to display]}, Set "-" to lastop, Set True to newNumber 
+						text: "-"
+					}
+				}
+			}				
+			GridRow {
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) { when True then [Set "0" to display, Set False to newNumber] when False then [Set Concat(display, "0") to display] } 
+						text: "0"
+					}
+				}
+				GridCell {
+					Button {
+						actions: BooleanCase(newNumber) {
+							when True then [Set "0." to display, Set False to newNumber]
+							when False then [StringCase(display) {when Not Contains "." then [Set Concat(display, ".") to display]  } ]}
+						text: "."
+					}
+				}
+				GridCell {
+					span: 1
+					Button {
+						actions: StringCase(lastop) {
+								when "+" then [Set Sum(buffer,display) to display, Set 0 to buffer]
+								when "-" then [Set Difference(buffer, display) to display, Set 0 to buffer]
+								when "X" then [Set Product(buffer, display) to display, Set 0 to buffer]
+								when "/" then [Set Ratio(buffer, display) to display, Set 0 to buffer]
+						}, Set True to newNumber
+						text: "="
+					}
+				}
+				GridCell {
+					Button {
+						actions: IntCase(buffer) { when = 0 then [Set display to buffer] otherwise [Set Sum(buffer,display) to buffer, Set buffer to display]}, Set "+" to lastop, Set True to newNumber 
+						text: "+"
+					}
+				}				
+
+			}				
+		}
+
+	}
+	
+	
+
+
+}

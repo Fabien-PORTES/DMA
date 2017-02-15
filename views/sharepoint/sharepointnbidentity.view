@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_sharepointnbidentity" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="Sharepoint elements list or picker with # of identities" notes="">
+	<ViewParam name="parentrecorduid" displayname="Filesystem parent permission record uid"/>
+	<ViewParam name="recorduid" displayname="Filesystem permission record uid"/>
+	<ViewSort name="sort" attribute1="A1304347368252_4"/>
+	<ViewAttribute name="A1304347368252_2" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1304347419886_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1304347368252_3" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347368252_4" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347368252_5" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347372815_10" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347373596_11" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347374204_12" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347374804_13" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347375556_14" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347376260_15" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347377109_16" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347377773_17" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304347378557_18" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1304347382382_19" kind="left" identitysecure="false" join="accountright">
+		<ViewJoin name="J1304347385301_20" kind="left" identitysecure="false" join="identityreconciliation">
+			<ViewAttribute name="A1304347387204_21" attribute="recorduid" alias="nbidentities" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1382818336680_5650" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382818340780_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382818344430_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1304350344187_68" kind="inner" identitysecure="false" join="uppermission">
+		<ViewAttribute name="A1304350348449_69" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1304350372803_0" reference="parentrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1305892746499_7029" prefix="application" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="A1316332684584_1648" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1316332688768_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Sharepoint"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1322672349718_1527" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1322672350205_1528" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1322672350638_1529" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1322672351132_1530" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

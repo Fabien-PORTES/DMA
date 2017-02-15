@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_applicationsfromrepository" operator="and" query="application" displayname="Applications from Repository {repository}" version="4">
+	<RequestParam name="repository" displayname="repository" query="application" criteria="eqRepository" criteriaparam="repositoryParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1331845144239_205" criteria="eqRepository">
+		<RequestCriteriaParam name="repositoryParam" reference="repository" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

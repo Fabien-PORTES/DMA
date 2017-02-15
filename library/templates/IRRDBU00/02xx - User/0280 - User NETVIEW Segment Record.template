@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User NETVIEW segment record" description="The User NETVIEW segment record defines the information required by NetView. There is only one record per user profile that contains a NETVIEW segment.">
+	<Source type="FORMATTED" filter="^0280 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USNETV_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the user NETVIEW segment record (0280)."/>
+		<Attribute name="A4199536690768339793" attribute="USNETV_NAME" column="6-13" type="String" multivalued="false" description="User ID as taken from profile name"/>
+		<Attribute name="A1290406167931330025" attribute="USNETV_IC" column="15-269" type="String" multivalued="false" description="Command list processed at logon"/>
+		<Attribute name="A7466509792483562715" attribute="USNETV_CONSNAME" column="271-278" type="String" multivalued="false" description="Default console name"/>
+		<Attribute name="A3188661801656117613" attribute="USNETV_CTL" column="280-287" type="String" multivalued="false" description="CTL value: GENERAL, GLOBAL, or SPECIFIC"/>
+		<Attribute name="A4037269903301147695" attribute="USNETV_MSGRECVR" column="289-292" type="Boolean" multivalued="false" description="Eligible to receive unsolicited messages?"/>
+		<Attribute name="A7863438466300294503" attribute="USNETV_NGMFADMN" column="294-297" type="Boolean" multivalued="false" description="Authorized to NetView graphic monitoring facility?"/>
+		<Attribute name="A7863438466300294510" attribute="USNETV_NGMFVSPN" column="299-306" type="String" multivalued="false" description="Value of view span options"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbproblemsidentity" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="applicationDetail_nbproblemsidentity" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1383240494962_16649" attribute="recorduid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1383240558457_16661" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383240206504_16537" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="1383240574561_16664" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383240214809_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1383240234854_16541" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383240242121_16542" kind="inner" identitysecure="false" join="application">
+				<ViewAttribute name="1383240582098_16668" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1376484196747_0" reference="uid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

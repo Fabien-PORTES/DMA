@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="manager" prefix="AD" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="manager">
+	<ViewJoin name="J1482187338803_736" prefix="ALIR" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="genericmanager">
+		<ViewAttribute name="A1482187353422_738" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1482187346489_737" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+</View>

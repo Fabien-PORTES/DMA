@@ -1,0 +1,17 @@
+databinding2 = Page {
+	title:'Record'
+	
+	identity = Record {
+		view:br_identity
+	}
+
+	Text {
+		label:'hr code'
+		value:identity.hrcode
+	}
+	Text {
+		label:'fullname'
+		value:identity.fullname
+	}
+}
+

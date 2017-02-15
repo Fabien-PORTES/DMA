@@ -1,0 +1,33 @@
+layout6 = Page {
+	title:'Layouting with tiles'
+	
+	Tiles {
+		columns:3
+		tile-height:128
+		Tile {
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+		Tile {
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+		Tile {
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+		Tile {
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+		Tile {
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+		Tile {
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+		Tile {
+			Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		}
+	
+	}
+}
+
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FeatureSets PUBLIC "-//Brainwave//DTD FeatureSets 1.0//EN" "urn:brainwave:igrc:dtds/featuresets.dtd">
+<FeatureSets version="1" name="reports" description="reports">
+	<FeatureSet name="I1418403516728" featureset="all_reports" description="all_reports" r0="false"/>
+	<FeatureSet name="I1461055805692" featureset="reports_browsing" description="All browing reports" r0="true"/>
+	<FeatureSet name="I1461071985472" featureset="reports_mining" description="All mining reports"/>
+	<FeatureSet name="I1461160518845" featureset="reports_analytics" description="All analytics reports"/>
+	<FeatureSet name="I1461162161206" featureset="reports_control" description="All control reports"/>
+	<FeatureSet name="I1461163540012" featureset="reports_review" description="All review reports"/>
+</FeatureSets>

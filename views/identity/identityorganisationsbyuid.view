@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="getidentityorganisations" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="get identity organisations" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1385409754252_566" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385409755001_567" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385409755747_568" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385409757361_569" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385409760172_570" attribute="organisationtypecode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1385409761140_571" attribute="organisationtypedisplayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1385409774460_572" prefix="parent" identitysecure="false" join="parentorganisation">
+		<ViewAttribute name="1385409789653_579" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1385409810583_585" kind="inner" identitysecure="false" join="upidentity">
+		<ViewAttribute name="A1385409831391_586" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1385409835150_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

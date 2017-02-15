@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="AD" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="AD">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1482920957623_67274" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1482921017390_67309" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1482921023946_67312" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1482921100809_67350" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1485773484723_0" operation="ilike" ignoreifempty="false">
+			<Value name="0" data="ts7901"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1482925773433_69291" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1482925778700_69293" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484304067206_409" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1484311375562_432" attribute="custom11" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1485248474738_373" prefix="manager_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="genericmanager">
+		<ViewAttribute name="A1485248488159_374" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485248490861_375" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

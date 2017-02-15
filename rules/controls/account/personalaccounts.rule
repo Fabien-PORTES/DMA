@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_personalaccounts" operator="or" query="account" displayname="Personal accounts (reconciled, owner gone, orphan, reconciled manually) " version="5">
+	<RequestGroup name="G1385417290062_713" operator="or">
+		<RequestGroup name="G1385414810720_684" operator="and" inverse="true">
+			<RequestCriteria name="C1385414811887_685" criteria="noOwnerReconciliatedAccounts">
+			</RequestCriteria>
+		</RequestGroup>
+		<RequestCriteria name="C1385417191090_704" criteria="leaverReconciliatedAccounts">
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

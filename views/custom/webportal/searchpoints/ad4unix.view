@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="ad4unix" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="ad4unix" notes="" begindate="" enddate="">
+	<ViewParam name="repo" displayname="Repository"/>
+	<ViewParam name="samaccountname" displayname="SAMAccountname"/>
+	<ViewParam name="windomain" displayname="WinDomain"/>
+	<ViewParam name="login" displayname="Login"/>
+	<ViewParam name="uidNumber" displayname="UID Number"/>
+	<ViewParam name="ad4unixUIDnumber" displayname="AD4UNIX UID Number"/>
+	<ViewParam name="mapping_in_current" displayname="Is in current"/>
+	<ViewParam name="sam_AD4UNIX_past" displayname="sam_AD4UNIX_past"/>
+	<ViewParam name="win_AD4UNIX_past" displayname="win_AD4UNIX_past"/>
+	<ViewParam name="mapping_in_past" displayname="is_in_past"/>
+	<ViewParam name="is_in_current" displayname="is_in_current"/>
+	<ViewComputedAttribute name="mapping" displayname="mapping" type="String" expression="dataset.custom5.get() == null ? &apos;in AD4UNIX Current&apos; : &apos;Not in AD4UNIX Current&apos;"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1486573427903_91554" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486573435244_91565" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486573819372_0" reference="uidNumber" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486573438994_91572" attribute="sid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486573829372_0" reference="ad4unixUIDnumber" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486573453336_91599" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486573898041_0" reference="is_in_current" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486573455839_91605" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486573850445_0" reference="windomain" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1486573461715_91621" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1486573471858_91653" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486632262785_169128" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1486632265185_0" reference="repo" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1486574104563_93367" attribute="login" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486574110487_0" reference="login" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486647106939_497" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486647109931_0" reference="samaccountname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1487082217225_412" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1487082281801_0" reference="sam_AD4UNIX_past" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1487082219961_413" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1487082384714_0" reference="mapping_in_past" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1487082222321_414" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1487082289265_0" reference="win_AD4UNIX_past" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="1487084430836_440" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1487084434801_0" operation="isNotNull" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

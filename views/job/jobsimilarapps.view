@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_jobsimilarapps" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="Similar applications for a given job" notes="">
+	<ViewParam name="recorduid" displayname="job record uid">
+		<Value name="0" data="19"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1329759451968_3228" direction1="DESC"/>
+	<ViewAttribute name="A1329759422968_3226" attribute="jobtitlerecorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1329759426387_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1329759451968_3228" attribute="recorduid" alias="nboccurence" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1324130494338_63" kind="inner" identitysecure="false" join="accountreconciliation">
+		<ViewJoin name="J1382689407315_5811" prefix="application" kind="inner" identitysecure="false" join="applicationright">
+			<ViewAttribute name="1382689419537_5816" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1324130517425_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="Profile"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="1382689419540_5817" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1382689419541_5818" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1382689419543_5819" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1382689434379_5820" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382689438179_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382689440950_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

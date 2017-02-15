@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_expiredaccounts" operator="and" query="account" displayname="Expired Accounts" version="4" notes="">
+	<RequestCriteria name="C1331841158436_48" criteria="ltExpirePeriod">
+		<RequestCriteriaParam name="expireDatePeriodParam" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_asset_picker" errorifempty="false" distinct="true" identitysecure="false" concept="asset" displayname="Asset picker" notes="">
+	<ViewParam name="paramDisplayname" displayname="Asset display name"/>
+	<ViewParam name="paramUid" displayname=" Asset uid"/>
+	<ViewParam name="paramCategory" displayname="Asset category"/>
+	<ViewParam name="paramNotUid" displayname="Asset excluded uid"/>
+	<ViewParam name="paramCode" displayname="Asset code"/>
+	<ViewSort name="sort" attribute1="A1336124415596_74" attribute2="A1336124414940_73"/>
+	<ViewAttribute name="A1336124413534_71" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336124414940_73" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336124424815_0" reference="paramCode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1336124415596_74" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336124434721_0" reference="paramDisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1336124417690_75" attribute="categorydisplayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336124443456_0" reference="paramCategory" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1384264469781_877" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1384264476754_0" reference="paramNotUid" operation="notIn" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1384264472202_878" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1384264489176_0" reference="paramUid" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

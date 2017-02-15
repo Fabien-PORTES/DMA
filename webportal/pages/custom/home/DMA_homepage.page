@@ -1,0 +1,40 @@
+/* Import other pages here */
+import "/webportal/pages/mixins/default_mixins.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/custom/recon_suggest_dialog/recon_suggest_dialog.page"
+/* Nationalized labels here */
+
+DMA_homepage = Page {
+	title: $DMA_homepage.title
+	homepage-for: All priority 1000000
+	/* Parameters here */
+	
+	/* Variables here */
+	
+	/* Datasets and records here */
+	searchPages = Dataset {
+	pages: Pages { tags: "DMA_homepage" hide-pages: False
+				}	
+	}
+	/* Page content */
+			Group {
+				mixins: homePageMixin
+//				title: $DMA_homepage.group.title
+				hidden: IntPredicate ( Count searchPages ) { when = 0 then True otherwise False }			
+					Tiles {
+						columns:2
+						tile-height:96
+						
+						TileGroup {
+							iterate-on:searchPages
+							Tile {
+								Button {
+									text:Current title
+									image:Current largeIcon
+									actions: GoTo Dynamic ( Current type , Current name )
+									}
+								}
+							}
+						}		
+					}
+}

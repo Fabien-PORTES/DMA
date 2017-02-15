@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Control PUBLIC "-//Brainwave//DTD Control Type 1 1.0//EN" "urn:brainwave:igrc:dtds/control_t1.dtd">
+<Control type="1" version="4" code="b4e8303a-76a8-4b7a-88eb-6211cd7bc3ee" name="report5" displayname="report5" executionplan="true">
+	<ControlType1 name="t1">
+		<ControlRule name="rule" rule="E1478608821746_41679"/>
+	</ControlType1>
+	<ControlMetrics name="metrics">
+		<Metric name="count" enabled="true"/>
+		<Metric name="ratio" enabled="false"/>
+	</ControlMetrics>
+	<ControlTags name="tags">
+		<Tag name="application" content="DMA"/>
+	</ControlTags>
+</Control>

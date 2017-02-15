@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryreconnbaccountbyrule" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="repositoryreconnbaccountbyrule">
+	<ViewParam name="repositoryrecorduid" displayname="Repository record uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1321620563017_7962" prefix="recon_" kind="inner" identitysecure="false" join="reconciliation">
+		<ViewAttribute name="A1321621924540_7976" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1321621972753_0" operation="isNotNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1326711443479_12" attribute="description" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1385418251517_738" kind="inner" identitysecure="false" join="identity">
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1321621689109_7964" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321621983960_7978" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1321622056890_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

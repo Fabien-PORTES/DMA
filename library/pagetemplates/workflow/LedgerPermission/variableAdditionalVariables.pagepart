@@ -1,0 +1,7 @@
+<template:variableselection/> = Variable {
+	type: String
+}
+<template:variablepickerselection/> = Variable {
+	type: String
+	multivalued: True
+}

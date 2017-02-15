@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_sharedserverDetail_uid" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="br_sharedserverDetail_uid">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1434461671793_346" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1434461686545_348" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1434462357475_0" aliasreference="A1434461686545_348" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1434462392434_387" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1434462393208_388" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1434462394145_389" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

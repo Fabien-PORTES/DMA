@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource categories record" description="The General Resource Categories record defines the categories associated with a general resource. There is one record per general resource/category combination.">
+	<Source type="FORMATTED" filter="^0502 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRCAT_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the General Resources Categories record (0502)."/>
+		<Attribute name="A4199536690768339793" attribute="GRCAT_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRCAT_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRCAT_CATEGORY" column="262-266" type="Number" multivalued="false" description="Category to which this general resource belongs."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

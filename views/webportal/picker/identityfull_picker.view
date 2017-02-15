@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityfull_picker" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="identity" displayname="Identity full Picker">
+	<ViewParam name="paramGivenname" displayname="Identity first name"/>
+	<ViewParam name="paramSurname" displayname="Identity last name"/>
+	<ViewParam name="paramAltname" displayname="Identity maiden name"/>
+	<ViewParam name="paramOrgRecordUid" displayname="Identity organization recordUid"/>
+	<ViewParam name="paramJob" displayname="Identity job"/>
+	<ViewParam name="paramOrganization" displayname="Identity organization"/>
+	<ViewParam name="paramHrCode" displayname="Identity HR code"/>
+	<ViewParam name="paramInternal" displayname="Identity internal flag"/>
+	<ViewParam name="paramManager" displayname="paramManager" type="Boolean"/>
+	<ViewParam name="paramNotUid" displayname="Identity excluded uid"/>
+	<ViewParam name="paramUid" displayname="Identity uid"/>
+	<ViewSort name="sort" attribute1="A1335978485390_32" direction1="ASC" attribute2="A1335978485390_36"/>
+	<ViewAttribute name="A1335978485390_29" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_31" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_32" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1335979355484_0" reference="paramHrCode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1335978485390_33" attribute="nickname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_34" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1335979283859_0" reference="paramGivenname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1335978485390_35" attribute="middlename" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_36" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1335979179890_0" reference="paramSurname" operation="ilike" ignoreifempty="true">
+			<Value name="0" data=""/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1335978485390_37" attribute="altname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1335979321671_0" reference="paramAltname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1335978485390_38" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_39" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_40" attribute="phone" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_41" attribute="mobile" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_42" attribute="titlerecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_43" attribute="titleuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_44" attribute="titlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_45" attribute="titledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_46" attribute="employeetyperecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_47" attribute="employeetypeuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_48" attribute="employeetypecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_49" attribute="employeetypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_50" attribute="expertisedomainrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_51" attribute="expertisedomainuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_52" attribute="expertisedomaincode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_53" attribute="expertisedomaindisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_54" attribute="arrivaldate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_56" attribute="departuredate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_58" attribute="active" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1335978485390_59" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336042494301_0" reference="paramInternal" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1335979022015_81" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" join="management">
+		<ViewAttribute name="A1335979026078_82" attribute="recorduid" alias="nbmanager" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1336051252500_71" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" join="upallocation">
+		<ViewAttribute name="A1336051274375_72" attribute="jobtitlerecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1336051276234_73" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1336051277125_74" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1336051292968_0" reference="paramJob" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewJoin name="J1335978623421_70" prefix="organization" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" join="organisation">
+			<ViewAttribute name="1336051303031_82" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="true">
+				<ViewAttributeFilter name="F1336062906481_0" reference="paramOrgRecordUid" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="1336051303031_83" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1336051303031_84" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="true">
+				<ViewAttributeFilter name="F1335979467046_0" reference="paramOrganization" operation="ilike" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="A1415895591528_1565" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1415895594001_1566" attribute="jobtitleuid" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1378977813324_398" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" enabled="param.paramManager.get()" join="genericteam">
+	</ViewJoin>
+	<ViewCriteria name="I1378977930783_399" enabled="!param.paramManager.get()" criteria="isNotManager">
+	</ViewCriteria>
+	<ViewCriteria name="I1378977935947_400" enabled="!param.paramManager.get()" criteria="hasNoTeam">
+	</ViewCriteria>
+	<ViewAttribute name="A1384264543888_885" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1384264553041_0" reference="paramNotUid" operation="notIn" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1384264545749_886" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1384264565022_0" reference="paramUid" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

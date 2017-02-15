@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314322220514" title="User CSDATA Custom fields record" description="The User CSDATA Custom fields record defines custom fields associated with a user. There is one record per combination of user and CSDATA custom fields.">
+	<Source type="FORMATTED" filter="^02G1 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USCSD_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the user CSDATA custom fields record (02G1)."/>
+		<Attribute name="A4199536690768339793" attribute="USCSD_NAME" column="6-13" type="String" multivalued="false" description="User name."/>
+		<Attribute name="A1290406167931330025" attribute="USCSD_TYPE" column="15-18" type="String" multivalued="false" description="Data type for the custom field. Valid values are CHAR, FLAG, HEX, NUM."/>
+		<Attribute name="A1290406167931156675" attribute="USCSD_KEY" column="20-51" type="String" multivalued="false" description="Custom field keyword; maximum length = 8."/>
+		<Attribute name="A1290406167931156487" attribute="USCSD_VALUE" column="53-1152" type="String" multivalued="false" description="Custom field value."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

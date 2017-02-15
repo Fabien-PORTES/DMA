@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountDetail_accountusergone" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="br_accountDetail_accountusergone" notes="">
+	<ViewParam name="today" displayname="today" defaultvalue="{(new Date()).toLDAPString()}"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1423153254906_413" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+		<ViewAttribute name="A1423153315447_416" attribute="departuredate" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1423153317747_0" reference="today" operation="lt" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1423153267600_414" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1423153414590_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423153268695_415" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1423153423516_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

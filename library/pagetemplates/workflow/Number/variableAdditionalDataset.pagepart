@@ -1,0 +1,3 @@
+<template:variabledataset/> = Dataset {
+	columns: <template:taskvariablename/> as displayname
+}

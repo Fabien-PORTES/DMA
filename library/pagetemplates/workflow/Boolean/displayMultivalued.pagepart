@@ -1,0 +1,5 @@
+Text {
+	label: <template:variablelabel/>
+	value: Transform Current displayname using booleanDisplayMapping
+	iterate-on: <template:variabledataset/>
+}

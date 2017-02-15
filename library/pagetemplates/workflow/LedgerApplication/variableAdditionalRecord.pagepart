@@ -1,0 +1,1 @@
+<template:variablerecord/> = Record(workflow_applicationdisplayname with <template:taskvariablename/> to uid)

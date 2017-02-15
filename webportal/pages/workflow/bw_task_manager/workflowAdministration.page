@@ -1,0 +1,1756 @@
+/**
+ * Workflow Administration
+ *
+ * copyright Brainwave 2013 
+ */
+
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/mixins/default_mixins.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/concepts_nls.page"
+
+TMdatePattern = Constant {type:String value:"yyyy-MM-dd"}
+TMdatetimePattern = Constant {type:String value:"yyyy-MM-dd HH:mm:ss"}
+
+PAinquirydialog_NLS = NLS{
+	title  [en "Send a request by email" fr "Envoyer un message"]
+	send [en "Send" fr "Envoyer"]
+	sent [en "Mail sent to " fr "Message envoyé à "]
+	cancel [en "Cancel" fr "Annuler"]
+	msgtitle [en "Title" fr "Titre"]
+	msgbody [en "Message" fr "Message"]
+}
+
+PAreassignTask_NLS = NLS{
+	title  [en "Reassign the task" fr "Réassigner la tâche"]
+	description [en "Please pick an identity" fr "Veuillez choisir une personne"]
+	tooltip [en "Pick an existing identity" fr "Sélectionner une personne existante"]
+}
+
+PAprocessCandidates_NLS = NLS{
+	title  [en "Task candidates" fr "Personnes éligibles sur la tâche"]
+	candidates [en "Candidates" fr "Personnes éligibles"]
+	candidatesfortask [en "Candidates for task" fr "Personnes éligibles pour la tâche"]
+	mailtext [en "Send an email to this candidate" fr "Envoyer un message à la personne"]
+	mailtooltip [en "Send an email to this candidate" fr "Envoyer un message à la personne"]
+	assigntext [en "Assign the task to this individual" fr "Affecter la tâche à cette personne"]
+	assigntooltip [en "Assign the task to this individual" fr "Affecter la tâche à cette personne"]
+	assignconfirm [en "Are you sure that you want to force this user to execute this task?" fr "Etes vous sur de bien vouloir affecter cette tâche à cette personne?"]
+	assignconfirmed [en "Task reassigned to " fr "Tâche affectée à "]
+}
+
+PAworkflowAdministration_NLS = NLS{
+	title  [en "Process Administration" fr "Administration des processus"]
+	tabinbox [en "Inbox" fr "Boite de réception"]
+	tabassignedtasks [en "My tasks" fr "Mes tâches"]
+	tabmyprocesses[en "Active Processes" fr "Processus actifs"]
+	tabmyarchives [en "Archived processes" fr "Processus archivés"]
+	taskassigned [en "Task assigned for the session duration" fr "Tâche assignée pour la durée de la session"]
+	taskspending [en "Tasks pending" fr "Tâches en attente"]
+	duedate [en "Due date" fr "date d'écheance"]
+	duedatetime [en "Due datetime" fr "date et heure d'écheance"]
+	starteddate [en "Started date" fr "date et heure de démarrage"]
+	starteddatetime [en "Started datetime" fr "date de démarrage"]
+	creationdate [en "Creation date" fr "Date de création"]
+	creationdatetime [en "Creation datetime" fr "Date et heure de création"]
+	duedatedyn [en "Due date {0}" fr "date d'écheance {0}"]
+	starteddatedyn [en "Started date {0}" fr "date et heure de démarrage {0}"]
+	starteddatetimedyn [en "Started datetime {0}" fr "date de démarrage {0}"]
+	creationdatedyn [en "Creation date {0}" fr "Date de création {0}"]
+	creationdatetimedyn [en "Creation datetime {0}" fr "Date et heure de création {0}"]
+	escalatedtask [en "Escalated task !" fr "Tâche escaladée !"]
+	associatedprocess [en "Associated process" fr "Processus associé"]
+	name [en "Name" fr "Nom"]
+	process [en "Process" fr "Processus"]
+	createdby [en "Created by" fr "Crée par"]
+	status [en "Status" fr "Statut"]
+	version [en "Version" fr "Version"]
+	candidates [en "Candidates" fr "Personnes éligibles"]
+	emailtext [en "Send an email to this candidate" fr "Envoyer un message à cette personne"]
+	emailtooltip [en "Send an email to this candidate" fr "Envoyer un message à cette personne"]
+	taketask [en "Take the task" fr "Prendre la tâche"]
+	updatetaskflash [en "Updating task" fr "Mettre à jour la tâche"]
+	assignedtasks [en "Assigned tasks" fr "Tâches assignées"]
+	taskreassignedto [en "Task reassigned to " fr "Tâche réassignée à "]
+	reassign [en "Reassign" fr "Réassigner"]
+	updatingtaskflash [en "Updating task" fr "Mise à jour de la tâche"]
+	resume [en "Resume" fr "Continuer"]
+	newprocess [en "Launch a new process instance" fr "Démarrer un nouveau processus"]
+	processinfos [en "Process infos" fr "Informations sur le processus"]
+	lastversion [en "Last version" fr "Dernière version"]
+	publicationdate [en "Publication date" fr "Date de publication"]
+	displaycandidates [en "Display the candidates" fr "Afficher les personnes éligibles"]
+	sendmailowner [en "Send an email to the owner" fr "Envoyer un message au propriétaire"]
+	reassigntasktext [en "Assign the task to a new individual" fr "Affecter cette tâche à une nouvelle personne"]
+	reassigntasktooltip [en "Assign the task to a new individual" fr "Affecter cette tâche à une nouvelle personne"]
+	taskreassignedflash [en "Task reassigned to " fr "Tâche réaffectée à "]
+	showerrortext [en "Show error" fr "Voir le détail de l'erreur"]
+	showerrortooltip [en "Show error details" fr "Voir le détail de l'erreur"]
+	showerrorpagetext [en "Jump to error page" fr "Aller à la page de traitement de l'erreur"]
+	showerrorpagetooltip [en "Jump to error page if it has been configured" fr "Aller à la page de traitement de l'erreur si elle a été configurée"]
+	retryonerrortext [en "Retry on error" fr "Réessayer"]
+	retryonerrortooltip [en "Retry the task on error" fr "Réessayer la tâche en erreur"]
+	retryonerrorconfirm [en "Are you sure that you want to retry this task ? You should have corrected the root cause prior to retry it" 
+	                     fr "Etes vous certain de vouloir réessayer d'exécuter cette tâche ? Assurez vous d'avoir corrigé la cause du problème avant de réessayer"]
+	skiponerrortext [en "Skip error" fr "Passer à la tâche suivante"]
+	skiponerrortooltip [en "Skip the task in error" fr "Passer à la tâche suivante"]
+	skiponerrorconfirm [en "Are you sure that you want to skip this task ? Skipping a process task often lead to unpredictable results, you should only do it if you are confident if the results of such action" 
+	                     fr "Etes vous certain de vouloir sauter cette activité ? Sauter une activé conduit souvent à des résultats incertains, vous ne devriez le faire que si vous connaissez les impacts de cette action"]
+	tasktitle [en "Task title" fr "Titre de la tâche"]
+	actor [en "Actor" fr "Acteur"]
+	taskstatus [en "Task status" fr "Status de la tâche"]
+	taskcreationdate [en "Task creation date" fr "Date de création de la tâche"]
+	taskduedate [en "Task due date" fr "Date d'échéance de la tâche"]
+	taskcompletedate [en "Task complete date" fr "Date de fin de la tâche"]
+	processsuspendconfirmation [en "Are you sure that you want to suspend the process? All tasks will be suspended until the process is reactivated" 
+	                            fr "Etes vous sur de bien vouloir suspendre ce processus? Toutes les tâches associées seront suspendues jusqu'à ce que le processus soit réactivé"]
+	processsuspendflash [en "Process suspended" fr "Processus suspendu"]
+	processsuspend [en "Suspend the process" fr "Suspendre le processus"]
+	processresumeconfirmation [en "Are you sure that you want to resume the process?" fr "Etes vous sur que vous souhaitez réactiver le processus?"]
+	processresumeflash [en "Process is resuming, this can take a few seconds" fr "Le processus se réactive, ceci peut prendre quelques secondes"]
+	processresume [en "Resume the process" fr "Réactiver le processus"]
+	processkillconfirmation [en "Killing the process will abort it brutally, are you sure that's what you really want? You should only abort a process when you started it by error" 
+	                         fr "Arrêter le processus va l'interrompre brutalement, êtes vous sur que c'est bien ce que vous voulez faire ? Vous ne devriez n'arrêter que les processus que vous avez démarré par erreur"]
+	processkillflash [en "Process killed" fr "Processus terminé"]
+	processkill [en "Kill the process" fr "Terminer le processus"]
+	completedate [en "Complete date" fr "Date de fin"]
+	completedatetime [en "Complete datetime" fr "Date et heure de fin"]
+	noduedate [en "No due date" fr "Pas d'écheance"]
+	nocreationdate [en "No creation date" fr "Pas de date de création"]
+	processPriority [en "Priority level" fr "Priorité"]
+	prioritylow [en "low" fr "faible"]
+	prioritymedium [en "medium" fr "moyenne"]
+	priorityhigh [en "high" fr "haute"]
+	priorityunknown [en "not set" fr "inconnue"]
+	progress [en "Progress" fr "Progression"]
+	subprocessesstate [en "Sub-processes status" fr "Etat des sous-processus"]
+	subarchivesstate [en "Sub-processes status" fr "Etat des sous-processus"]
+	archivereport [en "Display the synthesis" fr "Afficher la synthèse"]
+	compliancereport [en "Download the compliance report" fr "Télécharger le rapport de conformité"]
+	inforeport [en "Display details" fr "Afficher le détail"]
+	
+	processhelper [en "Click in the list to display the process details" fr "Cliquez pour afficher le détail"]
+	archivehelper [en "Click in the list to display the process details" fr "Cliquez pour afficher le détail"]
+
+	grabanytasktext [en "Take this task" fr "Prendre cette tâche"]
+	grabanytasktooltip [en "Take this task" fr "Prendre cette tâche"]
+	grabanytaskconfirm [en "Are you sure that you want to take this task?" fr "Etes vous certain de vouloir prendre cette tâche ?"]
+}
+
+PAchildProcessStatus_NLS = NLS{
+	title [en "Sub-processes progress status" fr "Etat d'avancement des sous-processus"]
+}
+
+PAchildArchiveStatus_NLS = NLS{
+	title [en "Sub-processes progress status" fr "Etat d'avancement des sous-processus"]
+}
+
+PAdueDateMapping = StringMapping { when Not IsEmpty then $PAworkflowAdministration_NLS.duedatedyn(current) otherwise $PAworkflowAdministration_NLS.noduedate}
+PAcreationDateMapping = StringMapping { when Not IsEmpty then $PAworkflowAdministration_NLS.creationdatedyn(current) otherwise $PAworkflowAdministration_NLS.nocreationdate}
+PAtaskPriorityMapping = StringMapping { when "1" then $PAworkflowAdministration_NLS.prioritylow when "2" then $PAworkflowAdministration_NLS.prioritymedium when "3" then $PAworkflowAdministration_NLS.priorityhigh otherwise $PAworkflowAdministration_NLS.priorityunknown}
+
+
+PAtaskprocessPriorityTemplate = StringImageTemplate {
+	when '1' then "16/famfamfam_silk_icons_v013/tag_blue.png"
+	when '2' then "16/famfamfam_silk_icons_v013/tag_orange.png"
+	when '3' then "16/famfamfam_silk_icons_v013/tag_red.png"
+	otherwise "otherwiseImage"
+}
+
+PAtaskStatusTemplate = StringImageTemplate {
+	when 'Active' then "16/famfamfam_silk_icons_v013/control_play.png"
+	when 'Completed' then "16/famfamfam_silk_icons_v013/accept.png"
+	when 'Error' then "16/famfamfam_silk_icons_v013/cancel.png"
+	when 'Suspended' then "16/famfamfam_silk_icons_v013/control_pause.png"
+	otherwise "otherwiseImage"
+}
+
+PAprocessStatusTemplate = StringImageTemplate {
+	when 'Active' then "16/famfamfam_silk_icons_v013/control_play.png"
+	when 'Completed' then "16/famfamfam_silk_icons_v013/accept.png"
+	when 'Error' then "16/famfamfam_silk_icons_v013/cancel.png"
+	when 'Suspended' then "16/famfamfam_silk_icons_v013/control_pause.png"
+	otherwise "otherwiseImage"
+}
+
+
+
+PAinquirydialog = Dialog {
+	title:$PAinquirydialog_NLS.title	
+	buttons: [
+		ActionButton {	text:$PAinquirydialog_NLS.send
+						close:True
+						actions:
+							Set title to inquiryprocess.title,
+							Set message to inquiryprocess.message,
+							Set principal.mail to inquiryprocess.sendermail,
+							Set principal.fullname to inquiryprocess.sendername,
+							Set issuerUID to inquiryprocess.candidateuid,
+							Set candidate.fullname to inquiryprocess.candidatename,
+							Set processname to inquiryprocess.processname,
+							Set processcreationdate to inquiryprocess.processcreationdate,
+							Set processduedate to inquiryprocess.processduedate,
+							Set processcompletedate to inquiryprocess.processcompletedate,
+							Set processcreatorname to inquiryprocess.processcreatorname,
+							Set taskname to inquiryprocess.taskname,
+							Set taskcreationdate to inquiryprocess.taskcreationdate,
+							Set taskduedate to inquiryprocess.taskduedate,
+							Set taskcompletedate to inquiryprocess.taskcompletedate,
+					        TaskComplete inquiryprocess,
+					        Flash Information Concat($PAinquirydialog_NLS.sent, principal.fullname)
+					  }
+		ActionButton {	text:$PAinquirydialog_NLS.cancel
+						close:True 
+						actions:
+							Set "" to inquiryprocess.candidateuid,
+					        TaskCancel inquiryprocess
+					  }
+	]
+	width: 450
+	height: 300
+	
+	issuerUID = Variable
+	title = Variable
+	message = Variable
+	processname = Variable
+	processduedate = Variable
+	processcompletedate = Variable
+	processcreationdate = Variable
+	taskname = Variable
+	taskcreationdate = Variable
+	taskduedate = Variable
+	taskcompletedate = Variable
+	processcreatorname = Variable
+	
+	principal = Record {
+		view:getidentities
+		with Principal.uid to uids
+	}
+	
+	inquiryprocess = TaskRecord (create "taskinquiry")
+	candidate = Record {
+		view:getidentities with issuerUID to uids
+		
+	}
+	
+	Edit {
+		label:$PAinquirydialog_NLS.msgtitle
+		variable:title
+	}
+	
+	Edit {
+		label:$PAinquirydialog_NLS.msgbody
+		multi-lines:True
+		layout:Layout{ grab:horizontal True vertical True }
+		variable:message
+	}
+}
+
+PAreassignTask = Dialog {
+	title:$PAreassignTask_NLS.title
+	buttons: [
+		OkButton
+		CancelButton
+	]
+	width: 450
+	height: 200
+	
+
+	taskID = Variable {type:String}	// input parameter
+	fullname = Variable {type:String}	
+	uid = Variable {type:String}	
+	
+	Flow {
+		Group {
+			Text {
+				value:$PAreassignTask_NLS.description
+				compact:True
+			}
+			Edit {
+				variable:fullname
+				label:$identity.fullname
+				disabled:True
+				commands:
+					Commands {
+						orientation: Vertical
+						position: After
+						presentation: Icon
+						Command {
+							actions:
+							Dialog identityPicker(uid from outUid, fullname from outDisplayname)
+							tooltip: $PAreassignTask_NLS.tooltip
+							icon:"16/audit/identity_16.png"
+						}
+				}
+			}
+		}	
+	}
+}
+
+PAprocessCandidates = Dialog {
+	title:$PAprocessCandidates_NLS.title
+
+	buttons: [
+		OkButton
+	]
+	width: 520
+	height: 400
+
+	taskID = Variable
+	taskName = Variable
+	taskStatus = Variable
+	candidateUID = Variable
+	candidateFullname = Variable
+
+    candidates = Dataset {
+    	view:getcandidates
+    		with TaskInfo(task-id taskID, CandidatesUID) to uids
+    }
+	
+	Group {
+		title:$PAprocessCandidates_NLS.candidates
+		Text {
+			value:Concat($PAprocessCandidates_NLS.candidatesfortask," '",taskName,"'")
+			compact:True
+		}
+		Table {
+			data:candidates
+			configurable:True
+			layout:Layout {hint:height 200 grab: horizontal True vertical True}
+			label: Label {break: True}
+			commands: Commands {
+				orientation: Vertical
+				position: After
+				presentation: Icon
+				Command {
+					text:$PAprocessCandidates_NLS.mailtext
+					tooltip:$PAprocessCandidates_NLS.mailtooltip
+					feature:wadmin_process_cansendmailtocandidate
+					icon:"16/famfamfam_silk_icons_v013/email.png"
+					disabled: StringPredicate(candidateUID) {
+						when IsEmpty then True
+						otherwise False
+					}
+					actions:Dialog PAinquirydialog(candidateUID to issuerUID, 
+												TaskInfo(task-id taskID, Title) to title,
+												TaskInfo(task-id taskID, Title) to taskname,
+												TaskInfo(task-id taskID, CreationDate) to taskcreationdate,
+												TaskInfo(task-id taskID, DueDate) to taskduedate,
+												TaskInfo(task-id taskID, ProcessTitle) to processname,
+												TaskInfo(task-id taskID, ProcessCreationDate) to processcreationdate,
+												TaskInfo(task-id taskID, ProcessDueDate) to processduedate,
+												TaskInfo(task-id taskID, ProcessCreatorName) to processcreatorname
+												)
+				}
+				Command {
+					text:$PAprocessCandidates_NLS.assigntext
+					tooltip:$PAprocessCandidates_NLS.assigntooltip
+					icon:"16/famfamfam_silk_icons_v013/user_go.png"
+					feature:wadmin_process_canassigntasktocandidate
+					disabled: StringPredicate(candidateUID) {
+						when IsEmpty then True
+						otherwise False
+					}
+					actions: Confirm $PAprocessCandidates_NLS.assignconfirm,
+					Flash Concat($PAprocessCandidates_NLS.assignconfirmed,candidateFullname),
+				    TaskReassign task-id taskID to candidateUID,
+				    CloseDialog Ok
+				}
+			}
+			
+			Column {
+				column:uid
+				hidden:True
+				selection:candidateUID
+			}
+			Column {
+				column:hrcode
+				header:$identity.hrcode
+				sortable:True
+			}
+			Column {
+				column:givenname
+				header:$identity.givenname
+				initially-masked:True
+				sortable:True
+			}
+			Column {
+				column:surname
+				header:$identity.surname
+				initially-masked:True
+				sortable:True
+			}
+			Column {
+				column:fullname
+				header:$identity.fullname
+				selection:candidateFullname
+				sortable:True
+			}
+			Column {
+				column:mail
+				header:$identity.mail
+				initially-masked:True
+				sortable:True
+			}
+			Column {
+				column:internal
+				header:$identity.internal
+				text: Transform Current internal using booleanDisplayMapping
+				initially-masked:True
+				sortable:True
+			}
+			Column {
+				column:phone
+				header:$identity.phone
+				initially-masked:True
+				sortable:True
+			}
+			Column {
+				column:mobile
+				header:$identity.mobile
+				initially-masked:True
+				sortable:True
+			}
+			Column {
+				column:jobtitlecode
+				header:$identity.jobtitlecode
+				initially-masked:True
+				sortable:True
+			}
+			Column {
+				column:jobtitledisplayname
+				header:$identity.jobtitledisplayname
+				sortable:True
+			}
+			Column {
+				column:organisationcode
+				header:$organisation.code
+				initially-masked:True
+				sortable:True
+			}
+			Column {
+				column:organisationshortname
+				header:$organisation.shortname
+				initially-masked:True
+				sortable:True
+			}
+			Column {
+				column:organisationdisplayname
+				header:$organisation.displayname
+				sortable:True
+			}
+		}
+	}
+}
+
+PAchildProcessStatus = Dialog {
+	title:$PAchildProcessStatus_NLS.title
+	buttons: [ OkButton ]
+
+	width: 640
+	height: 300
+	
+	selectedProcess = Variable{type:String}
+
+    childProcesses = Dataset {
+    	processes: ProcessFilter {
+    		show-completed:True
+    		hide-active:False
+    		show-error:True
+    		show-suspended:True
+    	}
+    	includes: SameValuePredicate(Current processParentId, selectedProcess)
+    }
+
+	Text {
+		iterate-on:childProcesses
+		value:Current processName
+		compact:True
+		layout:Layout{hint:grab: horizontal True vertical True}
+		decorator: Decorator {
+	     after: Bar {
+	      min-value: 0
+	      max-value: ProcessInfo(process-id Current processId, ProgressTotal)
+	      value: ProcessInfo(process-id Current processId, Progress)
+	      threshold-normal: Product(ProcessInfo(process-id Current processId, ProgressTotal), "66%")
+	      threshold-critical: Product(ProcessInfo(process-id Current processId, ProgressTotal), "33%")
+	      higher-is-better:True
+	      width: 200
+	      tooltip: Concat(ProcessInfo(process-id Current processId, Progress),'/',ProcessInfo(process-id Current processId, ProgressTotal))
+	     }
+	     width: 380
+	    }
+	}
+}
+
+PAchildArchiveStatus = Dialog {
+	title:$PAchildArchiveStatus_NLS.title
+	buttons: [ OkButton ]
+	
+	width: 640
+	height: 300
+
+	selectedArchive = Variable{type:String}
+
+    childArchives = Dataset {
+    	processes: ProcessFilter {
+    		show-completed:True
+    		hide-active:True
+    		show-error:False
+    		show-suspended:False
+    	}
+    	includes: SameValuePredicate(Current processParentId, selectedArchive)
+    }
+
+	Grid {
+		columns: GridColumn{width:grow}
+		layout: Layout {grab: horizontal False vertical False}
+		GridRowGroup { 
+			iterate-on:childArchives
+			GridRow { 
+				GridCell {
+					Text {
+						value:Current processName
+						compact:True
+						layout:Layout{hint:grab: horizontal True vertical True}
+						decorator: Decorator {
+					     after: Bar {
+					      min-value: 0
+					      max-value: Current processProgressTotal
+					      value: Current processProgress
+					      threshold-normal: Product(Current processProgressTotal, "66%")
+					      threshold-critical: Product(Current processProgressTotal, "33%")
+					      higher-is-better:True
+					      width: 200
+					      tooltip: Concat(Current processProgress,'/',Current processProgressTotal)
+					     }
+					     width: 300
+					    }
+					}
+				}
+			}
+		}
+		GridRow {
+			fill: True
+		}
+	}
+}
+
+/**
+ * Workflow administration Page
+ */
+workflowAdministration = Page {
+    title: $PAworkflowAdministration_NLS.title
+    tags: "admin"
+    enter-event: 
+    			 IntCase (Count rootprocesses) {when = 0 then [Set $PAworkflowAdministration_NLS.tabmyprocesses to myprocessesLabel] otherwise [Set Concat($PAworkflowAdministration_NLS.tabmyprocesses," (",Count rootprocesses,")") to myprocessesLabel]},
+    			 IntCase (Count rootarchives) {when = 0 then [Set $PAworkflowAdministration_NLS.tabmyarchives to myarchivesLabel] otherwise [Set Concat($PAworkflowAdministration_NLS.tabmyarchives," (",Count rootarchives,")") to myarchivesLabel]}
+    		
+    feature:wadmin_canaccesspage
+    	
+    myprocessesLabel = Variable{type:String multivalued:False}
+    myarchivesLabel = Variable{type:String multivalued:False}
+    
+    selectedProcess = Variable { type: Integer}
+    selectedArchive = Variable { type: Integer}
+    selectedProcessTitle = Variable {type:String}
+    selectedArchiveTitle = Variable {type:String}
+
+	reassignedIdentityUID = Variable {type:String}	
+	reassignedIdentityName = Variable {type:String}
+
+	candidateUID = Variable {type:String}
+
+	processProgress = Variable {type:Integer multivalued:False initial:0}
+	processProgressTotal = Variable {type:Integer multivalued:False initial:0}
+
+	myprocessSelectedTaskId = Variable { type:String }
+	myprocessSelectedTaskName = Variable { type:String }
+	myprocessSelectedTaskStatus = Variable { type:String }
+	myprocessSelectedAssigneeName = Variable { type:String }
+	myprocessSelectedAssigneeUid = Variable { type:String }
+
+	myprocessArchiveSelectedTaskId = Variable { type:String }
+	myprocessArchiveSelectedTaskName = Variable { type:String }
+	myprocessArchiveSelectedTaskStatus = Variable { type:String }
+	myprocessArchiveSelectedAssigneeName = Variable { type:String }
+	myprocessArchiveSelectedAssigneeUid = Variable { type:String }
+
+	activeTabMyProcess = Variable {type:Boolean initial:False}
+	activeTabMyArchive = Variable {type:Boolean initial:False}
+
+    processes = Dataset { // used in the hierarchical dataset
+    	processes: ProcessFilter {
+    		show-completed:True
+    		hide-active:False
+    		show-error:True
+    		show-suspended:True
+    		supervisor:True
+    	}
+    	excludes:
+    	AndPredicate { // exclude root completed processes 
+	    	StringPredicate(Current processParentId) { when IsEmpty then True otherwise False}
+			StringPredicate(Current processCompleteDate) { when Not IsEmpty then True otherwise False}
+	    }
+    }
+
+    rootprocesses = Dataset {
+    	processes: ProcessFilter {
+    		show-completed:False
+    		hide-active:False
+    		show-error:True
+    		show-suspended:True
+    		supervisor:True
+    	}
+    	includes: StringPredicate(Current processParentId) {
+    		when IsEmpty then True otherwise False
+    	}
+    }
+
+    processesHierarchy = HierarchicalData {
+    	dataset:processes 
+    		initial:processParentId IsNull
+    		connect:parent processId to child processParentId   
+    	disabled:Not BooleanPredicate(activeTabMyProcess)   
+    }
+
+    childProcesses = Dataset {
+    	processes: ProcessFilter {
+    		show-completed:True
+    		hide-active:False
+    		show-error:True
+    		show-suspended:True
+    		show-technical:False
+    	}
+    	includes: SameValuePredicate(Current processParentId, selectedProcess)
+    }
+
+    archives = Dataset {
+    	processes: ProcessFilter {
+    		show-completed:True
+    		hide-active:False
+    		show-error:False
+    		show-suspended:False
+    		supervisor:True
+    	}
+    	excludes:
+    	AndPredicate { // exclude root active processes 
+	    	StringPredicate(Current processParentId) { when IsEmpty then True otherwise False}
+			StringPredicate(Current processCompleteDate) { when IsEmpty then True otherwise False}
+	    }
+    }
+
+    rootarchives = Dataset {
+    	processes: ProcessFilter {
+    		show-completed:True
+    		hide-active:True
+    		show-error:False
+    		show-suspended:False
+    		supervisor:True
+    	}
+    	includes: StringPredicate(Current processParentId) {
+    		when IsEmpty then True otherwise False
+    	}
+    }
+
+    archivesHierarchy = HierarchicalData {
+    	dataset:archives
+    		initial:processParentId IsNull
+    		connect:parent processId to child processParentId
+    	disabled:Not BooleanPredicate(activeTabMyArchive)   
+    }
+
+    childArchives = Dataset {
+    	processes: ProcessFilter {
+    		show-completed:True
+    		hide-active:False
+    		show-error:False
+    		show-suspended:False
+    	}
+    	includes: SameValuePredicate(Current processParentId, selectedArchive)
+    }
+    
+	myProcessesTasks = Dataset {
+		tasks: TaskFilter {
+			instance: selectedProcess
+			mode: Supervision
+			show-completed: True
+			show-error: True
+			hide-active: False			
+		}		
+	}
+
+	myProcessArchivesTasks = Dataset {
+		tasks: TaskFilter {
+			instance: selectedArchive
+			mode: Supervision
+			show-completed: True
+			show-error: True
+			hide-active: False			
+		}		
+	}
+	
+	processticketlog = Record { 
+		view:tm_getticketlogfromprocessid with selectedProcess to processid
+	}
+	ticketlog = Record { 
+		view:tm_getticketlogfromprocessid with selectedArchive to processid
+	}
+	
+    // --------------------------------------
+    // Layout
+    TabFolder {
+    	// ---------------------------------------
+    	// All processes
+    	TabItem {
+    		text:myprocessesLabel
+    		icon:"16/famfamfam_silk_icons_v013/cog.png"
+    		activation-event:	Set True to activeTabMyProcess,
+    							Set False to activeTabMyArchive
+    	
+			Splitter {
+				disposition:Horizontal
+				size:30%
+				// Master
+				Group {
+					Tree {
+						data:processesHierarchy
+						layout: Layout {grab:horizontal True vertical True }
+						label: Label {break: True}
+						configurable:True
+						show-filter:True
+						selection-changed-event:Set ProcessInfo(process-id selectedProcess, ProgressTotal) to processProgressTotal, Set ProcessInfo(process-id selectedProcess, Progress) to processProgress  
+						persist-configuration:True
+
+				        Column {
+				            column: processName
+				            header:$PAworkflowAdministration_NLS.name
+				            width: 320px
+				            filterable:True
+				            sortable:True
+				            selection: selectedProcessTitle
+				        }
+				        Column {
+				            column: processId
+				            hidden:True
+				            selection: selectedProcess
+				        }
+				        Column {
+				        	column:processPriority
+				        	image: TemplateImageSelection (Current processPriority) using PAtaskprocessPriorityTemplate
+				        	text:Transform Current processPriority using PAtaskPriorityMapping
+				            filterable:True
+				            sortable:True
+				            width: 80px
+				            header:$PAworkflowAdministration_NLS.processPriority
+				        }
+				        Column {
+				        	column: processStatus
+				        	sortable:True
+				        	image: TemplateImageSelection (Current processStatus) using PAprocessStatusTemplate
+				            filterable:True
+				        	header:$PAworkflowAdministration_NLS.status
+				        	width:86px
+				        }
+				        Column {
+				            column: processCreatorName
+				            filterable:True
+				            sortable:True
+				            header:$PAworkflowAdministration_NLS.createdby
+				        }
+				        Column {
+				            column: processCreationDate
+				            sortable:True
+				            text: DateLDAP(Current processCreationDate).value(Constant TMdatePattern)
+				            header:$PAworkflowAdministration_NLS.creationdate
+				        }
+				        Column {
+				            column: processCreationDate
+				            sortable:True
+				            text: DateLDAP(Current processCreationDate).value(Constant TMdatetimePattern)
+				            header:$PAworkflowAdministration_NLS.creationdatetime
+				            initially-masked:True
+				        }
+				        Column {
+				            column: processDueDate
+				            sortable:True
+				            text: DateLDAP(Current processDueDate).value(Constant TMdatePattern)
+				            header:$PAworkflowAdministration_NLS.duedate
+				        }
+				        Column {
+				            column: processDueDate
+				            sortable:True
+				            text: DateLDAP(Current processDueDate).value(Constant TMdatetimePattern)
+				            header:$PAworkflowAdministration_NLS.duedatetime
+				            initially-masked:True
+				        }
+				        Column {
+				            column: processCompleteDate
+				            sortable:True
+				            text: DateLDAP(Current processCompleteDate).value(Constant TMdatePattern)
+				            header:$PAworkflowAdministration_NLS.completedate
+				        }
+				        Column {
+				            column: processCompleteDate
+				            sortable:True
+				            text: DateLDAP(Current processCompleteDate).value(Constant TMdatetimePattern)
+				            header:$PAworkflowAdministration_NLS.completedatetime
+				            initially-masked:True
+				        }
+					}
+				}
+				// Detail
+				ConditionalGroup {
+					StringCondition(selectedProcess) {
+						when IsEmpty then [
+							Grid {
+								columns:GridColumn{},GridColumn{width:grow}
+								GridRow {
+									GridCell {
+										Image { image:"various/arrow_left.png" }
+									}
+									GridCell {
+										Text { value:"" compact:True}
+										Text {
+											value:$PAworkflowAdministration_NLS.processhelper
+											styling:hugeRedTitleStyle
+											compact:True
+										 }
+									}
+								} 
+							}
+						] when Not IsEmpty then [
+							Grid {
+								columns:GridColumn
+								GridRow {
+									GridCell {
+										Grid {
+											columns:GridColumn{width:64px},GridColumn{width:grow}
+											GridRow {
+												GridCell {
+													Image { image:"48/objects/kservices_48.png" }
+												}
+												GridCell {
+												    Text {
+												        value: selectedProcessTitle // ProcessInfo(process-id selectedProcess, Title)
+														styling:hugeRedTitleStyle
+												        compact:True
+												    }
+												}
+											}
+										}
+									}
+								}
+								GridRow {
+									GridCell {
+										Spacer {
+											height:8
+										}
+									}
+								}
+								GridRow {
+									height:32
+									GridCell {
+										Grid {
+											columns:GridColumn{width:64px},GridColumn{width:32px},GridColumn{width:grow},GridColumn{width:32px},GridColumn{width:grow},GridColumn{width:32px},GridColumn{width:grow}
+											// Due date and started date
+											GridRow {
+												height:32
+												GridCell {}
+												GridCell {
+													Image { image:"16/famfamfam_silk_icons_v013/calendar.png" tooltip:$PAworkflowAdministration_NLS.duedate }
+												}
+												GridCell {
+													Text {
+														value: Transform[ProcessInfo(process-id selectedProcess, DueDate)] using PAdueDateMapping
+														align:Left
+														compact:True
+													}
+												
+												}
+												GridCell {
+													Image { image:"16/famfamfam_silk_icons_v013/clock.png" tooltip:$PAworkflowAdministration_NLS.starteddate }
+												}
+												GridCell {
+													Text {
+														value: Transform[ProcessInfo(process-id selectedProcess, CreationDate)] using PAcreationDateMapping
+														align:Left
+														compact:True
+													}
+												}
+												GridCell{
+												}
+												GridCell {
+												}
+											}
+										}
+									}
+								}
+								GridRow {
+									GridCell {
+										Group {
+											title:$PAworkflowAdministration_NLS.processinfos
+											Grid {
+												columns:GridColumn,GridColumn
+												GridRow {
+													GridCell {
+														Text {
+															label: $PAworkflowAdministration_NLS.process
+															value: ProcessInfo(process-id selectedProcess, DefinitionStaticTitle)
+															compact:True
+															info-popup: PA_processDescription_popup(ProcessInfo(process-id selectedProcess, Description) to description)
+														}
+														Text {
+															label: $PAworkflowAdministration_NLS.createdby
+															value: ProcessInfo(process-id selectedProcess, CreatorName)
+															compact:True 
+															commands:Commands {
+																position:Before
+																presentation:Icon
+																Command {
+																	text:$PAprocessCandidates_NLS.mailtext
+																	tooltip:$PAprocessCandidates_NLS.mailtooltip
+																	feature:wadmin_process_cansendmailtoprocessowner
+																	icon:"16/famfamfam_silk_icons_v013/email.png"
+																	actions:Dialog PAinquirydialog(ProcessInfo(process-id selectedProcess, CreatorUID) to issuerUID, 
+																								'' to title,
+																								'' to taskname,
+																								'' to taskcreationdate,
+																								'' to taskduedate,
+																								ProcessInfo(process-id selectedProcess, Title) to processname,
+																								ProcessInfo(process-id selectedProcess, CreationDate) to processcreationdate,
+																								ProcessInfo(process-id selectedProcess, DueDate) to processduedate,
+																								ProcessInfo(process-id selectedProcess, CreatorName) to processcreatorname
+																								)
+																}
+															}
+														} 
+														Text {
+															label: $PAworkflowAdministration_NLS.status
+															value: ProcessInfo(process-id selectedProcess, Status)
+															compact:True 
+														} 
+														Text {
+															label:$PAworkflowAdministration_NLS.progress
+															 decorator: Decorator {
+														     after: Bar {
+														      min-value: 0
+														      max-value: processProgressTotal
+														      value: processProgress
+														      threshold-normal: Product(processProgressTotal, "66%")
+														      threshold-critical: Product(processProgressTotal, "33%")
+														      higher-is-better:True
+														      width: 150
+														      tooltip: Concat(processProgress,'/',processProgressTotal)
+														     }
+														     width: 150
+														    }
+														   hidden:
+														   	OrPredicate {
+															   IntPredicate (processProgressTotal) { when InvalidInteger then True otherwise False}
+															   IntPredicate (processProgressTotal) { when =0 then True otherwise False}
+														   	}
+														   value:Concat(processProgress,'/',processProgressTotal)
+														   compact:True 
+														}
+													}
+													GridCell {
+														Text {
+															label: $PAworkflowAdministration_NLS.version
+															value: ProcessInfo(process-id selectedProcess, DefinitionVersion)
+															compact:True 
+														} 
+														Text {
+															label: $PAworkflowAdministration_NLS.lastversion
+															value: ProcessInfo(process-id selectedProcess, DefinitionLastVersion)
+															compact:True 
+														} 
+														Text {
+															label: $PAworkflowAdministration_NLS.publicationdate
+															value: ProcessInfo(process-id selectedProcess, DefinitionPublicationDate)
+															compact:True 
+														} 
+													}
+												}
+											}
+										}
+									}
+								}
+								GridRow {
+									height:grow
+									GridCell {
+										Table {
+											data: myProcessesTasks
+											initial-sort: taskCreationDate ascending	
+											configurable:True			
+											layout: Layout {
+												grab: horizontal True vertical True
+												minimal: height 120
+											}
+											label: Label {break: True}
+											commands:Commands {
+												orientation: Vertical
+												position: After
+												presentation: Icon
+													disabled: StringPredicate(myprocessSelectedTaskStatus) {
+														when "Active" then False
+														otherwise True
+													}
+												Command{
+													text:$PAworkflowAdministration_NLS.displaycandidates
+													tooltip:$PAworkflowAdministration_NLS.displaycandidates
+													icon:"16/audit/user_16.png"
+													feature:wadmin_process_canseetaskcandidates
+													disabled: 
+														StringPredicate(myprocessSelectedTaskStatus) {
+														when IsEmpty then True
+														when "Error" then True
+														otherwise False
+														}
+													actions:Dialog PAprocessCandidates(myprocessSelectedTaskId to taskID, myprocessSelectedTaskName to taskName, myprocessSelectedTaskStatus to taskStatus)
+												}
+												Command {
+													text:$PAworkflowAdministration_NLS.sendmailowner
+													tooltip:$PAworkflowAdministration_NLS.sendmailowner
+													icon:"16/famfamfam_silk_icons_v013/email.png"
+													feature:wadmin_process_cansendmailtoassignee
+													disabled: 
+													OrPredicate {
+														StringPredicate(myprocessSelectedTaskStatus) {
+														when "Active" then False
+														otherwise True
+														}
+														StringPredicate(myprocessSelectedAssigneeUid) {
+															when IsEmpty then True
+															otherwise False
+														}
+													}
+													actions:Dialog PAinquirydialog(myprocessSelectedAssigneeUid to issuerUID, 
+																				TaskInfo(task-id myprocessSelectedTaskId, Title) to title,
+																				TaskInfo(task-id myprocessSelectedTaskId, Title) to taskname,
+																				TaskInfo(task-id myprocessSelectedTaskId, CreationDate) to taskcreationdate,
+																				TaskInfo(task-id myprocessSelectedTaskId, DueDate) to taskduedate,
+																				TaskInfo(task-id myprocessSelectedTaskId, ProcessTitle) to processname,
+																				TaskInfo(task-id myprocessSelectedTaskId, ProcessCreationDate) to processcreationdate,
+																				TaskInfo(task-id myprocessSelectedTaskId, ProcessDueDate) to processduedate,
+																				TaskInfo(task-id myprocessSelectedTaskId, ProcessCreatorName) to processcreatorname
+																				)
+												}
+												Command {
+													text:$PAworkflowAdministration_NLS.grabanytasktext
+													tooltip:$PAworkflowAdministration_NLS.grabanytasktooltip
+													icon:"16/famfamfam_silk_icons_v013/star.png"
+													feature:wadmin_process_cangrabanytask
+													disabled: 
+													OrPredicate {
+														StringPredicate(myprocessSelectedTaskStatus) {
+														when "Active" then False
+														otherwise True
+														}
+														StringPredicate(myprocessSelectedTaskId) {
+															when IsEmpty then True
+															otherwise False
+														}
+													}
+													actions: Confirm $PAworkflowAdministration_NLS.grabanytaskconfirm,
+													Flash Concat($PAworkflowAdministration_NLS.taskreassignedto,Principal.fullname),
+												    TaskReassign task-id myprocessSelectedTaskId to Principal.uid,
+												    ReloadData (myProcessesTasks)
+												}
+												Command {
+													text:$PAworkflowAdministration_NLS.reassigntasktext
+													tooltip:$PAworkflowAdministration_NLS.reassigntasktooltip
+													icon:"16/famfamfam_silk_icons_v013/user_go.png"
+													feature:wadmin_process_canforcereassign
+													disabled: 
+													OrPredicate {
+														StringPredicate(myprocessSelectedTaskStatus) {
+														when "Active" then False
+														otherwise True
+														}
+														StringPredicate(myprocessSelectedTaskId) {
+															when IsEmpty then True
+															otherwise False
+														}
+													}
+													actions: Dialog PAreassignTask(reassignedIdentityUID from uid, reassignedIdentityName from fullname),
+													Flash Concat($PAworkflowAdministration_NLS.taskreassignedto,reassignedIdentityName),
+												    TaskReassign task-id myprocessSelectedTaskId to reassignedIdentityUID,
+												    ReloadData (myProcessesTasks)
+												}
+												Command {
+													text:$PAworkflowAdministration_NLS.showerrortext
+													tooltip:$PAworkflowAdministration_NLS.showerrortooltip
+													icon:"16/famfamfam_silk_icons_v013/exclamation.png"
+													feature:wadmin_process_canshowerror
+													actions:	Message Information TaskInfo ( task-id myprocessSelectedTaskId , Error )
+													disabled: 
+													OrPredicate {
+														StringPredicate(myprocessSelectedTaskStatus) {
+														when "Error" then False
+														otherwise True
+														}
+														StringPredicate(myprocessSelectedTaskId) {
+															when IsEmpty then True
+															otherwise False
+														}
+													}
+												}
+												Command {
+													text:$PAworkflowAdministration_NLS.showerrorpagetext
+													tooltip:$PAworkflowAdministration_NLS.showerrorpagetooltip
+													icon:"16/famfamfam_silk_icons_v013/application_form_magnify.png"
+													feature:wadmin_process_canshowerror
+													actions:	GoTo TaskPage myprocessSelectedTaskId
+													disabled: 
+													OrPredicate {
+														StringPredicate(myprocessSelectedTaskStatus) {
+														when "Error" then False
+														otherwise True
+														}
+														StringPredicate(myprocessSelectedTaskId) {
+															when IsEmpty then True
+															otherwise False
+														}
+													}
+												}
+												Command {
+													text:$PAworkflowAdministration_NLS.retryonerrortext
+													tooltip:$PAworkflowAdministration_NLS.retryonerrortooltip
+													icon:"16/famfamfam_silk_icons_v013/control_repeat.png"
+													feature:wadmin_process_canretryonerror
+													actions:	Confirm $PAworkflowAdministration_NLS.retryonerrorconfirm,
+																TaskErrorRestart task-id myprocessSelectedTaskId
+													disabled: 
+													OrPredicate {
+														StringPredicate(myprocessSelectedTaskStatus) {
+														when "Error" then False
+														otherwise True
+														}
+														StringPredicate(myprocessSelectedTaskId) {
+															when IsEmpty then True
+															otherwise False
+														}
+													}
+												}
+												Command {
+													text:$PAworkflowAdministration_NLS.skiponerrortext
+													tooltip:$PAworkflowAdministration_NLS.skiponerrortooltip
+													icon:"16/famfamfam_silk_icons_v013/control_play.png"
+													feature:wadmin_process_canskiponerror
+													actions: Confirm $PAworkflowAdministration_NLS.skiponerrorconfirm,
+															 TaskErrorContinue task-id myprocessSelectedTaskId 
+													disabled: 
+													OrPredicate {
+														StringPredicate(myprocessSelectedTaskStatus) {
+														when "Error" then False
+														otherwise True
+														}
+														StringPredicate(myprocessSelectedTaskId) {
+															when IsEmpty then True
+															otherwise False
+														}
+													}
+												}
+											}
+											
+											Column {
+												column: taskId
+												selection: myprocessSelectedTaskId
+												hidden: True
+												filterable: False			
+											}		
+											Column {
+												column: taskName
+												selection: myprocessSelectedTaskName
+												header: $PAworkflowAdministration_NLS.tasktitle
+												sortable: True
+												filterable: True
+												width: 100%	
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle when "Error" then errorStyle}			
+											}
+											Column {
+												column: taskAssigneeUid
+												selection: myprocessSelectedAssigneeUid
+												hidden: True
+											}
+											Column {
+												column: taskAssigneeName
+												selection: myprocessSelectedAssigneeName
+												header: $PAworkflowAdministration_NLS.actor
+												sortable: True
+												filterable: True
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle when "Error" then errorStyle}			
+											}
+											Column {
+												column: taskStatus
+												selection: myprocessSelectedTaskStatus
+												header: $PAworkflowAdministration_NLS.taskstatus
+												sortable: True
+												filterable: False
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle when "Error" then errorStyle}			
+											}
+											Column {
+												column: taskCreationDate
+												text: DateLDAP(Current taskCreationDate).value(Constant TMdatePattern)
+												header: $PAworkflowAdministration_NLS.taskcreationdate
+												sortable: True
+												filterable: False
+												align: Center
+												width:140px
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle when "Error" then errorStyle}			
+											}
+											Column {
+												column: taskDueDate
+												text: DateLDAP(Current taskDueDate).value(Constant TMdatePattern)
+												header: $PAworkflowAdministration_NLS.taskduedate
+												sortable: True
+												filterable: False
+												initially-masked:True
+												align: Center
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle when "Error" then errorStyle}			
+											}
+											Column {
+												column:taskCompleteDate
+												text: DateLDAP(Current taskCompleteDate).value(Constant TMdatePattern)
+												header: $PAworkflowAdministration_NLS.taskcompletedate
+												sortable: True
+												filterable: False
+												initially-masked:True
+												align: Center
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle when "Error" then errorStyle}			
+											}
+										}
+									}
+								}
+								GridRow {
+									GridCell {
+										Flow {
+											disposition:Horizontal
+											Group {
+											
+											}
+											Group {
+											
+											}
+											Group {
+												ConditionalGroup {
+													StringCondition(ProcessInfo(process-id selectedProcess,Status)) { 
+														when "Active" then [
+															Button {
+																actions:Confirm $PAworkflowAdministration_NLS.processsuspendconfirmation, ProcessSuspend process-id selectedProcess, 
+																        Flash $PAworkflowAdministration_NLS.processsuspendflash, ReloadData (processes)
+																feature:wadmin_process_cansuspend
+																image:"16/famfamfam_silk_icons_v013/control_pause.png"
+																text:$PAworkflowAdministration_NLS.processsuspend
+															}
+														]
+														when "Suspended" then [
+															Button {
+																actions:Confirm $PAworkflowAdministration_NLS.processresumeconfirmation, ProcessResume process-id selectedProcess, 
+																        Flash $PAworkflowAdministration_NLS.processresumeflash, ReloadData (processes)
+																feature:wadmin_process_cansuspend
+																image:"16/famfamfam_silk_icons_v013/control_play.png"
+																text:$PAworkflowAdministration_NLS.processresume
+															}
+														]
+													}
+												}
+											}
+											Group {
+												Button {
+													actions:Confirm $PAworkflowAdministration_NLS.processkillconfirmation, ProcessTerminate process-id selectedProcess, 
+													        Flash $PAworkflowAdministration_NLS.processkillflash, ReloadData (processes)
+													feature:wadmin_process_canstop
+													image:"16/famfamfam_silk_icons_v013/cancel.png"
+													text:$PAworkflowAdministration_NLS.processkill
+												}
+											}
+											Group {
+												Button {
+													text:$PAworkflowAdministration_NLS.inforeport
+													image:"16/famfamfam_silk_icons_v013/report.png"
+													actions:GoTo ProcessInfoPage selectedProcess
+													disabled:Not BooleanPredicate(ProcessInfo(process-id selectedProcess, InfoPageDefined)) 
+												}
+											}
+											Group {
+												Button {
+													text:$PAworkflowAdministration_NLS.compliancereport
+													image:"16/famfamfam_silk_icons_v013/report.png"
+													actions:DownloadComplianceReport processticketlog.recorduid
+													disabled:Not HasComplianceReportPredicate (processticketlog.recorduid) 
+												}
+											}
+											Group {
+												Button {
+													disabled:OrPredicate {
+														StringPredicate(selectedProcess) { when IsNull then True otherwise False}
+														IntPredicate(Count childProcesses) { when =0 then True otherwise False}
+													}
+													text:$PAworkflowAdministration_NLS.subprocessesstate
+													image:"16/famfamfam_silk_icons_v013/help.png"
+													actions:Dialog PAchildProcessStatus (selectedProcess to selectedProcess)
+												}
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				} 
+
+			}   	
+    	}
+    
+    	// ---------------------------------------
+    	// My archived processes
+    	TabItem {
+    		text:myarchivesLabel
+    		icon:"16/famfamfam_silk_icons_v013/database.png"
+    		activation-event:	Set False to activeTabMyProcess,
+    							Set True to activeTabMyArchive
+    		
+			Splitter {
+				disposition:Horizontal
+				size:30%
+				Group {
+					Tree {
+						data: archivesHierarchy
+						layout: Layout {grab:horizontal True vertical True }
+						label: Label {break: True}
+						configurable:True
+						show-filter:True
+						selection-changed-event:Set ProcessInfo(process-id selectedArchive, ProgressTotal) to processProgressTotal, Set ProcessInfo(process-id selectedArchive, Progress) to processProgress  
+						persist-configuration:True
+											
+				        Column {
+				            column: processName
+				            header:$PAworkflowAdministration_NLS.name
+				            width: 320px
+				            filterable:True
+				            sortable:True
+				            selection:selectedArchiveTitle
+				        }
+				        Column {
+				            column: processId
+				            hidden: True
+				            selection: selectedArchive
+				        }
+				        Column {
+				        	column:processPriority
+				        	image: TemplateImageSelection (Current processPriority) using PAtaskprocessPriorityTemplate
+				        	text:Transform Current processPriority using PAtaskPriorityMapping
+				            filterable:True
+				            sortable:True
+				            width: 80px
+				            header:$PAworkflowAdministration_NLS.processPriority
+				        }
+				        Column {
+				        	column: processStatus
+				        	sortable:True
+				            filterable:True
+				        	image: TemplateImageSelection (Current processStatus) using PAprocessStatusTemplate
+				        	header:$PAworkflowAdministration_NLS.status
+				            width: 86px
+				        }
+				        Column {
+				            column: processCreatorName
+				            filterable:True
+				            sortable:True
+				            header:$PAworkflowAdministration_NLS.createdby
+				        }
+				        Column {
+				            column: processCreationDate
+				            sortable:True
+				            text: DateLDAP(Current processCreationDate).value(Constant TMdatePattern)
+				            header:$PAworkflowAdministration_NLS.creationdate
+				        }
+				        Column {
+				            column: processCreationDate
+				            initially-masked:True
+				            sortable:True
+				            text: DateLDAP(Current processCreationDate).value(Constant TMdatetimePattern)
+				            header:$PAworkflowAdministration_NLS.creationdatetime
+				        }
+				        Column {
+				            column: processDueDate
+				            sortable:True
+				            text: DateLDAP(Current processDueDate).value(Constant TMdatePattern)
+				            header:$PAworkflowAdministration_NLS.duedate
+				        }
+				        Column {
+				            column: processDueDate
+				            sortable:True
+				            text: DateLDAP(Current processDueDate).value(Constant TMdatetimePattern)
+				            header:$PAworkflowAdministration_NLS.duedatetime
+				            initially-masked:True
+				        }
+				        Column {
+				            column: processCompleteDate
+				            sortable:True
+				            text: DateLDAP(Current processCompleteDate).value(Constant TMdatePattern)
+				            header:$PAworkflowAdministration_NLS.completedate
+				        }
+				        Column {
+				            column: processCompleteDate
+				            sortable:True
+				            text: DateLDAP(Current processCompleteDate).value(Constant TMdatetimePattern)
+				            header:$PAworkflowAdministration_NLS.completedatetime
+				            initially-masked:True
+				        }
+					}
+				}
+				
+				ConditionalGroup {
+					StringCondition(selectedArchive) {
+						when IsEmpty then [
+							Grid {
+								columns:GridColumn{},GridColumn{width:grow}
+								GridRow {
+									GridCell {
+										Image { image:"various/arrow_left.png" }
+									}
+									GridCell {
+										Text { value:"" compact:True}
+										Text {
+											value:$PAworkflowAdministration_NLS.archivehelper
+											styling:hugeRedTitleStyle
+											compact:True
+										 }
+									}
+								} 
+							}
+						] when Not IsEmpty then [
+							Grid {
+								columns:GridColumn
+								GridRow {
+									GridCell {
+										Grid {
+											columns:GridColumn{width:64px},GridColumn{width:grow}
+											GridRow {
+												GridCell {
+													Image { image:"48/objects/kservices_48.png" }
+												}
+												GridCell {
+												    Text {
+												        value: selectedArchiveTitle // ProcessInfo(process-id selectedArchive, Title)
+														styling:hugeRedTitleStyle
+												        compact:True
+												    }
+												}
+											}
+										}
+									}
+								}
+								GridRow {
+									GridCell {
+										Spacer {
+											height:8
+										}
+									}
+								}
+								GridRow {
+									height:32
+									GridCell {
+										Grid {
+											columns:GridColumn{width:64px},GridColumn{width:32px},GridColumn{width:grow},GridColumn{width:32px},GridColumn{width:grow},GridColumn{width:32px},GridColumn{width:grow}
+											// Due date and started date
+											GridRow {
+												height:32
+												GridCell {}
+												GridCell {
+													Image { image:"16/famfamfam_silk_icons_v013/calendar.png" tooltip:"Due date" }
+												}
+												GridCell {
+													Text {
+														value: Transform[ProcessInfo(process-id selectedArchive, DueDate)] using PAdueDateMapping
+														align:Left
+														compact:True
+													}
+												
+												}
+												GridCell {
+													Image { image:"16/famfamfam_silk_icons_v013/clock.png" tooltip:"Started date" }
+												}
+												GridCell {
+													Text {
+														value: Transform[ProcessInfo(process-id selectedArchive, CreationDate)] using PAcreationDateMapping
+														align:Left
+														compact:True
+													}
+												}
+												GridCell{
+												}
+												GridCell {
+												}
+											}
+										}
+									}
+								}
+								GridRow {
+									GridCell {
+										Group {
+											title:$PAworkflowAdministration_NLS.processinfos
+											Grid {
+												columns:GridColumn,GridColumn
+												GridRow {
+													GridCell {
+														Text {
+															label: $PAworkflowAdministration_NLS.process
+															value: ProcessInfo(process-id selectedArchive, DefinitionStaticTitle)
+															compact:True
+															info-popup: PA_processDescription_popup(ProcessInfo(process-id selectedArchive, Description) to description)
+														}
+														Text {
+															label: $PAworkflowAdministration_NLS.createdby
+															value: ProcessInfo(process-id selectedArchive, CreatorName)
+															compact:True 
+															commands:Commands {
+																position:Before
+																presentation:Icon
+																Command {
+																	text:$PAprocessCandidates_NLS.mailtext
+																	tooltip:$PAprocessCandidates_NLS.mailtooltip
+																	feature:wadmin_archive_cansendmailtoprocessowner
+																	icon:"16/famfamfam_silk_icons_v013/email.png"
+																	actions:Dialog PAinquirydialog(ProcessInfo(process-id selectedArchive, CreatorUID) to issuerUID, 
+																								'' to title,
+																								'' to taskname,
+																								'' to taskcreationdate,
+																								'' to taskduedate,
+																								ProcessInfo(process-id selectedArchive, Title) to processname,
+																								ProcessInfo(process-id selectedArchive, CreationDate) to processcreationdate,
+																								ProcessInfo(process-id selectedArchive, DueDate) to processduedate,
+																								ProcessInfo(process-id selectedArchive, CreatorName) to processcreatorname
+																								)
+																}
+															}
+														} 
+														Text {
+															label: $PAworkflowAdministration_NLS.status
+															value: ProcessInfo(process-id selectedArchive, Status)
+															compact:True 
+														} 
+														Text {
+															label: $PAworkflowAdministration_NLS.completedate
+															value: ProcessInfo(process-id selectedArchive, CompleteDate)
+															compact:True 
+														} 
+														Text {
+															label:$PAworkflowAdministration_NLS.progress
+															 decorator: Decorator {
+														     after: Bar {
+														      min-value: 0
+														      max-value: processProgressTotal
+														      value: processProgress
+														      threshold-normal: Product(processProgressTotal, "66%")
+														      threshold-critical: Product(processProgressTotal, "33%")
+														      higher-is-better:True
+														      width: 150
+														      tooltip: Concat(processProgress,'/',processProgressTotal)
+														     }
+														     width: 150
+														    }
+														   hidden:
+														   	OrPredicate {
+															   IntPredicate (processProgressTotal) { when InvalidInteger then True otherwise False}
+															   IntPredicate (processProgressTotal) { when =0 then True otherwise False}
+														   	}
+														   value:Concat(processProgress,'/',processProgressTotal)
+														   compact:True 
+														}
+													}
+													GridCell {
+														Text {
+															label: $PAworkflowAdministration_NLS.version
+															value: ProcessInfo(process-id selectedArchive, DefinitionVersion)
+															compact:True 
+														} 
+														Text {
+															label: $PAworkflowAdministration_NLS.lastversion
+															value: ProcessInfo(process-id selectedArchive, DefinitionLastVersion)
+															compact:True 
+														} 
+														Text {
+															label: $PAworkflowAdministration_NLS.publicationdate
+															value: ProcessInfo(process-id selectedArchive, DefinitionPublicationDate)
+															compact:True 
+														} 
+													}
+												}
+											}
+										}
+									}
+								}
+								GridRow {
+									height:grow
+									GridCell {
+										Table {
+											data: myProcessArchivesTasks
+											initial-sort: taskCreationDate ascending	
+											configurable:True			
+											layout: Layout {
+												grab: horizontal True vertical True
+												minimal: height 120
+											}
+											label: Label {break: True}
+											commands:Commands {
+												orientation: Vertical
+												position: After
+												presentation: Icon
+												Command {
+													text:$PAworkflowAdministration_NLS.sendmailowner
+													tooltip:$PAworkflowAdministration_NLS.sendmailowner
+													icon:"16/famfamfam_silk_icons_v013/email.png"
+													feature:wadmin_archive_cansendmailtoassignee
+													disabled: 
+													OrPredicate {
+														StringPredicate(myprocessArchiveSelectedTaskStatus) {
+														when "Completed" then False
+														otherwise True
+														}
+														StringPredicate(myprocessArchiveSelectedAssigneeUid) {
+															when IsEmpty then True
+															otherwise False
+														}
+													}
+													actions:Dialog PAinquirydialog(myprocessArchiveSelectedAssigneeUid to issuerUID, 
+																				TaskInfo(task-id myprocessArchiveSelectedTaskId, Title) to title,
+																				TaskInfo(task-id myprocessArchiveSelectedTaskId, Title) to taskname,
+																				TaskInfo(task-id myprocessArchiveSelectedTaskId, CreationDate) to taskcreationdate,
+																				TaskInfo(task-id myprocessArchiveSelectedTaskId, DueDate) to taskduedate,
+																				TaskInfo(task-id myprocessArchiveSelectedTaskId, ProcessTitle) to processname,
+																				TaskInfo(task-id myprocessArchiveSelectedTaskId, ProcessCreationDate) to processcreationdate,
+																				TaskInfo(task-id myprocessArchiveSelectedTaskId, ProcessDueDate) to processduedate,
+																				TaskInfo(task-id myprocessArchiveSelectedTaskId, ProcessCreatorName) to processcreatorname
+																				)
+												}
+												Command {
+													disabled:True
+													actions:Message "Layout only"
+												}
+											}
+											
+											Column {
+												column: taskId
+												selection: myprocessArchiveSelectedTaskId
+												hidden: True
+												filterable: False			
+											}		
+											Column {
+												column: taskName
+												selection: myprocessArchiveSelectedTaskName
+												header: $PAworkflowAdministration_NLS.tasktitle
+												sortable: True
+												filterable: True
+												width: 100%	
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle }			
+											}
+											Column {
+												column: taskAssigneeUid
+												selection: myprocessArchiveSelectedAssigneeUid
+												hidden: True
+											}
+											Column {
+												column: taskAssigneeName
+												selection: myprocessArchiveSelectedAssigneeName
+												header: $PAworkflowAdministration_NLS.actor
+												sortable: True
+												filterable: True
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle }			
+											}
+											Column {
+												column: taskStatus
+												selection: myprocessArchiveSelectedTaskStatus
+												header: $PAworkflowAdministration_NLS.taskstatus
+												sortable: True
+												filterable: False
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle }			
+											}
+											Column {
+												column: taskCreationDate
+												text: DateLDAP(Current taskCreationDate).value(Constant TMdatePattern)
+												header: $PAworkflowAdministration_NLS.taskcreationdate
+												sortable: True
+												filterable: False
+												align: Center
+												initially-masked:True
+												width:140px
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle }			
+											}
+											Column {
+												column:taskCompleteDate
+												text: DateLDAP(Current taskCompleteDate).value(Constant TMdatePattern)
+												header: $PAworkflowAdministration_NLS.taskcompletedate
+												sortable: True
+												filterable: False
+												width:140px
+												align: Center
+												styling: StringStyling (Current taskStatus) { when "Active" then emphasizeStyle }			
+											}
+										}
+									}
+								}
+								GridRow {
+									GridCell {
+										Flow {
+											disposition:Horizontal
+											Group {
+											}
+											Group {
+											}
+											Group {
+												Button {
+													text:$PAworkflowAdministration_NLS.archivereport
+													image:"16/famfamfam_silk_icons_v013/report.png"
+													actions:GoTo ProcessReportPage selectedArchive
+													disabled:Not BooleanPredicate(ProcessInfo(process-id selectedArchive, ReportPageDefined)) 
+												}
+											}
+											Group {
+												Button {
+													text:$PAworkflowAdministration_NLS.compliancereport
+													image:"16/famfamfam_silk_icons_v013/report.png"
+													actions:DownloadComplianceReport ticketlog.recorduid
+													disabled:Not HasComplianceReportPredicate (ticketlog.recorduid) 
+												}
+											}
+											Group {
+												Button {
+													disabled:OrPredicate {
+														StringPredicate(selectedArchive) { when IsNull then True otherwise False}
+														IntPredicate(Count childArchives) { when =0 then True otherwise False}
+													}
+													text:$PAworkflowAdministration_NLS.subarchivesstate
+													image:"16/famfamfam_silk_icons_v013/help.png"
+													actions:Dialog PAchildArchiveStatus (selectedArchive to selectedArchive)
+												}
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				} 
+			}   	
+    	}
+    }
+}
+
+PA_processDescription_popup = InfoPopup {
+	width: 600
+	height:300
+
+	description = Variable
+
+	Text {
+		value:description
+		lines:20
+		compact:True
+	}
+}

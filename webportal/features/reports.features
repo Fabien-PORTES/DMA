@@ -1,0 +1,409 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Features
+  PUBLIC '-//Brainwave//DTD Features 1.0//EN'
+  'urn:brainwave:igrc:dtds/features.dtd'>
+<Features description="Reports features" include="true" name="reportsfeatures" version="1">
+
+
+	<Feature description="browsing_accountdetail" name="browsing_accountdetail">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_account_allgroups" name="browsing_account_allgroups">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_account_detailapplications" name="browsing_account_detailapplications">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_account_detailpermissions" name="browsing_account_detailpermissions">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_account_usages" name="browsing_account_usages">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_applicationdetail" name="browsing_applicationdetail">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_application_detailaccounts" name="browsing_application_detailaccounts">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_application_identitylist" name="browsing_application_identitylist">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_application_permissionsbyaccount" name="browsing_application_permissionsbyaccount">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_application_permissionsbyidentity" name="browsing_application_permissionsbyidentity">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_application_usages" name="browsing_application_usages">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_application_detailassets" name="browsing_application_detailassets">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_organisationdetail" name="browsing_organisationdetail">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_organisation_identities" name="browsing_organisation_identities">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_organisation_suborgs" name="browsing_organisation_suborgs">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_organisation_detailassets" name="browsing_organisation_detailassets">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>	
+	<Feature description="browsing_identitydetail" name="browsing_identitydetail">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_identity_detailaccounts" name="browsing_identity_detailaccounts">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_identity_detailapplications" name="browsing_identity_detailapplications">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_identity_detailpermissions" name="browsing_identity_detailpermissions">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_identity_team" name="browsing_identity_team">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_identity_usages" name="browsing_identity_usages">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_groupdetail" name="browsing_groupdetail">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_group_allaccounts" name="browsing_group_allaccounts">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_group_detailpermissions" name="browsing_group_detailpermissions">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_repositorydetail" name="browsing_repositorydetail">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_repository_detailaccounts" name="browsing_repository_detailaccounts">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_repository_detailapplications" name="browsing_repository_detailapplications">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_repository_detailgroups" name="browsing_repository_detailgroups">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_permissiondetail" name="browsing_permissiondetail">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_permission_detailaccounts" name="browsing_permission_detailaccounts">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_permission_detailgroups" name="browsing_permission_detailgroups">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_permission_identitylist" name="browsing_permission_identitylist">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_permission_usages" name="browsing_permission_usages">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_currentorganisationhierarchy" name="browsing_currentorganisationhierarchy">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	<Feature description="browsing_applicationpermission" name="browsing_applicationpermission">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461055805692"/>
+	</Feature>
+	
+	
+	
+	<Feature description="analysis_accountreviewbyapplication" name="analysis_accountreviewbyapplication">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461163540012"/>
+	</Feature>
+	<Feature description="analysis_organisationdeltareview_hrteam" name="analysis_organisationdeltareview_hrteam">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461163540012"/>
+	</Feature>
+	<Feature description="analysis_organisationreview_hrteam_applications" name="analysis_organisationreview_hrteam_applications">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461163540012"/>
+	</Feature>
+	<Feature description="analysis_organisationdeltareview_hrteam_applications" name="analysis_organisationdeltareview_hrteam_applications">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461163540012"/>
+	</Feature>
+	<Feature description="analysis_organisationreview_crosstab" name="analysis_organisationreview_crosstab">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461163540012"/>
+	</Feature>
+	<Feature description="analysis_organisationreview_hrteam_permissionsprofiles" name="analysis_organisationreview_hrteam_permissionsprofiles">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461163540012"/>
+	</Feature>
+	<Feature description="analysis_organisationdeltareview_hrteam_left_permissionsprofiles" name="analysis_organisationdeltareview_hrteam_left_permissionsprofiles">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461163540012"/>
+	</Feature>
+	<Feature description="analysis_organisationreview_hrteam_deltapermissionsprofiles" name="analysis_organisationreview_hrteam_deltapermissionsprofiles">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461163540012"/>
+	</Feature>
+	<Feature description="analysis_accountreviewbymanager" name="analysis_accountreviewbymanager">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461163540012"/>
+	</Feature>
+	
+	
+	<Feature description="browsing_application_detailaccountproblems" name="browsing_application_detailaccountproblems">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="browsing_application_detailidentityproblems" name="browsing_application_detailidentityproblems">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_applicationassociatedwith" name="analysis_applicationassociatedwith">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_organisationreview_hrteam" name="analysis_organisationreview_hrteam">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_organisationsimilarapps" name="analysis_organisationsimilarapps">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_organisationdirectsimilarapps" name="analysis_organisationdirectsimilarapps">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_organisationsimilarperms" name="analysis_organisationsimilarperms">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_organisationdirectsimilarperms" name="analysis_organisationdirectsimilarperms">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_templateanalysis" name="analysis_templateanalysis">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_identitysimilarapps" name="analysis_identitysimilarapps">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_identitysimilarperms" name="analysis_identitysimilarperms">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_permissionassociatedwith" name="analysis_permissionassociatedwith">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_organisations_applications_withsubs" name="analysis_organisations_applications_withsubs">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_organisations_applications_nosubs" name="analysis_organisations_applications_nosubs">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_jobs_applications" name="analysis_jobs_applications">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_organisations_permissions_withsubs" name="analysis_organisations_permissions_withsubs">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_organisations_permissions_nosubs" name="analysis_organisations_permissions_nosubs">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	<Feature description="analysis_jobs_permissions" name="analysis_jobs_permissions">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461071985472"/>
+	</Feature>
+	
+	
+	<Feature description="analysis_applicationorphanaccounts" name="analysis_applicationorphanaccounts">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_applicationjoborgpivot" name="analysis_applicationjoborgpivot">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_permissionjobpivot_application" name="analysis_permissionjobpivot_application">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_permissionorgpivot_application" name="analysis_permissionorgpivot_application">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_joborganisationpivot" name="analysis_joborganisationpivot">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_organisationappsuborgpivot" name="analysis_organisationappsuborgpivot">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_organisationappjobpivot_detail" name="analysis_organisationappjobpivot_detail">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="controls_SoDtopControlsFltOrg" name="controls_SoDtopControlsFltOrg">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_repositoryreconciliation" name="analysis_repositoryreconciliation">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_repositoryorphanaccounts" name="analysis_repositoryorphanaccounts">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_repositoryaccounttopgroups" name="analysis_repositoryaccounttopgroups">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_repositorygrouptopaccounts" name="analysis_repositorygrouptopaccounts">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_repositoryidentitiesnbperm" name="analysis_repositoryidentitiesnbperm">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_repositoryaccountsnbperm" name="analysis_repositoryaccountsnbperm">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_permissionorphanaccounts" name="analysis_permissionorphanaccounts">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_permissionjobpivot" name="analysis_permissionjobpivot">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_permissionorgpivot" name="analysis_permissionorgpivot">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_permissionjoborgpivot" name="analysis_permissionjoborgpivot">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	<Feature description="analysis_joborganisationpivot_generic" name="analysis_joborganisationpivot_generic">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461160518845"/>
+	</Feature>
+	
+	
+	<Feature description="dashboard_datasources" name="dashboard_datasources">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="dashboard_reconciliationappsynthesis" name="dashboard_reconciliationappsynthesis">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="dashboard_reconciliationsynthesis" name="dashboard_reconciliationsynthesis">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="analysis_repositoryreconciliation_control" name="analysis_repositoryreconciliation_control">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="analysis_accountenabledusergone" name="analysis_accountenabledusergone">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="analysis_accountscreatedmodified" name="analysis_accountscreatedmodified">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="analysis_accountsdeleted" name="analysis_accountsdeleted">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="controls_SoDtopControlsNoOrg" name="controls_SoDtopControlsNoOrg">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="controls_identitycontrols" name="controls_identitycontrols">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="controls_accountcontrols" name="controls_accountcontrols">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="controls_applicationcontrols" name="controls_applicationcontrols">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="controls_permissioncontrols" name="controls_permissioncontrols">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="controls_organisationcontrols" name="controls_organisationcontrols">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="controls_assetcontrols" name="controls_assetcontrols">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="controls_SoDtopControlsFltOrg_control" name="controls_SoDtopControlsFltOrg_control">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+	<Feature description="custom_identity_changes" name="custom_identity_changes">
+		<FeatureSet name="I1418403516728"/>
+		<FeatureSet name="I1461162161206"/>
+	</Feature>
+</Features>

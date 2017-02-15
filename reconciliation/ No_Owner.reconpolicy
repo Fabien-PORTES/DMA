@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ReconPolicy PUBLIC "-//Brainwave//DTD Reconciliation Policy 1.0//EN" "urn:brainwave:igrc:dtds/reconpolicy.dtd">
+<ReconPolicy version="1.0">
+	<Definition name="No_Owner" description="Accounts not reconciled appearing in AD4UNIX_past">
+		<NoOwner>
+			<Repository name="R1484577343302" code="*">
+				<Rule name="R1484577365785" rule="AD4UNIX_past_account_to_deactivate" noownercode="AD4UNIX_past"/>
+			</Repository>
+		</NoOwner>
+	</Definition>
+</ReconPolicy>

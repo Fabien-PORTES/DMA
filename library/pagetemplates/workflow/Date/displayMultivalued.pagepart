@@ -1,0 +1,5 @@
+Text {
+	label: <template:variablelabel/>
+	value: DateLDAP(Current displayname).value
+	iterate-on: <template:variabledataset/>
+}

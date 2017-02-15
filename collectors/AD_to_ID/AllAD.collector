@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="AllAD" description="All AD (AD EU, AD AS, AD EXT &amp; AD NA)" name="P1469029107033_1" startingpoint="start">
+		<Component name="start" type="library/components/start.component" x="50" y="50" w="250" h="64" title="start"/>
+		<Component name="C1469029107029_1" type="callfilter" x="58" y="579" w="250" h="64" title="AllEU">
+			<Line provisioningfile="/collectors/AD_to_ID/EU/AllEU.collector"/>
+		</Component>
+		<Component name="C1469029107029_2" type="callfilter" x="51" y="152" w="250" h="64" title="AllAS">
+			<Line provisioningfile="/collectors/AD_to_ID/AS/AllAS.collector"/>
+		</Component>
+		<Component name="C1469029107029_3" type="callfilter" x="51" y="252" w="250" h="64" title="AllNA">
+			<Line provisioningfile="/collectors/AD_to_ID/NA/AllNA.collector"/>
+		</Component>
+		<Link name="L1479737276913" source="C1469029107029_2" target="C1469029107029_3" priority="1"/>
+		<Link name="L1481214737053" source="C1469029107029_3" target="C1469029107029_1" priority="2"/>
+		<Link name="L1481378180006" source="start" target="C1469029107029_2" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

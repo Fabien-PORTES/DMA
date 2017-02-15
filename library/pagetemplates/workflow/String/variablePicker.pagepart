@@ -1,0 +1,31 @@
+<template:variablepicker/> = Dialog {
+	title: $workflowpicker.addvalue
+	width: 450
+	height: 200
+	
+	buttons: [
+	OkButton
+	CancelButton
+	]
+	
+	inValueList = Variable {
+		type: String
+		multivalued: True
+	}
+	
+	outValue = Variable {
+		type: String
+	}
+	
+	valueListDataset = Dataset {
+		columns: inValueList as displayname
+	}
+	
+	Combo {
+		label: <template:variablelabel/>
+		variable: outValue
+		options: Static {
+			<template:staticlistelements/>
+		}
+	}
+}

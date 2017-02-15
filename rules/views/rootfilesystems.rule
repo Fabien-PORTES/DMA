@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_rootfilesystems" operator="and" query="permission" displayname="List all shared folders without parent (root)" version="4">
+	<RequestJoin name="J1321523569151_4898" operator="and" join="application">
+		<RequestCriteria name="C1321523581220_4899" criteria="eqApplicationType">
+			<RequestCriteriaParam name="applicationTypeParam" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+	<RequestCriteria name="C1321606108099_8" criteria="eqRoot">
+	</RequestCriteria>
+</Request>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_reconciledaccounts" operator="and" query="account" displayname="Reconciled Accounts" version="4" notes="">
+	<RequestCriteria name="C1331841413998_63" criteria="reconciliatedAccounts">
+	</RequestCriteria>
+</Request>

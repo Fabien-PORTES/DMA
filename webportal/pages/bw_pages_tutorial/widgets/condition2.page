@@ -1,0 +1,38 @@
+
+condition2 = Page {
+	title:'Composite condition to enable/disable a button'
+	
+	selectedHRCODE = Variable
+	selectedSURNAME = Variable
+	
+	identities = Dataset {
+		view:br_identity
+	}
+	
+	
+	Button {
+		text:'Button is enabled when hr code is not empty and surname contains B'
+		disabled:
+			OrPredicate {
+				StringPredicate(selectedHRCODE) { when IsEmpty then True otherwise False}
+				StringPredicate(selectedSURNAME) { when Not Contains 'B' then True otherwise False}
+			}
+		actions:Message Concat(selectedHRCODE, ' ', selectedSURNAME)
+	}
+	Table {
+		data:identities
+		layout:Layout{grab:horizontal True vertical True}
+		
+		Column {
+			column:hrcode
+			selection:selectedHRCODE
+		}
+		Column {
+			column:fullname
+		}
+		Column {
+			column:surname
+			selection:selectedSURNAME
+		}
+	}
+}

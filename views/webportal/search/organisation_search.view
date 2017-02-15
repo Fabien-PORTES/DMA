@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisation_search" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="br_organisation_search" notes="">
+	<ViewParam name="memberFullname" displayname="memberFullname"/>
+	<ViewParam name="parentOrgDisplayname" displayname="parentOrgDisplayname"/>
+	<ViewParam name="childOrgDisplayname" displayname="childOrgDisplayname"/>
+	<ViewParam name="managerFullname" displayname="managerFullname"/>
+	<ViewParam name="organisationShortname" displayname="organisationShortname"/>
+	<ViewParam name="parentOrgDisplaynameDirect" displayname="parentOrgDisplaynameDirect"/>
+	<ViewParam name="organisationDisplayname" displayname="organisationDisplayname"/>
+	<ViewParam name="organisationType" displayname="organisationType"/>
+	<ViewParam name="jobDisplayname" displayname="jobDisplayname"/>
+	<ViewParam name="childOrgDisplaynameDirect" displayname="childOrgDisplaynameDirect"/>
+	<ViewParam name="applicationDisplayname" displayname="applicationDisplayname"/>
+	<ViewSort name="sort" attribute1="A1347551204940_1831"/>
+	<ViewAttribute name="A1347551204940_1827" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347551204940_1828" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1347551204940_1830" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1378995814505_0" reference="organisationShortname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1347551204940_1831" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1378995832056_0" reference="organisationDisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1347551204940_1835" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1347551380644_0" reference="organisationType" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1378280014419_349" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;managerFullname&apos;)" join="manager">
+		<ViewAttribute name="1378280360572_359" attribute="fullname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378280291382_0" reference="managerFullname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378280023203_350" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;parentOrgDisplaynameDirect&apos;)" join="parentorganisation">
+		<ViewAttribute name="A1378280409248_361" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378280414085_0" reference="parentOrgDisplaynameDirect" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378280026527_351" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;childOrgDisplaynameDirect&apos;)" join="childorganisation">
+		<ViewAttribute name="1378280430622_364" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378280414085_0" reference="childOrgDisplaynameDirect" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378721831113_754" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;parentOrgDisplayname&apos;)" join="uporganisation">
+		<ViewAttribute name="1378721840288_757" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378280414085_0" reference="parentOrgDisplayname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378721833547_755" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;childOrgDisplayname&apos;)" join="downorganisation">
+		<ViewAttribute name="1378721844455_759" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378280414085_0" reference="childOrgDisplayname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1391787519669_576" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;jobDisplayname&apos;)" join="upallocation">
+		<ViewAttribute name="1391787533057_579" attribute="jobtitledisplayname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378280244002_0" reference="jobDisplayname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1391787524065_577" kind="inner" identitysecure="true" enabled="(!param.isEmpty(&apos;memberFullname&apos;))||(!param.isEmpty(&apos;applicationDisplayname&apos;))" join="upidentity">
+		<ViewJoin name="J1378280067876_353" kind="inner" identitysecure="false" enabled=" !param.isEmpty(&apos;applicationDisplayname&apos;)" join="applicationreconciliation">
+			<ViewAttribute name="1391787564722_582" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1378280521080_0" reference="applicationDisplayname" operation="ilike" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewAttribute name="1391787587311_584" attribute="fullname" operator="or" removedfromprojection="true" globalfilter="false" enabled="!param.isEmpty(&apos;memberFullname&apos;)">
+			<ViewAttributeFilter name="F1378280291382_0" reference="memberFullname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource tape volume data record" description="The General Resource Tape Volume Data Record defines the characteristics of the tape volume upon which a data set resides. There is one record per general resource/tape volume combination.">
+	<Source type="FORMATTED" filter="^0501 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRTVOL_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the General Resource Tape Volume Data record (0501)."/>
+		<Attribute name="A4199536690768339793" attribute="GRTVOL_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRTVOL_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs, namely TAPEVOL."/>
+		<Attribute name="A7466509792483562715" attribute="GRTVOL_SEQUENCE" column="262-266" type="Number" multivalued="false" description="The file sequence number of the tape data set."/>
+		<Attribute name="A3188661801656117613" attribute="GRTVOL_CREATE_DATE" column="268-277" type="Date" multivalued="false" description="Creation date of the tape data set."/>
+		<Attribute name="A4037269903301147695" attribute="GRTVOL_DISCRETE" column="279-282" type="Boolean" multivalued="false" description="Does a discrete profile exist?"/>
+		<Attribute name="A7863438466300294503" attribute="GRTVOL_INTERN_NAME" column="284-327" type="String" multivalued="false" description="The RACF internal data set name."/>
+		<Attribute name="A8801039954934473602" attribute="GRTVOL_INTERN_VOLS" column="329-583" type="String" multivalued="false" description="The volumes upon which the data set resides."/>
+		<Attribute name="A2460635583838380635" attribute="GRTVOL_CREATE_NAME" column="585-628" type="String" multivalued="false" description="The data set name used when creating the data set."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

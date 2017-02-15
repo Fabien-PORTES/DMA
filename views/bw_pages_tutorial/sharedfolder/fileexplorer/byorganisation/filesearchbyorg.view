@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_filesearchbyorg" prefix="share_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="br_filesearchbyorg" notes="">
+	<ViewParam name="sharerecorduid" displayname="sharerecorduid">
+		<Value name="0" data="35"/>
+	</ViewParam>
+	<ViewParam name="searchpattern" displayname="searchpattern"/>
+	<ViewParam name="sensitivityfilter" displayname="sensitivityfilter"/>
+	<ViewParam name="managedfilter" displayname="managedfilter"/>
+	<ViewParam name="organisationrecorduid" displayname="organisationrecorduid">
+		<Value name="0" data="262"/>
+	</ViewParam>
+	<ViewParam name="showall" displayname="showall" type="Boolean" defaultvalue="false"/>
+	<ViewComputedAttribute name="all" type="String" expression="param.showall.get()"/>
+	<ViewSort name="sort" attribute1="A1438623127874_1193"/>
+	<ViewAttribute name="A1438623066946_1184" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438623068742_0" reference="sharerecorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1438623074155_1186" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewAttribute name="A1438623088632_1187" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438623090451_0" reference="" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1438623117648_1192" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="A1438623127874_1193" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1438623176246_0" reference="searchpattern" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="1438692414342_372" attribute="folderdepth" alias="depth" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1438692414343_373" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1438692414345_374" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1438692414347_375" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1438692414349_376" attribute="inherited" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1438692414351_377" attribute="applicationrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1438692414353_378" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1438692414355_379" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1438692414357_380" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1438692414358_381" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1438695566164_906" prefix="id_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="directidentityright">
+			<ViewJoin name="J1438692514641_406" prefix="org_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="uporganisation">
+				<ViewAttribute name="1438695569305_910" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1438692563648_0" reference="organisationrecorduid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+				<ViewAttribute name="1438695569305_911" attribute="uid" alias="access" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false" enabled="param.showall.get() == false">
+					<ViewAttributeFilter name="F1438696554084_0" operation="gt" ignoreifempty="false">
+						<Value name="0" data="0"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+			</ViewJoin>
+			<ViewAttribute name="A1438695576584_912" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1444065847397_5446" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+			<ViewAttribute name="1444065878949_5521" attribute="sensitivityreason" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065878949_5522" attribute="sensitivitylevel" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1444065886300_0" reference="sensitivityfilter" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="1444065878959_5523" attribute="description" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065878959_5524" attribute="managed" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1444065897356_0" reference="managedfilter" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="1444065878959_5525" attribute="sensitivityreasonorigin" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065878959_5526" attribute="descriptionorigin" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1444065878959_5527" attribute="managedorigin" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

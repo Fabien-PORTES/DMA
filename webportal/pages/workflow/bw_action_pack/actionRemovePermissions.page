@@ -1,0 +1,166 @@
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+import "/webportal/pages/resources/concepts_nls.page"
+
+actionRemovePermissionsNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel current edition ?" fr "Annuler l'édition en cours ?"]
+	complete.buttontext [en "Task completed" fr "Tâche terminée"]
+	complete.confirm [en "Complete current task ?" fr "Terminer la tâche en cours ?"]
+	complete.flashmessage [en "Task completed" fr "Tâche terminée"]
+	title [en "Remove permissions" fr "Remove permissions"]
+	subtitle1 [en "Remove permissions for an individual" fr "Remove permissions for an individual"]
+	grouptitle1 [en "Beneficiary" fr "Beneficiary"]
+	_identityhrcode [en "identity hrcode" fr "identity hrcode"]
+	_identityfullname [en "identity fullname" fr "identity fullname"]
+	_applicationname [en "application name" fr "application name"]
+	_comments [en "comments" fr "comments"]
+	_accountlogins [en "account logins" fr "account logins"]
+	_accountusernames [en "account usernames" fr "account usernames"]
+	_accountrepositories [en "account repositories" fr "account repositories"]
+	accountloginsjointeditiontitle [en "Accounts" fr "Accounts"]
+	_permissioncodes [en "permission codes" fr "permission codes"]
+	_permissionnames [en "permission names" fr "permission names"]
+	permissioncodesjointeditiontitle [en "Permissions to remove" fr "Permissions to remove"]
+	_result [en "result" fr "result"]
+	result.value0 [en "ok" fr "ok"]
+	result.value1 [en "error" fr "error"]
+	_resultdescription [en "Additional action description that you want to push  back to the requester" fr "Additional action description that you want to push  back to the requester"]
+}
+
+
+actionRemovePermissions = Page {
+	title: $actionRemovePermissionsNLS.title
+	mixins: workflowDefaultMixin
+	
+	taskId = Parameter {
+		type: String
+		mandatory: True
+	}
+	
+	task = TaskRecord(taskId)
+	
+	accounts = Dataset {
+		columns:task.accountlogins, task.accountusernames, task.accountrepositories
+	}
+	permissions = Dataset {
+		columns:task.permissioncodes, task.permissionnames
+	}
+	
+	Header {
+		mixins: workflowTitleMixin
+		value: $actionRemovePermissionsNLS.subtitle1
+	}
+	Group {
+		title: $actionRemovePermissionsNLS.grouptitle1
+		Grid {
+			columns: GridColumn { group: a }, GridColumn { group: a }
+			
+			GridRow {
+				GridCell {
+					Text {
+						label: $actionRemovePermissionsNLS._identityhrcode
+						value: task.identityhrcode
+					}
+					Text {
+						label: $actionRemovePermissionsNLS._identityfullname
+						value: task.identityfullname
+					}
+				}
+			}
+		}
+	}
+	Text {
+		label: $actionRemovePermissionsNLS._applicationname
+		value: task.applicationname
+	}
+	Text {
+		label: $actionRemovePermissionsNLS._comments
+		value: task.comments
+	}
+	Grid {
+		columns: GridColumn { group: a }, GridColumn { group: a }
+		
+		GridRow {
+			GridCell {
+				Table {
+					mixins: workflowJointEditionMixin
+					label: $actionRemovePermissionsNLS.accountloginsjointeditiontitle
+					data: accounts
+					Column {
+						header:$account.login
+						column:task_accountlogins
+					}
+					Column {
+						header:$account.username
+						column:task_accountusernames
+					}
+					Column {
+						header:$repository.concept
+						column:task_accountrepositories
+					}
+				}
+			}
+			GridCell {
+				Table {
+					mixins: workflowJointEditionMixin
+					label: $actionRemovePermissionsNLS.permissioncodesjointeditiontitle
+					data: permissions
+					Column {
+						header:$permission.code
+						column:task_permissioncodes
+					}
+					Column {
+						header:$permission.displayname
+						column:task_permissionnames
+					}
+				}
+			}
+		}
+	}
+	Combo {
+		label: Concat($actionRemovePermissionsNLS._result,"*")
+		variable: task.result
+		options: Static {
+			Option {
+				value: "ok"
+				text: $actionRemovePermissionsNLS.result.value0
+			}
+			Option {
+				value: "error"
+				text: $actionRemovePermissionsNLS.result.value1
+			}
+		}
+	}
+	Edit {
+		label: $actionRemovePermissionsNLS._resultdescription
+		variable: task.resultdescription
+	}
+	
+	Header {
+		value: $actionRemovePermissionsNLS.mandatoryfields
+	}
+	
+	Group {
+		title: $actionRemovePermissionsNLS.actionsection
+		mixins: workflowActionsMixin
+		
+		ButtonGroup {
+			Button { 
+				text: $actionRemovePermissionsNLS.cancel.buttontext
+				actions: Confirm $actionRemovePermissionsNLS.cancel.confirm, TaskCancel task, GoTo HomePage
+			}
+			Button { 
+				disabled: StringPredicate (task.result) { when IsEmpty then True }
+				
+				text: $actionRemovePermissionsNLS.complete.buttontext
+				actions:  Confirm $actionRemovePermissionsNLS.complete.confirm, TaskComplete task, Flash Information $actionRemovePermissionsNLS.complete.flashmessage, GoTo HomePage
+			}
+		}
+	}
+}
+

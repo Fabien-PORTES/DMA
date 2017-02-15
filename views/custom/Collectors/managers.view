@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="managers" prefix="ID_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="managers">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1481102574460_380" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1481102616097_382" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1481102619903_383" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1481102636892_0" operation="ne" ignoreifempty="false">
+				<Value name="0" data="ALIR"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1481103586290_422" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="boss">
+		<ViewAttribute name="A1481103591204_423" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1481103593263_424" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

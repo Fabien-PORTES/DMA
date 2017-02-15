@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_myapplications" errorifempty="false" distinct="true" concept="application" displayname="Applications by manager" notes="">
+	<ViewParam name="manager" displayname="manager"/>
+	<ViewComputedAttribute name="icon" displayname="icon" type="String" expression="&apos;16/audit/application_16.png&apos;"/>
+	<ViewComputedAttribute name="tooltip" displayname="tooltip" type="String" expression="&apos;Application &apos; + dataset.displayname.get() + &apos; (&apos; + dataset.code.get() + &apos;)&apos;"/>
+	<ViewSort name="sort" attribute1="A1375348595335_229"/>
+	<ViewAttribute name="A1375348588103_228" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1375348595335_229" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1375348614247_230" prefix="manager_" kind="inner" join="manager">
+		<ViewAttribute name="A1375348621687_231" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1375348657193_0" reference="manager" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1375365362500_149" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

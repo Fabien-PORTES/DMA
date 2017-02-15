@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_reconciliationcount" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_applicationDetail_reconciliationcount" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewComputedAttribute name="category" displayname="Category" type="String" expression="dataset.isEmpty(&apos;type&apos;) ? &quot;orphan&quot; : (dataset.isEmpty(&apos;noownercode&apos;) ? &quot;reconciled&quot; : (dataset.noownercode.get() == &quot;leave&quot; ? &quot;leave&quot; : &quot;noowner&quot;)) "/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1378807226439_1357" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1378807226439_1358" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1377505573808_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+		<ViewAttributeFilter name="F1377505580236_1" operation="isNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1378806463710_1172" kind="inner" identitysecure="false" join="applicationright">
+		<ViewAttribute name="1378807259094_1365" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1378806479610_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1349173587321_7" kind="left" identitysecure="false" join="reconciliation">
+		<ViewAttribute name="1378807269314_1369" attribute="noownercode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1378807269314_1370" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

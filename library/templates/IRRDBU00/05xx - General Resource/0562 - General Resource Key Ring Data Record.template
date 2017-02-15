@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource key ring data record" description="The General Resource Key Ring Data Record defines the information associated with the Key Ring Data Record resource class.">
+	<Source type="FORMATTED" filter="^0562 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="KEYR_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the Key Ring Data record (0562)."/>
+		<Attribute name="A4199536690768339793" attribute="KEYR_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="KEYR_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="KEYR_CERT_NAME" column="262-507" type="String" multivalued="false" description="The name of the profile which contains the certificate which is in this key ring."/>
+		<Attribute name="A7466509792483562716" attribute="KEYR_CERT_USAGE" column="509-516" type="String" multivalued="false" description="The usage of the certificate within the ring. Valid values are PERSONAL, SITE, and CERTAUTH."/>
+		<Attribute name="A7466509792483562717" attribute="KEYR_CERT_DEFAULT" column="518-521" type="Boolean" multivalued="false" description="Is this certificate the default certificate within the ring?"/>
+		<Attribute name="A7466509792483562718" attribute="KEYR_CERT_LABEL" column="523-554" type="String" multivalued="false" description="The label associated with the certificate."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

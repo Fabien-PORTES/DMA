@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1342902880376" title="Organizational elements for authorizations " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A2383898089524344439" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client ID of Current User"/>
+		<Attribute name="A1063111726774759316" attribute="agr_name" column="AGR_NAME" type="String" multivalued="false" persistent="false" description="Role Name"/>
+		<Attribute name="A9159273167619575314" attribute="counter" column="COUNTER" type="Number" multivalued="false" persistent="false" description="Menu ID for BIW"/>
+		<Attribute name="A6138031262062371052" attribute="varbl" column="VARBL" type="String" multivalued="false" persistent="false" description="Profile generator: Organizational levels"/>
+		<Attribute name="A2221387281827997282" attribute="low" column="LOW" type="String" multivalued="false" persistent="false" description="Authorization value"/>
+		<Attribute name="A4789005223983458685" attribute="high" column="HIGH" type="String" multivalued="false" persistent="false" description="Authorization value"/>
+	</Attributes>
+</Discovery>

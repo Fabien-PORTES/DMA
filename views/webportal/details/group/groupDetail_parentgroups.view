@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_groupDetail_parentgroups" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="br_groupDetail_parentgroups" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewSort name="sort" attribute1="1377766649240_422"/>
+	<ViewAttribute name="1377766649224_420" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1377766649224_421" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1377766649240_422" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1377766649240_423" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1377766649240_424" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1377766721668_431" prefix="repository_" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1377766726412_432" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1377766664610_425" kind="inner" identitysecure="false" enabled="param.isDirectLink.get()" join="childgroup">
+		<ViewAttribute name="1379073172149_304" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377766679060_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1377766668355_426" kind="inner" identitysecure="false" enabled="!param.isDirectLink.get()" join="downgroup">
+		<ViewAttribute name="1379073172165_305" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377766679060_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

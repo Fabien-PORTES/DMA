@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="actionpackOrganisationpicker" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="organisation" displayname="Organisation picker" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1415617111464_37443" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617111465_37444" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1415617127028_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1415617111465_37445" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617111465_37446" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617111465_37447" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617111465_37448" attribute="organisationtyperecorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617111465_37449" attribute="organisationtypeuid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617111465_37450" attribute="organisationtypecode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617111465_37451" attribute="organisationtypedisplayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617111465_37452" attribute="importaction" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617111465_37453" attribute="deletedaction" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617114576_37454" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617115263_37455" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617116037_37456" attribute="custom3" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617116740_37457" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617117425_37458" attribute="custom5" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617118159_37459" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617118830_37460" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617119588_37461" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1415617120305_37462" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+</View>

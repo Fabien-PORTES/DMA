@@ -1,0 +1,137 @@
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/bw_pages_tutorial/sharedfolder/standard.page"
+
+tutfilebrowser2 = Page {
+	title:'File browser'
+
+	selectedFileserver = Variable {type:String multivalued:False}
+	selectedSharedfolder = Variable {type:String multivalued:False}
+	selectedSharedfolderRecorduid = Variable {type:Integer multivalued:False}
+
+	fileservers = Dataset {
+		view:tutorial_getfileservers
+	}
+
+	sharedfolders = Dataset {
+		view:tutorial_getsharedfolders with selectedFileserver to uid
+	}
+
+	identitiesWithSharedfolder = Dataset {
+		view:tutorial_getpeoplewithsharedfolder with selectedSharedfolder to uid
+	}
+	
+	currentSharedfolder = Record {
+		view:tutorial_getsharedfolder with selectedSharedfolder to uid
+	}
+	
+	Splitter {
+		disposition:Horizontal
+		size:33%
+		
+		Group {
+			Combo {
+				allow-none:True
+				options:Dynamic {
+					data:fileservers
+					text:Current displayname
+					value:Current uid
+				}
+				variable:selectedFileserver
+			}
+			
+			Table {
+				data:sharedfolders
+				layout:Layout {grab: horizontal True vertical True}
+				
+				Column {
+					column:uid
+					hidden:True
+					selection:selectedSharedfolder
+				}
+				Column {
+					column:recorduid
+					hidden:True
+					selection:selectedSharedfolderRecorduid
+				}
+				
+				Column {
+					column:code
+					width:100%
+				}
+				Column {
+					column:displayname
+				}
+			}
+		}
+		
+		Group {
+			Grid {
+				layout: Layout{grab: horizontal True vertical True}
+				columns:GridColumn{width:54px} ,GridColumn {width:grow},GridColumn {width:54px}
+				GridRow {
+					height:64px
+					GridCell {
+						Image {
+							image:"48/filesystems/folder_48.png"
+						}
+					
+					}
+					GridCell {
+						Text {
+							label:'Name'
+							compact:True
+							value:currentSharedfolder.displayname
+						}
+						Text {
+							label:'Path'
+							compact:True
+							value:currentSharedfolder.code
+						}
+					}
+					GridCell {
+						Button {
+							actions:GoTo Report browsing_sharedfolderdetail with selectedSharedfolderRecorduid to recorduid
+							presentation:Button
+							hide-text:True
+							image:'48/audit/application_48.png'
+							
+						}	
+					}
+				}
+				GridRow {
+					height:grow
+					GridCell {
+						span:3
+						Table {
+							data:identitiesWithSharedfolder
+							layout:Layout {grab: horizontal True vertical True}
+					
+							Column {
+								column:action
+							}	
+							Column {
+								column:accountlogin
+							}	
+							Column {
+								column:identityhrcode
+							}	
+							Column {
+								column:identityfullname
+							}	
+							Column {
+								column:organisationcode
+							}	
+							Column {
+								column:organisationdisplayname
+							}	
+						}
+					}
+				}
+			}
+		
+		
+		}
+	}
+	
+
+}

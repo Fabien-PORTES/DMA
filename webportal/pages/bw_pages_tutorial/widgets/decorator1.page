@@ -1,0 +1,24 @@
+
+decorator1 = Page {
+	title:'A compact text with a static value and an image decorator'
+	
+	staticDataset = Dataset {
+		values: [(col1 -> "key1",col2->17,col3->"new york"),
+				(col1 -> "key2",col2->19,col3->"new york"),
+				(col1 -> "key3",col2->33,col3->"new york"),
+				(col1 -> "key4",col2->37,col3->"texas"),
+				(col1 -> "key5",col2->39,col3->"texas")
+				]
+	}
+
+		Text {
+			label:"label"
+			value:"A compact text with a static value and an image decorator"
+			compact:True
+			decorator:Decorator{
+							before:Image {image: "16/famfamfam_silk_icons_v013/help.png" width:20}
+							width:Fill
+					  }
+		}
+
+}

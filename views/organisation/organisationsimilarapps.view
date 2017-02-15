@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="organisationsimilarapps" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="Similar permissions for people belonging to a given organisation or suborgs" notes="">
+	<ViewParam name="recorduid" displayname="organisation record uid">
+		<Value name="0" data="268"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1324143612848_21" direction1="DESC"/>
+	<ViewAttribute name="A1324130352729_30" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1324130371785_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1324130388084_32" kind="inner" identitysecure="false" join="upidentity">
+		<ViewJoin name="J1324130494338_63" kind="inner" identitysecure="false" join="accountreconciliation">
+			<ViewAttribute name="1382787454006_972" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1382787435042_0" operation="isNull" ignoreifempty="false"/>
+				<ViewAttributeFilter name="F1382787439277_1" operation="isFalse" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewJoin name="J1382787464046_973" prefix="application" kind="inner" identitysecure="false" join="applicationright">
+				<ViewAttribute name="1382787491566_978" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1324130517425_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="Profile"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+				<ViewAttribute name="1382787491574_979" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1382787491580_980" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1382787491588_981" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="A1324143612848_21" attribute="recorduid" alias="nboccurence" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="updatepermissionmanagerstart" displayname="People who can start an update on a permission manager workflow" version="1" query="identity"/>

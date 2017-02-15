@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_groupDetail_nbidentities" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="br_groupDetail_nbidentities" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1379060133989_466" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1379060177964_469" kind="inner" identitysecure="false" join="accountreconciliation">
+		<ViewJoin name="J1379060186983_470" kind="inner" identitysecure="false" enabled="param.isDirectLink.get()" join="group">
+			<ViewAttribute name="A1379060194803_472" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1379060200983_0" reference="uid" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1379060189698_471" kind="inner" identitysecure="false" enabled="!param.isDirectLink.get()" join="upgroup">
+			<ViewAttribute name="A1379060196598_473" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1379060209971_0" reference="uid" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

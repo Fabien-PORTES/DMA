@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_parentorganisations_flat" prefix="level0_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="organisation" displayname="br_organisationDetail_parentorganisations_flat" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewComputedAttribute name="flat" displayname="flat" type="String" expression="(dataset.isEmpty(&apos;level2_shortname&apos;) ? &apos;&apos; : dataset.level2_shortname.get() + &apos; / &apos;) + (dataset.isEmpty(&apos;level1_shortname&apos;) ? &apos;&apos; : dataset.level1_shortname.get() + &apos; / &apos;)  + dataset.level0_shortname.get()"/>
+	<ViewSort name="sort" attribute1="A1416392615071_1372" direction1="DESC" attribute2="A1416392612756_1371" direction2="DESC" attribute3="A1416392037116_1331" direction3="DESC"/>
+	<ViewAttribute name="A1416392037116_1331" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1416392131685_1336" prefix="level1_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" join="parentorganisation">
+		<ViewJoin name="J1416392589348_1370" prefix="level2_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" join="parentorganisation">
+			<ViewAttribute name="A1416392615071_1372" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1422973670213_728" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1422973671074_729" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1422973672013_730" attribute="code" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1422973708830_731" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1416392612756_1371" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1422973665813_725" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1422973666733_726" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1422973667560_727" attribute="code" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1422973730343_732" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1416394198168_1417" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1416394207306_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1422973661500_723" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1422973662999_724" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1422973733226_733" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+</View>

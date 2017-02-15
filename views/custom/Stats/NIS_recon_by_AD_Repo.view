@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_recon_by_AD_Repo" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="NIS_recon_by_AD_Repo">
+	<ViewJoin name="J1483689984067_91323" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+		<ViewAttribute name="A1483689990669_91324" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1483689997611_91325" attribute="identifier" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1483690025021_91327" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1483690030138_91328" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

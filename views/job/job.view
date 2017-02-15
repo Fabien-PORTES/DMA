@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_job" distinct="true" concept="identity" displayname="Job search or picker" notes="">
+	<ViewParam name="jobtitledisplayname" displayname="Job Title Display Name"/>
+	<ViewParam name="jobtitlerecorduid" displayname="Job Title Record UID">
+		<Value name="0" data="107"/>
+	</ViewParam>
+	<ViewParam name="jobtitlecode" displayname="Job Title Code"/>
+	<ViewSort name="sort" attribute1="A1302512938106_150" attribute2="A1302512939386_151"/>
+	<ViewAttribute name="A1302512935647_148" attribute="jobtitlerecorduid" operator="and" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302513017970_1" reference="jobtitlerecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302512936944_149" attribute="jobtitleuid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302513077844_0" operation="isNotNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302512938106_150" attribute="jobtitlecode" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302513033550_0" reference="jobtitlecode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302512939386_151" attribute="jobtitledisplayname" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302513044255_0" reference="jobtitledisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302539709909_163" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT" removedfromprojection="false"/>
+</View>

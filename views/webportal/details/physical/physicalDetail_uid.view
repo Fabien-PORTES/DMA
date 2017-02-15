@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_physicalDetail_uid" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="application" displayname="br_physicalDetail_uid" notes="">
+	<ViewParam name="recorduid" displayname="physical room record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1306930590376_43" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1306931646372_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1306930590376_44" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

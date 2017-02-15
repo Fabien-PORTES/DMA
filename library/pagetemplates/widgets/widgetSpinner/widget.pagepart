@@ -1,0 +1,10 @@
+Spinner {
+	label: <template:widgetlabel/>
+	variable: <template:widgetvariablename/>
+	minimum: 0
+	maximum: 100
+	layout: Layout {
+		grab: horizontal False vertical False
+		align: horizontal Beginning vertical Center
+	}
+}

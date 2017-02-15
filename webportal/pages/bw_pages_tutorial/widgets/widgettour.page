@@ -1,0 +1,849 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/bw_pages_tutorial/tutorial.page"
+import "/webportal/pages/reports/standard.page"
+
+widgettour = Page {
+	title:"A showcase of all the Pages widgets"
+	
+	// Static variables used in the show case
+	textsample = Variable { type:String multivalued:False initial:"This is a dynamic text, please modify me in the edit field!" }
+	
+	phonenumber = Variable { type:String multivalued:False initial:"01 47 65 32 85"}
+	
+	loginsample = Variable { type:String multivalued:False initial:"" }
+	
+	mycheckbox = Variable { type:Boolean multivalued:False initial:False }
+
+	mybarvalue = Variable { type:Integer initial:33}
+	
+	mybulletrange = Variable { type:Integer multivalued:True initial:[5,13,55,76] }
+	
+	myradio = Variable { type:Integer multivalued:False initial:False }
+	
+	mycombo = Variable { type:String multivalued:False initial:"" }
+
+	mydate = Variable { type:Date multivalued:False }
+	
+	myscale1 = Variable { type:Integer initial:0}
+
+	myscale2 = Variable { type:Integer initial:0}
+	
+	mynavigator1 = Variable { type:String multivalued:False initial:"" }
+
+	mynavigator2 = Variable { type:String multivalued:False initial:"" }
+	
+	tablechecks = Variable { type:String multivalued:True }
+		
+	tableselection = Variable { type:String multivalued:False }
+
+	myupload = Variable { type:String multivalued:True }
+
+	mytreevalue = Variable { type:String multivalued:False }
+
+	multi1 = Variable { type:Integer multivalued:True initial:[5,13,55,76] }
+	multi2 = Variable { type:String multivalued:True initial:['label 1', 'toto', 'label 2','this is the end'] }
+	multi3 = Variable { type:Boolean multivalued:True initial:[True, True, False, True] }
+	
+	
+	staticDataset = Dataset {
+		values: [(col1 -> "key1",col2->17,col3->"new york"),
+				(col1 -> "key2",col2->19,col3->"new york"),
+				(col1 -> "key3",col2->33,col3->"new york"),
+				(col1 -> "key4",col2->37,col3->"texas"),
+				(col1 -> "key5",col2->39,col3->"texas")
+				]
+	}
+
+	statichierarchicaldataset = HierarchicalData {
+		view:br_organisationtreeview
+		connect:parent recorduid to child parent_recorduid 
+		initial:parent_recorduid IsNull
+	}
+	
+	chartorgs = Dataset {
+		values: [(col1 -> "DCOM",col2->17),
+				(col1 -> "DFIN",col2->35),
+				(col1 -> "DG",col2->78),
+				(col1 -> "DTECH",col2->5),
+				(col1 -> "DMARK",col2->96),
+				(col1 -> "DRH",col2->65),
+				(col1 -> "DSI",col2->50)
+				]
+	}
+	
+	// ***********************************************************************************************************
+	// The widgets
+	
+	// Text widget
+	Group {
+		title:"Text"
+
+		Text {
+			label:"label"
+			value:"A compact text with a static value"
+			compact:True
+		}
+		
+		Text {
+			label:"label"
+			value:"A standard text with a static value"
+		}
+		
+		Text {
+			label:"label"
+			value:"A compact text with a static value and an image decorator"
+			compact:True
+			decorator:Decorator{
+							before:Image {image: "16/famfamfam_silk_icons_v013/help.png" width:20}
+							width:Fill
+					  }
+		}
+
+		Text {
+			label:"label"
+			value:"A compact text with a static value and a sparkline decorator"
+			compact:True
+			decorator:Decorator{
+							after:LineSparkline{data:staticDataset column:col2 width: 64}
+							width:Fill
+					  }
+		}
+
+		Text {
+			label:"label"
+			value:"A compact text with a static value and a pie decorator"
+			compact:True
+			decorator:Decorator{
+							after:PieSparkline{data:staticDataset column:col2 width: 64}
+							width:Fill
+					  }
+		}
+
+		Text {
+			label:"label"
+			value:"A compact text with a static value and a Bar decorator"
+			compact:True
+			decorator:Decorator{
+							after:Bar{max-value:100 width: 64 value:mybarvalue higher-is-better:True threshold-normal:66 threshold-critical: 33 tooltip:Concat(mybarvalue,'/100')}
+							width:Fill
+					  }
+		}
+
+		Text {
+			label:"label"
+			value:"A compact text with a static value and a BulletSparkline decorator"
+			compact:True
+			decorator:Decorator{
+							after:BulletSparkline{width:64 performance-value:33 target-value:50 range-values:mybulletrange }
+							width:Fill
+					  }
+		}
+	
+		Text {
+			label:"label"
+			value:textsample
+			compact:True
+			tooltip:"A compact text with a dynamic value (the value by itself is located in a variable)"
+		}
+	
+		Text {
+			label:"label"
+			value:"A compact text with a static value and a custom style"
+			compact:True
+			styling:warningFieldStyle
+		}
+	
+		Text {
+			label:"label"
+			value:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+			lines:10
+			compact:True
+			layout:Layout{hint:height 64}
+		}
+	}
+	
+	Spacer {
+		height:8
+	}
+
+	// Header widget
+	Group {
+		title:"Header"
+		
+		Header {
+			value:"This is a header. It is like a text but with no 'label' associated, notice how it is indented to the left side of the Page"
+		}
+	
+		Header {
+			value:"This is a header. It is like a text but with no 'label' associated, notice how it is indented to the left side of the Page"
+			styling:warningFieldStyle
+		}
+		
+		Header {
+			value:"This is a header, centered as a title thanks to a layout property"
+			styling:warningFieldStyle
+			layout:Layout {grab:horizontal True vertical False align:horizontal Center vertical Center}
+		}
+	}
+
+
+	Spacer {
+		height:8
+	}
+	
+	// Link
+	Group {
+		title:"Link"
+	
+		Link {
+			value:"This is a hyperlink to the homepage"
+			target: HomePage
+		}
+		
+		Link {
+			value:"This is a hyperlink to the homepage with a custom style"
+			target: HomePage
+			styling:activeLinkStyle
+		}
+
+		Link {
+			value:"This is a hyperlink to a Page"
+			target: Page tutorialPage
+			styling:activeLinkStyle
+		}
+		
+		Link {
+			value:"This is a hyperlink to a Report"
+			target: Report browsing_applicationsearch
+			styling:activeLinkStyle
+		}
+
+		Link {
+			value:"This is a hyperlink to a static content"
+			target: Static "static/bw_pages_tutorial/samplefile.html"
+			tooltip:"The static content must be located under the 'static' subdirectory of your project"
+			styling:activeLinkStyle
+		}
+		
+	}
+	
+	Spacer {
+		height:8
+	}
+	
+	// Edit
+	Group {
+		title:"Edit"
+
+		Edit {
+			label:"edit"
+		 	variable:textsample
+		 }
+
+		Edit {
+			label:"edit"
+			multi-lines:True
+			layout:Layout{hint:height 64}
+		 	variable:textsample
+		 }
+		
+		Edit {
+			label:"edit"
+			match:"^[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}$"
+		 	variable:phonenumber
+		 	tooltip:"Entrer ici un numero de téléphone à 10 chiffres avec des espaces entre les couples"
+		 }
+
+
+		Edit {
+			label:"edit"
+		 	variable:loginsample
+		 	not-empty:True
+		 	proposal:Account.login
+		 	tooltip:"Press Ctrl+Space for dynamic proposals"
+		 }
+	}
+
+	Spacer {
+		height:8
+	}
+	
+	// Image
+	Group {
+		title:"Image"
+
+		Image { 
+			text:"Image"
+			image:"48/audit/account_48.png"
+		}
+	}
+		
+	Spacer {
+		height:8
+	}
+	
+	// Button
+	Group {
+		title:"Button"
+
+		Button { actions:Message "hello"
+				 text:"A button"
+				}
+
+		Button { actions:Message "hello"
+				hide-text:True
+				image:"48/audit/account_48.png"
+				}
+
+		Button { actions:Message "hello"
+				 text:"A button"
+				image:"48/audit/account_48.png"
+				}
+				
+		ButtonGroup {
+			Button { actions:Message "hello"
+					hide-text:True
+					image:"48/audit/account_48.png"
+					}
+			Button { actions:Message "hello"
+					hide-text:True
+					image:"48/audit/identity_48.png"
+					}
+			Button { actions:Message "hello"
+					hide-text:True
+					image:"48/audit/application_48.png"
+					}
+		}
+		
+		Button {
+			presentation:Link
+			actions:Message "hello"	
+			text:"A button presented as a link"	
+		}
+	}
+
+	Spacer {
+		height:8
+	}
+	
+	// Checkbox
+	Group {
+		title:"Checkbox"
+		
+		Checkbox {
+			variable:mycheckbox
+			text:"A checkbox"
+		}
+	}
+
+	Spacer {
+		height:8
+	}
+	
+	// RadioButtons
+	Group {
+		title:"RadioButtons"
+		
+		RadioButtons {
+			variable:myradio
+			Option {
+				text:"First choice"
+				value:1
+			}
+			Option {
+				text:"Second choice"
+				value:2
+			}
+			Option {
+				text:"Third choice"
+				value:3
+			}
+		}
+	}
+
+	Spacer {
+		height:8
+	}
+	
+	// Combo
+	Group {
+		title:"Combo"
+	
+		Combo {
+			label:"Combo"
+			options:Static {
+				Option {
+					text:"choice 1"
+					value:"My choice 1"
+				}
+				Option {
+					text:"choice 2"
+					value:"My choice 2"
+				}
+				Option {
+					text:"choice 3"
+					value:"My choice 3"
+				}
+			}
+			variable:mycombo
+		}
+
+		Combo {
+			label:"Combo"
+			options:Static {
+				Option {
+					text:"choice 1"
+					value:"My choice 1"
+				}
+				Option {
+					text:"choice 2"
+					value:"My choice 2"
+				}
+				Option {
+					text:"choice 3"
+					value:"My choice 3"
+				}
+			}
+			variable:mycombo
+			commands:Commands {
+				Command {
+					icon:"16/audit/application_16.png"
+					actions:Message Concat("hello application ",mycombo)
+				}
+				Command {
+					icon:"16/audit/permission_16.png"
+					actions:Message Concat("hello permission ",mycombo)
+				}
+				Command {
+					icon:"16/audit/account_16.png"
+					actions:Message Concat("hello account ",mycombo)
+				}
+			}
+		}
+
+	}
+
+	Spacer {
+		height:8
+	}
+	
+	// DateTime
+	Group {
+		title:"DateTime"
+	
+		DateTime {
+			variable:mydate
+			label:"Date"
+		}
+		
+		DateTime {
+			variable:mydate
+			type:Date
+			label:"Date"
+		}
+
+		DateTime {
+			variable:mydate
+			type:Time
+			label:"Date"
+		}
+		
+		DateTime {
+			variable:mydate
+			label:"Date"
+			date-after:Date
+			type:Date
+			tooltip:"The selected date must be after now"
+		}
+	}
+	
+	Spacer {
+		height:8
+	}
+	
+	// OpenURL
+	Group {
+		title:"OpenURL"
+	
+		OpenURL {
+			text:"Jump to brainwave website"
+			url:"http://www.brainwave.fr"
+			styling:activeLinkStyle
+		}
+	}	
+
+	Spacer {
+		height:8
+	}
+	
+	// Scale
+	Group {
+		title:"Scale"
+	
+		Scale {
+			label:"Scale"
+			variable:myscale1
+			minimum:0
+			maximum:100
+			increment:10
+		}
+	
+		Scale {
+			label:"Scale"
+			variable:myscale2
+			minimum:0
+			maximum:100
+			increment:1
+			show-value:Right
+		}
+	}
+	
+
+	Spacer {
+		height:8
+	}
+	
+	// Separator
+	Group {
+		title:"Separator"
+		
+		Separator {
+		}
+
+		Separator {
+			color:red
+			width:16
+		}
+	}	
+
+	Spacer {
+		height:8
+	}
+	
+	// SetNavigator
+	Group {
+		title:"SetNavigator"
+		
+		SetNavigator {
+			data:staticDataset
+			column:col1
+			selection:mynavigator1
+		}
+
+		Grid {
+			columns:GridColumn,GridColumn{width:grow}
+			GridRow {
+				GridCell {
+					SetNavigator {
+						data:staticDataset
+						column:col1
+						selection:mynavigator2
+						show-count:True
+						show-first:True
+						show-last:True
+					}	
+				}
+				GridCell {
+				Text {
+					value:mynavigator2
+					layout:Layout{grab:horizontal True vertical False }
+				}
+				}
+			}
+		}		
+	}				
+
+	Spacer {
+		height:8
+	}
+	
+	// Table
+	Group {
+		title:"Table"
+	
+		Table {
+			data:staticDataset
+			layout:Layout {hint:height 128}
+			
+			Column {
+				column:col1
+			}
+			Column {
+				column:col2
+			}
+			Column {
+				column:col3
+			}
+		}	
+
+		Table {
+			data:staticDataset
+			layout:Layout {hint:height 128}
+			label:"Table"
+			
+			Column {
+				header:"Column 1"
+				column:col1
+				sortable:True
+			}
+			Column {
+				header:"Column 2"
+				column:col2
+				sortable:True
+			}
+			Column {
+				header:"Column 3"
+				column:col3
+				sortable:True
+			}
+		}
+			
+		Table {
+			data:staticDataset
+			layout:Layout {hint:height 196}
+			label:"Table"
+			checkboxes:col1 to tablechecks
+			configurable:True
+			show-filter:True
+			double-click:Message Concat("You selected [", tableselection, "]")
+			
+			Column {
+				header:"Column 1"
+				column:col1
+				sortable:True
+				filterable:True
+				image:"16/audit/account_16.png"
+				selection:tableselection
+			}
+			Column {
+				header:"Column 2"
+				column:col2
+				sortable:True
+				image:"16/audit/application_16.png"
+			}
+			Column {
+				header:"Column 3"
+				column:col3
+				sortable:True
+				filterable:True
+				width:100%
+			}
+		}
+
+
+		Table {
+			data:staticDataset
+			layout:Layout {hint:height 128}
+			label:"Table"
+			GroupingColumn {
+				GroupedAttribute {
+					column:col3
+				}
+				RowAttribute {
+					column:col2
+				}
+			}			
+			Column {
+				header:"Column 1"
+				column:col1
+			}
+			Column {
+				header:"Column 2"
+				column:col2
+			}
+			Column {
+				header:"Column 3"
+				column:col3
+			}
+		}
+	}
+	
+	Spacer {
+		height:8
+	}
+		
+	// Tree
+	Group {
+		title:"Tree"
+		
+		Tree {
+			label:"Tree"
+			data:statichierarchicaldataset
+			expand-level:2
+			show-filter:True
+			layout:Layout {hint:height 256}
+			double-click:Message Concat("You have selected ",mytreevalue)
+			
+			Column {
+				column:shortname
+				filterable:True
+				image:"16/audit/organisation_16.png"
+				selection:mytreevalue
+			}	
+			Column {
+				column:organisationtypecode
+				filterable:True
+			}	
+			Column {
+				header:"Display name"
+				column:displayname
+				filterable:True
+				width:100%
+			}
+		}
+	}
+	
+	Spacer {
+		height:8
+	}
+
+	Spacer {
+		height:8
+	}
+		
+	// MultiEdit
+	Group {
+		title:"MultiEdit"
+	
+		MultiEdit {
+			buttons-presentation:IconAndText
+			show-count:True
+			show-filter:True
+			show-header:True
+			show-lines:True
+			add-dialog:addDialog returning var1,var2,var3
+					
+			Element {
+				variable:multi1
+				header:"Column 1"
+				filterable:True
+				image:"16/audit/organisation_16.png"
+			}
+			Element {
+				variable:multi2
+				header:"Column 2"
+				filterable:True
+			}
+			Element {
+				variable:multi3
+				header:"Column 3"
+				filterable:True
+			}
+		}	
+	}
+		
+	// Upload
+	Group {
+		title:"Upload"
+
+		Upload {
+			label:"Upload"
+			variable:myupload
+		}
+
+		Upload {
+			label:"Upload"
+			variable:myupload
+			compact:True
+			confirm-delete:True
+			download-mode:ButtonLeft
+			show-uploader:True
+			show-size:True
+			show-date:True
+			show-controls:True
+		}
+	}
+	
+	Spacer {
+		height:8
+	}
+		
+	// Chart
+	Group {
+		title:"Chart"
+
+		Chart {
+			file: "charts/histogram"
+			data:chartorgs
+			series: (Current col1) as String in "category", (Current col2) as Double in "value"
+			label: Label {
+				break: True
+			}
+			layout: Layout {
+				grab: horizontal True vertical True hint: height 256
+			}
+		}
+
+		Chart {
+			file: "charts/treemap"
+			data:chartorgs
+			series: (Current col1) as String in "category", (Current col2) as Double in "value"
+			label: Label {
+				break: True
+			}
+			layout: Layout {
+				grab: horizontal True vertical True hint: height 256
+			}
+		}
+
+		Chart {
+			file: "charts/pie"
+			data:chartorgs
+			series: (Current col1) as String in "category", (Current col2) as Double in "value"
+			label: Label {
+				break: True
+			}
+			layout: Layout {
+				grab: horizontal True vertical True hint: height 400
+			}
+		}
+	}
+			
+	// Browser
+	Group {
+		title:"Browser"
+
+		Browser {
+			url:"http://www.brainwave.fr"
+			layout:Layout{hint:width 640 height 480}
+		}
+
+		Browser {
+			static:"static/bw_pages_tutorial/samplefile.html" // this file is located into the project under the static directory
+			layout:Layout{hint:width 640 height 480}
+		}
+	}	
+}
+
+addDialog = Dialog {
+	title:"Add"
+	
+	buttons:[ CancelButton 
+			  OkButton{disabled:Not BooleanPredicate(valid)} 
+			]
+
+	var1 = Variable{type:Integer }
+	var2 = Variable{type:String }
+	var3 = Variable{type:Boolean }
+	
+	valid = Variable {type:Boolean}
+	
+	Edit {
+		// Here is an example of a constrained edit field with a conditional ok button
+		variable:var1
+		label:"Variable 1"
+		match:"^[0-9]+$"
+		tooltip:"Type a valid number"
+		validity:valid
+	}
+	
+	Edit {
+		variable:var2
+		label:"Variable 2"
+	}
+	
+	Checkbox {
+		variable:var3
+		label:"Variable 3"
+	}
+}

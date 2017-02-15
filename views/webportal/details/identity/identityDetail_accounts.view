@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityDetail_accounts" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_identityDetail_accounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1378216447008_1377" kind="inner" identitysecure="false" join="identityreconciliation">
+		<ViewAttribute name="1378216476357_1382" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378216348396_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1378216481381_1383" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378216483784_1384" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378216485470_1385" attribute="identifier" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378216487811_1386" attribute="login" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378216490480_1387" prefix="repository_" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1378216494086_1388" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

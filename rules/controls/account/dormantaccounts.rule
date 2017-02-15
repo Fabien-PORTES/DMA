@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_dormantaccounts" operator="and" query="account" displayname="Dormant accounts" version="2">
+	<RequestGroup name="G1415109886768_1915" operator="or">
+		<RequestCriteria name="C1415109893864_1916" criteria="isNullProperty">
+			<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+				<Value name="0" data="disabled"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+		<RequestCriteria name="C1415109902144_1917" criteria="neDisabled">
+		</RequestCriteria>
+	</RequestGroup>
+	<RequestCriteria name="C1415109937949_1921" criteria="isNotNullProperty">
+		<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+			<Value name="0" data="lastLoginDate"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1415110001144_1923" criteria="ltLastLoginPeriod">
+		<RequestCriteriaParam name="lastLoginDatePeriodParam" ignoreifempty="false">
+			<Value name="0" data="90"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

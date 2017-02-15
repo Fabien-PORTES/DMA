@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="accountNIS_Repository" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="accountNIS_Repository" notes="">
+	<ViewParam name="repo_displayname" displayname="Repository Displayname"/>
+	<ViewSort name="sort" attribute1="A1486374861068_75649"/>
+	<ViewJoin name="J1486374848083_75635" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1486374861068_75649" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

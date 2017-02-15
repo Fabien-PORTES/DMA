@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343581298780" title="CUA: Selection Criteria for Field Attributes " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A1451521360384729035" attribute="borobject" column="BOROBJECT" type="String" multivalued="false" persistent="false" description="Object Type"/>
+		<Attribute name="A418298902588782624" attribute="log_field" column="LOG_FIELD" type="String" multivalued="false" persistent="false" description="Logical field ID for ALE distribution field selection"/>
+		<Attribute name="A7173023746108111320" attribute="g_allowed" column="G_ALLOWED" type="Boolean" multivalued="false" persistent="false" description="Yes/No (X/ )"/>
+		<Attribute name="A523681403632886772" attribute="l_allowed" column="L_ALLOWED" type="Boolean" multivalued="false" persistent="false" description="Yes/No (X/ )"/>
+		<Attribute name="A2994678671277743314" attribute="t_allowed" column="T_ALLOWED" type="Boolean" multivalued="false" persistent="false" description="Yes/No (X/ )"/>
+		<Attribute name="A5776003719908577549" attribute="b_allowed" column="B_ALLOWED" type="Boolean" multivalued="false" persistent="false" description="Yes/No (X/ )"/>
+		<Attribute name="A2094566309789797494" attribute="c_allowed" column="C_ALLOWED" type="Boolean" multivalued="false" persistent="false" description="Yes/No (X/ )"/>
+	</Attributes>
+	<Format booleanvalues="X"/>
+	<Checks>
+		<Check name="U1343581324052" attribute="borobject" checktype="mandatory"/>
+		<Check name="U1343581464954" attribute="log_field" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1343581432373" action="default" attribute="g_allowed" newvalue="false"/>
+		<Action name="U1343581437174" action="default" attribute="l_allowed" newvalue="false"/>
+		<Action name="U1343581441199" action="default" attribute="t_allowed" newvalue="false"/>
+		<Action name="U1343581446830" action="default" attribute="b_allowed" newvalue="false"/>
+		<Action name="U1343581451227" action="default" attribute="c_allowed" newvalue="false"/>
+	</Actions>
+</Discovery>

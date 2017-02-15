@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="stats" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="stats">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1479385604281_795" attribute="identifier" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1482916952715_65491" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1482916958955_65493" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewCriteria name="I1482600046844_48395" criteria="reconciliatedAccounts">
+	</ViewCriteria>
+	<ViewJoin name="J1482599988474_48393" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="A1482958785454_1155" attribute="description" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

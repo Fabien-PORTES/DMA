@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_unusedpermissions" operator="and" query="permission" displayname="Unused Permissions" version="2">
+	<RequestJoin name="J1331845862044_228" operator="and" countOperator="exact" countNumber1="0" countNumber2="0" join="usage">
+	</RequestJoin>
+</Request>

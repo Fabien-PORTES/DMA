@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sf_foldersInShareDiscoSuggestions" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketreview" displayname="sf_foldersInShareDiscoSuggestions" notes="permission (custom9) = uid du folder&#xA;identity=reviewerUID&#xA;custom1=ownermode   custom2=ownerUID  custom3=senstivitiLevel  custom4=senstivityReason&#xA;csutom5=description custom6=reviewermode ">
+	<ViewParam name="ticketid" displayname="Ticket Recorduid" type="Integer">
+		<Value name="0" data="20"/>
+	</ViewParam>
+	<ViewParam name="minUsers" displayname="Min Users" defaultvalue="1">
+		<Value name="0" data="2"/>
+	</ViewParam>
+	<ViewParam name="folderUid" displayname="Folder"/>
+	<ViewSort name="sort" attribute1="A1442308284375_495" direction1="ASC" attribute2="A1442402944099_440" direction2="DESC"/>
+	<ViewJoin name="J1442075995009_947" prefix="action_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketaction">
+		<ViewAttribute name="A1442098374971_887" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewJoin name="J1442308447441_506" prefix="ticket_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticket">
+			<ViewAttribute name="A1442308450953_507" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1442308454414_0" reference="ticketid" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="A1442351509757_11849" attribute="tickettype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1442351514519_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="SF_SHARE_DISCOVERY"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1442076097997_951" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442076100095_952" attribute="custom1" alias="algo" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442076102176_953" attribute="custom2" alias="owneruid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442076104172_954" attribute="custom3" alias="ownerfullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442099634377_949" attribute="custom4" alias="orgname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1442308271123_494" prefix="folder_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissions">
+		<ViewAttribute name="A1442308284375_495" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1442409248721_0" reference="folderUid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1442309736635_843" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1442351466024_11846" attribute="custom5" alias="nbusers" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1442353544997_0" reference="minUsers" operation="ge" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1442402944099_440" attribute="custom6" alias="rate" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

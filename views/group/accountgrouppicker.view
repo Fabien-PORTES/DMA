@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountgrouppicker" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="Show why an account is a member of a given group" notes="">
+	<ViewParam name="accountrecorduid" displayname="Account record uid">
+		<Value name="0" data="2738"/>
+	</ViewParam>
+	<ViewParam name="grouprecorduid" displayname="Group record uid">
+		<Value name="0" data="11"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1303145304143_19" attribute2="A1303145304143_20"/>
+	<ViewJoin name="J1303145227900_4" kind="inner" identitysecure="false" join="account">
+		<ViewAttribute name="A1303145286726_7" attribute="recorduid" alias="accountrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1303145330856_0" reference="accountrecorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="1382688290194_3877" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382688196313_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382688198391_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1303145279054_5" kind="inner" identitysecure="false" join="upgroup">
+		<ViewAttribute name="A1303145284344_6" attribute="recorduid" alias="grouprecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1303145338216_0" reference="grouprecorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1303145304142_10" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304142_11" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304142_12" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304142_13" attribute="repositoryuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304143_14" attribute="repositorycode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304143_15" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304143_16" attribute="repositorymedia" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304143_17" attribute="repositoryextractdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304143_18" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304143_19" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304143_20" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303145304143_21" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

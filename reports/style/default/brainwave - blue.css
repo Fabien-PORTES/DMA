@@ -1,0 +1,235 @@
+/***********************************/
+/*                                 */
+/* CSS style for Brainwave reports */
+/* (c) 2016                        */
+/*                                 */
+/***********************************/
+
+.label {
+	font-size: 11px;
+	font-family: sans-serif;
+	font-weight: normal;
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-bottom: 2px;
+	}
+.data {
+	font-size: 11px;
+	font-family: sans-serif;
+	font-weight: normal;
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-bottom: 2px;
+	}
+.text {
+	font-size: 11px;
+	font-family: sans-serif;
+	font-weight: normal;
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-bottom: 2px;
+	}
+.text-data {
+	font-size: 11px;
+	font-family: sans-serif;
+	font-weight: normal;
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-bottom: 2px;
+	}
+.image {
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-bottom: 2px;
+	}	
+	
+.table-group-header-1 {
+background-color: #EEEEEE;
+background-repeat: repeat-x;
+background-position: 0-1px;
+background-attachment: scroll;
+font-family: arial,helvetica,verdana,helvetica,sans-serif;
+font-size: 11px;
+font-weight: bold;
+color: #111111;
+text-align: left;
+}
+
+.table-group-header-2 {
+background-repeat: repeat-x;
+background-position: 0-1px;
+background-attachment: scroll;
+font-family: arial,helvetica,verdana,helvetica,sans-serif;
+font-size: 11px;
+font-weight: bold;
+color: #111111;
+text-align: left;
+	}
+
+.table-group-header-3 {
+background : #1A5FDA;
+font-size : small;
+font-weight : bold;
+color : #FFFFE0;
+text-align: left;
+}
+
+.table-header {
+background-color: #978a8a;
+padding-top: 10px;
+font-family: arial,helvetica,verdana,helvetica,sans-serif;
+font-size: 11px;
+font-weight: normal;
+font-style:	normal;
+color: #fff;
+text-align: left;
+line-height: 20px;
+vertical-align: middle;
+}
+
+.table-detail {
+background : #FFFFFF;
+font:normal 11px helvetica;
+}
+
+.table-footer {
+background : #6495ED;
+font-size : x-small;
+font-weight : bold;
+color : #FFFFE0;
+}
+
+.h1 {
+background-color: rgb(118, 118, 118);
+color: white;
+font-family: arial, helvetica, lucida-sans, sans-serif;
+font-size: 30pt;
+font-weight: bold;
+font-variant: normal
+}
+
+.h2 {
+margin-top: 2pt;
+font-family: helvetica,arial,verdana,sans-serif;
+font-size: 18px;
+font-weight: bold;
+font-style:	normal;
+color: #ffffff;
+background-color: #bf3b40;
+text-transform:	uppercase;
+text-decoration: none;
+letter-spacing:	normal;
+word-spacing: 0;
+vertical-align:	middle;
+direction:	ltr;
+line-height: 36px;
+}
+
+.h3 {
+font-family: helvetica,arial,verdana,sans-serif;
+font-size: 16px;
+font-weight: bold;
+font-style:	normal;
+color: rgb(118, 118, 118);
+border-top: thin solid rgb(185, 39, 45);
+padding-top: 2pt;
+}
+
+.h4 {
+font-family: helvetica,arial,verdana,sans-serif;
+font-size: 12px;
+font-weight: bold;
+font-style:	normal;
+color: rgb(185, 39, 45);
+}
+
+.h5 {
+font-family: helvetica,arial,verdana,sans-serif;
+font-size: 11px;
+font-weight: normal;
+font-style:	normal;
+color: rgb(118, 118, 118);
+}
+
+.h6 {
+font-family: helvetica,arial,verdana,sans-serif;
+font-size: 11px;
+font-weight: normal;
+font-style:	normal;
+color: rgb(118, 118, 118);
+} 
+
+.x-small {
+font-family : arial, helvetica, lucida-sans, sans-serif;
+font-size : x-small;
+	}
+
+.small {
+font-family : arial, helvetica, lucida-sans, sans-serif;
+font-size : small;
+	}
+	
+.header {
+background-color: #978a8a;
+border-bottom : solid;
+border-top : solid;
+border-top-width : thin;
+border-color : #c5c2c1;
+font-family: arial,helvetica,verdana,helvetica,sans-serif;
+font-size: 12px;
+font-weight: normal;
+font-style:	normal;
+color: #ffffff;
+text-align: left;
+padding-top: 2pt
+}
+	
+.tableAltDetail {
+background : #F0F0F0;
+font:normal 11px helvetica;
+}
+	
+.blueGrid {
+font-family: helvetica,arial,verdana,sans-serif;
+font-size: 16px;
+font-weight: bold;
+color: #ffffff;
+background-color: #351e1f;
+text-transform:	uppercase;
+text-decoration: none;
+direction:	ltr;
+padding-top: 10pt;
+padding-left: 10px;
+margin-top: 2pt
+}
+
+.whiteText {
+	color: #fff
+	
+}
+	
+.bulletList {
+color: #351e1f;
+font:normal 11px helvetica;
+padding-left: 18px;
+background-image: url('../icons/16/famfamfam_silk_icons_v013/bullet_black.png');
+background-repeat: no-repeat;
+background-position: 0 bottom;
+}
+
+.bulletListBold {
+
+color: #351e1f;
+font:bold 14px helvetica;
+padding-left: 18px;
+background-image: url('../icons/16/famfamfam_silk_icons_v013/bullet_red.png');
+background-repeat: no-repeat;
+background-position: left bottom ;
+}
+		
+	

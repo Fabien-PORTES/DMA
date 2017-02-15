@@ -1,0 +1,9 @@
+Text {
+	label: <template:variablelabel/>
+	value: <template:variablerecord/>.displayname
+	mixins: workflowTextWithCommandMixin
+	commands: Command { 
+		actions: Dialog organisationPicker(<template:taskvariablename/> from outUid)
+		icon: "16/audit/organisation_16.png"
+	}
+}

@@ -1,0 +1,4 @@
+Header {
+	mixins: workflowTitleMixin
+	value: <template:title/>	
+}

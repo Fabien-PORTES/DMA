@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1475080751109">
+	<Source file="{config.importfiles}/Extracts_DMA/20160830_ASPIRE.csv" type="CSV" separator="," textseparator="&quot;" encoding="ISO-8859-1"/>
+	<Attributes hasheader="true">
+		<Attribute name="A4970547551521843498" attribute="application_code" column="Application_Code" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A8706647669171013540" attribute="applicationname" column="ApplicationName" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7065516132961958959" attribute="appli_historicname" column="Appli_HistoricName" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4678328373038075054" attribute="instance_name" column="Instance_Name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2538622164955923289" attribute="instance_short_description" column="Instance_Short_Description" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7179589374913280267" attribute="instance_lifecycle_status" column="Instance_LifeCycle_Status" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2271104896374433076" attribute="appmanager_logon" column="AppManager_Logon" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A8991543071284029147" attribute="appmanager_name" column="AppManager_Name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A9084403316857440688" attribute="appmanager_mail" column="AppManager_Mail" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A627128910340979730" attribute="appmanagerdelegate_logon" column="AppManagerDelegate_Logon" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A8746831088615397856" attribute="appmanagerdelegate_name" column="AppManagerDelegate_Name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3738242664437868543" attribute="appmanagerdelegate_mail" column="AppManagerDelegate_Mail" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5795393948640251676" attribute="appbusinessowner_logon" column="AppBusinessOwner_Logon" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A489914806456005082" attribute="appbusinessowner_name" column="AppBusinessOwner_Name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4396748470316019326" attribute="appbusinessowner_mail" column="AppBusinessOwner_Mail" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3027359505109295277" attribute="ispl_logon" column="ISPL_Logon" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7518859012938949877" attribute="ispl_name" column="ISPL_Name" type="Number" multivalued="false" persistent="false"/>
+		<Attribute name="A8855191957309625458" attribute="ispl_mail" column="ISPL_Mail" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5287486510504765563" attribute="application_service_line" column="Application_Service_Line" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2069495256740288836" attribute="maintenance_organization" column="Maintenance_organization" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A9072883411245079788" attribute="business_organization" column="Business_organization" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Actions>
+		<Action name="U1475597846794" action="add" attribute="_APPMANAGER_FULLNAME" newvalue="{dataset.appmanager_name.get().replace(&quot;\\(.*&quot;,&quot;&quot;).normalize()}"/>
+		<Action name="U1475601521205" action="add" attribute="_DELEGATE_FULLNAME" newvalue="{dataset.appmanagerdelegate_name.get().replace(&quot;\\(.*&quot;,&quot;&quot;).normalize()}"/>
+		<Action name="U1475601579660" action="add" attribute="_OWNER_FULLNAME" newvalue="{dataset.appbusinessowner_name.get().replace(&quot;\\(.*&quot;,&quot;&quot;).normalize()}"/>
+	</Actions>
+</Discovery>

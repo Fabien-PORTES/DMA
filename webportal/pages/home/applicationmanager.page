@@ -1,0 +1,607 @@
+/* ***********************************************************************************
+ * Application Manager Homepage
+ * 
+ * Copyright Brainwave 2013
+ * ***********************************************************************************
+ */
+ 
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/mixins/default_mixins.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/reports/browsing/applicationidentitylist.page"
+import "/webportal/pages/reports/browsing/applicationdetailaccounts.page"
+import "/webportal/pages/reports/browsing/applicationpermissionsbyaccount.page"
+
+
+// kpi thresholds
+applicationmanagernbproblemsThreshold1 = Constant {value: 1000 }
+applicationmanagernbproblemsThreshold2 = Constant {value: 100 }
+applicationmanagernbproblemsThreshold3 = Constant {value: 10 }
+applicationmanagernbproblemsThreshold4 = Constant {value: 0 }
+
+applicationmanagerEvolution1 = Constant {value: 100 }
+applicationmanagerEvolution2 = Constant {value: -100 }
+
+// kpi images templates
+applicationmanagerEvolutionImage = IntImageTemplate {
+	when < Constant applicationmanagerEvolution2 then "16/audit/indicators/set1l_1.png"
+	when < 0 then "16/audit/indicators/set1l_2.png"
+	when = 0  then "16/audit/indicators/set1l_3.png"
+	when > Constant applicationmanagerEvolution1 then "16/audit/indicators/set1l_5.png"
+	when > 0 then "16/audit/indicators/set1l_4.png"
+}
+
+applicationmanagercontrolFormat = NLS {
+	val [en "{0,number,integer}" fr "{0,number,integer}"]
+	val_pct [en "{0,number,integer} ({1})" fr "{0,number,integer} ({1})"]
+	diff [en "({0,choice,-1#{0}|0#equal|1#+{0}})" fr "({0,choice,-1#{0}|0#égal|1#+{0}})"]
+}
+
+applicationmanagernbproblemsControlImage = IntImageTemplate {
+	when > Constant applicationmanagernbproblemsThreshold1 then "16/audit/indicators/set2h_1.png"
+	when > Constant applicationmanagernbproblemsThreshold2 then "16/audit/indicators/set2h_2.png"
+	when > Constant applicationmanagernbproblemsThreshold3 then "16/audit/indicators/set2h_3.png"
+	when > Constant applicationmanagernbproblemsThreshold4 then "16/audit/indicators/set2h_4.png"
+	when <= Constant applicationmanagernbproblemsThreshold4 then "16/audit/indicators/set2h_5.png"
+}
+
+// --------------------------------------------------------
+// application manager page
+
+applicationManagerPage = Page {
+	title:$applicationmanagerlabel.title
+	feature:applicationmanager_dashboard_homepage
+	homepage-for: 	applicationmanager_dashboard_homepage priority 1000 
+	dynamic-title: $applicationmanagerlabel.dynamictitle( Transform applicationdetails.code using mayBeNullMapping, Transform  applicationdetails.displayname using mayBeNullMapping )
+	enter-event:Set mydefaultapplication.uid to currentapplicationuid
+
+	// hyperlinks panel
+	dock-right:Dock{
+		collapsible:True
+		collapsed:True
+		width:320
+
+		// links
+		Group {
+			mixins: dockInnerMinxin
+
+			// first group
+			Header {
+				value: $applicationmanagerlabel.reports
+			}
+			Group {
+				Link {
+					icon: "16/devices/printer_16.png"
+					value: $applicationmanagerlabel.applicationdetails
+					target: Report browsing_applicationdetail with applicationdetails.recorduid to recorduid
+				}
+			}
+
+			// second group
+			Spacer {
+				height: 1
+			}
+			Header {
+				value: $applicationmanagerlabel.browsing
+			}
+			Group {
+				Link {
+					icon: "16/audit/permission_16.png"
+					value: $applicationmanagerlabel.permission
+					target: Report browsing_applicationidentitylist with applicationdetails.recorduid to recorduid
+				}
+				Link {
+					icon: "16/audit/identity_16.png"
+					value: $applicationmanagerlabel.identities
+					target: Report browsing_permissionlistbyidentity with applicationdetails.recorduid to applicationrecorduid
+				}
+				Link {
+					icon: "16/audit/account_16.png"
+					value: $applicationmanagerlabel.accounts
+					target: Report browsing_permissionlistbyaccount with applicationdetails.recorduid to applicationrecorduid
+				}
+				Link {
+					icon: "16/audit/usage_16.png"
+					value: $applicationmanagerlabel.usages
+					target: Report browsing_applicationusages with applicationdetails.recorduid to recorduid
+				}
+			}
+
+			// third group
+			Spacer {
+				height: 1
+			}
+			Header {
+				value: $applicationmanagerlabel.analytics
+			}
+			Group {
+				Link {
+					icon: "16/audit/report.png"
+					value: $applicationmanagerlabel.orphanaccounts
+					target: Report analysis_applicationorphanaccounts with applicationdetails.recorduid to recorduid
+				}
+				Link {
+					icon: "16/audit/report.png"
+					value: $applicationmanagerlabel.joborgpivot
+					target: Report analysis_applicationjoborgpivot with applicationdetails.recorduid to recorduid
+				}
+				Link {
+					icon: "16/audit/report.png"
+					value: $applicationmanagerlabel.permissionjobpivot
+					target: Report analysis_permissionjobpivot with applicationdetails.recorduid to applicationrecorduid
+				}
+				Link {
+					icon: "16/audit/report.png"
+					value: $applicationmanagerlabel.permissionorgpivot
+					target: Report analysis_permissionorgpivot with applicationdetails.recorduid to applicationrecorduid
+				}
+			}
+
+			// fourth group
+			Spacer {
+				height: 1
+			}
+			Header {
+				value: $applicationmanagerlabel.review
+			}
+			Group {
+				Link {
+					icon: "16/audit/report.png"
+					value: $applicationmanagerlabel.accountreviewbyapplication
+					target: Report analysis_accountreviewbyapplication with applicationdetails.recorduid to recorduid
+				}
+			}
+
+			// fifth group
+			Spacer {
+				height: 1
+			}
+			Header {
+				value: $applicationmanagerlabel.mining
+			}
+			Group {
+				Link {
+					icon: "16/audit/report.png"
+					value: $applicationmanagerlabel.applicationassociatedwith
+					target: Report analysis_applicationassociatedwith with applicationdetails.recorduid to recorduid
+				}
+			}
+		}
+	}
+
+	// -------------------------------
+	// Variable segment
+	currentapplicationuid = Variable {type:String multivalued:False}
+
+	// -------------------------------
+	// Data segment
+	mydefaultapplication = Record {
+		view:br_mymanagedapplications
+			with Principal.uid to uid
+	}
+
+	mymanagedapplications = Dataset {
+		view:br_mymanagedapplications
+			with Principal.uid to uid
+	}
+	
+	applicationdetails = Record {
+		view:br_applicationDetail
+			with currentapplicationuid to uid
+	}
+	
+	// metrics
+	applicationDetail_nbaccounts = Record(br_applicationDetail_counts with currentapplicationuid to uid)
+	applicationDetail_nbaccounts_ts = Dataset {
+		view: br_applicationDetail_counts_ts with currentapplicationuid to uid
+	}
+	applicationDetail_nbaccountsactive = Record(br_applicationDetail_nbaccountsactive with currentapplicationuid to uid)
+	applicationDetails_nbaccountsactive_ts = Dataset {
+		view: br_applicationDetail_nbaccountsactive_ts with currentapplicationuid to uid
+	}
+	applicationDetail_nbidentitiesactive = Record(br_applicationDetail_nbidentities with currentapplicationuid to uid)
+	applicationDetails_nbidentitiesactive_ts = Dataset {
+		view: br_applicationDetail_nbidentities_ts with currentapplicationuid to uid
+	}
+
+	applicationDetail_nbaccountsnoowner = Dataset {
+		view: br_applicationDetail_nbactivenoowneraccounts with currentapplicationuid to uid
+	}
+	applicationDetail_nbaccountsorphan = Record(br_applicationDetail_nbactiveorphanaccounts with currentapplicationuid to uid)
+	applicationDetail_nbaccountsorphan_ts = Dataset {
+		view: br_applicationDetail_nbactiveorphanaccounts_ts with currentapplicationuid to uid
+	}
+	applicationDetail_nbaccountsprivileged = Record(br_applicationDetail_nbactiveprivilegedaccounts with currentapplicationuid to uid)
+	applicationDetail_nbpermissionbytype = Dataset {
+		view: br_applicationDetail_nbpermissionbytype with currentapplicationuid to uid
+	}
+
+	// problems metrics
+	applicationDetail_nbproblems = Record {
+		view: br_applicationDetail_nbproblems with currentapplicationuid to uid
+	}
+
+	applicationDetail_nbproblems_prev = Record {
+		view: br_applicationDetail_nbproblems with currentapplicationuid to uid timeslot: FromPage(-1)
+	}
+	
+	applicationDetail_nbproblemsaccount = Record {
+		view: br_applicationDetail_nbproblemsaccount with currentapplicationuid to uid
+	}
+
+	applicationDetail_nbproblemsaccount_prev = Record {
+		view: br_applicationDetail_nbproblemsaccount with currentapplicationuid to uid timeslot: FromPage(-1)
+	}
+	
+	applicationDetail_nbproblemsidentity = Record {
+		view: br_applicationDetail_nbproblemsidentity with currentapplicationuid to uid
+	}
+
+	applicationDetail_nbproblemsidentity_prev = Record {
+		view: br_applicationDetail_nbproblemsidentity with currentapplicationuid to uid timeslot: FromPage(-1)
+	}
+	
+	applicationDetail_nbproblemstype = Record {
+		view: br_applicationDetail_nbproblemstype with currentapplicationuid to uid
+	}
+
+	applicationDetail_nbproblemstype_prev = Record {
+		view: br_applicationDetail_nbproblemstype with currentapplicationuid to uid timeslot: FromPage(-1)
+	}
+	
+	applicationDetail_nbproblemspermission = Record {
+		view: br_applicationDetail_nbproblemspermission with currentapplicationuid to uid
+	}
+
+	applicationDetail_nbproblemspermission_prev = Record {
+		view: br_applicationDetail_nbproblemspermission with currentapplicationuid to uid timeslot: FromPage(-1)
+	}
+	
+	// graphs
+	applicationDetail_graphnbproblems = Dataset {
+		view:br_applicationDetail_graphnbproblems
+			with applicationdetails.recorduid to recorduid
+		limit:10
+	}
+
+	applicationDetail_graphnbproblemsjob = Dataset {
+		view:br_applicationDetail_graphnbproblemsjob
+			with applicationdetails.recorduid to recorduid
+		limit:10
+	}
+
+	applicationDetail_graphnbproblemsorg = Dataset {
+		view:br_applicationDetail_graphnbproblemsorg
+			with applicationdetails.recorduid to recorduid
+		limit:10
+	}
+
+	applicationDetail_graphnbproblemspermission = Dataset {
+		view:br_applicationDetail_graphnbproblemspermission
+			with applicationdetails.recorduid to recorduid
+		limit:10
+	}
+	
+	
+	// ---------------------------------
+	// ---------------------------------
+	// Layouting
+	// ---------------------------------
+	// ---------------------------------
+	
+	Grid {
+		columns:GridColumn{},GridColumn{},GridColumn{} 
+		GridRow {
+			GridCell {
+				span:3
+				
+				Combo {
+					variable:currentapplicationuid
+					label:$applicationmanagerlabel.myapplications
+					layout:Layout {grab:vertical False horizontal True}
+					allow-none:False
+					options:Dynamic {
+						data:mymanagedapplications
+						value:Current uid
+						text:Current displayname
+					}
+				}
+			}
+		}
+		GridRow {
+			height:grow 1
+			GridCell {
+				Flow {
+					disposition:Vertical
+					Group {
+						title:$applicationmanagerlabel.metrics
+						mixins:metricsMixin
+
+						Link {
+							label: $applicationmanagerlabel.nbaccounts
+							value: applicationDetail_nbaccounts.nbaccounts
+							target: Page browsing_application_detailaccounts with applicationdetails.uid to uid, 0 to filter
+							decorator: Decorator {
+								after: LineSparkline {
+									data: applicationDetail_nbaccounts_ts
+									column: nbaccounts
+									tooltip: Current commitdate
+									width: 40
+								}
+								width: 120
+							}
+						}
+						Link {
+							label:$applicationmanagerlabel.nbactiveaccounts
+							value: Concat(applicationDetail_nbaccountsactive.nbaccounts," (",Percent(applicationDetail_nbaccountsactive.nbaccounts, applicationDetail_nbaccounts.nbaccounts),")")
+							target: Page browsing_application_detailaccounts with applicationdetails.uid to uid , 1 to filter
+							decorator: Decorator {
+								after: LineSparkline {
+									data: applicationDetails_nbaccountsactive_ts
+									column:  nbaccounts 
+									tooltip: Current timeslotcommitdate
+									width: 40
+								}
+								width: 120
+							}
+						}
+						Link {
+							label:$applicationmanagerlabel.nbactiveidentities
+							value: applicationDetail_nbidentitiesactive.count
+							target: Page browsing_application_identitylist with applicationdetails.uid to uid
+							decorator: Decorator {
+								after: LineSparkline {
+									data: applicationDetails_nbidentitiesactive_ts
+									column: count
+									tooltip: Current timeslotcommitdate
+									width: 40
+								}
+								width: 120
+							}
+						}
+						Link {
+							label: $applicationmanagerlabel.nbprivilegedaccounts
+							value: Concat(applicationDetail_nbaccountsprivileged.nbaccounts," (",Percent(applicationDetail_nbaccountsprivileged.nbaccounts, applicationDetail_nbaccounts.nbaccounts),")")
+							target: Page browsing_application_detailaccounts with applicationdetails.uid to uid , 2 to filter
+						}
+						Link {
+							label: Label {
+								value: $applicationmanagerlabel.nbaccountswo
+							}
+							value: Concat(Current nbaccounts," - ",Current noownercode)
+							target: Page browsing_application_detailaccounts with applicationdetails.uid to uid , 3 to filter
+							iterate-on: applicationDetail_nbaccountsnoowner default $applicationmanagerlabel.noaccountswo
+						}
+						Link {
+							label: $applicationmanagerlabel.nborphanaccounts
+							value: Concat(applicationDetail_nbaccountsorphan.nbaccounts," (",Percent(applicationDetail_nbaccountsorphan.nbaccounts, applicationDetail_nbaccounts.nbaccounts),")")
+							target: Report analysis_applicationorphanaccounts with applicationdetails.recorduid to recorduid
+							decorator: Decorator {
+								after: LineSparkline {
+									data: applicationDetail_nbaccountsorphan_ts
+									column: nbaccounts
+									tooltip: Current timeslotcommitdate
+									width: 40
+								}
+								width: 120
+							}
+						}
+						Link {
+							label: Label {
+								value: $applicationmanagerlabel.nbpermsbytype
+								layout: Layout {
+									align: vertical Center horizontal Beginning
+								}
+							}
+							value: Concat(Current count," - ",Transform Current permissiontype using optionStringMapping)
+							iterate-on: applicationDetail_nbpermissionbytype default $applicationmanagerlabel.nopermbytype
+							target: Page browsing_application_permissionsbyaccount with applicationdetails.uid to uid 
+						}
+					}
+					Group {
+						title: $applicationmanagerlabel.problemmetrics
+						mixins: metricsMixin
+						
+						Text {
+							label:$applicationmanagerlabel.nbproblems // "# de problèmes"
+							value:applicationDetail_nbproblems.count
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(applicationDetail_nbproblems.count) using applicationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(applicationDetail_nbproblems.count, applicationDetail_nbproblems_prev.count)) using applicationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(applicationDetail_nbproblems.count, applicationDetail_nbproblems_prev.count, $applicationmanagercontrolFormat.diff)
+									width: Pack
+								}
+								width: 60
+							}
+						}												
+						Link {
+							label:$applicationmanagerlabel.nbproblemsaccounts // "# de comptes avec des problèmes"
+							value:applicationDetail_nbproblemsaccount.count
+							target: Report browsing_applicationdetailaccountproblems with applicationdetails.recorduid to recorduid
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(applicationDetail_nbproblemsaccount.count) using applicationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(applicationDetail_nbproblemsaccount.count, applicationDetail_nbproblemsaccount_prev.count)) using applicationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(applicationDetail_nbproblemsaccount.count, applicationDetail_nbproblemsaccount_prev.count, $applicationmanagercontrolFormat.diff)
+									width: Pack
+								}
+								width: 60
+							}
+						}												
+						Link {
+							label:$applicationmanagerlabel.nbproblemsidentities // "# de personnes avec des problèmes"
+							value:applicationDetail_nbproblemsidentity.count
+							target: Report browsing_applicationdetailidentityproblems with applicationdetails.recorduid to recorduid
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(applicationDetail_nbproblemsidentity.count) using applicationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(applicationDetail_nbproblemsidentity.count, applicationDetail_nbproblemsidentity_prev.count)) using applicationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(applicationDetail_nbproblemsidentity.count, applicationDetail_nbproblemsidentity_prev.count, $applicationmanagercontrolFormat.diff)
+									width: Pack
+								}
+								width: 60
+							}
+						}												
+						Text {
+							label:$applicationmanagerlabel.nbproblemstypes // "# de types de problèmes"
+							value:applicationDetail_nbproblemstype.count
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(applicationDetail_nbproblemstype.count) using applicationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(applicationDetail_nbproblemstype.count, applicationDetail_nbproblemstype_prev.count)) using applicationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(applicationDetail_nbproblemstype.count, applicationDetail_nbproblemstype_prev.count, $applicationmanagercontrolFormat.diff)
+									width: Pack
+								}
+								width: 60
+							}
+						}
+						Text {
+							label:$applicationmanagerlabel.nbproblemsimpacts // "# de permissions impactées"
+							value:applicationDetail_nbproblemspermission.count
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(applicationDetail_nbproblemspermission.count) using applicationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(applicationDetail_nbproblemspermission.count, applicationDetail_nbproblemspermission_prev.count)) using applicationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(applicationDetail_nbproblemspermission.count, applicationDetail_nbproblemspermission_prev.count,  $applicationmanagercontrolFormat.diff)
+									width: Pack
+								}
+								width: 60
+							}
+						}
+					}
+				}
+			}
+			GridCell {
+				Grid {
+					columns:GridColumn{}
+					GridRow {
+						fill:True
+						height:grow 1
+						group: r
+						GridCell {
+							Group  {
+								title:$applicationmanagerlabel.problemsbysuborg
+								Chart {
+									file: "charts/treemap"
+									data: applicationDetail_graphnbproblemsorg
+									series: (Current shortname) as String in "category", (Current nbresult) as Double in "value"
+									label: Label {
+										break: True
+									}
+									layout: Layout {
+										grab: horizontal True vertical True
+									}
+								}
+							}
+						}
+					}
+					GridRow {
+						fill:True
+						height:grow 1
+						group: r
+						GridCell {
+							Group {
+								title:$applicationmanagerlabel.problemsbyjob
+								Chart {
+									file: "charts/histogram"
+									data:applicationDetail_graphnbproblemsjob
+									series: (Current jobtitledisplayname) as String in "category", (Current nbresult) as Double in "value"
+									label: Label {
+										break: True 
+									}
+									
+									layout: Layout {
+										grab: horizontal True vertical True
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			GridCell {
+				Grid {
+					columns:GridColumn{}
+					GridRow {
+						fill:True
+						height:grow 1
+						group: r
+						GridCell {
+							Group {
+								title:$applicationmanagerlabel.mfproblems
+								Chart {
+									file: "charts/histogram"
+									data: applicationDetail_graphnbproblems
+									series: (Current controldisplayname) as String in "category", (Current nbresult) as Double in "value"
+									label: Label {
+										break: True
+									}
+									layout: Layout {
+										grab: horizontal True vertical True
+									}
+								}
+							}
+						}
+					}
+					GridRow {
+						fill:True
+						height:grow 1
+						group: r
+						GridCell {
+							Group {
+								title:$applicationmanagerlabel.problemsbypermission
+								Chart {
+									file: "charts/histogram"
+									data: applicationDetail_graphnbproblemspermission
+									series: (Current label) as String in "category", (Current nbresult) as Double in "value"
+									label: Label {
+										break: True
+									}
+									layout: Layout {
+										grab: horizontal True vertical True
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+
+

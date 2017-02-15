@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343319525518" title="User buffer content for fast RFC logon - new " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7121952891446279154" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A7288363716794430647" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User name"/>
+		<Attribute name="A6132307663541619979" attribute="objct" column="OBJCT" type="String" multivalued="false" persistent="false" description="Authorization Object"/>
+		<Attribute name="A6682372052865650711" attribute="auth" column="AUTH" type="String" multivalued="false" persistent="false" description="Authorization name in user master maintenance"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343319586109" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

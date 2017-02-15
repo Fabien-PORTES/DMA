@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbproblems" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="organisationDetail_nbproblems" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="directrecorduid" displayname="directrecorduid"/>
+	<ViewSort name="sort" attribute1="1383242188289_16922" direction1="DESC" attribute2="A1383242292127_16935"/>
+	<ViewAttribute name="1383242188289_16922" attribute="recorduid" alias="nbdefects" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1366190310726_46" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;directrecorduid&apos;)" join="organisation">
+		<ViewAttribute name="1383242249413_16927" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1366190387625_0" reference="directrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1367159941043_3386" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewAttribute name="1383242256558_16930" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1367159947699_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1383242267883_16931" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383242278117_16932" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383242281970_16933" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383242285060_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="A1383242292127_16935" attribute="controldisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1383242315761_16936" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383242320456_16937" kind="inner" identitysecure="false" join="permission">
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

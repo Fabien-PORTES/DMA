@@ -1,0 +1,119 @@
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+import "/webportal/pages/resources/concepts_nls.page"
+
+actionRemoveApplicationNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel current edition ?" fr "Annuler l'édition en cours ?"]
+	complete.buttontext [en "Task completed" fr "Tâche terminée"]
+	complete.confirm [en "Complete current task ?" fr "Terminer la tâche en cours ?"]
+	complete.flashmessage [en "Task completed" fr "Tâche terminée"]
+	title [en "Remove an application access for a given individual" fr "Remove an application access for a given individual"]
+	subtitle1 [en "Remove an application access" fr "Remove an application access"]
+	grouptitle1 [en "Individual" fr "Individual"]
+	_identityhrcode [en "identity hrcode" fr "identity hrcode"]
+	_identityfullname [en "identity fullname" fr "identity fullname"]
+	_accountLogins [en "accountLogins" fr "accountLogins"]
+	_accountUsernames [en "accountUsernames" fr "accountUsernames"]
+	_accountRepositorries [en "accountRepositorries" fr "accountRepositorries"]
+	accountLoginsjointeditiontitle [en "Accounts to disable" fr "Accounts to disable"]
+	_result [en "result" fr "result"]
+	_resultdescription [en "Additional action description that you want to push  back to the requester" fr "Additional action description that you want to push  back to the requester"]
+	result.value0 [en "ok" fr "ok"]
+	result.value1 [en "error" fr "error"]
+}
+
+
+actionRemoveApplication = Page {
+	title: $actionRemoveApplicationNLS.title
+	mixins: workflowDefaultMixin
+	
+	taskId = Parameter {
+		type: String
+		mandatory: True
+	}
+	
+	task = TaskRecord(taskId)
+	
+	accounts = Dataset {
+		columns:task.accountLogins,task.accountUsernames,task.accountRepositorries
+	}
+	
+	Header {
+		mixins: workflowTitleMixin
+		value: $actionRemoveApplicationNLS.subtitle1
+	}
+	Group {
+		title: $actionRemoveApplicationNLS.grouptitle1
+		Text {
+			label: $actionRemoveApplicationNLS._identityhrcode
+			value: task.identityhrcode
+		}
+		Text {
+			label: $actionRemoveApplicationNLS._identityfullname
+			value: task.identityfullname
+		}
+	}
+	Table {
+		mixins: workflowJointEditionMixin
+		label: $actionRemoveApplicationNLS.accountLoginsjointeditiontitle
+		data: accounts
+		Column {
+			column:task_accountLogins
+			header:$account.login
+		}
+		Column {
+			column:task_accountUsernames
+			header:$account.username
+		}
+		Column {
+			column:task_accountRepositorries
+			header:$repository.concept
+		}
+	}
+	Combo {
+		label: Concat($actionRemoveApplicationNLS._result,"*")
+		variable: task.result
+		options: Static {
+			Option {
+				value: "ok"
+				text: $actionRemoveApplicationNLS.result.value0
+			}
+			Option {
+				value: "error"
+				text: $actionRemoveApplicationNLS.result.value1
+			}
+		}
+	}
+	Edit {
+		label: $actionRemoveApplicationNLS._resultdescription
+		variable: task.resultdescription
+	}
+	
+	Header {
+		value: $actionRemoveApplicationNLS.mandatoryfields
+	}
+	
+	Group {
+		title: $actionRemoveApplicationNLS.actionsection
+		mixins: workflowActionsMixin
+		
+		ButtonGroup {
+			Button { 
+				text: $actionRemoveApplicationNLS.cancel.buttontext
+				actions: Confirm $actionRemoveApplicationNLS.cancel.confirm, TaskCancel task, GoTo HomePage
+			}
+			Button { 
+				disabled: StringPredicate (task.result) { when IsEmpty then True }
+				
+				text: $actionRemoveApplicationNLS.complete.buttontext
+				actions:  Confirm $actionRemoveApplicationNLS.complete.confirm, TaskComplete task, Flash Information $actionRemoveApplicationNLS.complete.flashmessage, GoTo HomePage
+			}
+		}
+	}
+}
+

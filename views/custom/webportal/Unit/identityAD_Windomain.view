@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="identityAD_Windomain" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="identityAD_Windomain">
+	<ViewAttribute name="A1486637236081_172588" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitieswithjob" operator="and" query="identity" displayname="Identities with job {job}" version="3">
+	<RequestParam name="job" displayname="job" query="identity" criteria="eqJobTitle" criteriaparam="jobTitleParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1331843763219_170" criteria="eqJobTitle">
+		<RequestCriteriaParam name="jobTitleParam" reference="job" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

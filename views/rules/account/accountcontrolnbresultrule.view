@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountcontrolnbresultrule" distinct="true" concept="account" displayname="# of results for each account control">
+	<ViewAttribute name="A1303678209386_249" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	<ViewJoin name="J1303678224266_251" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1303678228519_252" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303678240083_0" operation="ilike" ignoreifempty="false">
+				<Value name="0" data="control_%"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1303678262749_254" attribute="ruleentity" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303719374778_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Account"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1303678263692_255" attribute="ruledisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303678267694_256" attribute="ruledescription" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303678268898_257" attribute="rulenotes" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

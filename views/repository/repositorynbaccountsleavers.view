@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositorynbaccountsleavers" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="nb of accounts reconciled with a leaver" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="repositoryrecorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1385390300788_300" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1385390300793_301" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1321632921884_0" reference="repositoryrecorduid" aliasreference="" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewCriteria name="I1385390305791_302" criteria="leaverReconciliatedAccounts">
+	</ViewCriteria>
+</View>

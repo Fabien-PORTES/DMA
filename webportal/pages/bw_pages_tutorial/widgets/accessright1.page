@@ -1,0 +1,10 @@
+
+
+accessright1 = Page {
+	title:'A simple Page access right example'
+	feature:organisationmanager_dashboard_homepage 
+
+	Text {
+		value:'If you are accessing this page, then you have the "organisationmanager_dashboard_homepage" feature'
+	}
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Roles PUBLIC "-//Brainwave//DTD Roles 1.0//EN" "urn:brainwave:igrc:dtds/roles.dtd">
+<Roles version="1" name="sharedfolders" description="Roles for DAG For Filers app">
+	<Role name="r1441301524428" portalrolename="sf_ciso" description="CISO"/>
+</Roles>

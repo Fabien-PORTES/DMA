@@ -1,0 +1,97 @@
+/* Import other pages here */
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/custom/account/details.page"
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/custom/account_categorisation_ticket_details/account_ticket_management_change_status.page"
+import "/webportal/pages/custom/account_categorisation_ticket_details/account_ticket_management_change_informations.page"
+import "/webportal/pages/resources/pickers.page"
+/* Nationalized labels here */
+account_categorisation_ticket_details = NLS {
+	inboxhelper [en "Click in the list
+to display the 
+reconciliation details" fr "Cliquez pour afficher le détail"]
+	close_ticket [en "close_ticket" fr "close_ticket"]
+	dialog.title [en "Change ticket(s) information(s)" fr "Change ticket(s) information(s)"]
+	change_ticket [en "change_ticket" fr "change_ticket"]
+}
+	
+account_reconciliation_ticket_details = Page {
+	title: $account_reconciliation_ticket_details.title
+	icon: "16/red/reconciliation_16.png"
+	large-icon: "48/audit/reconciliation_48.png"
+	tags: "DMA_homepage"		
+	/*Dock here */
+	/* Parameters here */
+	paramAccountUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: False
+	}
+	/* Variables here */
+	selected_ticket_review_recorduid = Variable {
+		type: String
+		initial: ""
+		}
+/*Record and Dataset here */
+	account_reconciliation_ticket = Dataset {
+		view: account_reconciliation_ticket with paramAccountUid to account_uid
+	}
+	/* Page content */
+Group {
+	layout: Layout { grab: horizontal True vertical True }
+		PaginatedTable {
+			data: account_reconciliation_ticket
+			page-size: 200
+			show-filter: True
+			double-click: GoTo Page accountNISDetailsPage with Current account_uid to paramAccountUid
+			layout: Layout {
+				grab: horizontal True vertical True
+			}
+			Column {
+				column: ticket_review_recorduid
+				hidden: True
+			}
+			Column {
+				column: account_uid
+				hidden: True
+			}
+			Column {
+				column: account_identifier
+				header: $accountNISAttributes.Login
+				sortable: True
+				filterable: True
+				width: 15%
+			}
+			Column {
+				column: repository_displayname
+				header: $accountNISAttributes.repository
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: ticket_action_startdate
+				header: $ticket_reconciliation_attributes.startdate
+				sortable: True
+				filterable: False
+				width: 20%
+			}
+			Column {
+				column: actor_fullname
+				header: $ticket_reconciliation_attributes.actor_fullname
+				sortable: True
+				filterable: False
+				width: 20%
+			}
+			Column {
+				column: actor_hrcode
+				header: $ticket_reconciliation_attributes.actor_hrcode
+				sortable: True
+				filterable: False
+				width: 20%
+			}
+		}
+	}
+}

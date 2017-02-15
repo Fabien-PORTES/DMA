@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="accountenabledusergone" distinct="true" concept="account" displayname="Liste des comptes actifs dont l&apos;utilisateur a quitté l&apos;organisation, par référentiel et par date de départ" notes="">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1323767993155_15" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1323768003696_16" attribute="repositorydisplayname" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1323768019725_17" kind="inner" join="identityreconciliation">
+		<ViewAttribute name="A1323768162789_20" attribute="departuredate" operator="and" removedfromprojection="false"/>
+		<ViewAttribute name="A1323769508467_24" attribute="fullname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1323769543780_25" attribute="repositorydisplayname" alias="identity_repository" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1323771057446_28" attribute="login" operator="or" removedfromprojection="false"/>
+	<ViewRule name="I1326378514595_9" rule="br_accountenabledusergone">
+	</ViewRule>
+</View>

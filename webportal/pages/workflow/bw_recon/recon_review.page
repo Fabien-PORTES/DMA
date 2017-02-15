@@ -1,0 +1,1202 @@
+import "/webportal/pages/resources/reconciliation_dialogs.page"
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/services.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+
+bw_recon_reviewNLS = NLS {
+	title [en "Reconciliations" fr "Réconciliations"]
+	accounts [en "Accounts" fr "Comptes"]
+	noownercode [en "No owner code" fr "Code de non rattachement"]
+	identities [en "Suggested identities" fr "Identités suggérées"]
+	manualrecon [en "Manual Reconciliation" fr "Réconciliation manuelle"]
+	manualrecontt [en "Open the manual reconciliation dialog for the account selected above" fr "Ouvre la boite de dialogue de réconciliation manuelle pour le compte sélectionné ci-dessus"]
+	idrecon [en "Reconcile selected account with selected identity" fr "Réconcilier le compte et l'identité sélectionnés"]
+	idrecontt [en "Reconcile the account selected on the left with the identity selected on the right" fr "Réconcilier le compte sélectionné à gauche avec l'identité sélectionnée à droite"]
+	reconComment [en "Reconciliation Comment" fr "Commentaire de réconciliation"]
+	confirmdialog [ en "Confirm the reconciliation" fr "Confirmer la réconciliation"]
+	sure [en "Confirm" fr "Confirmer"]
+	suretxt [en "Are you sure you want to link the identity and account below ?" fr "Êtes vous certain de vouloir lier compte et identité ci-dessous ?"]
+	hasID [en "Potential Identity" fr "Identité potentielle"]
+	allCriteria [en "All fields" fr "Tous critères"]
+	disable [en "Deactivate" fr "Désactivation"]
+	delete [en "Delete" fr "Suppression"]
+	disablett [en "Request deactivation of selected account(s)" fr "Demander la désactivation des comptes sélectionnés"]
+	deletett [en "Request deletion of selected account(s)" fr "Demander la suppression des comptes sélectionnés"]
+	comment [en "Comment" fr "Commentaire"]
+	status [en "Status" fr "Statut"]
+	todo [en "None" fr "Aucun"]
+	revoke [en "Deactivate" fr "Désactiver"]
+	del [en "Delete" fr "Suppression"]
+	reconciled [en "Reconcile" fr "Réconcilier"]
+	releaseconfirm [en "Are you sure that you want to save the current progress and release the review to make it available to all candidates ? you can also save your progress and come back at a later time to finalize the review" 
+	                fr "Etes vous certain que vous souhaitez sauvegarder la progression et relacher la tâche pour la rendre accessible à tous les candidats ? Vous pouvez aussi sauvegarder votre progression et revenir plus tard pour finaliser la revue"]
+	releaseflash [en "Release the current review process and make it available to all candidates" fr ""]
+	releasetext [en "Release the task" fr "Relacher la tâche"]
+	saveflash [en "Review information saved for later usage" fr "Informations de revue sauvegardées pour plus tard"]
+	savetext [en "Save and finish later" fr "Sauvegarder et finir plus tard"]
+	okflash [en "Review done, thank you for your commitment !" fr "Revue finalisée, merci pour votre implication"]
+	oktext [en "Confirm the review" fr "Finaliser la revue"]
+	taskButtons [en "Actions on task" fr "Actions sur la tâche"]
+	cancelButton [en "Cancel" fr "Annuler"]
+	canceltt [en "Cancel deletion or deactivation on selected account(s)" fr "Annuler la suppression ou désactivation sur le(s) compte(s) sélectionné(s)"]
+	commenttitle [en "Comments" fr "Commentaires"]
+	commentsdialog [en "Adding or modifying comments" fr "Ajouter ou modifier un commentaire"]
+	reconCommentDefault [en "Manual reconciliation" fr "Réconciliation manuelle"]
+	requestRecon [en "Reconcile Account (if none of the suggested identities matches)" fr "Réconcilier le compte (si aucune des identités suggérées ne correspond)"]
+	noSuggestion [en "No suggestion for this tab, other options (if any):" fr "Aucune suggestion dans cet onglet, autre choix (si disponible) :"]
+	manualReconGp [en "Manual reconciliation between selected account and identity" fr "Réconciliation manuelle entre le compte et l'identité sélectionnés"]
+}
+
+// Mapping of actions with labels
+bw_recon_review_actionMapping = StringMapping {
+	when IsNull then $bw_recon_reviewNLS.todo
+	when '' then $bw_recon_reviewNLS.todo
+	when ' ' then $bw_recon_reviewNLS.todo
+	when '0' then $bw_recon_reviewNLS.todo
+	when '1' then $bw_recon_reviewNLS.reconciled
+	when '2' then $bw_recon_reviewNLS.revoke
+	when '3' then $bw_recon_reviewNLS.del
+	otherwise $bw_recon_reviewNLS.todo
+}
+// Mapping of actions with images
+bw_recon_review_appactionTemplate = StringImageTemplate {
+	when IsNull then "16/famfamfam_silk_icons_v013/help.png"
+	when '' then "16/famfamfam_silk_icons_v013/help.png"
+	when ' ' then "16/famfamfam_silk_icons_v013/help.png"
+	when '0' then "16/famfamfam_silk_icons_v013/help.png"
+	when '1' then "16/famfamfam_silk_icons_v013/user_green.png"
+	when '2' then "16/famfamfam_silk_icons_v013/delete_black.png"
+	when '3' then "16/famfamfam_silk_icons_v013/delete.png"
+	otherwise "16/famfamfam_silk_icons_v013/help.png"
+}
+
+bw_recon_confirm = Dialog {
+	title: $bw_recon_reviewNLS.confirmdialog
+	height: 240
+	width: 640
+	buttons: [
+		OkButton
+		CancelButton]
+	
+	localIdentityFullname = Variable { type: String }
+	localAccountLogin = Variable { type: String }
+	localComment = Variable { type: String }
+	
+	Text {
+		label: $bw_recon_reviewNLS.sure
+		value: $bw_recon_reviewNLS.suretxt
+		compact: True
+	}
+	Text {
+		value: localIdentityFullname
+		label: $identity.concept
+		compact: True
+	}
+	Text {
+		value: localAccountLogin
+		label: $account.concept
+		compact: True
+	}
+	Edit {
+		variable: localComment
+		label: $bw_recon_reviewNLS.reconComment
+	}
+}
+
+/**
+ * adding/modifying comments dialog
+ */
+recon_commentsDialog = Dialog {
+	title: $bw_recon_reviewNLS.commenttitle
+	buttons: [
+		OkButton
+		CancelButton
+	]
+	width: 450
+	height: 220
+
+	comment = Variable { type: String }
+
+	Text {
+		value: $bw_recon_reviewNLS.commentsdialog
+		compact: True
+	}
+	Edit {
+		variable: comment
+		label: $bw_recon_reviewNLS.comment
+		multi-lines: True
+		layout: Layout { hint: height 64 width 400}
+	}
+}
+
+bw_recon_review = Page {
+	title: $bw_recon_reviewNLS.title
+	
+	taskId = Parameter {
+		type: String
+		mandatory: True
+		hidden:True
+	}
+	
+	// Current selection
+	currentAccountRecordUid = Variable { type: String }
+	currentAccountUid = Variable { type: String }
+	currentAccountLogin = Variable { type: String }
+	currentIdentityUid = Variable { type: String }
+	currentIdentityFullname = Variable { type: String }
+	currentAccountsUids = Variable { type: String multivalued: True }
+	currentComment = Variable { type: String }
+	// From Identity Picker
+	idPickerUid = Variable { type: String }
+	
+	// Current account variables
+	acc_hrcode = Variable { type: String }
+	acc_fullname = Variable { type: String }
+	acc_mail = Variable { type: String }
+	acc_surname = Variable { type: String }
+	acc_givenname = Variable { type: String }
+	
+	// Recon
+	reconComment = Variable { type: String initial: $bw_recon_reviewNLS.reconCommentDefault}
+	
+	// Count results
+	ids = Variable { type: String multivalued: True }
+	nbIds = Variable { type: Integer }
+	idsMail = Variable { type: String multivalued: True }
+	nbIdsMail = Variable { type: Integer }
+	idsSurname = Variable { type: String multivalued: True }
+	nbIdsSurname = Variable { type: Integer }
+	idsGivenname = Variable { type: String multivalued: True }
+	nbIdsGivenname = Variable { type: Integer }
+	idsHRCode = Variable { type: String multivalued: True }
+	nbIdsHRCode = Variable { type: Integer }
+	idsFullname = Variable { type: String multivalued: True }
+	nbIdsFullname = Variable { type: Integer }
+	// Tabbed text for number of results
+	strIds = Variable { type: String initial: Concat($bw_recon_reviewNLS.allCriteria, "(0)") }
+	strIdsMail = Variable { type: String initial: Concat($identity.mail, "(0)") }
+	strIdsSurname = Variable { type: String initial: Concat($identity.surname, "(0)") }
+	strIdsGivenname = Variable { type: String initial: Concat($identity.givenname, "(0)") }
+	strIdsHRCode = Variable { type: String initial: Concat($identity.hrcode, "(0)") }
+	strIdsFullname = Variable { type: String initial: Concat($identity.fullname, "(0)") }
+	
+	task = TaskRecord(taskId)
+	
+	accounts_t = Dataset {
+		columns: task.accounts as account,
+			task.accountsFullname as accountsFullname,
+			task.accountsGivenname as accountsGivenname,
+			task.accountsHRCode as accountsHRCode,
+			task.accountsHasID as accountsHasID,
+			task.accountsMail as accountsMail,
+			task.accountsSurname as accountsSurname,
+			task.accountsActions as accountsAction,
+			task.accountsComments as accountsComment,
+			task.accountsIdentitiesFullname as accountsIdentitiesFullname
+	}
+	
+	accounts_v = Dataset {
+		view: bw_recon_accounts with task.repository to repouid, task.noownercode to noownercode
+	}
+	
+	accounts = Dataset {
+		join: Join {
+			primary-dataset: accounts_t primary-column: account primary-optional: False primary-prefix: t_
+			secondary-dataset: accounts_v secondary-column: acc_uid secondary-cardinality: mandatory secondary-prefix: v_
+		}
+	}
+	
+	account = Record {
+		view: bw_recon_accounts with task.repository to repouid, task.noownercode to noownercode, currentAccountUid to accuid
+	}
+	
+	identity = Record {
+		view: bw_recon_identity with idPickerUid to iduid
+	}
+	
+	identities = Dataset {
+		view: bw_recon_identities with 
+			//task.fuzzyNB to fuzzynb, 
+			acc_hrcode to hrcode, 
+			acc_fullname to fullname, 
+			acc_surname to surname, 
+			acc_givenname to givenname, 
+			acc_mail to mail,
+			currentAccountUid to accountuid
+		excludes:
+			OrPredicate {
+				StringPredicate ( currentAccountUid ) {
+					when IsEmpty then True
+				}
+				AndPredicate { // If all the fields are null : prevent view from returning all identities
+					StringPredicate ( acc_hrcode ) { when IsEmpty then True }
+					StringPredicate ( acc_fullname ) { when IsEmpty then True }
+					StringPredicate ( acc_surname ) { when IsEmpty then True }
+					StringPredicate ( acc_givenname ) { when IsEmpty then True }
+					StringPredicate ( acc_mail ) { when IsEmpty then True }
+				}
+			}
+	}
+	identities_mail = Dataset {
+		view: bw_recon_identities with 
+			//task.fuzzyNB to fuzzynb, 
+			acc_mail to mail,
+			currentAccountUid to accountuid
+		excludes:
+			OrPredicate {
+				StringPredicate ( currentAccountUid ) { when IsEmpty then True }
+				StringPredicate ( acc_mail ) { when IsEmpty then True }
+			}
+	}
+	identities_givenname = Dataset {
+		view: bw_recon_identities with 
+			//task.fuzzyNB to fuzzynb, 
+			acc_givenname to givenname, 
+			currentAccountUid to accountuid
+		excludes:
+			OrPredicate {
+				StringPredicate ( currentAccountUid ) { when IsEmpty then True }
+				StringPredicate ( acc_givenname ) { when IsEmpty then True }
+			}
+	}
+	identities_surname = Dataset {
+		view: bw_recon_identities with 
+			//task.fuzzyNB to fuzzynb, 
+			acc_surname to surname,
+			currentAccountUid to accountuid
+		excludes:
+			OrPredicate {
+				StringPredicate ( currentAccountUid ) { when IsEmpty then True }
+				StringPredicate ( acc_surname ) { when IsEmpty then True }
+			}
+	}
+	identities_fullname = Dataset {
+		view: bw_recon_identities with 
+			//task.fuzzyNB to fuzzynb,  
+			acc_fullname to fullname, 
+			currentAccountUid to accountuid
+		excludes:
+			OrPredicate {
+				StringPredicate ( currentAccountUid ) { when IsEmpty then True }
+				StringPredicate ( acc_fullname ) { when IsEmpty then True }
+			}
+	}
+	identities_hrcode = Dataset {
+		view: bw_recon_identities with 
+			//task.fuzzyNB to fuzzynb, 
+			acc_hrcode to hrcode,
+			currentAccountUid to accountuid
+		excludes:
+			OrPredicate {
+				StringPredicate ( currentAccountUid ) { when IsEmpty then True }
+				StringPredicate ( acc_hrcode ) { when IsEmpty then True }
+			}
+	}
+	
+	Splitter {
+		size: 60%
+		disposition: Horizontal
+		// Accounts
+		Group {
+			title: $bw_recon_reviewNLS.accounts
+			// Actions on account(s)
+			ButtonGroup {
+				uniform: True
+				// Deactivation
+				Button {
+					text: $bw_recon_reviewNLS.disable
+					image: "16/famfamfam_silk_icons_v013/delete_black.png"
+					tooltip: $bw_recon_reviewNLS.disablett
+					actions:
+						StringCase ( currentAccountsUids ) {
+							when Not IsEmpty then [
+								MultivaluedSet "2" to task.accountsActions where task.accounts in currentAccountsUids,
+								Unset currentAccountsUids
+							] otherwise [
+								MultivaluedSet "2" to task.accountsActions where task.accounts in currentAccountUid
+							]
+						}
+					disabled:
+						AndPredicate {
+							StringPredicate ( currentAccountUid ) { when IsEmpty then True }
+							StringPredicate ( currentAccountsUids ) { when IsEmpty then True }
+						}
+				}
+				// Deletion
+				Button {
+					text: $bw_recon_reviewNLS.delete
+					image: "16/famfamfam_silk_icons_v013/delete.png"
+					tooltip: $bw_recon_reviewNLS.deletett
+					actions:
+						StringCase ( currentAccountsUids ) {
+							when Not IsEmpty then [
+								MultivaluedSet "3" to task.accountsActions where task.accounts in currentAccountsUids,
+								Unset currentAccountsUids
+							] otherwise [
+								MultivaluedSet "3" to task.accountsActions where task.accounts in currentAccountUid
+							]
+						}
+					disabled:
+						AndPredicate {
+							StringPredicate ( currentAccountUid ) { when IsEmpty then True }
+							StringPredicate ( currentAccountsUids ) { when IsEmpty then True }
+						}
+				}
+				// Comment (add or modify, for one or many accounts)
+				Button {
+					text: $bw_recon_reviewNLS.comment
+					image: "16/famfamfam_silk_icons_v013/application_form_edit.png"
+					tooltip: $bw_recon_reviewNLS.deletett
+					actions:
+						Dialog recon_commentsDialog ( currentComment to comment, currentComment from comment),
+						StringCase ( currentAccountsUids ) {
+							when Not IsEmpty then [
+								MultivaluedSet currentComment to task.accountsComments where task.accounts in currentAccountsUids,
+								Unset currentAccountsUids
+							] otherwise [
+								MultivaluedSet currentComment to task.accountsComments where task.accounts in currentAccountUid
+							]
+						},
+						Set "" to currentComment
+					disabled:
+						AndPredicate {
+							StringPredicate ( currentAccountUid ) { when IsEmpty then True }
+							StringPredicate ( currentAccountsUids ) { when IsEmpty then True }
+						}
+				}
+				// Cancel
+				Button {
+					text: $bw_recon_reviewNLS.cancelButton
+					image: "16/famfamfam_silk_icons_v013/tag_green.png"
+					tooltip: $bw_recon_reviewNLS.canceltt
+					actions:
+						StringCase ( currentAccountsUids ) {
+							when Not IsEmpty then [
+								MultivaluedSet "0" to task.accountsActions where task.accounts in currentAccountsUids,
+								MultivaluedSet "" to task.accountsComments where task.accounts in currentAccountsUids,
+								MultivaluedSet "" to task.accountsIdentities where task.accounts in currentAccountsUids,
+								MultivaluedSet "" to task.accountsIdentitiesFullname where task.accounts in currentAccountsUids,
+								Unset currentAccountsUids
+							] otherwise [
+								MultivaluedSet "0" to task.accountsActions where task.accounts in currentAccountUid,
+								MultivaluedSet "" to task.accountsComments where task.accounts in currentAccountUid,
+								MultivaluedSet "" to task.accountsIdentities where task.accounts in currentAccountUid,
+								MultivaluedSet "" to task.accountsIdentitiesFullname where task.accounts in currentAccountUid
+							]
+						}
+					disabled:
+						AndPredicate {
+							StringPredicate ( currentAccountUid ) { when IsEmpty then True }
+							StringPredicate ( currentAccountsUids ) { when IsEmpty then True }
+						}
+				}
+			}
+			// List of accounts
+			Table {
+				layout: Layout { grab: horizontal True vertical True }
+				data: accounts
+				configurable: True
+				hide-header: False
+				initial-sort: v_acc_login
+				show-count: True
+				show-filter: True
+				checkboxes:
+					t_account to currentAccountsUids
+				selection-changed-event:
+					// Set Account variables
+					Set account.acc_employeenumber to acc_hrcode,
+					Set account.acc_username to acc_fullname,
+					Set account.acc_givenname to acc_givenname,
+					Set account.acc_surname to acc_surname,
+					Set account.acc_mail to acc_mail,
+					// Count results
+					TransferData identities ( id_uid ) to ( ids ),
+					Set SizeOf ids to nbIds,
+					TransferData identities_fullname ( id_uid ) to ( idsFullname ),
+					Set SizeOf idsFullname to nbIdsFullname,
+					TransferData identities_givenname ( id_uid ) to ( idsGivenname ),
+					Set SizeOf idsGivenname to nbIdsGivenname,
+					TransferData identities_hrcode ( id_uid ) to ( idsHRCode ),
+					Set SizeOf idsHRCode to nbIdsHRCode,
+					TransferData identities_mail ( id_uid ) to ( idsMail ),
+					Set SizeOf idsMail to nbIdsMail,
+					TransferData identities_surname ( id_uid ) to ( idsSurname ),
+					Set SizeOf idsSurname to nbIdsSurname,
+					// Update tab texts
+					Set Concat( $bw_recon_reviewNLS.allCriteria, " (", nbIds, ")") to strIds,
+					Set Concat( $identity.hrcode, " (", nbIdsHRCode, ")") to strIdsHRCode,
+					Set Concat( $identity.mail, " (", nbIdsMail, ")") to strIdsMail,
+					Set Concat( $identity.fullname, " (", nbIdsFullname, ")") to strIdsFullname,
+					Set Concat( $identity.surname, " (", nbIdsSurname, ")") to strIdsSurname,
+					Set Concat( $identity.givenname, " (", nbIdsGivenname, ")") to strIdsGivenname
+				Column {
+					column: t_account
+					header: $paccount.uid
+					hidden: True
+					selection: currentAccountUid
+				}
+				Column {
+					column: v_acc_recorduid
+					header: $paccount.recorduid
+					hidden: True
+					selection: currentAccountRecordUid
+				}
+				Column {
+					column: t_accountsAction
+					header: $bw_recon_reviewNLS.status
+					sortable: True
+					filterable: True
+					width: 100%
+					text:Transform Current t_accountsAction using bw_recon_review_actionMapping
+					image:TemplateImageSelection (Current t_accountsAction) using bw_recon_review_appactionTemplate
+				}
+				Column {
+					column: v_acc_login
+					header: $paccount.login
+					sortable: True
+					filterable: True
+					width: 100%
+					selection: currentAccountLogin
+				}
+				Column {
+					column: v_acc_username
+					header: $paccount.username
+					sortable: True
+					filterable: True
+					width: 100%
+				}
+				Column {
+					column: v__noownercode
+					header: $bw_recon_reviewNLS.noownercode
+					sortable: True
+					width: 100%
+				}
+				Column {
+					column: t_accountsHasID
+					header: $bw_recon_reviewNLS.hasID
+					sortable: True
+					width: 100%
+					initially-masked: True
+				}
+				Column {
+					column: v_repo_code
+					header: $prepository.code
+					sortable: True
+					filterable: True
+					width: 100%
+				}
+				Column {
+					column: t_accountsComment
+					header: $bw_recon_reviewNLS.comment
+					sortable: True
+					filterable: True
+					width: 100%
+					selection: currentComment
+				}
+				Column {
+					column: t_accountsIdentitiesFullname
+					header: $pidentity.fullname
+					sortable: True
+					filterable: True
+					width: 100%
+				}
+			}
+			Group {
+				// Recon dialog
+				title: $bw_recon_reviewNLS.requestRecon
+				layout: Layout { grab: horizontal True vertical False }
+				// Reconciliation Comment
+					Edit {
+						label: $bw_recon_reviewNLS.reconComment
+						variable: reconComment
+					}
+				// Pick an identity
+				Text {
+					label: $identity.concept
+					value: identity.id_fullname
+					commands: 
+						Command { 
+							actions: Dialog identityPicker(idPickerUid from outUid)
+							icon: "16/audit/identity_16.png"
+						}
+				}
+				Button {
+					actions:
+						Dialog bw_recon_confirm ( currentAccountLogin to localAccountLogin, identity.id_fullname to localIdentityFullname, reconComment to localComment, reconComment from localComment),
+						MultivaluedSet idPickerUid to task.accountsIdentities where task.accounts in currentAccountUid,
+						MultivaluedSet "1" to task.accountsActions where task.accounts in currentAccountUid,
+						MultivaluedSet reconComment to task.accountsComments where task.accounts in currentAccountUid,
+						MultivaluedSet identity.id_fullname to task.accountsIdentitiesFullname where task.accounts in currentAccountUid,
+						Set "" to idPickerUid
+					text: $bw_recon_reviewNLS.manualrecon
+					tooltip: $bw_recon_reviewNLS.manualrecontt
+					image: "16/audit/reconciliation_16.png"
+					disabled:
+						OrPredicate {
+							StringPredicate ( idPickerUid ) {
+								when IsEmpty then True
+							}
+							StringPredicate ( currentAccountUid ) {
+								when IsEmpty then True
+							}
+						}
+				}
+			}
+		}
+		// Layout
+		Group {
+			// Identities
+			Group {
+				title: $bw_recon_reviewNLS.identities
+				// List of identities
+				TabFolder {
+					// Ids on all criterias
+					TabItem {
+						text: strIds
+						activation-event:
+							Unset currentIdentityUid
+						Group {
+							hidden: IntPredicate ( nbIds ) { when > 0 then True }
+							Text {
+								value: $bw_recon_reviewNLS.noSuggestion
+								compact: True
+							}
+							Text {
+								label: $bw_recon_reviewNLS.allCriteria
+								value: nbIds
+								compact: True
+								hidden: IntPredicate ( nbIds ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.hrcode
+								value: nbIdsHRCode
+								compact: True
+								hidden: IntPredicate ( nbIdsHRCode ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.mail
+								value: nbIdsMail
+								compact: True
+								hidden: IntPredicate ( nbIdsMail ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.fullname
+								value: nbIdsFullname
+								compact: True
+								hidden: IntPredicate ( nbIdsFullname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.surname
+								value: nbIdsSurname
+								compact: True
+								hidden: IntPredicate ( nbIdsSurname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.givenname
+								value: nbIdsGivenname
+								compact: True
+								hidden: IntPredicate ( nbIdsGivenname ) { when < 1 then True }
+							}
+						}
+						Table {
+							hidden:
+								IntPredicate ( nbIds ) { when < 1 then True }
+							layout: Layout { grab: horizontal True vertical True }
+							data: identities
+							configurable: True
+							hide-header: False
+							initial-sort: id_fullname
+							show-count: True
+							show-filter: True
+							Column {
+								column: id_uid
+								header: $identity.uid
+								hidden: True
+								selection: currentIdentityUid
+							}
+							Column {
+								column: id_fullname
+								header: $identity.fullname
+								sortable: True
+								filterable: True
+								width: 100%
+								selection: currentIdentityFullname
+							}
+							Column {
+								column: id_surname
+								header: $identity.surname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_givenname
+								header: $identity.givenname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_mail
+								header: $identity.mail
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+						}
+					}
+					// Ids on hrcode
+					TabItem {
+						text: strIdsHRCode
+						activation-event:
+							Unset currentIdentityUid
+						Group {
+							hidden: IntPredicate ( nbIdsHRCode ) { when > 0 then True }
+							Text {
+								value: $bw_recon_reviewNLS.noSuggestion
+								compact: True
+							}
+							Text {
+								label: $bw_recon_reviewNLS.allCriteria
+								value: nbIds
+								compact: True
+								hidden: IntPredicate ( nbIds ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.hrcode
+								value: nbIdsHRCode
+								compact: True
+								hidden: IntPredicate ( nbIdsHRCode ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.mail
+								value: nbIdsMail
+								compact: True
+								hidden: IntPredicate ( nbIdsMail ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.fullname
+								value: nbIdsFullname
+								compact: True
+								hidden: IntPredicate ( nbIdsFullname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.surname
+								value: nbIdsSurname
+								compact: True
+								hidden: IntPredicate ( nbIdsSurname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.givenname
+								value: nbIdsGivenname
+								compact: True
+								hidden: IntPredicate ( nbIdsGivenname ) { when < 1 then True }
+							}
+						}
+						Table {
+							hidden:
+								IntPredicate ( nbIdsHRCode ) { when < 1 then True }
+							layout: Layout { grab: horizontal True vertical True }
+							data: identities_hrcode
+							configurable: True
+							hide-header: False
+							initial-sort: id_fullname
+							show-count: True
+							show-filter: True
+							Column {
+								column: id_uid
+								header: $identity.uid
+								hidden: True
+								selection: currentIdentityUid
+							}
+							Column {
+								column: id_fullname
+								header: $identity.fullname
+								sortable: True
+								filterable: True
+								width: 100%
+								selection: currentIdentityFullname
+							}
+							Column {
+								column: id_surname
+								header: $identity.surname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_givenname
+								header: $identity.givenname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_mail
+								header: $identity.mail
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+						}
+					}
+					// Ids on mail
+					TabItem {
+						text: strIdsMail
+						activation-event:
+							Unset currentIdentityUid
+						Group {
+							hidden: IntPredicate ( nbIdsMail ) { when > 0 then True }
+							Text {
+								value: $bw_recon_reviewNLS.noSuggestion
+								compact: True
+							}
+							Text {
+								label: $bw_recon_reviewNLS.allCriteria
+								value: nbIds
+								compact: True
+								hidden: IntPredicate ( nbIds ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.hrcode
+								value: nbIdsHRCode
+								compact: True
+								hidden: IntPredicate ( nbIdsHRCode ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.mail
+								value: nbIdsMail
+								compact: True
+								hidden: IntPredicate ( nbIdsMail ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.fullname
+								value: nbIdsFullname
+								compact: True
+								hidden: IntPredicate ( nbIdsFullname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.surname
+								value: nbIdsSurname
+								compact: True
+								hidden: IntPredicate ( nbIdsSurname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.givenname
+								value: nbIdsGivenname
+								compact: True
+								hidden: IntPredicate ( nbIdsGivenname ) { when < 1 then True }
+							}
+						}
+						Table {
+							hidden:
+								IntPredicate ( nbIdsMail ) { when < 1 then True }
+							layout: Layout { grab: horizontal True vertical True }
+							data: identities_mail
+							configurable: True
+							hide-header: False
+							initial-sort: id_fullname
+							show-count: True
+							show-filter: True
+							Column {
+								column: id_uid
+								header: $identity.uid
+								hidden: True
+								selection: currentIdentityUid
+							}
+							Column {
+								column: id_fullname
+								header: $identity.fullname
+								sortable: True
+								filterable: True
+								width: 100%
+								selection: currentIdentityFullname
+							}
+							Column {
+								column: id_surname
+								header: $identity.surname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_givenname
+								header: $identity.givenname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_mail
+								header: $identity.mail
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+						}
+					}
+					// Ids on fullname
+					TabItem {
+						text: strIdsFullname
+						activation-event:
+							Unset currentIdentityUid
+						Group {
+							hidden: IntPredicate ( nbIdsFullname ) { when > 0 then True }
+							Text {
+								value: $bw_recon_reviewNLS.noSuggestion
+								compact: True
+							}
+							Text {
+								label: $bw_recon_reviewNLS.allCriteria
+								value: nbIds
+								compact: True
+								hidden: IntPredicate ( nbIds ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.hrcode
+								value: nbIdsHRCode
+								compact: True
+								hidden: IntPredicate ( nbIdsHRCode ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.mail
+								value: nbIdsMail
+								compact: True
+								hidden: IntPredicate ( nbIdsMail ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.fullname
+								value: nbIdsFullname
+								compact: True
+								hidden: IntPredicate ( nbIdsFullname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.surname
+								value: nbIdsSurname
+								compact: True
+								hidden: IntPredicate ( nbIdsSurname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.givenname
+								value: nbIdsGivenname
+								compact: True
+								hidden: IntPredicate ( nbIdsGivenname ) { when < 1 then True }
+							}
+						}
+						Table {
+							hidden:
+								IntPredicate ( nbIdsFullname ) { when < 1 then True }
+							layout: Layout { grab: horizontal True vertical True }
+							data: identities_fullname
+							configurable: True
+							hide-header: False
+							initial-sort: id_fullname
+							show-count: True
+							show-filter: True
+							Column {
+								column: id_uid
+								header: $identity.uid
+								hidden: True
+								selection: currentIdentityUid
+							}
+							Column {
+								column: id_fullname
+								header: $identity.fullname
+								sortable: True
+								filterable: True
+								width: 100%
+								selection: currentIdentityFullname
+							}
+							Column {
+								column: id_surname
+								header: $identity.surname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_givenname
+								header: $identity.givenname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_mail
+								header: $identity.mail
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+						}
+					}
+					// Ids on surname
+					TabItem {
+						text: strIdsSurname
+						activation-event:
+							Unset currentIdentityUid
+						Group {
+							hidden: IntPredicate ( nbIdsSurname ) { when > 0 then True }
+							Text {
+								value: $bw_recon_reviewNLS.noSuggestion
+								compact: True
+							}
+							Text {
+								label: $bw_recon_reviewNLS.allCriteria
+								value: nbIds
+								compact: True
+								hidden: IntPredicate ( nbIds ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.hrcode
+								value: nbIdsHRCode
+								compact: True
+								hidden: IntPredicate ( nbIdsHRCode ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.mail
+								value: nbIdsMail
+								compact: True
+								hidden: IntPredicate ( nbIdsMail ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.fullname
+								value: nbIdsFullname
+								compact: True
+								hidden: IntPredicate ( nbIdsFullname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.surname
+								value: nbIdsSurname
+								compact: True
+								hidden: IntPredicate ( nbIdsSurname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.givenname
+								value: nbIdsGivenname
+								compact: True
+								hidden: IntPredicate ( nbIdsGivenname ) { when < 1 then True }
+							}
+						}
+						Table {
+							hidden:
+								IntPredicate ( nbIdsSurname ) { when < 1 then True }
+							layout: Layout { grab: horizontal True vertical True }
+							data: identities_surname
+							configurable: True
+							hide-header: False
+							initial-sort: id_fullname
+							show-count: True
+							show-filter: True
+							Column {
+								column: id_uid
+								header: $identity.uid
+								hidden: True
+								selection: currentIdentityUid
+							}
+							Column {
+								column: id_fullname
+								header: $identity.fullname
+								sortable: True
+								filterable: True
+								width: 100%
+								selection: currentIdentityFullname
+							}
+							Column {
+								column: id_surname
+								header: $identity.surname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_givenname
+								header: $identity.givenname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_mail
+								header: $identity.mail
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+						}
+					}
+					// Ids on givenname
+					TabItem {
+						text: strIdsGivenname
+						activation-event:
+							Unset currentIdentityUid
+						Group {
+							hidden: IntPredicate ( nbIdsGivenname ) { when > 0 then True }
+							Text {
+								value: $bw_recon_reviewNLS.noSuggestion
+								compact: True
+							}
+							Text {
+								label: $bw_recon_reviewNLS.allCriteria
+								value: nbIds
+								compact: True
+								hidden: IntPredicate ( nbIds ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.hrcode
+								value: nbIdsHRCode
+								compact: True
+								hidden: IntPredicate ( nbIdsHRCode ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.mail
+								value: nbIdsMail
+								compact: True
+								hidden: IntPredicate ( nbIdsMail ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.fullname
+								value: nbIdsFullname
+								compact: True
+								hidden: IntPredicate ( nbIdsFullname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.surname
+								value: nbIdsSurname
+								compact: True
+								hidden: IntPredicate ( nbIdsSurname ) { when < 1 then True }
+							}
+							Text {
+								label: $identity.givenname
+								value: nbIdsGivenname
+								compact: True
+								hidden: IntPredicate ( nbIdsGivenname ) { when < 1 then True }
+							}
+						}
+						Table {
+							hidden:
+								IntPredicate ( nbIdsGivenname ) { when < 1 then True }
+							layout: Layout { grab: horizontal True vertical True }
+							data: identities_givenname
+							configurable: True
+							hide-header: False
+							initial-sort: id_fullname
+							show-count: True
+							show-filter: True
+							Column {
+								column: id_uid
+								header: $identity.uid
+								hidden: True
+								selection: currentIdentityUid
+							}
+							Column {
+								column: id_fullname
+								header: $identity.fullname
+								sortable: True
+								filterable: True
+								width: 100%
+								selection: currentIdentityFullname
+							}
+							Column {
+								column: id_surname
+								header: $identity.surname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_givenname
+								header: $identity.givenname
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+							Column {
+								column: id_mail
+								header: $identity.mail
+								sortable: True
+								filterable: True
+								width: 100%
+							}
+						}
+					}
+				}
+				// Recon buttons
+				Group {
+					title: $bw_recon_reviewNLS.manualReconGp
+					layout: Layout { grab: horizontal True vertical False }
+					// Reconciliation Comment
+					Edit {
+						label: $bw_recon_reviewNLS.reconComment
+						variable: reconComment
+					}
+					Button {
+						text: $bw_recon_reviewNLS.idrecon
+						tooltip: $bw_recon_reviewNLS.idrecontt
+						image: "16/audit/reconciliation_identity.png"
+						actions: 
+							Dialog bw_recon_confirm ( currentAccountLogin to localAccountLogin, currentIdentityFullname to localIdentityFullname, reconComment to localComment, reconComment from localComment),
+							MultivaluedSet "1" to task.accountsActions where task.accounts in currentAccountUid,
+							MultivaluedSet currentIdentityUid to task.accountsIdentities where task.accounts in currentAccountUid,
+							MultivaluedSet reconComment to task.accountsComments where task.accounts in currentAccountUid,
+							MultivaluedSet currentIdentityFullname to task.accountsIdentitiesFullname where task.accounts in currentAccountUid,
+							Set "" to currentIdentityUid
+						disabled:
+							OrPredicate {
+								StringPredicate ( currentIdentityUid ) {
+									when IsEmpty then True
+								}
+								StringPredicate ( currentAccountUid ) {
+									when IsEmpty then True
+								}
+								StringPredicate ( reconComment ) {
+									when IsEmpty then True
+								}
+							}
+					}
+				}
+			}
+			// Task related buttons
+			Group {
+				title: $bw_recon_reviewNLS.taskButtons
+				layout: Layout { grab: horizontal True vertical False }
+				ButtonGroup {
+					align: Right
+					uniform: True
+					// Cancel
+					Button {
+						actions:
+							Confirm $bw_recon_reviewNLS.releaseconfirm,
+							TaskCancel task,
+							Flash Information $bw_recon_reviewNLS.releaseflash, 
+							GoTo HomePage
+							text: $bw_recon_reviewNLS.releasetext
+							image:"16/famfamfam_silk_icons_v013/cancel.png"
+					}
+					// Save
+					Button {
+						actions:
+							TaskSave task, 
+							Flash Information $bw_recon_reviewNLS.saveflash,
+							GoTo HomePage
+						text: $bw_recon_reviewNLS.savetext
+						image:"16/famfamfam_silk_icons_v013/disk.png"
+					}
+					// Finish
+					Button {
+						actions:
+							Set Principal.uid to task.requester,
+							Set True to task.isManual,
+							TaskComplete task,
+							Flash Information $bw_recon_reviewNLS.okflash,
+							GoTo HomePage
+						text: $bw_recon_reviewNLS.oktext
+						styling: importantTextStyle
+						image: "16/famfamfam_silk_icons_v013/accept.png"
+					}
+				}
+			}
+		}
+	}
+}

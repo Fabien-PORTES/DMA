@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sample_reports_identity_search" prefix="identity_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="sample_reports_identity_search">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1479727059860_402" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479727060985_403" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479727069345_404" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479733366673_455" attribute="fullname" removedfromprojection="false" globalfilter="false"/>
+</View>

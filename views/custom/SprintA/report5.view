@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="report5" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="controllogv2" displayname="report5">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1478535932094_128488" attribute="controldisplayname" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1478535935199_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="report5"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1478535945048_128490" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="controldiscrepancy">
+		<ViewJoin name="J1478608905331_41686" prefix="AD_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+			<ViewJoin name="J1478608925611_41687" prefix="NIS_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountreconciliation">
+				<ViewJoin name="J1478608938851_41688" prefix="NIS_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+					<ViewAttribute name="A1478608955168_41691" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="A1478608964310_41692" attribute="repositorytype" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1478608971087_0" operation="eq" ignoreifempty="false">
+							<Value name="0" data="NIS"/>
+						</ViewAttributeFilter>
+					</ViewAttribute>
+				</ViewJoin>
+				<ViewAttribute name="A1478609020136_41698" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1478610246961_41842" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1478610558856_41851" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1478686627055_66180" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewJoin name="J1478610566786_41852" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+				<ViewAttribute name="A1478610573896_41853" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1478609225428_41750" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1483460058958_799" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1483460075899_800" attribute="givenname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1483460094668_801" attribute="surname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1483460107759_802" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

@@ -1,0 +1,3 @@
+<template:variabledataset/> = Dataset {
+	view: workflow_assetdisplayname_all
+}

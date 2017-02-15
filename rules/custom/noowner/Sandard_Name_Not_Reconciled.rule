@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="Sandard_Name_Not_Reconciled" operator="and" query="account" displayname="Sandard_Name_Not_Reconciled" version="3">
+	<RequestCriteria name="C1484555869554_375" criteria="notReconciliatedAccounts">
+	</RequestCriteria>
+	<RequestCriteria name="C1484555751704_370" criteria="eqSmartCardRequired">
+	</RequestCriteria>
+</Request>

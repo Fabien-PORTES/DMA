@@ -1,0 +1,443 @@
+/* Import other pages here */
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/admin/projectupdatemanager_refresh.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/styles/styles.page"
+
+getListOfFacetFiles = EventService {
+    javascript-file: "/webportal/pages/admin/projectupdate_utils.javascript"
+    javascript-method: getListOfFacetFiles
+    facetId = 	Input { multivalued: True mandatory: True }
+    results = Output { multivalued: True  }
+    extensions = Output { multivalued: True }
+}
+
+generateConfirmationCode = StringService {
+	javascript-file: "/webportal/pages/admin/projectupdate_utils.javascript"
+    javascript-method: generateConfirmationCode
+}
+
+darkBoldLabel = Style {
+	foreground: RGB ( 83 , 89, 93 )
+	bold: True
+}
+
+warning = Style {
+	foreground: RGB ( 159 , 96, 0 )
+}
+
+boldText = Style {
+	bold: True
+}
+
+normalText = Style {
+	bold: False 
+}
+
+
+
+installParDialog = Dialog {
+	title: $projectUpdateManagerNLS.installdialog.title
+	height: 350
+	width: 600
+	enter-event: Set @generateConfirmationCode to confirmationCode
+	
+	install_status = Variable
+	name = Variable
+	show = Variable { type: Boolean }
+	changed = Variable { type: Boolean }
+	confirmationCode = Variable { type: String }
+	codeInput = Variable { type:  String }
+	
+	Spacer {
+		height: 5
+	}
+	
+	Group {
+		background: Color RGB ( 254,239,176)
+		border: True 
+		layout: Layout { grab: horizontal True vertical False hint: height 50}
+		Text {
+			layout: Layout { grab: horizontal True vertical False hint: height 40 indent: horizontal 0 vertical 5}
+			compact: True
+			value: $projectUpdateManagerNLS.installdialog.warning
+			styling: warning
+			lines: 2
+		}
+	}
+	Spacer {
+		height: 5
+	}
+	Checkbox {
+		variable: show
+		text: $projectUpdateManagerNLS.installdialog.understandmessage
+		modify-event: Set True to changed
+		disabled: BooleanPredicate ( changed )
+	}
+	
+	
+	Spacer {
+		height: 10
+	}
+	
+	Group {
+		hidden: Not BooleanPredicate ( show )
+		layout: Layout { grab: horizontal True vertical True }
+		
+		Spacer {
+			height: 5
+		}
+		
+		Edit {
+			variable: codeInput
+			layout: Layout { hint: width 100}
+			label: $projectUpdateManagerNLS.installdialog.askconfirmationcode ( Concat(" ",confirmationCode) )
+		}
+		
+		Spacer {
+			height: 5
+		}
+	
+		InstallFacet {
+			label: $projectUpdateManagerNLS.uploadpar.uploader.label
+			installation-status: install_status
+			installation-name: name
+			hide-progress: True
+			install-complete-event: Message Information $projectUpdateManagerNLS.uploadpar.uploader.message.completed ( name , install_status ), CloseDialog Cancel, GoTo Page projectUpdateManagerPageRefresh
+			install-failed-event: Message Error $projectUpdateManagerNLS.uploadpar.uploader.message.failure ( name , install_status )  
+			tooltip: $projectUpdateManagerNLS.uploadpar.uploader.button.tooltip
+			text: $projectUpdateManagerNLS.uploadpar.uploader.button.text
+			
+			disabled: Not SameValuePredicate ( codeInput, confirmationCode )
+		}
+	}
+}
+
+deleteParDialog = Dialog {
+	title: $projectUpdateManagerNLS.uninstalldialog.title ( parName )
+	width: 600
+	height: 280
+	enter-event: Set @generateConfirmationCode to confirmationCode
+	
+	buttons: [ 
+		OkButton { 
+			actions: UninstallFacet parID 
+			status-variable uninstall_status
+			when-complete [ Message Information $projectUpdateManagerNLS.parhistory.command.uninstall.message.completed (parName,uninstall_status), GoTo Page projectUpdateManagerPageRefresh]
+			when-failed [ Message Error $projectUpdateManagerNLS.parhistory.command.uninstall.message.failed (parName,uninstall_status) ]
+			disabled: Not SameValuePredicate ( codeInput, confirmationCode )
+		} CancelButton ]
+	
+	parName = Variable 
+	parID = Variable 
+	uninstall_status = Variable
+	confirmationCode = Variable { type: String }
+	codeInput = Variable { type:  String }
+	show = Variable
+	
+	Group{
+		background: Color RGB ( 254,239,176)
+		border: True 
+		layout: Layout { grab: horizontal True vertical False hint: height 50}
+		Text {
+			layout: Layout { grab: horizontal True vertical False hint: height 40 indent: horizontal 0 vertical 5}
+			compact: True
+			value: $projectUpdateManagerNLS.uninstalldialog.warning
+			styling: warning
+			lines: 2
+		}
+	}
+		
+	
+	Grid {
+		columns: GridColumn {width: grow } , GridColumn { width: 120 }
+		fill: Both 
+		
+		GridRow {
+			height: 5
+			GridCell { span: 2 }
+		}
+		GridRow {
+			height: 35
+			GridCell {
+				span: 2
+				
+				Checkbox {
+					variable: show
+					text: $projectUpdateManagerNLS.uninstalldialog.understandmessage
+				}
+			}
+		}
+		GridRow {
+			height: 30
+			GridCell {
+				align: trailing
+				Text {
+					compact: True 
+					value: $projectUpdateManagerNLS.uninstalldialog.askconfirmationcode ( Concat(" ",confirmationCode) )
+					hidden: Not BooleanPredicate (show)
+					align: Right
+				}
+			}
+			GridCell {
+				align: leading
+				Edit {
+					variable: codeInput
+					hidden: Not BooleanPredicate (show)
+					
+					layout: Layout { hint: width 100 }
+				}
+			}
+		}
+		GridRow {
+			height: grow
+			GridCell { span: 2}
+		}
+	}
+}
+
+projectUpdateManagerPage = Page {
+
+	title: $projectUpdateManagerNLS.title
+	tags: "admin"
+	feature: projectupdatemanager_page
+	
+	/* Parameters here */
+	
+	/* Variables here */
+	install_status = Variable
+	uninstall_status = Variable
+	name = Variable
+	selected_parID = Variable
+	selected_name = Variable
+	listOfFiles = Variable { multivalued: True }
+	listOfExtensions = Variable { multivalued: True }
+	
+	/* Datasets and records here */
+	installedFacets = Dataset {
+		facets: InstalledFacets 
+	}
+	
+	files = Dataset {
+		columns: listOfFiles as path, listOfExtensions as extension
+	}
+	
+	noFiles = Dataset {
+		values: [ ( label -> $projectUpdateManagerNLS.details.noselection ) ]
+	}
+	
+	/* Page content */
+	Grid {
+		columns: GridColumn { width: maximum 800px minimum 200px (prefered 800px) }, GridColumn {}, GridColumn{ width: 65 }, GridColumn { width: 400px },  GridColumn { width: grow}
+		fill: Both
+		GridRow {
+			height: 10
+			GridCell { span: 5 }
+		}
+		GridRow{
+			height: grow
+			GridCell {
+				span: 2
+				
+				
+				Group {
+					background: Color RGB ( 189, 189 , 189)
+					layout: Layout { grab: horizontal True vertical False hint: height 80 indent: horizontal 12 vertical 0}
+					border: False 
+					margins: All 1
+					
+					Group {
+						layout: Layout { grab: horizontal True vertical True }
+						background: Color RGB (255,255,255)
+						
+						Grid {
+							columns: GridColumn { width: 90px }, GridColumn { width: 150px} , GridColumn { width:30px}, GridColumn { width: grow }
+							fill: Both 
+							
+							GridRow {
+								GridCell {
+									Image {
+										image: "webportal/package_50.png"
+									}
+								}
+								GridCell {
+									align: trailing
+									Spacer { height: 10}
+									Button { 
+										actions: Dialog installParDialog, ReloadData ( installedFacets )
+										presentation: Link
+										text: $projectUpdateManagerNLS.uploadpar.uploader.label 
+										styling: darkBoldLabel 
+										align: Right 
+									}
+								}
+								GridCell {
+									Spacer { height: 2 }
+									Button {
+										actions: Dialog installParDialog, ReloadData ( installedFacets )
+										presentation: Link
+										image: "webportal/install_24.png"
+										text: ""
+										tooltip: $projectUpdateManagerNLS.uploadpar.uploader.button.tooltip
+									}	
+								}
+							}
+						}
+					}
+				}
+				
+				Spacer { height: 10 }
+				
+				Text { value: $projectUpdateManagerNLS.parhistory.title compact: True styling: bigTitleStyle}
+				
+				Spacer { height: 10 }
+				
+				TemplateTable {
+					layout: Layout { grab: horizontal True vertical True }
+					data: installedFacets initial-sort: installTimestamp descending
+					selection-changed-event: Call getListOfFacetFiles ( selected_parID to facetId , listOfFiles from results, listOfExtensions from extensions )
+					row-height: 80
+					
+					
+					StaticImageCell {
+						top: 9
+						left: 19
+						width: 60
+						height: 60
+						image: "webportal/package_50.png"
+					}
+					
+					TextCell {
+						top: 16
+						left: 100
+						width: 250
+						height: 20
+						column: label
+						styling: boldText
+					}
+					
+					StaticTextCell {
+						top: 46
+						left: 140
+						width: 200
+						height: 20
+						text: $projectUpdateManagerNLS.item.author
+						styling: boldText
+					}
+					
+					TextCell {
+						top: 46
+						left: 190
+						width: 200
+						height: 20
+						column: author
+						styling: normalText
+					}
+					
+					StaticTextCell {
+						top: 16
+						right: 345
+						width: 200
+						height: 20
+						text: $projectUpdateManagerNLS.item.installdate
+						horizontal-align: Right
+						styling: boldText
+					}
+					
+					TextCell {
+						top: 16
+						right: 120
+						width: 200
+						height: 20
+						column: installTimestamp
+						text: DateLDAP(Current installTimestamp).value("yyyy-MM-dd HH:mm:ss") 
+						styling: normalText
+					}
+					
+					StaticTextCell {
+						top: 46
+						right: 345
+						width: 200
+						height: 20
+						text: $projectUpdateManagerNLS.item.installedby
+						horizontal-align: Right
+						styling: boldText
+					}
+					
+					TextCell {
+						top: 46
+						right: 120
+						width: 200
+						height: 20
+						column: installUserName
+						styling: normalText
+					} 
+					
+					StaticImageCell {
+						top: 18
+						right: 40
+						width: 40
+						height: 40
+						image: "webportal/more_30.png"
+					}
+					
+					HiddenCell { column: installFacetId selection: selected_parID }
+					HiddenCell { column: label selection: selected_name }
+				}
+			}
+			GridCell {
+				Button {
+					actions: Dialog deleteParDialog ( selected_parID to parID, selected_name to parName  )
+					presentation: Link
+					image: "webportal/delete_32.png"
+					layout: Layout { indent: horizontal  0 vertical 163}
+					hidden: Not CanUninstallFacet ( selected_parID ) 
+					tooltip: $projectUpdateManagerNLS.parhistory.command.uninstall.tooltip
+				}
+			}
+			GridCell {
+			
+				ConditionalGroup {
+					StringCondition ( selected_parID ){
+						when IsEmpty then  [
+							Table {
+								data: noFiles
+								layout: Layout { grab: horizontal True vertical True }
+								hide-header: True
+								hide-lines: True 
+								show-filter: True
+								disabled: True
+								Column { column: label width: 100%}
+							}
+							Spacer { height: 17 }
+						]
+						otherwise [
+							Table {
+								data: files
+								layout: Layout { grab: horizontal True vertical True }
+								hide-header: True
+								hide-lines: True 
+								show-count: True 
+								show-filter: True
+								
+								Column {
+									column: path
+									text: ""
+									image: TemplateImageSelection ( Current extension ) using studioIconMapping
+									width: 25px
+									filterable: True
+								}
+								
+								Column {
+									column: path 
+									width: 100%
+								}
+							}
+						]
+					}
+				}
+				
+			}
+		}
+	}
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_nbaccountsharepoint" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="Count the # of accounts who have access to a sharepoint element">
+	<ViewParam name="recorduid" displayname="Filesystem record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1304344052568_495" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1304344162703_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1304344052568_497" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344060211_503" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344064772_504" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344065476_505" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344066212_506" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344066931_507" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344067635_508" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344068332_509" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344069140_510" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344071579_511" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1304344072380_512" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1304344075581_513" kind="left" identitysecure="false" join="accountright">
+		<ViewAttribute name="A1304344082212_514" attribute="recorduid" alias="nbaccounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1382818421910_5691" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382818340780_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382818344430_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1305892727026_7026" prefix="application" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="A1316332652312_1646" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1316332658876_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Sharepoint"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1322672684398_1570" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1322672684932_1571" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1322672685428_1572" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1322672685874_1573" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1304344052568_498" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

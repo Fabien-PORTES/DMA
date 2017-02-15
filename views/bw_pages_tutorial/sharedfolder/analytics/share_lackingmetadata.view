@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="share_lackingmetadata" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="share_lackingmetadata" notes="">
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewParam name="sensitivity" displayname="sensitivity"/>
+	<ViewParam name="condition" displayname="condition"/>
+	<ViewSqlFilter name="F1439827613717" expression="(dataset.expertisedomainuid IS NULL)" enabled="( param.isEmpty(&apos;condition&apos;)==false &amp;&amp; param.condition.get()==&apos;noowner&apos;)"/>
+	<ViewSqlFilter name="F1439827595519" expression="(dataset.sensitivitylevel IS NULL OR  dataset.sensitivitylevel  =&apos;&apos;)" enabled="( param.isEmpty(&apos;condition&apos;)==false &amp;&amp; param.condition.get()==&apos;nosensitivity&apos;)"/>
+	<ViewSqlFilter name="F1439827639486" expression="(dataset.description IS NULL OR dataset.description =&apos;&apos; OR dataset.category IS NULL OR dataset.category =&apos;&apos; OR dataset.sensitivitylevel IS NULL OR  dataset.sensitivitylevel  =&apos;&apos; OR  dataset.expertisedomainuid IS NULL)" enabled="( param.isEmpty(&apos;condition&apos;)==true || ( param.isEmpty(&apos;condition&apos;)==false &amp;&amp; param.condition.get()==&apos;all&apos;) )"/>
+	<ViewSqlFilter name="F1439827446055" expression="(dataset.description IS NULL OR dataset.description =&apos;&apos; )" enabled="( param.isEmpty(&apos;condition&apos;)==false &amp;&amp; param.condition.get()==&apos;nodescription&apos;)"/>
+	<ViewSqlFilter name="F1439827463014" expression="(dataset.category IS NULL OR dataset.category =&apos;&apos; )" enabled="( param.isEmpty(&apos;condition&apos;)==false &amp;&amp; param.condition.get()==&apos;nocategory&apos;)"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1439384116422_345" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1439384132105_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1439384152014_347" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1439384152654_348" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1439409547900_0" reference="shares" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1439384154068_349" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1439384154936_350" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1439384250334_359" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="A1439384253856_360" attribute="uid" alias="nbelements" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1439384250334_359" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="1439397450621_948" attribute="uid" alias="nbmanaged" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1444063219197_1157" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+			<ViewAttribute name="1444064012650_2105" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063353561_0" reference="managed" operation="isTrue" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1439827086885_357" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="management">
+		<ViewAttribute name="A1439827093163_358" attribute="expertisedomainuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1444121855004_7979" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="applicationinfo">
+		<ViewAttribute name="1444121938844_8015" attribute="sensitivityreason" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1444121938844_8016" attribute="sensitivitylevel" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1444121896783_0" reference="sensitivity" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="1444121938844_8017" attribute="description" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1444121938844_8018" attribute="category" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1444121938844_8019" attribute="sensitivityreasonorigin" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1444121938844_8020" attribute="descriptionorigin" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1444121938845_8021" attribute="categoryorigin" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

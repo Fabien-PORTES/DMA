@@ -1,0 +1,190 @@
+import "/webportal/pages/mixins/default_mixins.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/reports/standard.page"
+
+transformStatus = StringMapping {
+	when "S" then $defaultHomepage_NLS.batchedreports.status.s
+	when "R" then $defaultHomepage_NLS.batchedreports.status.r
+	when "C" then $defaultHomepage_NLS.batchedreports.status.c
+	when "E" then $defaultHomepage_NLS.batchedreports.status.e
+}
+
+defaultHomepage = Page {
+	title: $defaultHomepage_NLS.default_home.title
+	homepage-for: Any priority 100
+	feature: Any
+	
+	selectedPosition = Variable {
+		type: String
+	}
+	
+	selectedStatus = Variable {
+		type: String
+	}
+	
+	controlReports = Dataset {
+		pages: Pages {tags: "generic" and "control" }
+	}
+	
+	miningAnalyticsReports = Dataset {
+		pages: Pages {tags: "generic" and "mining" , "generic" and "analytics"}
+	}
+	
+	browsingReports = Dataset {
+		pages: Pages {tags: "generic" and "browsing" }
+	}
+	
+	searchPages = Dataset {
+		pages: Pages {tags: "conceptsearch"}
+	}
+	
+	batchedReports = Dataset {
+		batched-reports: BatchedReports { status: Submitted, Running, Completed, Error  } 
+		
+	}
+	
+	Splitter {
+		disposition: Horizontal
+		
+		Group {
+		
+			Group {
+				mixins: homePageMixin
+				title: $defaultHomepage_NLS.portalsearch.title
+				hidden: IntPredicate ( Count searchPages ) { when = 0 then True otherwise False }
+				
+				Tiles {
+					columns:2
+					tile-height: 20
+					TileGroup{
+						iterate-on:searchPages
+						initial-sort: title					
+						Tile{
+							Link{
+								value: Current title
+								target: Dynamic ( Current type , Current name)
+								decorator: Decorator { width: Fill before: Image { image: Current icon width: 26  } }
+							}
+						}
+					}
+				}
+			}
+		
+			Group {
+				mixins: homePageMixin
+				title: $defaultHomepage_NLS.navigation.title
+				hidden: IntPredicate ( Count browsingReports ) { when = 0 then True otherwise False }
+
+				Grid{	
+					columns: GridColumn{ width: 20 } , GridColumn{ width: grow }
+					GridRowGroup{
+						iterate-on: browsingReports
+						initial-sort: title
+						GridRow{
+							GridCell { 
+								Image { image: Current icon  align: Center }
+							}
+							GridCell {
+								Link { value: Current title target: Dynamic ( Current type, Current name ) }
+							}
+						}
+					}
+				}				
+			}
+
+			Group {
+				mixins: homePageMixin
+				title: $defaultHomepage_NLS.mining.title
+				hidden: IntPredicate ( Count miningAnalyticsReports ) { when = 0 then True otherwise False }
+
+				Grid{	
+					columns: GridColumn{ width: 20 } , GridColumn{ width: grow }
+					GridRowGroup{
+						iterate-on: miningAnalyticsReports
+						initial-sort: title
+						GridRow{
+							GridCell { 
+								Image { image: Current icon  align: Center }
+							}
+							GridCell {
+								Link { value: Current title target: Dynamic ( Current type, Current name ) }
+							}
+						}
+					}
+				}				
+			}
+		}
+		
+		Group {
+
+			Group {
+				
+				mixins: homePageMixin
+				title: $defaultHomepage_NLS.controls.title
+				hidden: IntPredicate ( Count controlReports ) { when = 0 then True otherwise False }
+				
+				Grid{	
+					columns: GridColumn{ width: 20 } , GridColumn{ width: grow }
+					GridRowGroup{
+						iterate-on: controlReports
+						initial-sort: title
+						GridRow{
+							GridCell { 
+								Image { image: Current icon  align: Center }
+							}
+							GridCell {
+								Link { value: Current title target: Dynamic ( Current type, Current name ) }
+							}
+						}
+					}
+				}
+			}
+			
+			Group {
+				title: $defaultHomepage_NLS.batchedreports.grouptitle 
+				hidden: IntPredicate ( Count batchedReports ) { when = 0 then True otherwise False }
+				
+				Spacer { height: 5 }
+				Table {
+					data: batchedReports
+					layout: Layout { grab: horizontal True vertical True }
+					configurable: True 
+					initial-sort: submissionDate descending
+					double-click: StringCase( selectedStatus ) { when "C" then [ GoTo Position selectedPosition ] }
+					
+					commands: 
+						Commands {
+							
+							orientation: Vertical  position: After
+							Command { 	
+								actions: StringCase(selectedStatus) { when "C" then [ GoTo Position selectedPosition] } icon: "16/famfamfam_silk_icons_v013/report_go.png" 
+								disabled: StringPredicate (selectedStatus) { when "C" then False otherwise True }
+								tooltip: $defaultHomepage_NLS.batchedreports.goto
+							} 
+						}
+					
+					Column  { 
+						column: status 
+						text: Concat ( "  " ,  Transform Current status using transformStatus )  
+						header: $defaultHomepage_NLS.batchedreports.status sortable: True 
+						width: 95px
+						image: StringImageSelection ( Current status ) {
+							when "S" then "16/famfamfam_silk_icons_v013/time.png"
+							when "R" then "16/famfamfam_silk_icons_v013/time.png"
+							when "C" then "16/famfamfam_silk_icons_v013/report.png"
+							when "E" then "16/famfamfam_silk_icons_v013/error.png"
+						}
+						selection: selectedStatus
+					}
+					
+					Column { column: title width: 100% header: $defaultHomepage_NLS.batchedreports.title sortable: True }
+					Column { column: submissionDate text: DateLDAP ( Current submissionDate ).value width: 132px header: $defaultHomepage_NLS.batchedreports.submissiondate sortable: True }
+					Column { column: completionDate text: DateLDAP ( Current completionDate ).value width: 132px header: $defaultHomepage_NLS.batchedreports.completitiondate  sortable: True initially-masked: True }
+					Column { column: position hidden: True selection: selectedPosition }
+				}
+			
+			}
+		}
+	}		
+}
+

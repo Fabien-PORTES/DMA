@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="AD4UNIX_reconcilied_NIS_and_AD" operator="and" query="group" displayname="AD4UNIX_reconcilied" version="15">
+	<RequestCriteria name="C1476870331375_5711" criteria="eqRepository">
+		<RequestCriteriaParam name="repositoryParam" ignoreifempty="false">
+			<Value name="0" data="AD4UNIX"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestGroup name="G1477476641607_442" operator="and">
+		<RequestJoin name="J1477410530219_22414" operator="and" join="account">
+			<RequestJoin name="J1477410508791_22410" operator="and" join="repository">
+				<RequestCriteria name="C1477410513403_22411" criteria="eqRepositoryType">
+					<RequestCriteriaParam name="repositoryTypeParam" ignoreifempty="false">
+						<Value name="0" data="AD"/>
+					</RequestCriteriaParam>
+				</RequestCriteria>
+			</RequestJoin>
+			<RequestGroup name="G1477476576609_431" operator="and">
+				<RequestCriteria name="C1477480307769_489" criteria="notReconciliatedAccounts">
+				</RequestCriteria>
+			</RequestGroup>
+		</RequestJoin>
+	</RequestGroup>
+	<RequestGroup name="G1477476648218_448" operator="and">
+		<RequestJoin name="J1477410530219_22414" operator="and" join="account">
+			<RequestJoin name="J1477410508791_22410" operator="and" join="repository">
+				<RequestCriteria name="C1477410513403_22411" criteria="eqRepositoryType">
+					<RequestCriteriaParam name="repositoryTypeParam" ignoreifempty="false">
+						<Value name="0" data="NIS"/>
+					</RequestCriteriaParam>
+				</RequestCriteria>
+			</RequestJoin>
+			<RequestGroup name="G1477476576609_431" operator="and">
+				<RequestCriteria name="C1477476131206_396" criteria="reconciliatedAccounts">
+				</RequestCriteria>
+			</RequestGroup>
+		</RequestJoin>
+	</RequestGroup>
+</Request>

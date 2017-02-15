@@ -1,0 +1,183 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+reportDetails = NLS {
+	browsing_permission_detailaccounts.pagetitle [ en "Accounts Details" fr "Comptes Détaillés"]
+	browsing_permission_detailaccounts.title [ en "List of Accounts" fr "Liste des Comptes"]
+	browsing_permission_detailaccounts.subtitle [ en "Accounts - Permission <<{0}>>" fr "Comptes - Permission <<{0}>>"]
+	browsing_permission_detailaccounts.columns.account_login [ en "Login" fr "Login"]
+	browsing_permission_detailaccounts.columns.account_disabled [en "Disabled" fr "Désactivé"]
+	browsing_permission_detailaccounts.columns.account_lastlogindate [en "Last Login Date" fr "Dernière Connexion"]
+	browsing_permission_detailaccounts.columns.account_creationdate [en "Creation Date" fr "Date de Création"]
+	browsing_permission_detailaccounts.columns.account_passwordlastsetdate [ en "Password Changed" fr "Mot de Passe Modifié"]
+	browsing_permission_detailaccounts.columns.account_repositorydisplayname [ en "Repository" fr "Référentiel"]
+}
+
+browsing_permission_detailaccounts = Page {
+
+	title: $reportDetails.browsing_permission_detailaccounts.pagetitle
+	tags: "permission" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: browsing_permission_detailaccounts
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	permissionSearch = SearchDefinition {
+		entity: Permission
+		simple-mode-rule: br_permission_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentPermission = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	permissionList = Dataset {
+		search: Search {
+			definition: permissionSearch
+			view: br_permission_searchpoint with "Profile" to applicationtype , nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_permissionDetail with currentPermission to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_permissionbyaccount with conceptData.recorduid to recorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: permissionList
+			column: uid
+			selection: currentPermission
+			back-link: Activity Permission Detail with currentPermission to paramPermissionUid , SerializeSearch permissionSearch to permissionSearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_permission_detailaccounts.title	
+		}		
+		
+		Text {
+			value: $reportDetails.browsing_permission_detailaccounts.subtitle( conceptData.code )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			double-click: GoTo Activity Account Detail with selectedUid to paramAccountUid
+			show-filter: True
+			show-count: True
+			
+			Column {
+				column: account_recorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: account_uid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: account_login
+				header: $reportDetails.browsing_permission_detailaccounts.columns.account_login
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: account_disabled
+				text: Transform Current account_disabled using booleanDisplayMapping
+				header: $reportDetails.browsing_permission_detailaccounts.columns.account_disabled
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: account_lastlogindate
+				text: Date( Current account_lastlogindate ).value('dd/MM/yyyy')
+				header: $reportDetails.browsing_permission_detailaccounts.columns.account_lastlogindate
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: account_creationdate
+				text: Date( Current account_creationdate ).value('dd/MM/yyyy')
+				header: $reportDetails.browsing_permission_detailaccounts.columns.account_creationdate
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: account_passwordlastsetdate
+				text: Date( Current account_passwordlastsetdate ).value('dd/MM/yyyy')
+				header: $reportDetails.browsing_permission_detailaccounts.columns.account_passwordlastsetdate
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: account_repositorydisplayname
+				header: $reportDetails.browsing_permission_detailaccounts.columns.account_repositorydisplayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+		}
+		
+		Button {
+			actions:  GoTo Activity Account Detail with selectedUid to paramAccountUid
+			layout: Layout { align: horizontal End vertical Beginning grab: horizontal False vertical False hint: width 200}
+			disabled: StringPredicate(selectedUid) { when IsEmpty then True }
+			text: $search_page.showdetails
+		}
+	}
+}

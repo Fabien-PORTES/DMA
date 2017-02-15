@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource conditional access record" description="The General Resource Conditional Access record defines the conditional access to a general resource. There is one record per general resource/access combination.">
+	<Source type="FORMATTED" filter="^0507 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRCACC_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the General Resources Conditional Access record (0507)."/>
+		<Attribute name="A4199536690768339793" attribute="GRCACC_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRCACC_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRCACC_CATYPE" column="262-269" type="String" multivalued="false" description="The type of conditional access checking that is being performed. Valid values are CONSOLE, TERMINAL, JESINPUT, SYSID, APPCPORT, SERVAUTH, and PROGRAM."/>
+		<Attribute name="A3188661801656117613" attribute="GRCACC_CANAME" column="271-278" type="String" multivalued="false" description="The name of a conditional access element which is permitted access."/>
+		<Attribute name="A4037269903301147695" attribute="GRCACC_AUTH_ID" column="280-287" type="String" multivalued="false" description="The user ID or group name which has authority to the general resource."/>
+		<Attribute name="A4037269903301147696" attribute="GRCACC_ACCESS" column="289-296" type="String" multivalued="false" description="The authority of the conditional access element/user combination. Valid values are NONE, READ, UPDATE, CONTROL, and ALTER."/>
+		<Attribute name="A4037269903301147697" attribute="GRCACC_ACCESS_CNT" column="298-302" type="Number" multivalued="false" description="The number of times that the general resource was accessed."/>
+		<Attribute name="A4037269903301147698" attribute="GRCACC_NET_ID" column="304-311" type="String" multivalued="false" description="The network name when GRCACC_CATYPE is APPCPORT."/>
+		<Attribute name="A4037269903301147699" attribute="GRCACC_CACRITERIA" column="313-556" type="String" multivalued="false" description="Access criteria or SERVAUTH IP data."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+	<Checks>
+		<Check name="U1314367823667" attribute="GRCACC_CATYPE" checktype="regexp" checkvalue="^CONSOLE|TERMINAL|JESINPUT|SYSID|APPCPORT|SERVAUTH|PROGRAM$" event="Invalid CA Type"/>
+		<Check name="U1314367823668" attribute="GRCACC_ACCESS" checktype="regexp" checkvalue="^NONE|READ|UPDATE|CONTROL|ALTER$" event="Invalid Access"/>
+	</Checks>
+</Discovery>

@@ -1,0 +1,372 @@
+/* Import other pages here */
+
+/* Nationalized labels here */
+DMA_nls = NLS {
+	title [en "DMA_nls" fr "DMA_nls"]
+}
+
+DMA_homepage = NLS {
+    title [en "Homepage DMA" fr "Homepage DMA"]
+    group.title [en "Links" fr "Links" ]
+                }
+
+applicationASPIRE = NLS {
+	displayname [en "Application Name"]
+	custom1 [en "Business Owner Login"]
+	custom2 [en "Business Owner Mail"]
+	custom3 [en "Business Owner Name"]
+	custom4 [en "App Manager Login"]
+	custom5 [en "App Manager Mail"]
+	custom6 [en "App Manager Name"]
+	custom7 [en "App Delegate Login"]
+	custom8 [en "App Delegate Mail"]
+	custom9 [en "App Delegate Name"]
+}
+
+identityAdAttributes = NLS {
+	disabled [en "Status"]
+	custom6 [en "Airbus Mail" fr "Airbus Mail"]
+	givenname [en "First Name" fr "First Name"]
+	sn [en "Last Name" fr "Last Name"]
+	internal [en "Internal" fr "Internal"]
+	FullName [en "Full Name" fr "Full Name"]
+	departureDate [en "Departure Date" fr "Departure Date"]
+	mail [en "Email" fr "Email"]
+	custom1 [en "Identity State" fr "Identity State"]
+	custom4 [en "Repository" fr "Repository"]
+	custom12 [en "Object ID" fr "Objects ID"]
+	custom15 [en "Creation Date" fr "Creation Date"]
+	custom8 [en "SAMAccountname" fr "SAMAccountname"]
+	custom9 [en "SAM extract" fr "SAM extract"]
+	custom13 [en "UID number" fr "UID number"]
+	custom14 [en "UID" fr "UID"]
+	repository [en "Repository" fr "Repository"]
+	custom10 [en "Service" fr "Service"]
+	custom11 [en "Status" fr "Status"]
+	hrcode [en "Distinguished Name" fr "Distinguished Name"]
+	custom18 [en "Repository" fr "Repository"]
+	custom17 [en "Standard Name" fr "Standard Name"]
+	manager [en "ALIR owner"]
+}
+identityAdAttributesPref = NLS {
+	givenname [en "AD First Name" fr "AD First Name"]
+	sn [en "AD Last Name" fr "AD Last Name"]
+	internal [en "AD Internal" fr "AD Internal"]
+	FullName [en "AD Full Name" fr "AD Full Name"]
+	departureDate [en "AD Departure Date" fr "AD Departure Date"]
+	mail [en "AD Email" fr "AD Email"]
+	custom1 [en "AD Identity State" fr "AD Identity State"]
+	custom4 [en "AD Repository" fr "AD Repository"]
+	custom12 [en "AD Object ID" fr "AD Objects ID"]
+	custom15 [en "AD Creation Date" fr "AD Creation Date"]
+	custom8 [en "AD SAMAccountname" fr "AD SAMAccountname"]
+	custom9 [en "AD SAM extract" fr "AD SAM extract"]
+	custom13 [en "AD UID number" fr "AD UID number"]
+	custom14 [en "AD UID" fr "AD UID"]
+	repository [en "AD Repository" fr "AD Repository"]
+	custom10 [en "AD Service" fr "AD Service"]
+	custom11 [en "AD Disabled" fr "AD Disabled"]
+	hrcode [en "AD Distinguished Name" fr "AD Distinguished Name"]
+	custom18 [en "AD Repository" fr "AD Repository"]
+	custom17 [en "AD Standard Name" fr "AD Standard Name"]
+}
+
+identityALIRAttributes = NLS {
+	hrcode [en "Login" fr "Login"]
+	givenname [en "First Name" fr "First Name"]
+	sn [en "Last Name" fr "Last Name"]
+	fullName [en "Full Name" fr "Full Name"]
+	departureDate [en "Departure Date" fr "Departure Date"]
+	mail [en "Email" fr "Email"]
+	jobTitle [en "Job Title" fr "Job Title"]
+	custom1 [en "Identity State" fr "Identity State"]
+	custom2 [en "Unique Key" fr "Unique Key"]
+	company [en "Company UID" fr "Company UID"]
+	custom3 [en "External UID" fr "External UID"]
+	altname [en "Alternative Name" fr "Alternative Name"]
+	phone [en "Fixed Phone Number" fr "Fixed Phone Number"]
+	mobile [en "Mobile Phone Number" fr "Mobile Phone Number"]
+	custom5 [en "Second Fixed Phone Number" fr "Second Fixed Phone Number"]
+	custom6 [en "Airbus Mail" fr "Airbus Mail"]
+	orgshortname [en "Organization Short Name" fr "Organization Short Name"]
+	orgname [en "Organization Name" fr "Organization Name"]
+}
+
+
+identityALIRAttributesPref = NLS {
+	hrcode [en "ALIR Login" fr "ALIR Login"]
+	givenname [en "ALIR First Name" fr "ALIR First Name"]
+	sn [en "ALIR Last Name" fr "ALIR Last Name"]
+	FullName [en "ALIR Full Name" fr "ALIR Full Name"]
+	departureDate [en "ALIR Departure Date" fr "ALIR Departure Date"]
+	mail [en "ALIR Email" fr "ALIR Email"]
+	jobTitle [en "ALIR Job Title" fr "ALIR Job Title"]
+	custom1 [en "ALIR Identity State" fr "ALIR Identity State"]
+	custom2 [en "ALIR Unique Key" fr "ALIR Unique Key"]
+	company [en "ALIR Company UID" fr "ALIR Company UID"]
+	custom3 [en "ALIR External UID" fr "ALIR External UID"]
+	altname [en "ALIR Alternative Name" fr "ALIR Alternative Name"]
+	phone [en "ALIR Fixed Phone Number" fr "ALIR Fixed Phone Number"]
+	mobile [en "ALIR Mobile Phone Number" fr "ALIR Mobile Phone Number"]
+	custom5 [en "ALIR Second Fixed Phone Number" fr "ALIR Second Fixed Phone Number"]
+	custom6 [en "ALIR Airbus Mail" fr "ALIR Airbus Mail"]
+}
+
+ad4Unix_Current = NLS {
+custom5 [en "SAMAccountname" fr "SAMAccountname"]
+sid [en "UID#" fr "UID#"]
+custom8 [en "WinDomain" fr "WinDomain"]
+}
+
+ad4Unix_Past = NLS {
+custom5 [en "SAMAccountname" fr "SAMAccountname"]
+sid [en "UID#" fr "UID#"]
+}
+
+account_reconciliation_ticket_details = NLS {
+	title [en "Account reconciliation details" fr "Account reconciliation details"]
+	viewtable.actor_actorfullname [en "Actor's full name of the ticket" fr "Actor's full name of the ticket"]
+	viewtable.actor_enddate [en "Ticket action end date" fr "Ticket action end date"]
+	viewtable.review_status [en "Ticket review status" fr "Ticket review status"]
+	viewtable.review_comment [en "Ticket review comment" fr "Ticket review comment"]
+	viewtable.review_categorization [en "Ticket review custom attribute 1" fr "Ticket review custom attribute 1"]
+	viewtable.review_custom2 [en "Ticket review custom attribute 2" fr "Ticket review custom attribute 2"]
+	viewtable.review_desired_samaccountname [en "Ticket review custom attribute 6" fr "Ticket review custom attribute 6"]
+	viewtable.review_desired_gecos [en "Ticket review custom attribute 5" fr "Ticket review custom attribute 5"]
+	viewtable.review_desired_uid [en "Ticket review custom attribute 3" fr "Ticket review custom attribute 3"]
+	viewtable.review_desired_uid_number [en "Ticket review custom attribute 4" fr "Ticket review custom attribute 4"]
+}
+ticket_reconciliation_attributes = NLS {
+	actor_hrcode [en 'Operator Login' fr 'Operator Login']
+	actor_fullname [en 'Operator' fr 'Operator']
+	startdate [en 'Creation Date']
+}
+
+accountNISAttributes = NLS {
+	manager [en "Standard Naming"]
+	locked [en 'Locked' fr 'Locked']
+	passwordExpired [en 'Password has Expired' fr 'Password has Expired']
+	passwordNotRequired [en 'Password not Required' fr 'Password not Required']
+	sid [en 'UID Number' fr 'UID Number']
+	recon.reliability [en "Reliability" fr "Reliability"]
+	recon.displayname [en "Reconciliation rule" fr "Reconciliation Rule"]
+	service [en "Service" fr "Service"]
+	hrcode [en "Distinguished Name" fr "Distinguished Name"]
+	disabled [en "Status" fr "Status"]
+	creationDate [en "Creation Date" fr "Creation Date"]
+	Login  [en "UID" fr "UID"]
+	repository [en "Domain" fr "Domain"]
+	custom1 [en "Vintella" fr "Vintella"]
+	custom2 [en "AD4UNIX historic SAMAccountname" fr "AD4UNIX historic SAMAccountname"]
+	custom3 [en "Account is in AD4UNIX historic" fr "Account is in AD4UNIX historic"]
+	custom4 [en "UID Number" fr "UID Number"]
+	custom5 [en "AD4UNIX SAMAccountname" fr "AD4UNIX SAMAccountname"]
+	custom6 [en "Account is in AD4UNIX" fr "Account is in AD4UNIX"]
+	is_in [en "Is in ?" fr "Is in ?"]
+	custom7 [en "AD4UNIX historic AD Domain" fr "AD4UNIX historic AD Domain"]
+	custom8 [en "AD4UNIX AD Domain" fr "AD4UNIX AD Domain"]
+	custom9 [en "GECOS" fr "GECOS"]
+	username [en "Full Name" fr "Full Name"]
+	givenname [en "First Name" fr "First Name"]
+	surname [en "Last Name" fr "Last Name"]
+	mail [en "Email" fr "Email"]
+	guid [en "GID number" fr "GID number"]
+	smart_card_required [en "Standard Name" fr "Standard Name"]
+	sid_AD4UNIX [en "AD4UNIX UID number" fr "AD4UNIX UID number"]
+	employeeNumber [en "Login from GECOS" fr "Login from GECOS"]
+}
+accountNISAttributesPref = NLS {
+	service [en "Type" fr "Type"]
+	hrcode [en "NIS Distinguished Name" fr "NIS Distinguished Name"]
+	Login  [en "NIS UID" fr "NIS UID"]
+	repository [en "NIS Domain" fr "NIS Domain"]
+	custom1 [en "NIS Vintella" fr "NIS Vintella"]
+	custom2 [en "NIS AD4UNIX historic SAMAccountname" fr "NIS AD4UNIX historic SAMAccountname"]
+	custom3 [en "NIS Account is in AD4UNIX historic" fr "NIS Account is in AD4UNIX historic"]
+	custom4 [en "NIS UID Number" fr "NIS UID Number"]
+	custom5 [en "NIS AD4UNIX SAMAccountname" fr "NIS AD4UNIX SAMAccountname"]
+	custom6 [en "NIS Account is in AD4UNIX" fr "NIS Account is in AD4UNIX"]
+	custom7 [en "NIS AD4UNIX historic AD Domain" fr "NIS AD4UNIX historic AD Domain"]
+	custom8 [en "NIS AD4UNIX AD Domain" fr "NIS AD4UNIX AD Domain"]
+	custom9 [en "NIS GECOS" fr "NIS GECOS"]
+	username [en "NIS Full Name" fr "NIS Full Name"]
+	givenname [en "NIS First Name" fr "NIS First Name"]
+	surname [en "NIS Last Name" fr "NIS Last Name"]
+	mail [en "NIS Email" fr "NIS Email"]
+	guid [en "NIS GID number" fr "NIS GID number"]
+	smart_card_required [en "NIS Standard Name" fr "NIS Standard Name"]
+	sid_AD4UNIX [en "NIS AD4UNIX UID number" fr "NIS AD4UNIX UID number"]
+	employeeNumber [en "NIS Login from GECOS" fr "NIS Login from GECOS"]
+}
+
+ticketReviewAttributes = NLS {
+	actor_hrcode [en 'Actor Login']
+	actorfullname [en 'Actor Full Name']
+	id_hrcode [en 'Identity Login']
+	startdate [en 'Creation Date']
+	title [en 'Title']
+	uid [en 'UID']
+	actorFullName [en 'Actor' fr 'Actor']
+	status [en "Status" fr "Status"]
+	comment [en "Comment" fr "Comment"]
+	custom1 [en "Category" fr "Category"]
+	custom2 [en "More than 1 Ticket on the NIS Account" fr "More than 1 Ticket on the NIS Account"]
+	custom3 [en "UID Request" fr "UID Request"]
+	custom4 [en "UID# Request" fr "UID# Request"]
+	custom5 [en "GECOS Request" fr "GECOS Request"]
+	custom6 [en "SAMAccountname Request" fr "SAMAccountname Request"]
+	startDate [en "Creation Date" fr "Creation Date"]
+}
+
+identityAdDetails = NLS {
+	group_ALIR [en "ALIR" fr "ALIR"]
+	group_AD [en "AD" fr "AD"]
+	title [en "AD Accounts Details" fr "AD Accounts Details"]
+	dynamictitle [en "AD Accounts Details" fr "AD Accounts Details"]
+	identityteam.title [en "Team" fr "Equipe"]
+	identityteam.response[en "Works with {0}" fr "Travaille avec {0}"]
+	identityteam.response.others [en "{0,choice,-1#.|0#.|1# and {0} others.|1< and {0} others.}" fr "{0,choice,-1#.|0#.|1# et {0} autre.|1< et {0} autres.}"]
+	reconciledNIS [en "NIS accounts reconciled" fr "NIS accounts reconciled"]
+}
+
+ticketReviewDetails = NLS {
+	title [en 'Ticket Review Details']
+
+}
+
+identityALIRDetails = NLS {
+	title [en "ALIR identity Details" fr "ALIR identity Details"]
+	dynamictitle [en "AD identity Details" fr "AD identity Details"]
+	ownedAD [en "AD Accounts Owned" fr "AD Accounts Owned"]
+	identityteam.response[en "Works with {0}" fr "Travaille avec {0}"]
+	identityteam.response.others [en "{0,choice,-1#.|0#.|1# and {0} others.|1< and {0} others.}" fr "{0,choice,-1#.|0#.|1# et {0} autre.|1< et {0} autres.}"]
+}
+
+identityAdSearch = NLS {
+	title [en "AD Accounts Search" fr "AD Accounts Search"]
+	dynamictitle [en "AD Accounts Search" fr "AD Accounts Search"]
+}
+
+identityAlirSearch = NLS {
+	title [en "ALIR Accounts Search" fr "ALIR Accounts Search"]
+	dynamictitle [en "ALIR Accounts Search" fr "ALIR Accounts Search"]
+}
+
+accountNisSearch = NLS {
+	title [en "NIS Accounts Search" fr "NIS Accounts Search"]
+	titleAdvanced [en "NIS Accounts Advanced Search" fr "NIS Accounts Advanced Search"]
+	dynamictitle [en "NIS Accounts Search" fr "NIS Accounts Search"]
+}
+
+AD4UNIXSearch = NLS {
+	title [en "AD4UNIX Search" fr "AD4UNIX Search"]
+	dynamictitle [en "Application Search (ASPIRE)" fr "Application Search (ASPIRE)"]
+}
+
+applicationSearch = NLS {
+	title [en "Application Search (ASPIRE)" fr "Application Search (ASPIRE)"]
+	dynamictitle [en "Application Search (ASPIRE)" fr "Application Search (ASPIRE)"]
+}
+
+accountNisDetails = NLS {
+	group_Category [en "Category" fr "Category"]
+	group_Password [en "Password" fr "Password"]
+	group_Recon [en "Reconciliation" fr "Reconciliation"]
+	group_ALIR [en "ALIR Identity" fr "ALIR identity"]
+	title [en "NIS Accounts Details" fr "NIS Accounts Details"]
+	dynamictitle [en "NIS Accounts Details" fr "NIS Accounts Details"]
+	group_AD [en "AD Account" fr "AD Account"]
+	group_Application [en "Applications" fr "Applications"]
+	group_NIS [en "NIS Account" fr "NIS Account"]
+	group_AD4UNIX [en "AD4UNIX" fr "AD4UNIX"]
+	category [en "Category" fr "Category"]
+	reconciled_identity [en "SAMAccountname (Win Domain)" fr "SAMAccountname (Win Domain)"]
+	application_code [en "Code" fr "Code"]
+	group_Ticket_Review [en "Tickets Review" fr "Tickets Review"]
+}
+
+NIS_Search_Param = NLS {
+	title [en "tmp_nis_table" fr "tmp_nis_table"]
+	viewtable.recorduid [en "Account unique internal identifier" fr "Account unique internal identifier"]
+	viewtable.uid [en "Account permanent identifier" fr "Account permanent identifier"]
+	viewtable.custom2 [en "Account custom attribute 2" fr "Account custom attribute 2"]
+	viewtable.custom3 [en "Account custom attribute 3" fr "Account custom attribute 3"]
+	viewtable.custom4 [en "Account custom attribute 4" fr "Account custom attribute 4"]
+	viewtable.custom5 [en "Account custom attribute 5" fr "Account custom attribute 5"]
+	viewtable.custom6 [en "Account custom attribute 6" fr "Account custom attribute 6"]
+	viewtable.custom7 [en "Account custom attribute 7" fr "Account custom attribute 7"]
+	viewtable.custom8 [en "Account custom attribute 8" fr "Account custom attribute 8"]
+	viewtable.custom9 [en "Account custom attribute 9" fr "Account custom attribute 9"]
+	viewtable.repository_code [en "Repository code" fr "Repository code"]
+	viewtable.repository_displayname [en "Repository display name" fr "Repository display name"]
+	viewtable.identifier [en "Account key" fr "Account key"]
+	viewtable.login [en "Account login" fr "Account login"]
+	viewtable.givenname [en "Account first name" fr "Account first name"]
+	viewtable.surname [en "Account last name" fr "Account last name"]
+	viewtable.username [en "Account user name" fr "Account user name"]
+	viewtable.mail [en "Account email" fr "Account email"]
+	viewtable.employeenumber [en "Account user HR code" fr "Account user HR code"]
+	viewtable.custom1 [en "Account custom attribute 1" fr "Account custom attribute 1"]
+}
+
+ticket_review_managerNLS = NLS {
+	title [en "Ticket review manager" fr "Ticket review manager"]
+	viewtable.actor_actorfullname [en "Actor's full name of the ticket" fr "Actor's full name of the ticket"]
+	viewtable.actor_enddate [en "Ticket action end date" fr "Ticket action end date"]
+	viewtable.review_status [en "Ticket review status" fr "Ticket review status"]
+	viewtable.review_comment [en "Ticket review comment" fr "Ticket review comment"]
+	viewtable.review_categorization [en "Ticket review custom attribute 1" fr "Ticket review custom attribute 1"]
+	viewtable.review_custom2 [en "Ticket review custom attribute 2" fr "Ticket review custom attribute 2"]
+	viewtable.review_desired_samaccountname [en "Ticket review custom attribute 6" fr "Ticket review custom attribute 6"]
+	viewtable.review_desired_gecos [en "Ticket review custom attribute 5" fr "Ticket review custom attribute 5"]
+	viewtable.review_desired_uid [en "Ticket review custom attribute 3" fr "Ticket review custom attribute 3"]
+	viewtable.review_desired_uid_number [en "Ticket review custom attribute 4" fr "Ticket review custom attribute 4"]
+}
+
+account_categorizationNLS = NLS {
+	parameters [en "Parameters" fr "Parameters"]
+	edit [en "Filter by repositories (picker)" fr "Filter by repositories (picker)"]
+	edit3 [en "Filter by reconciliation rules (lookup)" fr "Filter by reconciliation rules (lookup)"]
+	edit4 [en "Filter by account categorisation" fr "Filter by account categorisation"]
+	table [en "Results" fr "Results"]
+	table.column1 [ en "Account login" fr "Account login" ]
+	table.column2 [ en "Account username" fr "Account username" ]
+	table.column3 [ en "Repository displayname" fr "Repository displayname" ]
+	table.column4 [ en "AI Unique key" fr "Unique key" ]
+	table.column5 [ en "Account GECOS" fr "AI Account GECOS" ]
+	table.column6 [ en "Reconciliation detail" fr "Reconciliation detail" ]
+	table.column7 [ en "Reconciliation reliability" fr "Reconciliation reliability" ]
+	table.column8 [ en "Identity unique key" fr "Identity unique key" ]
+	button.link [en "Printable version" fr "Printable version"]
+	report.link.tooltip [en "Click on this link to export data" fr "Click on this link to export data"]
+	dialog.flash [ en "Account categorisation submitted" fr "Account categorisation submitted"]
+	dialog.comment [ en "Add instructions for account cateogrisation" fr "Add instructions for account cateogrisation"]
+	dialog.combo [en "Select categorisation" fr "Select categorisation"]
+	dialog.modify_value [en "Attribute(s) to modify" fr "Attribute(s) to modify"]
+	dialog.uid [en "Desired uid" fr "Desired uid"]
+	dialog.uid_number [en "Desired uid number" fr "Desired uid number"]
+	dialog.GECOS [en "Desired GECOS" fr "Desired GECOS"]
+	dialog.samaccountname [en "Desired samaccountname" fr "Desired samaccountname"]
+	title [en "Account categorization" fr "Account categorization"]
+	option1 [en "1-Already Mapped, UID# Matches (ID OK)" fr "1-Already Mapped, UID# Matches (ID OK)"]
+	option2 [en "2-Already Mapped, ID OK Mismatched UID#" fr "2-Already Mapped, ID OK Mismatched UID#"]
+	option3 [en "3-Already Mapped, ID OK Mismatched UID# (Conflicting)" fr "3-Already Mapped, ID OK Mismatched UID# (Conflicting)"]
+	option4 [en "4-New mapping to new SAM_N using changed NIS UID, current UID#" fr "4-New mapping to new SAM_N using changed NIS UID, current UID#"]
+	option5 [en "5-New mapping to new SAM_N using changed NIS UID, newly allocated UID#" fr "5-New mapping to new SAM_N using changed NIS UID, newly allocated UID#"]
+	option6 [en "6-New mapping to existing SAM_N using changed NIS UID, current UID#" fr "6-New mapping to existing SAM_N using changed NIS UID, current UID#"]
+	option7 [en "7-New mapping to existing SAM_N using changed NIS UID, new UID#" fr "7-New mapping to existing SAM_N using changed NIS UID, new UID#"]
+	option8 [en "8-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping" fr "8-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping"]
+	option9 [en "9-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping, after resolving conflicting UID# issue" fr "9-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping, after resolving conflicting UID# issue"]
+	option10 [en "10-Use existing mapping (SAM_N): change NIS UID to match existing mapping." fr "10-Use existing mapping (SAM_N): change NIS UID to match existing mapping."]
+	option11 [en "11-New mapping to new SAM_N using NIS UID, UID#" fr "11-New mapping to new SAM_N using NIS UID, UID#"]
+	option12 [en "12-New mapping to new SAM_N using NIS UID, new UID#" fr "12-New mapping to new SAM_N using NIS UID, new UID#"]
+	option13 [en "13-Mapping already exists for this identity in this domain – transfer usage to mapped account UID_N, deactivate this one (UID)"  fr "13-Mapping already exists for this identity in this domain – transfer usage to mapped account UID_N, deactivate this one (UID)" ]
+	option14 [en "14-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping" fr "14-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping"]
+	option15 [en "15-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping, after resolving conflicting UID# issue" fr "15-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping, after resolving conflicting UID# issue"]
+	option16 [en "16-Use existing mapping (SAM_N): change NIS UID to match existing mapping" fr "16-Use existing mapping (SAM_N): change NIS UID to match existing mapping"]
+	option17 [en "17-New mapping (using SAM_N, NIS UID and UID#)" fr "17-New mapping (using SAM_N, NIS UID and UID#)"]
+	option18 [en "18-New Mapping using SAM_N, NIS UID, new UID#" fr "18-New Mapping using SAM_N, NIS UID, new UID#"]
+	option19 [en "19-To be Deactivated" fr "19-To be Deactivated"]
+	option20 [en "20-Unidentifiable (Lock NIS account to provoke reaction" fr"20-Unidentifiable (Lock NIS account to provoke reaction"]
+	option_empty [en "" fr ""]
+}

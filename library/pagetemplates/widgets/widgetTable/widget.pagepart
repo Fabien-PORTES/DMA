@@ -1,0 +1,37 @@
+Table {
+	label: <template:widgetlabel/>
+	data: <template:widgetdatasetname/>
+	show-filter: False
+	hide-header: False
+	layout: Layout {
+		grab: horizontal True vertical True
+	}
+	
+	Column {
+		column: recorduid
+		hidden: True
+		selection: <template:widgetvariablename/>
+	}
+	Column {
+		column: identifier
+		header: $<template:pageNLSname/>.<template:widgetnlsname/>.column1
+		image: "16/audit/account_16.png"
+		sortable: True
+		filterable: True
+		width: 33%
+	}
+	Column {
+		column: login
+		header: $<template:pageNLSname/>.<template:widgetnlsname/>.column2
+		sortable: True
+		filterable: True
+		width: 33%
+	}
+	Column {
+		column: repositorydisplayname
+		header: $<template:pageNLSname/>.<template:widgetnlsname/>.column3
+		sortable: True
+		filterable: True
+		width: 33%
+	}
+}

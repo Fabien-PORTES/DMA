@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource filter data record" description="The General Resource Filter Data record defines the information used to create the filter described by this DIGTNMAP profile and identifies the associated user ID or criteria (DIGTCRIT) profile.">
+	<Source type="FORMATTED" filter="^0508 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRFLTR_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record Type of the Filter Data record (0508)."/>
+		<Attribute name="A4199536690768339793" attribute="GRFLTR_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRFLTR_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRFLTR_LABEL" column="262-293" type="String" multivalued="false" description="The label associated with this filter."/>
+		<Attribute name="A3188661801656117613" attribute="GRFLTR_STATUS" column="295-302" type="String" multivalued="false" description="The status of this filter (TRUST) for filters that are trusted."/>
+		<Attribute name="A4037269903301147695" attribute="GRFLTR_USER" column="304-549" type="String" multivalued="false" description="The user ID or criteria profile name associated with this filter."/>
+		<Attribute name="A4037269903301147696" attribute="GRFLTR_CREATE_NAME" column="551-1061" type="String" multivalued="false" description="The issuer's or subject's name, or both, used to create this profile."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

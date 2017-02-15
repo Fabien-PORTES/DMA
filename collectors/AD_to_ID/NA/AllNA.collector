@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="AllNA" description="All NA (accounts, groups, groupsmembership)" name="P1469008875919_12" startingpoint="start">
+		<Component name="start" type="library/components/start.component" x="50" y="50" w="250" h="64" title="start"/>
+		<Link name="Ltart" source="start" target="C1469001401405_3" priority="1"/>
+		<Component name="N1475587416585" type="note" x="399" y="133" w="294" h="85" title="no need for groups in DMA&#xA;However, we load VAL accounts&#xA;"/>
+		<Component name="C1468943321272_1" type="repository" x="72" y="227" w="200" h="64" title="Create repository NA">
+			<Media type="I" code="REPOSITORYCODE" label="REPOSITORYNAME" repositorytype="REPOSITORYNAME"/>
+		</Component>
+		<Component name="C1469001401405_3" type="changefilter" x="72" y="140" w="200" h="64" title="adding repository">
+			<Actions>
+				<Action name="U1469001460358" action="add" attribute="REPOSITORYCODE" type="String" multivalued="false" newvalue="NA" errorexist="false"/>
+				<Action name="U1469005064762" action="add" attribute="REPOSITORYNAME" type="String" multivalued="false" newvalue="NA" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1469009163173_1" source="C1469001401405_3" target="C1468943321272_1" priority="1"/>
+		<Component name="C1468943321272_2" type="repository" x="402" y="372" w="200" h="64" title="Create repository NA-V">
+			<Media type="I" code="REPOSITORYCODE" label="REPOSITORYNAME" repositorytype="REPOSITORYNAME"/>
+		</Component>
+		<Component name="C1469001401405_4" type="changefilter" x="402" y="285" w="200" h="64" title="adding repository V">
+			<Actions>
+				<Action name="U1475592707017" action="update" attribute="REPOSITORYCODE" newvalue="NA-V" errorunknown="false"/>
+				<Action name="U1475592723760" action="update" attribute="REPOSITORYNAME" newvalue="NA-V" errorunknown="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1469009163173_2" source="C1469001401405_4" target="C1468943321272_2" priority="1"/>
+		<Component name="C1469008875914_7" type="callfilter" x="28" y="320" w="250" h="64" title="NA_accounts INSIDE">
+			<Line provisioningfile="/collectors/AD_to_ID/NA/NA_INSIDE.collector">
+				<Configuration name="A1475587656847" variable="sourcefile" content="{config.importfiles}/Extracts_AMC/PROD/ACDS_AD/export----NA.csv"/>
+				<Configuration name="A1475663245165" variable="repository" content="NA"/>
+			</Line>
+		</Component>
+		<Link name="L1481217339303" source="C1468943321272_1" target="C1469008875914_7" priority="1"/>
+		<Component name="C1469008875914_8" type="callfilter" x="727" y="202" w="250" h="64" title="NA_accounts VAL INSIDE">
+			<Line provisioningfile="/collectors/AD_to_ID/NA/NA_INSIDE.collector">
+				<Configuration name="A1475587890623" variable="sourcefile" content="{config.importfiles}/Extracts_AMC/VAL/ACDS_AD/export----NA-V.csv"/>
+				<Configuration name="A1475592673722" variable="repository" content="NA-V"/>
+			</Line>
+		</Component>
+		<Link name="L1481217348010" source="C1468943321272_2" target="C1469008875914_8" priority="2"/>
+		<Link name="L1481378435732" source="C1469008875914_7" target="C1469001401405_4" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+		<Variables>
+			<Variable name="sourcefile"/>
+		</Variables>
+	</Configuration>
+</Provisioning>

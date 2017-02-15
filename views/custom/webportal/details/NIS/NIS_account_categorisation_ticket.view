@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_account_categorisation_ticket" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="NIS_account_categorisation_ticket" notes="" begindate="" enddate="">
+	<ViewParam name="ticket_UID" displayname="ticket_UID"/>
+	<ViewParam name="account_uid" displayname="account_uid"/>
+	<ViewSort name="sort" attribute1="A1485356915024_599" direction1="DESC"/>
+	<ViewJoin name="J1485355655948_556" prefix="ticket_review_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketreview">
+		<ViewAttribute name="A1485355739010_577" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485355743830_578" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485355745183_579" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485355747159_580" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485355748573_581" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485355751111_582" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485355752751_583" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485356090752_586" attribute="status" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1485356901470_598" prefix="ticket_action_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketaction">
+			<ViewAttribute name="A1485356915024_599" attribute="startdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1485356927244_600" attribute="actorfullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1485357074210_602" prefix="actor_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="actor">
+				<ViewAttribute name="A1485357084426_603" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1485357090520_604" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1485357241374_606" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1485357180321_605" attribute="title" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1486545701738_1724" prefix="ticket_log_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticket">
+				<ViewAttribute name="A1486545705241_1725" attribute="tickettype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1486545803016_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="ACCOUNTCATEGORISATION"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="A1486479089093_755" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1485358514470_631" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486546382817_0" reference="account_uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1486545626259_1718" prefix="identity_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+		<ViewAttribute name="A1486545637861_1719" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486545639513_1720" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486545644169_1721" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486545645764_1722" attribute="custom14" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486545646971_1723" attribute="custom13" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

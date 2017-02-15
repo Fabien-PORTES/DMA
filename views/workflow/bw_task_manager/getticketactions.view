@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_getticketactions" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketaction" displayname="get ticket actions" notes="">
+	<ViewParam name="ticketlogrecorduid" displayname="ticketlogrecorduid"/>
+	<ViewSort name="sort" attribute1="A1475592808692_2054"/>
+	<ViewAttribute name="A1475592808692_2047" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2048" attribute="taskid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2049" attribute="startdate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2050" attribute="startday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2051" attribute="enddate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2052" attribute="endday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2053" attribute="status" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2054" attribute="title" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2055" attribute="description" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2056" attribute="actoruid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2057" attribute="actorfullname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2058" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2059" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2060" attribute="custom3" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2061" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2062" attribute="custom5" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2063" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2064" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2065" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2066" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808692_2067" attribute="custom10" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808693_2068" attribute="custom11" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808693_2069" attribute="custom12" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808693_2070" attribute="custom13" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808693_2071" attribute="custom14" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808693_2072" attribute="custom15" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808693_2073" attribute="custom16" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808693_2074" attribute="custom17" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808693_2075" attribute="custom18" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475592808693_2076" attribute="custom19" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1475592811881_2077" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticket">
+		<ViewAttribute name="A1475592825925_2078" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1475592827995_0" reference="ticketlogrecorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NotifyRule PUBLIC "-//Brainwave//DTD Notify Rule 1.0//EN" "urn:brainwave:igrc:dtds/notifyrule.dtd">
+<NotifyRule version="1" name="actionpackAddPermissions" displayname="Add new permissions for an individual">
+	<Mail sendername="IS Security" sendermail="security@acme.com" recipientview="br_identity" recipientfullnameattribute="fullname" recipientmailattribute="mail" recipientuidattribute="uid" body="&lt;body&gt;&#xA;{image.header}&#xA;&lt;pre&gt;&#xA;Dear {dataset.fullname.get()},&#xA;&#xA;Please add new {param.applicationname.get()} permissions for {param.beneficiaryname.get()} by clicking on this &lt;a href=&apos;{task.url.get()}&apos;&gt;link&lt;/a&gt;.&#xA;&#xA;Best Regards,&#xA;The security team&#xA;&lt;/pre&gt;&#xA;{image.account_48}&#xA;&lt;/body&gt;" subject="Please add new {param.applicationname.get()} permissions for {param.beneficiaryname.get()}">
+		<MailParams>
+			<MailParam name="applicationname" displayname="applicationname"/>
+			<MailParam name="beneficiaryname" displayname="beneficiaryname"/>
+		</MailParams>
+		<Embeddeds>
+			<Embedded name="I1415616621317" embeddedimage="header" embeddedfile="/reports/icons/various/mailheader.png"/>
+			<Embedded name="I1415616630479" embeddedimage="account_48" embeddedfile="/reports/icons/48/audit/account_48.png"/>
+		</Embeddeds>
+	</Mail>
+</NotifyRule>

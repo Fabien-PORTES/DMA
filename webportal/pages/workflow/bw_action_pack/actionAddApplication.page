@@ -1,0 +1,200 @@
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+import "/webportal/pages/resources/concepts_nls.page"
+
+actionAddApplicationNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel current edition ?" fr "Annuler l'édition en cours ?"]
+	complete.buttontext [en "Task completed" fr "Tâche terminée"]
+	complete.confirm [en "Complete current task ?" fr "Terminer la tâche en cours ?"]
+	complete.flashmessage [en "Task completed" fr "Tâche terminée"]
+	title [en "Create a new application access" fr "Create a new application access"]
+	subtitle1 [en "Please add a new Application access for this individual" fr "Please add a new Application access for this individual"]
+	grouptitle1 [en "Beneficiary informations" fr "Beneficiary informations"]
+	_identityhrcode [en "Beneficiary HR code" fr "Beneficiary HR code"]
+	_identityfullname [en "Beneficiary name" fr "Beneficiary name"]
+	grouptitle2 [en "Application informations" fr "Application informations"]
+	_applicationname [en "application name" fr "application name"]
+	_profilescodes [en "profiles codes" fr "profiles codes"]
+	_profilesnames [en "profiles names" fr "profiles names"]
+	profilescodesjointeditiontitle [en "Profiles" fr "Profiles"]
+	_comments [en "comments" fr "comments"]
+	_result [en "result" fr "result"]
+	result.value0 [en "ok" fr "ok"]
+	result.value1 [en "error" fr "error"]
+	_accountlogin [en "account login" fr "login du compte"]
+	_resultdescription [en "Additional action description that you want to push  back to the requester" fr "Additional action description that you want to push  back to the requester"]
+	_refererinfos [en "Referer" fr "Référant"]
+	_refererprofiles [en "Referer profile(s)" fr "Profil(s) du référant"]
+}
+
+
+actionAddApplication = Page {
+	title: $actionAddApplicationNLS.title
+	mixins: workflowDefaultMixin
+	
+	taskId = Parameter {
+		type: String
+		mandatory: True
+	}
+	
+	task = TaskRecord(taskId)
+	refererdetails = Record {
+		view:actionpackIdentitypicker with task.referer to uid
+	}
+	
+	profiles = Dataset {
+		columns:task.profilescodes, task.profilesnames
+	}
+	
+	refererprofiles = Dataset {
+		view:actionpackIdentityProfiles with task.referer to uid, task.application to applicationuids
+	}
+	
+	Header {
+		mixins: workflowTitleMixin
+		value: $actionAddApplicationNLS.subtitle1
+	}
+	Group {
+		title: $actionAddApplicationNLS.grouptitle1
+		Text {
+			label: $actionAddApplicationNLS._identityhrcode
+			value: task.identityhrcode
+		}
+		Text {
+			label: $actionAddApplicationNLS._identityfullname
+			value: task.identityfullname
+		}
+	}
+	Group {
+		title: $actionAddApplicationNLS.grouptitle2
+		Text {
+			label: $actionAddApplicationNLS._applicationname
+			value: task.applicationname
+		}
+		ConditionalGroup {
+			StringCondition(task.referer) { 
+			when IsEmpty then [
+				Table {
+					mixins: workflowJointEditionMixin
+					label: $actionAddApplicationNLS.profilescodesjointeditiontitle
+					data: profiles
+					Column {
+						header:$actionAddApplicationNLS._profilescodes
+						column:task_profilescodes
+					}
+					Column {
+						header:$actionAddApplicationNLS._profilesnames
+						column:task_profilesnames
+					}
+				}
+			]
+			otherwise [
+				Flow {
+					disposition:Horizontal
+					Group {
+						title:$actionAddApplicationNLS._refererinfos
+						Text {
+							label:$identity.hrcode
+							value:refererdetails.hrcode
+						}
+						Text {
+							label:$identity.hrcode
+							value:refererdetails.fullname
+						}
+						Text {
+							label:$identity.internal
+							value:refererdetails.internal
+						}
+						Text {
+							label:$identity.jobtitledisplayname
+							value:refererdetails.jobtitledisplayname
+						}
+						Text {
+							label:$organisation.concept
+							value:refererdetails.organisationcode
+						}
+						Text {
+							label:$organisation.concept
+							value:refererdetails.organisationdisplayname
+						}
+					}
+					Group {
+						title:$actionAddApplicationNLS._refererprofiles
+						Table {
+							data:refererprofiles
+							layout:Layout { grab:horizontal True vertical True}
+							Column {
+								column:permissioncode
+								header:$permission.code
+								sortable:True
+							}
+							Column {
+								column:permissiondisplayname
+								header:$permission.displayname
+								width:100%
+								sortable:True
+							}
+						
+						}
+					}
+				}
+			]
+			}
+		}
+		Text {
+			label: $actionAddApplicationNLS._comments
+			value: task.comments
+		}
+	}
+	Combo {
+		label: Concat($actionAddApplicationNLS._result,"*")
+		variable: task.result
+		options: Static {
+			Option {
+				value: "ok"
+				text: $actionAddApplicationNLS.result.value0
+			}
+			Option {
+				value: "error"
+				text: $actionAddApplicationNLS.result.value1
+			}
+		}
+	}
+	Edit {
+		label: $actionAddApplicationNLS._accountlogin
+		variable: task.accountlogin
+		layout:Layout {hint:width 128 grab: horizontal False vertical False align: horizontal Beginning vertical Center }
+	}
+	Edit {
+		label: $actionAddApplicationNLS._resultdescription
+		variable: task.resultdescription
+	}
+	
+	Header {
+		value: $actionAddApplicationNLS.mandatoryfields
+	}
+	
+	Group {
+		title: $actionAddApplicationNLS.actionsection
+		mixins: workflowActionsMixin
+		
+		ButtonGroup {
+			Button { 
+				text: $actionAddApplicationNLS.cancel.buttontext
+				actions: Confirm $actionAddApplicationNLS.cancel.confirm, TaskCancel task, GoTo HomePage
+			}
+			Button { 
+				disabled: StringPredicate (task.result) { when IsEmpty then True }
+				
+				text: $actionAddApplicationNLS.complete.buttontext
+				actions:  Confirm $actionAddApplicationNLS.complete.confirm, TaskComplete task, Flash Information $actionAddApplicationNLS.complete.flashmessage, GoTo HomePage
+			}
+		}
+	}
+}
+

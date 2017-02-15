@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NotifyRule PUBLIC "-//Brainwave//DTD Notify Rule 1.0//EN" "urn:brainwave:igrc:dtds/notifyrule.dtd">
+<NotifyRule version="1" name="bw_recon_reviewpending" displayname="Recon review - you have a pending task" description="Recon task for Repository Managers">
+	<Mail recipientview="br_identity" sendername=" IS Security" sendermail="issecurity@acme.com" recipientfullnameattribute="fullname" recipientmailattribute="mail" recipientuidattribute="uid" subject="Reconciliation review for repository {param.repositoryname.get()}" body="&lt;body&gt;&#xA;{image.header}&#xA;&lt;pre&gt;&#xA;Dear {dataset.fullname.get()},&#xA;&#xA;This email comes to you to conduct the &lt;u&gt;Reconciliations&lt;/u&gt; of your repository.&#xA;&#xA;This compulsory control is &lt;u&gt;required by the Internal Control framework&lt;/u&gt;.&#xA;Feedback is expected by &lt;b&gt;{param.deadline.get().toLocaleDateString()}&lt;/b&gt;&#xA;&#xA;Please clic on the following link to perform the review:&#xA;{$task.listOfFormattedUrls.get()}&#xA;&#xA;Best Regards,&#xA;The security team&#xA;&lt;/pre&gt;&#xA;{image.account_48}&#xA;&lt;/body&gt;">
+		<MailParams>
+			<MailParam name="deadline" displayname="Deadline" type="Date"/>
+			<MailParam name="repositoryname" displayname="Repository Name"/>
+		</MailParams>
+		<Embeddeds>
+			<Embedded name="I1385499757922" embeddedimage="account_48" embeddedfile="/reports/icons/48/audit/account_48.png"/>
+			<Embedded name="I1387966667737" embeddedimage="header" embeddedfile="/reports/icons/various/mailheader.png"/>
+		</Embeddeds>
+	</Mail>
+</NotifyRule>

@@ -1,0 +1,9 @@
+Combo {
+	label: <template:variablelabel/>
+	variable: <template:taskvariablename/>
+	options: Dynamic {
+		value: Current displayname
+		text: DateLDAP(Current displayname).value
+		data: <template:variablevaluelistdataset/>
+	}
+}

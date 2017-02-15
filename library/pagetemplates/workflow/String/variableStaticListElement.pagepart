@@ -1,0 +1,4 @@
+Option {
+	value: <template:staticlistelementvalue/>
+	text: <template:staticlistelementlabel/>
+}

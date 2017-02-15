@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_groupDetail_permissions" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="br_groupDetail_permissions" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewSort name="sort" attribute1="A1377767661667_469"/>
+	<ViewAttribute name="A1377767645487_464" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1377767647391_465" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1377767649107_466" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1377767651447_467" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1377767656783_468" prefix="application_" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="A1377767661667_469" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1377767704241_470" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1377767842198_473" kind="inner" identitysecure="false" enabled="param.isDirectLink.get()" join="groups">
+		<ViewAttribute name="1378192569409_689" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377767874665_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1377767825787_472" kind="inner" identitysecure="false" enabled="!param.isDirectLink.get()" join="downgroups">
+		<ViewAttribute name="1378192572545_692" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377767874665_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

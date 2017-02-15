@@ -1,0 +1,9 @@
+Chart {
+	label: <template:widgetlabel/>
+	file: "charts/histogram"
+	data: <template:widgetdatasetname/>
+	series: (Current controldisplayname) as String in "category", (Current nbdefects) as Double in "value"
+	layout: Layout {
+		grab: horizontal True vertical True
+	}
+}

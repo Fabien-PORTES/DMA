@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343319768972" title="Reference user for internet applications " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7708263289036792915" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A2915557534471769456" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A5529256125706765288" attribute="refuser" column="REFUSER" type="String" multivalued="false" persistent="false" description="Reference user"/>
+		<Attribute name="A4131903535759856967" attribute="useralias" column="USERALIAS" type="String" multivalued="false" persistent="false" description="Internet user alias"/>
+	</Attributes>
+</Discovery>

@@ -1,0 +1,170 @@
+/* Import other pages here */
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/custom/account_categorization/account_categorization.page"
+/* Nationalized labels here */
+search_conflictsNLS = NLS {
+	title [en "Search conflicts" fr "Search conflicts"]
+	NIS_search_conflicts_NIS_accounts_same_uid.title [en "NIS accounts with the same UID" fr "NIS accounts with the same UID"]
+	NIS_search_conflicts_NIS_accounts_same_uid_same_domain.title [en "NIS accounts with the same UID and the same domain" fr "NIS accounts with the same UID and the same domain"]		
+	NIS_search_conflicts_NIS_accounts_same_GECOS.title [en "NIS accounts with the same GECOS" fr "NIS accounts with the same UID and the same GECOS"]		
+	dialog.title [en "Account categorization" fr  "Account categorization"]
+}
+
+NIS_search_conflicts = Page {
+	title: $search_conflictsNLS.title
+	tags: "DMA_homepage"
+	icon: "16/red/control.png"
+	large-icon: "48/audit/control_48.png" 
+	dock-left:Dock{
+		collapsible:True
+		collapsed:True
+		width:320
+		
+			Group {
+			mixins: dockInnerMinxin	
+				ParametersEdition {
+								allow-reset: True
+								outline-position: Top
+								parameters: NIS_uid, NIS_uid_number, NIS_domain, NIS_GECOS
+								}
+					}
+				}
+	
+	/* Parameters here */
+NIS_uid = Parameter {
+	type: String
+	constraint: Text 
+	mandatory: False
+	}
+NIS_uid_number = Parameter {
+	type: String
+	}
+NIS_GECOS = Parameter {
+	type: String
+	}
+NIS_domain = Parameter {
+		constraint: Picker { picker: repositoryMultiPicker returning outUid 
+								display: Display { value: Current repository_displayname data: repository  match repository_uid }
+							}
+		multivalued: True
+		tooltip: "Select at least one repository"
+	}
+	
+	/* Variables here */
+selected_account_uid = Variable {
+							type: String
+						}	
+	/* Datasets and records here */
+repository = Dataset {
+	view: NIS_search_conflicts_domains
+	}
+NIS_search_conflicts_details = Dataset {
+	view: NIS_search_conflicts_details
+	}
+NIS_search_conflicts_NIS_accounts_same_uid = Dataset {
+	view: NIS_search_conflicts_NIS_accounts with NIS_uid to uid
+	disabled: StringPredicate (NIS_uid) {
+		when IsEmpty then True
+		otherwise False
+		}
+	}
+NIS_search_conflicts_NIS_accounts_same_uid_same_domain = Dataset {
+	view: NIS_search_conflicts_NIS_accounts with NIS_uid to uid , NIS_domain to repository_uid
+	disabled: 
+		OrPredicate {
+				StringPredicate (NIS_uid) {when IsEmpty then True}
+				StringPredicate (NIS_domain) {when IsEmpty then True}
+				}
+	}
+NIS_search_conflicts_NIS_accounts_same_GECOS = Dataset {
+	view: NIS_search_conflicts_NIS_accounts with NIS_GECOS to GECOS
+		disabled: StringPredicate (NIS_GECOS) {
+			when IsEmpty then True
+			otherwise False
+									}
+								}
+	/* Page content */
+
+			Group {
+				title: $search_conflictsNLS.NIS_search_conflicts_NIS_accounts_same_uid.title
+				PaginatedTable {
+				//layout: Layout { grab: horizontal True vertical True } 
+				layout: Layout { hint:height 150 } 
+					data: NIS_search_conflicts_NIS_accounts_same_uid
+					show-filter: True
+					page-size: 20
+						Column {
+							column: account_uid
+							hidden: True
+							selection: selected_account_uid
+							}
+						Column {
+							column:	account_identifier
+							initially-masked: False
+							filterable: False
+							}
+						Column {
+							column:	account_username
+							initially-masked: False
+							filterable: True
+							}						
+						}
+				}
+			Group {
+				title: $search_conflictsNLS.NIS_search_conflicts_NIS_accounts_same_uid_same_domain.title
+				PaginatedTable {
+				//layout: Layout { grab: horizontal True vertical True }
+				layout: Layout { hint:height 150 } 
+					data: NIS_search_conflicts_NIS_accounts_same_uid_same_domain
+					show-filter: True
+					page-size: 20
+						Column {
+							column: account_uid
+							hidden: True
+							selection: selected_account_uid
+							}						
+						Column {
+							column:	account_identifier
+							initially-masked: False
+							filterable: False
+							}
+						Column {
+							column:	account_username
+							initially-masked: False
+							filterable: True
+							}						
+						}
+				}
+			Group {
+				title: $search_conflictsNLS.NIS_search_conflicts_NIS_accounts_same_GECOS.title
+				PaginatedTable {
+				//layout: Layout { grab: horizontal True vertical True }
+				layout: Layout { hint:height 150 } 
+					data: NIS_search_conflicts_NIS_accounts_same_GECOS
+					show-filter: True
+					page-size: 20
+						Column {
+							column: account_uid
+							hidden: True
+							selection: selected_account_uid
+							}
+						Column {
+							column:	account_identifier
+							initially-masked: False
+							filterable: False
+							}
+						Column {
+							column:	account_custom9
+							initially-masked: False
+							filterable: True
+							}						
+						}
+				}
+			Group {
+				Button {
+					actions: GoTo Page account_categorization with selected_account_uid to inaccount_uids
+					text: $search_conflictsNLS.dialog.title
+					}
+				}	
+}

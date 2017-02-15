@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_Domain_Details" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="NIS_Domain_Details" notes="" begindate="" enddate="">
+	<ViewParam name="login" displayname="Login"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1485441461203_26273" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1485441485139_26430" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1485441476907_26387" attribute="identifier" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485441781763_28825" attribute="login" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1485441784023_0" reference="login" operation="ilike" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1485508933927_52213" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+</View>

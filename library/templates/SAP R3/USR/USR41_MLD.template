@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343317372911" title="USR41_MLD " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A8680830588292782295" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A5248633108687473315" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A7256042308090071401" attribute="cal_year" column="CAL_YEAR" type="String" multivalued="false" persistent="false" description="Calendar year"/>
+		<Attribute name="A2700948848816400303" attribute="peak" column="PEAK" type="Number" multivalued="false" persistent="false" description="Counter (up to roughly 2,000,000)"/>
+		<Attribute name="A4644118608790352300" attribute="counter" column="COUNTER" type="Number" multivalued="false" persistent="false" description="Counter (up to roughly 2,000,000)"/>
+		<Attribute name="A8933597758385039643" attribute="first_date_" column="FIRST_DATE" type="String" multivalued="false" persistent="false" description="Modification date" hidden="true"/>
+		<Attribute name="A5786872117953543771" attribute="first_time" column="FIRST_TIME" type="String" multivalued="false" persistent="false" description="Modification time"/>
+		<Attribute name="A8172878563673332444" attribute="last_date_" column="LAST_DATE" type="String" multivalued="false" persistent="false" description="Modification date" hidden="true"/>
+		<Attribute name="A7336504572965402716" attribute="last_time" column="LAST_TIME" type="String" multivalued="false" persistent="false" description="Modification time"/>
+		<Attribute name="A3453661888706775570" attribute="peak_date_" column="PEAK_DATE" type="String" multivalued="false" persistent="false" description="Modification date" hidden="true"/>
+		<Attribute name="A4936844022862689014" attribute="peak_time" column="PEAK_TIME" type="String" multivalued="false" persistent="false" description="Modification time"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343317423521" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1343317621347" action="replace" attribute="first_date_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343317634637" action="replace" attribute="last_date_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343317650723" action="replace" attribute="peak_date_" oldvalue="00.00.0000" newvalue="01.01.1900"/>
+		<Action name="U1343317682220" action="convertdate" oldname="first_date_" attribute="first_date" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="Modification date"/>
+		<Action name="U1343317709629" action="convertdate" oldname="last_date_" attribute="last_date" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="Modification date"/>
+		<Action name="U1343317729562" action="convertdate" oldname="peak_date_" attribute="peak_date" type="Date" newvalue="dd.MM.yyyy" oldvalue="01.01.1900" description="Modification date"/>
+		<Action name="U1343317763876" action="add" attribute="firststr" newvalue="{dataset.first_date_.get()} {dataset.first_time.get()}" hidden="true"/>
+		<Action name="U1343317785216" action="add" attribute="laststr" newvalue="{dataset.last_date_.get()} {dataset.last_time.get()}" hidden="true"/>
+		<Action name="U1343317810240" action="add" attribute="peakstr" newvalue="{dataset.peak_date_.get()} {dataset.peak_time.get()}" hidden="true"/>
+		<Action name="U1343317861657" action="convertdate" oldname="firststr" attribute="firstdatetime" type="Date" newvalue="dd.MM.yyyy HH:mm:ss" oldvalue="01.01.1900 00:00:00" description="First modification date (as deducted from FIRST_DATE and FIRST_TIME)"/>
+		<Action name="U1343317878249" action="convertdate" oldname="laststr" attribute="lastdatetime" type="Date" newvalue="dd.MM.yyyy HH:mm:ss" oldvalue="01.01.1900 00:00:00" description="Last modification date (as deducted from LAST_DATE and LAST_TIME)"/>
+		<Action name="U1343317957714" action="convertdate" oldname="peakstr" attribute="peakdatetime" type="Date" newvalue="dd.MM.yyyy HH:mm:ss" oldvalue="01.01.1900 00:00:00" description="Peak modification date (as deducted from PEAK_DATE and PEAK_TIME)"/>
+	</Actions>
+</Discovery>

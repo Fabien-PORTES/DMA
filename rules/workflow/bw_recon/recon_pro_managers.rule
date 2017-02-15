@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="bw_recon_pro_managers" operator="and" query="identity" displayname="Recon Process Managers" version="6">
+	<RequestJoin name="J1385123696377_7559" operator="and" join="uporganisation">
+		<RequestCriteria name="C1386839944247_812" criteria="likeDisplayName">
+			<RequestCriteriaParam name="displayNameParam" ignoreifempty="false">
+				<Value name="0" data="*"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

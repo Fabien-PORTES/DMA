@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositorydatasources" distinct="true" concept="repository" displayname="Retrieve information about the datasources used">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1331729492642_60" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1331729493188_61" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1331729493907_62" attribute="media" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1331729494751_63" attribute="extractDate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1331729495469_64" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

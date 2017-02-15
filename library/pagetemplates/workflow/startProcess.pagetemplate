@@ -1,0 +1,62 @@
+/* Import other pages here */
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+
+/* Nationalized labels here */
+<template:pageNLSname/> = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation ?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process ?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+<template:additionalNLS/>
+}
+
+
+<template:pagename/> = Page {
+	title: <template:pagetitle/>
+	mixins: workflowDefaultMixin
+
+/* Parameters here */
+
+/* variables here */
+<template:additionalvariables/>
+
+/* Datasets and records here */
+	task = TaskRecord (create <template:processname/>)
+<template:additionaldatasets/>
+
+/* Page content */
+<template:editcomponents/>
+<template:mandatoryfieldslabel/>
+	
+	Group {
+		title: $<template:pageNLSname/>.actionsection
+		mixins: workflowActionsMixin	
+		
+		ButtonGroup {
+			Button { 
+				text: $<template:pageNLSname/>.cancel.buttontext
+				actions: Confirm $<template:pageNLSname/>.cancel.confirm, TaskCancel task, GoTo HomePage
+			}
+			Button { 
+				disabled: <template:completecondition/>
+				text: $<template:pageNLSname/>.complete.buttontext
+				actions: StringCase (TaskValidation task) { 
+					when IsNull then [ 
+						Confirm $<template:pageNLSname/>.complete.confirm, TaskComplete task, Flash Information $<template:pageNLSname/>.complete.flashmessage, GoTo HomePage
+					]
+					otherwise [
+						Message Error TaskValidation task
+					]
+				}
+			}
+		}	
+	}	
+}
+
+<template:additionalpickers/>

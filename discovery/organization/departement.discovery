@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1474015806676">
+	<Source file="{config.importfiles}/Extracts_AMC/PROD/ALIR/1U40_AMC_DATA_ALIR.csv" type="CSV" separator=";" textseparator="&quot;" encoding="ISO-8859-1"/>
+	<Attributes hasheader="true">
+		<Attribute name="A557672642239159159" attribute="department" column="Department" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4903355547520084656" attribute="related_department" column="Related Department" type="String" multivalued="false" persistent="false"/>
+		</Attributes>
+	<Actions>
+		<Action name="U1474016341372" action="add" attribute="_departement" newvalue="{dataset.department.get()}" condition="(! dataset.isEmpty(&apos;department&apos;))"/>
+		<Action name="U1474016364940" action="default" attribute="_departement" newvalue="{dataset.related_department.get()}" condition="(! dataset.isEmpty(&apos;related_department&apos;))"/>
+		<Action name="U1474016438996" action="add" attribute="_ORGANIZATIONTYPE" newvalue="dpt"/>
+		<Action name="U1474017030273" action="uniqueness" oldname="_departement" event="duplicated departement"/>
+	</Actions>
+</Discovery>

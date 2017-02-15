@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1342903039637" title="Profile name for role " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A4370984773034565653" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A1479281889019412382" attribute="agr_name" column="AGR_NAME" type="String" multivalued="false" persistent="false" description="Role Name"/>
+		<Attribute name="A3623248263555298363" attribute="langu" column="LANGU" type="String" multivalued="false" persistent="false" description="Language Key"/>
+		<Attribute name="A3572970319476020094" attribute="profile" column="PROFILE" type="String" multivalued="false" persistent="false" description="Profile name"/>
+		<Attribute name="A2318012976012194788" attribute="ptext" column="PTEXT" type="String" multivalued="false" persistent="false" description="Texts in user master/authorizations"/>
+	</Attributes>
+</Discovery>

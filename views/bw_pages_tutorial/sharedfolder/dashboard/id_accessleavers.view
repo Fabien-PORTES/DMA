@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="id_accessleavers" prefix="share_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="id_accessleavers" notes="">
+	<ViewParam name="today" displayname="today" defaultvalue="{(new Date()).toLDAPString()}"/>
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewParam name="sensitivity" displayname="sensitivity"/>
+	<ViewParam name="filetype" displayname="filetype"/>
+	<ViewParam name="managed" displayname="managed" type="Boolean"/>
+	<ViewComputedAttribute name="todaydate" displayname="todaydate" type="String" expression="param.today.get()"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1438873821361_344" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438851865107_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="1438873821361_345" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438856336628_0" reference="shares" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1438851944909_329" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="1438873828352_359" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="1438873828356_365" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438852604416_0" reference="filetype" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewJoin name="J1438852126628_365" prefix="right_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="directpermright">
+			<ViewJoin name="J1438865607383_688" prefix="account_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+				<ViewAttribute name="1438873828355_361" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1438865397189_0" operation="isNull" ignoreifempty="false"/>
+					<ViewAttributeFilter name="F1438865400393_1" operation="isFalse" ignoreifempty="false"/>
+				</ViewAttribute>
+				<ViewJoin name="J1438865621824_691" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+					<ViewAttribute name="1438873828355_362" attribute="uid" alias="nbidentities" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1438873828355_363" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+					<ViewAttribute name="A1438873987790_379" attribute="departuredate" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1438874035252_0" reference="today" operation="lt" ignoreifempty="false"/>
+					</ViewAttribute>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewJoin name="J1444063219197_1157" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+			<ViewAttribute name="1444064642328_3444" attribute="sensitivitylevel" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063325208_0" reference="sensitivity" operation="in" ignoreifempty="true"/>
+			</ViewAttribute>
+			<ViewAttribute name="1444064642328_3445" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444063353561_0" reference="managed" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

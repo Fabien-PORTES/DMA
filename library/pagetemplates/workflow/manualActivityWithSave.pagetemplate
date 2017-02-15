@@ -1,0 +1,73 @@
+/* Import other pages here */
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+
+/* Nationalized labels here */
+<template:pageNLSname/> = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel current edition ?" fr "Annuler l'édition en cours ?"]
+	complete.buttontext [en "Task completed" fr "Tâche terminée"]
+	complete.confirm [en "Complete current task ?" fr "Terminer la tâche en cours ?"]
+	complete.flashmessage [en "Task completed" fr "Tâche terminée"]
+	save.buttontext [en "Save" fr "Sauver"]
+	save.confirm [en "Save current edition and exit ?" fr "Sauver l'édition en cours et sortir ?"]
+	save.flashmessage [en "Current edition saved" fr "Edition en cours sauvegardée"]
+<template:additionalNLS/>
+}
+
+
+<template:pagename/> = Page {
+	title: <template:pagetitle/>
+	mixins: workflowDefaultMixin
+
+/* Parameters here */	
+	taskId = Parameter {
+		type: String
+		mandatory: True
+	}	
+	
+/* variables here */
+<template:additionalvariables/>
+
+/* Datasets and records here */
+task = TaskRecord(taskId)
+<template:additionaldatasets/>
+
+/* Page content */
+<template:editcomponents/>
+<template:mandatoryfieldslabel/>
+	
+	Group {
+		title: $<template:pageNLSname/>.actionsection		
+		mixins: workflowActionsMixin
+				
+		ButtonGroup {
+			Button { 
+				text: $<template:pageNLSname/>.cancel.buttontext
+				actions: Confirm $<template:pageNLSname/>.cancel.confirm, TaskCancel task, GoTo HomePage
+			}
+			Button { 
+				text: $<template:pageNLSname/>.save.buttontext
+				actions: Confirm $<template:pageNLSname/>.save.confirm, TaskSave task, TaskCancel task, Flash Information $<template:pageNLSname/>.save.flashmessage, GoTo HomePage
+			}
+			Button { 
+				disabled: <template:completecondition/>
+				text: $<template:pageNLSname/>.complete.buttontext
+				actions: StringCase (TaskValidation task) { 
+					when IsNull then [ 
+						Confirm $<template:pageNLSname/>.complete.confirm, TaskComplete task, Flash Information $<template:pageNLSname/>.complete.flashmessage, GoTo HomePage
+					]
+					otherwise [
+						Message Error TaskValidation task
+					]
+				}
+			}
+		}	
+	}	
+}
+
+<template:additionalpickers/>

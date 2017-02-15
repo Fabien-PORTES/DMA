@@ -1,0 +1,22 @@
+
+
+parameter1 = Page {
+	title:'a simple Parameter example'
+
+	myparam1 = Parameter {
+		label:'My parameter label'
+		type:String
+		default:'My default value'
+		mandatory:False
+		hidden:False
+		multivalued:False
+	}
+
+
+	Text {
+		value:myparam1
+		label:'The parameter value'
+	}
+}
+
+

@@ -1,0 +1,8 @@
+try {
+	$outputfile=$Connector.Options.Options.Get_Item('scriptfilename')
+	Remove-Item $outputfile
+		if ($Connector -ne $null) {
+				$Connector.Options.Options.Get_Item('scriptcontent') >> $outputfile
+		}	
+	}
+catch{throw} 

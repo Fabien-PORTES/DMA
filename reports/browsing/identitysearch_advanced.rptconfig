@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__organisationtype_890_0</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__hrcode_896_1</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__givenname_897_2</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__surname_898_3</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__jobtitle_899_4</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__organisation_900_5</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">jobtitle_899_6</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">jobtitle_899_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_900_7</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">organisation_900_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">givenname_897_8</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">givenname_897_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">surname_898_9</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">surname_898_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">organisationtype_890_10</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">organisationtype_890_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">hrcode_896_11</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">hrcode_896_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

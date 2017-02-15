@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_directparentfilesystem" prefix="child_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_directparentfilesystem" notes="">
+	<ViewParam name="recorduid" displayname="recorduid">
+		<Value name="0" data="4653"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1434533219413_695" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1434533224659_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1434533232944_697" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentpermission">
+		<ViewAttribute name="A1434533241482_698" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434533242439_699" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434533243149_700" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434533243828_701" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434533244680_702" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1434545452965_928" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1434545453825_929" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1434545454747_930" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+</View>

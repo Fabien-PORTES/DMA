@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MenuItems PUBLIC "-//Brainwave//DTD MenuItems 1.0//EN" "urn:brainwave:igrc:dtds/menuitems.dtd">
+<MenuItems version="1" name="sharedfoldersMenuItems" description="menu items for IT secu op ">
+	<MenuItem name="M1441298022332" label="Classification" priority="520" position="page:sf_classificationPage" feature="sharedfolder_classification_menu"/>
+	<MenuItem name="M1441301367503" label="Risks" priority="530" position="page:sf_securityRisksPage" feature="sharedfolder_risks_menu"/>
+	<MenuItem name="M1441303390634" label="Quality" priority="540" position="page:sf_quality_and_statsPage" feature="sharedfolder_quality_menu"/>
+	<MenuItem name="M1441303420477" label="Explore" priority="510" position="page:sf_explorePage" feature="sharedfolder_explore_menu"/>
+	<MenuItem name="M1441303507640" label="Requests" priority="500" position="page:sf_requestsPage" feature="sharedfolder_requests_menu"/>
+</MenuItems>

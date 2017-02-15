@@ -1,0 +1,5 @@
+Text {
+	compact: True
+	label: $<template:pageNLSname/>.<template:detailnlsname/>.<template:detailcolumnnlsname/>
+	value:  Transform detailViewRecord.<template:detailcolumnattribute/> using booleanDisplayMapping
+}

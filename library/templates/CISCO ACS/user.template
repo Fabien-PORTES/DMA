@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343909743215" title="CISCO ACS USER" description="Cisco ACS &quot;user&quot; information as extracted from the export-data command line tool">
+	<Source type="CSV" separator="," textseparator="&quot;" encoding="ISO-8859-1"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7241925149140974719" attribute="name" column="name:String(64):Required" type="String" multivalued="false" persistent="false" description="Username of the user."/>
+		<Attribute name="A2150377579158366860" attribute="description" column="description:String(1024)" type="String" multivalued="false" persistent="false" description="Description of the user."/>
+		<Attribute name="A5664789590240050419" attribute="enabled" column="enabled:Boolean(true,false):Required" type="Boolean" multivalued="false" persistent="false" description="Boolean field that indicates whether the user must be enabled or disabled."/>
+		<Attribute name="A5627042594445830329" attribute="changepassword" column="changePassword:Boolean(true,false):Required" type="Boolean" multivalued="false" persistent="false" description="Boolean field that indicates whether the user must change password on first login."/>
+		<Attribute name="A8578015959811205218" attribute="password" column="password:String(32):Required" type="String" multivalued="false" persistent="false" description="Password of the user."/>
+		<Attribute name="A9192027768326747889" attribute="enablepassword" column="enablePassword:String(32)" type="String" multivalued="false" persistent="false" description="Enable password of the user. (You need the enable privilege to view or make changes to the concentrator&apos;s configuration. If you do not specify an EnablePassword, then the normal Password is used)"/>
+		<Attribute name="A8840097290157872171" attribute="useridentitygroup" column="UserIdentityGroup:String(256)" type="String" multivalued="false" persistent="false" description="Identity group to which the user belongs. A hierarchical notation is used (character : is used a separator string)"/>
+	</Attributes>
+	<Actions>
+		<Action name="U1343909845957" action="add" attribute="disabled" type="Boolean" newvalue="{!dataset.enabled.get()}" description="As deducted from the enabled attribute"/>
+		<Action name="U1343915830560" action="splitvalue" oldname="useridentitygroup" attribute="identitygroups" multivalued="true" oldvalue=":" description="Splitted groups to which the user belongs as deducted from the UserIdentityGroup attribute"/>
+	</Actions>
+</Discovery>

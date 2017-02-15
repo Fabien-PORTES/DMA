@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_recon_ticketrecorduid" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketlog" displayname="Recon - get ticket record uid">
+	<ViewParam name="ticketnumber" displayname="Ticket Number"/>
+	<ViewParam name="tickettype" displayname="Ticket Type"/>
+	<ViewSort name="sort" attribute1="A1392502078285_326" direction1="DESC"/>
+	<ViewAttribute name="A1392502078285_326" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1392502138958_329" attribute="tickettype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1392502179809_0" reference="tickettype" operation="eq" ignoreifempty="false">
+			<Value name="0"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1422305328976_285420" attribute="ticketnumber" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1422305345316_0" reference="ticketnumber" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,26 @@
+
+decorator4 = Page {
+	title:'A compact text with a static value and a Bar decorator'
+	
+	mybarvalue = Variable { type:Integer initial:33}
+
+	staticDataset = Dataset {
+		values: [(col1 -> "key1",col2->17,col3->"new york"),
+				(col1 -> "key2",col2->19,col3->"new york"),
+				(col1 -> "key3",col2->33,col3->"new york"),
+				(col1 -> "key4",col2->37,col3->"texas"),
+				(col1 -> "key5",col2->39,col3->"texas")
+				]
+	}
+
+		Text {
+			label:"label"
+			value:"A compact text with a static value and a Bar decorator"
+			compact:True
+			decorator:Decorator{
+							after:Bar{max-value:100 width: 64 value:mybarvalue higher-is-better:True threshold-normal:66 threshold-critical: 33 tooltip:Concat(mybarvalue,'/100')}
+							width:Fill
+					  }
+		}
+
+}

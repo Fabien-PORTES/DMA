@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1342903896718" title="Roles in Composite Roles " description="relation Composite roles – Derived Roles ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7009903734708357266" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client ID of Current User"/>
+		<Attribute name="A1041447969610225658" attribute="agr_name" column="AGR_NAME" type="String" multivalued="false" persistent="false" description="Composite role"/>
+		<Attribute name="A231971074325819070" attribute="child_agr" column="CHILD_AGR" type="String" multivalued="false" persistent="false" description="Single Role in Composite Role"/>
+		<Attribute name="A4583404915895188151" attribute="attributes" column="ATTRIBUTES" type="String" multivalued="false" persistent="false" description="Assignment active"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1342904013952" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

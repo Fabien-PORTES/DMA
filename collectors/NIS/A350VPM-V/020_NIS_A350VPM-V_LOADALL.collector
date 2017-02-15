@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="020_NIS_A350VPM_LOADALL" name="P1475227682847_19" startingpoint="start">
+		<Component name="start" type="library/components/start.component" x="50" y="50" w="250" h="64" title="start"/>
+		<Component name="C1475227682847_2" type="callfilter" x="50" y="250" w="250" h="64" title="022_NIS_A350VPM">
+			<Line provisioningfile="/collectors/NIS/A350VPM-V/022_NIS_A350VPM-V.collector">
+			</Line>
+		</Component>
+		<Component name="C1475227682847_1" type="callfilter" x="50" y="150" w="250" h="64" title="021_NIS_A350VPM_STATIC">
+			<Line provisioningfile="/collectors/NIS/A350VPM-V/021_NIS_A350VPM-V_STATIC.collector">
+			</Line>
+		</Component>
+		<Link name="L1475227682847_1" source="C1475227682847_1" target="C1475227682847_2" priority="1"/>
+		<Link name="Ltart" source="start" target="C1475227682847_1" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+		<Variables>
+		</Variables>
+	</Configuration>
+</Provisioning>

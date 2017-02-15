@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343308880418" title="Logon data without kernel access " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A6776576662271150479" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A5704775780226909020" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A8152625555465820468" attribute="copyrtsum" column="COPYRTSUM" type="String" multivalued="false" persistent="false" description="Check sum of copyright text (logon dialog box)"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343308925584" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

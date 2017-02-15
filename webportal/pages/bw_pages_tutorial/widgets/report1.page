@@ -1,0 +1,52 @@
+
+
+tutorial_browsing_applicationsearch = Report {
+	report: "/reports/browsing/applicationsearch.rptdesign" with ^code to ^code, ^displayname to ^displayname, ^repositoryname to ^repositoryname, ^sort to ^sort
+	title: 'Application search'
+	^code = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: 'code'
+	}
+	^displayname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: 'name'
+	}
+	^repositoryname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: 'repository name'
+		constraint: Lookup {
+			data: br_repository
+			value: Current repositorydisplayname
+			text: Current repositorydisplayname
+			distinct: True
+		}
+	}
+	^sort = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		default: "code"
+	}
+	br_repository = Dataset {
+		view: br_repository
+	}
+}
+
+
+report1 = Page {
+	title:'A report declaration sample'
+
+	Button {
+		text:'Click to jump to the application search report'
+		actions:GoTo Report tutorial_browsing_applicationsearch 
+	}
+}

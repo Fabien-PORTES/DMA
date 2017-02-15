@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_permissions" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="br_applicationDetail_permissions" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1378804194078_1151"/>
+	<ViewAttribute name="A1378804189630_1149" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378804191956_1150" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378804194078_1151" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378804195967_1152" attribute="permissiontype" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378804198854_1153" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378804202787_1154" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="A1378804205799_1155" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378804215270_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

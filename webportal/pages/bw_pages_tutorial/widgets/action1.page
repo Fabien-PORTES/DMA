@@ -1,0 +1,15 @@
+
+
+
+action1 = Page {
+	title:'A simple Action example'
+
+	Button {
+		text:'Click me for action!'
+		actions:Message 'You clicked on the button, jumping back to the home page',
+		        Flash 'Jump to home page', 
+		        GoTo HomePage
+	}
+}
+
+

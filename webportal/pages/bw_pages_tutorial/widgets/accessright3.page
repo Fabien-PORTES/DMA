@@ -1,0 +1,10 @@
+
+
+accessright3 = Page {
+	title:'A Page access right example with negative features'
+	feature:Not (organisationmanager_dashboard_homepage) 
+
+	Text {
+		value:'Everybody can access this page, except people with the "organisationmanager_dashboard_homepage" feature'
+	}
+}

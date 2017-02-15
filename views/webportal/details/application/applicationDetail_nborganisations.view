@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nborganisations" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="br_applicationDetail_nborganisations" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1378817270562_1460" kind="inner" identitysecure="false" enabled="param.isDirectLink.get()" join="identity">
+		<ViewJoin name="J1378817285415_1462" kind="inner" identitysecure="false" join="applicationreconciliation">
+			<ViewAttribute name="A1378817296119_1464" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+				<ViewAttributeFilter name="F1378817301159_0" reference="uid" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1378817273995_1461" kind="inner" identitysecure="false" enabled="!param.isDirectLink.get()" join="upidentity">
+		<ViewJoin name="J1378817289862_1463" kind="inner" identitysecure="false" join="applicationtheoretical">
+			<ViewAttribute name="1378817311908_1467" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+				<ViewAttributeFilter name="F1378817301159_0" reference="uid" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1378817332910_1468" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+</View>

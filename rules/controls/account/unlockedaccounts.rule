@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_unlockedaccounts" operator="and" query="account" displayname="Unlocked Accounts" version="6" notes="">
+	<RequestGroup name="G1331841725928_77" operator="or">
+		<RequestCriteria name="C1331840793657_19" criteria="neLocked">
+		</RequestCriteria>
+		<RequestCriteria name="C1331841749469_79" criteria="isNullProperty">
+			<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+				<Value name="0" data="locked"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryDetail_nbactiveaccounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="br_repositoryDetail_nbactiveaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="serviceaccount" displayname="serviceaccount"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1377505273878_366" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1377505404163_369" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1377505573808_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+		<ViewAttributeFilter name="F1377505580236_1" operation="isNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1378712239311_377" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1378712256537_378" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1378712609075_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1422983569891_370" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1422983575114_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1428500638769_4590" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.isEmpty(&apos;serviceaccount&apos;)==false &amp;&amp; param.serviceaccount.get()==true" join="reconciliation">
+		<ViewAttribute name="A1428500719503_4591" attribute="noownercode" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1428500722456_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="service"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

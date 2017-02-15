@@ -1,0 +1,3 @@
+<template:widgetvariablename/> = Variable {
+	type: Date
+}

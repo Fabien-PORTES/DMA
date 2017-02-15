@@ -1,0 +1,12 @@
+MultiEdit {
+	label: <template:variablelabel/>
+	add-dialog: permissionPicker(<template:taskvariablename/> to inExcludedUidList,<template:taskvariablevaluelist/> to inUidList) returning outUid
+	Element {
+		variable: <template:taskvariablename/>
+		filterable: True
+		display: Display {
+			data: <template:variabledataset/> match uid
+			value: Current displayname
+		}
+	}
+}

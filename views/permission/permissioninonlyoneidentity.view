@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissioninonlyoneidentity" prefix="permission_" distinct="true" concept="permission" displayname="Find permissions that belong to one identity but not the other one" notes="">
+	<ViewParam name="referencerecorduid" displayname="Reference record uid" type="Integer"/>
+	<ViewParam name="comparisonrecorduid" displayname="Comparison record uid" type="Integer"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303825084743_243" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_244" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_245" attribute="code" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_246" attribute="displayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_251" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_252" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_253" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_254" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_255" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_256" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_257" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_258" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303825084743_259" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewRule name="I1303917318729_19" rule="br_permissionsinlonyoneidentity">
+		<ViewRuleParam name="ReferenceRecordUID" reference="referencerecorduid" ignoreifempty="false">
+			<Value name="0"/>
+		</ViewRuleParam>
+		<ViewRuleParam name="ComparisonRecordUID" reference="comparisonrecorduid" ignoreifempty="false"/>
+	</ViewRule>
+	<ViewJoin name="J1304087641466_15487" prefix="permission_application" kind="inner" join="application">
+		<ViewAttribute name="A1316334054737_4937" attribute="applicationtype" operator="or" removedfromprojection="true">
+			<ViewAttributeFilter name="F1316334058941_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Profile"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1322582080567_1130" attribute="recorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322582082553_1131" attribute="uid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322582083375_1132" attribute="code" removedfromprojection="false"/>
+		<ViewAttribute name="A1322582084133_1133" attribute="displayname" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

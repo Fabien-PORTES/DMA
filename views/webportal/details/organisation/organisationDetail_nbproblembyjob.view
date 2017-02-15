@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbproblembyjob" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="organisationDetail_nbproblembyjob" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="directrecorduid" displayname="directrecorduid"/>
+	<ViewSort name="sort" attribute1="1383241538044_16834" direction1="DESC"/>
+	<ViewAttribute name="1383241538044_16834" attribute="recorduid" alias="nbdefects" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1365836984779_39" kind="inner" identitysecure="false" join="allocation">
+		<ViewAttribute name="1383241544627_16837" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1366190310726_46" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;directrecorduid&apos;)" join="organisation">
+		<ViewAttribute name="1383241551912_16840" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1366190387625_0" reference="directrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1367159542950_3294" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewAttribute name="1383241563893_16843" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1367159552004_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1383241672956_16844" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383241677480_16845" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383241684905_16846" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383241687948_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1383241706762_16848" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383241711458_16849" kind="inner" identitysecure="false" join="permission">
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

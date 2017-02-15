@@ -1,0 +1,6 @@
+Upload {
+	label: <template:variablelabel/>
+	readonly: True
+	variable: <template:taskvariablename/>
+	show-uploader: True
+}

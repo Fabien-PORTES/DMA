@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="010_Identities_STATIC" scriptfile="/collectors/identity _ ALIR/identities.javascript" name="P1475239148017" startingpoint="C1475239149985">
+		<Component name="C1475239149985" type="library/components/start.component" x="297" y="41" w="200" h="64" title="Start"/>
+		<Component name="C1467983386621_1" type="changefilter" x="297" y="140" w="200" h="64" title="Update if needed">
+			<Actions>
+				<Action name="U1467983636358" action="add" attribute="_EMPLOYEE" type="String" multivalued="false" newvalue="Employee" description="Static value for job title&#xA;(used for the mapping user &lt;-&gt; ECL organization)" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1475239177798" source="C1475239149985" target="C1467983386621_1" priority="1"/>
+		<Component name="C1475239181657" type="references" x="297" y="249" w="200" h="64" title="Employee">
+			<Job check="true" code="_EMPLOYEE" label="_EMPLOYEE"/>
+		</Component>
+		<Link name="L1475239185732" source="C1467983386621_1" target="C1475239181657" priority="1"/>
+		<Component name="C1475239211987" type="repository" x="297" y="350" w="200" h="64" title="ALIR">
+			<Media type="I" code="_REPOSITORY_CODE_" label="_REPOSITORY_DISPLAYNAME_"/>
+		</Component>
+		<Link name="L1475239219380" source="C1475239181657" target="C1475239211987" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

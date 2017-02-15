@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_physicalsite_picker" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="Physical site picker">
+	<ViewParam name="paramDisplayname" displayname="Application display name"/>
+	<ViewParam name="paramRepository" displayname="Application repository"/>
+	<ViewParam name="paramCode" displayname="Application code"/>
+	<ViewSort name="sort" attribute1="A1336065017728_309" attribute2="A1336065016947_308"/>
+	<ViewAttribute name="A1336065014994_306" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336065015744_307" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336065016947_308" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336065122431_0" reference="paramCode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1336065017728_309" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336065155728_0" reference="paramDisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1336065018431_310" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1380569365315_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Physical"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1336065054400_311" prefix="repository" kind="left" identitysecure="false" join="repository">
+		<ViewAttribute name="A1336065059931_312" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="A1336065061275_313" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="A1336065062166_314" attribute="code" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="A1336065062791_315" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="true">
+			<ViewAttributeFilter name="F1336067102161_0" reference="paramRepository" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

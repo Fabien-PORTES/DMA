@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="AllEU" description="All EU (accounts, groups, groupsmembership)" name="P1469008875919_11" startingpoint="start">
+		<Component name="start" type="library/components/start.component" x="50" y="50" w="250" h="64" title="start"/>
+		<Component name="N1475587416585" type="note" x="399" y="133" w="294" h="85" title="no need for groups in DMA&#xA;However, we load VAL accounts&#xA;"/>
+		<Component name="C1468943321272_1" type="repository" x="72" y="227" w="200" h="64" title="Create repository EU">
+			<Media type="I" code="REPOSITORYCODE" label="REPOSITORYCODE" repositorytype="REPOSITORYNAME"/>
+		</Component>
+		<Component name="C1469001401405_3" type="changefilter" x="72" y="140" w="200" h="64" title="adding repository">
+			<Actions>
+				<Action name="U1469001460358" action="add" attribute="REPOSITORYCODE" type="String" multivalued="false" newvalue="EU" errorexist="false"/>
+				<Action name="U1469005064762" action="add" attribute="REPOSITORYNAME" type="String" multivalued="false" newvalue="EU" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Component name="C1468943321272_2" type="repository" x="401" y="418" w="200" h="64" title="Create repository EU-V">
+			<Media type="I" code="REPOSITORYCODE" label="REPOSITORYCODE" repositorytype="REPOSITORYNAME"/>
+		</Component>
+		<Component name="C1469001401405_4" type="changefilter" x="402" y="305" w="200" h="64" title="adding repository V">
+			<Actions>
+				<Action name="U1475592707017" action="update" attribute="REPOSITORYCODE" newvalue="EU-V" errorunknown="false"/>
+				<Action name="U1475592723760" action="update" attribute="REPOSITORYNAME" newvalue="EU-V" errorunknown="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1469009163173_2" source="C1469001401405_4" target="C1468943321272_2" priority="1"/>
+		<Component name="C1469008875914_7" type="callfilter" x="15" y="326" w="250" h="64" title="EU_accounts INSIDE">
+			<Line provisioningfile="/collectors/AD_to_ID/EU/EU_INSIDE.collector">
+				<Configuration name="A1475587656847" variable="sourcefile" content="{config.importfiles}/Extracts_AMC/PROD/ACDS_AD/export----EU.csv"/>
+				<Configuration name="A1475663245165" variable="repository" content="EU"/>
+			</Line>
+		</Component>
+		<Component name="C1469008875914_8" type="callfilter" x="755" y="220" w="250" h="64" title="EU_accounts VAL INSIDE">
+			<Line provisioningfile="/collectors/AD_to_ID/EU/EU_INSIDE.collector">
+				<Configuration name="A1475587890623" variable="sourcefile" content="{config.importfiles}/Extracts_AMC/VAL/ACDS_AD/export----EU-V.csv"/>
+				<Configuration name="A1475592673722" variable="repository" content="EU-V"/>
+			</Line>
+		</Component>
+		<Link name="L1481217198040" source="C1468943321272_2" target="C1469008875914_8" priority="2"/>
+		<Link name="L1481359818569" source="start" target="C1469001401405_3" priority="1"/>
+		<Link name="L1481361132618" source="C1469001401405_3" target="C1468943321272_1" priority="1"/>
+		<Link name="L1481361134953" source="C1468943321272_1" target="C1469008875914_7" priority="2"/>
+		<Link name="L1481378399133" source="C1469008875914_7" target="C1469001401405_4" priority="2"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

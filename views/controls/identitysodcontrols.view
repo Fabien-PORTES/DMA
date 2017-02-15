@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="identitysodcontrols" distinct="true" concept="identity" displayname="controles SOD pour une identité" notes="">
+	<ViewParam name="recorduid" displayname="identity recorduid">
+		<Value name="0" data="30"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1347899256939_7901" attribute2="A1347899183502_7898"/>
+	<ViewAttribute name="A1347899174947_7895" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1347899227631_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1347899178076_7896" kind="inner" join="controlresult">
+		<ViewAttribute name="A1347899181392_7897" attribute="controlcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1347899183502_7898" attribute="controldisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1347899242181_7900" attribute="controldescription" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1347899256939_7901" attribute="controltagcustom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1347899257952_7902" attribute="controltagcustom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1347899258967_7903" attribute="controltagcustom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1347899259797_7904" attribute="controltagcustom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1347899262007_7905" attribute="controltagcustom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1347899262800_7906" attribute="controltagcustom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1349177761893_25237" attribute="controltype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1349177765397_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="6"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

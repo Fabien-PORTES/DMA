@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Control PUBLIC "-//Brainwave//DTD Control Type 1 1.0//EN" "urn:brainwave:igrc:dtds/control_t1.dtd">
+<Control type="1" version="2" code="ad03707e-e1ba-4b70-960e-497de677365c" name="ActiveUnixAccount_Inactive_AD" displayname="ActiveUnixAccount_Inactive_AD" executionplan="true">
+	<ControlType1 name="t1">
+		<ControlRule name="rule" rule="ActiveNISAccounts_1"/>
+	</ControlType1>
+	<ControlMetrics name="metrics">
+		<Metric name="count" enabled="true"/>
+		<Metric name="ratio" enabled="false"/>
+	</ControlMetrics>
+	<ControlTags name="tags">
+		<Tag name="application" content="DMA"/>
+	</ControlTags>
+</Control>

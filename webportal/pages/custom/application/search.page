@@ -1,0 +1,207 @@
+/* Import other pages here */
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/custom/account/details.page"
+/* Nationalized labels here */
+
+search_Application = Page {
+	title: $applicationSearch.title
+	tags: "DMA_homepage", "DMA_search" priority 200
+	icon: "16/audit/application_16.png"
+	large-icon: "48/red/application.png"
+	/* Parameters here */
+	appname = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+//		label: $applicationASPIRE.displayname
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current displayname
+//			value: Current displayname
+//		}
+		}
+	BO_Login = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $applicationASPIRE.custom1
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current custom1
+//			value: Current custom1
+//		}
+		}
+	BO_Mail = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $applicationASPIRE.custom2
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current custom2
+//			value: Current custom2
+//		}
+		}
+	BO_FullName = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $applicationASPIRE.custom3
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current custom3
+//			value: Current custom3
+//		}
+		}
+	
+	/* Variables here */
+	
+	selectedAccountUid = Variable {
+		type: String
+	}
+	
+	/* Datasets and records here */
+	viewDataset = Dataset {
+		view: application_searchpoint with appname to displayname, BO_Login to BO_Login, BO_Mail to BO_mail, BO_FullName to BO_FullName
+	}
+	
+	select_accountNIS_Repository = Dataset {
+		view: accountNIS_Repository
+	}
+	select_accountNIS_Recon = Dataset {
+		view: accountNIS_Recon
+	}
+	select_accountNIS_Type = Dataset {
+		view: accountNIS_Type
+	}
+	
+	
+	/* Page content */
+	Splitter {
+		disposition: Horizontal
+		size: 20%
+	Group {
+			border: True
+			title: $accountNisSearch.title
+			Flow {
+				 			disposition:Horizontal
+			Grid {
+				columns: GridColumn {}, GridColumn{}
+				 GridRow {
+				 	GridCell {
+				 		span: 2
+						
+						ParametersEdition {
+							
+							allow-reset: True
+							label-position: Top
+							parameters: appname, BO_Login, BO_Mail, BO_FullName
+							outline-position:Top
+							}
+						}
+						}
+					}
+			}
+		}
+	Group {
+		PaginatedTable {
+			page-size:50
+			data: viewDataset 
+			show-filter: True
+			//show-count: True
+			configurable:True
+			persist-configuration:True
+			hide-header: False
+			layout: Layout {
+				grab: horizontal True vertical True
+			}
+			//double-click: GoTo Page accountNISDetailsPage with selectedAccountUid to paramAccountUid 
+			Column {
+						column: uid
+						hidden: True
+						selection: selectedAccountUid
+					}
+					Column {
+						column: displayname
+						header: $applicationASPIRE.displayname
+						width: 100%
+						
+						initially-masked: True
+					}
+					Column {
+						column: custom1
+						header: $applicationASPIRE.custom1
+						width: 100%
+						sortable:True
+						initially-masked: False
+						filterable:True
+					}
+					Column {
+						column: custom2
+						header: $applicationASPIRE.custom2
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom3
+						header: $applicationASPIRE.custom3
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom4
+						header: $applicationASPIRE.custom4
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom5
+						header: $applicationASPIRE.custom5
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom6
+						header: $applicationASPIRE.custom6
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom7
+						header: $applicationASPIRE.custom7
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom8
+						header: $applicationASPIRE.custom8
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom9
+						header: $applicationASPIRE.custom9
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+		}
+
+	}
+	}
+}

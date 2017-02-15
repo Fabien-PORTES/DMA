@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="ad4unix_current_Domain" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="ad4unix_current_Domain" notes="" begindate="" enddate="">
+	<ViewParam name="login" displayname="Login">
+		<Value name="0" data="st00056"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1486472804658_451" attribute="login" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486472977509_0" reference="login" operation="ilike" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1486472813057_452" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1486472820137_453" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486472823913_454" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1486473471483_456" attribute="sid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486473484299_457" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486474440659_0" operation="isNotNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486473492507_458" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486473509443_461" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486543717765_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="true"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

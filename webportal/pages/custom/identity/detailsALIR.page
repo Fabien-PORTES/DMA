@@ -1,0 +1,404 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/details_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/reports/browsing/identityteam.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/custom/identity/detailsAD.page"
+
+avoidEmptyMapping = StringMapping {
+	when IsEmpty then ''
+	otherwise current prefix '' suffix ' '
+}
+
+identityDetailsALIRPageRecorduid = Page {
+	title: "Recorduid redirection (identity)"
+	conditional-redirect: ConditionalRedirect { condition: True target: Page identityDetailsALIRPage with identityUid.uid to paramIdentityUid }
+	
+	recorduid = Parameter {
+		type: Integer
+		hidden: True
+		recorduid-of: Identity
+		mandatory: True
+	}
+	
+	identityUid = Record {
+		view: br_identityDetail_uid with recorduid to recorduid
+	}
+}
+
+identityDetailsALIRPage = Page {
+	title: $identityDetails.title
+	dynamic-title:$identityDetails.dynamictitle(identity.fullname)
+	//enter-event: BooleanCase (paramSearchMode) { when False then [ Set paramIdentityUid to nonEmptyUid] when True then []}, TransferData identityTeamFirst(fullname) to (identityTeamShort)
+	mixins: detailsPage
+	
+	// Parameters Here
+	paramIdentityUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: True
+	}
+	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	// Search Definition Here
+	identitySearch = SearchDefinition {
+		entity: Identity
+		simple-mode-rule: br_identity_simple_search
+	}
+	
+	// Variables Here
+//	initialIndex = Variable {
+//		type: Integer
+//	}
+//	
+	selectedIdentityUid = Variable {
+		type: String
+		initial: paramIdentityUid
+	}
+//	identityTeamShort = Variable {
+//		type: String
+//		multivalued: True
+//	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Dataset for Navigator
+	identityList = Dataset {
+		search: Search {
+			definition: identitySearch
+			view: br_identity_searchpoint with nonEmptyUid to uid unless-empty
+		}
+	}
+	
+	// Dataset for Reports
+	relatedLinksTiles = Dataset {
+		pages: Pages{tags: "identity" and "byuid" }
+	}
+	
+	// Record for concept details
+	identity = Record {
+		view: br_identityDetail with selectedIdentityUid to uid
+	}
+	
+	// All other Records and Datasets
+	identityJob = Record {
+		view: br_identityDetail_jobs with selectedIdentityUid to uid
+	}
+	
+	identityManagedOrganisation = Record {
+		view: br_identityDetail_managedorganisations with selectedIdentityUid to uid 
+	}
+	
+	identityOrganisation = Record {
+		view: br_identityDetail_organisations with selectedIdentityUid to uid, identityManagedOrganisation.organisation_uid to managedOrgUid
+	}
+	
+	linkedOrganisation = Record {
+		view: br_organisationDetail with identityOrganisation.organisation_uid to uid 
+	}
+	linkedOrganisationTreeFlat = Record {
+		view: br_organisationDetail_parentorganisations_flat with linkedOrganisation.uid to uid
+	}
+	
+	identitygonebnperm = Record {
+		view: br_identitygonenbperms with identity.recorduid to recorduid
+	}	
+	
+//	identitynbsoddefect = Record {
+//		view:identitynbsoddefect with identity.recorduid to recorduid
+//	}
+	
+//	identitynbapps = Record {
+//		view: br_identitynbapps with identity.recorduid to recorduid
+//	}
+	identityTeamFirst = Dataset {
+		view: br_identityDetails_team with identity.recorduid to recorduid
+		limit: 3
+	}
+	
+	identityTeamCount = Dataset {
+		view: br_identityDetails_team with identity.recorduid to recorduid
+	}
+	
+	identityADmanagedByALIR = Dataset {
+		view: identityADManagedByALIR with identity.recorduid to recorduid
+	}
+	
+	// Start of the Layout based on a 1-column Grid
+	Grid {
+		columns: GridColumn{}
+		
+		// Row for the Navigator
+//		GridRow {
+//			GridCell{
+//				Group{
+//					layout: Layout {align: horizontal Center vertical Beginning }
+//					Spacer {
+//						height: 5
+//						hidden: Not BooleanPredicate( paramSearchMode )
+//					}
+//					SetNavigator {
+//						data: identityList
+//						column: uid
+//						selection: selectedIdentityUid
+//						back-link: Activity Identity Search with SerializeSearch identitySearch to identitySearch, paramSearchMode to paramSearchMode, selectedIdentityUid to initialUid, initialIndex to paramInitialIndex
+//						initial: paramIdentityUid
+//						initial-index: paramInitialIndex
+//						selection-index: initialIndex
+//						show-count: True
+//						show-first: True
+//						show-last: True
+//						count-width: 150
+//						hidden: Not BooleanPredicate( paramSearchMode )
+//					}
+//					Spacer{
+//						height:10
+//					}
+//				}
+//			}
+//		}
+		
+
+
+		// Row for content
+		GridRow{
+			GridCell{
+				//background: Image "details/card_content.png"
+				
+				//Spacer { height:10 }
+				
+				Text {
+					value: Concat ( Transform identity.titledisplayname using  avoidEmptyMapping , identity.fullname )
+					styling:detailsTitle
+					align: Center
+				}
+				
+				Text {
+					value: linkedOrganisationTreeFlat.flat
+					styling: detailsSubtitle
+					align:Center
+					hidden: StringPredicate ( linkedOrganisation.uid ) { when IsEmpty then True otherwise False }
+				}
+				
+				Spacer { height:5 }
+				
+				Flow {
+					disposition: Horizontal
+
+//					// First Column
+//					Group {
+//						layout: Layout { hint: width 290}
+//						Image {
+//							image: "details/avatar.png"
+//							align: Center
+//						}
+//					}
+					
+					// Second Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Text {
+							value: Transform identity.hrcode using optionStringMapping 
+							label: $identityALIRAttributes.hrcode
+							lines: 2
+						}
+						Text {
+							hidden: StringPredicate (identity.mail) {when IsEmpty then True otherwise False}
+							value: Transform identity.mail using optionStringMapping 
+							label: $identityALIRAttributes.mail
+							lines: 2
+						}
+						Text {
+							hidden: StringPredicate (identity.custom6) {when IsEmpty then True otherwise False}
+							value: Transform identity.custom6 using optionStringMapping 
+							label: $identityALIRAttributes.custom6
+							lines: 2
+						}	
+						Text {
+							hidden: StringPredicate (identity.phone) {when IsEmpty then True otherwise False}
+							value: Transform identity.phone using optionStringMapping 
+							label: $identityALIRAttributes.phone
+							lines: 2
+						}	
+						Text {
+							hidden: StringPredicate (identity.custom5) {when IsEmpty then True otherwise False}
+							value: Transform identity.custom5 using optionStringMapping 
+							label: $identityALIRAttributes.custom5
+							lines: 2
+						}	
+//						Text {
+//							value: Transform identity.employeetypedisplayname using optionStringMapping 
+//							label: $identity.employeetypedisplayname
+//							lines: 2
+//						}							
+//						Link {
+//							value: Transform identity.manager_fullname using optionStringMapping
+//							disabled:
+//								OrPredicate {
+//									StringPredicate(identity.manager_fullname) { when IsEmpty then True }
+//									Not FeaturePredicate identitydetails_linktomanager
+//								}	
+//							label: $identity.boss
+//							target: Activity Identity Detail with identity.manager_uid to paramIdentityUid
+//							icon:"details/link_profile_14.png"				
+//						}		
+						Text {
+							value: Date(identity.arrivaldate).value('dd/MM/yyyy')
+							label: $identity.arrivaldate
+							hidden:StringPredicate(identity.arrivaldate) { when IsEmpty then True}
+							lines: 2
+						}
+					}
+					
+					// Third Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Text {
+							value: Transform identityJob.jobtitledisplayname using optionStringMapping
+							label: $identity.jobtitledisplayname
+							lines: 2
+						}	
+						Link {
+							value: Transform linkedOrganisation.displayname using optionStringMapping
+							label: $identityALIRAttributes.company
+							target: Activity Organisation Detail with linkedOrganisation.uid to paramOrganisationUid
+							icon:"details/link_briefcase_14.png"
+							disabled: 
+								OrPredicate {
+									StringPredicate(linkedOrganisation.displayname) { when IsEmpty then True }
+									Not FeaturePredicate identitydetails_linktoorganisation
+								}	
+						}
+									
+						Text {
+							value: Transform linkedOrganisation.organisationtypedisplayname using optionStringMapping
+							label: $organisation.organisationtypedisplayname
+							lines: 2
+						}
+						
+						Text {
+							value: Date(identity.departuredate).value('dd/MM/yyyy')
+							label: $identity.departuredate
+							hidden:StringPredicate(identity.departuredate) { when IsEmpty then True}
+							lines: 2
+						}
+					}
+				}
+				Spacer { height: 20 }
+			}
+		}
+		GridRow{
+			GridCell{
+				//background: Image "details/card_content.png"
+				Group {
+//						layout: Layout { hint: width 820}
+//						
+//						Link {		
+//							value: Concat($identityDetails.identityteam.response (Join identityTeamShort using ", "), 
+//										  $identityDetails.identityteam.response.others (Difference( Count identityTeamCount , 3)))
+//							label: Label{ value: $identityDetails.identityteam.title}
+//							target: Page browsing_identity_team with identity.uid to uid
+//							disabled:Not FeaturePredicate identitydetails_linktoteam
+//						}
+					margins: Top 20 Left 25 Bottom 20 Right 25
+					border:False
+					//title: $accountNisDetails.group_Ticket_Review
+					
+					Table {
+						
+						data:identityADmanagedByALIR
+						layout:Layout {hint:height 128}
+						label: $identityALIRDetails.ownedAD
+						double-click: GoTo Page identityDetailsADPage with Current AD_uid to paramIdentityUid
+						//show-count:True
+						Column {
+							header: $identityAdAttributes.hrcode
+							column: AD_hrcode
+							width: 100%
+							sortable:True
+							hidden:False
+						}
+						Column {
+							header:$identityAdAttributes.custom8
+							column: AD_custom8
+							sortable:True
+							width: 50%
+						}
+						Column {
+							header: $identityAdAttributes.repository
+							column: AD_custom4
+							sortable:True
+							width: 50%
+						}
+						Column {
+							header: $identityAdAttributes.FullName
+							column: AD_fullname
+							sortable:True
+							width: 50%
+							}
+						Column {
+							header: $identityAdAttributes.custom11
+							column: AD_custom11
+							text: Transform Current AD_custom11 using diabled_Mapping
+							sortable:True
+							width: 50%
+							}
+						}
+					}
+				}	
+			}
+		// Row for footer
+		GridRow{
+			GridCell{
+				//background: Image "details/card_footer.png"
+				Spacer { height: 12 }
+			}
+		}
+		
+		// Row for links
+//		GridRow{
+//			GridCell{
+//				Spacer { height: 20 }
+//				Tiles {
+//					columns:5
+//					tile-height:120
+//					mixins:detailIcons
+//					TileGroup {
+//						iterate-on: relatedLinksTiles
+//						initial-sort: ^priority 
+//						Tile {
+//							Button {
+//								actions: GoTo Dynamic (Current type, Current name) with identity.recorduid to recorduid, identity.uid to uid, SerializeSearch identitySearch to identitySearch, paramSearchMode to paramSearchMode
+//								image: Current largeIcon
+//								tooltip: Current title		
+//							}
+//							Text{
+//								value: Current title
+//								label: Label{ layout:Layout{indent: vertical 0 horizontal 0   }  }
+//								lines:2
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+	}
+}

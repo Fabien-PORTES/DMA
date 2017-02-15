@@ -1,0 +1,54 @@
+/* Import other pages here */
+import "/webportal/pages/resources/mappings.page"
+
+/* Nationalized labels here */
+<template:pageNLSname/> = NLS {
+<template:additionalNLS/>
+}
+
+<template:pagename/> = Page {
+	title: <template:pagetitle/>
+
+/* Parameters here */
+
+/* Variables here */
+selectionVariable = Variable {
+	type: String
+}
+<template:additionalvariables/>
+/* Datasets and records here */
+masterViewDataset = Dataset {
+	view: <template:masterviewname/>
+}
+detailViewRecord = Record {
+	view: <template:detailviewname/> with selectionVariable to <template:detailparameter/>
+}
+<template:additionaldatasets/>
+
+/* Page content */
+	Splitter {
+		disposition: Horizontal
+		
+		Group {
+			Table {
+				data: masterViewDataset
+				show-filter: True
+				show-count: True
+				hide-header: False
+				layout: Layout {
+					grab: horizontal True vertical True
+				}
+				
+				Column {
+					column: <template:masterselection/>
+					selection: selectionVariable
+					hidden: True
+				}			
+<template:tablecolumns/>
+			}
+		}		
+		Group {		
+<template:detailcomponents/>			
+		}
+	}
+}

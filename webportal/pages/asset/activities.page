@@ -1,0 +1,15 @@
+
+import "/webportal/pages/reports/standard.page"
+
+Activity {
+	concept: Asset
+	kind: Search
+	to: Report browsing_assetsearch
+}
+
+Activity {
+	concept: Asset
+	kind: Detail
+	to: Report browsing_assetdetail
+}
+

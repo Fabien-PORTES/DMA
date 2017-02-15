@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_physicalaccessassets" distinct="true" concept="permission" displayname="Physical access list or picker" notes="">
+	<ViewParam name="recorduid" displayname="permision record uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1306930357827_17" kind="inner" join="application">
+		<ViewAttribute name="A1316337128181_5659" attribute="applicationtype" operator="or" removedfromprojection="true">
+			<ViewAttributeFilter name="F1316337131800_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Physical"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1306930384003_20" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1306930485510_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1306939978135_425" prefix="asset_" kind="inner" join="asset">
+		<ViewAttribute name="A1306939984916_426" attribute="recorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939984916_427" attribute="uid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939984916_428" attribute="code" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939984916_429" attribute="displayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939984916_430" attribute="categoryrecorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939984916_431" attribute="categoryuid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939984916_432" attribute="categorycode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939984916_433" attribute="categorydisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939986885_434" attribute="custom1" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939987638_435" attribute="custom2" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939988382_436" attribute="custom3" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939989150_437" attribute="custom4" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939990094_438" attribute="custom5" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939990886_439" attribute="custom6" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939991630_440" attribute="custom7" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939992390_441" attribute="custom8" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306939993192_442" attribute="custom9" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_childorganisations" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="br_organisationDetail_childorganisations" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1365605153527_189"/>
+	<ViewAttribute name="A1365605151595_186" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1365605155717_192" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1365605155196_191" attribute="organisationtypecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1365605154078_190" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1365605153527_189" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1365605153016_188" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1365605152465_187" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1365605160460_193" prefix="parent" kind="left" identitysecure="false" join="parentorganisation">
+		<ViewAttribute name="A1365605166375_194" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1365606053289_203" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1365606829956_211" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewAttribute name="A1378383403835_457" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378383409967_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

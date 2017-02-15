@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="identitynbsoddefect" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="# sod defects by dentity" notes="">
+	<ViewParam name="recorduid" displayname="identity recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1347898421069_7888" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1347898573757_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1424955048730_323" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="controldiscrepancy">
+		<ViewJoin name="J1424955061787_324" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="controllog">
+			<ViewAttribute name="A1424955071917_325" attribute="controltype" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1424955074717_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="6"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="A1424955086408_327" attribute="controlcode" alias="nbdefect" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1424955112548_329" attribute="controlresulttype" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1424955115218_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

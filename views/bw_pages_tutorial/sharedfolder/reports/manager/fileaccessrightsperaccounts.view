@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bwfs_fileaccessrightsperaccounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="file access rights per account" notes="">
+	<ViewParam name="uids" displayname="uids"/>
+	<ViewComputedAttribute name="compactaction" displayname="compact action" type="String" expression="dataset.action.get().indexOf(&apos;RW&apos;)==0?&apos;RW&apos;:dataset.action.get().indexOf(&apos;W&apos;)!=-1?&apos;W&apos;:dataset.action.get().indexOf(&apos;R&apos;)!=-1?&apos;R&apos;:&apos;?&apos;"/>
+	<ViewSort name="sort" attribute1="1442853117846_11983" attribute2="1442853117850_11989" attribute3="1442853117844_11980"/>
+	<ViewAttribute name="A1442852969635_11937" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1442852973113_0" reference="uids" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1442852990991_11939" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442853000441_11940" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1442853002723_0" operation="isNull" ignoreifempty="false"/>
+		<ViewAttributeFilter name="F1442853005556_1" operation="isFalse" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1442494870123_346" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="right">
+		<ViewAttribute name="1442853117844_11980" attribute="action" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1442494881872_348" prefix="permission" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+			<ViewJoin name="J1442494884786_349" prefix="application" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+				<ViewAttribute name="1442853117846_11981" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1442853117846_11982" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1442853117846_11983" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1442853117847_11984" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1442853117847_11985" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1442494905890_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="Filesystem"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+			</ViewJoin>
+			<ViewAttribute name="1442853117849_11987" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1442853117850_11988" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1442853117850_11989" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1442853117850_11990" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1444066177234_6487" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+				<ViewAttribute name="A1444066180504_6488" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1444066182733_0" operation="isTrue" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

@@ -1,0 +1,13 @@
+Combo {
+	label: <template:widgetlabel/>
+	variable: <template:widgetvariablename/>
+	layout: Layout {
+		grab: horizontal False vertical False
+		align: horizontal Beginning vertical Center
+	}
+	options:Dynamic {
+		data: <template:widgetdatasetname/>
+		value: Current uid
+		text: Current login
+	}
+}	

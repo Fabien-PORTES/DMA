@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_overviewnbproblemapp_trend" errorifempty="false" distinct="true" identitysecure="false" concept="controllogv2" displayname="organisationDetail_overviewnbproblemapp_trend" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1383243376792_17413"/>
+	<ViewAttribute name="A1383243356823_17411" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1383243360740_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1383243376792_17413" attribute="timeslotcommitdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383243378337_17414" attribute="timeslotellapsedtime" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1383243390585_0" operation="lt" ignoreifempty="false">
+			<Value name="0" data="180"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1383243401130_17417" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383243405420_17418" kind="inner" identitysecure="false" join="identity">
+			<ViewJoin name="J1367156391709_2622" kind="inner" identitysecure="false" join="uporganisation">
+				<ViewAttribute name="1383243418275_17421" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1380733883981_0" reference="uid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewJoin name="J1383243440130_17422" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383243450146_17423" kind="inner" identitysecure="false" join="application">
+				<ViewAttribute name="1383243458601_17425" attribute="recorduid" alias="nbapplication" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

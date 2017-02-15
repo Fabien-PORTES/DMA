@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_overviewnbproblem" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="organisationDetail_overviewnbproblem" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1383243189990_17366" attribute="recorduid" alias="nbdefects" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1367156391709_2622" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewAttribute name="1383243198882_17370" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1367156402549_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="1383243198882_17371" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1380726818160_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1383243208538_17372" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383243219740_17373" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383243231658_17374" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383243233828_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1383243250239_17376" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383243255137_17377" kind="inner" identitysecure="false" join="permission">
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

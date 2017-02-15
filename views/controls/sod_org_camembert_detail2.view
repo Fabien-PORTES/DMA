@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sod_org_camembert_detail2" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="sod_org_camembert_detail2" notes="">
+	<ViewParam name="org_recorduid" displayname="org_recorduid"/>
+	<ViewParam name="module" displayname="module"/>
+	<ViewParam name="risklevel" displayname="risklevel"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1383235823548_15870" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383235829932_15872" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383235830556_15873" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383235841716_15874" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1383235852028_15875" kind="inner" identitysecure="false" join="allocation">
+		<ViewAttribute name="A1383235860172_15876" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1383235964484_15884" kind="inner" identitysecure="false" join="organisation">
+			<ViewAttribute name="A1383235989963_15885" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383235995443_0" reference="org_recorduid" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1383236031659_15887" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383236056963_15888" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383236060730_15889" attribute="controlcode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1383236063362_15890" attribute="controldescription" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1383236064099_15891" attribute="controldisplayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1383236065963_15892" attribute="controlnotes" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1383236071683_15893" attribute="controltagcustom1" alias="risklevel" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1383236104794_0" reference="risklevel" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewAttribute name="A1383236073027_15894" attribute="controltagcustom2" alias="module" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1383236112186_0" reference="module" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1383236130826_15899" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383236139002_15900" prefix="perm_" kind="inner" identitysecure="false" join="permission">
+				<ViewAttribute name="A1383236152994_15901" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1383236153890_15902" attribute="code" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1383236154626_15903" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1324374744776_59996" prefix="app_" kind="inner" identitysecure="false" join="application">
+					<ViewAttribute name="1383236166395_15907" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1383236166395_15908" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

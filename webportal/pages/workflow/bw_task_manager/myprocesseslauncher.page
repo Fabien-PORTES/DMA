@@ -1,0 +1,47 @@
+/**
+ * Workflow process browser and launcher
+ * list all the processes that can be launched by a given individual
+ *
+ * copyright Brainwave 2013 
+ */
+
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/mixins/default_mixins.page"
+
+myProcessLauncherPage_NLS = NLS {
+	title [en "Launch a new process" fr "Démarrer un nouveau processus"]
+	}
+
+
+
+myProcessLauncherPage = Page {
+	title: $myProcessLauncherPage_NLS.title
+	
+	myprocessdefinitions = Dataset {
+		process-definitions: ProcessDefinitionFilter {
+			show-not-browsable:False
+			show-technical:False
+		}
+	}
+
+	Group {
+		mixins: buttonPage
+
+		Tiles {
+			columns:2
+			tile-height:96
+			
+			TileGroup {
+				iterate-on:myprocessdefinitions
+				initial-sort:processDefinitionStaticTitle
+				Tile {
+					Button {
+						text:Current processDefinitionStaticTitle
+						image:Current processDefinitionLargeIcon
+						actions:GoTo NewProcessPage Current processDefinitionId
+					}
+				}
+			}
+		}
+	}
+}

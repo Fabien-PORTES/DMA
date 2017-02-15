@@ -1,0 +1,237 @@
+workflowpicker = NLS {
+	addvalue [en "Add a value" fr "Ajouter une valeur"]
+	date.novalue [en "None" fr "Non spécifié"]	
+}
+
+
+booleanPicker = Dialog {
+	title: $workflowpicker.addvalue
+	width: 450
+	height: 170
+
+	buttons: [
+		OkButton 
+		CancelButton
+	]
+	
+	inVariableDisplayname = Variable {
+		type: String
+	}
+	outValue = Variable {
+		type: Boolean
+		initial: False
+	}
+	
+	Checkbox { 
+		label: inVariableDisplayname
+		variable: outValue
+	}	
+}
+
+datePicker = Dialog {
+	title: $workflowpicker.addvalue
+	width: 450
+	height: 170
+
+	buttons: [
+		OkButton
+		CancelButton
+	]
+	
+	inVariableDisplayname = Variable {
+		type: String
+	}
+	
+	outValue = Variable {
+		type: Date
+		initial: Date.value("yyyyMMddHHmmss")
+	}
+	
+	DateTime {
+		type: Date
+		label: inVariableDisplayname
+		variable: outValue
+		format: "yyyyMMddHHmmss"				
+	}
+}
+
+numberPicker = Dialog {
+	title: $workflowpicker.addvalue
+	width: 450
+	height: 170
+
+	buttons: [
+		OkButton 
+		CancelButton
+	]
+	
+	inVariableDisplayname = Variable {
+		type: String
+	}
+	inVariableMinimum = Variable {
+		type: Integer
+	}
+	inVariableMaximum = Variable {
+		type: Integer
+	}
+	outValue = Variable {
+		type: Integer
+		initial: 0
+	}
+	
+	Spinner { 
+		label: inVariableDisplayname
+		variable: outValue
+		//minimum: inVariableMinimum
+		//maximum: inVariableMaximum
+	}	
+}
+
+stringPicker = Dialog {
+	title: $workflowpicker.addvalue
+	width: 450
+	height: 170
+
+	buttons: [
+		OkButton {
+			disabled: AndPredicate {
+				StringPredicate (outValue) {
+					when IsEmpty then True otherwise False
+				}
+			}
+		}
+		CancelButton
+	]
+	
+	inVariableDisplayname = Variable {
+		type: String
+	}
+	inVariableLimit = Variable {
+		type: Integer
+	}
+	inVariableMatch = Variable {
+		type: String
+	}
+	outValue = Variable {
+		type: String
+	}
+	
+	Edit { 
+		label: inVariableDisplayname
+		variable: outValue
+		//limit: inVariableLimit
+		//match: inVariableMatch
+	}	
+}
+
+dateFromListPicker = Dialog {
+	title: $workflowpicker.addvalue
+	width: 450
+	height: 200
+
+	buttons: [
+		OkButton
+		CancelButton
+	]
+	
+	inVariableDisplayname = Variable {
+		type: String
+	}
+	inValueList = Variable {
+		type: Date
+		multivalued: True
+	}
+
+	outValue = Variable {
+		type: Date
+	}
+	
+	valueListDataset = Dataset {
+		columns: inValueList as displayname
+	}	
+	
+	Combo {
+		label: inVariableDisplayname
+		variable: outValue
+		options: Dynamic {
+			data: valueListDataset
+			text: DateLDAP(Current displayname).value
+			value: Current displayname
+		}	
+	}
+}
+
+numberFromListPicker = Dialog {
+	title: $workflowpicker.addvalue
+	width: 450
+	height: 200
+
+	buttons: [
+		OkButton
+		CancelButton
+	]
+	
+	inVariableDisplayname = Variable {
+		type: String
+	}
+	inValueList = Variable {
+		type: Integer
+		multivalued: True
+	}
+
+	outValue = Variable {
+		type: Integer
+	}
+	
+	valueListDataset = Dataset {
+		columns: inValueList as displayname
+	}	
+	
+	Combo {
+		label: inVariableDisplayname
+		variable: outValue
+		options: Dynamic {
+			data: valueListDataset
+			text: Current displayname
+			value: Current displayname			
+		}	
+	}
+}
+
+stringFromListPicker = Dialog {
+	title: $workflowpicker.addvalue
+	width: 450
+	height: 200
+
+	buttons: [
+		OkButton
+		CancelButton
+	]
+	
+	inVariableDisplayname = Variable {
+		type: String
+	}
+	inValueList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	outValue = Variable {
+		type: String
+	}
+	
+	valueListDataset = Dataset {
+		columns: inValueList as displayname
+	}	
+	
+	Combo {
+		label: inVariableDisplayname
+		variable: outValue
+		options: Dynamic {
+			data: valueListDataset
+			text: Current displayname
+			value: Current displayname			
+		}	
+	}
+}
+

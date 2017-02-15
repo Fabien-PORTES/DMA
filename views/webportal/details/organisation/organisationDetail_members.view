@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_members" prefix="identity_" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="br_organisationDetail_members" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewSort name="sort" attribute1="A1378385807966_607"/>
+	<ViewJoin name="J1365612212648_277" prefix="identity_" kind="left" identitysecure="false" join="allocation">
+		<ViewAttribute name="1378385762194_604" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1378385784160_605" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378385786156_606" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378385807966_607" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378385810057_608" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378385812209_609" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378385829479_610" kind="inner" identitysecure="false" enabled="param.isDirectLink.get()" join="organisation">
+		<ViewAttribute name="A1378385847132_612" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378385852309_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378385832045_611" kind="inner" identitysecure="false" enabled="!param.isDirectLink.get()" join="uporganisation">
+		<ViewAttribute name="A1378385848756_613" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378385866117_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1378387437943_618" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

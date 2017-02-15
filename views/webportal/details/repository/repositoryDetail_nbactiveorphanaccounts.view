@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryDetail_nbactiveorphanaccounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="account" displayname="br_repositoryDetail_nbactivereconciledaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1378712962647_420" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1378712962647_421" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1377505573808_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+		<ViewAttributeFilter name="F1377505580236_1" operation="isNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1378712992601_422" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="repository">
+		<ViewAttribute name="A1378713016399_427" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378713020721_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1422984988868_407" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1422984994052_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewCriteria name="I1378713472549_447" criteria="notReconciliatedAccounts">
+	</ViewCriteria>
+</View>

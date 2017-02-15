@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_assetcategory_picker" distinct="true" concept="asset" displayname="Asset category picker" notes="">
+	<ViewSort name="sort" attribute1="A1336124262678_69"/>
+	<ViewAttribute name="A1336124262678_69" attribute="categorydisplayname" removedfromprojection="false" globalfilter="false"/>
+</View>

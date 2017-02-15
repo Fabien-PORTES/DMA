@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MenuItems PUBLIC "-//Brainwave//DTD MenuItems 1.0//EN" "urn:brainwave:igrc:dtds/menuitems.dtd">
+<MenuItems version="1" name="default" description="Default menus">
+	<MenuItem name="menuitem_search" label="Search" priority="1000" position="page:searchPage" description="Search page" feature="menu_search"/>
+</MenuItems>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_disabledaccounts" operator="and" query="account" displayname="Disabled Accounts" version="6" notes="">
+	<RequestCriteria name="C1331840692770_13" criteria="eqDisabled">
+	</RequestCriteria>
+</Request>

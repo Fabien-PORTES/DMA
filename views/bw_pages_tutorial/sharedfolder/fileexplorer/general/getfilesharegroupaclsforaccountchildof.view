@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="fileexplorergetfilesharegroupaclsforaccountchildof" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="group" displayname="getfilesharegroupaclsforaccountchildof" notes="">
+	<ViewParam name="accountuid" displayname="accountuid"/>
+	<ViewParam name="parentrecorduid" displayname="parentrecorduid">
+		<Value name="0" data="57290"/>
+	</ViewParam>
+	<ViewParam name="groups" displayname="groups"/>
+	<ViewParam name="identityuid" displayname="identityuid"/>
+	<ViewComputedAttribute name="negative" type="String" expression="&apos;&apos;"/>
+	<ViewComputedAttribute name="action" type="String" expression="&apos;&apos;"/>
+	<ViewComputedAttribute name="order" type="String" expression="&apos;&apos;"/>
+	<ViewSort name="sort" attribute1="A1433772178427_2966"/>
+	<ViewAttribute name="A1433772178427_2962" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2963" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2965" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2966" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2967" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2968" attribute="grouptype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2969" attribute="dynamic" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2970" attribute="filter" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2971" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2972" attribute="creationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2973" attribute="modificationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2974" attribute="modificationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2975" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433772178427_2976" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1433508492635_4943" prefix="repository" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="1433772205797_2985" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433772205798_2986" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1433772205798_2987" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1433773056092_2994" prefix="parent" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentgroup">
+		<ViewAttribute name="A1433773064379_2995" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1433773075634_0" reference="parentrecorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1443443543529_499" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="upaccount">
+		<ViewAttribute name="A1443443547376_500" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1443443549603_0" reference="accountuid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

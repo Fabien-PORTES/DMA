@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_lockedaccounts" operator="and" query="account" displayname="Locked Accounts" version="5" notes="">
+	<RequestCriteria name="C1331840754547_17" criteria="eqLocked">
+	</RequestCriteria>
+</Request>

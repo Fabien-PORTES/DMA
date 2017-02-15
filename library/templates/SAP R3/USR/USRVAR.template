@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343583822163" title="Variants for Critical Authorizations " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A4032875988471259850" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A358322644948075386" attribute="varname" column="VARNAME" type="String" multivalued="false" persistent="false" description="Variant for Critical Authorizations"/>
+		<Attribute name="A964936691537788617" attribute="vtext" column="VTEXT" type="String" multivalued="false" persistent="false" description="Variant label for Critical Authorizations"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343583849141" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

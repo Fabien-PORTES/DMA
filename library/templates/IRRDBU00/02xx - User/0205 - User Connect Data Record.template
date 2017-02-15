@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User connect data record" description="The User Connect Data record defines the relationships between users and groups. There is one record per user connection.">
+	<Source type="FORMATTED" filter="^0205 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USCON_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the User Connect Data record (0205)."/>
+		<Attribute name="A4199536690768339793" attribute="USCON_NAME" column="6-13" type="String" multivalued="false" description="User ID as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="USCON_GRP_ID" column="15-22" type="String" multivalued="false" description="The group name."/>
+		<Attribute name="A7466509792483562715" attribute="USCON_CONNECT_DATE" column="24-33" type="Date" multivalued="false" description="The date that the user was connected."/>
+		<Attribute name="A3188661801656117613" attribute="USCON_OWNER_ID" column="35-42" type="String" multivalued="false" description="The owner of the user-group connection."/>
+		<Attribute name="A4037269903301147695" attribute="USCON_LASTCON_TIME" column="44-51" type="String" multivalued="false" description="Time that the user last connected to this group."/>
+		<Attribute name="A7863438466300294503" attribute="USCON_LASTCON_DATE" column="53-62" type="Date" multivalued="false" description="Date that the user last connected to this group."/>
+		<Attribute name="A8801039954934473602" attribute="USCON_UACC" column="64-71" type="String" multivalued="false" description="The default universal access authority for all new resources the user defines while connected to the specified group. Valid values are NONE, READ, UPDATE, CONTROL, and ALTER."/>
+		<Attribute name="A2460635583838380635" attribute="USCON_INIT_CNT" column="73-77" type="Number" multivalued="false" description="The number of RACINITs issued for this user/group combination."/>
+		<Attribute name="A5281244329858370167" attribute="USCON_GRP_ADSP" column="79-82" type="Boolean" multivalued="false" description="Does this user have the ADSP attribute in this group?"/>
+		<Attribute name="A5281244329858370168" attribute="USCON_GRP_SPECIAL" column="84-87" type="Boolean" multivalued="false" description="Does this user have GROUP-SPECIAL in this group?"/>
+		<Attribute name="A5281244329858370169" attribute="USCON_GRP_OPER" column="89-92" type="Boolean" multivalued="false" description="Does this user have GROUP-OPERATIONS in this group?"/>
+		<Attribute name="A5281244329858370170" attribute="USCON_REVOKE" column="94-97" type="Boolean" multivalued="false" description="Is this user revoked?"/>
+		<Attribute name="A5281244329858370171" attribute="USCON_GRP_ACC" column="99-102" type="Boolean" multivalued="false" description="Does this user have the GRPACC attribute?"/>
+		<Attribute name="A5281244329858370172" attribute="USCON_NOTERMUACC" column="104-107" type="Boolean" multivalued="false" description="Does this user have the NOTERMUACC attribute in this group?"/>
+		<Attribute name="A5281244329858370173" attribute="USCON_GRP_AUDIT" column="109-112" type="Boolean" multivalued="false" description="Does this user have the GROUP-AUDITOR attribute in this group?"/>
+		<Attribute name="A5281244329858370174" attribute="USCON_REVOKE_DATE" column="114-123" type="Date" multivalued="false" description="The date that the user's connection to the group will be revoked."/>
+		<Attribute name="A5281244329858370175" attribute="USCON_RESUME_DATE" column="125-134" type="Date" multivalued="false" description="The date that the user's connection to the group will be resumed."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

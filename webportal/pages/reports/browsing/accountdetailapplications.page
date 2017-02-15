@@ -1,0 +1,159 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+reportDetails = NLS {
+	browsing_account_detailapplications.pagetitle [ en "Applications Details" fr "Applications Détaillées"]
+	browsing_account_detailapplications.title [ en "List of Applications" fr "Liste des Applications"]
+	browsing_account_detailapplications.subtitle [ en "Applications - Account <<{0}>>" fr "Applications - Compte <<{0}>>"]
+	browsing_account_detailapplications.columns.code [ en "Code" fr "Code"]
+	browsing_account_detailapplications.columns.displayname [en "Name" fr "Nom"]
+	browsing_account_detailapplications.columns.repositorydisplayname [ en "Repository" fr "Référentiel"]
+	browsing_account_detailapplications.columns.repositorycode [ en "Repository Code" fr "Code du Référentiel"]
+}
+
+browsing_account_detailapplications = Page {
+
+	title: $reportDetails.browsing_account_detailapplications.pagetitle
+	tags: "account" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: browsing_account_detailapplications
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	accountSearch = SearchDefinition {
+		entity: Account
+		simple-mode-rule: br_account_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentAccount = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	accountList = Dataset {
+		search: Search {
+			definition: accountSearch
+			view: br_account_searchpoint with nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_accountDetail with currentAccount to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_accountDetail_applications with conceptData.recorduid to recorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: accountList
+			column: uid
+			selection: currentAccount
+			back-link: Activity Account Detail with currentAccount to paramAccountUid , SerializeSearch accountSearch to accountSearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_account_detailapplications.title	
+		}		
+		
+		Text {
+			value: $reportDetails.browsing_account_detailapplications.subtitle( conceptData.login )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			double-click: GoTo Activity Application Detail with selectedUid to paramApplicationUid
+			show-filter: True
+			show-count: True
+			
+			Column {
+				column: recorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: uid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: code
+				header: $reportDetails.browsing_account_detailapplications.columns.code
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: displayname
+				header: $reportDetails.browsing_account_detailapplications.columns.displayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: repositorydisplayname
+				header: $reportDetails.browsing_account_detailapplications.columns.repositorydisplayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: repositorycode
+				header: $reportDetails.browsing_account_detailapplications.columns.repositorycode
+				sortable: True
+				filterable: True
+				width:100%
+			}
+		}
+		
+		Button {
+			actions:  GoTo Activity Application Detail with selectedUid to paramApplicationUid
+			layout: Layout { align: horizontal End vertical Beginning grab: horizontal False vertical False hint: width 200}
+			disabled: StringPredicate(selectedUid) { when IsEmpty then True }
+			text: $search_page.showdetails
+		}
+	}
+}

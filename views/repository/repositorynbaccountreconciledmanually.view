@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositorynbaccountreconciledmanually" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="# of accounts reconciled manually by repository" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="Repository record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1321625454783_6" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321625457747_7" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1321625474845_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1321628309047_25" attribute="repositoryuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321628310167_26" attribute="repositorycode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321628314275_27" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321628320473_28" attribute="repositorymedia" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321628330040_29" attribute="repositoryextractdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321628332924_30" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewCriteria name="I1385375701803_1028" criteria="manuallyReconciliatedAccounts">
+	</ViewCriteria>
+</View>

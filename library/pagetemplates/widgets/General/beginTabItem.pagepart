@@ -1,0 +1,2 @@
+TabItem {
+	text: <template:tabtitle/>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="identitypicker" operator="and" query="identity" displayname="identity picker by {uid}" version="4" notes="">
+	<RequestParam name="uid" displayname="uid" query="identity" criteria="eqUid" criteriaparam="uidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="localuid" displayname="localuid" query="identity" criteria="eqUid" criteriaparam="uidParam">
+		<Value name="0" data="{dataset.isEmpty(&apos;uid&apos;)?&apos;vsdfs$+ds&apos;:dataset.uid.get()}"/>
+	</RequestParam>
+	<RequestCriteria name="C1386351345628_929" criteria="eqUid">
+		<RequestCriteriaParam name="uidParam" reference="localuid" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

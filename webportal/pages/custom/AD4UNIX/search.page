@@ -1,0 +1,294 @@
+/* Import other pages here */
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/custom/account/details.page"
+import "/webportal/pages/resources/mappings.page"
+/* Nationalized labels here */
+
+search_AD4UNIX = Page {
+	title: $AD4UNIXSearch.title
+	tags: "DMA_homepage", "DMA_search" priority 200
+	/* Parameters here */
+	NIS_UID = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $accountNISAttributes.Login
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current displayname
+//			value: Current displayname
+//		}
+		}
+	NIS_repo = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $accountNISAttributes.repository
+		constraint: Lookup {
+			data: select_accountNIS_Repository
+			text: Current displayname
+			value: Current displayname
+		}
+		}
+	NIS_UIDnum = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $accountNISAttributes.custom4
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current displayname
+//			value: Current displayname
+//		}
+		}
+	AD4UNIX_UIDnum = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $accountNISAttributes.sid_AD4UNIX
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current custom1
+//			value: Current custom1
+//		}
+		}
+	SAM_AD4UNIX = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $accountNISAttributes.custom5
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current custom2
+//			value: Current custom2
+//		}
+		}
+	Windomain_AD4UNIX = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $accountNISAttributes.custom8
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current custom3
+//			value: Current custom3
+//		}
+		}
+	
+	SAM_AD4UNIXpast = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $accountNISAttributes.custom2
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current custom2
+//			value: Current custom2
+//		}
+		}
+	Windomain_AD4UNIXpast = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: True
+		label: $accountNISAttributes.custom7
+//		constraint: Lookup {
+//			data: viewDataset
+//			text: Current custom3
+//			value: Cis_in_current3
+//		}
+		}
+	
+	mapping_in_current = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: False
+		label: "AD4UNIX Current Mapping Status"
+		constraint: Choice {
+			values: ['UID in',
+					'UID/Domain in',
+					'UID in but Domain is not in'
+					 ]
+			
+			presentation: List
+		}
+		}
+
+	mapping_in_past = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: False
+		label: "AD4UNIX Past Mapping Status"
+		constraint: Choice {
+			values: ['UID in',
+					'UID/Domain in',
+					'UID in but Domain is not in'
+					 ]
+			
+			presentation: List
+		}
+		}
+	is_in_current = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		multivalued: False
+		label: "AD4UNIX Past Mapping Status"
+		constraint: Choice {
+			values: ['UID in',
+					'UID/Domain in',
+					'UID in but Domain is not in'
+					 ]
+			
+			presentation: List
+		}
+		}
+	
+	/* Variables here */
+	
+	selectedAccountUid = Variable {
+		type: String
+	}
+	
+	/* Datasets and records here */
+	viewDataset = Dataset {
+		view: ad4unix with NIS_UID to login, AD4UNIX_UIDnum to ad4unixUIDnumber, NIS_UIDnum to uidNumber,
+		NIS_repo to repo, SAM_AD4UNIX to samaccountname, Windomain_AD4UNIX to windomain,
+		Transform mapping_in_current using AD4UNIX_Current_reversed to mapping_in_current,
+		Transform mapping_in_past using AD4UNIX_Current_reversed to mapping_in_past  
+	}
+	
+	select_accountNIS_Repository = Dataset {
+		view: accountNIS_Repository
+	}
+	select_accountNIS_Recon = Dataset {
+		view: accountNIS_Recon
+	}
+	select_accountNIS_Type = Dataset {
+		view: accountNIS_Type
+	}
+	
+	select_AD4UNIX_status = Dataset {
+		view: ad4unix_mapping_status
+	}
+	
+	/* Page content */
+	Splitter {
+		disposition: Horizontal
+		size: 20%
+	Group {
+			border: True
+			title: $AD4UNIXSearch.title
+			Flow {
+				 			disposition:Horizontal
+			Grid {
+				columns: GridColumn {}, GridColumn{}
+				 GridRow {
+				 	GridCell {
+				 		span: 2
+						
+						ParametersEdition {
+							allow-reset: True
+							label-position: Top
+							parameters: mapping_in_current, mapping_in_past, NIS_UID, NIS_repo, NIS_UIDnum, AD4UNIX_UIDnum, SAM_AD4UNIX, Windomain_AD4UNIX, SAM_AD4UNIXpast, Windomain_AD4UNIXpast
+							outline-position:Top
+							}
+						}
+						}
+					}
+			}
+		}
+	Group {
+		PaginatedTable {
+			page-size:50
+			data: viewDataset 
+			show-filter: True
+			//show-count: True
+			configurable:True
+			persist-configuration:True
+			hide-header: False
+			layout: Layout {
+				grab: horizontal True vertical True
+			}
+			//double-click: GoTo Page accountNISDetailsPage with selectedAccountUid to paramAccountUid 
+			Column {
+						column: uid
+						hidden: True
+						selection: selectedAccountUid
+					}
+					Column {
+						column: login
+						header: $accountNISAttributes.Login
+						width: 100%
+						sortable:True
+						initially-masked: False
+						filterable:True
+					}
+					Column {
+						column: displayname
+						header: $accountNISAttributes.repository
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: sid
+						header: $accountNISAttributes.sid_AD4UNIX
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom5
+						header: $accountNISAttributes.custom5
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom8
+						header: $accountNISAttributes.custom8
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom6
+						header: $accountNISAttributes.custom6
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom2
+						header: $accountNISAttributes.custom2
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom7
+						header: $accountNISAttributes.custom7
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					
+		}
+
+	}
+	}
+}

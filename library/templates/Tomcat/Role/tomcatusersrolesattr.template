@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="X1320417507376" title="tomcat-users.xml roles as listed in the roles attribute of the users tag" description="MemoryRealm is a simple demonstration implementation of the Tomcat 6 Realm interface. It is not designed for production use. At startup time, MemoryRealm loads information about all users, and their corresponding roles, from an XML document (by default, this document is loaded from $CATALINA_BASE/conf/tomcat-users.xml). Changes to the data in this file are not recognized until Tomcat is restarted.">
+	<Source type="XML" itempath="/tomcat-users/user"/>
+	<Attributes>
+		<Attribute name="A171104723998396202" attribute="username" column="@username" type="String" multivalued="false" hidden="true"/>
+		<Attribute name="A8126662442705006912" attribute="roles_" column="@roles" type="String" multivalued="false" hidden="true"/>
+		<Attribute name="A5867760647533877791" attribute="password" column="@password" type="String" multivalued="false" hidden="true"/>
+	</Attributes>
+	<Actions>
+		<Action name="U1320417633150" action="splitvalue" oldname="roles_" attribute="roles" multivalued="true" oldvalue="," hint="permissioncode,permissiondisplayname" description="Used roles in the USER tag ROLES attributes"/>
+	</Actions>
+</Discovery>

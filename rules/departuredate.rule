@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="departuredate" operator="and" query="identity" displayname="departuredate" version="2">
+	<RequestCriteria name="C1479284756133_724" criteria="ltDeparturePeriod">
+		<RequestCriteriaParam name="departureDatePeriodParam" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

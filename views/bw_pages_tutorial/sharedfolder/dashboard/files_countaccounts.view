@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="files_countaccounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="files_countaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1443532982280_1544" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1443532992793_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1443533005306_1546" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountright">
+		<ViewAttribute name="A1443533024221_1547" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1443533025807_0" operation="isFalse" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1443533030721_1" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1443533039108_1549" attribute="uid" alias="total_active_accounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1443711500603_547" prefix="share_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="A1443711507647_548" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1443711514533_549" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

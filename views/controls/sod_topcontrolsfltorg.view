@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sod_topcontrols_fltorg" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="SOD on Identities : Controls who appears the most" notes="">
+	<ViewParam name="shortnames" displayname="organisation short names" type="String"/>
+	<ViewParam name="codes" displayname="organisation codes" type="String">
+		<Value name="0" data="DRHRE"/>
+	</ViewParam>
+	<ViewSort name="sort" attribute1="A1324371861173_36433" direction1="DESC"/>
+	<ViewAttribute name="A1324371861173_36433" attribute="recorduid" alias="nbdefect" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1330348867142_58" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewAttribute name="A1330348902333_59" attribute="shortname" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1330348942325_0" reference="shortnames" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1399020691298_295" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1399020696765_0" reference="codes" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1399020761635_298" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1399020765206_299" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1399020776846_300" attribute="controltagtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1399020778075_301" attribute="controlcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1399020779615_302" attribute="controldisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1399020781358_303" attribute="controltype" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1399020788754_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="6"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="A1399020783826_304" attribute="controlnotes" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

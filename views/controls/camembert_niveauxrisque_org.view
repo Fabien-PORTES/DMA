@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="camembert_niveauxrisque_org" prefix="org_" distinct="true" concept="organisation" displayname="camembert_niveauxrisque_org" notes="">
+	<ViewParam name="organizationrecorduid" displayname="organizationrecorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1348063293470_4" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1348063308251_0" reference="organizationrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1348063295964_5" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1348063296764_6" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1348063297516_7" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1348063298596_8" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1348063327093_10" prefix="identity_" kind="inner" join="identity">
+		<ViewAttribute name="A1348063340548_11" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1348063354165_12" kind="inner" join="controlresult">
+			<ViewAttribute name="A1348063379064_13" attribute="controlcode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_15" attribute="controltype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1348063382848_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="6"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="A1348063379064_17" attribute="controldisplayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_18" attribute="controldescription" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_19" attribute="controlnotes" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_20" attribute="controltagtype" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_21" attribute="controltagscope" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_22" attribute="controltagfamily" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_23" attribute="controltagapplication" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_24" attribute="controltagpermission" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_25" attribute="controltagcustom1" alias="risklevel" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1348063379064_26" attribute="controltagcustom2" alias="module" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

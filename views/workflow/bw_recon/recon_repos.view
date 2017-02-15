@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_recon_repos" prefix="repo_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="repository" displayname="Repositories">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1423064567358_1248" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423064567358_1249" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423064567358_1250" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423064567358_1251" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423064567358_1252" attribute="media" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423064567358_1253" attribute="extractDate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423064567358_1254" attribute="extractday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423064567358_1255" attribute="type" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1423066951810_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="A"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1423064567358_1256" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423064567358_1257" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

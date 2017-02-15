@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityjoborgpivotrule" distinct="false" concept="identity" displayname="# of Identities by organisation and by job corresponding to a given rule result" notes="">
+	<ViewParam name="rulename" displayname="Rule name"/>
+	<ViewParam name="lowthreshold" displayname="Low threshold"/>
+	<ViewAttribute name="A1300893525397_84" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false">
+		<ViewAttributeFilter name="F1303581195580_0" reference="lowthreshold" operation="ge" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1300964574593_486" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1300964581881_487" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1300964584736_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1303581137025_771" prefix="org_" join="organisation">
+		<ViewAttribute name="A1303581223940_777" attribute="recorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1303581225480_778" attribute="code" removedfromprojection="false"/>
+		<ViewAttribute name="A1303581226834_779" attribute="displayname" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1303581217542_774" attribute="jobtitlerecorduid" removedfromprojection="false"/>
+	<ViewAttribute name="A1303581219095_775" attribute="jobtitlecode" removedfromprojection="false"/>
+	<ViewAttribute name="A1303581220494_776" attribute="jobtitledisplayname" removedfromprojection="false"/>
+</View>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource EIM record" description="The general resource EIM record defines EIM-related information. There is only one record per general resource profile that contains an EIM segment.">
+	<Source type="FORMATTED" filter="^05A0 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GREIM_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the general resource EIM segment record (05A0)."/>
+		<Attribute name="A4199536690768339793" attribute="GREIM_NAME" column="6-251" type="String" multivalued="false" description="Profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GREIM_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Class name."/>
+		<Attribute name="A7466509792483562715" attribute="GREIM_DOMAIN_DN" column="262-1284" type="String" multivalued="false" description="EIM domain name."/>
+		<Attribute name="A7466509792483562987" attribute="GREIM_ENABLE" column="1286-1289" type="Boolean" multivalued="false" description="EIM Enable option."/>
+		<Attribute name="A7466509792483562716" attribute="GREIM_RESERVED" column="1291-1364" type="String" multivalued="false" description="Reserved for IBM's use."/>
+		<Attribute name="A7466509792483562717" attribute="GREIM_LOCAL_REG" column="1366-1620" type="String" multivalued="false" description="EIM LDAP local registry name."/>
+		<Attribute name="A7466509792483562718" attribute="GREIM_KERBREG" column="1622-1876" type="String" multivalued="false" description="EIM Kerberos Registry Name"/>
+		<Attribute name="A7466509792483562719" attribute="GREIM_X509REG" column="1878-2132" type="String" multivalued="false" description="EIM X.509 Registry name"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

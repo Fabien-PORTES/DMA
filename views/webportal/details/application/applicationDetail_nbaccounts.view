@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbaccounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="br_applicationDetail_nbaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="disabledaccount" displayname="disabledaccount" type="Boolean"/>
+	<ViewParam name="lockedaccount" displayname="lockedaccount" type="Boolean"/>
+	<ViewParam name="orphanaccount" displayname="orphanaccount" type="Boolean"/>
+	<ViewParam name="serviceaccount" displayname="serviceaccount" type="Boolean"/>
+	<ViewParam name="activeaccount" displayname="activeaccount"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378806434708_1170" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378806463710_1172" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="applicationright">
+		<ViewAttribute name="A1422979127564_945" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1422979132560_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1422979130200_946" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1422979139685_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1422979031884_940" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1422979152314_0" reference="disabledaccount" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1422979039564_942" attribute="locked" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1422979173589_0" reference="lockedaccount" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewCriteria name="I1422979310179_962" enabled="((!param.isEmpty(&apos;orphanaccount&apos;)) &amp;&amp; (param.orphanaccount.get()==true))" criteria="notReconciliatedAccounts">
+	</ViewCriteria>
+	<ViewAttribute name="A1422980343190_1009" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false" enabled="(!param.isEmpty(&apos;activeaccount&apos;) ) &amp;&amp; (param.activeaccount.get()==true)">
+		<ViewAttributeFilter name="F1422980349383_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+		<ViewAttributeFilter name="F1422980357854_1" operation="isNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1428500870917_4596" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.isEmpty(&apos;serviceaccount&apos;)==false &amp;&amp; param.serviceaccount.get()==true" join="reconciliation">
+		<ViewAttribute name="A1428500877159_4597" attribute="noownercode" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1428500879809_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="service"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

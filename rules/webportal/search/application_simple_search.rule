@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_application_simple_search" operator="and" query="application" displayname="Simple application search ({code}, {name})" version="4">
+	<RequestParam name="code" displayname="Code" query="application" criteria="likeCode" criteriaparam="codeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="name" displayname="Name" query="application" criteria="likeDisplayName" criteriaparam="displayNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1423217758746_366" criteria="likeCode">
+		<RequestCriteriaParam name="codeParam" reference="code" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423217792902_368" criteria="likeDisplayName">
+		<RequestCriteriaParam name="displayNameParam" reference="name" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

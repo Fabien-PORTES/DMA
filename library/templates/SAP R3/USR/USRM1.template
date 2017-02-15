@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343581545447" title="Material Master User Settings: Organizational Levels " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A5862793563791610211" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A6385199105174876425" attribute="uname" column="UNAME" type="String" multivalued="false" persistent="false" description="User name"/>
+		<Attribute name="A7162454276471158101" attribute="bilds" column="BILDS" type="String" multivalued="false" persistent="false" description="Screen Sequence Number"/>
+		<Attribute name="A6529648415418142787" attribute="mbrsh" column="MBRSH" type="String" multivalued="false" persistent="false" description="Deactivated"/>
+		<Attribute name="A1344147133627533496" attribute="werks" column="WERKS" type="String" multivalued="false" persistent="false" description="Plant"/>
+		<Attribute name="A8897093264495728652" attribute="ref_werks" column="REF_WERKS" type="String" multivalued="false" persistent="false" description="Reference plant"/>
+		<Attribute name="A3569132910049747694" attribute="lgort" column="LGORT" type="String" multivalued="false" persistent="false" description="Storage Location"/>
+		<Attribute name="A1853459873614735834" attribute="ref_lgort" column="REF_LGORT" type="String" multivalued="false" persistent="false" description="Reference Storage Location"/>
+		<Attribute name="A3344239336912828530" attribute="bukrs" column="BUKRS" type="String" multivalued="false" persistent="false" description="Company Code"/>
+		<Attribute name="A9197789886974033329" attribute="ref_bukrs" column="REF_BUKRS" type="String" multivalued="false" persistent="false" description="Reference Company Code"/>
+		<Attribute name="A1434795836724754021" attribute="bwkey" column="BWKEY" type="String" multivalued="false" persistent="false" description="Valuation Area"/>
+		<Attribute name="A2824850099628905553" attribute="ref_bwkey" column="REF_BWKEY" type="String" multivalued="false" persistent="false" description="Reference valuation area"/>
+		<Attribute name="A415158545244579109" attribute="bwtar" column="BWTAR" type="String" multivalued="false" persistent="false" description="Valuation Type"/>
+		<Attribute name="A4673764015076689671" attribute="ref_bwtar" column="REF_BWTAR" type="String" multivalued="false" persistent="false" description="Reference valuation type"/>
+		<Attribute name="A5540585618903493899" attribute="vkorg" column="VKORG" type="String" multivalued="false" persistent="false" description="Sales Organization"/>
+		<Attribute name="A8437405105581552628" attribute="ref_vkorg" column="REF_VKORG" type="String" multivalued="false" persistent="false" description="Reference sales organization"/>
+		<Attribute name="A6328834838019857577" attribute="vtweg" column="VTWEG" type="String" multivalued="false" persistent="false" description="Distribution Channel"/>
+		<Attribute name="A3621214057521235021" attribute="ref_vtweg" column="REF_VTWEG" type="String" multivalued="false" persistent="false" description="Reference distribution channel"/>
+		<Attribute name="A5546862798356347356" attribute="lgnum" column="LGNUM" type="String" multivalued="false" persistent="false" description="Warehouse Number / Warehouse Complex"/>
+		<Attribute name="A6901426564576016980" attribute="ref_lgnum" column="REF_LGNUM" type="String" multivalued="false" persistent="false" description="Reference warehouse number"/>
+		<Attribute name="A1223581458766742165" attribute="lgtyp" column="LGTYP" type="String" multivalued="false" persistent="false" description="Storage Type"/>
+		<Attribute name="A8145493164512223242" attribute="ref_lgtyp" column="REF_LGTYP" type="String" multivalued="false" persistent="false" description="Reference storage type"/>
+		<Attribute name="A2450375414830288641" attribute="dispr" column="DISPR" type="String" multivalued="false" persistent="false" description="Material: MRP profile"/>
+		<Attribute name="A1008127474307239359" attribute="propr" column="PROPR" type="String" multivalued="false" persistent="false" description="Forecast profile"/>
+		<Attribute name="A87208026692731824" attribute="aausw" column="AAUSW" type="Boolean" multivalued="false" persistent="false" description="Indicator: view selection only on request"/>
+		<Attribute name="A6122899213192357289" attribute="aschl" column="ASCHL" type="Boolean" multivalued="false" persistent="false" description="Indicator: org. levels/profiles only on request"/>
+		<Attribute name="A8785228128001321139" attribute="abrsh" column="ABRSH" type="Boolean" multivalued="false" persistent="false" description="Indicator: hide industry sector on initial"/>
+		<Attribute name="A5838322050207151343" attribute="bdref" column="BDREF" type="String" multivalued="false" persistent="false" description="Inactive: no longer used"/>
+		<Attribute name="A4174603959186709982" attribute="sisel" column="SISEL" type="String" multivalued="false" persistent="false" description="Create Views Selected"/>
+	</Attributes>
+	<Format booleanvalues="X"/>
+	<Checks>
+		<Check name="U1343581623992" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1343581982566" action="default" attribute="aausw" newvalue="false"/>
+		<Action name="U1343581987059" action="default" attribute="aschl" newvalue="false"/>
+		<Action name="U1343581991708" action="default" attribute="abrsh" newvalue="false"/>
+	</Actions>
+</Discovery>

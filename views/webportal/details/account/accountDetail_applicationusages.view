@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountDetail_applicationusages" prefix="usage_" errorifempty="false" distinct="true" identitysecure="false" concept="usage" displayname="accountDetail_applicationusages">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1379576345606_265" kind="inner" identitysecure="false" join="account">
+		<ViewAttribute name="A1379576414403_266" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1379576416230_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1379577285442_270" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1379577298173_271" attribute="firstdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1379577300864_272" attribute="lastdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1379577304825_273" attribute="counter" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1379577816774_338" prefix="application_" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="1379577821408_340" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1379577825660_341" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

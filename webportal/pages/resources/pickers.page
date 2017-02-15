@@ -1,0 +1,3261 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/styles/styles.page"
+
+picker = NLS {
+	job.results [en "Results" fr "Résultats"]
+	organisation.results [en "Results" fr "Résultats"]
+	identity.title [en "Identity selection" fr "Sélection d'une identité"]
+	group.hierarchy.subtitle [en "Group tree" fr "Arbre des groupes"]
+	permission.hierarchy.subtitle [en "Permission tree" fr "Arbre des permissions"]
+	repository.result [en "List of repositories found" fr "Liste des référentiels trouvés"]
+	permission.hierarchy.title [en "Permission selection using a tree" fr "Sélection d'une permission à l'aide d'un arbre"]
+	group.result [en "List of groups found" fr "Liste des groupes trouvés"]
+	job.result [en "List of jobs found" fr "Liste des métiers trouvés"]
+	account.result [en "List of accounts found" fr "Liste des comptes trouvés"]
+	organisation.result [en "List of organizations found" fr "Liste des organisations trouvées"]
+	deletedidentity.title [en "Selection of an identity who has left the company" fr "Sélection d'une identité ayant quitté la société"]
+	account.title [en "Account selection" fr "Sélection d'un compte"]
+	organisation.hierarchy.subtitle [en "Organization tree" fr "Arbre des organisations"]
+	asset.result [en "List of assets found" fr "Liste des actifs trouvés"]
+	group.hierarchy.title [en "Group selection using a tree" fr "Sélection d'un groupe à l'aide d'un arbre"]
+	permission.title [en "Permission selection" fr "Sélection d'une permission"]
+	clearfield.title [en "Clear field content" fr "Effacement du contenu du champ"]
+	application.type.profile [en "Role-based or profile-based application" fr "Application basée sur des profils ou des rôles"]
+	group.title [en "Group selection" fr "Sélection d'un groupe"]
+	application.result [en "List of applications found" fr "Liste des applications trouvées"]
+	repository.title [en "Repository selection" fr "Sélection d'un référentiel"]
+	organisation.identities [en "List of persons working in the selected organization" fr "Liste des collaborateurs de l'organisation sélectionnée"]
+	organisation.title [en "Organization selection" fr "Sélection d'une organisation"]
+	permission.result [en "List of permissions found" fr "Liste des permissions trouvées"]
+	asset.title [en "Asset selection" fr "Sélection d'un actif"]
+	application.title [en "Application selection" fr "Sélection d'une application"]
+	job.title [en "Job selection" fr "Sélection d'un métier"]
+	organisation.hierarchy.title [en "Organization selection using a tree" fr "Sélection d'une organisation à l'aide d'un arbre"]
+	identity.result [en "List of identities found" fr "Liste des identités trouvées"]
+	searchaction [en "Apply" fr "Appliquer"]
+	emptyaction [en "Reset" fr "Vider"]
+}
+
+
+assetPicker = Dialog {
+
+	title: $picker.asset.title
+	mixins: pickerMixin
+	width: 750
+	height: 650
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outRecordUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localCategory = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+	localCategoryEdit = Variable {
+		type: String
+	}
+
+	// database view
+	assetList = Dataset {
+		view: br_asset_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			localCategory to paramCategory,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	assetCategoryList = Dataset {
+		view: br_assetcategory_picker
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/asset_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $asset.concept
+				proposal: Asset.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $asset.code
+				proposal: Asset.code
+			}
+			Combo {
+				variable: localCategoryEdit
+				label: $asset.categorydisplayname
+				allow-none: True
+				options: Dynamic {
+					data: assetCategoryList
+					text: Current categorydisplayname
+					value: Current categorydisplayname
+				}
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode,  Set localCategoryEdit to localCategory
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit,Unset localDisplayname, Unset localCode, Unset localCategoryEdit, Unset localCategory
+					text: $picker.emptyaction
+				}
+			}			
+		}
+	}
+
+	// results
+	Table {
+		data: assetList
+		label: Label {
+			value: $picker.asset.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: displayname
+			header: $asset.concept
+			image: "16/audit/asset_16.png"
+			width: 440px
+			selection: outDisplayname
+		}
+		Column {
+			column: categorydisplayname
+			header: $asset.categorydisplayname
+			width: 200px
+		}
+	}
+}
+
+assetMultiPicker = Dialog {
+
+	title: $picker.asset.title
+	mixins: pickerMixin
+	width: 750
+	height: 650
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variable (uid)
+	outUid = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localCategory = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+	localCategoryEdit = Variable {
+		type: String
+	}
+
+	// database view
+	assetList = Dataset {
+		view: br_asset_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			localCategory to paramCategory,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	assetCategoryList = Dataset {
+		view: br_assetcategory_picker
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/asset_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $asset.concept
+				proposal: Asset.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $asset.code
+				proposal: Asset.code
+			}
+			Combo {
+				variable: localCategoryEdit
+				label: $asset.categorydisplayname
+				allow-none: True
+				options: Dynamic {
+					data: assetCategoryList
+					text: Current categorydisplayname
+					value: Current categorydisplayname
+				}
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode,  Set localCategoryEdit to localCategory
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit,Unset localDisplayname, Unset localCode, Unset localCategoryEdit, Unset localCategory
+					text: $picker.emptyaction
+				}
+			}			
+		}
+	}
+
+	// results
+	Table {
+		data: assetList
+		checkboxes: uid to outUid
+		label: Label {
+			value: $picker.asset.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: uid
+			hidden: True
+		}
+		Column {
+			column: displayname
+			header: $asset.concept
+			image: "16/audit/asset_16.png"
+			width: 440px
+		}
+		Column {
+			column: categorydisplayname
+			header: $asset.categorydisplayname
+			width: 200px
+		}
+	}
+}
+
+
+organisationPicker = Dialog {
+
+	title: $picker.organisation.title
+	width: 500
+	height: 500
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton (Set False to varDummy)
+		CancelButton
+	]
+
+	// for dummy action in OkButton
+	varDummy = Variable {
+		type: Boolean
+	}
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outCode = Variable {
+		type: String
+	}
+	outShortname = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localShortname = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localShortnameEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+	localTypeEdit = Variable {
+		type: String
+	}
+
+	// database view
+	organisationList = Dataset {
+		view: br_organisation_picker with
+			localCode to paramCode,
+			localShortname to paramShortname,
+			localDisplayname to paramDisplayname,
+			localTypeEdit to paramType
+	}
+
+	organisationTypePicker = Dataset {
+		view: br_organisationtype_picker
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 15%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/organisation_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $organisation.concept
+				proposal: Organisation.displayName
+			}
+			Edit {
+				variable: localShortnameEdit
+				label: $organisation.shortname
+				proposal: Organisation.shortName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $organisation.code
+				proposal: Organisation.code
+			}
+			Combo {
+				options:Dynamic{
+					data:organisationTypePicker
+					text: Current organisationtypedisplayname
+					value: Current organisationtypecode
+				}
+				variable:localTypeEdit
+				allow-none:True
+				label:$organisation.organisationtypedisplayname
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localCodeEdit to localCode, Set localDisplaynameEdit to localDisplayname, Set localShortnameEdit to localShortname
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localCodeEdit, Unset localDisplaynameEdit, Unset localShortnameEdit, Unset localCode, Unset localDisplayname, Unset localShortname
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: organisationList
+		configurable:True
+		label: Label {
+			value: $picker.organisation.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: code
+			header: $organisation.code
+			image: "16/audit/organisation_16.png"
+			width: 50%
+			selection: outCode
+			sortable: True
+			initially-masked:True
+		}
+		Column {
+			column: shortname
+			header: $organisation.shortname
+			image: "16/audit/organisation_16.png"
+			width: 50%
+			selection: outShortname
+			sortable: True
+		}
+		Column {
+			column: displayname
+			header: $organisation.displayname
+			width: 50%
+			selection: outDisplayname
+			sortable: True
+		}
+		Column {
+			column:organisationtypecode 
+			header: $organisation.organisationtypecode
+			width: 50%
+			sortable: True
+			initially-masked:True
+		}
+	}
+}
+
+organisationMultiPicker = Dialog {
+
+	title: $picker.organisation.title
+	width: 500
+	height: 500
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+	
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variable (uid)
+	outUid = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localShortname = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localShortnameEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+
+	// database view
+	organisationList = Dataset {
+		view: br_organisation_picker with
+			localCode to paramCode,
+			localShortname to paramShortname,
+			localDisplayname to paramDisplayname,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 15%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/organisation_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $organisation.concept
+				proposal: Organisation.displayName
+			}
+			Edit {
+				variable: localShortnameEdit
+				label: $organisation.shortname
+				proposal: Organisation.shortName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $organisation.code
+				proposal: Organisation.code
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localCodeEdit to localCode, Set localDisplaynameEdit to localDisplayname, Set localShortnameEdit to localShortname
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localCodeEdit, Unset localDisplaynameEdit, Unset localShortnameEdit, Unset localCode, Unset localDisplayname, Unset localShortname
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: organisationList
+		checkboxes: uid to outUid
+		label: Label {
+			value: $picker.organisation.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: uid
+			hidden: True
+		}
+		Column {
+			column: shortname
+			header: $organisation.shortname
+			image: "16/audit/organisation_16.png"
+			width: 50%
+			sortable: True
+		}
+		Column {
+			column: displayname
+			header: $organisation.displayname
+			width: 50%
+			sortable: True
+		}
+	}
+}
+
+/*
+bigTitleStyle = Style {
+	size: 16px
+}
+*/
+organisationTreePicker = Dialog {
+
+	title: $picker.organisation.title
+	width: 500
+	height: 500
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton
+		CancelButton
+	]
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// database view
+	organisationList = HierarchicalData {
+		view: br_organisation_hierarchy_picker
+		initial: ^parent IsNull
+		connect: parent recorduid to child ^parent
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 15%
+		layout: Layout {
+			grab: horizontal False vertical False			
+		}
+
+		Group {
+			Image {
+				image: "48/audit/organisation_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+			layout: Layout {
+				align: horizontal Beginning vertical Center
+			}
+			
+			Header {
+				value: $picker.organisation.hierarchy.subtitle
+				styling: bigTitleStyle
+			}
+		}
+	}
+
+	// results
+	Tree {
+		data: organisationList
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: shortname
+			header: $organisation.shortname
+			image: "16/audit/organisation_16.png"
+			width: 50%
+		}
+		Column {
+			column: displayname
+			header: $organisation.displayname
+			width: 50%
+			selection: outDisplayname
+		}
+	}
+}
+
+jobPicker = Dialog {
+	title: $picker.job.title
+	width: 500
+	height: 450
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outRecordUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	outRecordUid = Variable {
+		type: Integer
+	}
+	
+	outUid = Variable {
+		type: String
+	}
+	
+	outDisplayname = Variable {
+		type: String
+	}
+
+	localJobCode = Variable {
+		type: String
+	}
+	
+	localJobDisplayname = Variable {
+		type: String
+	}
+
+	localJobCodeEdit = Variable {
+		type: String
+	}
+	
+	localJobDisplaynameEdit = Variable {
+		type: String
+	}
+
+	jobList = Dataset {
+		view: br_job_picker with localJobCode to paramJobCode, localJobDisplayname to paramJobDisplayname
+	}
+
+	Splitter {
+		disposition: Horizontal
+		size: 15%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/job_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+			Edit {
+				variable: localJobDisplaynameEdit
+				label: $identity.jobtitledisplayname
+				proposal: JobTitle.displayName
+			}
+			Edit {
+				variable: localJobCodeEdit
+				label: $identity.jobtitlecode
+				proposal: JobTitle.code
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localJobDisplaynameEdit to localJobDisplayname, Set localJobCodeEdit to localJobCode
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localJobDisplaynameEdit, Unset localJobCodeEdit,Unset localJobDisplayname, Unset localJobCode
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	Table {
+		data: jobList
+		label: Label {
+			value: $picker.job.results
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: jobtitlerecorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: jobtitleuid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: jobtitledisplayname
+			selection: outDisplayname
+			header: $identity.jobtitledisplayname
+			image: "16/audit/job_16.png"
+			width: 100%
+		}
+	}
+}
+
+applicationPicker = Dialog {
+
+	title: $picker.application.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outRecordUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localRepository = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+	localRepositoryEdit = Variable {
+		type: String
+	}
+
+	// database view
+	applicationList = Dataset {
+		view: br_application_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			localRepository to paramRepository,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/application_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $application.concept
+				//proposal: Application.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $application.code
+				//proposal: Application.code
+			}
+			Edit {
+				variable: localRepositoryEdit
+				label: $repository.concept
+				proposal: Repository.displayName
+				commands: [
+					Command {
+						icon: "16/audit/repository_16.png"
+						tooltip: $picker.repository.title
+						actions: Dialog repositoryPicker (localRepositoryEdit from outDisplayname)
+					}
+				]
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode, Set localRepositoryEdit to localRepository 
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit, Unset localRepositoryEdit,Unset localDisplayname, Unset localCode, Unset localRepository  
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: applicationList
+		label: Label {
+			value: $picker.application.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: displayname
+			header: $application.concept
+			image: "16/audit/application_16.png"
+			width: 50%
+			selection: outDisplayname
+			sortable: True
+		}
+		Column {
+			column: repositorydisplayname
+			header: $repository.concept
+			width: 50%
+			sortable: True
+		}
+	}
+}
+
+applicationMultiPicker = Dialog {
+
+	title: $picker.application.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variable (uid)
+	outUid = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localRepository = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+	localRepositoryEdit = Variable {
+		type: String
+	}
+
+	// database view
+	applicationList = Dataset {
+		view: br_application_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			localRepository to paramRepository,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/application_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $application.concept
+				//proposal: Application.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $application.code
+				//proposal: Application.code
+			}
+			Edit {
+				variable: localRepositoryEdit
+				label: $repository.concept
+				proposal: Repository.displayName
+				commands: [
+					Command {
+						icon: "16/audit/repository_16.png"
+						tooltip: $picker.repository.title
+						actions: Dialog repositoryPicker (localRepositoryEdit from outDisplayname)
+					}
+				]
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode, Set localRepositoryEdit to localRepository 
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit, Unset localRepositoryEdit,Unset localDisplayname, Unset localCode, Unset localRepository  
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: applicationList
+		checkboxes: uid to outUid
+		label: Label {
+			value: $picker.application.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: uid
+			hidden: True
+		}
+		Column {
+			column: displayname
+			header: $application.concept
+			image: "16/audit/application_16.png"
+			width: 50%
+			sortable: True
+		}
+		Column {
+			column: repositorydisplayname
+			header: $repository.concept
+			width: 50%
+			sortable: True
+		}
+	}
+}
+
+accountPicker = Dialog {
+
+	title: $picker.account.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outRecordUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		multivalued: True
+		type: String
+	}
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// search attributes
+	localIdentifier = Variable {
+		type: String
+	}
+	localLogin = Variable {
+		type: String
+	}
+	localRepository = Variable {
+		type: String
+	}
+	localIdentifierEdit = Variable {
+		type: String
+	}
+	localLoginEdit = Variable {
+		type: String
+	}
+	localRepositoryEdit = Variable {
+		type: String
+	}
+
+	// database view
+	accountList = Dataset {
+		view: br_account_picker with
+			localIdentifier to paramIdentifier,
+			localLogin to paramLogin,
+			localRepository to paramRepository,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/account_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localLoginEdit
+				label: $account.login
+				proposal: Account.login
+			}
+			Edit {
+				variable: localIdentifierEdit
+				label: $account.identifier
+				proposal: Account.identifier
+			}
+			Edit {
+				variable: localRepositoryEdit
+				label: $repository.concept
+				proposal: Repository.displayName
+				commands: [
+					Command {
+						icon: "16/audit/repository_16.png"
+						tooltip: $picker.repository.title
+						actions: Dialog repositoryPicker (localRepositoryEdit from outDisplayname)
+					}
+				]
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localLoginEdit to localLogin, Set localIdentifierEdit to localIdentifier, Set localRepositoryEdit to localRepository
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localLoginEdit, Unset localIdentifierEdit, Unset localRepositoryEdit,Unset localLogin, Unset localIdentifier, Unset localRepository
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: accountList
+		label: Label {
+			value: $picker.account.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: identifier
+			header: $account.identifier
+			image: "16/audit/account_16.png"
+			width: 33%
+			selection: outDisplayname
+			sortable: True
+		}
+		Column {
+			column: login
+			header: $account.login
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: repositorydisplayname
+			header: $repository.concept
+			width: 33%
+			sortable: True
+		}
+	}
+}
+
+accountMultiPicker = Dialog {
+
+	title: $picker.account.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variable (uid)
+	outUid = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// search attributes
+	localIdentifier = Variable {
+		type: String
+	}
+	localLogin = Variable {
+		type: String
+	}
+	localRepository = Variable {
+		type: String
+	}
+	localIdentifierEdit = Variable {
+		type: String
+	}
+	localLoginEdit = Variable {
+		type: String
+	}
+	localRepositoryEdit = Variable {
+		type: String
+	}
+
+	// database view
+	accountList = Dataset {
+		view: br_account_picker with
+			localIdentifier to paramIdentifier,
+			localLogin to paramLogin,
+			localRepository to paramRepository,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/account_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localLoginEdit
+				label: $account.login
+				proposal: Account.login
+			}
+			Edit {
+				variable: localIdentifierEdit
+				label: $account.identifier
+				proposal: Account.identifier
+			}
+			Edit {
+				variable: localRepositoryEdit
+				label: $repository.concept
+				proposal: Repository.displayName
+				commands: [
+					Command {
+						icon: "16/audit/repository_16.png"
+						tooltip: $picker.repository.title
+						actions: Dialog repositoryPicker (localRepositoryEdit from outDisplayname)
+					}
+				]
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localLoginEdit to localLogin, Set localIdentifierEdit to localIdentifier, Set localRepositoryEdit to localRepository
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localLoginEdit, Unset localIdentifierEdit, Unset localRepositoryEdit,Unset localLogin, Unset localIdentifier, Unset localRepository
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: accountList
+		checkboxes: uid to outUid
+		label: Label {
+			value: $picker.account.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: uid
+			hidden: True
+		}
+		Column {
+			column: identifier
+			header: $account.identifier
+			image: "16/audit/account_16.png"
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: login
+			header: $account.login
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: repositorydisplayname
+			header: $repository.concept
+			width: 33%
+			sortable: True
+		}
+	}
+}
+
+groupPicker = Dialog {
+
+	title: $picker.group.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localRepository = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+	localRepositoryEdit = Variable {
+		type: String
+	}
+
+	// database view
+	groupList = Dataset {
+		view: br_group_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			localRepository to paramRepository,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/group_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $group.concept
+				proposal: Group.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $group.code
+				proposal: Group.code
+			}
+			Edit {
+				variable: localRepositoryEdit
+				label: $repository.concept
+				proposal: Repository.displayName
+				commands: [
+					Command {
+						icon: "16/audit/repository_16.png"
+						tooltip: $picker.repository.title
+						actions: Dialog repositoryPicker (localRepositoryEdit from outDisplayname)
+					}
+				]
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode, Set localRepositoryEdit to localRepository
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit, Unset localRepositoryEdit,Unset localDisplayname, Unset localCode, Unset localRepository
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: groupList
+		label: Label {
+			value: $picker.group.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: code
+			header: $group.code
+			image: "16/audit/group_16.png"
+			width: 33%
+			selection: outDisplayname
+			sortable: True
+		}
+		Column {
+			column: displayname
+			header: $group.displayname
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: repositorydisplayname
+			header: $repository.concept
+			width: 33%
+			sortable: True
+		}
+	}
+}
+
+groupMultiPicker = Dialog {
+
+	title: $picker.group.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (uid)
+	outUid = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localRepository = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+	localRepositoryEdit = Variable {
+		type: String
+	}
+
+	// database view
+	groupList = Dataset {
+		view: br_group_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			localRepository to paramRepository,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/group_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $group.concept
+				proposal: Group.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $group.code
+				proposal: Group.code
+			}
+			Edit {
+				variable: localRepositoryEdit
+				label: $repository.concept
+				proposal: Repository.displayName
+				commands: [
+					Command {
+						icon: "16/audit/repository_16.png"
+						tooltip: $picker.repository.title
+						actions: Dialog repositoryPicker (localRepositoryEdit from outDisplayname)
+					}
+				]
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode, Set localRepositoryEdit to localRepository
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit, Unset localRepositoryEdit,Unset localDisplayname, Unset localCode, Unset localRepository
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: groupList
+		checkboxes: uid to outUid
+		label: Label {
+			value: $picker.group.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: uid
+			hidden: True
+		}
+		Column {
+			column: code
+			header: $group.code
+			image: "16/audit/group_16.png"
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: displayname
+			header: $group.displayname
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: repositorydisplayname
+			header: $repository.concept
+			width: 33%
+			sortable: True
+		}
+	}
+}
+
+identityPicker = Dialog {
+
+	title: $picker.identity.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outRecordUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	outHRCode = Variable {
+	  type: String
+	}
+
+	// search attributes
+	localSurname = Variable {
+		type: String
+	}
+	localGivenname = Variable {
+		type: String
+	}
+	localAltname = Variable {
+		type: String
+	}
+	localOrganization = Variable {
+		type: String
+	}
+	localJob = Variable {
+		type: String
+	}
+	localInternal = Variable {
+		type: Boolean
+	}
+	localHrCode = Variable {
+		type: String
+	}
+	localIsManager = Variable {
+		type: Boolean
+	}
+	localSurnameEdit = Variable {
+		type: String
+	}
+	localGivennameEdit = Variable {
+		type: String
+	}
+	localAltnameEdit = Variable {
+		type: String
+	}
+	localOrganizationEdit = Variable {
+		type: String
+	}
+	localJobEdit = Variable {
+		type: String
+	}
+	localInternalEdit = Variable {
+		type: Boolean
+	}
+	localHrCodeEdit = Variable {
+		type: String
+	}
+	localIsManagerEdit = Variable {
+		type: Boolean
+	}
+
+	// database view
+	identityList = Dataset {
+		view: br_identity_picker with
+			localSurname to paramSurname,
+			localGivenname to paramGivenname,
+			localAltname to paramAltname,
+			localOrganization to paramOrganization,
+			localJob to paramJob,
+			localInternal to paramInternal,
+			localHrCode to paramHrCode,
+			localIsManager to paramManager,			
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/identity_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localSurnameEdit
+				label: $identity.surname
+				proposal: Identity.surname
+			}
+			Edit {
+				variable: localGivennameEdit
+				label: $identity.givenname
+				proposal: Identity.givenName
+			}
+			Edit {
+				variable: localAltnameEdit
+				label: $identity.altname
+				proposal: Identity.altName
+			}
+			Edit {
+				variable: localOrganizationEdit
+				label: $organisation.concept
+				proposal: Organisation.displayName
+				commands: [
+					Command {
+						icon: "16/audit/organisation_16.png"
+						tooltip: $picker.organisation.title
+						actions: Dialog organisationPicker (localOrganizationEdit from outDisplayname)
+					}
+					Command {
+						icon: "16/famfamfam_silk_icons_v013/chart_organisation.png"
+						tooltip: $picker.organisation.hierarchy.title
+						actions: Dialog organisationTreePicker (localOrganizationEdit from outDisplayname)
+					}
+				]
+			}
+			Edit {
+				variable: localJobEdit
+				label: $identity.jobtitledisplayname
+				proposal: JobTitle.displayName
+				commands: [
+					Command {
+						icon: "16/audit/job_16.png"
+						tooltip: $picker.job.title
+						actions: Dialog jobPicker (localJobEdit from outDisplayname)
+					}
+				]
+			}
+			Combo {
+				variable: localInternalEdit
+				label: $identity.internal
+				allow-none: True
+				options: Static {
+					Option {
+						value: True
+						text: $global.yes
+					}
+					Option {
+						value: False
+						text: $global.no
+					}
+				}
+			}
+			Combo {
+				variable: localIsManagerEdit
+				label: $identity.manager
+				allow-none: True
+				options: Static {
+					Option {
+						value: True
+						text: $global.yes
+					}
+					Option {
+						value: False
+						text: $global.no
+					}
+				}
+			}
+			Edit {
+				variable: localHrCodeEdit
+				label: $identity.hrcode
+				proposal: Identity.hrCode
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+				actions: Set localSurnameEdit to localSurname, Set localGivennameEdit to localGivenname, Set localAltnameEdit to localAltname, Set localOrganizationEdit to localOrganization, Set localJobEdit to localJob, Set localInternalEdit to localInternal, Set localHrCodeEdit to localHrCode, Set localIsManagerEdit to localIsManager
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localSurnameEdit, Unset localGivennameEdit, Unset localAltnameEdit, Unset localOrganizationEdit, Unset localJobEdit, Unset localInternalEdit, Unset localHrCodeEdit, Unset localIsManagerEdit,Unset localSurname, Unset localGivenname, Unset localAltname, Unset localOrganization, Unset localJob, Unset localInternal, Unset localHrCode, Unset localIsManager
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: identityList
+		label: Label {
+			value: $picker.identity.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: fullname
+			hidden: True
+			selection: outDisplayname
+		}
+		Column {
+			column: hrcode
+			header: $identity.hrcode
+			image: IntImageSelection (Current nbmanager) {
+				when > 0 then "16/audit/manager_16.png"
+				otherwise "16/audit/identity_16.png"
+			}
+			width: 33%
+			sortable: True
+			selection: outHRCode
+		}
+		Column {
+			column: surname
+			header: $identity.surname
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: givenname
+			header: $identity.givenname
+			width: 33%
+			sortable: True
+		}
+	}
+}
+
+identityMultiPicker = Dialog {
+
+	title: $picker.identity.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (uid)
+	outUid = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// search attributes
+	localSurname = Variable {
+		type: String
+	}
+	localGivenname = Variable {
+		type: String
+	}
+	localAltname = Variable {
+		type: String
+	}
+	localOrganization = Variable {
+		type: String
+	}
+	localJob = Variable {
+		type: String
+	}
+	localInternal = Variable {
+		type: Boolean
+	}
+	localHrCode = Variable {
+		type: String
+	}
+	localIsManager = Variable {
+		type: Boolean
+	}
+	localSurnameEdit = Variable {
+		type: String
+	}
+	localGivennameEdit = Variable {
+		type: String
+	}
+	localAltnameEdit = Variable {
+		type: String
+	}
+	localOrganizationEdit = Variable {
+		type: String
+	}
+	localJobEdit = Variable {
+		type: String
+	}
+	localInternalEdit = Variable {
+		type: Boolean
+	}
+	localHrCodeEdit = Variable {
+		type: String
+	}
+	localIsManagerEdit = Variable {
+		type: Boolean
+	}
+
+	// database view
+	identityList = Dataset {
+		view: br_identity_picker with
+			localSurname to paramSurname,
+			localGivenname to paramGivenname,
+			localAltname to paramAltname,
+			localOrganization to paramOrganization,
+			localJob to paramJob,
+			localInternal to paramInternal,
+			localHrCode to paramHrCode,
+			localIsManager to paramManager,			
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/identity_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localSurnameEdit
+				label: $identity.surname
+				proposal: Identity.surname
+			}
+			Edit {
+				variable: localGivennameEdit
+				label: $identity.givenname
+				proposal: Identity.givenName
+			}
+			Edit {
+				variable: localAltnameEdit
+				label: $identity.altname
+				proposal: Identity.altName
+			}
+			Edit {
+				variable: localOrganizationEdit
+				label: $organisation.concept
+				proposal: Organisation.displayName
+				commands: [
+					Command {
+						icon: "16/audit/organisation_16.png"
+						tooltip: $picker.organisation.title
+						actions: Dialog organisationPicker (localOrganizationEdit from outDisplayname)
+					}
+					Command {
+						icon: "16/famfamfam_silk_icons_v013/chart_organisation.png"
+						tooltip: $picker.organisation.hierarchy.title
+						actions: Dialog organisationTreePicker (localOrganizationEdit from outDisplayname)
+					}
+				]
+			}
+			Edit {
+				variable: localJobEdit
+				label: $identity.jobtitledisplayname
+				proposal: JobTitle.displayName
+				commands: [
+					Command {
+						icon: "16/audit/job_16.png"
+						tooltip: $picker.job.title
+						actions: Dialog jobPicker (localJobEdit from outDisplayname)
+					}
+				]
+			}
+			Combo {
+				variable: localInternalEdit
+				label: $identity.internal
+				allow-none: True
+				options: Static {
+					Option {
+						value: True
+						text: $global.yes
+					}
+					Option {
+						value: False
+						text: $global.no
+					}
+				}
+			}
+			Combo {
+				variable: localIsManagerEdit
+				label: $identity.manager
+				allow-none: True
+				options: Static {
+					Option {
+						value: True
+						text: $global.yes
+					}
+					Option {
+						value: False
+						text: $global.no
+					}
+				}
+			}
+			Edit {
+				variable: localHrCodeEdit
+				label: $identity.hrcode
+				proposal: Identity.hrCode
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+				actions: Set localSurnameEdit to localSurname, Set localGivennameEdit to localGivenname, Set localAltnameEdit to localAltname, Set localOrganizationEdit to localOrganization, Set localJobEdit to localJob, Set localInternalEdit to localInternal, Set localHrCodeEdit to localHrCode, Set localIsManagerEdit to localIsManager
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localSurnameEdit, Unset localGivennameEdit, Unset localAltnameEdit, Unset localOrganizationEdit, Unset localJobEdit, Unset localInternalEdit, Unset localHrCodeEdit, Unset localIsManagerEdit,Unset localSurname, Unset localGivenname, Unset localAltname, Unset localOrganization, Unset localJob, Unset localInternal, Unset localHrCode, Unset localIsManager
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: identityList
+		checkboxes: uid to outUid
+		label: Label {
+			value: $picker.identity.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: uid
+			hidden: True
+		}
+		Column {
+			column: fullname
+			hidden: True
+		}
+		Column {
+			column: hrcode
+			header: $identity.hrcode
+			image: IntImageSelection (Current nbmanager) {
+				when > 0 then "16/audit/manager_16.png"
+				otherwise "16/audit/identity_16.png"
+			}
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: surname
+			header: $identity.surname
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: givenname
+			header: $identity.givenname
+			width: 33%
+			sortable: True
+		}
+	}
+}
+
+permissionPicker = Dialog {
+
+	title: $picker.permission.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localApplication = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+	localApplicationEdit = Variable {
+		type: String
+	}
+
+	// database view
+	permissionList = Dataset {
+		view: br_permission_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			localApplication to paramApplication,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/application_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $permission.concept
+				proposal: Permission.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $permission.code
+				proposal: Permission.code
+			}
+			Edit {
+				variable: localApplicationEdit
+				label: $application.concept
+				proposal: Application.displayName
+				commands: [
+					Command {
+						icon: "16/audit/application_16.png"
+						tooltip: $picker.application.title
+						actions: Dialog applicationPicker (localApplicationEdit from outDisplayname)
+					}
+				]
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode, Set localApplicationEdit to localApplication
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit, Unset localApplicationEdit,Unset localDisplayname, Unset localCode, Unset localApplication
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: permissionList
+		label: Label {
+			value: $picker.permission.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: code
+			header: $permission.code
+			image: "16/audit/permission_16.png"
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: displayname
+			header: $permission.displayname
+			width: 33%
+			selection: outDisplayname
+			sortable: True
+		}
+		Column {
+			column: applicationdisplayname
+			header: $application.concept
+			width: 33%
+			sortable: True
+		}
+	}
+}
+
+permissionMultiPicker = Dialog {
+
+	title: $picker.permission.title
+	width: 750
+	height: 650
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (uid)
+	outUid = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localApplication = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+	localApplicationEdit = Variable {
+		type: String
+	}
+
+	// database view
+	permissionList = Dataset {
+		view: br_permission_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			localApplication to paramApplication,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 10%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/application_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $permission.concept
+				proposal: Permission.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $permission.code
+				proposal: Permission.code
+			}
+			Edit {
+				variable: localApplicationEdit
+				label: $application.concept
+				proposal: Application.displayName
+				commands: [
+					Command {
+						icon: "16/audit/application_16.png"
+						tooltip: $picker.application.title
+						actions: Dialog applicationPicker (localApplicationEdit from outDisplayname)
+					}
+				]
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode, Set localApplicationEdit to localApplication
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit, Unset localApplicationEdit,Unset localDisplayname, Unset localCode, Unset localApplication
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: permissionList
+		checkboxes: uid to outUid
+		label: Label {
+			value: $picker.permission.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: uid
+			hidden: True
+		}
+		Column {
+			column: code
+			header: $permission.code
+			image: "16/audit/permission_16.png"
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: displayname
+			header: $permission.displayname
+			width: 33%
+			sortable: True
+		}
+		Column {
+			column: applicationdisplayname
+			header: $application.concept
+			width: 33%
+			sortable: True
+		}
+	}
+}
+
+permissionTreePicker = Dialog {
+
+	title: $picker.permission.title
+	width: 600
+	height: 600
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton
+		CancelButton
+	]
+
+	applicationUid = Variable {
+		type: String
+	}
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// database view
+	permissionList = HierarchicalData {
+		view: br_permission_hierarchy_picker with applicationUid to applicationUid
+		initial: ^parent IsNull
+		connect: parent recorduid to child ^parent
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 15%
+		layout: Layout {
+			grab: horizontal False vertical False			
+		}
+
+		Group {
+			Image {
+				image: "48/audit/organisation_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+			layout: Layout {
+				align: horizontal Beginning vertical Center
+			}
+			
+			Header {
+				value: $picker.permission.hierarchy.subtitle
+				styling: bigTitleStyle
+			}
+		}
+	}
+
+	// results
+	Tree {
+		data: permissionList		
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True		
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: code
+			header: $permission.code
+			image: "16/audit/permission_16.png"
+			width: 100%
+		}
+	}
+}
+
+repositoryPicker = Dialog {
+
+	title: $picker.repository.title
+	width: 500
+	height: 450
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outRecordUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (recordUid, uid and displayname)
+	outRecordUid = Variable {
+		type: Integer
+	}
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+
+	// database view
+	repositoryList = Dataset {
+		view: br_repository_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 15%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/repository_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $repository.concept
+				proposal: Repository.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $repository.code
+				proposal: Repository.code
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit,Unset localDisplayname, Unset localCode
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: repositoryList
+		label: Label {
+			value: $picker.repository.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: recorduid
+			selection: outRecordUid
+			hidden: True
+		}
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: displayname
+			header: $repository.concept
+			image: "16/audit/repository_16.png"
+			width: 100%
+			selection: outDisplayname
+		}
+	}
+}
+
+repositoryMultiPicker = Dialog {
+
+	title: $picker.repository.title
+	width: 500
+	height: 450
+	mixins: pickerMixin
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// input variable : list of uids to restrict scope (if null, no restriction is applied)
+	inUidList = Variable {
+		type: String
+		multivalued: True
+	}
+	// input variable : list of excluded uids to restrict scope (if null, no restriction is applied)
+	inExcludedUidList = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// output variables (uid)
+	outUid = Variable {
+		type: String
+		multivalued: True
+	}
+
+	// search attributes
+	localCode = Variable {
+		type: String
+	}
+	localDisplayname = Variable {
+		type: String
+	}
+	localCodeEdit = Variable {
+		type: String
+	}
+	localDisplaynameEdit = Variable {
+		type: String
+	}
+
+	// database view
+	repositoryList = Dataset {
+		view: br_repository_picker with
+			localCode to paramCode,
+			localDisplayname to paramDisplayname,
+			inUidList to paramUid,
+			inExcludedUidList to paramNotUid
+	}
+
+	// search form
+	Splitter {
+		disposition: Horizontal
+		size: 15%
+		layout: Layout {
+			grab: horizontal False vertical False
+		}
+
+		Group {
+			Image {
+				image: "48/audit/repository_48.png"
+				label: Label {
+					break: True
+				}
+			}
+		}
+		Group {
+
+			// search fields
+			Edit {
+				variable: localDisplaynameEdit
+				label: $repository.concept
+				proposal: Repository.displayName
+			}
+			Edit {
+				variable: localCodeEdit
+				label: $repository.code
+				proposal: Repository.code
+			}
+			ButtonGroup {
+				layout: Layout {
+					grab: horizontal False vertical False
+					align: horizontal End vertical Beginning
+				}
+				Button {
+					actions: Set localDisplaynameEdit to localDisplayname, Set localCodeEdit to localCode
+					text: $picker.searchaction
+				}
+				Button {
+					actions: Unset localDisplaynameEdit, Unset localCodeEdit,Unset localDisplayname, Unset localCode
+					text: $picker.emptyaction
+				}
+			}
+		}
+	}
+
+	// results
+	Table {
+		data: repositoryList
+		checkboxes: uid to outUid
+		label: Label {
+			value: $picker.repository.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+		show-count: True
+
+		Column {
+			column: uid
+			hidden: True
+		}
+		Column {
+			column: displayname
+			header: $repository.concept
+			image: "16/audit/repository_16.png"
+			width: 100%
+		}
+	}
+}
+
+deletedIdentityPicker = Dialog {
+
+	title: $picker.deletedidentity.title
+	width: 530
+	height: 400
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (outUid) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+	// output variables (recordUid, uid and displayname)
+	outUid = Variable {
+		type: String
+	}
+	outDisplayname = Variable {
+		type: String
+	}
+
+	// database view
+	identityList = Dataset {
+		view: br_deleted_identity_picker
+	}
+
+	// results
+	Table {
+		data: identityList
+		show-count: True
+		label: Label {
+			value: $picker.identity.result
+			break: True
+			layout: Layout {
+				align: horizontal Beginning vertical Beginning
+			}
+		}
+		layout: Layout {
+			grab: horizontal True vertical True
+		}
+		double-click: CloseDialog Ok
+
+		Column {
+			column: uid
+			selection: outUid
+			hidden: True
+		}
+		Column {
+			column: fullname
+			header: $identity.fullname
+			image: "16/audit/user_16.png"
+			width: 450px
+			selection: outDisplayname
+			filterable: True
+		}
+	}
+}

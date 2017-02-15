@@ -1,0 +1,34 @@
+layout9 = Page {
+	title:'Layouting with conditional group'
+	
+	val = Variable{initial:0 type:Integer}
+	
+	Combo {
+		variable:val
+		label:'Select what you want to see'
+		allow-none:True
+		options:Static {
+			Option {text:'the first group' value:1}
+			Option {text:'the group group' value:2}
+			Option {text:'the third group' value:3}
+		}	
+	}
+
+	ConditionalGroup {
+		IntCondition(val) {
+			when =1 then [
+				Button {actions:Message 'hello' text:'first group' layout:Layout{grab:horizontal True vertical True}}
+			]
+			when =2 then [
+				Button {actions:Message 'hello' text:'second group' layout:Layout{grab:horizontal True vertical True}}
+			]
+			when =3 then [
+				Button {actions:Message 'hello' text:'third group' layout:Layout{grab:horizontal True vertical True}}
+			]
+			otherwise [
+				Button {actions:Message 'hello' text:'default group' layout:Layout{grab:horizontal True vertical True}}
+			]
+		}
+	}
+}
+

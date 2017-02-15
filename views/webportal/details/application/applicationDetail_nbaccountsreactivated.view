@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbaccountsreactivated" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="applicationDetail_nbaccountsreactivated">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1366622570038_109" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1366622579287_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1375890953730_507" kind="inner" identitysecure="false" join="account">
+		<ViewAttribute name="1375890963153_509" attribute="recorduid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1375890967329_511" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1366622865513_0" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1366622821986_164" kind="inner" identitysecure="false" join="timeslotaccounts">
+			<ViewAttribute name="1375890975301_515" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1366622830443_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewAttribute name="1375890975306_516" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1366622846360_0" operation="isTrue" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343583034738" title="Password History " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A4355620306764888859" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A5999621066842872979" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A8853505457644623148" attribute="timestamp" column="TIMESTAMP" type="String" multivalued="false" persistent="false" description="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+		<Attribute name="A8418326152934209049" attribute="passcode" column="PASSCODE" type="String" multivalued="false" persistent="false" description="Password Hash Value (SHA1, 160 Bit)"/>
+		<Attribute name="A3931411323142709340" attribute="bcode" column="BCODE" type="String" multivalued="false" persistent="false" description="Password Hash Key"/>
+		<Attribute name="A5187224024364766453" attribute="codvn" column="CODVN" type="String" multivalued="false" persistent="false" description="Code Version of Password Hash Algorithm (New Systems)"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343583071916" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

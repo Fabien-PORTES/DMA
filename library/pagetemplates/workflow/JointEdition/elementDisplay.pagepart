@@ -1,0 +1,4 @@
+display: Display {
+	data: <template:variabledataset/> match uid
+	value: Current displayname
+}

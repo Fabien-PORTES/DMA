@@ -1,0 +1,280 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/custom/identity/detailsAD.page"
+
+
+
+identityADSearchPage = Page {
+	title: $identityAdSearch.title
+	homepage-for: All priority 99
+	tags: "DMA_homepage" , "DMA_search" priority 100
+	icon: "16/audit/identity_16.png"
+	large-icon: "48/red/identity.png"
+	description: $searchlabel.identity
+
+	initialUid = Parameter {
+		type: String
+		hidden: True
+	}
+	
+	useNavigatorMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: True
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	identitySearch = SearchDefinition {
+		entity: Identity
+		simple-mode-rule: identity_simple_search_AD
+	}
+	
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedIdentityUid = Variable {type: String }
+
+	showAnalytics = Variable {type:String initial:'0'}
+	uids =  Variable {type:String multivalued:True}
+	identityanalytics = Dataset {
+		pages: Pages{tags: "identity" and "byuids" }
+	}
+
+	identityData = Dataset {
+		search: Search {
+			definition: identitySearch
+			view: br_identity_AD_searchpoint
+		}
+	}
+
+
+	Grid {
+		columns:GridColumn{width:grow}, GridColumn
+		GridRow {
+		GridCell {
+			// Search section
+			Group{
+				layout: Layout { grab: horizontal True vertical False indent: horizontal 5 vertical 0 }
+				SearchEdition {
+					definition: identitySearch
+					layout: Layout { grab: horizontal True vertical False }
+					simple-mode-columns: 3
+					simple-mode-layout: SimpleModeLayout {
+						hrcode { label: $identityAdAttributes.hrcode },
+						samaccountname {label: $identityAdAttributes.custom8 break: True},
+						fullname { label: $identityAdAttributes.FullName  },
+						givenname { label: $identityAdAttributes.givenname  },
+						surname { label: $identityAdAttributes.sn},
+						windomain { label: $identityAdAttributes.custom4}
+					}
+				}
+			}
+		
+			Group{
+				layout: Layout { grab: horizontal True vertical True }
+				
+				PaginatedTable {
+					data: identityData
+					page-size:100
+					//show-count: True
+					double-click: GoTo Page identityDetailsADPage with selectedIdentityUid to paramIdentityUid//, SerializeSearch identitySearch to identitySearch, useNavigatorMode to paramSearchMode, initialIndex to paramInitialIndex
+					layout: Layout { grab: horizontal True vertical True }
+					configurable: True
+					persist-configuration: True
+					initial-selection: initialUid using uid
+					initial-selection-index: paramInitialIndex 
+					selection-index: initialIndex
+			
+					Column {
+						column: uid
+						hidden: True
+						selection: selectedIdentityUid
+						initially-masked: False
+					}
+					Column {
+						column: hrcode
+						header: $identityAdAttributes.hrcode
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: custom8
+						header: $identityAdAttributes.custom8
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: surname
+						header: $identityAdAttributes.sn
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: givenname
+						header: $identityAdAttributes.givenname
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: custom11
+						header: $identityAdAttributes.custom11
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: fullname
+						header: $identityAdAttributes.FullName
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: mail
+						header: $identityAdAttributes.mail
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: internal
+						header: $identityAdAttributes.internal
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: repository_code
+						header: $identityAdAttributes.custom4
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom13
+						header: $identityAdAttributes.custom13
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: custom15
+						header: $identityAdAttributes.custom15
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: custom4
+						header: $identityAdAttributes.custom4
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+				}
+			}
+				
+		
+
+			Group{
+				layout: Layout {align: horizontal End vertical Beginning grab: horizontal True vertical False }
+				ButtonGroup {
+					uniform:True
+					
+					Button {
+						actions:StringCase(showAnalytics) { when "0" then [Set "1" to showAnalytics] when "1" then [Set "0" to showAnalytics]}  
+						layout: Layout { grab: horizontal False vertical False hint: width 200}
+						feature:identitysearch_analytics
+						hidden: IntPredicate ( Count identityanalytics )  { when = 0 then True otherwise False }
+						text: Transform showAnalytics using search_page_analyticsSectionMapping
+					}
+					Button {
+						actions: GoTo Page identityDetailsADPage with selectedIdentityUid to paramIdentityUid //, SerializeSearch identitySearch to identitySearch, useNavigatorMode to paramSearchMode
+						layout: Layout { grab: horizontal False vertical False hint: width 200}
+						disabled: StringPredicate(selectedIdentityUid) { when IsEmpty then True }
+						text: $search_page.showdetails
+					}
+				}
+			}
+
+			
+			Spacer {
+				height:10
+			}
+		}
+		GridCell {
+			// Analytics section
+			Group {
+				hidden:StringPredicate(showAnalytics) { when '0' then True}
+				layout:Layout{hint:width 320}
+	
+				Header {
+					value:$search_page.analyticsreport
+					styling:bigRedTitleStyle
+					layout:Layout{align:horizontal Center vertical Center}
+					tooltip:$search_page.analyticsreporttooltip
+				}
+				TemplateTable {
+					data:identityanalytics
+					layout:Layout{grab: horizontal True vertical True}
+					row-height:82
+					initial-sort:^priority
+					pagination:6
+					disabled:IntPredicate(Count identityData) {when =0 then True when >2001 then True}  //MAX AS OF SQL SERVER : 2100 parameters in Hibernate request
+					show-filter:True			
+					double-click:TransferData identityData(uid) to (uids), 
+								 GoTo Dynamic (Current type, Current name) with uids to uids
+					
+					ImageCell {
+						image:Current largeIcon
+						top:0
+						height:48
+						left:136
+						width:48
+						on-click:
+								TransferData identityData(uid) to (uids), 
+								GoTo Dynamic (Current type, Current name) with uids to uids					
+						}
+					TextCell {
+						column:title
+						top:50
+						height:32
+						left:0
+						width:320
+						horizontal-align:Center
+						filterable:True
+						on-click:
+								TransferData identityData(uid) to (uids), 
+								GoTo Dynamic (Current type, Current name) with uids to uids
+						/*
+								TransferData identityData(uid) to (uids), 
+									MultivaluedDistinct uids, MultivaluedRemove all '' from uids,
+										IntCase(SizeOf uids) { 
+											when =0 then [Message $search_page.analyticsreportnoentries]
+											when <2001 then [GoTo Dynamic (Current type, Current name) with uids to uids] //MAX AS OF SQL SERVER : 2100 parameters in Hibernate request
+											otherwise [Message $search_page.analyticsreporttoomanyentries]
+										}
+										*/
+					
+					}
+				
+				}
+			}
+		}	
+		}
+		}
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="actionpackIdentityApplicationAccount" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="identity" displayname="account infos for a given identity/application" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="applicationuid" displayname="applicationuid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1415627744885_600" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="accountreconciliation">
+		<ViewJoin name="J1415627751149_601" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="applicationright">
+			<ViewAttribute name="A1415627761605_640" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1415627766159_0" reference="applicationuid" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewAttribute name="A1415627757086_602" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_603" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_605" attribute="identifier" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_606" attribute="login" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_607" attribute="profile" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_608" attribute="givenname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_609" attribute="surname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_610" attribute="username" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_611" attribute="employeenumber" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_612" attribute="mail" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_613" attribute="managerdata" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_614" attribute="creationdate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_615" attribute="creationday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_616" attribute="lastlogindate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_617" attribute="lastloginday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_618" attribute="passwordlastsetdate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_619" attribute="passwordlastsetday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_620" attribute="expiredate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_621" attribute="expireday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_622" attribute="nextpwdchangedate" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_623" attribute="nextpwdchangeday" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_624" attribute="service" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_625" attribute="disabled" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_626" attribute="locked" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_627" attribute="logincount" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_628" attribute="badpasswordcount" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_629" attribute="passwordnotrequired" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_630" attribute="passwordcantchange" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_631" attribute="notnormalaccount" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_632" attribute="dontexpirepassword" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_633" attribute="passwordexpired" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_634" attribute="smartcardrequired" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_635" attribute="importaction" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_636" attribute="deletedaction" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_637" attribute="groupchanged" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1415627757086_638" attribute="permissionchanged" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1415628169256_644" prefix="repository" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="repository">
+			<ViewAttribute name="A1415628177493_645" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1415628177493_646" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1415628177493_647" attribute="code" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1415628177493_648" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1415628177493_649" attribute="media" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1415628177493_650" attribute="extractDate" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1415628177493_651" attribute="extractday" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1415628177493_652" attribute="type" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1415628177493_653" attribute="importaction" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1415628177493_654" attribute="deletedaction" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1415627759492_639" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1415627775458_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

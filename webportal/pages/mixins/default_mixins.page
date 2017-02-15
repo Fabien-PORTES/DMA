@@ -1,0 +1,103 @@
+import "/webportal/pages/styles/styles.page"
+
+buttonPage = Mixin {
+	This Group {
+		border: False
+		compact:True
+	}
+	Grid {
+		
+		layout: Layout {
+			grab: horizontal True vertical True
+			//indent: horizontal 5 vertical 5
+		}
+		GridColumn {
+			//gap: 5px
+			
+		}
+		GridRow {
+			//gap: 5px
+			
+		}
+	}
+	Button {
+		styling: bigButtonStyle
+		layout: Layout {grab: horizontal True vertical True
+			indent: horizontal 5 vertical 5
+			}
+	}
+}
+
+mediumbuttonPage = Mixin {
+	This Group {
+		border: False
+		compact:True
+	}
+	Grid {
+		
+		layout: Layout {
+			grab: horizontal True vertical True
+			//indent: horizontal 5 vertical 5
+		}
+		GridColumn {
+			//gap: 5px
+			
+		}
+		GridRow {
+			//gap: 5px
+			
+		}
+	}
+	Button {
+		styling: mediumButtonStyle
+		layout: Layout {grab: horizontal True vertical True
+			indent: horizontal 5 vertical 5
+			}
+	}
+}
+
+metricsMixin = Mixin {
+ This Group {
+  layout: Layout { grab: horizontal True vertical True}
+  compact: True
+ }
+ Text {
+  styling: metricsValue
+  compact: True
+  align: Left
+  layout: Layout { grab:horizontal True vertical False}
+ }
+ Label {
+  styling: metricsLabel
+  break: False
+  layout: Layout { hint: align: vertical Center horizontal Beginning indent: horizontal 0 vertical 12 grab:horizontal True vertical False}  
+  
+ }
+ Link {
+  styling: metricsValue
+  compact: True
+  align: Left
+  layout: Layout { grab:horizontal True vertical False}
+  underline:Hover
+ }
+}
+
+
+pickerMixin = Mixin {
+	ButtonGroup {
+		uniform: True
+	}
+}
+
+homePageMixin = Mixin {
+	Group {
+		border: True
+	}
+	Link {
+		styling: homePageLinkStyle
+		underline: Hover 
+	}
+	Grid{
+		layout: Layout {grab: horizontal True vertical False}
+	}
+}

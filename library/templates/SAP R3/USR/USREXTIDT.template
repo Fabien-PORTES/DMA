@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343395678784" title="Values Table for External ID Type " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A9029809331201688508" attribute="extid_type" column="EXTID_TYPE" type="String" multivalued="false" persistent="false" description="External ID type"/>
+		<Attribute name="A2552544188085967994" attribute="text" column="TEXT" type="String" multivalued="false" persistent="false" description="Label"/>
+	</Attributes>
+</Discovery>

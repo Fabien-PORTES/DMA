@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repository_searchpoint_1" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="true" searchpoint="true" concept="repository" displayname="Repository with search point" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1423228586830_600"/>
+	<ViewAttribute name="A1423228580199_598" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423228582543_599" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1440061931832_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423228586830_600" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423228589910_601" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1423678637207_392" attribute="type" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1423678642610_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="A"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

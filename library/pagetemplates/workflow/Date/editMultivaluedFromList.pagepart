@@ -1,0 +1,9 @@
+MultiEdit {
+	label: <template:variablelabel/>
+	add-dialog: dateFromListPicker(<template:variablelabel/> to inVariableDisplayname,<template:taskvariablevaluelist/> to inValueList) returning outValue
+	silent-remove: True
+	Element {
+		variable: <template:taskvariablename/>
+		filterable: True
+	}
+}

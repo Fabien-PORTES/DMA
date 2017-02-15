@@ -1,0 +1,83 @@
+srv_reconciliation_owner = EventService {
+	reference: reconciliation
+	selection: setOwner
+	accountRecordUid = Input
+	identityUid = Input
+	comment = Input
+	result = Output
+}
+
+srv_reconciliation_noowner = EventService {
+	reference: reconciliation
+	selection: setNoOwner
+	accountRecordUid = Input
+	noOwnerCode = Input
+	comment = Input
+	result = Output
+}
+
+srv_reconciliation_remove = EventService {
+	reference: reconciliation
+	selection: remove
+	accountRecordUid = Input {
+		type: Integer
+		mandatory: True
+	}
+	result = Output {
+		type: String
+	}
+}
+
+srv_reconciliation_suggestidentities = DatasetService {
+	reference: reconciliation
+	selection: suggestIdentitiesForAccount
+	accountRecordUid = Input {
+		type: Integer
+		mandatory: True
+	}
+	reconPolicyName = Input {
+		type: String
+		mandatory: False
+	}
+	// returned columns:
+	// - recorduid
+	// - uid
+	// - hrcode
+	// - givenname
+	// - surname
+	// - fullname
+	// - mail
+	// - arrivaldate
+	// - departuredate
+	// - rulename
+	// - ruledescription
+	// - rulecomment
+}
+
+srv_reconciliation_listReconPolicies = DatasetService {
+	reference: reconciliation
+	selection: listReconPolicies
+	excludeMainPolicy = Input {
+		type: Boolean
+		mandatory: False
+	}
+	// returned columns:
+	// - name (to be used as input in srv_reconciliation_suggestidentities)
+	// - description
+}
+
+srv_identityvisualizations_list = EventService {
+	reference: identityvisualizations
+	selection: listActiveVisualizations
+	name = Output {
+		type: String
+		multivalued: True
+	}
+	displayname = Output {
+		type: String
+		multivalued: True
+	}
+	result = Output {
+		type: String
+	}
+}

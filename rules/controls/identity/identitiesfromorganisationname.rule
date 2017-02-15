@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesfromorganisationname" operator="and" query="identity" displayname="Identities from organisation name {organisationname} (including sub organisations)" version="2" notes="">
+	<RequestParam name="organisationname" displayname="organisation name" query="organisation" criteria="eqDisplayName" criteriaparam="displayNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestJoin name="J1332848465119_59" operator="and" join="uporganisation">
+		<RequestCriteria name="C1332850392652_105" criteria="eqDisplayName">
+			<RequestCriteriaParam name="displayNameParam" reference="organisationname" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

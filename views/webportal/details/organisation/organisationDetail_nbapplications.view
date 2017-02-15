@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbapplications" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="br_organisationDetail_nbapplications" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378480935754_244" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378480965803_246" kind="inner" identitysecure="false" join="account">
+		<ViewJoin name="J1378480976039_247" kind="inner" identitysecure="false" join="identityreconciliation">
+			<ViewJoin name="J1378480984355_248" kind="inner" identitysecure="false" enabled="param.isDirectLink.get()" join="organisation">
+				<ViewAttribute name="1378481001035_251" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1378480890401_0" reference="uid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+			<ViewJoin name="J1378480988116_249" kind="inner" identitysecure="false" enabled="!param.isDirectLink.get()" join="uporganisation">
+				<ViewAttribute name="1378481002019_253" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1378480890401_0" reference="uid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

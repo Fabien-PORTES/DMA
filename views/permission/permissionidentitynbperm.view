@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="identitynbperm" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="# of perms by identity" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="repository record uid" type="Integer"/>
+	<ViewSort name="sort" attribute1="A1321965326845_34"/>
+	<ViewAttribute name="A1321965250463_24" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321965255911_25" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321965257323_26" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321965261046_27" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321965278018_28" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1321965292144_29" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountreconciliation">
+		<ViewJoin name="J1321965300570_30" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissionright">
+			<ViewJoin name="J1321965306584_31" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+				<ViewAttribute name="A1321965315371_32" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1321965318948_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="Profile"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+			</ViewJoin>
+			<ViewAttribute name="A1321965326845_34" attribute="recorduid" alias="nbperm" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1321965346226_36" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1321965350468_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1321965353312_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1335369730724_53" attribute="repositoryrecorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1335369734870_0" reference="repositoryrecorduid" aliasreference="" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

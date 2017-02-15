@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sf_shareTicketsOfType" errorifempty="false" distinct="false" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketlog" displayname="sf_shareTicketsOfType" notes="retourne la derniere instance de discovery pour chaque share">
+	<ViewParam name="shareuid" displayname="shareuid"/>
+	<ViewParam name="types" displayname="types">
+		<Value name="0" data="SF_SHARE_QUALIFY"/>
+		<Value name="1" data="SF_SHARE_DISCOVERY"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1442089419784_1217" attribute="tickettype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1442089438328_0" reference="types" operation="in" ignoreifempty="false">
+			<Value name="0" data="SF_SHARE_DISCOVERY"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1442098766290_942" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1443715278468_371" attribute="custom1" alias="shareuid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1443715309414_0" reference="shareuid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

@@ -1,0 +1,553 @@
+import "/webportal/pages/resources/mappings.page"
+
+report = NLS {
+
+	// Identity Printable
+	browsing_identitydetail.title [en "Printable Version" fr "Version Imprimable"]
+
+	// Group Printable
+	browsing_groupdetail.title [en "Printable Version" fr "Version Imprimable"]
+
+	// Identity Browsing
+	browsing_identitydetailfileshare.title [en "Shared Folders" fr "Répertoires Partagés"]
+	
+	// Identity Review
+	analysis_sharedfolderreviewbymanager.title [en "Shared Folders Review (By Organisation)" fr "Revue de Répertoires Partagés (Equipes D'Organisation)"]
+	
+	// Identity Mining
+	analysis_identitysimilarsharedfolders.title [en "Identities with Similar Shared Folders" fr "Identités avec des Répertoires Similaires"]
+	
+	// Account Browsing
+	browsing_accountdetailfileshare.title [en "Account Shared Folders" fr "Répertoires Partagés"]
+	browsing_accountdetailfileshare.^withgroupacl [en "Display corresponding group ACLs" fr "Display corresponding group ACLs"]
+	
+	// Organisation Review
+	analysis_sharedfolderreviewbyorganisation.title [en "Shared Folders Review" fr "Revue de Répertoires Partagés"]
+	
+	// Group Browsing
+	browsing_groupdetailfileshares.title [en "Shared Folders" fr "Répertoires Partagés"]
+	
+	// Sharedfolder Printable
+	browsing_sharedfolderdetail.title [en "Printable Version" fr "Version Imprimable"]
+	
+	// Sharedfolder Browsing
+	browsing_sharedfoldersubsharedfolder.title [en "Subfolders Hierarchy" fr "Hiérarchie des Sous Répertoires"]
+	
+	// Sharedfolder Review
+	browsing_sharedfolderaccounts.title [en "Accounts that Have Access to this Folder" fr "Comptes Ayant Accès à ce Répertoire"]
+	browsing_sharedfolderaccounts.^login [en "Filter by login" fr "Filter by login"]
+	browsing_sharedfolderaccounts.^identifier [en "Filter by identifier" fr "Filter by identifier"]
+	browsing_sharedfolderaccounts.^username [en "Filter by username" fr "Filter by username"]
+	browsing_sharedfolderidentities.title [en "Identities that Have Access to this Folder" fr "Identités Ayant Accès à ce Répertoire"]
+	browsing_sharedfolderidentities.^hrcode [en "Filter by HR Code" fr "Filter by HR Code"]
+	browsing_sharedfolderidentities.^fullname [en "Filter by name" fr "Filter by name"]
+	
+	// Sharedfolder Analytics
+	analysis_sharedfolderorgpivot.title [en "Subfolders Organisation Pivot" fr "Ventilation des Sous Répertoires par Organisation"]
+	analysis_sharedfolderorgpivot.^code [en "Filter by folder" fr "Filter by folder"]
+	analysis_sharedfolderjobpivot.title [en "Subfolders Job Pivot" fr "Ventilation des Sous Répertoires par Métier"]
+	analysis_sharedfolderjobpivot.^code [en "Filter by folder" fr "Filter by folder"]
+	
+	// Generic Controls
+	controls_sharedfoldercontrols.title [en "Shared folders controls" fr "Contrôles sur les répertoires"]
+	controls_sharedfoldercontrols.^showdescription [en "Show control description" fr "Afficher la description du contrôle"]
+	
+	// Generic Browsing 
+	browsing_rootsharedfoldersubsharedfolder.title [en "File system permissions" fr "Répertoires partagés"]
+	browsing_sharedfolderlistnbidentities.title [en "Number of Identities by Subfolders" fr "Nombre D'Identités par Sous Répertoire"]
+	browsing_sharedfolderlistnbaccounts.title [en "Number Account by Subfolders" fr "Nombre de Comptes par Sous Répertoire"]
+	
+	// Untagged Reports
+	browsing_sharedfoldersearch.title [en "Shared folder search" fr "Recherche de répertoires partagés"]
+	browsing_sharedfoldersearch.^permissioncode [en "Complete path" fr "Repertoire"]
+	browsing_sharedfoldersearch.^permissionname [en "Folder name" fr "Nom"]
+	browsing_sharedfoldersearch.^filesystemapplication [en "Filesystem" fr "Système de fichiers"]
+	analysis_identitysimilarsharedfoldersjoborgpivot.title [en "Job organisation pivot detail" fr "Détail sous la forme d'une ventilation Métier Organisation"]
+	analysis_identitysimilarsharedfoldersjoborgpivot.^threshold [en "Filtering threshold (# of directories by job / organisation)" fr "Seuil de filtrage (# de répertoires par couple organisation/métier)"]
+	analysis_sharedfolderjoborgpivotdetail.title [en "Details" fr "Détail"]
+	analysis_identitysimilarsharedfolders_incommon.title [en "Shared folders in common" fr "Répertoires en commun"]
+	analysis_sharedfoldernoorgpivotdetail.title [en "Details" fr "Détail"]
+	
+}
+
+// ***************************************** Concept Change *****************************************
+// Identity Review Reports
+
+analysis_sharedfolderreviewbymanager = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/analysis/sharedfolderreviewbymanager.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_sharedfolderreviewbymanager
+	title: $report.analysis_sharedfolderreviewbymanager.title
+	tags:"identity" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Identity
+		
+	}
+}
+
+// Identity Mining Reports
+
+analysis_identitysimilarsharedfolders = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/analysis/identitysimilarsharedfolders.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_identitysimilarsharedfolders
+	title: $report.analysis_identitysimilarsharedfolders.title
+	tags:"identity" priority 500, "byuid", "mining"
+	icon: "16/details/mining_16.png" large-icon: "48/details/mining_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Identity
+	}
+}
+
+// ***************************************** Concept Change *****************************************
+// Organisation Review Reports
+
+analysis_sharedfolderreviewbyorganisation = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/analysis/sharedfolderreviewbyorganisation.rptdesign" with ^recorduid to ^recorduid
+	feature: analysis_sharedfolderreviewbyorganisation
+	title: $report.analysis_sharedfolderreviewbyorganisation.title
+	tags:"organisation" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Organisation
+		
+	}
+}
+
+// ***************************************** Concept Change *****************************************
+// Sharedfolder Printable version 
+
+browsing_sharedfolderdetail = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/sharedfolderdetail.rptdesign" with ^recorduid to ^recorduid
+	feature: browsing_sharedfolderdetail
+	title: $report.browsing_sharedfolderdetail.title
+	dynamic-title: permission.code
+	tags:"sharedfolder" priority 100, "byuid", "printable"
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+		
+	}
+	
+	permission = Record {
+		view:br_filesystem
+		with ^recorduid to recorduid
+	}
+}
+
+// Sharedfolder Review
+
+browsing_sharedfolderaccounts = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/sharedfolderaccounts.rptdesign" with ^recorduid to ^recorduid, ^login to ^login, ^identifier to ^identifier, ^username to ^username
+	feature: browsing_sharedfolderaccounts
+	title: $report.browsing_sharedfolderaccounts.title
+	tags:"sharedfolder" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+		
+	}
+	^login = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_sharedfolderaccounts.^login
+	}
+	^identifier = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_sharedfolderaccounts.^identifier
+	}
+	^username = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_sharedfolderaccounts.^username
+	}
+}
+
+browsing_sharedfolderidentities = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/sharedfolderidentities.rptdesign" with ^recorduid to ^recorduid, ^hrcode to ^hrcode, ^fullname to ^fullname
+	feature: browsing_sharedfolderidentities
+	title: $report.browsing_sharedfolderidentities.title
+	tags:"sharedfolder" priority 300, "byuid", "review"
+	icon: "16/details/review_16.png" large-icon: "48/details/review_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+	}
+	^hrcode = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_sharedfolderidentities.^hrcode
+	}
+	^fullname = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_sharedfolderidentities.^fullname
+	}
+}
+
+// Sharedfolder Analytics
+
+analysis_sharedfolderorgpivot = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/analysis/sharedfolderorgpivot.rptdesign" with 
+	^permission.codestar to ^code unless-empty, ^code to ^code unless-empty, 
+	^permission.applicationrecorduid to ^applicationrecorduid unless-empty,  ^applicationrecorduid to ^applicationrecorduid
+	
+	
+	feature: analysis_sharedfolderorgpivot
+	title: $report.analysis_sharedfolderorgpivot.title
+	tags:"sharedfolder" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	^code = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		label: $report.analysis_sharedfolderorgpivot.^code
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+	}
+	
+	// Added for compliance
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+		
+	}
+	^permission = Record {
+		view:br_sharedfolderDetail_uid
+		with ^recorduid to recorduid
+	}
+}
+
+analysis_sharedfolderjobpivot = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/analysis/sharedfolderjobpivot.rptdesign" with 
+	^permission.codestar to ^code unless-empty, ^code to ^code unless-empty, 
+	^permission.applicationrecorduid to ^applicationrecorduid unless-empty,  ^applicationrecorduid to ^applicationrecorduid
+	
+	feature: analysis_sharedfolderjobpivot
+	title: $report.analysis_sharedfolderjobpivot.title
+	tags:"sharedfolder" priority 400, "byuid", "analytics"
+	icon: "16/details/analytics_16.png" large-icon: "48/details/analytics_48.png" 
+	^code = Parameter {
+		mandatory: False
+		hidden: False
+		type: String
+		label: $report.analysis_sharedfolderjobpivot.^code
+	}
+	^applicationrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Application
+	}
+	
+	// Added for compliance
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+		recorduid-of: Permission
+		
+	}
+	permission = Record {
+		view:br_sharedfolderDetail_uid
+		with ^recorduid to recorduid
+	}
+}
+
+// ******************************************* Generic Control Reports ************************************************
+
+controls_sharedfoldercontrols = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/controls/sharedfoldercontrols.rptdesign" with ^showdescription to ^showdescription
+	feature: controls_sharedfoldercontrols
+	title: $report.controls_sharedfoldercontrols.title
+	tags: "generic", "control"
+	icon: "16/filesystems/folder_grey_16.png"
+	
+	^showdescription = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "false"
+		label: $report.controls_sharedfoldercontrols.^showdescription
+	}
+}
+
+// ******************************************* Generic Browsing Reports ************************************************
+
+browsing_rootsharedfoldersubsharedfolder = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/rootsharedfoldersubsharedfolder.rptdesign"
+	feature: browsing_rootsharedfoldersubsharedfolder
+	title: $report.browsing_rootsharedfoldersubsharedfolder.title
+	tags: "generic", "browsing"
+	icon: "16/filesystems/folder_grey_16.png"
+}
+
+browsing_sharedfolderlistnbidentities = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/sharedfolderlistnbidentities.rptdesign" with ^recorduid to ^recorduid
+	feature: browsing_sharedfolderlistnbidentities
+	title: $report.browsing_sharedfolderlistnbidentities.title
+	tags: "generic", "browsing"
+	icon: "16/filesystems/folder_grey_16.png"
+
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_sharedfolderlistnbaccounts = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/sharedfolderlistnbaccounts.rptdesign" with ^recorduid to ^recorduid
+	feature: browsing_sharedfolderlistnbaccounts
+	title: $report.browsing_sharedfolderlistnbaccounts.title
+	tags: "generic", "browsing"
+	icon: "16/filesystems/folder_grey_16.png"
+	
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+// Now Continue with the Untagged Reports
+///********************************************************************************************************************
+///********************************************************************************************************************
+// First the reports previously tagged as browsing and migrated
+
+browsing_identitydetailfileshare = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/identitydetailfileshare.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_identitydetailfileshare.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_accountdetailfileshare = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/accountdetailfileshare.rptdesign" with ^recorduid to ^recorduid, ^withgroupacl to ^withgroupacl
+	title: $report.browsing_accountdetailfileshare.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+	^withgroupacl = Parameter {
+		mandatory: False
+		hidden: False
+		type: Boolean
+		default: "true"
+		label: $report.browsing_accountdetailfileshare.^withgroupacl
+	}
+}
+
+
+browsing_groupdetailfileshares = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/groupdetailfileshares.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_groupdetailfileshares.title
+
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+}
+
+browsing_sharedfoldersubsharedfolder = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/sharedfoldersubsharedfolder.rptdesign" with ^recorduid to ^recorduid
+	title: $report.browsing_sharedfoldersubsharedfolder.title
+
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+///********************************************************************************************************************
+
+browsing_sharedfoldersearch = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/sharedfoldersearch.rptdesign" with ^permissioncode to ^permissioncode, ^permissionname to ^permissionname, ^filesystemapplication to ^filesystemapplication
+	title: $report.browsing_sharedfoldersearch.title
+	^permissioncode = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_sharedfoldersearch.^permissioncode
+	}
+	^permissionname = Parameter {
+		mandatory: True
+		hidden: False
+		type: String
+		default: "*"
+		label: $report.browsing_sharedfoldersearch.^permissionname
+	}
+	^filesystemapplication = Parameter {
+		mandatory: True
+		hidden: False
+		type: Integer
+		label: $report.browsing_sharedfoldersearch.^filesystemapplication
+		constraint: Lookup {
+			data: br_filesystemapplication
+			value: Current recorduid
+			text: Current displayname
+			distinct: True
+		}
+	}
+	br_filesystemapplication = Dataset {
+		view: br_filesystemapplication
+	}
+}
+
+
+analysis_identitysimilarsharedfoldersjoborgpivot = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/analysis/identitysimilarsharedfoldersjoborgpivot.rptdesign" with ^recorduid to ^recorduid, ^threshold to ^threshold
+	title: $report.analysis_identitysimilarsharedfoldersjoborgpivot.title
+	^recorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: Integer
+	}
+	^threshold = Parameter {
+		mandatory: False
+		hidden: False
+		type: Integer
+		label: $report.analysis_identitysimilarsharedfoldersjoborgpivot.^threshold
+	}
+}
+
+analysis_sharedfolderjoborgpivotdetail = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/analysis/sharedfolderjoborgpivotdetail.rptdesign" with ^permissionrecorduid to ^permissionrecorduid, ^jobrecorduid to ^jobrecorduid, ^orgrecorduid to ^orgrecorduid
+	title: $report.analysis_sharedfolderjoborgpivotdetail.title
+	^permissionrecorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+	}
+	^jobrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+	^orgrecorduid = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+	}
+}
+
+analysis_identitysimilarsharedfolders_incommon = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/analysis/identitysimilarsharedfolders_incommon.rptdesign" with ^recorduid1 to ^recorduid1, ^recorduid2 to ^recorduid2
+	title: $report.analysis_identitysimilarsharedfolders_incommon.title
+	^recorduid1 = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+	^recorduid2 = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+analysis_sharedfoldernoorgpivotdetail = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/analysis/sharedfoldernoorgpivotdetail.rptdesign" with ^permissionrecorduid to ^permissionrecorduid
+	title: $report.analysis_sharedfoldernoorgpivotdetail.title
+	^permissionrecorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		
+	}
+}
+
+
+// Identity Printable version 
+
+fs_browsing_identitydetail = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/fs_identitydetail.rptdesign" with ^recorduid to ^recorduid
+	feature:  fs_browsing_identity_detail
+	title: $report.browsing_identitydetail.title
+	tags:"identity" priority 100, "byuid", "printable"
+	dynamic-title:Concat(Transform identity.hrcode using mayBeNullMapping," - ",Transform identity.fullname using mayBeNullMapping)
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Identity
+		
+	}
+	
+	identity = Record {
+		view:br_identity
+		with ^recorduid to recorduid
+	}
+}
+
+
+// Group Printable version 
+
+fs_browsing_groupdetail = Report {
+	report: "/reports/bw_pages_tutorial/sharedfolder/browsing/fs_groupdetail.rptdesign" with ^recorduid to ^recorduid
+	feature: fs_browsing_group_detail
+	title: $report.browsing_groupdetail.title
+	dynamic-title: Concat(Transform group.code using mayBeNullMapping," - ",Transform group.displayname using mayBeNullMapping)
+	tags:"group" priority 100, "byuid", "printable"
+	icon: "16/details/printable_16.png" large-icon: "48/details/printable_48.png" 
+	^recorduid = Parameter {
+		mandatory: True
+		hidden: True
+		type: Integer
+		recorduid-of: Group
+		
+	}
+	
+	group = Record {
+		view: br_group
+		with ^recorduid to recorduid
+	}
+}
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_accountfromrepository" operator="and" query="account" displayname="Accounts from Repository {repository}" version="3">
+	<RequestParam name="repository" displayname="repository" query="account" criteria="eqRepository" criteriaparam="repositoryParam"/>
+	<RequestCriteria name="C1331842192217_133" criteria="eqRepository">
+		<RequestCriteriaParam name="repositoryParam" reference="repository" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

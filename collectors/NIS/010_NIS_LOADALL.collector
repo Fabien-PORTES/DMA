@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="010_NIS_LOADALL" name="P1475237710217" startingpoint="start">
+		<Component name="start" type="library/components/start.component" x="48" y="-111" w="250" h="64" title="start"/>
+		<Component name="C1475238305440" type="callfilter" x="51" y="-18" w="309" h="64" title="020_NIS_A350VPM_LOADALL">
+			<Line provisioningfile="/collectors/NIS/A350VPM/020_NIS_A350VPM_LOADALL.collector">
+			</Line>
+		</Component>
+		<Component name="N1476256217120" type="note" x="415" y="-116" w="221" h="123" title="PCT must be executed as the last collector line in this silo."/>
+		<Component name="C1477581681348" type="callfilter" x="47" y="74" w="300" h="64" title="020_NIS_A350VPM-V_LOADALL">
+			<Line provisioningfile="/collectors/NIS/A350VPM-V/020_NIS_A350VPM-V_LOADALL.collector">
+			</Line>
+		</Component>
+		<Link name="L1477581721589" source="C1475238305440" target="C1477581681348" priority="1"/>
+		<Link name="L1481788746973" source="start" target="C1475238305440" priority="1"/>
+		<Component name="C1481798469531" type="callfilter" x="54" y="275" w="200" h="64" title="PCT">
+			<Line provisioningfile="/collectors/PCT/PCT.collector"/>
+		</Component>
+		<Component name="C1481798479016" type="callfilter" x="61" y="416" w="200" h="64" title="AD4UNIX_past">
+			<Line provisioningfile="/collectors/AD4UNIX_past/AD4UNIX_past.collector"/>
+		</Component>
+		<Component name="C1482533445855" type="callfilter" x="468" y="219" w="260" h="64" title="ALL_NIS_except_A350">
+			<Line provisioningfile="/collectors/NIS/ALL_NIS_except_A350.collector"/>
+		</Component>
+		<Component name="C1482533958957" type="callfilter" x="455" y="79" w="200" h="64" title="Create_NIS_REPO">
+			<Line provisioningfile="/collectors/NIS/Create_NIS_REPO.collector"/>
+		</Component>
+		<Link name="L1482533969765" source="C1477581681348" target="C1482533958957" priority="1"/>
+		<Link name="L1482533970656" source="C1482533958957" target="C1482533445855" priority="1"/>
+		<Link name="L1485180504128" source="C1482533445855" target="C1481798479016" priority="1"/>
+		<Link name="L1485180505165" source="C1481798479016" target="C1481798469531" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

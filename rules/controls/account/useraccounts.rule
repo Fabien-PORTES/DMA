@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_useraccounts" operator="and" query="account" displayname="User Accounts (not Service Accounts)" version="5" notes="">
+	<RequestGroup name="G1331841782978_88" operator="or">
+		<RequestCriteria name="C1331841005818_42" criteria="neService">
+		</RequestCriteria>
+		<RequestCriteria name="C1331841798735_90" criteria="isNullProperty">
+			<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+				<Value name="0" data="service"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

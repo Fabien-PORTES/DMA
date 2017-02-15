@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_groupsbysharefolder" prefix="element_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_groupsbysharefolder" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="groupexcluding" displayname="groupexcluding" type="String"/>
+	<ViewSort name="sort" attribute1="A1435769893333_647" direction1="DESC"/>
+	<ViewAttribute name="A1435756070845_340" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1435756149861_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1435756071344_341" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435756071860_342" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435756072532_343" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435756073134_344" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1435756082425_345" prefix="share_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="A1435756087660_346" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1435756088348_347" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1435756089192_348" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1435756089957_349" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1435756090661_350" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1435756094245_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1435761397783_343" prefix="group_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.isEmpty (&apos;groupexcluding&apos;)" join="downgroups">
+		<ViewAttribute name="1435761405330_348" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1435761405332_349" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1435761405333_350" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1435761405335_351" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1435760910323_340" prefix="parent_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentgroup">
+			<ViewAttribute name="1435761412857_355" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1435761412857_356" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1435769888362_646" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+			<ViewAttribute name="A1435769893333_647" attribute="uid" alias="accounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1435761397783_343" prefix="group_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="!param.isEmpty (&apos;groupexcluding&apos;)" join="downgroups">
+		<ViewAttribute name="1435829912005_544" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1435829930185_0" reference="groupexcluding" operation="notIn" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1435769888362_646" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+			<ViewAttribute name="1435829912005_549" attribute="uid" alias="accounts2" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

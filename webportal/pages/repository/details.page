@@ -1,0 +1,477 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/details_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/resources/audittrail.page"
+import "/webportal/pages/mixins/workflow_mixins.page"
+
+repositoryDetailsManager_Dialog = Dialog {
+	title: $repositoryDetailsManager_Dialog_NLS.title
+	mixins: workflowDefaultMixin
+	buttons:OkButton
+	width:800
+	height:300
+	
+	/* Parameters here */
+	paramRepositoryUid = Variable {type:String multivalued:False}
+	
+	// can be either businessowner or technicalowner, default to businessowner
+	paramManagertype = Variable {type:String multivalued:False initial:'businessowner'}
+
+	/* variables here */
+	newmanagerUid = Variable {type:String multivalued:False}
+
+	
+	/* Datasets and records here */
+	// Record for concept details
+	repository = Record {
+		view: br_repositoryDetail with paramRepositoryUid to uid
+	}
+	
+	newManager = Record {
+		view: br_identityDetail with newmanagerUid to uid
+	}
+
+	repositoryowner = Record {
+		view: br_repositoryowner with paramRepositoryUid to uid, paramManagertype to expertisedomain
+	}
+
+	audittrailstatus = Record {
+		view:br_updatemanagerstatus with paramRepositoryUid to uid, Transform "Repository" using entityDetailsManagerTicketTypeMapping to tickettype
+	}
+
+	task = TaskRecord (create "updaterepositorymanager")
+	
+	
+	/* Page content */
+	Grid {
+		columns:GridColumn{width:64px}, GridColumn{width:320px}, GridColumn{width:320px}, GridColumn{width:grow}
+		GridRow {
+			height:96
+			GridCell {
+				Image {
+					image: "48/red/repository.png"
+					align: Center
+				}
+			}
+			GridCell {
+				Text{
+					label:   $repository.concept 
+					value: Transform repository.displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $repositoryDetailsManager_Dialog_NLS.managerhrcode
+					value: Transform repositoryowner.hrcode using optionStringMapping
+					lines: 2
+				}
+
+				Text {
+					label: $repositoryDetailsManager_Dialog_NLS.managerfullname
+					value: Transform repositoryowner.fullname using optionStringMapping
+					lines: 2
+				}
+
+				Text{
+					label:   $repositoryDetailsManager_Dialog_NLS.managertype 
+					value: paramManagertype
+					lines: 2
+				}
+			}
+			GridCell {
+			}
+			GridCell {
+			}
+		}
+		GridRow {
+			GridCell {
+				span:4
+				Header {
+					value:$repositoryDetailsManager_Dialog_NLS.question
+				}
+				Header {
+					value:$repositoryDetailsManager_Dialog_NLS.changeinprogress
+					styling:warningFieldStyle
+					hidden:
+							Not AndPredicate {
+								StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+								StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+							}
+				}
+			}
+		}
+		GridRow {
+			height:grow
+			GridCell {
+				span:4
+				ButtonGroup {
+						Button {
+							actions:Dialog identityPicker(newmanagerUid from outUid), 
+									Confirm $repositoryDetailsManager_Dialog_NLS.newmanagerconfirm(Transform newManager.hrcode using mayBeNullMapping, newManager.fullname, repository.displayname),
+									Flash Information $repositoryDetailsManager_Dialog_NLS.confirmupdate,
+									Set paramManagertype to task.managertype,
+									Set paramRepositoryUid to task.repository,
+									Set newmanagerUid to task.manager,
+									StringCase(repositoryowner.fullname) { when IsEmpty then [Set 'create' to task.action] otherwise [Set 'modify' to task.action] },
+									TaskComplete task wait,
+									ReloadData (repositoryowner, audittrailstatus)
+							text:$repositoryDetailsManager_Dialog_NLS.setmanager
+							disabled:
+								AndPredicate {
+									StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+									StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Confirm $repositoryDetailsManager_Dialog_NLS.newmanagerremove(Transform repositoryowner.hrcode using mayBeNullMapping, repositoryowner.fullname, repository.displayname),
+									Flash Information $repositoryDetailsManager_Dialog_NLS.removeupdate,
+									Set paramManagertype to task.managertype,
+									Set paramRepositoryUid to task.repository,
+									Set '' to task.manager,
+									Set 'delete' to task.action,
+									TaskComplete task wait,
+									ReloadData (repositoryowner, audittrailstatus)
+							text:$repositoryDetailsManager_Dialog_NLS.removemanager
+							disabled:
+								OrPredicate {
+									AndPredicate {
+										StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+										StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+									}
+								StringPredicate(repositoryowner.fullname) {when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Dialog entityDetailsManagerAuditDialog("Repository" to type, paramRepositoryUid to entity) 
+						                        feature:repositorydetails_auditmanager
+							                       
+							text:$repositoryDetailsManager_Dialog_NLS.manageraudittrail
+						}
+				}		
+			}
+		}
+	}
+}
+
+
+
+repositoryDetailsPageRecorduid = Page {
+	title: "Recorduid redirection (repository)"
+	conditional-redirect: ConditionalRedirect { condition: True target: Page repositoryDetailsPage with repositoryUid.uid to paramRepositoryUid }
+	
+	recorduid = Parameter {
+		type: Integer
+		hidden: True
+		recorduid-of: Repository
+		mandatory: True
+	}
+	
+	repositoryUid = Record {
+		view: br_repositoryDetail_uid with recorduid to recorduid
+	}
+}
+
+repositoryDetailsPage = Page {
+	title: $repositoryDetails.title
+	dynamic-title: $repositoryDetails.dynamictitle ( repository.displayname )
+	mixins: detailsPage
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set paramRepositoryUid to nonEmptyUid] when True then []}
+	
+	// Parameters Here
+	paramRepositoryUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: True
+	}
+	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	// Search Definition Here
+	repositorySearch = SearchDefinition {
+		entity: Repository
+		simple-mode-rule: br_repository_simple_search
+	}
+	
+	// Variables Here
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedRepositoryUid = Variable {
+		type: String
+		initial: paramRepositoryUid
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Dataset for Navigator
+	repositoryList = Dataset {
+		search: Search {
+			definition: repositorySearch
+			view: br_repository_searchpoint with nonEmptyUid to uid unless-empty
+		}
+	}
+	
+	// Dataset for Reports
+	relatedLinksTiles = Dataset {
+		pages: Pages{tags: "repository" and "byuid" }
+	}
+	
+	// Record for concept details
+	repository = Record {
+		view: br_repositoryDetail with selectedRepositoryUid to uid
+	}
+	
+	// All other Records and Datasets
+	nbapplications = Record {
+		view: br_repositoryDetail_nbapplications with repository.recorduid to recorduid
+	}
+	
+	nbgroups = Record {
+		view: br_repositoryDetail_nbgroups with repository.recorduid to recorduid
+	}
+	
+	nbactiveaccounts = Record {
+		view: br_repositoryDetail_nbactiveaccounts with repository.recorduid to recorduid
+	}
+	
+	nbactiveserviceaccounts = Record {
+		view: br_repositoryDetail_nbactiveaccounts with repository.recorduid to recorduid, True to serviceaccount
+	}
+	
+	nborphanaccounts = Record {
+		view: br_repositoryDetail_nbactiveorphanaccounts with repository.recorduid to recorduid
+	}
+
+	repositorybusinessowner = Record {
+		view: br_repositoryBusinessowner with selectedRepositoryUid to uid
+	}
+
+	repositorytechnicalowner = Record {
+		view: br_repositoryTechnicalowner with selectedRepositoryUid to uid
+	}
+	
+	// Start of the Layout based on a 1-column Grid
+	Grid {
+		columns: GridColumn{}
+		
+		// Row for the Navigator
+		GridRow {
+			GridCell{
+				Group{
+					layout: Layout {align: horizontal Center vertical Beginning }
+					Spacer {
+						height: 5
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					SetNavigator {
+						data: repositoryList
+						column: uid
+						selection: selectedRepositoryUid
+						back-link: Activity Repository Search with SerializeSearch repositorySearch to repositorySearch, paramSearchMode to paramSearchMode, selectedRepositoryUid to initialUid, initialIndex to paramInitialIndex
+						initial: paramRepositoryUid
+						initial-index: paramInitialIndex
+						selection-index: initialIndex
+						show-count: True
+						show-first: True
+						show-last: True
+						count-width: 150
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					Spacer{
+						height:10
+					}
+				}
+			}
+		}
+		
+		// Row for header
+		GridRow{
+			GridCell{
+				background: Image "details/card_header.png"
+				Spacer { height: 67 }
+			}
+		}
+		
+		// Row for content
+		GridRow{
+			GridCell{
+				background: Image "details/card_content.png"
+				
+				Spacer { height:10 }
+				
+				Text {
+					value: repository.displayname
+					styling:detailsTitle
+					align: Center
+				}
+				
+				
+				Spacer { height:5 }
+				
+				Flow {
+					disposition: Horizontal
+
+					// First Column
+					Group {
+						layout: Layout { hint: width 290}
+						Image {
+							image: "details/repository.png"
+							align: Center
+						}
+					}
+					
+					// Second Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Text {
+							label: $repository.displayname
+							value: Transform repository.displayname using optionStringMapping
+							lines: 2
+						}
+						
+						Text {
+							label: $repositoryDetails.number_active_accounts
+							value: Transform nbactiveaccounts.count using nullToZeroMapping
+						}
+						
+						Text {
+							label: $repositoryDetails.number_active_service_accounts
+							value: Transform nbactiveserviceaccounts.count using nullToZeroMapping
+						}
+					}
+					
+					// Third Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Link {
+							label: $businessowner.concept
+							value: Concat(Transform repositorybusinessowner.hrcode using optionStringMapping, ' / ',Transform repositorybusinessowner.fullname using optionStringMapping)
+							target:Activity Identity Detail with repositorybusinessowner.uid to paramIdentityUid
+							disabled:
+							OrPredicate {
+								StringPredicate(repositorybusinessowner.uid) { when IsEmpty then True}
+								Not FeaturePredicate repositorydetails_linktobusinessowner					
+							}
+							commands:Commands { position: Before orientation: Horizontal 
+											Command{actions:Dialog repositoryDetailsManager_Dialog(selectedRepositoryUid to paramRepositoryUid), ReloadData (repositorybusinessowner)
+							                        icon:'16/red/edit_16.png' feature:repositorydetails_updatemanager tooltip:$repositoryDetails.updatemanager
+							                       }
+							                  }
+						}
+
+						Link {
+							label: $technicalowner.concept
+							value: Concat(Transform repositorytechnicalowner.hrcode using optionStringMapping, ' / ',Transform repositorytechnicalowner.fullname using optionStringMapping)
+							target:Activity Identity Detail with repositorytechnicalowner.uid to paramIdentityUid
+							disabled:
+							OrPredicate {
+								StringPredicate(repositorytechnicalowner.uid) { when IsEmpty then True}
+								Not FeaturePredicate repositorydetails_linktotechnicalowner							
+							}
+							commands:Commands { position: Before orientation: Horizontal 
+											Command{actions:Dialog repositoryDetailsManager_Dialog('technicalowner' to paramManagertype, selectedRepositoryUid to paramRepositoryUid), ReloadData (repositorytechnicalowner)
+							                        icon:'16/red/edit_16.png' feature:repositorydetails_updatemanager tooltip:$repositoryDetails.updatemanager
+							                       }
+							                  }
+						}
+
+						Text {
+							label: $repositoryDetails.number_applications
+							value: Transform nbapplications.count using nullToZeroMapping
+						}
+						
+						
+						
+						Text {
+							label: $repositoryDetails.number_groups
+							value: Transform nbgroups.count using nullToZeroMapping
+						}
+					}
+				}
+				Spacer { height: 5 }
+				// Did you know ?
+				Flow {
+					disposition: Horizontal
+					hidden: IntPredicate(nborphanaccounts.count){
+						when =0 then True
+					}
+					Group {
+						background:Color RGB (200,200,200)
+						layout: Layout { hint: width 820}
+						margins: All 1
+						Group {
+							background:Color RGB (254,241,215)
+							
+							Text {
+								value:$repositoryDetails.didyouknow.title
+								styling: detailsLabel
+							}
+							Text{
+								value: $repositoryDetails.didyouknow.response1(nborphanaccounts.count , nborphanaccounts.count)
+								hidden: IntPredicate (Transform nborphanaccounts.count using amountDetection ) { when =0 then True}
+								layout: Layout { indent: horizontal 25 vertical 8}
+							}
+							
+							Spacer { height: 5 }
+						}
+					}
+				}
+				Spacer { height: 20 }
+			}
+		}
+		
+		// Row for footer
+		GridRow{
+			GridCell{
+				background: Image "details/card_footer.png"
+				Spacer { height: 12 }
+			}
+		}
+		
+		// Row for links
+		GridRow{
+			GridCell{
+				Spacer { height: 20 }
+				Tiles {
+					columns:5
+					tile-height:120
+					mixins:detailIcons
+					TileGroup {
+						iterate-on: relatedLinksTiles
+						initial-sort: ^priority 
+						Tile {
+							Button {
+								actions: GoTo Dynamic (Current type, Current name) with repository.recorduid to recorduid, repository.uid to uid, SerializeSearch repositorySearch to repositorySearch, paramSearchMode to paramSearchMode
+								image: Current largeIcon
+								tooltip: Current title		
+							}
+							Text{
+								value: Current title
+								label: Label{ layout:Layout{indent: vertical 0 horizontal 0   }  }
+								lines:2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

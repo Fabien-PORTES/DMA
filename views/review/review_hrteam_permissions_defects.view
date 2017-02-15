@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="review_hrteam_permissions_defects" prefix="identity" distinct="true" concept="identity" displayname="review_hrteam_permissions_defects" notes="">
+	<ViewParam name="permissionrecorduid" displayname="permission record uid"/>
+	<ViewParam name="identityrecorduid" displayname="identity record uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1330359469476_321" kind="inner" join="controlresult">
+		<ViewAttribute name="A1330359591101_325" attribute="controltype" removedfromprojection="false"/>
+		<ViewAttribute name="A1330359593054_326" attribute="controlentity" removedfromprojection="false"/>
+		<ViewAttribute name="A1330359593836_327" attribute="controldisplayname" removedfromprojection="false"/>
+		<ViewAttribute name="A1330359594601_328" attribute="controldescription" removedfromprojection="false"/>
+		<ViewAttribute name="A1330359606054_329" attribute="controlresulttype" removedfromprojection="false"/>
+		<ViewAttribute name="A1330359610633_330" attribute="controlnotes" removedfromprojection="false"/>
+		<ViewJoin name="J1330359814586_333" kind="inner" join="rootcause">
+			<ViewAttribute name="A1330359820976_334" attribute="recorduid" operator="or" removedfromprojection="true">
+				<ViewAttributeFilter name="F1330359887195_0" reference="permissionrecorduid" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1330359578929_323" attribute="recorduid" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1330359620539_0" reference="identityrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

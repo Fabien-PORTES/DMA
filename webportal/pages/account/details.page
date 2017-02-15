@@ -1,0 +1,613 @@
+
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/details_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/resources/audittrail.page"
+import "/webportal/pages/mixins/workflow_mixins.page"
+
+import "/webportal/pages/resources/services.page"
+import "/webportal/pages/resources/reconciliation_dialogs.page"
+
+import "/webportal/pages/workflow/manager/updateaccountmanager_start.page"
+
+accountDetailsManager_Dialog = Dialog {
+	title: $accountDetailsManager_Dialog_NLS.title
+	mixins: workflowDefaultMixin
+	buttons:OkButton
+	width:800
+	height:300
+	
+	/* Parameters here */
+	paramAccountUid = Variable {type:String multivalued:False}
+	
+	/* variables here */
+	newmanagerUid = Variable {type:String multivalued:False}
+
+	
+	/* Datasets and records here */
+	// Record for concept details
+	account = Record {
+		view: br_accountDetail with paramAccountUid to uid
+	}
+
+	accountnoownerinfos = Record {
+		view: br_accountDetail_noownerinfos with account.recorduid to recorduid
+	}
+	
+	newManager = Record {
+		view: br_identityDetail with newmanagerUid to uid
+	}
+
+	accountbusinessowner = Record {
+		view: br_accountBusinessowner with paramAccountUid to uid
+	}
+
+	audittrailstatus = Record {
+		view:br_updatemanagerstatus with paramAccountUid to uid, Transform "Account" using entityDetailsManagerTicketTypeMapping to tickettype
+	}
+
+	task = TaskRecord (create "updateaccountmanager")
+	
+	
+	/* Page content */
+	Grid {
+		columns:GridColumn{width:64px}, GridColumn{width:320px}, GridColumn{width:320px}, GridColumn{width:grow}
+		GridRow {
+			height:96
+			GridCell {
+				Image {
+					image: "48/red/account.png"
+					align: Center
+				}
+			}
+			GridCell {
+				Text{
+					label:   $account.login 
+					value: Transform account.login using optionStringMapping
+					lines: 2
+				}
+				Text{
+					label:   $account.username 
+					value: Transform account.username using optionStringMapping
+					lines: 2
+				}
+				Text{
+					label:   $accountDetailsManager_Dialog_NLS.noowneraccountype
+					value: Transform accountnoownerinfos.noownercode using optionStringMapping
+					lines: 2
+				}
+				Text{
+					label:   $accountDetailsManager_Dialog_NLS.noowneraccountcomments
+					value: Transform accountnoownerinfos.comment using optionStringMapping
+					lines: 2
+				}
+											
+			}
+			GridCell {
+				Text{
+					label:   $account.repositorycode 
+					value: Transform account.repository_code using optionStringMapping
+					lines: 2
+				}
+				Text{
+					label:   $account.repositorydisplayname 
+					value: Transform account.repository_displayname using optionStringMapping
+					lines: 2
+				}
+				Text {
+					label: $accountDetailsManager_Dialog_NLS.managerhrcode
+					value: Transform accountbusinessowner.hrcode using optionStringMapping
+					lines: 2
+				}
+
+				Text {
+					label: $accountDetailsManager_Dialog_NLS.managerfullname
+					value: Transform accountbusinessowner.fullname using optionStringMapping
+					lines: 2
+				}
+			}
+			GridCell {
+			}
+		}
+
+		GridRow {
+			GridCell {
+				span:4
+				Header {
+					value:$accountDetailsManager_Dialog_NLS.question
+				}
+				Header {
+					value:$accountDetailsManager_Dialog_NLS.changeinprogress
+					styling:warningFieldStyle
+					hidden:
+							Not AndPredicate {
+								StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+								StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+							}
+				}
+			}
+		}
+		GridRow {
+			height:grow
+			GridCell {
+				span:4
+				ButtonGroup {
+						Button {
+							actions:Dialog identityPicker(newmanagerUid from outUid), 
+									Confirm $accountDetailsManager_Dialog_NLS.newmanagerconfirm(Transform newManager.hrcode using mayBeNullMapping, newManager.fullname, account.login),
+									Flash Information $accountDetailsManager_Dialog_NLS.confirmupdate,
+									Set paramAccountUid to task.account,
+									Set newmanagerUid to task.manager,
+									StringCase(accountbusinessowner.fullname) { when IsEmpty then [Set 'create' to task.action] otherwise [Set 'modify' to task.action] },
+									TaskComplete task wait,
+									ReloadData (accountbusinessowner, audittrailstatus)
+							text:$accountDetailsManager_Dialog_NLS.setmanager
+							disabled:
+								AndPredicate {
+									StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+									StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Confirm $accountDetailsManager_Dialog_NLS.newmanagerremove(Transform accountbusinessowner.hrcode using mayBeNullMapping, accountbusinessowner.fullname, account.login),
+									Flash Information $accountDetailsManager_Dialog_NLS.removeupdate,
+									Set paramAccountUid to task.account,
+									Set '' to task.manager,
+									Set 'delete' to task.action,
+									TaskComplete task wait,
+									ReloadData (accountbusinessowner, audittrailstatus)
+							text:$accountDetailsManager_Dialog_NLS.removemanager
+							disabled:
+								OrPredicate {
+									AndPredicate {
+										StringPredicate(audittrailstatus.status) { when Not IsEmpty then True}
+										StringPredicate(audittrailstatus.closedate) { when IsEmpty then True}
+									}
+								StringPredicate(accountbusinessowner.fullname) {when IsEmpty then True}
+								}
+						}					
+						Button {
+							actions:Dialog entityDetailsManagerAuditDialog("Account" to type, paramAccountUid to entity) 
+						                        feature:accountdetails_auditmanager
+							                       
+							text:$accountDetailsManager_Dialog_NLS.manageraudittrail
+						}
+				}		
+			}
+		}
+	}
+}
+
+
+emptyBooleanMapping = StringMapping {
+	when IsEmpty then 0
+	otherwise current
+}
+
+notNullTo01Mapping = StringMapping {
+	when IsEmpty then '0'
+	otherwise '1'
+}
+
+accountDetailsPageRecorduid = Page {
+	title: "Recorduid redirection (account)"
+	conditional-redirect: ConditionalRedirect { condition: True target: Page accountDetailsPage with accountUid.uid to paramAccountUid }
+	
+	recorduid = Parameter {
+		type: Integer
+		hidden: True
+		recorduid-of: Account
+		mandatory: True
+	}
+	
+	accountUid = Record {
+		view: br_accountDetail_uid with recorduid to recorduid
+	}
+}
+
+accountDetails_commentspopup = InfoPopup {
+	width: 400
+	height:48
+
+	comment = Variable
+	
+	Text {
+		compact:True
+		lines:3
+		value:comment
+	}
+}
+
+accountDetailsPage = Page {
+	title: $accountDetails.title
+	dynamic-title: $accountDetails.dynamictitle (account.login)
+	mixins: detailsPage
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set paramAccountUid to nonEmptyUid] when True then []}
+	
+	// Parameters Here
+	paramAccountUid = Parameter {
+		type: String
+		hidden: True
+		mandatory: True
+	}
+	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	
+	paramInitialIndex = Parameter {
+		type: Integer
+		hidden: True
+	}
+	
+	// Search Definition Here
+	accountSearch = SearchDefinition {
+		entity: Account
+		simple-mode-rule: br_account_simple_search
+	}
+	
+	// Variables Here
+	initialIndex = Variable {
+		type: Integer
+	}
+	
+	selectedAccountUid = Variable {
+		type: String
+		initial: paramAccountUid
+	}
+	
+	reconciliationResult = Variable {
+		type: String
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Dataset for Navigator
+	accountList = Dataset {
+		search: Search {
+			definition: accountSearch
+			view: br_account_searchpoint with nonEmptyUid to uid unless-empty
+		}
+	}
+	
+	// Dataset for Reports
+	relatedLinksTiles = Dataset {
+		pages: Pages{tags: "account" and "byuid" }
+	}
+	
+	// Record for concept details
+	account = Record {
+		view: br_accountDetail with selectedAccountUid to uid
+	}
+	
+	// All other Records and Datasets
+	numberOfApplications = Record {
+		view: br_accountDetail_nbapplications with account.recorduid to recorduid
+	}
+	
+	reconciledIdentity = Record {
+		view: br_identityDetail with account.identity_uid to uid
+	}
+	
+	accountusergone = Record {
+		view: br_accountDetail_accountusergone with account.recorduid to recorduid
+	}
+
+	accountnoownerinfos = Record {
+		view: br_accountDetail_noownerinfos with account.recorduid to recorduid
+	}
+	
+	baccountDetail_manualreconinfos = Record {
+		view: br_accountDetail_manualreconinfos with account.recorduid to recorduid
+	}
+	
+	accountbusinessowner = Record {
+		view: br_accountBusinessowner with account.recorduid to recorduid
+	}
+	
+	// Start of the Layout based on a 1-column Grid
+	Grid {
+		columns: GridColumn{}
+		
+		// Row for the Navigator
+		GridRow {
+			GridCell{
+				Group{
+					layout: Layout {align: horizontal Center vertical Beginning }
+					Spacer {
+						height: 5
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					SetNavigator {
+						data: accountList
+						column: uid
+						selection: selectedAccountUid
+						back-link: Activity Account Search with SerializeSearch accountSearch to accountSearch, paramSearchMode to paramSearchMode, selectedAccountUid to initialUid, initialIndex to paramInitialIndex
+						initial: paramAccountUid
+						initial-index: paramInitialIndex
+						selection-index: initialIndex
+						show-count: True
+						show-first: True
+						show-last: True
+						count-width: 150
+						hidden: Not BooleanPredicate( paramSearchMode )
+					}
+					Spacer{
+						height:10
+					}
+				}
+			}
+		}
+		
+		// Row for header
+		GridRow{
+			GridCell{
+				background: Image "details/card_header.png"
+				Spacer { height: 67 }
+			}
+		}
+		
+		// Row for content
+		GridRow{
+			GridCell{
+				background: Image "details/card_content.png"
+				
+				Spacer { height:10 }
+				
+				Text {
+					value: account.login
+					styling:detailsTitle
+					align: Center
+				}
+				
+				Text {
+					value: $accountDetails.subtitle ( Transform account.repository_displayname using isEmptyMapping, account.repository_displayname )
+					styling: detailsSubtitle
+					align:Center
+				}
+				
+				Spacer { height:5 }
+				
+				Flow {
+					disposition: Horizontal
+
+					// First Column
+					Group {
+						layout: Layout { hint: width 290}
+						Image {
+							image: "details/account.png"
+							align: Center
+						}
+					}
+					
+					// Second Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Text {
+							value: Transform account.login using optionStringMapping
+							label: $account.login
+							lines:2
+						}
+						Text {
+							value: Transform account.username using optionStringMapping
+							label: $account.username
+							lines:2
+						}
+						Text {
+							value: Transform Date(account.creationdate).value('dd/MM/yyyy') using optionStringMapping
+							label: $account.creationdate
+						}
+						Text {
+							value: Transform Date(account.lastlogindate).value('dd/MM/yyyy') using optionStringMapping
+							label: $account.lastlogindate
+						}
+						Text {
+							value: Transform Date(account.passwordlastsetdate).value('dd/MM/yyyy') using optionStringMapping
+							label: $account.passwordlastsetdate
+						}
+						Link {
+							value: account.repository_displayname
+							label: $account.repositorydisplayname
+							icon:"details/link_database_14.png"
+							target: Activity Repository Detail with account.repository_uid to paramRepositoryUid
+							disabled:
+								OrPredicate {
+									StringPredicate( account.repository_displayname ) { when IsEmpty then True}
+									Not FeaturePredicate accountdetails_linktorepository				
+								} 
+						}
+					}
+					
+					// Third Column
+					Group {
+						layout: Layout { hint: width 350}
+						margins: Top 20 Left 25
+						Link {
+							value: Transform reconciledIdentity.fullname using optionStringMapping
+							label: $accountDetails.reconciled_identity
+							target: Activity Identity Detail with reconciledIdentity.uid to paramIdentityUid
+							disabled:
+								OrPredicate {
+									StringPredicate (reconciledIdentity.uid) { when IsEmpty then True}
+									Not FeaturePredicate accountdetails_linktoidentity
+								} 
+							hidden:StringPredicate(accountnoownerinfos.noownercode) {when Not IsEmpty then True}
+							info-popup: accountDetails_commentspopup(baccountDetail_manualreconinfos.comment to comment)
+							//icon:"details/link_profile_14.png"	
+							commands: Commands {
+								position: After
+										Command { 
+											icon: "16/filesystems/trashcan_empty_16.png"
+											tooltip: $reconciliationactions.delete
+											disabled:StringPredicate(reconciledIdentity.fullname) {when IsEmpty then True}
+											feature:recon_remove 
+											actions: 
+												Confirm Concat($reconciliationactions.delete, " ?"),
+												Call srv_reconciliation_remove (account.recorduid to accountRecordUid, reconciliationResult from result),
+												StringCase (reconciliationResult) { 
+													when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmdeleted,account.login), ReloadData (account), ReloadData (reconciledIdentity)]
+													otherwise [ Message Concat($reconciliationactions.actionerror," : ",reconciliationResult) ] 
+												}
+										}		
+										Command { 
+												icon: "16/audit/reconciliation_identity.png"
+												tooltip: $reconciliationactions.reconcilewithidentity
+												feature:recon_identity
+												actions: Dialog reconciliationIdentityDialog (account.login to inAccountLogin, account.recorduid to inAccountRecordUid, reconciliationResult from outResult),
+													StringCase (reconciliationResult) { 
+														when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmreconciled," ",account.login), ReloadData(account), ReloadData (reconciledIdentity) ]
+														otherwise [ Message Concat($reconciliationactions.actionerror," : ",reconciliationResult) ]
+													}
+											}										
+											Command { 
+												icon: "16/audit/reconciliation_leave.png"
+												tooltip: $reconciliationactions.reconcilewithleave
+												feature:recon_identity
+												actions: Dialog reconciliationLeaveDialog (account.login to inAccountLogin, account.recorduid to inAccountRecordUid, reconciliationResult from outResult),
+													StringCase (reconciliationResult) { 
+														when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmreconciled," ",account.login), ReloadData(account), ReloadData (reconciledIdentity) ]
+														otherwise [ Message Concat($reconciliationactions.actionerror, " : ",reconciliationResult) ]
+												}
+											}
+										}
+													
+						}
+						Text {
+							value:  numberOfApplications.count
+							label: $accountDetails.number_applications
+						}
+						Text {
+							value:  Transform Transform  account.disabled using emptyBooleanMapping using booleanDisplayMapping 
+							label: $account.disabled
+						}
+						Text {
+							value:  Transform Transform  account.service using emptyBooleanMapping using booleanDisplayMapping 
+							label: $account.serviceflag
+						}
+						Text {
+							value: $accountDetails.noownervalue(Transform accountnoownerinfos.noownercode using notNullTo01Mapping, accountnoownerinfos.noownercode)
+							label:$accountDetails.noowneraccount
+							info-popup: accountDetails_commentspopup(accountnoownerinfos.comment to comment)
+							hidden:StringPredicate(reconciledIdentity.fullname) {when Not IsEmpty then True}
+							commands: Commands {
+								position: After
+										Command { 
+											icon: "16/filesystems/trashcan_empty_16.png"
+											tooltip: $reconciliationactions.delete
+											disabled:StringPredicate(accountnoownerinfos.noownercode) {when IsEmpty then True}
+											feature:recon_remove 
+											actions: 
+												Confirm Concat($reconciliationactions.delete, " ?"),
+												Call srv_reconciliation_remove (account.recorduid to accountRecordUid, reconciliationResult from result),
+												StringCase (reconciliationResult) { 
+													when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmdeleted,account.login), ReloadData (account), ReloadData (reconciledIdentity)]
+													otherwise [ Message Concat($reconciliationactions.actionerror," : ",reconciliationResult) ] 
+												}
+										}		
+											Command { 
+												icon: "16/audit/reconciliation_noowner.png"
+												tooltip: $reconciliationactions.reconcilewithnoowner
+												feature:recon_noowner
+												actions: Dialog reconciliationNoOwnerDialog (account.login to inAccountLogin, account.recorduid to inAccountRecordUid, reconciliationResult from outResult),
+													StringCase (reconciliationResult) { 
+														when IsEmpty then [ Flash Information Concat($reconciliationactions.confirmreconciled," ",account.login), ReloadData(account), ReloadData (reconciledIdentity) ]
+														otherwise [ Message Concat($reconciliationactions.actionerror," : ",reconciliationResult) ]
+												}
+											}
+										}
+													
+						}
+						Link {
+							label: $accountDetails.noownermanager
+							value: Concat(Transform accountbusinessowner.hrcode using optionStringMapping, ' / ',Transform accountbusinessowner.fullname using optionStringMapping)
+							target:Activity Identity Detail with accountbusinessowner.uid to paramIdentityUid
+							hidden:StringPredicate(accountnoownerinfos.noownercode) {when IsEmpty then True}
+							disabled:
+							OrPredicate {
+								StringPredicate(accountbusinessowner.uid) { when IsEmpty then True}
+								Not FeaturePredicate accountdetails_linkto_noownermanager
+							}
+							commands:Commands { position: Before orientation: Horizontal 
+											Command{actions:Dialog accountDetailsManager_Dialog(selectedAccountUid to paramAccountUid), ReloadData (accountbusinessowner)
+							                        icon:'16/red/edit_16.png' feature:accountdetails_updatemanager tooltip:$accountDetails.updatemanager
+							                       }
+							                  }
+						}
+					}
+				}
+				Spacer { height: 5 }
+				// Did you know ?
+				Flow {
+					disposition: Horizontal
+					hidden: IntPredicate( Transform accountusergone.departuredate using isEmptyInverseMapping ){
+								when =0 then True
+					}
+					Group {
+						background:Color RGB (200,200,200)
+						layout: Layout { hint: width 820}
+						margins: All 1
+						Group {
+							background:Color RGB (254,241,215)
+							
+							Text {
+								value:$accountDetails.didyouknow.title
+								styling: detailsLabel
+							}
+							Text{
+								value: $accountDetails.didyouknow.response1
+								hidden: IntPredicate (Transform accountusergone.departuredate using isEmptyInverseMapping) { when =0 then True}
+							}
+							
+							Spacer { height: 5 }
+						}
+					}
+				}
+				Spacer { height: 20 }
+			}
+		}
+		
+		// Row for footer
+		GridRow{
+			GridCell{
+				background: Image "details/card_footer.png"
+				Spacer { height: 12 }
+			}
+		}
+		
+		// Row for links
+		GridRow{
+			GridCell{
+				Spacer { height: 20 }
+				Tiles {
+					columns:5
+					tile-height:120
+					mixins:detailIcons
+					TileGroup {
+						iterate-on: relatedLinksTiles
+						initial-sort: ^priority 
+						Tile {
+							Button {
+								actions: GoTo Dynamic (Current type, Current name) with account.recorduid to recorduid, account.uid to uid, SerializeSearch accountSearch to accountSearch, paramSearchMode to paramSearchMode
+								image: Current largeIcon
+								tooltip: Current title		
+							}
+							Text{
+								value: Current title
+								label: Label{ layout:Layout{indent: vertical 0 horizontal 0   }  }
+								lines:2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_group" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="Group list or picker" notes="">
+	<ViewParam name="recorduid" displayname="Record UID"/>
+	<ViewParam name="repositoryrecorduid" displayname="Repository Record uid"/>
+	<ViewParam name="code" displayname="Code"/>
+	<ViewParam name="displayname" displayname="Displayname"/>
+	<ViewSort name="sort" attribute1="A1303137174621_12" attribute2="A1303137174621_13"/>
+	<ViewAttribute name="A1303137174621_3" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1303137224439_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1303137174621_4" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303137174621_5" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1303137249447_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1303137174621_6" attribute="repositoryuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303137174621_7" attribute="repositorycode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303137174621_8" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303137174621_9" attribute="repositorymedia" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303137174621_10" attribute="repositoryextractdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303137174621_11" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1303137174621_12" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1303137231894_0" reference="code" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1303137174621_13" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1303137239598_0" reference="displayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1303137174622_14" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1303205187029_192" kind="left" identitysecure="false" join="upaccount">
+		<ViewAttribute name="A1303205191702_193" attribute="recorduid" alias="nballaccount" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1382688255314_3869" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382688196313_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382688198391_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

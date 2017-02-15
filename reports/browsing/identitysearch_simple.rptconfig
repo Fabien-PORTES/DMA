@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__hrcode_890_0</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__surname_892_1</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__givenname_891_2</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__sort_893_3</property>
+            <property name="value">hrcode</property>
+        </structure>
+        <structure>
+            <property name="name">sort_893_4</property>
+            <property name="value">hrcode</property>
+        </structure>
+        <structure>
+            <property name="name">sort_893_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">givenname_891_5</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">givenname_891_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">surname_892_6</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">surname_892_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">hrcode_890_7</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">hrcode_890_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

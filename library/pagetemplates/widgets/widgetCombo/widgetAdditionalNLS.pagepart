@@ -1,0 +1,3 @@
+<template:widgetnlsname/>.option1 [ en "Option1" fr "Option1" ]
+<template:widgetnlsname/>.option2 [ en "Option2" fr "Option2" ]
+<template:widgetnlsname/>.option3 [ en "Option3" fr "Option3" ]

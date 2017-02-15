@@ -1,0 +1,6 @@
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/admin/projectupdatemanager.page"
+projectUpdateManagerPageRefresh = Page {
+	conditional-redirect: ConditionalRedirect { condition: True target: Page projectUpdateManagerPage }
+	title: $projectUpdateManagerNLS.title
+}

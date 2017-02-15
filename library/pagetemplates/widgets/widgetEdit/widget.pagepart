@@ -1,0 +1,4 @@
+Edit {
+	label: <template:widgetlabel/>
+	variable: <template:widgetvariablename/>
+}

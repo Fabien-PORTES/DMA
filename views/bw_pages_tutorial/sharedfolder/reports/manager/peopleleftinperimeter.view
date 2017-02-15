@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bwfs_peopleleftinperimeter" errorifempty="false" distinct="true" identitysecure="true" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="people who left the company in the perimeter" notes="">
+	<ViewSort name="sort" attribute1="A1442848234947_11841"/>
+	<ViewAttribute name="A1442848225048_11830" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1442848227341_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1442848234947_11832" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11833" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11834" attribute="repositoryrecorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11835" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11836" attribute="nickname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11837" attribute="givenname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11838" attribute="middlename" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11839" attribute="surname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11840" attribute="altname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11841" attribute="fullname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11842" attribute="mail" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11843" attribute="phone" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11844" attribute="mobile" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11845" attribute="titlerecorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11846" attribute="titleuid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11847" attribute="titlecode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11848" attribute="titledisplayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11849" attribute="employeetyperecorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11850" attribute="employeetypeuid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11851" attribute="employeetypecode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11852" attribute="employeetypedisplayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11853" attribute="expertisedomainrecorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11854" attribute="expertisedomainuid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11855" attribute="expertisedomaincode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11856" attribute="expertisedomaindisplayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234947_11857" attribute="arrivaldate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11858" attribute="arrivalday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11859" attribute="departuredate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11860" attribute="departureday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11861" attribute="active" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11862" attribute="internal" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11863" attribute="importaction" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11864" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1442848243268_0" operation="isTrue" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1442848234948_11865" attribute="allocationchanged" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11866" attribute="organisationchanged" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11867" attribute="accountchanged" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442848234948_11868" attribute="permissionchanged" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1442849108868_11870" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="allocation">
+		<ViewJoin name="J1442849111470_11871" prefix="organisation" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="organisation">
+			<ViewAttribute name="A1442849121152_11874" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1442849121688_11875" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1442849122158_11876" attribute="code" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1442849125184_11877" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1442849125854_11878" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1442849127530_11879" attribute="organisationtypedisplayname" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1442849114625_11872" attribute="jobtitlecode" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1442849115176_11873" attribute="jobtitledisplayname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

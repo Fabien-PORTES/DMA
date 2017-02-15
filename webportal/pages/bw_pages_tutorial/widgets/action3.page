@@ -1,0 +1,33 @@
+import "/webportal/pages/bw_pages_tutorial/widgets/widgettour.page"
+import "/webportal/pages/reports/standard.page"
+
+action3 = Page {
+	title:'Go to examples'	
+
+	Button {
+		text:'go to Home Page'
+		actions: GoTo HomePage
+	}
+	
+	Button {
+		text:'go to default identity search Pages'
+		actions: GoTo Activity Identity Search
+	}
+
+	Button {
+		text:'go to the widget tour Pages'
+		actions: GoTo Page widgettour 
+	}
+
+	Button {
+		text:'go to the identity search report'
+		actions: GoTo Report browsing_identitysearch_simple
+	}
+	
+	Button {
+		text:"This is a hyper link to a static content"
+		actions: GoTo Static "static/bw_pages_tutorial/samplefile.html"
+	}
+}
+
+

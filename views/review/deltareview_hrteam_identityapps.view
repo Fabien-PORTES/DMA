@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="identityapps" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="identity applications" notes="">
+	<ViewParam name="recorduid" displayname="identity record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1335449572466_887" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1335449593748_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1335449602998_889" kind="inner" identitysecure="false" join="accountreconciliation">
+		<ViewAttribute name="A1335449610733_890" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1335449614514_0" operation="isFalse" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382818088270_1" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1335449628749_893" prefix="app_" kind="inner" identitysecure="false" join="applicationright">
+			<ViewAttribute name="A1335449679437_901" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1335449679437_902" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1335449679437_903" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1335449679437_904" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1335449679437_905" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1337156956383_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="Profile"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="A1335449679437_906" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1335449679437_907" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1335449679437_908" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1335449633405_894" attribute="recorduid" alias="accountrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1335449634624_895" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1335449657905_897" prefix="repository" kind="inner" identitysecure="false" join="repository">
+			<ViewAttribute name="A1335449671484_898" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1335449672437_899" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1335449673515_900" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1337097567228_40" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

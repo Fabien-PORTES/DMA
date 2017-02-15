@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="training_nbpeoplebyorg" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="organisation" displayname="nb people by org">
+	<ViewAttribute name="A1406818130882_1260" attribute="organisationtypecode" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1406818134393_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Service"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1406818147419_1262" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1406818157342_1263" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="upidentity">
+		<ViewAttribute name="A1406818160702_1264" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

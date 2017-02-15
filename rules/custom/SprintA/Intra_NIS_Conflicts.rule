@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="Intra_NIS_Conflicts" operator="and" query="account" displayname="Intra_NIS_Conflicts" version="3">
+	<RequestCriteria name="C1478709001086_92352" criteria="neDisabled">
+	</RequestCriteria>
+</Request>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_identity_simple_search" operator="and" query="identity" displayname="Simple identity search ({hrcode}, {givenname}, {surname}, {mail}, {orgshortname}, {orgname})" version="12" notes="">
+	<RequestParam name="hrcode" displayname="HR Code" query="identity" criteria="eqHrCode" criteriaparam="hrCodeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="givenname" displayname="Given name" query="identity" criteria="likeGivenName" criteriaparam="givenNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="surname" displayname="Surname" query="identity" criteria="likeSurname" criteriaparam="surnameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="mail" displayname="Mail" query="identity" criteria="likeMail" criteriaparam="mailParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="orgshortname" displayname="Organisation short name" query="organisation" criteria="likeShortName" criteriaparam="shortNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="orgname" displayname="Organisation name" query="organisation" criteria="likeDisplayName" criteriaparam="displayNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1423131565531_676" criteria="eqHrCode">
+		<RequestCriteriaParam name="hrCodeParam" reference="hrcode" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423131597625_678" criteria="likeGivenName">
+		<RequestCriteriaParam name="givenNameParam" reference="givenname" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423131628106_680" criteria="likeSurname">
+		<RequestCriteriaParam name="surnameParam" reference="surname" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423221128609_474" criteria="likeMail">
+		<RequestCriteriaParam name="mailParam" reference="mail" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestJoin name="J1423237438165_766" operator="and" join="uporganisation">
+		<RequestCriteria name="C1423221193008_477" criteria="likeShortName">
+			<RequestCriteriaParam name="shortNameParam" reference="orgshortname" ignoreifempty="true">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+		<RequestCriteria name="C1423221231376_479" criteria="likeDisplayName">
+			<RequestCriteriaParam name="displayNameParam" reference="orgname" ignoreifempty="true">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

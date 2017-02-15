@@ -1,0 +1,15 @@
+import "/webportal/pages/group/search.page"
+import "/webportal/pages/group/details.page"
+import "/webportal/pages/reports/standard.page"
+
+Activity {
+	concept: Group
+	kind: Search
+	to: Page groupSearchPage
+}
+
+Activity {
+	concept: Group
+	kind: Detail
+	to: Page groupDetailsPage
+}

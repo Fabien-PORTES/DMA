@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="fileexplorergetaccountgroups" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="Get account groups" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1434446830350_1462" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1434446833052_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1434446849082_1464" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="upgroup">
+		<ViewAttribute name="A1434446852756_1465" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434446853854_1466" attribute="code" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1434446854687_1467" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

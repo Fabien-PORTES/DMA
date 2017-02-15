@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_parentsharepoint" prefix="parent_" distinct="true" concept="permission" displayname="Parent sharepoint element picker" notes="">
+	<ViewParam name="recorduid" displayname="filesystem permission record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1304355332364_2" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355332364_3" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355332364_4" attribute="code" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355332364_5" attribute="displayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355335284_10" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355336243_11" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355336827_12" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355337507_13" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355338243_14" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355338900_15" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355339563_16" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355340218_17" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304355340883_18" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1304355391117_22" kind="inner" join="childpermission">
+		<ViewAttribute name="A1304355411510_23" attribute="recorduid" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1304355414669_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1305892524893_6997" prefix="parent_application" kind="inner" join="application">
+		<ViewAttribute name="A1316332598824_1641" attribute="applicationtype" operator="or" removedfromprojection="true">
+			<ViewAttributeFilter name="F1316332603654_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Sharepoint"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1322672632230_1562" attribute="recorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322672632866_1563" attribute="uid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322672633521_1564" attribute="code" removedfromprojection="false"/>
+		<ViewAttribute name="A1322672634199_1565" attribute="displayname" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="ReconciliedAccounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="controllogv2" displayname="Reconcilied-Accounts" notes="">
+	<ViewSort name="sort" attribute1="A1481816315003_4356"/>
+	<ViewJoin name="J1477575002412_394" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="controldiscrepancy">
+		<ViewJoin name="J1477575093881_399" prefix="NISAccount_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+			<ViewAttribute name="A1478256043331_627" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1478684044177_804" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1481816130516_4352" prefix="NIS_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+				<ViewAttribute name="A1481816137529_4353" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1481816315003_4356" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1478268950417_479" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+				<ViewAttribute name="A1478268968419_480" attribute="reliability" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1478268993083_482" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewJoin name="J1481816385927_4358" prefix="AD_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+				<ViewAttribute name="A1481816400679_4359" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1481816412464_4360" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1481816418553_4361" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1481816839951_4389" prefix="AD_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+					<ViewAttribute name="A1481817068722_4393" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="A1481817277676_4394" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1477575020134_396" attribute="controldisplayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1477575025735_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Reconcilied-Accounts"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

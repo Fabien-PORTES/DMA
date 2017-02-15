@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationtypes" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="br_applicationtypes" notes="">
+	<ViewSort name="sort" attribute1="A1378741441942_1399"/>
+	<ViewAttribute name="A1378741441942_1399" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

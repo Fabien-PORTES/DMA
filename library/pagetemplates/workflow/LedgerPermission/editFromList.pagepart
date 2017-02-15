@@ -1,0 +1,9 @@
+Text {
+	label: <template:variablelabel/>
+	value: <template:variablerecord/>.displayname
+	mixins: workflowTextWithCommandMixin
+	commands: Command { 
+		actions: Dialog permissionPicker(<template:taskvariablevaluelist/> to inUidList,<template:taskvariablename/> from outUid)
+		icon: "16/audit/permission_16.png"
+	}
+}

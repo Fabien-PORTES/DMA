@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_groupDetail_accounts" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_groupDetail_accounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="isDirectLink" displayname="isDirectLink" type="Boolean"/>
+	<ViewSort name="sort" attribute1="A1377763694851_290"/>
+	<ViewJoin name="J1377763684133_289" kind="inner" identitysecure="false" enabled="!param.isDirectLink.get()" join="upgroup">
+		<ViewAttribute name="A1377763721280_294" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377763731391_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1377763694851_290" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1377763697020_291" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1377763704930_292" prefix="repository_" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1377763710235_293" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1377763776884_296" prefix="identity_" kind="left" identitysecure="false" join="identityreconciliation">
+		<ViewAttribute name="A1377763781050_297" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1377763783796_298" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1377763787183_299" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1377764177369_302" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1377764184063_303" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1377765359732_304" kind="inner" identitysecure="false" enabled="param.isDirectLink.get()" join="group">
+		<ViewAttribute name="1377765372402_306" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1377763731391_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

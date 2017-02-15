@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition scriptfile="/collectors/AD4UNIX_past/AD4UNIX_past.javascript" name="P1475487305914_1" label="AD4UNIX_past" startingpoint="C1484296698786">
+		<Component name="C1481271658698" type="account" x="170" y="479" w="200" h="64" title="Add in_AD4UNIXpast to NIS">
+			<Account key="UID_original_JOIN">
+				<Attribute name="custom3" attribute="_NIS_IN_AD4Unix_past"/>
+				<Attribute name="custom7" attribute="windomain_first"/>
+				<Attribute name="custom2" attribute="samaccountname_first"/>
+			</Account>
+			<Media code="repo"/>
+		</Component>
+		<Component name="C1481556322773" type="joinfilter" x="315" y="261" w="200" h="64" title="join uid">
+			<Join source="C1484233083567" zeroerror="true" zeroevent="NO_JOIN" zerotechnical="true" severalaction="first"/>
+			<Cache active="true" main="LOGIN_JOIN" join="uid"/>
+		</Component>
+		<Component name="C1481271658698_1" type="account" x="630" y="449" w="200" h="64" title="Add in_AD4UNIXpast">
+			<Account key="UID_original_JOIN">
+				<Attribute name="custom3" attribute="_FALSE"/>
+			</Account>
+			<Media code="repo"/>
+		</Component>
+		<Component name="C1484233083567" type="discoverysource" x="63" y="19" w="200" h="64" title="AD4UNIX_past_after_script">
+			<Discovery file="/discovery/AD4UNIX/AD4UNIX_past_after_script.discovery"/>
+		</Component>
+		<Link name="L1484233868086" source="C1481556322773" target="C1481187785280_5" priority="2" expression="(!dataset.hasEvent(&apos;NO_JOIN&apos;))"/>
+		<Component name="C1484296698786" type="discoverysource" x="554" y="8" w="200" h="64" title="_JOIN_UID">
+			<Discovery file="/discovery/NIS/JOIN_UID.discovery"/>
+		</Component>
+		<Component name="C1482233123468_2" type="changefilter" x="428" y="141" w="200" h="64" title="true false">
+			<Actions>
+				<Action name="U1482233173090" action="add" attribute="_TRUE" type="Boolean" multivalued="false" newvalue="true" errorexist="false"/>
+				<Action name="U1482233181694" action="add" attribute="_FALSE" type="Boolean" multivalued="false" errorexist="false" newvalue="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1484312170157" source="C1482233123468_2" target="C1481556322773" priority="1"/>
+		<Component name="C1481187785280_5" type="changefilter" x="110" y="380" w="200" h="64" title="Flag if NIS account Domain in AD4Unix">
+			<Actions>
+				<Action name="U1481189944372" action="multifilter" attribute="legacyenv_unique" remove="false" oldname="_DMA_NIS_DOMAINS"/>
+				<Action name="U1481190432334" action="add" attribute="_NIS_IN_AD4Unix_past" type="Boolean" multivalued="false" newvalue="{!dataset.legacyenv_unique.get().isEmpty()}" errorexist="false"/>
+				<Action name="U1481205341290" action="default" attribute="_NIS_IN_AD4Unix_past" newvalue="{dataset._FALSE.get()}" errorunknown="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1484233869060" source="C1481187785280_5" target="C1481271658698" priority="1"/>
+		<Link name="L1484234279890" source="C1481556322773" target="C1481271658698_1" priority="1" expression="(dataset.hasEvent(&apos;NO_JOIN&apos;))"/>
+		<Link name="L1485167612767" source="C1484233083567" target="C1481556322773" priority="2"/>
+		<Link name="L1485174982380" source="C1484296698786" target="C1482233123468_2" priority="2"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

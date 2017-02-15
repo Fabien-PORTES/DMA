@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Features PUBLIC "-//Brainwave//DTD Features 1.0//EN" "urn:brainwave:igrc:dtds/features.dtd">
+<Features version="1" name="bw_sharedfolder_pages" description="Shared folder facet features" include="true">
+	<Feature name="sharesearch_analytics" description="Show the analytics panel in the search view">
+		<FeatureSet name="I1442855836592"/>
+	</Feature>
+	<Feature name="sharedfoldersearch_analytics" description="Show the analytics panel in the search view">
+		<FeatureSet name="I1442855836592"/>
+	</Feature>
+	<Feature name="sharedfolderdetails_updatemanager" description="Can update the manager of a given shared folder in the shared folder details page (add, modify, delete)">
+		<FeatureSet name="I1442855626411"/>
+	</Feature>
+	<Feature name="sharedfolderdetails_auditmanager" description="Can see the manager audit trail in the shared folder details page (add, modify, delete)">
+		<FeatureSet name="I1442855626411"/>
+	</Feature>
+	<Feature name="sharedfolderdetails_updatemetadata" description="Can update the metadata of a given shared folder in the shared folder details page (description, classification, manageable)">
+		<FeatureSet name="I1442855626411"/>
+	</Feature>
+	<Feature name="sharedetails_updatemanager" description="Can update the manager of a given share in the share details page (add, modify, delete)">
+		<FeatureSet name="I1442855626411"/>
+	</Feature>
+	<Feature name="sharedetails_auditmanager" description="Can see the manager audit trail in the share details page (add, modify, delete)">
+		<FeatureSet name="I1442855626411"/>
+	</Feature>
+	<Feature name="sharedetails_updatemetadata" description="Can update the metadata of a given share in the share details page (description, classification, manageable)">
+		<FeatureSet name="I1442855626411"/>
+	</Feature>
+	<Feature name="sharedfolder_classification_menu" description="Shows classification page">
+		<FeatureSet name="I1441300070662"/>
+	</Feature>
+	<Feature name="sharedfolder_risks_menu" description="Shows security risk page">
+		<FeatureSet name="I1441300070662"/>
+	</Feature>
+	<Feature name="sharedfolder_quality_menu" description="Shows Quality page">
+		<FeatureSet name="I1441300070662"/>
+	</Feature>
+	<Feature name="sharedfolder_explore_menu" description="Shows Explore page">
+		<FeatureSet name="I1441300070662"/>
+	</Feature>
+	<Feature name="sharedfolder_requests_menu" description="Shows requests management page">
+	</Feature>
+	<Feature name="sharedfolder_manager_home" description="Shows the manager home">
+	</Feature>
+	<Feature name="sharedfolder_accesswizard" description="Shows the access wizard">
+		<FeatureSet name="I1442316872240"/>
+	</Feature>
+	<Feature name="sharedfolder_manager_myteam" description="Shows the team">
+		<FeatureSet name="I1442316872240"/>
+	</Feature>
+	<Feature name="sharedfolder_secu_op_it_home" description="Shows the secu op it home">
+		<FeatureSet name="I1441300070662"/>
+	</Feature>
+	<Feature name="sharedfolder_explorer_byshare" description="Sharedfolder explorer by share">
+		<FeatureSet name="I1442854955031"/>
+	</Feature>
+	<Feature name="sharedfolder_explorer_bygroup" description="Sharedfolder explorer by group">
+		<FeatureSet name="I1442854955031"/>
+	</Feature>
+	<Feature name="sharedfolder_explorer_byidentiy" description="Sharedfolder explorer by identity">
+		<FeatureSet name="I1442854955031"/>
+	</Feature>
+	<Feature name="sharedfolder_explorer_byorg" description="Sharedfolder explorer by organisation">
+		<FeatureSet name="I1442854955031"/>
+	</Feature>
+	<Feature name="sharedfolder_explorer_byaccount" description="Sharedfolder explorer by account">
+		<FeatureSet name="I1442854955031"/>
+	</Feature>
+	<Feature name="sharedfolder_modify_rights" description="This feature enables all the buttons to modify the access rights through the action brokers">
+		<FeatureSet name="I1442855642805"/>
+	</Feature>
+	<Feature description="analysis_sharedfolderreviewbymanager" name="analysis_sharedfolderreviewbymanager">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="analysis_identitysimilarsharedfolders" name="analysis_identitysimilarsharedfolders">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="analysis_sharedfolderreviewbyorganisation" name="analysis_sharedfolderreviewbyorganisation">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="analysis_sharedfolderjobpivot" name="analysis_sharedfolderjobpivot">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="analysis_sharedfolderorgpivot" name="analysis_sharedfolderorgpivot">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolderdetail" name="browsing_sharedfolderdetail">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolderaccounts" name="browsing_sharedfolderaccounts">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolderidentities" name="browsing_sharedfolderidentities">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_group_detailfileshares" name="browsing_group_detailfileshares">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_identity_detailfileshare" name="browsing_identity_detailfileshare">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature description="conditional display of the show details button" name="browsing_identity_detailfileshare_showdetails">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="conditional hyperlink within the report" name="browsing_identity_detailfileshare_sharedfolder">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolder_listnbaccounts" name="browsing_sharedfolder_listnbaccounts">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolder_listnbidentities" name="browsing_sharedfolder_listnbidentities">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolder_detailaccountacls" name="browsing_sharedfolder_detailaccountacls">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolder_detailgroupacls" name="browsing_sharedfolder_detailgroupacls">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_account_detailfileshare" name="browsing_account_detailfileshare">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolder_subsharedfolder" name="browsing_sharedfolder_subsharedfolder">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="controls_sharedfoldercontrols" name="controls_sharedfoldercontrols">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_rootsharedfoldersubsharedfolder" name="browsing_rootsharedfoldersubsharedfolder">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolderlistnbidentities" name="browsing_sharedfolderlistnbidentities">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolderlistnbaccounts" name="browsing_sharedfolderlistnbaccounts">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_aclsexplorer" name="browsing_aclsexplorer">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_aclsexplorer_analytics" name="browsing_aclsexplorer_analytics">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolder_actionaudit" name="browsing_sharedfolder_actionaudit">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedserver_actionaudit" name="browsing_sharedserver_actionaudit">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedfolderbyidentity_actionaudit" name="browsing_sharedfolderbyidentity_actionaudit">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature description="browsing_sharedfolderforaccount_actionaudit" name="browsing_sharedfolderforaccount_actionaudit">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="browsing_sharedelements_byowner" name="browsing_sharedelements_byowner">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature description="sf_manager_peopleperpermpermanager" name="sf_manager_peopleperpermpermanager">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature description="sf_manager_managedsharedfolderswithrights" name="sf_manager_managedsharedfolderswithrights">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature description="sf_manager_permsperpeoplepermanager" name="sf_manager_permsperpeoplepermanager">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature description="sf_manager_crosstabpeoplepermspermanager" name="sf_manager_crosstabpeoplepermspermanager">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature description="sf_manager_peopleallocationchangedpermanager" name="sf_manager_peopleallocationchangedpermanager">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature description="sf_manager_peopleftcompanyinperimeter" name="sf_manager_peopleftcompanyinperimeter">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature description="sf_manager_peopleoutfromperimeter" name="sf_manager_peopleoutfromperimeter">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature name="fs_browsing_group_detail" description="Group details report">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail" description="Identity details report">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_orgmanager" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_directmanager" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_organisation" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_jobtitle" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_teamname" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_teamjob" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_teamorg" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_account" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_repository" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="fs_browsing_identity_detail_sharedfolder" description="Identity details report conditional hyperlink">
+		<FeatureSet name="I1442915083195"/>
+	</Feature>
+	<Feature name="sf_manager_peoplewithaccesstofolder" description="Permission detail report for the manager: people with access to the shared folder">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature name="sf_manager_peoplewithaccesstofolder_canrevoke" description="Permission detail report conditional action: can revoke an access">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature name="sf_manager_accountwithaccesstofolder" description="Permission detail report for the manager: privileged accounts with access to the shared folder">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+	<Feature name="sf_manager_accountwithaccesstofolder_canrevoke" description="Permission detail report conditional action: can revoke an access">
+		<FeatureSet name="I1442915083195"/>
+		<FeatureSet name="I1442915083193"/>
+	</Feature>
+</Features>

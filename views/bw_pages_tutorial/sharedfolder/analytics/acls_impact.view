@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="acls_impact" prefix="element_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="acls_impact" notes="">
+	<ViewParam name="uids" displayname="uids"/>
+	<ViewComputedAttribute name="has_acl" displayname="has_acl" type="String" expression="dataset.aclaccount_count.get()+dataset.aclgroup_count.get()&gt;0?1:0"/>
+	<ViewComputedAttribute name="acl_total" displayname="acl_total" type="Integer" expression="dataset.aclaccount_count.get()+dataset.aclgroup_count.get()"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1443717558881_684" prefix="parent_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentpermission">
+		<ViewAttribute name="A1443717572583_689" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443717573138_690" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443717573653_691" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443717574140_692" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1443717567038_685" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1443717567570_686" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1443717802691_0" reference="uids" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1443717568172_687" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1443717568782_688" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1443717581982_693" prefix="aclaccount_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclaccount">
+		<ViewAttribute name="A1443717622813_697" attribute="uid" alias="aclaccount_count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1443717598836_694" prefix="aclgroup_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclgroup">
+		<ViewAttribute name="A1443717606750_695" attribute="uid" alias="aclgroup_count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1443717645829_699" prefix="account_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountright">
+		<ViewAttribute name="A1443717656434_700" attribute="uid" alias="account_total" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1443717819136_703" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1443717821511_0" operation="isFalse" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1443717825242_1" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1443773146298_759" attribute="permissiontype" alias="element_subtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

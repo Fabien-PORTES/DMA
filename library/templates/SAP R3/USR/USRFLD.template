@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343580729220" title="CUA: Definition of Logical Fields " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A3441332257712139440" attribute="borobject" column="BOROBJECT" type="String" multivalued="false" persistent="false" description="Object Type"/>
+		<Attribute name="A5283373152702534394" attribute="log_field" column="LOG_FIELD" type="String" multivalued="false" persistent="false" description="Logical field ID for ALE distribution field selection"/>
+		<Attribute name="A6173736111169941103" attribute="text" column="TEXT" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7527667259395835410" attribute="fieldname" column="FIELDNAME" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343580789665" attribute="borobject" checktype="mandatory"/>
+	</Checks>
+</Discovery>

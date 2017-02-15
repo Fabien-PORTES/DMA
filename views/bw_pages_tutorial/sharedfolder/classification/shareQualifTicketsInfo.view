@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sf_shareQualifTicketsInfo" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketlog" displayname="sf_shareQualifTicketsInfo">
+	<ViewComputedAttribute name="status" type="String" expression="&quot;started&quot;"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1442334545628_348" attribute="tickettype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1442334548028_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="SF_SHARE_QUALIFY"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1442337858979_11534" attribute="custom1" alias="shareuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442339660264_11660" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442339995829_11672" attribute="closedate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442339999729_11673" attribute="closeday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442340017786_11675" attribute="title" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442340045368_11677" attribute="custom2" alias="nbmanaged" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442340047178_11678" attribute="custom3" alias="nbowners" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442340054294_11679" attribute="custom4" alias="nbsensitivities" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343581175023" title="CUA: Text Table to Define Logical Fields " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A6694820038592410077" attribute="sprache" column="SPRACHE" type="String" multivalued="false" persistent="false" description="Language Key"/>
+		<Attribute name="A4269359271470739828" attribute="borobject" column="BOROBJECT" type="String" multivalued="false" persistent="false" description="Object Type"/>
+		<Attribute name="A6167769515797473920" attribute="log_field" column="LOG_FIELD" type="String" multivalued="false" persistent="false" description="Logical field ID for ALE distribution field selection"/>
+		<Attribute name="A9205861240659278797" attribute="text" column="TEXT" type="String" multivalued="false" persistent="false" description="Text Field"/>
+		<Attribute name="A7441492891334903856" attribute="fieldname" column="FIELDNAME" type="String" multivalued="false" persistent="false" description="Medium Field Label"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343581207622" attribute="borobject" checktype="mandatory"/>
+	</Checks>
+</Discovery>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissionruleevol" distinct="true" concept="permission" displayname="Permission rule evolution on the last 3 months" notes="">
+	<ViewParam name="rulename" displayname="rule name"/>
+	<ViewSort name="sort" attribute1="A1303673909241_185"/>
+	<ViewAttribute name="A1303673906189_184" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT" removedfromprojection="false"/>
+	<ViewAttribute name="A1303673909241_185" attribute="timeslotcommitdate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303673910008_186" attribute="timeslotellapsedtime" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1303673932743_0" operation="le" ignoreifempty="false">
+			<Value name="0" data="90"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1303673976907_198" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1303673981585_199" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303673989576_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1304088261103_16453" kind="inner" join="application">
+		<ViewAttribute name="A1316337578276_6179" attribute="applicationtype" operator="or" removedfromprojection="true">
+			<ViewAttributeFilter name="F1316337582544_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Profile"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

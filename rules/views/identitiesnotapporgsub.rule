@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_identitiesnotapporgsub" operator="and" query="identity" displayname="Identities belonging to org and sub {organisationrecorduid} and who don&apos;t have access to a given application {applicationrecorduid}" version="3">
+	<RequestParam name="organisationrecorduid" displayname="organisation record uid" query="organisation" criteria="eqRecordUid" criteriaparam="recordUidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="applicationrecorduid" displayname="application record uid" query="application" criteria="eqRecordUid" criteriaparam="recordUidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestJoin name="J1325600778813_3473" operator="and" join="uporganisation">
+		<RequestCriteria name="C1325600842610_3474" criteria="eqRecordUid">
+			<RequestCriteriaParam name="recordUidParam" reference="organisationrecorduid" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+	<RequestGroup name="G1325600874633_3476" operator="and" inverse="true">
+		<RequestJoin name="J1325600882117_3477" operator="and" join="accountreconciliation">
+			<RequestJoin name="J1325600885959_3478" operator="and" join="right">
+				<RequestJoin name="J1325600887812_3479" operator="and" join="permission">
+					<RequestJoin name="J1325600892273_3480" operator="and" join="application">
+						<RequestCriteria name="C1325600897293_3481" criteria="eqRecordUid">
+							<RequestCriteriaParam name="recordUidParam" reference="applicationrecorduid" ignoreifempty="false"/>
+						</RequestCriteria>
+					</RequestJoin>
+				</RequestJoin>
+			</RequestJoin>
+		</RequestJoin>
+	</RequestGroup>
+</Request>

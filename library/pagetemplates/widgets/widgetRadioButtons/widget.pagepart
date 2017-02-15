@@ -1,0 +1,20 @@
+RadioButtons {
+	label: <template:widgetlabel/>
+	variable: <template:widgetvariablename/>
+	layout: Layout {
+		grab: horizontal False vertical False
+		align: horizontal Beginning vertical Center
+	}
+	Option {
+		text: $<template:pageNLSname/>.<template:widgetnlsname/>.option1
+		value: "option1"
+	}
+	Option {
+		text: $<template:pageNLSname/>.<template:widgetnlsname/>.option2
+		value: "option2"
+	}
+	Option {
+		text: $<template:pageNLSname/>.<template:widgetnlsname/>.option3
+		value: "option3"
+	}
+}	

@@ -1,0 +1,159 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+reportDetails = NLS {
+	browsing_repository_detailapplications.pagetitle [ en "Applications Details" fr "Applications Détaillées"]
+	browsing_repository_detailapplications.title [ en "List of Applications" fr "Liste des Applications"]
+	browsing_repository_detailapplications.subtitle [ en "Applications - Repository <<{0}>>" fr "Applications - Référentiel <<{0}>>"]
+	browsing_repository_detailapplications.columns.code [ en "Code" fr "Code"]
+	browsing_repository_detailapplications.columns.displayname [en "Name" fr "Nom"]
+	browsing_repository_detailapplications.columns.repositorydisplayname [ en "Repository" fr "Référentiel"]
+	browsing_repository_detailapplications.columns.repositorycode [ en "Repository Code" fr "Code du Référentiel"]
+}
+
+browsing_repository_detailapplications = Page {
+
+	title: $reportDetails.browsing_repository_detailapplications.pagetitle
+	tags: "repository" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: browsing_repository_detailapplications
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	repositorySearch = SearchDefinition {
+		entity: Repository
+		simple-mode-rule: br_repository_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentRepository = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	repositoryList = Dataset {
+		search: Search {
+			definition: repositorySearch
+			view: br_repository_searchpoint with nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_repositoryDetail with currentRepository to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_application with conceptData.recorduid to repositoryrecorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: repositoryList
+			column: uid
+			selection: currentRepository
+			back-link: Activity Repository Detail with currentRepository to paramRepositoryUid , SerializeSearch repositorySearch to repositorySearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_repository_detailapplications.title	
+		}		
+		
+		Text {
+			value: $reportDetails.browsing_repository_detailapplications.subtitle( conceptData.displayname )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			double-click: GoTo Activity Application Detail with selectedUid to paramApplicationUid
+			show-filter: True
+			show-count: True
+			
+			Column {
+				column: recorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: uid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: code
+				header: $reportDetails.browsing_repository_detailapplications.columns.code
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: displayname
+				header: $reportDetails.browsing_repository_detailapplications.columns.displayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: repositorydisplayname
+				header: $reportDetails.browsing_repository_detailapplications.columns.repositorydisplayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: repositorycode
+				header: $reportDetails.browsing_repository_detailapplications.columns.repositorycode
+				sortable: True
+				filterable: True
+				width:100%
+			}
+		}
+		
+		Button {
+			actions:  GoTo Activity Application Detail with selectedUid to paramApplicationUid
+			layout: Layout { align: horizontal End vertical Beginning grab: horizontal False vertical False hint: width 200}
+			disabled: StringPredicate(selectedUid) { when IsEmpty then True }
+			text: $search_page.showdetails
+		}
+	}
+}

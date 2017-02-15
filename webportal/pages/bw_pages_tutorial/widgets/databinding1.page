@@ -1,0 +1,20 @@
+databinding1 = Page {
+	title:'Dataset'
+	
+	identities = Dataset {
+		view:br_identity
+	}
+
+	Table {
+		data:identities
+		layout:Layout{grab: horizontal True vertical True}
+		Column {
+			column:hrcode
+		}
+		Column {
+			column:fullname
+		}
+	}
+
+}
+

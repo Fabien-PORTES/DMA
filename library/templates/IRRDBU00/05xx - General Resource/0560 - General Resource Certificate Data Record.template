@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource certificate data record" description="The General Resource Certificate Data Record defines the information associated with the Certificate Data Record resource class.">
+	<Source type="FORMATTED" filter="^0560 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRCERT_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the Certificate Data record (0560)."/>
+		<Attribute name="A4199536690768339793" attribute="GRCERT_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRCERT_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRCERT_START_DATE" column="262-271" type="Date" multivalued="false" description="The date from which this certificate is valid."/>
+		<Attribute name="A3188661801656117613" attribute="GRCERT_START_TIME" column="273-280" type="String" multivalued="false" description="The time from which this certificate is valid."/>
+		<Attribute name="A4037269903301147695" attribute="GRCERT_END_DATE" column="282-291" type="Date" multivalued="false" description="The date after which this certificate is no longer valid."/>
+		<Attribute name="A7863438466300294503" attribute="GRCERT_END_TIME" column="293-300" type="String" multivalued="false" description="The time after which this certificate is no longer valid."/>
+		<Attribute name="A8801039954934473602" attribute="GRCERT_KEY_TYPE" column="302-309" type="String" multivalued="false" description="The type of key associated with the certificate. Valid values are PKCSDER, ICSFTOKN, PCICCTKN, DSA, or all blanks indicating no private key. The value PUBTOKEN indicates that the public key (without the private key) is stored in ICSF."/>
+		<Attribute name="A2460635583838380635" attribute="GRCERT_KEY_SIZE" column="311-320" type="Number" multivalued="false" description="The size of private key associated with the certificate, expressed in bits."/>
+		<Attribute name="A5281244329858370167" attribute="GRCERT_LAST_SERIAL" column="322-337" type="String" multivalued="false" description="The hexadecimal representation of the low-order eight bytes of the serial number of the last certificate signed with this key."/>
+		<Attribute name="A5281244329858370168" attribute="GRCERT_RING_SEQN" column="339-348" type="Number" multivalued="false" description="A sequence number for certificates within the ring."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+	<Checks>
+		<Check name="U1314367823667" attribute="GRCERT_KEY_TYPE" checktype="regexp" checkvalue="^PKCSDER|ICSFTOKN|PCICCTKN|DSA|PUBTOKEN$" event="Invalid Key Type"/>
+	</Checks>
+</Discovery>

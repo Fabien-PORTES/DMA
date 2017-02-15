@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Roles PUBLIC "-//Brainwave//DTD Roles 1.0//EN" "urn:brainwave:igrc:dtds/roles.dtd">
+<Roles version="1" name="recon" description="Reconciliation Page">
+	<Role name="r1424271252593" portalrolename="bw_recon" rolerule="bw_recon_pro_managers" description="Reconciliation Administrators"/>
+</Roles>

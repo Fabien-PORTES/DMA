@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_nbgroups" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_nbgroups">
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1438776435124_712" prefix="share_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="1438777057563_761" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1438776448378_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1438777066277_762" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+	<ViewAttribute name="1438865971657_805" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1438776475148_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="D"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1442406757187_349" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="groups">
+		<ViewAttribute name="A1442406764911_350" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

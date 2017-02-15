@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationcountpermission" distinct="true" concept="application" displayname="Count the number of permission for a given application" notes="">
+	<ViewParam name="recorduid" displayname="Record UID"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1302171511005_530" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302171524949_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1302171560054_533" kind="inner" join="permission">
+		<ViewAttribute name="A1302171566486_534" attribute="recorduid" alias="nbpermission" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1316330719963_785" attribute="applicationtype" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1316330724681_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Profile"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

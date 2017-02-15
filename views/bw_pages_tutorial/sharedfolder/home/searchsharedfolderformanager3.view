@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bwfs_searchsharedfolderformanager3" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="search shared folder for manager with share management">
+	<ViewParam name="query" displayname="query"/>
+	<ViewParam name="businessowneruid" displayname="businessowneruid"/>
+	<ViewComputedAttribute name="description" displayname="description" type="String" expression="dataset.code.get()+&apos; (&apos;+dataset.applicationdisplayname.get()+&apos;)&apos;"/>
+	<ViewSort name="sort" attribute1="A1441636380927_663" attribute2="A1441636355280_660"/>
+	<ViewAttribute name="A1441636344045_658" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1441636344690_659" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1441636355280_660" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1441636428423_0" reference="query" operation="ilike" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1441636361926_661" prefix="application" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="A1441636366062_662" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1441636391543_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1441636380927_663" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1441636381612_664" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1441636807395_749" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="management">
+			<ViewAttribute name="1441636813363_751" attribute="expertisedomaincode" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1441636615256_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="businessowner"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewJoin name="J1441636555175_668" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+				<ViewAttribute name="1441636815873_754" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1441636605694_0" reference="businessowneruid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

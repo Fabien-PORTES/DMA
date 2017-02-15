@@ -1,0 +1,30 @@
+
+condition1 = Page {
+	title:'Simple condition to enable/disable a button'
+	
+	selectedHRCODE = Variable
+	
+	identities = Dataset {
+		view:br_identity
+	}
+	
+	
+	Button {
+		text:'Show the selected Hr code'
+		disabled:StringPredicate(selectedHRCODE) { when IsEmpty then True otherwise False}
+		actions:Message selectedHRCODE
+	}
+	Table {
+		data:identities
+		layout:Layout{grab:horizontal True vertical True}
+		
+		Column {
+			column:hrcode
+			selection:selectedHRCODE
+		}
+		Column {
+			column:fullname
+		}
+	}
+}
+

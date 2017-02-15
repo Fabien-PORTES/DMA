@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitieswithjobs" operator="and" query="identity" displayname="Identities with job which is one of {jobs}" version="2" notes="">
+	<RequestParam name="jobs" displayname="jobs names" query="identity" criteria="inJobTitle" criteriaparam="jobTitleParam"/>
+	<RequestCriteria name="C1332848218562_48" criteria="inJobTitle">
+		<RequestCriteriaParam name="jobTitleParam" reference="jobs" ignoreifempty="false"/>
+	</RequestCriteria>
+</Request>

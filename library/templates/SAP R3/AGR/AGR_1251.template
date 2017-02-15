@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1342902551417" title="Authorization data for the activity group " description="Auth. Fields with auth. Values per role ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A635266965051821425" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client ID of Current User"/>
+		<Attribute name="A6534741192382005175" attribute="agr_name" column="AGR_NAME" type="String" multivalued="false" persistent="false" description="Role Name"/>
+		<Attribute name="A275105247387897472" attribute="counter" column="COUNTER" type="Number" multivalued="false" persistent="false" description="Menu ID for BIW"/>
+		<Attribute name="A2622098709098759882" attribute="object" column="OBJECT" type="String" multivalued="false" persistent="false" description="Auth. Object in User Master Maintenance"/>
+		<Attribute name="A6394389316754767247" attribute="auth" column="AUTH" type="String" multivalued="false" persistent="false" description="Authorization name in user master maintenance"/>
+		<Attribute name="A825559410633154842" attribute="variant" column="VARIANT" type="String" multivalued="false" persistent="false" description="Variants for Profile Generator"/>
+		<Attribute name="A910248223480080208" attribute="field" column="FIELD" type="String" multivalued="false" persistent="false" description="Field name of an authorization"/>
+		<Attribute name="A6359817925807083319" attribute="low" column="LOW" type="String" multivalued="false" persistent="false" description="Authorization value"/>
+		<Attribute name="A8891791188930085132" attribute="high" column="HIGH" type="String" multivalued="false" persistent="false" description="Authorization value"/>
+		<Attribute name="A4672720159127627113" attribute="modified" column="MODIFIED" type="String" multivalued="false" persistent="false" description="Object status"/>
+		<Attribute name="A7404516148478819931" attribute="deleted" column="DELETED" type="String" multivalued="false" persistent="false" description="ID whether object is deleted"/>
+		<Attribute name="A2306759642150249269" attribute="copied" column="COPIED" type="String" multivalued="false" persistent="false" description="ID whether object is copied"/>
+		<Attribute name="A7022009109608581594" attribute="neu" column="NEU" type="String" multivalued="false" persistent="false" description="ID whether object is new"/>
+		<Attribute name="A6551441261254797322" attribute="node" column="NODE" type="String" multivalued="false" persistent="false" description="Internal: Node ID"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1342902581915" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

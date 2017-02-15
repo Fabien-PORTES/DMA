@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1475487699594">
+	<Source file="{config.importfiles}/Extracts_DMA/nis_export_all.csv" type="CSV" separator=";" textseparator="&quot;" encoding="ISO-8859-1"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7268302464959183987" attribute="nis" column="NIS" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3406334582623751561" attribute="server" column="Server" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3162657518080453387" attribute="accountname" column="AccountName" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1820719894594252359" attribute="mdphash" column="MDPHash" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A6616344836346440122" attribute="quality" column="Quality" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Checks>
+	</Checks>
+	<Actions>
+		<Action name="U1475487935678" action="multireplace" attribute="nis" newvalue="{dataset.nis.get().toUpperCase()}"/>
+		<Action name="U1475490383642" action="add" attribute="_ACCOUNTLOCKED" type="Boolean" newvalue="{dataset.quality.get().startsWith(&quot;lock&quot;)}"/>
+		<Action name="U1475490539906" action="add" attribute="_PASSWORDCRACKED" type="Boolean" newvalue="{dataset.quality.get().startsWith(&quot;cracked&quot;)}"/>
+		<Action name="U1475490631212" action="add" attribute="_NOPASSWORD" type="Boolean" newvalue="{dataset.quality.get().startsWith(&quot;NP&quot;)}"/>
+		<Action name="U1475671504047" action="replace" attribute="nis" oldvalue="NZ.CTI.FR" newvalue="NZCTIFR"/>
+		<Action name="U1475671544718" action="replace" attribute="nis" oldvalue="ADOC.AS" newvalue="ADOC"/>
+		<Action name="U1475671727007" action="replace" attribute="nis" oldvalue="NTNISP.FR" newvalue="NTNISP"/>
+		<Action name="U1475674491100" action="replace" attribute="nis" oldvalue="ADOC.AS" newvalue="ADOC"/>
+		<Action name="U1475674515225" action="replace" attribute="nis" oldvalue="CAE" newvalue="EDGA_CAE"/>
+		<Action name="U1478597805961" action="replace" attribute="nis" oldvalue="TO.BTV.CTI.FR" newvalue="EV"/>
+		<Action name="U1481546200091" action="add" attribute="_UID_Upper_PCT" newvalue="{dataset.accountname.get().toUpperCase()}"/>
+		<Action name="U1481546232340" action="add" attribute="_DOMAIN_Upper_PCT" newvalue="{dataset.nis.get().toUpperCase()}"/>
+	</Actions>
+</Discovery>

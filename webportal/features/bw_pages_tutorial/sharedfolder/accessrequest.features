@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Features PUBLIC "-//Brainwave//DTD Features 1.0//EN" "urn:brainwave:igrc:dtds/features.dtd">
+<Features version="1" name="bw_sharedfolder_sharemanagement" description="share management" include="true">
+	<Feature name="addnewshareforeverybody" description="The user can add a new share for everybody">
+		<FeatureSet name="I1415897810832"/>
+	</Feature>
+	<Feature name="addnewshareformyself" description="the user can request new shares through self service">
+		<FeatureSet name="I1415897751033"/>
+	</Feature>
+	<Feature name="addnewshareforteam" description="The user can add new share to his team members">
+		<FeatureSet name="I1415897782104"/>
+	</Feature>
+	<Feature name="removeshareforeverybody" description="The user can remove an share for everybody">
+		<FeatureSet name="I1415897810832"/>
+	</Feature>
+	<Feature name="removshareformyself" description="the user can remove an share through self service">
+		<FeatureSet name="I1415897751033"/>
+	</Feature>
+	<Feature name="removeshareforteam" description="The user can remove an share to his team members">
+		<FeatureSet name="I1415897782104"/>
+	</Feature>
+	<Feature name="modifyshareforeverybody" description="The user can modify an share for everybody">
+		<FeatureSet name="I1415897810832"/>
+	</Feature>
+	<Feature name="modifyshareformyself" description="the user can modify an share through self service">
+		<FeatureSet name="I1415897751033"/>
+	</Feature>
+	<Feature name="modifyshareforteam" description="The user can modify an share to his team members">
+		<FeatureSet name="I1415897782104"/>
+	</Feature>
+	<Feature name="sharedfolderaccessrequestaudit" description="The user can access to the access request audit page">
+		<FeatureSet name="I1415897810832"/>
+		<FeatureSet name="I1422723283358"/>
+	</Feature>
+</Features>

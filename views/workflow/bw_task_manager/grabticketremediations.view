@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_grabticketremediations" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketreview" displayname="grabticketremediations" notes="" begindate="" enddate="">
+	<ViewParam name="ticketreviews" displayname="ticketreviews"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1475595304261_2253" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="remediations">
+		<ViewAttribute name="A1475595311727_2254" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1475595321274_2255" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1475595323541_0" reference="ticketreviews" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

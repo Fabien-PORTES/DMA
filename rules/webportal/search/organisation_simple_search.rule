@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_organisation_simple_search" operator="and" query="organisation" displayname="Simple organisation search ({shortname}, {name})" version="5" notes="">
+	<RequestParam name="shortname" displayname="Short name" query="organisation" criteria="likeShortName" criteriaparam="shortNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="name" displayname="Display name" query="organisation" criteria="likeDisplayName" criteriaparam="displayNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1423150542280_345" criteria="likeShortName">
+		<RequestCriteriaParam name="shortNameParam" reference="shortname" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423150566776_347" criteria="likeDisplayName">
+		<RequestCriteriaParam name="displayNameParam" reference="name" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

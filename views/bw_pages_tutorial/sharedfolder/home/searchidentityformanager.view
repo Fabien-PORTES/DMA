@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bwfs_searchidentityformanager" errorifempty="false" distinct="true" identitysecure="true" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="search identity for manager" notes="">
+	<ViewParam name="query" displayname="query"/>
+	<ViewComputedAttribute name="description" displayname="description" type="String" expression="!dataset.isEmpty(&apos;hrcode&apos;)?dataset.hrcode.get()+&apos; - &apos;+dataset.fullname.get():dataset.fullname.get()"/>
+	<ViewSort name="sort" attribute1="A1441635530026_653"/>
+	<ViewAttribute name="A1441635526605_650" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1441635527488_651" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1441635528208_652" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1441635530026_653" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1441642245970_0" reference="query" operation="ilike" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

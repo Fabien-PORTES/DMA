@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="account_Status" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="account_Status">
+	<ViewAttribute name="A1487093030433_612" attribute="disabled" removedfromprojection="false" globalfilter="false"/>
+</View>

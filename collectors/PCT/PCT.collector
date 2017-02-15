@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition scriptfile="/collectors/PCT/PCT.javascript" label="PCT" name="P1475490257198" startingpoint="C1475490273250">
+		<Component name="C1475490273250" type="discoverysource" x="67" y="16" w="200" h="64" title="PCT">
+			<Discovery file="/discovery/PCT/PCT.discovery"/>
+		</Component>
+		<Component name="C1475490286213" type="account" x="303" y="430" w="200" h="64" title="attributs PCT du compte NIS">
+			<Account key="UID_original_JOIN" error="true" event="ACCOUNT_KEY_NULL">
+				<Attribute name="disabled" attribute="_ACCOUNTLOCKED"/>
+				<Attribute name="locked" attribute="_ACCOUNTLOCKED"/>
+				<Attribute name="passwordexpired" attribute="_PASSWORDCRACKED"/>
+				<Attribute name="passwordnotrequired" attribute="_NOPASSWORD"/>
+			</Account>
+			<Media code="nis"/>
+		</Component>
+		<Component name="C1481556874089" type="joinfilter" x="295" y="252" w="200" h="64" title="join on uid">
+			<Cache active="true" main="PCT_JOIN_KEY" join="repo_uid"/>
+			<Join zeroerror="true" zeroevent="NO_JOIN" zerotechnical="true" source="C1484296698786_1" severalaction="first"/>
+		</Component>
+		<Link name="L1481556880570" source="C1481556874089" target="C1475490286213" priority="1" expression="(! dataset.hasEvent(&apos;NO_JOIN&apos;))"/>
+		<Component name="C1484296698786_1" type="discoverysource" x="494" y="28" w="200" h="64" title="_JOIN_UID">
+			<Discovery file="/discovery/NIS/JOIN_UID.discovery"/>
+		</Component>
+		<Link name="L1484313238707" source="C1484296698786_1" target="C1481556874089" priority="1"/>
+		<Component name="C1481708596716" type="changefilter" x="67" y="128" w="200" h="64" title="join_key">
+			<Actions>
+				<Action name="U1481708681149" action="add" attribute="PCT_JOIN_KEY" type="String" multivalued="false" newvalue="{dataset.nis.get().toUpperCase()}{dataset.accountname.get()}" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1481708603005" source="C1481708596716" target="C1481556874089" priority="1"/>
+		<Link name="L1481708602020" source="C1475490273250" target="C1481708596716" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

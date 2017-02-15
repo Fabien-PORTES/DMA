@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_permissionsfromapplication" operator="and" query="permission" displayname="Permissions from Application {applicationcode}" version="3">
+	<RequestParam name="applicationcode" displayname="applicationcode" query="application" criteria="eqCode" criteriaparam="codeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestJoin name="J1331845273939_211" operator="and" join="application">
+		<RequestCriteria name="C1331845277059_212" criteria="eqCode">
+			<RequestCriteriaParam name="codeParam" reference="applicationcode" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

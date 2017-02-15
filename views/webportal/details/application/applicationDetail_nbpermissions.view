@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbpermissions" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="br_applicationDetail_nbpermissions">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1376494011153_174" attribute="recorduid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1376494030177_176" kind="inner" identitysecure="false" join="application">
+		<ViewAttribute name="A1376494045505_177" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1376494048769_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

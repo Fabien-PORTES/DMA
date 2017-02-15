@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="departement" description="Departements collected from ALIR input" scriptfile="collectors/organization/departement.javascript" name="P1467977369475" startingpoint="C1467977669693">
+		<Component name="C1467977669693" type="discoverysource" x="152" y="39" w="200" h="64" title="departement">
+			<Discovery file="/discovery/organization/departement.discovery"/>
+		</Component>
+		<Component name="C1467977680301" type="organisation" x="152" y="178" w="200" h="64" title="departement creation">
+			<Organisation code="_departement">
+				<Attribute name="displayname" attribute="_departement"/>
+				<Attribute name="organisationType" attribute="_ORGANIZATIONTYPE"/>
+				<Attribute name="shortname" attribute="_departement"/>
+			</Organisation>
+		</Component>
+		<Link name="L1467977688543" source="C1467977669693" target="C1467977680301" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

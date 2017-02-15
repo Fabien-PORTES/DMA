@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisation_hierarchy_picker" distinct="true" concept="organisation" displayname="Organisation hierarchy picker" notes="">
+	<ViewParam name="recorduid" displayname="Parent organization recorduid"/>
+	<ViewSort name="sort" attribute1="A1336052203281_90" attribute2="A1336052202546_89"/>
+	<ViewAttribute name="A1336052200171_86" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336052200843_87" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336052201656_88" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336052202546_89" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336052203281_90" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1336052213281_91" kind="left" join="parentorganisation">
+		<ViewAttribute name="A1336052223359_92" attribute="recorduid" alias="parent" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1336052252890_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1348824933156_9" attribute="organisationtypedisplayname" removedfromprojection="false" globalfilter="false"/>
+</View>

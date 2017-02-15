@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sf_sharesMetadataCounts" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="sf_sharesMetadataCounts" notes="">
+	<ViewParam name="shareduids" displayname="shareduids"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1438878761151_717" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1438878763964_718" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1438878765096_719" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1443185664489_0" reference="shareduids" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1439988915652_331" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1439988926352_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1440170643800_6964" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="A1440170649558_6965" attribute="uid" alias="managedcount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1440170682552_7027" attribute="permissiontype" alias="subtype" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1440170685838_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="D"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewJoin name="J1442915356483_6129" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="management">
+			<ViewJoin name="J1442915486885_6136" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+				<ViewAttribute name="A1442915507112_6137" attribute="uid" alias="ownercount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1442915893467_6169" attribute="expertisedomaincode" operator="or" removedfromprojection="true" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1444065321458_4192" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissioninfo">
+			<ViewAttribute name="A1444065326387_4193" attribute="managed" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1444065328807_0" operation="isTrue" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewAttribute name="A1444065357149_4196" attribute="sensitivitylevel" alias="sensitivitycount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewJoin name="J1444122038631_8100" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="applicationinfo">
+		<ViewAttribute name="A1444122042147_8102" attribute="sensitivityreason" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122042147_8103" attribute="sensitivitylevel" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122042147_8104" attribute="description" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122042147_8105" attribute="category" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122042147_8106" attribute="sensitivityreasonorigin" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122042147_8107" attribute="descriptionorigin" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444122042147_8108" attribute="categoryorigin" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

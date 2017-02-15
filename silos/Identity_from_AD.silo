@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Silo PUBLIC "-//Brainwave//DTD Silo 1.0//EN" "urn:brainwave:igrc:dtds/silo.dtd">
+<Silo version="1" name="Identity_from_AD" displayname="Identity_from_AD" type="hr" collector="/collectors/AD_to_ID/AllAD.collector" parentsilo="Identity">
+</Silo>

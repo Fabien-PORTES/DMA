@@ -1,0 +1,17 @@
+
+import "/webportal/pages/account/search.page"
+import "/webportal/pages/account/details.page"
+import "/webportal/pages/reports/standard.page"
+
+Activity {
+	concept: Account
+	kind: Search
+	to: Page accountSearchPage
+}
+
+Activity {
+	concept: Account
+	kind: Detail
+	to: Page accountDetailsPage
+}
+

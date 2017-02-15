@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountreconstatus" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="account reconciliation status" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="repository record uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1332922665031_9308" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="A1332922680106_9310" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1332922798906_9315" attribute="noownercode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1332922676763_9309" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1332922731437_9312" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1332923293402_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1332922732406_9313" attribute="repositorycode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1332922734296_9314" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

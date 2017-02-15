@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_job_picker" distinct="true" concept="identity" displayname="Job picker" notes="">
+	<ViewParam name="paramJobCode" displayname="Job code"/>
+	<ViewParam name="paramJobDisplayname" displayname="Job displayname"/>
+	<ViewSort name="sort" attribute1="A1336048935223_59" attribute2="A1336048934567_58"/>
+	<ViewJoin name="J1336048393829_51" kind="inner" join="allocation">
+		<ViewAttribute name="A1336048402047_52" attribute="jobtitlerecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1336048403047_53" attribute="jobtitleuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1336048934567_58" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1336048941036_0" reference="paramJobCode" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1336048935223_59" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1336048955583_0" reference="paramJobDisplayname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

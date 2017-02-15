@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1342903346474" title="Assignment of roles to Tcodes " description="transactions in roles ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A3342460803690558995" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client ID of Current User"/>
+		<Attribute name="A7560294633788547577" attribute="agr_name" column="AGR_NAME" type="String" multivalued="false" persistent="false" description="Role Name"/>
+		<Attribute name="A4142876933711454132" attribute="type" column="TYPE" type="String" multivalued="false" persistent="false" description="Report type"/>
+		<Attribute name="A1857335808316575835" attribute="tcode" column="TCODE" type="String" multivalued="false" persistent="false" description="Extended program name (transaction code)"/>
+		<Attribute name="A2999648446252000010" attribute="exclude" column="EXCLUDE" type="String" multivalued="false" persistent="false" description="Exclusive"/>
+		<Attribute name="A3199902518672888365" attribute="direct" column="DIRECT" type="Boolean" multivalued="false" persistent="false" description="Flag to show that the transaction was input directly"/>
+		<Attribute name="A8424266359314421476" attribute="inherited" column="INHERITED" type="Boolean" multivalued="false" persistent="false" description="Flag to show that the entry was inherited"/>
+		<Attribute name="A8562449888230198306" attribute="folder" column="FOLDER" type="String" multivalued="false" persistent="false" description="Counter for menu ID"/>
+	</Attributes>
+	<Format booleanvalues="X"/>
+	<Checks>
+		<Check name="U1342903826627" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

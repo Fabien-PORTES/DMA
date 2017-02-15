@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="allpermsbyorganisationprev" distinct="true" concept="organisation" displayname="All permission profiles for a given organisation and suborg (previous timeslot)" notes="">
+	<ViewParam name="code" displayname="organisation code">
+		<Value name="0" data="TD0000"/>
+	</ViewParam>
+	<ViewComputedAttribute name="pkey" displayname="previous key" type="String" expression="dataset.pidentityhrcode.get()+&quot;$$&quot;+dataset.paccountlogin.get()+&quot;$$&quot;+dataset.ppermcode.get()+&quot;$$&quot;+dataset.pappcode.get()"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1340370483820_374250" attribute="code" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1340370487945_0" reference="code" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1340370497070_374252" kind="inner" join="timeslotorganisations">
+		<ViewAttribute name="A1340370523241_374254" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1340370526616_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1340370199650_374220" prefix="pidentity" kind="inner" join="upidentity">
+			<ViewAttribute name="1340370565788_374275" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1340370565788_374276" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1340370565788_374277" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1340370565788_374278" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1340370565788_374279" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1340370565788_374280" attribute="active" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1340370250696_0" operation="isTrue" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewJoin name="J1340370284774_374230" prefix="paccount" kind="inner" join="accountreconciliation">
+				<ViewAttribute name="1340370565788_374281" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1340370565788_374282" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false">
+					<ViewAttributeFilter name="F1340370310633_0" operation="isNull" ignoreifempty="false"/>
+					<ViewAttributeFilter name="F1340370313352_1" operation="isFalse" ignoreifempty="false"/>
+				</ViewAttribute>
+				<ViewJoin name="J1340370319993_374235" prefix="pperm" kind="inner" join="permissionright">
+					<ViewJoin name="J1340370323993_374236" prefix="papp" kind="inner" join="application">
+						<ViewAttribute name="1340370565788_374283" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+						<ViewAttribute name="1340370565788_374284" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+						<ViewAttribute name="1340370565788_374285" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+							<ViewAttributeFilter name="F1340370370398_0" operation="eq" ignoreifempty="false">
+								<Value name="0" data="Profile"/>
+							</ViewAttributeFilter>
+						</ViewAttribute>
+					</ViewJoin>
+					<ViewAttribute name="1340370565788_374286" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1340370565788_374287" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="A1345454457626_58" attribute="permissiontype" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1345454464741_0" operation="eq" ignoreifempty="false">
+							<Value name="0" data="Role"/>
+						</ViewAttributeFilter>
+					</ViewAttribute>
+				</ViewJoin>
+			</ViewJoin>
+			<ViewJoin name="J1340374750002_21" prefix="pidentity" kind="left" join="allocation">
+				<ViewAttribute name="1340374790673_57" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="1340374790673_58" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1340374769564_24" prefix="porg" kind="left" join="organisation">
+					<ViewAttribute name="1340374790673_59" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1340374790673_60" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1340374790673_61" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

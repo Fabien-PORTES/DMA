@@ -1,0 +1,5 @@
+titleStyle = Style {
+	size: 16px
+	background: Color RGB(204,236,207)
+	foreground: RGB(56,46,36)
+}

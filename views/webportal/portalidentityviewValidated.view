@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_portalidentity_Validated" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="Portal Identity" notes="" begindate="" enddate="">
+	<ViewParam name="principal" displayname="Principal" type="String">
+		<Value name="0" data="AADKINS"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1318323357956_83" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1318323366457_84" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1318323378969_85" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1318323381626_86" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1318323393314_87" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1481033733879_76609" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486735751973_456" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1485874249200_91692" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="downgenericteam">
+		<ViewAttribute name="A1487000222035_525" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1487000224419_0" reference="principal" operation="ilike" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

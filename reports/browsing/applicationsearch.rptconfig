@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__code_881_0</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__displayname_882_1</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__repositoryrecorduid_883_2</property>
+            <property name="value">AD</property>
+        </structure>
+        <structure>
+            <property name="name">repositoryrecorduid_883_3</property>
+            <property name="value">9</property>
+        </structure>
+        <structure>
+            <property name="name">repositoryrecorduid_883_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">repositoryrecorduid_883_expr_</property>
+            <property name="value">dataSetRow["repositoryrecorduid"]</property>
+        </structure>
+        <structure>
+            <property name="name">code_881_4</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">code_881_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">displayname_882_5</property>
+            <property name="value">%</property>
+        </structure>
+        <structure>
+            <property name="name">displayname_882_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

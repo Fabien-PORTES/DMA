@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="accountReconciledAD" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="accountReconciledAD" notes="" begindate="" enddate="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1485793756102_935" prefix="NIS_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountreconciliation">
+		<ViewAttribute name="A1485793815827_995" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485793825121_996" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485793828723_997" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1485793835473_998" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+			<ViewAttribute name="A1485793841006_999" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1485793844337_1000" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1485793864917_1001" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485793876138_1002" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485793883995_1003" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485793892228_1004" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485853208819_75698" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1486031143569_71186" prefix="recon_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+			<ViewAttribute name="A1486031152800_71192" attribute="rulename" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1486031155221_71193" attribute="comment" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1486031156595_71194" attribute="noownercode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1486031157963_71196" attribute="description" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1486031166942_71203" attribute="type" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1486031168656_71204" attribute="reliability" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1485793789278_993" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1485793797594_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

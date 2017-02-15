@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FeatureSets PUBLIC "-//Brainwave//DTD FeatureSets 1.0//EN" "urn:brainwave:igrc:dtds/featuresets.dtd">
+<FeatureSets version="1" name="bw_sharedfolder_sharemanagement" description="share management">
+	<FeatureSet name="I1415897751033" featureset="sharemanagement_selfservice" description="Self service features are enabled" r0="true"/>
+	<FeatureSet name="I1415897782104" featureset="sharemanagement_teammanagement" description="Team management features are enabled" r0="true" r5="false" r1="false"/>
+	<FeatureSet name="I1415897810832" featureset="sharemanagement_admin" description="Featureset for administrators : can add, modify, remove shares for any individual" r0="true"/>
+	<FeatureSet name="I1422723283358" featureset="sharemanagement_audit" description="Access to the access request audit features" r0="true"/>
+</FeatureSets> 

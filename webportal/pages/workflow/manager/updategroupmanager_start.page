@@ -1,0 +1,162 @@
+/* Import other pages here */
+import "/webportal/pages/mixins/workflow_mixins.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/resources/workflow_pickers.page"
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/audittrail.page"
+
+/* Nationalized labels here */
+updategroupmanager_startNLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation ?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process ?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Update group manager" fr "Mettre à jour le responsable du groupe"]
+	dynamictitle [en "Update group manager for \"{0}\" on \"{1}\"" fr "Mettre à jour le reponsable groupe \"{0}\" sur le référentiel \"{1}\""]
+	managerhrcode [en "Current manager HR code" fr "Matricule du responsable actuel"]
+	managerfullname [en "Current manager fullname" fr "Nom du responsable actuel"]
+	newmanagerconfirm [en "Are you sure that you want to assign {0}-{1}\nas the manager of the {2} group on the {3} repository?" fr "Etes vous sur de vouloir positionner {0}-{1} en tant que responsable\ndu groupe {2} sur le référentiel {3}"]
+	newmanagerremove [en "Are you sure that you want to remove {0}-{1}\nas the manager of the {2} group on the {3} repository?" fr "Etes vous sur de vouloir supprimer {0}-{1} en tant que responsable\ndu groupe {2} sur le référentiel {3}"]
+	confirmupdate [en "Your request to assign a new manager as been registered successfully" fr "Votre demande a bien été prise en compte"]
+	removeupdate [en "Your request to remove the current manager as been registered successfully" fr "Votre demande a bien été prise en compte"]
+	
+	setmanager [en "Set a manager for this group" fr "Assigner un responsable pour ce groupe"]
+	removemanager [en "Remove the current manager" fr "Supprimer le responsable actuel"]
+	
+	manageraudittrail [en "Browse modifications audit trail" fr "Voir l'historique des modifications"]
+}
+
+updategroupmanager_start = Page {
+	title: $updategroupmanager_startNLS.title
+	dynamic-title: $updategroupmanager_startNLS.dynamictitle(group.displayname, group.repository_code)
+	mixins: workflowDefaultMixin
+	
+	/* Parameters here */
+	paramGroupUid = Parameter {type:String multivalued:False}
+	
+	/* variables here */
+	newmanagerUid = Variable {type:String multivalued:False}
+
+	
+	/* Datasets and records here */
+	// Record for concept details
+	group = Record {
+		view: br_groupDetail with paramGroupUid to uid
+	}
+	
+	newManager = Record {
+		view: br_identityDetail with newmanagerUid to uid
+	}
+
+	groupbusinessowner = Record {
+		view: br_groupBusinessowner with paramGroupUid to uid
+	}
+
+	task = TaskRecord (create "updategroupmanager")
+	
+	
+	/* Page content */
+	Grid {
+		columns:GridColumn{width:64px}, GridColumn{width:320px}, GridColumn{width:320px}, GridColumn{width:grow}
+		GridRow {
+			height:96
+			GridCell {
+				Image {
+					image: "48/red/group.png"
+					align: Center
+				}
+			}
+			GridCell {
+				Text {
+					label: $group.code
+					value: Transform group.code using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $group.displayname
+					value: Transform group.displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text{
+					label: $group.comment
+					value:  Transform group.comment using optionStringMapping
+				}
+			}
+			GridCell {
+				Text{
+					label:   $group.repositorydisplayname 
+					value: Transform group.repository_displayname using optionStringMapping
+					lines: 2
+				}
+											
+				Text {
+					label: $updategroupmanager_startNLS.managerhrcode
+					value: Transform groupbusinessowner.hrcode using optionStringMapping
+					lines: 2
+				}
+
+				Text {
+					label: $updategroupmanager_startNLS.managerfullname
+					value: Transform groupbusinessowner.fullname using optionStringMapping
+					lines: 2
+				}
+			}
+			GridCell {
+			}
+		}
+
+		GridRow {
+			GridCell {
+				span:4
+				Header {
+					value:"What do you want to do?"
+				}
+			}
+		}
+		GridRow {
+			height:grow
+			GridCell {
+				span:4
+				ButtonGroup {
+						Button {
+							actions:Dialog identityPicker(newmanagerUid from outUid), 
+									Confirm $updategroupmanager_startNLS.newmanagerconfirm(Transform newManager.hrcode using mayBeNullMapping, newManager.fullname, group.displayname, group.repository_displayname),
+									Flash Information $updategroupmanager_startNLS.confirmupdate,
+									Set paramGroupUid to task.group,
+									Set newmanagerUid to task.manager,
+									StringCase(groupbusinessowner.fullname) { when IsEmpty then [Set 'create' to task.action] otherwise [Set 'modify' to task.action] },
+									TaskComplete task wait,
+									GoTo Activity Group Detail with paramGroupUid to paramGroupUid
+							text:$updategroupmanager_startNLS.setmanager
+							layout:Layout{hint:width 320 height 128}
+						}					
+						Button {
+							actions:Confirm $updategroupmanager_startNLS.newmanagerremove(Transform groupbusinessowner.hrcode using mayBeNullMapping, groupbusinessowner.fullname, group.displayname, group.repository_displayname),
+									Flash Information $updategroupmanager_startNLS.removeupdate,
+									Set paramGroupUid to task.group,
+									Set 'delete' to task.action,
+									TaskComplete task wait,
+									GoTo Activity Group Detail with paramGroupUid to paramGroupUid
+							text:$updategroupmanager_startNLS.removemanager
+							layout:Layout{hint:width 320 height 128}
+							disabled:StringPredicate(groupbusinessowner.fullname) {when IsEmpty then True}
+						}					
+						Button {
+							actions:Dialog entityDetailsManagerAuditDialog("Group" to type, paramGroupUid to entity) 
+						                        feature:groupdetails_auditmanager
+							                       
+							text:$updategroupmanager_startNLS.manageraudittrail
+						}
+				}		
+			}
+		}
+	}
+}
+

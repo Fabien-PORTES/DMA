@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User installation data record" description="The User Installation Data record defines the user data associated with a user ID. This record type contains the data stored in the USRCNT repeat group, which is a field in the RACF database that is reserved for your installation’s use. None of the RACF commands manipulate this field. Do not confuse this field with the USER_INSTALL_DATA field which you enter into the database using the ADDUSER and ALTUSER commands.">
+	<Source type="FORMATTED" filter="^0204 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USINSTD_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the User Installation Data record (0204)."/>
+		<Attribute name="A4199536690768339793" attribute="USINSTD_NAME" column="6-13" type="String" multivalued="false" description="User ID as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="USINSTD_USR_NAME" column="15-22" type="String" multivalued="false" description="The name of the installation-defined field."/>
+		<Attribute name="A7466509792483562715" attribute="USINSTD_USR_DATA" column="24-278" type="String" multivalued="false" description="The data for the installation-defined field."/>
+		<Attribute name="A3188661801656117613" attribute="USINSTD_USR_FLAG" column="280-287" type="String" multivalued="false" description="The flag for the installation-defined field in the form X&lt;cc&gt;."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

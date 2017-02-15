@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_jobsimilarperms" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="Similar perms for a given job" notes="">
+	<ViewParam name="recorduid" displayname="job record uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1453198621695_334" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountreconciliation">
+		<ViewJoin name="J1453198630499_335" prefix="permission" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permissionright">
+			<ViewJoin name="J1453198634121_336" prefix="application" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+				<ViewAttribute name="A1453198683462_341" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1453198686730_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="Profile"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+				<ViewAttribute name="A1453198832961_350" attribute="code" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1453198835446_351" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1453199122311_352" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1453199125462_353" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1453198700739_343" attribute="permissiontype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1453198703680_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="Role"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="A1453198747506_346" attribute="code" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1453198749413_347" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1453198751525_348" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1453198753076_349" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="1453198666245_340" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382689438179_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382689440950_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="1453198655120_338" attribute="recorduid" alias="nboccurence" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1453199192336_356" attribute="jobtitlerecorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1329759426387_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

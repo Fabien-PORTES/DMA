@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_rootfilesystem" distinct="true" concept="permission" displayname="Filesystem permissions with no parents" notes="">
+	<ViewParam name="applicationcode" displayname="application code"/>
+	<ViewParam name="applicationrecorduid" displayname="application record uid"/>
+	<ViewSort name="sort" attribute1="A1304343498835_330"/>
+	<ViewAttribute name="A1304343498835_328" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_329" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_330" attribute="code" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_331" attribute="displayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_336" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_337" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_338" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_339" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_340" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_341" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_342" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_343" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304343498835_344" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1305892307184_6993" prefix="application" kind="inner" join="application">
+		<ViewAttribute name="A1316332567556_1639" attribute="applicationtype" operator="or" removedfromprojection="true">
+			<ViewAttributeFilter name="F1316332572602_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1322663952292_819" attribute="recorduid" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1335198514974_0" reference="applicationrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1322663952836_820" attribute="uid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1322663953314_821" attribute="code" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1335198501251_0" reference="applicationcode" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1322663953866_822" attribute="displayname" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewRule name="I1321606307747_23" rule="br_rootfilesystems">
+	</ViewRule>
+</View>

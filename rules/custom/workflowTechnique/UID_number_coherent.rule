@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="UID_number_coherent" operator="and" query="account" displayname="UID_number_coherent" version="3">
+	<RequestJoin name="J1486739187840_484" operator="and" join="identityreconciliation">
+		<RequestCriteria name="C1486739352707_490" criteria="eqProperty">
+			<RequestCriteriaParam name="firstPropertyParam" ignoreifempty="false">
+				<Value name="0" data="custom13"/>
+			</RequestCriteriaParam>
+			<RequestCriteriaParam name="secondPropertyParam" ignoreifempty="false">
+				<Value name="0" data="root.custom4"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+		<RequestCriteria name="C1486739352707_490" criteria="eqProperty">
+			<RequestCriteriaParam name="firstPropertyParam" ignoreifempty="false">
+				<Value name="0" data="custom13"/>
+			</RequestCriteriaParam>
+			<RequestCriteriaParam name="secondPropertyParam" ignoreifempty="false">
+				<Value name="0" data="root.sid"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

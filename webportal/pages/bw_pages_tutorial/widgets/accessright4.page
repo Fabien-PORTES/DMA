@@ -1,0 +1,30 @@
+
+
+accessright4 = Page {
+	title:'Widgets with access rights'
+
+	Text {
+		value:"This text is hidden if you don't have the organisationmanager_dashboard_homepage feature"
+		feature:organisationmanager_dashboard_homepage
+	}
+
+	Button {
+		text:"This button is disabled if you don't have the organisationmanager_dashboard_homepage feature"
+		disabled:FeaturePredicate organisationmanager_dashboard_homepage 
+		actions:Message 'you have the feature!'
+		        
+	}
+	
+	Group {
+		title:'My secured widgets'
+		feature:organisationmanager_dashboard_homepage
+	
+		Text {
+			value:"This whole group is hidden if you don't have the organisationmanager_dashboard_homepage feature" 
+		}
+		Text {
+			value:'bla bla bla'
+		}
+	}
+}
+

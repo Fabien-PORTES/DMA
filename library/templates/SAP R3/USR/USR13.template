@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343308030681" title="Short Texts for Authorizations " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7662185602029270155" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A3059304443198484844" attribute="langu" column="LANGU" type="String" multivalued="false" persistent="false" description="Language Key"/>
+		<Attribute name="A5033244015685646191" attribute="objct" column="OBJCT" type="String" multivalued="false" persistent="false" description="Authorization Object"/>
+		<Attribute name="A5426237854623464360" attribute="auth" column="AUTH" type="String" multivalued="false" persistent="false" description="Authorization name in user master maintenance"/>
+		<Attribute name="A5310697836322974248" attribute="aktps" column="AKTPS" type="String" multivalued="false" persistent="false" description="Active or maintenance version"/>
+		<Attribute name="A7718593415251345660" attribute="atext" column="ATEXT" type="String" multivalued="false" persistent="false" description="Texts in user master/authorizations"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343308114294" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

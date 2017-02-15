@@ -1,0 +1,6 @@
+Spinner {
+	label: <template:variablelabel/>
+	variable: <template:taskvariablename/>
+	increment: 1
+	<template:variableconstraints/>
+}

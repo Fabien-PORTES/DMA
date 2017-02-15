@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identitynbsharedfolders" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="# of shared folders for a given identity">
+	<ViewParam name="recorduid" displayname="Record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303303496080_813" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1303303536721_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1303303503680_814" kind="inner" identitysecure="false" join="accountreconciliation">
+		<ViewJoin name="J1303303506440_815" kind="inner" identitysecure="false" join="right">
+			<ViewJoin name="J1303303508736_816" kind="inner" identitysecure="false" join="permission">
+				<ViewAttribute name="A1303303512000_817" attribute="recorduid" alias="nbperms" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1304087172268_13410" kind="inner" identitysecure="false" join="application">
+					<ViewAttribute name="A1316333605718_3809" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1316333609612_0" operation="eq" ignoreifempty="false">
+							<Value name="0" data="Filesystem"/>
+						</ViewAttributeFilter>
+					</ViewAttribute>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="1382688735545_5540" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382688617400_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382688620486_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

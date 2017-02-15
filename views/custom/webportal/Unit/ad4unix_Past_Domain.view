@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="ad4unix_Past_Domain" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="ad4unix_Past_Domain" notes="" begindate="" enddate="">
+	<ViewParam name="login" displayname="Login"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1486544595859_72304" attribute="login" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486472977509_0" reference="login" operation="ilike" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486544693821_72411" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486544697301_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="true"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1486544703333_72418" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486544705821_72421" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1486544712613_72428" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1486544718805_72437" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

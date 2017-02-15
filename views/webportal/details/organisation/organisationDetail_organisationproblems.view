@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_organisationproblems" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="organisationDetail_organisationproblems" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="directuid" displayname="directuid"/>
+	<ViewSort name="sort" attribute1="1383242698617_17281" attribute2="1383242664171_17254" attribute3="1383242664171_17255"/>
+	<ViewJoin name="J1367159167898_3178" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewJoin name="J1367159175456_3179" kind="inner" identitysecure="false" join="parentorganisation">
+			<ViewAttribute name="1383242664155_17250" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1367159251478_0" reference="uid" operation="eq" ignoreifempty="false"/>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewAttribute name="1383242664171_17251" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1383242664171_17252" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1383242664171_17253" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1383242664171_17254" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1383242664171_17255" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1383242664171_17256" attribute="organisationtypecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1383242664171_17257" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1367159262709_3189" kind="inner" identitysecure="false" join="organisation">
+		<ViewAttribute name="1383242672642_17260" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1367159268818_0" reference="directuid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1383241933673_16888" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383241943438_16889" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="1383242698617_17280" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383241950537_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="1383242698617_17281" attribute="controlcode" alias="nbdefects" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1383242005653_16894" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383242012689_16895" kind="inner" identitysecure="false" join="permission">
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

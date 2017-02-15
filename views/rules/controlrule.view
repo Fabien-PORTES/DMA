@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_controlrule" distinct="false" concept="searchlog" displayname="Rule details" notes="">
+	<ViewParam name="entity" displayname="rule entity"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1300964465950_468" attribute="rulename" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1303672897203_0" operation="ilike" ignoreifempty="false">
+			<Value name="0" data="control_%"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1300964465950_469" attribute="ruleentity" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1303672940929_0" reference="entity" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1300964465950_470" attribute="ruledisplayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300964465950_471" attribute="ruledescription" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1300964465950_472" attribute="rulenotes" operator="or" removedfromprojection="false"/>
+</View>

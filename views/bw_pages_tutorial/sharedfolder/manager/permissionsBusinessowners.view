@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sf_permissionsBusinessOwners" errorifempty="false" distinct="false" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="sf_permissionsBusinessOwners" notes="">
+	<ViewParam name="uids" displayname="Folder UIDs">
+		<Value name="0" data="ID0000289_1442335638744_774"/>
+		<Value name="1" data="ID0000024_1442335638486_450"/>
+	</ViewParam>
+	<ViewSqlFilter name="F1442996469792" expression="((dataset.management_expertisedomaincode = &apos;businessowner&apos;) OR  (dataset.management_expertisedomaincode IS NULL) )"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1442961027058_400" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1442961257513_0" reference="uids" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1442961122410_402" prefix="management_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="management">
+		<ViewAttribute name="A1442961128471_403" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1442961131214_404" attribute="expertisedomaincode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1442961163893_406" prefix="owner_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+			<ViewAttribute name="A1442961167962_407" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1443013544807_926" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1443013553164_927" attribute="fullname" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1442961340587_411" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1442961343198_412" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1442961361185_413" prefix="share_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="A1442961380968_414" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

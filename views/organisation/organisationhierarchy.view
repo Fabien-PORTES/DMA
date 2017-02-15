@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationhierarchy" prefix="root_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="organisation" displayname="br_organisationhierarchy" notes="">
+	<ViewParam name="rootuid" displayname="rootuid"/>
+	<ViewParam name="rootrecorduid" displayname="rootrecorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1426092315900_388" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1426092334636_0" reference="rootrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1426092316624_389" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1426092344799_0" reference="rootuid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1426092370882_392" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="downorganisation">
+		<ViewAttribute name="A1426092436690_393" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092437833_394" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092439074_395" attribute="code" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092440364_396" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092441264_397" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092442274_398" attribute="organisationtyperecorduid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092443236_399" attribute="organisationtypeuid" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092444251_400" attribute="organisationtypecode" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092446305_401" attribute="organisationtypedisplayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092457024_402" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092458577_403" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092459331_404" attribute="custom3" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092459997_405" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092460873_406" attribute="custom5" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092461563_407" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092462219_408" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092462910_409" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1426092463743_410" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1426092571695_411" prefix="parent_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentorganisation">
+			<ViewAttribute name="A1426092586677_412" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092587917_413" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092590824_414" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092591567_415" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092592284_416" attribute="code" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1426092746810_417" prefix="manager_" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="manager">
+			<ViewAttribute name="A1426092796419_421" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092798039_422" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092802382_423" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092806625_424" attribute="givenname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092808012_425" attribute="surname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092811559_426" attribute="fullname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092813487_427" attribute="mail" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092839475_428" attribute="titlerecorduid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092840632_429" attribute="titleuid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092841912_430" attribute="titlecode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092843128_431" attribute="titledisplayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1426092854385_432" attribute="refvaluedisplayname9" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1426092766720_418" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="upidentity">
+			<ViewAttribute name="A1426092778323_419" attribute="recorduid" alias="nbidentities" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

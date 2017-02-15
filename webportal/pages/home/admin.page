@@ -1,0 +1,31 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/mixins/default_mixins.page"
+import "/webportal/pages/reports/standard.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+adminPage = Page {
+	title:$admin.label
+	
+	adminPages = Dataset {
+		pages: Pages {tags: "admin"}
+	}
+	
+	Tiles {
+		mixins: buttonPage
+		columns: 2
+		tile-height: 80
+				
+		TileGroup{
+			iterate-on: adminPages
+			initial-sort: ^priority
+			Tile{
+				Button {
+					actions: GoTo Dynamic ( Current type , Current name ) 
+					image: Current largeIcon
+					text: Current title
+				}
+			}
+		}
+	}
+	
+}

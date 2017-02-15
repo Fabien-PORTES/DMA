@@ -1,0 +1,51 @@
+
+import "/webportal/pages/resources/pickers.page"
+
+parameter4 = Page {
+	title:'Data binded editable parameters'
+
+	dock-left: Dock {
+		collapsible:True
+		background:Color silver
+		ParametersEdition {
+			label-position: Top
+			parameters: parameter1 inline,
+						parameter2 outline
+		} 
+	}
+
+	parameter1 = Parameter {
+		type:String
+		label:'Identity full name with lookup'
+		constraint:Lookup{
+			data: identityDataPicker
+			text:Current fullname
+			value:Current fullname
+			presentation: Combo
+			distinct:True
+		}
+	}
+
+	parameter2 = Parameter {
+		type:String
+		label:'Identity full name with picker'
+		constraint:Picker {picker:identityPicker returning outDisplayname}
+	}
+
+	identityDataPicker = Dataset {
+		view: br_identity
+	}
+
+
+	Text {
+		label:'Identity 1 full name'
+		value:parameter1
+	}
+	Text {
+		label:'Identity 2 full name'
+		value:parameter2
+	}
+}
+
+
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryDetail_nbnewaccounts" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_repositoryDetail_nbnewaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1379513926133_752" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1379513934918_753" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1379513936651_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1379513958586_756" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1379514020757_759" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1379514024330_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="C"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

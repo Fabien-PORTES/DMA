@@ -1,0 +1,167 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+reportDetails = NLS {
+	browsing_permission_detailgroups.pagetitle [ en "Groups that Give Access" fr "Groupes qui Donnent Accès"]
+	browsing_permission_detailgroups.title [ en "List of Groups" fr "Liste des Groupes"]
+	browsing_permission_detailgroups.subtitle [ en "Groups - Permission <<{0}>>" fr "Groupes - Permission <<{0}>>"]
+	browsing_permission_detailgroups.columns.group_code [ en "Code" fr "Code"]
+	browsing_permission_detailgroups.columns.group_displayname [en "Display Name" fr "Nom d'affichage"]
+	browsing_permission_detailgroups.columns.group_comment [en "Comment" fr "Commentaire"]
+	browsing_permission_detailgroups.columns.group_grouptype [en "Type" fr "Type"]
+	browsing_permission_detailgroups.columns.grouprepository_displayname [en "Repository" fr "Référentiel"]
+}
+
+browsing_permission_detailgroups = Page {
+
+	title: $reportDetails.browsing_permission_detailgroups.pagetitle
+	tags: "permission" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: browsing_permission_detailgroups
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	permissionSearch = SearchDefinition {
+		entity: Permission
+		simple-mode-rule: br_permission_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentPermission = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	permissionList = Dataset {
+		search: Search {
+			definition: permissionSearch
+			view: br_permission_searchpoint with "Profile" to applicationtype , nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_permissionDetail with currentPermission to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_permissiongroups with conceptData.recorduid to recorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: permissionList
+			column: uid
+			selection: currentPermission
+			back-link: Activity Permission Detail with currentPermission to paramPermissionUid , SerializeSearch permissionSearch to permissionSearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_permission_detailgroups.title	
+		}		
+		
+		Text {
+			value: $reportDetails.browsing_permission_detailgroups.subtitle( conceptData.code )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			double-click: GoTo Activity Group Detail with selectedUid to paramGroupUid
+			show-filter: True
+			show-count: True
+			
+			Column {
+				column: group_recorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: group_uid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: group_code
+				header: $reportDetails.browsing_permission_detailgroups.columns.group_code
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: group_displayname
+				header: $reportDetails.browsing_permission_detailgroups.columns.group_displayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: group_comment
+				header: $reportDetails.browsing_permission_detailgroups.columns.group_comment
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: group_grouptype
+				header: $reportDetails.browsing_permission_detailgroups.columns.group_grouptype
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: grouprepository_displayname
+				header: $reportDetails.browsing_permission_detailgroups.columns.grouprepository_displayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+		}
+		
+		Button {
+			actions:  GoTo Activity Group Detail with selectedUid to paramGroupUid
+			layout: Layout { align: horizontal End vertical Beginning grab: horizontal False vertical False hint: width 200}
+			disabled: StringPredicate(selectedUid) { when IsEmpty then True }
+			text: $search_page.showdetails
+		}
+	}
+}

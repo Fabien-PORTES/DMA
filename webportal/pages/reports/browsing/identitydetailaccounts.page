@@ -1,0 +1,183 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+reportDetails = NLS {
+	browsing_identity_detailaccounts.pagetitle [ en "Accounts Details" fr "Comptes Détaillés"]
+	browsing_identity_detailaccounts.title [ en "List of Accounts" fr "Liste des Comptes"]
+	browsing_identity_detailaccounts.subtitle [ en "Accounts - Identity <<{0}>>" fr "Comptes - Identité <<{0}>>"]
+	browsing_identity_detailaccounts.columns.login [ en "Login" fr "Login"]
+	browsing_identity_detailaccounts.columns.disabled [en "Disabled" fr "Désactivé"]
+	browsing_identity_detailaccounts.columns.lastlogindate [en "Last Login Date" fr "Dernière Connexion"]
+	browsing_identity_detailaccounts.columns.creationdate [en "Creation Date" fr "Date de Création"]
+	browsing_identity_detailaccounts.columns.passwordlastsetdate [ en "Password Changed" fr "Mot de Passe Modifié"]
+	browsing_identity_detailaccounts.columns.repositorydisplayname [ en "Repository" fr "Référentiel"]
+}
+
+browsing_identity_detailaccounts = Page {
+
+	title: $reportDetails.browsing_identity_detailaccounts.pagetitle
+	tags: "identity" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: browsing_identity_detailaccounts
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	identitySearch = SearchDefinition {
+		entity: Identity
+		simple-mode-rule: br_identity_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentIdentity = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	identityList = Dataset {
+		search: Search {
+			definition: identitySearch
+			view: br_identity_searchpoint with nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_identityDetail with currentIdentity to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_accountsbyidentity with conceptData.recorduid to identityrecorduid
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: identityList
+			column: uid
+			selection: currentIdentity
+			back-link: Activity Identity Detail with currentIdentity to paramIdentityUid , SerializeSearch identitySearch to identitySearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_identity_detailaccounts.title	
+		}		
+		
+		Text {
+			value: $reportDetails.browsing_identity_detailaccounts.subtitle( conceptData.fullname )
+			styling: reportSubtitle
+			align: Left
+		}
+		
+		Table{
+			data: dataToReport
+			double-click: GoTo Activity Account Detail with selectedUid to paramAccountUid
+			show-filter: True
+			show-count: True
+			
+			Column {
+				column: recorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: uid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: login
+				header: $reportDetails.browsing_identity_detailaccounts.columns.login
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: disabled
+				text: Transform Current disabled using booleanDisplayMapping
+				header: $reportDetails.browsing_identity_detailaccounts.columns.disabled
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: lastlogindate
+				text: Date( Current lastlogindate ).value('dd/MM/yyyy')
+				header: $reportDetails.browsing_identity_detailaccounts.columns.lastlogindate
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: creationdate
+				text: Date( Current creationdate ).value('dd/MM/yyyy')
+				header: $reportDetails.browsing_identity_detailaccounts.columns.creationdate
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: passwordlastsetdate
+				text: Date( Current passwordlastsetdate ).value('dd/MM/yyyy')
+				header: $reportDetails.browsing_identity_detailaccounts.columns.passwordlastsetdate
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: repositorydisplayname
+				header: $reportDetails.browsing_identity_detailaccounts.columns.repositorydisplayname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+		}
+		
+		Button {
+			actions:  GoTo Activity Account Detail with selectedUid to paramAccountUid
+			layout: Layout { align: horizontal End vertical Beginning grab: horizontal False vertical False hint: width 200}
+			disabled: StringPredicate(selectedUid) { when IsEmpty then True }
+			text: $search_page.showdetails
+		}
+	}
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityDetails_team" prefix="Id_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="br_identityDetails_team" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort" attribute1="A1337180352873_1233"/>
+	<ViewJoin name="J1337180329148_1223" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="downgenericteam">
+		<ViewAttribute name="A1337180352873_1225" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1417100113006_0" reference="uid" operation="ne" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1337180352873_1226" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1337180352873_1227" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1337180352873_1228" attribute="nickname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1337180352873_1229" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1337180352873_1230" attribute="middlename" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1337180352873_1231" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1337180352873_1232" attribute="altname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1337180352873_1233" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1417101851804_1081" attribute="uid" alias="count" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1417107851210_1166" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1417107941189_0" reference="recorduid" operation="ne" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1417099993753_1062" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1417100000177_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1423589277656_676" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1423589351202_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

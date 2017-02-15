@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="bw_recon_identities_hrcode" operator="or" query="identity" displayname="Recon Identities for hrcode {hrcode}" version="4" notes="">
+	<RequestParam name="hrcode" displayname="HR Code" query="identity" criteria="likeHrCode" criteriaparam="hrCodeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestGroup name="G1423068892892_1507" operator="and">
+		<RequestCriteria name="C1423067530802_1325" criteria="likeHrCode">
+			<RequestCriteriaParam name="hrCodeParam" reference="hrcode" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+		<RequestCriteria name="C1423068930345_1511" criteria="hasHrCode">
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

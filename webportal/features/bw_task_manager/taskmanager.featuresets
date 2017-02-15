@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FeatureSets PUBLIC "-//Brainwave//DTD FeatureSets 1.0//EN" "urn:brainwave:igrc:dtds/featuresets.dtd">
+<FeatureSets version="1" name="taskmanager" description="Task Manager features set">
+	<FeatureSet name="I1388338299121" featureset="tm_poweruser" description="Can launch new processes, send emails in all tabs, assign tasks to candidates and access to completed tasks" r5="true"/>
+	<FeatureSet name="I1388338316267" featureset="tm_standarduser" description="Can send emails to other candidates, cannot start new processes" r6="true"/>
+	<FeatureSet name="I1388338330191" featureset="tm_all" description="Access to all the task manager features. poweruser  + suspend, resume, stop processes; reassign a task to any individual" r7="true"/>
+	<FeatureSet name="I1388338342741" featureset="tm_limiteduser" description="Limited to the minimum : cannot launch new processes, can only acquire tasks from the inbox" r8="true"/>
+</FeatureSets>

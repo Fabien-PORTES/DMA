@@ -1,0 +1,15 @@
+import "/webportal/pages/permission/search.page"
+import "/webportal/pages/permission/details.page"
+import "/webportal/pages/reports/standard.page"
+
+Activity {
+	concept: Permission
+	kind: Search
+	to: Page permissionSearchPage
+}
+
+Activity {
+	concept: Permission
+	kind: Detail
+	to: Page permissionDetailsPage
+}

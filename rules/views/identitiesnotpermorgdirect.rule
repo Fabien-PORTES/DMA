@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_identitiesnotpermorgdirect" operator="and" query="identity" displayname="Identities belonging to direct org {organisationrecorduid} and who don&apos;t have access to a given permission {permissionrecorduid}" version="3">
+	<RequestParam name="organisationrecorduid" displayname="organisation record uid" query="organisation" criteria="eqRecordUid" criteriaparam="recordUidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="permissionrecorduid" displayname="permission record uid" query="permission" criteria="eqRecordUid" criteriaparam="recordUidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestGroup name="G1325600874633_3476" operator="and" inverse="true">
+		<RequestJoin name="J1325600882117_3477" operator="and" join="accountreconciliation">
+			<RequestJoin name="J1325600885959_3478" operator="and" join="right">
+				<RequestJoin name="J1325600887812_3479" operator="and" join="permission">
+					<RequestCriteria name="C1336742252204_240" criteria="eqRecordUid">
+						<RequestCriteriaParam name="recordUidParam" reference="permissionrecorduid" ignoreifempty="false">
+							<Value name="0"/>
+						</RequestCriteriaParam>
+					</RequestCriteria>
+				</RequestJoin>
+			</RequestJoin>
+		</RequestJoin>
+	</RequestGroup>
+	<RequestJoin name="J1336741291417_139" operator="and" join="organisation">
+		<RequestCriteria name="C1325600842610_3474" criteria="eqRecordUid">
+			<RequestCriteriaParam name="recordUidParam" reference="organisationrecorduid" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestJoin>
+</Request>

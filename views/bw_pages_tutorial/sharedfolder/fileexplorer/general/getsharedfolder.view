@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="fileexplorergetsharedfolder" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="get permission" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1406815435920_1222" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1406815435920_1223" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1406815442974_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1406815435920_1224" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1406815435920_1225" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1406815435920_1226" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1406815435920_1227" attribute="applicationrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1406815435920_1228" attribute="inherited" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1406815435920_1229" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1406815435920_1230" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationmanagers" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="manager" displayname="br_organisationmanagers" notes="" begindate="" enddate="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewComputedAttribute name="manager_display" displayname="manager_display" type="String" expression="dataset.isEmpty (&apos;jobtitledisplayname&apos;)?dataset.manager_fullname.get():dataset.manager_fullname.get()+&apos; - &apos;+dataset.jobtitledisplayname.get()"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1465822447301_13332" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="organisation">
+		<ViewAttribute name="A1465823799380_13380" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1465823802609_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1465822459493_13333" attribute="expertisedomainrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1465822461329_13334" attribute="expertisedomainuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1465822462165_13335" attribute="expertisedomaincode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1465822463299_13336" attribute="expertisedomaindisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1465822468298_13337" attribute="collected" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1465822469432_13338" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1465822479567_13339" prefix="manager_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+		<ViewAttribute name="A1465822492441_13340" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1465822493369_13341" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1465822494675_13342" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1465822496105_13343" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1465822497535_13344" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1465822498513_13345" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1465826685054_13482" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="allocation">
+			<ViewJoin name="J1465826688765_13483" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="organisation">
+				<ViewAttribute name="A1465826692040_13484" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1465826694461_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+			<ViewAttribute name="A1465826707363_13487" attribute="jobtitlerecorduid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1465826708075_13488" attribute="jobtitleuid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1465826708691_13489" attribute="jobtitlecode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1465826709270_13490" attribute="jobtitledisplayname" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_parentorganisation" distinct="true" concept="organisation" displayname="Retreive the parent organisation for a given organisation" notes="">
+	<ViewParam name="recorduid" displayname="Record UID"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1302185726574_7" prefix="parent_" kind="inner" join="parentorganisation">
+		<ViewAttribute name="A1302185864512_10" attribute="recorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_11" attribute="uid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_12" attribute="code" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_13" attribute="shortname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_14" attribute="displayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_15" attribute="organisationtyperecorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_16" attribute="organisationtypeuid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_17" attribute="organisationtypecode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_18" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_19" attribute="custom1" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_20" attribute="custom2" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_21" attribute="custom3" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_22" attribute="custom4" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_23" attribute="custom5" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_24" attribute="custom6" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_25" attribute="custom7" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_26" attribute="custom8" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302185864512_27" attribute="custom9" operator="or" removedfromprojection="false"/>
+		<ViewJoin name="J1302186827088_236" kind="inner" join="upidentity">
+			<ViewAttribute name="A1302186832793_237" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1302185830380_8" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302185842971_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

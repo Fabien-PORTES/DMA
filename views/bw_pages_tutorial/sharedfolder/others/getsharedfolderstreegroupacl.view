@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="fileexplorergetsharedfolderstreegroupacl" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="get shared folders" notes="">
+	<ViewParam name="uid" displayname="uid">
+		<Value name="0" data="BRAINWAVE_FR_1431344913151_2591"/>
+	</ViewParam>
+	<ViewComputedAttribute name="withacl" displayname="with acl" type="String" expression="1"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1406801987145_881" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1406801990955_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1406802013383_884" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+		<ViewAttribute name="A1406802021761_887" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1433747639831_1672" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclgroup">
+		</ViewJoin>
+	</ViewJoin>
+</View>

@@ -1,0 +1,213 @@
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/resources/pages_nls.page"
+
+reportDetails = NLS {
+	browsing_application_detailaccounts.pagetitle [ en "Accounts Details" fr "Comptes Détaillés"]
+	browsing_application_detailaccounts.title [ en "Accounts Details" fr "Comptes Détaillés"]
+	browsing_application_detailaccounts.subtitle [ en "Accounts - Application <<{0}>>" fr "Comptes - Application <<{0}>>"]
+	browsing_application_detailaccounts.columns.account_login [ en "Account login" fr "Login du compte" ]
+	browsing_application_detailaccounts.columns.account_username [ en "Account username" fr "Nom du compte" ]
+	browsing_application_detailaccounts.columns.identity_fullname [ en "Identity" fr "Identité" ]
+	browsing_application_detailaccounts.columns.account_disabled [en "Disabled" fr "Désactivé"]
+	browsing_application_detailaccounts.columns.reconciliation [en "Status" fr "Statut"]
+	browsing_application_detailaccounts.columns.account_lastlogindate [en "Last Login Date" fr "Dernière Connexion"]
+	browsing_application_detailaccounts.filter.viewall [en "Show All" fr "Voir Tous"]
+	browsing_application_detailaccounts.filter.active [en "Active Accounts" fr "Comptes Actifs"]
+	browsing_application_detailaccounts.filter.privileded [en "Privileged Accounts" fr "Comptes Privilégiés"]
+	browsing_application_detailaccounts.filter.withoutowner [en "Accounts Without Owner" fr "Comptes Sans Propriétaire"]
+	browsing_application_detailaccounts.filter.service [en "Service Account" fr "Compte de Service"]
+	browsing_application_detailaccounts.filter [en "Filter" fr "Filtrer"]
+}
+
+browsing_application_detailaccounts = Page {
+
+	title: $reportDetails.browsing_application_detailaccounts.pagetitle
+	tags: "application" priority 200, "byuid" , "browsing"
+	icon: "16/details/browsing_16.png" large-icon: "48/details/browsing_48.png"
+	feature: browsing_application_detailaccounts
+	enter-event: BooleanCase (paramSearchMode) { when False then [ Set uid to nonEmptyUid] when True then []}
+	
+	mixins: simpleReport
+	
+	uid = Parameter {
+		label:"Concept Uid"
+		type:String
+	}
+	filter = Parameter{
+		type: Integer
+		mandatory: False
+		default: 0
+	}
+
+	// Related to Search Navigator	
+	paramSearchMode = Parameter {
+		type: Boolean
+		hidden: True
+		default: False
+	}
+	// Related to Search Navigator	
+	applicationSearch = SearchDefinition {
+		entity: Application
+		simple-mode-rule: br_application_simple_search
+	}
+	
+	// Related to Search Navigator
+	currentApplication = Variable {
+		type: String
+		initial: uid
+	}
+	
+	selectedUid = Variable {
+		type: String
+	}
+	
+	selectedRecorduid = Variable {
+		type: Integer
+	}
+	currentfilter = Variable {
+		type: String multivalued: False
+		initial: filter
+	}
+	
+	// Empty uid when search mode
+	nonEmptyUid = Variable { type: String }
+	
+	// Related to Search Navigator	
+	applicationList = Dataset {
+		search: Search {
+			definition: applicationSearch
+			view: br_application_searchpoint with "Profile" to applicationtype , nonEmptyUid to uid
+		}
+	}
+	
+	conceptData = Record {
+		view: br_applicationDetail with currentApplication to uid
+	}
+	
+	dataToReport = Dataset {
+		view: br_applicationbyaccount with conceptData.recorduid to recorduid, currentfilter to filter
+	}
+
+	Group{
+		layout: Layout { grab: horizontal False vertical False align: horizontal Center vertical Beginning }
+		Spacer {
+			height: 11
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+		SetNavigator {
+			data: applicationList
+			column: uid
+			selection: currentApplication
+			back-link: Activity Application Detail with currentApplication to paramApplicationUid , SerializeSearch applicationSearch to applicationSearch, paramSearchMode to paramSearchMode
+			initial: uid
+			show-count: True
+			show-first: True
+			show-last: True
+			count-width: 150
+			hidden: Not BooleanPredicate(paramSearchMode)
+		}
+	}
+		
+	Group {
+		Text {
+			value: $reportDetails.browsing_application_detailaccounts.title	
+		}		
+		
+		Text {
+			value: $reportDetails.browsing_application_detailaccounts.subtitle( conceptData.displayname )
+			styling: reportSubtitle
+			align: Left
+		}
+		Group{
+			layout: Layout { hint: width 270 grab: horizontal False vertical False align: horizontal End vertical Center indent: vertical 0 horizontal 0}
+			Combo{
+				variable: currentfilter
+				label: $reportDetails.browsing_application_detailaccounts.filter
+				allow-none:False
+				styling: reportSubtitle
+				options: Static{
+					Option { text: $reportDetails.browsing_application_detailaccounts.filter.viewall value: 0 }
+					Option { text: $reportDetails.browsing_application_detailaccounts.filter.active value: 1}
+					Option { text: $reportDetails.browsing_application_detailaccounts.filter.privileded  value: 2}
+					Option { text: $reportDetails.browsing_application_detailaccounts.filter.withoutowner value: 3}
+					Option { text: $reportDetails.browsing_application_detailaccounts.filter.service  value: 4}
+					
+				}
+			}
+		
+		}
+		
+		Table{
+			data: dataToReport
+			double-click: GoTo Activity Account Detail with selectedUid to paramAccountUid
+			show-filter: False
+			show-count: True
+			
+			Column {
+				column: account_recorduid
+				hidden: True
+				selection: selectedRecorduid
+			}
+			Column {
+				column: account_uid
+				hidden: True
+				selection: selectedUid
+			}
+			Column{
+				column: account_login
+				header: $reportDetails.browsing_application_detailaccounts.columns.account_login
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: account_username
+				header: $reportDetails.browsing_application_detailaccounts.columns.account_username
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: identity_fullname
+				header: $reportDetails.browsing_application_detailaccounts.columns.identity_fullname
+				sortable: True
+				filterable: True
+				width:100%
+			}
+			Column{
+				column: account_disabled
+				text: Transform Transform Current account_disabled using booleanAlwaysShow using booleanDisplayMapping
+				header: $reportDetails.browsing_application_detailaccounts.columns.account_disabled
+				sortable: True
+				filterable: True
+				align: Center
+			}
+			Column{
+				column: reconciliation
+				text: Transform Current reconciliation using reconciliationStatusMapping
+				header: $reportDetails.browsing_application_detailaccounts.columns.reconciliation
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+			Column{
+				column: account_lastlogindate
+				text: Date( Current account_lastlogindate ).value('dd/MM/yyyy')
+				header: $reportDetails.browsing_application_detailaccounts.columns.account_lastlogindate
+				sortable: True
+				filterable: True
+				width:100%
+				align: Center
+			}
+		}
+		
+		Button {
+			actions:  GoTo Activity Account Detail with selectedUid to paramAccountUid
+			layout: Layout { align: horizontal End vertical Beginning grab: horizontal False vertical False hint: width 200}
+			disabled: StringPredicate(selectedUid) { when IsEmpty then True }
+			text: $search_page.showdetails
+		}
+	}
+}

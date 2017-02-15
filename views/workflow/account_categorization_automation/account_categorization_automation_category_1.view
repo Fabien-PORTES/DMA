@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="account_categorization_automation_category_1" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="account_categorization_automation_category_1">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1486738634784_463" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewRule name="I1486740463613_793" rule="account_categorization_automation_category_1">
+	</ViewRule>
+	<ViewJoin name="J1486738628146_462" prefix="AD_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+		<ViewAttribute name="A1486738677142_470" attribute="custom4" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1486738678884_0" operation="in" ignoreifempty="false">
+				<Value name="0" data="EU"/>
+				<Value name="1" data="EU-V"/>
+				<Value name="2" data="AS"/>
+				<Value name="3" data="AS-V"/>
+				<Value name="4" data="NA"/>
+				<Value name="5" data="NA-V"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1486738621599_461" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="A1486738734676_475" attribute="description" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1486738736983_0" operation="in" ignoreifempty="false">
+				<Value name="0" data="AD4UNIX [SAM, Fullname] EQ [UID, Fullname]"/>
+				<Value name="1" data="AD4UNIX [SAM, Fullname] EQ [UID, FullnameReversed]"/>
+				<Value name="2" data="AD4UNIX [SAMextract, Fullname] EQ [UID, Fullname]"/>
+				<Value name="3" data="ADGECOS [SAM, Fullname] EQ [UID, FullnameReversed]"/>
+				<Value name="4" data="ADGECOS [SAMextract, Fullname] EQ [UID, Fullname]"/>
+				<Value name="5" data="ADGECOS [SAM, Fullname] EQ [UID, Fullname]"/>
+				<Value name="6" data="ADGECOS [SAMextract, Fullname] EQ [UID, FullnameReversed]"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

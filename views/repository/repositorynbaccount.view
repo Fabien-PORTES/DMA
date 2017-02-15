@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositorynbaccount" distinct="true" concept="account" displayname="# of account by repository" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="Repository record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303204992054_182" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT"/>
+	<ViewAttribute name="A1303204993863_183" attribute="repositoryrecorduid" operator="or">
+		<ViewAttributeFilter name="F1303204996887_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

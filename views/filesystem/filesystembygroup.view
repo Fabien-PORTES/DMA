@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_filesystembygroup" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="All fileshares accessible through a given group" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort" attribute1="A1328705500114_277"/>
+	<ViewAttribute name="A1328705500114_275" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1328705500114_276" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1328705500114_277" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1328705500114_278" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1328705500114_279" attribute="applicationrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1328705500114_280" attribute="applicationuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1328705500114_281" attribute="applicationcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1328705500114_282" attribute="applicationdisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1328705500114_283" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1328705500114_284" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1328706315200_16" prefix="application_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+		<ViewAttribute name="A1328706325625_17" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_18" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_19" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_20" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_21" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1433268223229_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1328706325625_22" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_23" attribute="repositoryuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_24" attribute="repositorycode" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_25" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_26" attribute="repositorymedia" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_27" attribute="repositoryextractdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_28" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_29" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1328706325625_30" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1433266829884_1116" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="groups">
+		<ViewAttribute name="1433266833966_1118" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1328705490720_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

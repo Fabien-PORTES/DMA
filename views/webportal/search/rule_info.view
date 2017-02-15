@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_ruleinfo" errorifempty="false" distinct="true" concept="searchlog" displayname="Rule info">
+	<ViewParam name="ruleName" displayname="Rule name"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1375111389296_155" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1375111456630_0" reference="ruleName" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1375111391335_156" attribute="ruleentity" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1375111396082_157" attribute="ruledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

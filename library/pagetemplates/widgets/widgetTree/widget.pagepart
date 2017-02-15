@@ -1,0 +1,31 @@
+Tree {
+	label: <template:widgetlabel/>
+	data: <template:widgetdatasetname/>
+	show-filter: False	
+	hide-header: False
+	expand-level: All
+	layout: Layout {
+		grab: horizontal True vertical True
+	}
+	
+	Column {
+		column: uid
+		hidden: True
+		selection: <template:widgetvariablename/>
+	}
+	Column {
+		column: code
+		header: $<template:pageNLSname/>.<template:widgetnlsname/>.column1
+		image:"16/audit/organisation_16.png"
+		sortable: True
+		filterable: True
+		width: 34%
+	}
+	Column {
+		column: displayname
+		header: $<template:pageNLSname/>.<template:widgetnlsname/>.column2
+		sortable: True
+		filterable: True
+		width: 66%
+	}
+}

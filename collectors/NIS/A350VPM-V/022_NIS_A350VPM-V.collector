@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="022_NIS_A350VPM" scriptfile="/collectors/NIS/global.javascript" name="P1475224796147_19" startingpoint="C1475224802790">
+		<Component name="C1475224802790" type="discoverysource" x="46" y="24" w="200" h="64" title="A350VPM-V">
+			<Discovery file="/discovery/NIS/A350VPM-V_AD.discovery"/>
+		</Component>
+		<Component name="C1475224816108" type="account" x="57" y="449" w="200" h="64" title="Create Accounts">
+			<Account key="distinguishedname">
+				<Attribute name="login" attribute="Login_A350"/>
+				<Attribute name="givenname" attribute="_FIRSTNAME"/>
+				<Attribute name="username" attribute="_FULLNAME"/>
+				<Attribute name="surname" attribute="_LASTNAME"/>
+				<Attribute name="custom9" attribute="GECOS"/>
+				<Attribute name="creationdate" attribute="_CREATION_DATE"/>
+				<Attribute name="passwordlastsetdate" attribute="_MODIFIED_DATE"/>
+				<Attribute name="custom5" attribute="GID"/>
+				<Attribute name="mail" attribute="_EMAIL"/>
+				<Attribute name="custom4" attribute="UID number"/>
+				<Attribute name="custom1" attribute="vintela_sidbl"/>
+				<Attribute name="custom6" attribute="_FALSE"/>
+				<Attribute name="smartcardrequired" attribute="standard_name"/>
+				<Attribute name="sid" attribute="uidnumber"/>
+				<Attribute name="guid" attribute="GID"/>
+			</Account>
+			<Media code="_REPOSITORY"/>
+		</Component>
+		<Component name="C1475224816108_2" type="account" x="618" y="455" w="200" h="64" title="Create Accounts joined AD4UNIX">
+			<Account key="distinguishedname">
+				<Attribute name="login" attribute="Login_A350"/>
+				<Attribute name="givenname" attribute="_FIRSTNAME"/>
+				<Attribute name="username" attribute="_FULLNAME"/>
+				<Attribute name="surname" attribute="_LASTNAME"/>
+				<Attribute name="custom9" attribute="GECOS"/>
+				<Attribute name="creationdate" attribute="_CREATION_DATE"/>
+				<Attribute name="passwordlastsetdate" attribute="_MODIFIED_DATE"/>
+				<Attribute name="mail" attribute="_EMAIL"/>
+				<Attribute name="custom4" attribute="UID number"/>
+				<Attribute name="custom1" attribute="vintela_sidbl"/>
+				<Attribute name="custom5" attribute="_AD4Unix_SAM_upper"/>
+				<Attribute name="custom8" attribute="_AD4Unix_FIRST_Windomain"/>
+				<Attribute name="custom6" attribute="_NIS_IN_AD4Unix"/>
+				<Attribute name="smartcardrequired" attribute="standard_name"/>
+				<Attribute name="sid" attribute="uidnumber"/>
+				<Attribute name="guid" attribute="GID"/>
+				<Attribute name="manager" attribute="gecos_from_ad4unix"/>
+			</Account>
+			<Media code="_REPOSITORY"/>
+		</Component>
+		<Component name="C1481184912424_2" type="joinfilter" x="94" y="263" w="200" h="64" title="Add AD4Unix to NIS">
+			<Cache active="true" main="_UID_UpperCase" join="_AD4UNIX_UID_upper"/>
+			<Join source="C1481184901432_2" zeroerror="true" zeroevent="NO_JOIN_ON_UID" zerotechnical="true" severalaction="first"/>
+		</Component>
+		<Component name="C1481184901432_2" type="discoverysource" x="551" y="39" w="200" h="64" title="ad4unix">
+			<Discovery file="/discovery/AD4UNIX/ad4unix.discovery"/>
+		</Component>
+		<Link name="L1481206533077" source="C1481184912424_2" target="C1475224816108" priority="1" expression="(dataset.hasEvent(&apos;NO_JOIN_ON_UID&apos;))"/>
+		<Link name="L1482238859694" source="C1481184901432_2" target="C1481184912424_2" priority="1"/>
+		<Component name="C1482238943641" type="changefilter" x="102" y="135" w="200" h="64" title="true false">
+			<Actions>
+				<Action name="U1482239019443" action="add" attribute="_TRUE" type="Boolean" multivalued="false" newvalue="true" errorexist="false"/>
+				<Action name="U1482239031328" action="add" attribute="_FALSE" type="Boolean" multivalued="false" newvalue="false" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Link name="L1482238947731" source="C1475224802790" target="C1482238943641" priority="1"/>
+		<Link name="L1482238949736" source="C1482238943641" target="C1481184912424_2" priority="1"/>
+		<Link name="L1481205904406_1" source="C1481187785280_3" target="C1475224816108_2" priority="1"/>
+		<Link name="L1481187789644_2" source="C1481184912424_2" target="C1481187785280_3" priority="2" expression="(! dataset.hasEvent(&apos;NO_JOIN_ON_UID&apos;))"/>
+		<Component name="C1481187785280_3" type="changefilter" x="624" y="226" w="200" h="64" title="Flag if NIS account Domain in AD4Unix">
+			<Actions>
+				<Action name="U1481189944372" action="multifilter" attribute="nis_domain" remove="false" oldname="_REPOSITORY"/>
+				<Action name="U1481190432334" action="add" attribute="_NIS_IN_AD4Unix" type="Boolean" multivalued="false" newvalue="{!dataset.nis_domain.get().isEmpty()}" errorexist="false"/>
+				<Action name="U1481205341290" action="default" attribute="_NIS_IN_AD4Unix" newvalue="0" errorunknown="false"/>
+			</Actions>
+		</Component>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+		<Variables>
+		</Variables>
+	</Configuration>
+</Provisioning>

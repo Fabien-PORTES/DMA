@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesfromtype" operator="and" query="identity" displayname="Identities from type {identitytype}" version="3">
+	<RequestParam name="identitytype" displayname="identitytype" query="identity" criteria="eqEmployeeType" criteriaparam="employeeTypeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1331842686624_149" criteria="eqEmployeeType">
+		<RequestCriteriaParam name="employeeTypeParam" reference="identitytype" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

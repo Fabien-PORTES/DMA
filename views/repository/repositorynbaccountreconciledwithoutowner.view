@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositorynbaccountreconciledwithoutowner" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="# of account reconciled without owner by repository" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="Repository record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1321625584967_12" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321625586670_13" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1321625666604_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewCriteria name="I1385375717939_1039" criteria="noOwnerReconciliatedAccounts">
+	</ViewCriteria>
+	<ViewJoin name="J1385390917421_314" identitysecure="false" join="reconciliation">
+		<ViewAttribute name="A1385390919873_315" attribute="noownercode" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1385390947307_0" operation="ne" ignoreifempty="false">
+				<Value name="0" data="leave"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

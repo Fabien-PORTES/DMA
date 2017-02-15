@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="020_Identities" description="Collect Airbus identities" scriptfile="/collectors/identity _ ALIR/identities.javascript" name="P1467983358048" startingpoint="C1467983377228">
+		<Component name="C1467983377228" type="discoverysource" x="211" y="57" w="206" h="64" title="ALIR">
+			<Discovery file="/discovery/identity _ ALIR/ALIR.discovery"/>
+			<Limit/>
+		</Component>
+		<Component name="C1467983415365" type="identity" x="279" y="190" w="206" h="64" title="identity - ECL">
+			<Mapping>
+				<Attribute name="givenname" attribute="_firstname" key="true"/>
+				<Attribute name="sn" attribute="_lastname" key="true"/>
+				<Attribute name="internal" attribute="_internal"/>
+				<Attribute name="fullname" attribute="_ALIR_FULLNAME" key="true"/>
+				<Attribute name="organization" attribute="company_uid"/>
+				<Attribute name="jobtitle" attribute="_EMPLOYEE"/>
+				<Attribute name="custom1" attribute="identity_state"/>
+				<Attribute name="custom2" attribute="_ALIR_Unique_Key"/>
+				<Attribute name="custom3" attribute="external_uid"/>
+				<Attribute name="mail" attribute="contact_email" key="true"/>
+				<Attribute name="altname" attribute="second_name"/>
+				<Attribute name="mobile" attribute="mobile_phone"/>
+				<Attribute name="phone" attribute="principal_fixed_telephone"/>
+				<Attribute name="custom5" attribute="secondary_fixed_telephone"/>
+				<Attribute name="custom6" attribute="airbus_mail"/>
+				<Attribute name="custom4" attribute="_REPOSITORY_CODE_"/>
+			</Mapping>
+			<Media code="_REPOSITORY_CODE_"/>
+			<Identity code="_ALIR_matricule"/>
+		</Component>
+		<Link name="L1481101852543" source="C1467983377228" target="C1467983415365" priority="1"/>
+		<Component name="C1467983415365_4" type="identity" x="234" y="345" w="206" h="64" title="identity - Department">
+			<Mapping>
+				<Attribute name="givenname" attribute="_firstname"/>
+				<Attribute name="sn" attribute="_lastname"/>
+				<Attribute name="internal" attribute="_internal"/>
+				<Attribute name="fullname" attribute="_ALIR_FULLNAME"/>
+				<Attribute name="organization" attribute="_department"/>
+				<Attribute name="jobtitle" attribute="category"/>
+				<Attribute name="custom1" attribute="identity_state"/>
+				<Attribute name="custom2" attribute="_ALIR_Unique_Key"/>
+				<Attribute name="custom3" attribute="external_uid"/>
+				<Attribute name="mail" attribute="contact_email"/>
+				<Attribute name="altname" attribute="second_name"/>
+				<Attribute name="mobile" attribute="mobile_phone"/>
+				<Attribute name="phone" attribute="principal_fixed_telephone"/>
+				<Attribute name="custom5" attribute="secondary_fixed_telephone"/>
+				<Attribute name="custom6" attribute="airbus_mail"/>
+				<Attribute name="custom4" attribute="_REPOSITORY_CODE_"/>
+			</Mapping>
+			<Media code="_REPOSITORY_CODE_"/>
+			<Identity code="_ALIR_matricule"/>
+		</Component>
+		<Link name="L1481810031115" source="C1467983415365" target="C1467983415365_4" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

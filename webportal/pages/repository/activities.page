@@ -1,0 +1,15 @@
+import "/webportal/pages/repository/search.page"
+import "/webportal/pages/repository/details.page"
+import "/webportal/pages/reports/standard.page"
+
+Activity {
+	concept: Repository
+	kind: Search
+	to: Page repositorySearchPage
+}
+
+Activity {
+	concept: Repository
+	kind: Detail
+	to: Page repositoryDetailsPage
+}

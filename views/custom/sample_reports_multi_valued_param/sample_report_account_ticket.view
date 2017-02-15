@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sample_report_account_ticket" prefix="acc_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="sample_report_account_ticket">
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1479828321375_393" prefix="ticket_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketreview">
+		<ViewAttribute name="A1479828329821_394" attribute="comment" alias="ticket_account_categorisation_instructions" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479828639149_443" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479897927163_779" attribute="custom1" alias="ticket_account_categorisation" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479897928771_780" attribute="custom2" alias="ticket_erase_categorisation" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1479726675183_372" prefix="recon_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="1479828363415_411" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_412" attribute="reconciliationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_413" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_414" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_415" attribute="description" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_416" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_417" attribute="reliability" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_418" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479828417510_442" attribute="noownercode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1479726883019_393" prefix="repo_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="1479828363415_419" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_420" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_421" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1479828363415_422" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="1479828386457_431" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1479828386457_432" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1479828386473_435" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1479828386473_436" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1479828386473_437" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1479828386473_438" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

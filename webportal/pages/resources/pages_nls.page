@@ -1,0 +1,330 @@
+global = NLS {
+	yes [en "Yes" fr "Oui"]
+	no [en "No" fr "Non"]
+	mnone [en "None" fr "Aucun"]
+	fnone [en "None" fr "Aucune"]
+	any [en "Any" fr "Indifférent"]
+	novalue [en "No value" fr "Donnée non précisée"]
+}
+
+entity = NLS {
+	loweraccounts [en "accounts" fr "comptes"]
+	loweridentities [en "identities" fr "identités"]
+	lowerorganisations [en "organizations" fr "organisations"]
+	lowerassets [en "assets" fr "actifs"]
+	lowerpermissions [en "permissions" fr "permissions"]
+	lowerapplications [en "applications" fr "applications"]
+	lowergroups [ en "groups" fr "groupes" ]
+	upperaccounts [en "Accounts" fr "Comptes"]
+	upperidentities [en "Identities" fr "Identités"]
+	upperorganisations [en "Organizations" fr "Organisations"]
+	upperassets [en "Assets" fr "Actifs"]
+	upperpermissions [en "Permissions" fr "Permissions"]
+	upperapplications [en "Applications" fr "Applications"]
+	uppergroups [ en "Groups" fr "Groupes" ]
+}
+
+control = NLS {
+	type1 [en "Arbitrary set" fr "Ensemble arbitraire"]
+	type2 [en "Permission assignment" fr "Affectation d'une permission"]
+	type3 [en "Separation of duties" fr "Séparation des tâches"]
+	type4 [en "Advanced control" fr "Contrôle avancé"]
+	type5 [en "Theoretical authorizations" fr "Habilitations théoriques"]
+	type6 [en "Separation of two sets of tasks" fr "Séparation de deux ensembles de tâches"]
+	type7 [en "Separation of roles" fr "Séparation des rôles"]
+	type8 [en "Separation of two sets of roles" fr "Séparation de deux ensembles de rôles"]
+}
+
+default_home = NLS {
+	title [en "Main menu" fr "Menu général"]
+	search.title [en "Search" fr "Recherche"]
+	search.description [en "Search identities, accounts, etc. using advanced criteria" fr "Recherche d'identités, de comptes,... avec des critères avancés"]
+	search.organisation [en "Search organizations" fr "Recherche d'organisations"]
+	search.identity [en "Search identities" fr "Recherche d'identités"]
+}
+
+search_page = NLS {
+	title [en "Search menu" fr "Menu de recherche"]
+	browsing [en "Links" fr "Liens"]
+	filter [en "Filter" fr "Filtre"]
+	results [en "Links" fr "Liens"]
+	results.link [en "Rule results" fr "Résultat de règle"]
+	results.rulename [en "Name" fr "Nom"]
+	results.ruledisplayname [en "Display name" fr "Nom d'affichage"]
+	results.ruleentity [en "Entity" fr "Entité"]
+	
+	showdetails  [ en "Show Details" fr "Voir le Détail"]
+	showanalyticssection  [ en "Show analytics panel" fr "Afficher le panneau d'analyses"]
+	hideanalyticssection  [ en "Hide analytics panel" fr "Cacher le panneau d'analyses"]
+	resultsnumber [ en "Number of results: " fr "Nombre de résultats: "]
+	
+	analyticsreport [en "Analytics reports" fr "Rapports d'analyse"]
+	analyticsreporttooltip [en "This section contains analytics reports\nThese reports leverage your search results to provide advanced insights\nThese reports can be run only if your search result returns fewer than 2000 entries" 
+	                        fr "Cette section présente les rapports d'analyse\nCes rapports s'appuient sur vos résultats de recherche afin de vous fournir des analyses complémentaires\nCes rapports ne peuvent s'exécuter que si votre recherche retourne moins de 2000 résultats"]
+	analyticsreportnoentries [en "No entries found, please refine your selection" fr "Pas d'entrées trouvées, veuillez affiner votre sélection"]
+	analyticsreporttoomanyentries [en "Too many entries, please refine your selection" fr "Trop de résultats, veuillez affiner votre sélection"]
+}
+
+search_page_analyticsSectionMapping = StringMapping {
+	when '0' then $search_page.showanalyticssection
+	when '1' then $search_page.hideanalyticssection
+}
+
+search = NLS {
+	identity.title [en "Search identities" fr "Recherche d'identités"]
+	organisation.title [en "Search organizations" fr "Recherche d'organisations"]
+	account.title [en "Search accounts" fr "Recherche de comptes"]
+	group.title [en "Search groups" fr "Recherche de groupes"]
+	repository.title [en "Search repositories" fr "Recherche de référentiels"]
+	application.title [en "Search applications" fr "Recherche d'applications"]
+	permission.title [en "Search permissions" fr "Recherche de permissions"]
+	asset.title [en "Search assets" fr "Recherche d'actifs"]
+}
+
+searchlabel = NLS {
+	title [en "Search objects in the Identity Ledger" fr "Recherche d'objets dans le Grand Livre des Identités"]
+	hierarchy [en "Hierarchy" fr "Hierarchie"]
+	organisation [en "Organization" fr "Organisation"]
+	identity [en "Identity" fr "Identité"]
+	job [en "Job" fr "Métier"]
+	asset [en "Asset" fr "Actif"]
+	group [en "Group" fr "Groupe"]
+	account [en "Account" fr "Compte"]
+	application [en "Application" fr "Application"]
+	permission [en "Permission" fr "Permission"]
+	repository [en "Repository" fr "Référentiel"]
+}
+
+admin = NLS {
+  title [en "Admin" fr "Admin"]
+  label [en "Administration pages" fr "Pages d'administration"]
+}
+
+list = NLS {
+	identity.title [en "Identity list" fr "Liste d'identités"]
+	identity.link.identity [en "Detail" fr "Détail"]
+	identity.link.accounts [en "Accounts" fr "Comptes"]
+	identity.link.groups [en "Groups" fr "Groupes"]
+	identity.link.permissions [en "Permissions" fr "Permissions"]
+	identity.link.applications [en "Applications" fr "Applications"]
+	identity.link.usages [en "Usages" fr "Usages"]
+	organisation.title [en "Organization list" fr "Liste des organisations"]
+	organisation.link.organisation [en "Details" fr "Détail"]
+	organisation.link.identities [en "Identities" fr "Identités"]
+	organisation.link.assets [en "Assets" fr "Actifs"]
+	organisation.link.accounts [en "Accounts" fr "Comptes"]
+	account.title [en "Account list" fr "Liste de comptes"]
+	group.title [en "Group list" fr "Liste de groupes"]
+	repository.title [en "Repository list" fr "Liste des référentiels"]
+	application.title [en "Application list" fr "Liste des applications"]
+	permission.title [en "Permission list" fr "Liste des permissions"]
+	asset.title [en "Asset list" fr "Liste des actifs"]
+}
+
+reconciliationactions = NLS {
+	delete [en "Delete this reconciliation" fr "Supprimer cette réconciliation"]
+	confirmdeleted [en "Reconciliation deleted for account " fr "Réconciliation supprimée pour le compte "]
+	reconcilewithidentity [en "This account has an owner" fr "Ce compte a un propriétaire"]
+	reconcilewithleave [en "The owner of this account has left" fr "Le propriétaire de ce compte est parti"]
+	reconcilewithnoowner [en "This account has no owner" fr "Ce compte n'a pas de propriétaire"]
+	reconcileaccount [en "Reconcile account" fr "Réconcilier le compte"]
+	confirmreconciled [en "New reconciliation status for account" fr "Nouveau statut de réconciliation pour le compte"]	
+	actionerror [en "An error occurred while trying to perform the requested action" fr "Une erreur est survenue en tentant d'effectuer l'opération demandée"]
+	chooseowner [en "Choose among identities" fr "Choisir parmi les identités"]
+	suggestowner [en "Choose among reconciliation results" fr "Choisir parmi les réconciliations possibles"]
+	setleave [en "Reconcile the account with its departed owner" fr "Réconcilier le compte avec son propriétaire parti"]
+	chooseleaveowner [en "Choose owner among departed identities" fr "Choisir le propriétaire parmi les personnes parties"]
+	setnoowner [en "Mark the account as having no owner" fr "Marquer le compte comme étant sans propriétaire"]
+	isserviceaccount [en "This account is a service account" fr "Ce compte est un compte de service"]
+	isothertypeaccount [en "This account is another type of account without an owner" fr "Ce compte est un autre type de compte sans propriétaire"]
+	choosecode [en "Choose a code indicating the reason" fr "Choisir un code qualifiant la raison"]
+	addcode [en "Add a new code for this account" fr "Ajouter un nouveau code pour ce compte"]
+	mainpolicyempty [en "The main reconciliation policy gives no results. You can choose another policy." fr "La politique de réconciliation principale ne donne pas de résultats. Vous pouvez choisir une autre politique."]
+	curtompolicyempty [en "Reconciliation policy {0} gives no results. You can choose another policy." fr "La politique de réconciliation {0} ne donne pas de résultats. Vous pouvez choisir une autre politique."]
+	nomorepolicies [ en "There is no additional reconciliation policy." fr "Il n'y a pas de politique de réconciliation supplémentaire." ]
+}
+
+detail = NLS {
+	fullversion [en "Detailed file" fr "Fiche détaillée"]
+	printable [en "Printable version" fr "Version imprimable"]
+	browsing [en "Browsing" fr "Naviguation"]
+	analytics [en "Analytics" fr "Analyses"]
+	mining [en "Mining" fr "Mining"]
+	review [en "Review" fr "Revue"]
+	summary [en "Summary" fr "Résumé"]
+	metrics [en "Key figures" fr "Chiffres clés"]
+	events [en "Events" fr "Evénements"]
+	controls [en "Controls" fr "Contrôles"]
+	viewmore [en "View more..." fr "En voir plus..."]
+	moremetrics [en "Other key figures" fr "Autres chiffres clés"]
+	changessince [en "Changes since" fr "Mouvements depuis le"]
+}
+
+myapplications = NLS {
+	title [en "My applications" fr "Mes applications"]
+}
+
+myrepositories = NLS {
+	title [en "My repositories" fr "Mes référentiels"]
+}
+
+applicationmanagerlabel = NLS {
+	title [en "Application manager dashboard" fr "Tableau de bord du gestionnaire d'application"]
+	dynamictitle [en "Dashboard {0} {1}" fr "Tableau de bord {0} {1}"]
+	myapplications [en "My applications" fr "Mes applications"]
+	// reports
+	reports [en "Reports" fr "Rapports"]
+	applicationdetails [en "Application details" fr "Détails de l'application"]
+	browsing [en "Browsing" fr "Navigation"]
+	permission [en "Identities" fr "Identités"]
+	identities [en "Permissions by identity" fr "Permissions par identité"]
+	accounts [en "Permissions by account" fr "Permissions par compte"]
+	usages [en "Usages" fr "Usages"]
+	analytics [en "Analytics" fr "Analyse"]
+	orphanaccounts [en "Orphan accounts" fr "Comptes orphelins"]
+	joborgpivot [en "Breakdown by job and organization" fr "Ventilation par métier et organisation"]
+	permissionjobpivot [en "Breakdown by job" fr "Ventilation par métier"]
+	permissionorgpivot [en "Breakdown by organization" fr "Ventilation par organisation"]
+	review [en "Review" fr "Revue"]
+	accountreviewbyapplication [en "Accounts" fr "Comptes"]
+	mining [en "Mining" fr "Rationalisation"]
+	applicationassociatedwith [en "Associated applications" fr "Applications associées"]
+	// metrics
+	metrics [en "Metrics" fr "Métriques"]
+	problemmetrics [en "Issues metrics" fr "Métriques des problèmes"]
+	nbaccounts [en "Accounts" fr "Comptes"]
+	nbactiveaccounts [en "Active accounts" fr "Comptes actifs"]
+	nbactiveidentities [en "Identities" fr "Personnes"]
+	nbprivilegedaccounts [en "Privileged accounts" fr "Comptes privilégiés"]
+	nbaccountswo [en "Accounts without owner" fr "Comptes sans propriétaire"]
+	noaccountswo [en "none" fr "none"]
+	nborphanaccounts [en "Orphan accounts" fr "Comptes orphelins"]
+	nbpermsbytype [en "Permissions by type" fr "Permissions par type"]
+	nopermbytype [en "none" fr "none"]
+	problemsbysuborg [en "Top 10 - Issues by suborganization" fr "Top 10 - Problèmes par sous organisation"]
+	problemsbyjob [en "Top 10 - Issues by job" fr "Top 10 - Problèmes par métier"]
+	mfproblems [en "Top 10 - Most frequent issues" fr "Top 10 - Problèmes les plus fréquents"]
+	problemsbypermission [en "Top 10 - Impacted permissions" fr "Top 10 - Permissions impactées"]
+	nbproblems [en "Total Issues" fr "Problèmes"]
+	nbproblemsaccounts [en "Accounts with issues" fr "Comptes avec des problèmes"]
+	nbproblemsidentities [en "Identities with issues" fr "Personnes avec des problèmes"]
+	nbproblemstypes [en "Issue types" fr "Types de problèmes"]
+	nbproblemsimpacts [en "Permissions impacted" fr "Permissions impactées"]
+}
+
+defaultHomepage_NLS = NLS {
+	default_home.title [en "Main menu" fr "Menu général"]
+	portalsearch.title [en "Search" fr "Recherche"]
+	search.title [en "Search" fr "Recherche"]
+	controls.title [en "Controls" fr "Contrôle"]
+	mining.title [en "Mining and Analytics" fr "Mining et Analyse"]
+	navigation.title [en "Browsing" fr "Navigation"]
+	ts_filesystem_browsing.title [en "Browse m:" fr "Parcourir m:"]
+	help.title [en "Help" fr "Aide"]
+	help_start.title [en "Start" fr "Démarrage"]
+	
+	batchedreports.grouptitle [ en "Available Reports" fr "Rapports Disponibles"]
+	batchedreports.status [ en "Status" fr "Statut"]
+	batchedreports.title [ en "Title" fr "Titre"]
+	batchedreports.submissiondate [ en "Submission Date" fr "Date de Soumission" ]
+	batchedreports.completitiondate [ en "Completion Date" fr "Date de Finalisation" ]
+	batchedreports.goto [ en "View report" fr "Voir le rapport" ]
+	batchedreports.status.s [ en "Submitted" fr "Soumis"]
+	batchedreports.status.r [ en "Running" fr "En Cours"]
+	batchedreports.status.c [ en "Available" fr "Disponible"]
+	batchedreports.status.e [ en "Error" fr "Erreur" ]
+	
+}
+
+organisationmanagerlabel = NLS {
+	title [en "Organization" fr "Organisation"]
+	dynamictitle [en "Dashboard {0} {1}" fr "Tableau de bord {0} {1}"]
+	// reports
+	reports [en "Reports" fr "Rapports"]
+	organisationdetails [en "Organization details" fr "Détails de l'organisation"]
+	browsing [en "Browsing" fr "Navigation"]
+	identitylist [en "Identity list" fr "Liste des personnes"]
+	suborgs [en "Suborganizations" fr "Sous organisations"]
+	analysis [en "Analytics" fr "Analyse"]
+	byjob [en "Breakdown by job" fr "Ventilation par métier"]
+	byapp [en "Breakdown by application" fr "Ventilation par application"]
+	byappjob [en "Breakdown by application and job" fr "Ventilation par application et métier"]
+	sod [en "SoD discrepancies" fr "Ecarts de SoD"]
+	review [en "Reviews" fr "Revues"]
+	organisationreview [en "Organization" fr "Organisation"]
+	organisationchangereview [en "Changes in the organization" fr "Changements dans l'organisation"]
+	applicationreview [en "Applications" fr "Applications"]
+	applicationchangereview [en "Application changes" fr "Changements d'application"]
+	permissionreview [en "Permissions" fr "Permissions"]
+	permissionchangereview [en "Permission changes" fr "Changements de permission"]
+	reviewcrosstab [en "Permission cross-analysis" fr "Analyse croisée des permissions"]
+	// organisation choice
+	myorganisations [en "My organizations" fr "Mes organisations"]
+	// organisation metrics
+	organisationmetrics [en "Organization metrics" fr "Métriques de l'organisation"]
+	nbpeople [en "Identities" fr "Personnes"]
+	nbdirectpeople [en "Direct Identities" fr "Personnes directes"]
+	nbarrivals [en "Arrivals" fr "Arrivées"]
+	nbmovein [en "Move-Ins" fr "Mutations entrantes"]
+	nbdeparture [en "Leavers" fr "Départs"]
+	nbmoveout [en "Move-Outs" fr "Mutations sortantes"]
+	nbaccountchg [en "Identities with account changes" fr "Personnes avec des changements de comptes"]
+	nbpermissionchg [en "Identities with permission changes" fr "Personnes dont les permissions ont changé"]
+	// problem metrics
+	problemmetrics [en "Issues Metrics" fr "Métriques des problèmes"]
+	nbproblems [en "Total Issues" fr "Problèmes"]
+	nbpeopleproblems [en "Identities with issues" fr "Personnes avec des problèmes"]
+	nbtypeproblems [en "Issues types" fr "Types de problèmes"]
+	nbapplicationproblems [en "Applications with issues" fr "Applications avec des problèmes"]
+	nbpermissionproblems [en "Permissions with issues" fr "Permissions avec des problèmes"]
+	// graphs
+	graphprbsuborgs [en "Issues by Suborganization" fr "Problèmes par sous organisation"]
+	graphtop10job [en "Top 10 - Jobs with the most issues" fr "Top 10 des métiers avec des problèmes"]
+	graphtop10problems [en "Top 10 - Most frequent issues" fr "Top 10 des problèmes les plus fréquents"]
+	graphtop10impact [en "Top 10 - Applications with the most issues" fr "Top 10 de l'Impact applicatif"]
+	// popup
+	popupmovein [en "Move-Ins" fr "Mutations entrantes"]
+	popuparrival [en "Arrivals" fr "Arrivées"]
+	popupdeparture [en "Leavers" fr "Départs"]
+	popupmoveout [en "Move-Outs" fr "Mutations sortantes"]
+	popupaccountchanged [en "Identities with account changes" fr "Personnes dont les comptes ont changé"]
+	popuppermissionchanged [en "Identities with permission changes" fr "Personnes dont les permissions ont changé"]
+}
+
+projectUpdateManagerNLS = NLS {
+	
+	installdialog.title [ en "Install a Project Archive (PAR)" fr "Installer une Archive de projet (PAR)"]
+	installdialog.warning [ en "WARNING: Installing a project archive will modify the project directly in the webportal. Please proceed with caution." fr "ATTENTION : L'installation d'une archive de projet modifie le contenu de votre portail web. Veuillez procéder avec précaution" ]
+	installdialog.understandmessage [ en "I understand, and I want to install the PAR file " fr "Je comprends, et je souhaite procéder à l'installation du fichier PAR" ]
+	installdialog.askconfirmationcode [ en "Please enter the following confirmation code {0}: " fr "Veuillez entrer le code de confirmation suivant {0} : " ]
+	
+	uninstalldialog.title [ en "Uninstall PAR file {0}" fr "Désinstaller le fichier PAR {0}"]
+	uninstalldialog.warning [ en "WARNING: Uninstalling a project archive will modify the project directly in the webportal. Please proceed with caution." fr "ATTENTION : La suppression d'une archive de projet modifie le contenu de votre portail web. Veuillez procéder avec précaution" ]
+	uninstalldialog.understandmessage [ en "I understand, and I want to uninstall the PAR file" fr "Je comprends, et je souhaite désinstaller le fichier PAR" ]
+	uninstalldialog.askconfirmationcode [ en "Please enter the following confirmation code {0}: " fr "Veuillez entrer le code de confirmation suivant {0} : " ]
+
+	item.installdate [ en "Installation date" fr "Date d'installation" ]
+	item.author [ en "Author" fr "Auteur" ]
+	item.installedby [ en "Installed by" fr "Installé par" ]
+	item.noitem [en "No PAR file has been installed" fr "Aucun fichier PAR n'a été installé" ]
+	
+	details.includedfiles [ en "Included files" fr "Fichiers inclus" ]
+	details.noselection [ en "Select an installed PAR file for more information" fr "Sélectionner un fichier PAR installé pour plus d'informations" ]
+	
+	title [en "Project Archive update manager" fr "Gestionnaire de mise à jour des archives de projet" ]
+	uploadpar.title [en "Upload the project update" fr "Télécharger la mise à jour du projet" ]
+	uploadpar.uploader.label [ en "Upload a new PAR file" fr "Télécharger un nouveau fichier PAR" ]
+	uploadpar.uploader.message.completed [en "The PAR file {0} was installed (Status code: {1})" fr "Le fichier PAR {0} a été installé ( code : {1} )"]
+	uploadpar.uploader.message.failure [en "Failed to install the PAR File {0} (Status code: {1})" fr "L'installation du fichier PAR {0} a échoué ( code : {1} )"]
+	uploadpar.uploader.button.text [ en "Upload" fr "Télécharger"]
+	uploadpar.uploader.button.tooltip [ en "Upload and install a new PAR file" fr "Télécharger et installer un nouveau fichier PAR"]
+	
+	parhistory.title [ en "Update history" fr "Historique des mises à jour"]
+	parhistory.header.label [en "Label" fr "Libellé"]
+	parhistory.header.author [en "Author" fr "Auteur"]
+	parhistory.header.installTimestamp [en "Installation Date" fr "Date d'installation"]
+	parhistory.header.installUserName [en "Installed by" fr "Installé par"]
+	parhistory.command.uninstall.tooltip [en "Uninstall" fr "Désinstaller"]
+	parhistory.command.uninstall.message.completed [en "The PAR file {0} was uninstalled (Status code: {1})" fr "Le fichier PAR {0} a été désinstallé ( code : {1} )"]
+	parhistory.command.uninstall.message.failed [ en "Failed to uninstall the PAR file {0} (Status code: {1})" fr "La désinstallation du fichier PAR {0} a échoué ( code : {1} )"]
+}

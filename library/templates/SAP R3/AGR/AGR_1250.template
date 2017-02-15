@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1342902138436" title="Authorization data for the activity group " description="Auth objects per role ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A3564028159231950508" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client ID of Current User"/>
+		<Attribute name="A7570731340354862836" attribute="agr_name" column="AGR_NAME" type="String" multivalued="false" persistent="false" description="Role Name"/>
+		<Attribute name="A7668553608174849494" attribute="counter" column="COUNTER" type="Number" multivalued="false" persistent="false" description="Menu ID for BIW"/>
+		<Attribute name="A8349035835036677701" attribute="object" column="OBJECT" type="String" multivalued="false" persistent="false" description="Authorization Object"/>
+		<Attribute name="A5366625799209976289" attribute="auth" column="AUTH" type="String" multivalued="false" persistent="false" description="Authorization name in user master maintenance"/>
+		<Attribute name="A2775171878072231124" attribute="variant" column="VARIANT" type="String" multivalued="false" persistent="false" description="Variants for Profile Generator"/>
+		<Attribute name="A1709928281843169697" attribute="modified" column="MODIFIED" type="String" multivalued="false" persistent="false" description="Object status"/>
+		<Attribute name="A5816302241107779481" attribute="deleted" column="DELETED" type="String" multivalued="false" persistent="false" description="ID whether object is deleted"/>
+		<Attribute name="A5321116216576052838" attribute="copied" column="COPIED" type="String" multivalued="false" persistent="false" description="ID whether object is copied"/>
+		<Attribute name="A3452416298198798616" attribute="neu" column="NEU" type="String" multivalued="false" persistent="false" description="ID whether object is new"/>
+		<Attribute name="A5211532180523813750" attribute="node" column="NODE" type="String" multivalued="false" persistent="false" description="Internal: Node ID"/>
+		<Attribute name="A8209262045586452060" attribute="atext" column="ATEXT" type="String" multivalued="false" persistent="false" description="Texts in user master/authorizations"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1342902187607" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

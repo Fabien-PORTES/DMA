@@ -1,0 +1,4 @@
+Checkbox {
+	label: <template:variablelabel/>
+	variable: <template:taskvariablename/>
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_group_picker" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="Group picker" notes="">
+	<ViewParam name="paramDisplayname" displayname="Group display name"/>
+	<ViewParam name="paramRepository" displayname="Group repository"/>
+	<ViewParam name="paramUid" displayname="Group uid"/>
+	<ViewParam name="paramNotUid" displayname="Group excluded uid"/>
+	<ViewParam name="paramCode" displayname="Group code"/>
+	<ViewSort name="sort" attribute1="A1336133588902_190" attribute2="A1336133588152_189"/>
+	<ViewJoin name="J1336133579042_186" prefix="repository" kind="left" identitysecure="false" join="repository">
+		<ViewAttribute name="A1336133617183_191" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="A1336133617917_192" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="A1336133618558_193" attribute="code" operator="or" removedfromprojection="true" globalfilter="false"/>
+		<ViewAttribute name="A1336133619386_194" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="true">
+			<ViewAttributeFilter name="F1336133661433_0" reference="paramRepository" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1336133585136_187" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336133588152_189" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336133673996_0" reference="paramCode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1336133588902_190" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336133693027_0" reference="paramDisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1384264511040_881" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1384264516342_0" reference="paramNotUid" operation="notIn" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1384264512751_882" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1384264525234_0" reference="paramUid" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

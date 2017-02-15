@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationcounttotalidentity" distinct="true" concept="organisation" displayname="Count the otal number of identities under a given organisation" notes="">
+	<ViewParam name="recorduid" displayname="Record UID"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1302166621015_682" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302166631592_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1302166640200_684" kind="inner" join="upidentity">
+		<ViewAttribute name="A1302166646672_685" attribute="recorduid" alias="nbidentities" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

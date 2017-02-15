@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="comptesNIS" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="comptesNIS">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1481530586044_363" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1482922414865_67933" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1485870125544_88068" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+		<ViewAttribute name="A1485870138216_88079" attribute="description" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1485870139872_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="AD [SAM] EQ [Lastname]"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1485870150464_88087" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1485870154136_88091" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

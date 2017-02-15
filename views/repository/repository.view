@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repository" distinct="true" concept="account" displayname="Repository list or picker" notes="">
+	<ViewParam name="repositorydisplayname" displayname="Repository display name"/>
+	<ViewParam name="repositorycode" displayname="Repository code"/>
+	<ViewParam name="repositoryrecorduid" displayname="Repository record uid"/>
+	<ViewSort name="sort" attribute1="A1302171503508_134" attribute2="A1302171505308_135"/>
+	<ViewAttribute name="A1302171500380_132" attribute="repositoryrecorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1303204320721_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302171501740_133" attribute="repositoryuid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302171503508_134" attribute="repositorycode" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1303204329769_0" reference="repositorycode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302171505308_135" attribute="repositorydisplayname" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1303204686645_0" reference="repositorydisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302171536188_136" attribute="repositorymedia" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302171538254_137" attribute="repositoryextractdate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302171540637_138" attribute="repositorytype" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1303204204037_74" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT" removedfromprojection="false"/>
+</View>

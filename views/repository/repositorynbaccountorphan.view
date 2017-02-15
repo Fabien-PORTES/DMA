@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositorynbaccountorphan" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="# of orphan accounts by repository" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="repository record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1321625826480_18" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321625827886_19" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1321632921884_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1321625840637_21" attribute="repositoryuid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321625841801_22" attribute="repositorycode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321625843057_23" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321625844143_24" attribute="repositorymedia" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321625847826_25" attribute="repositoryextractdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1321625849582_26" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewCriteria name="I1385375630724_1012" criteria="notReconciliatedAccounts">
+	</ViewCriteria>
+</View>

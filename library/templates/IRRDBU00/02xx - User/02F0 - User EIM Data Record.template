@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="User EIM data record" description="The user EIM record defines the LDAPBIND profile for a user. There is one record per user profile that contains the EIM segment.">
+	<Source type="FORMATTED" filter="^02F0 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="USEIM_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the user EIM segment record (02F0)."/>
+		<Attribute name="A4199536690768339793" attribute="USEIM_NAME" column="6-13" type="String" multivalued="false" description="User name."/>
+		<Attribute name="A1290406167931330025" attribute="USEIM_LDAPPROF" column="15-260" type="String" multivalued="false" description="EIM LDAPBIND profile name."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

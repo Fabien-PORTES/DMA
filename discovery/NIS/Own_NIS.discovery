@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1482528905695">
+	<Source file="{config.importfiles}\NIS.passwd" type="CSV" separator="," textseparator="&quot;" encoding="UTF-8"/>
+	<Attributes hasheader="true">
+		<Attribute name="A7969563290869069869" attribute="uid" column="UID" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3372132596769080288" attribute="pwd" column="PWD" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4998960271721025002" attribute="uid_number" column="UID_number" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7706271430217378580" attribute="gid" column="GID" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3080384224568261152" attribute="gecos" column="GECOS" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5749497078354840416" attribute="homedirectory" column="HOMEDIRECTORY" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1085464246857655410" attribute="loginshell" column="LOGINSHELL" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4868174504238229595" attribute="_fullname" column="_FULLNAME" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4545523360463721794" attribute="_surname" column="_SURNAME" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5405266222421408711" attribute="_firstname" column="_FIRSTNAME" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A6785472390284622278" attribute="_login" column="_LOGIN" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4446242064759769733" attribute="_email" column="_EMAIL" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A645376404056777981" attribute="repo" column="REPO" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="1486289577169_362" column="Type" attribute="type"/>
+		<Attribute name="1486289577215_363" column="UID_number_clean" attribute="uid_number_clean" type="Number"/>
+	</Attributes>
+	<Actions>
+		<Action name="U1482529732857" action="multireplace" attribute="_surname" newvalue="{dataset._surname.get().toUpperCase()}"/>
+		<Action name="U1482529756662" action="multireplace" attribute="_firstname" newvalue="{dataset._firstname.get().toUpperCase()}"/>
+		<Action name="U1482529812251" action="multireplace" attribute="_login" newvalue="{dataset._login.get().toUpperCase()}"/>
+		<Action name="U1482531540982" action="default" attribute="_fullname" newvalue="{dataset._surname.get()} {dataset._firstname.get()}"/>
+		<Action name="U1482531576911" action="multireplace" attribute="_fullname" newvalue="{dataset._fullname.get().toUpperCase()}"/>
+		<Action name="U1482531620593" action="add" attribute="_FSURNAME" newvalue="{dataset._firstname.get().substr(0,1)}{dataset._surname.get()}" condition="(! dataset._surname.get().length &gt; 1)"/>
+		<Action name="U1482702987594" action="add" attribute="_EMAIL_NIS" newvalue="{dataset._email.get()}"/>
+		<Action name="U1482741822976" action="add" attribute="_FULLNAME_LAST_FIRST" newvalue="{dataset._surname.get()} {dataset._firstname.get()}"/>
+		<Action name="U1484385082146" action="add" attribute="standard_name" type="Boolean" newvalue="{!(dataset.type.get() == &apos;Not Standard Name&apos;)}"/>
+		<Action name="U1484904666765" action="add" attribute="_UID_UPPER" newvalue="{dataset.uid.get().toUpperCase()}"/>
+		<Action name="U1484928842446" action="add" attribute="UID_Current_NIS" newvalue="{dataset.uid.get()}"/>
+	</Actions>
+</Discovery>

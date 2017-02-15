@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accounttopgroups" distinct="true" concept="account" displayname="Accounts with the most # of groups" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="repository record uid"/>
+	<ViewSort name="sort" attribute1="A1322081297627_81" direction1="DESC"/>
+	<ViewAttribute name="A1322081264865_40" attribute="recorduid" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_41" attribute="uid" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_42" attribute="repositoryrecorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1322081341097_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1322081264865_43" attribute="repositoryuid" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_44" attribute="repositorycode" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_45" attribute="repositorydisplayname" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_46" attribute="repositorymedia" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_47" attribute="repositoryextractdate" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_48" attribute="repositorytype" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_49" attribute="identifier" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_50" attribute="login" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_51" attribute="profile" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_52" attribute="givenname" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_53" attribute="surname" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_54" attribute="username" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_55" attribute="mail" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_56" attribute="creationdate" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_57" attribute="lastlogindate" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_58" attribute="passwordlastsetdate" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_59" attribute="expiredate" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_60" attribute="service" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_61" attribute="disabled" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_62" attribute="locked" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_63" attribute="logincount" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_64" attribute="badpasswordcount" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_65" attribute="passwordnotrequired" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_66" attribute="passwordcantchange" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_67" attribute="notnormalaccount" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_68" attribute="dontexpirepassword" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_69" attribute="passwordexpired" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081264865_70" attribute="smartcardrequired" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081276770_71" attribute="custom1" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081278139_72" attribute="custom2" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081279587_73" attribute="custom3" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081280917_74" attribute="custom4" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081282174_75" attribute="custom5" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081283522_76" attribute="custom6" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081284819_77" attribute="custom7" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081286201_78" attribute="custom8" removedfromprojection="false"/>
+	<ViewAttribute name="A1322081287681_79" attribute="custom9" removedfromprojection="false"/>
+	<ViewJoin name="J1322081293446_80" kind="inner" join="upgroup">
+		<ViewAttribute name="A1322081297627_81" attribute="recorduid" alias="nbgroup" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

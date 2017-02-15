@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_group_simple_search_1" operator="and" query="group" displayname="Simple group search ({repository}, {code}, {name})" version="1">
+	<RequestParam name="repository" displayname="Repository" query="group" criteria="eqRepository" criteriaparam="repositoryParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="code" displayname="Code" query="group" criteria="likeCode" criteriaparam="codeParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="name" displayname="Name" query="group" criteria="likeDisplayName" criteriaparam="displayNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1423231443329_622" criteria="likeCode">
+		<RequestCriteriaParam name="codeParam" reference="code" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423231452041_623" criteria="likeDisplayName">
+		<RequestCriteriaParam name="displayNameParam" reference="name" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423231494752_632" criteria="eqRepository">
+		<RequestCriteriaParam name="repositoryParam" reference="repository" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

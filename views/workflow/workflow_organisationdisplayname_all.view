@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="workflow_organisationdisplayname_all" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="workflow_organisationdisplayname" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1383639027848_301"/>
+	<ViewAttribute name="A1383639025647_300" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383639027848_301" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

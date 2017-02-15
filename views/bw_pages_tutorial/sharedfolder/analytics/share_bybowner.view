@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="share_bybowner" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="application" displayname="share_bybowner" notes="">
+	<ViewParam name="shares" displayname="shares"/>
+	<ViewParam name="sensitivity" displayname="sensitivity"/>
+	<ViewParam name="owneruid" displayname="owneruid"/>
+	<ViewParam name="exclude" displayname="exclude"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1439469330083_365" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1439384132105_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="1439469330084_366" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1439469330084_367" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1439409547900_0" reference="shares" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="1439469330085_368" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1439469330086_369" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1439469356029_374" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="management">
+		<ViewAttribute name="A1439469364120_375" attribute="expertisedomaincode" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1439469379508_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="businessowner"/>
+			</ViewAttributeFilter>
+			<ViewAttributeFilter name="F1439469387811_1" operation="eq" ignoreifempty="false">
+				<Value name="0" data="technicalowner"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewJoin name="J1439469457125_379" prefix="id_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+			<ViewAttribute name="A1439469461875_380" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1439469468468_0" reference="owneruid" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1439473454984_605" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.isEmpty(&apos;exclude&apos;)==false &amp;&amp; param.exclude.get()==&quot;share&quot;">
+		<ViewAttributeFilter name="F1439473458702_0" reference="exclude" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1444121855004_7979" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="applicationinfo">
+		<ViewAttribute name="A1444121868970_7981" attribute="sensitivityreason" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444121868970_7982" attribute="sensitivitylevel" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1444121896783_0" reference="sensitivity" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1444121868970_7983" attribute="description" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444121868970_7984" attribute="category" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444121868970_7985" attribute="sensitivityreasonorigin" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444121868970_7986" attribute="descriptionorigin" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444121868970_7987" attribute="categoryorigin" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

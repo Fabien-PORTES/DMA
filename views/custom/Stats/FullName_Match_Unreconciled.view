@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="FullName_Match_Unreconciled" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="FullName_Match_Unreconciled">
+	<ViewCriteria name="I1486049209788_87193" criteria="notReconciliatedAccounts">
+	</ViewCriteria>
+</View>

@@ -1,0 +1,23 @@
+try {	
+	$outputfile=$Connector.Options.Options.Get_Item('filename')
+	Remove-Item $outputfile
+		if ($Connector -ne $null) {
+			$String=$Connector.Options.Options.Get_Item('content')
+			[byte[]] $ByteArray =  new-object byte[] ($String.Length/2)
+			For ( $i = 0; $i -lt ($String.Length/2); $i++ ) {
+				$Chars = $String.Substring($i*2,2)
+				#$var =[Convert]::ToInt32($Chars, 16)
+				$Byte = [Byte] "0x$Chars"
+				$ByteArray[$i] = $Byte
+			}
+			set-content -value $ByteArray -encoding byte -path $outputfile				 
+		}	
+	}
+catch{    
+		$date=Get-Date   
+		$head='{0} @ in  {1} @ Error: ' -f $date,"file deployer"    
+		$head >> log.txt
+		$error >> log.txt
+		"`n" >> log.txt
+		throw
+	} 

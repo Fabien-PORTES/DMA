@@ -1,0 +1,976 @@
+/* ***********************************************************************************
+ * Organisation Manager Homepage
+ * 
+ * Copyright Brainwave 2013
+ * ***********************************************************************************
+ */
+ 
+ 
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/mixins/default_mixins.page"
+import "/webportal/pages/reports/standard.page"
+
+
+// kpi thresholds
+organisationmanagernbproblemsThreshold1 = Constant {value: 1000 }
+organisationmanagernbproblemsThreshold2 = Constant {value: 100 }
+organisationmanagernbproblemsThreshold3 = Constant {value: 10 }
+organisationmanagernbproblemsThreshold4 = Constant {value: 0 }
+
+organisationmanagerEvolution1 = Constant {value: 100 }
+organisationmanagerEvolution2 = Constant {value: -100 }
+
+// kpi images templates
+organisationmanagerEvolutionImage = IntImageTemplate {
+	when < Constant organisationmanagerEvolution2 then "16/audit/indicators/set1l_1.png"
+	when < 0 then "16/audit/indicators/set1l_2.png"
+	when = 0  then "16/audit/indicators/set1l_3.png"
+	when > Constant organisationmanagerEvolution1 then "16/audit/indicators/set1l_5.png"
+	when > 0 then "16/audit/indicators/set1l_4.png"
+}
+
+organisationmanagercontrolFormat = NLS {
+	val [en "{0,number,integer}" fr "{0,number,integer}"]
+	val_pct [en "{0,number,integer} ({1})" fr "{0,number,integer} ({1})"]
+	diff [en "({0,choice,-1#{0}|0#equal|1#+{0}})" fr "({0,choice,-1#{0}|0#égal|1#+{0}})"]
+}
+
+organisationmanagernbproblemsControlImage = IntImageTemplate {
+	when > Constant organisationmanagernbproblemsThreshold1 then "16/audit/indicators/set2h_1.png"
+	when > Constant organisationmanagernbproblemsThreshold2 then "16/audit/indicators/set2h_2.png"
+	when > Constant organisationmanagernbproblemsThreshold3 then "16/audit/indicators/set2h_3.png"
+	when > Constant organisationmanagernbproblemsThreshold4 then "16/audit/indicators/set2h_4.png"
+	when <= Constant organisationmanagernbproblemsThreshold4 then "16/audit/indicators/set2h_5.png"
+}
+
+
+
+// --------------------------------------------------------
+// organisation manager page
+
+organisationManagerPage = Page {
+	title:$organisationmanagerlabel.title
+	feature:organisationmanager_dashboard_homepage
+	homepage-for: 	organisationmanager_dashboard_homepage priority 1000
+	dynamic-title: $organisationmanagerlabel.dynamictitle ( Transform organisationdetails.shortname using mayBeNullMapping, Transform organisationdetails.displayname using mayBeNullMapping )
+	enter-event:Set mydefaultorganisation.uid to currentorganisationuid
+
+	// hyperlinks panel
+	dock-right:Dock{
+		collapsible:True
+		collapsed:True
+		width:320
+		
+		Group {
+			mixins: dockInnerMinxin
+
+			// first group
+			Header {
+				value: $organisationmanagerlabel.reports
+			}
+			Group {
+				Link {
+					icon: "16/devices/printer_16.png"
+					value: $organisationmanagerlabel.organisationdetails
+					target: Report browsing_organisationdetail with organisationdetails.recorduid to recorduid
+				}
+			}
+
+			// second group
+			Spacer {
+				height: 1
+			}
+			Header {
+				value: $organisationmanagerlabel.browsing
+			}
+			Group {
+				Link {
+					icon: "16/audit/identity_16.png"
+					value: $organisationmanagerlabel.identitylist
+					target: Report browsing_organisationidentities with organisationdetails.recorduid to recorduid
+				}
+				Link {
+					icon: "16/audit/organisation_16.png"
+					value: $organisationmanagerlabel.suborgs
+					target: Report browsing_organisationsuborgs with organisationdetails.recorduid to recorduid
+				}
+			}
+
+			// third group
+			Spacer {
+				height: 1
+			}
+			Header {
+				value: $organisationmanagerlabel.analysis
+			}
+			Group {
+				Link {
+					icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.byjob
+					target: Report analysis_joborganisationpivot with organisationdetails.recorduid to orgrecorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.byapp
+					target: Report analysis_organisationappsuborgpivot with organisationdetails.recorduid to recorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.byappjob
+					target: Report analysis_organisationappjobpivot with organisationdetails.recorduid to recorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.sod
+					target: Report controls_SoDtopControlsFltOrg with organisationdetails.code to orgs
+				}
+			}
+
+			// fourth group
+			Spacer {
+				height: 1
+			}
+			Header {
+				value: $organisationmanagerlabel.review
+			}
+			Group {
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.organisationreview
+					target: Report analysis_organisationreview_hrteam with organisationdetails.recorduid to recorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.organisationchangereview
+					target: Report analysis_organisationdeltareview_hrteam with organisationdetails.recorduid to recorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.applicationreview
+					target: Report analysis_organisationreview_hrteam_applications with organisationdetails.recorduid to recorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.applicationchangereview
+					target: Report analysis_organisationdeltareview_hrteam_applications with organisationdetails.recorduid to recorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.permissionreview
+					target: Report analysis_organisationreview_hrteam_permissionsprofiles with organisationdetails.recorduid to recorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.permissionchangereview
+					target: Report analysis_organisationdeltareview_hrteam_permissionsprofiles with organisationdetails.recorduid to recorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: $organisationmanagerlabel.reviewcrosstab
+					target: Report analysis_organisationreview_crosstab with organisationdetails.recorduid to recorduid
+				}
+				/* 
+				Link{ icon: "16/audit/report.png"
+					value: "permissions des personnes parties"
+					target: Report analysis_organisationdeltareview_hrteam_permissionsprofiles with organisationdetails.recorduid to recorduid
+				}
+				Link{ icon: "16/audit/report.png"
+					value: "accès aux répertoires partagés"
+					target: Report analysis_organisationdeltareview_hrteam_permissionsprofiles with organisationdetails.recorduid to recorduid
+				}*/
+			}
+		}
+	}
+
+	// -------------------------------
+	// Variable segment
+	currentorganisationuid = Variable {type:String multivalued:False}
+
+	// -------------------------------
+	// Data segment
+	mydefaultorganisation = Record {
+		view:br_mymanagedorganisations
+			with Principal.uid to uid
+	}
+
+	mymanagedorganisations = Dataset {
+		view:br_mymanagedorganisations
+			with Principal.uid to uid
+	}
+	
+	organisationdetails = Record {
+		view:br_organisationDetail
+			with currentorganisationuid to uid
+	}
+
+	// organisation metrics
+	organisationDetail_nbpeople = Record {
+		view:br_organisationDetail_nbpeople
+			with organisationdetails.recorduid to recorduid
+	}
+
+	organisationDetail_nbpeople_trend = Dataset {
+		view:br_organisationDetail_nbpeople_trend
+			with organisationdetails.uid to uid
+	}
+
+	organisationDetail_nbdirectpeople = Record {
+		view:br_organisationDetail_nbdirectpeople
+			with organisationdetails.recorduid to recorduid
+	}
+
+	organisationDetail_nbdirectpeople_trend = Dataset {
+		view:br_organisationDetail_nbdirectpeople_trend
+			with organisationdetails.uid to uid
+	}
+
+	organisationDetailnbnewcomers = Record {
+		view:br_organisationDetail_newcomers
+			with organisationdetails.recorduid to recorduid
+	}
+	
+	organisationDetail_nbmovein = Record {
+		view:br_organisationDetail_nbmovein
+			with organisationdetails.code to code
+	}
+	
+	organisationDetail_nbmoveout = Record {
+		view:br_organisationDetail_nbmoveout
+			with organisationdetails.code to code
+	}
+	
+	organisationDetail_leavers = Record {
+		view:br_organisationDetail_leavers
+			with organisationdetails.recorduid to recorduid
+	}
+
+	organisationDetail_nbaccountchanged = Record {
+		view:br_organisationDetail_nbaccountchanged
+			with organisationdetails.code to code
+	}
+
+	organisationDetail_nbpermissionchanged = Record {
+		view:br_organisationDetail_nbpermissionchanged
+			with organisationdetails.code to code
+	}
+	
+	// problems metrics
+	
+	// charts
+	organisationDetail_nbproblembyorg = Dataset {
+		view:br_organisationDetail_nbproblembyorg
+			with organisationdetails.recorduid to recorduid
+	}
+
+	organisationDetail_nbproblembyjob = Dataset {
+		view:br_organisationDetail_nbproblembyjob
+			with organisationdetails.recorduid to recorduid
+		limit:10
+	}
+
+	organisationDetail_nbproblems = Dataset {
+		view:br_organisationDetail_nbproblems
+			with organisationdetails.recorduid to recorduid
+		limit:10
+	}
+
+	organisationDetail_nbproblembyapplication = Dataset {
+		view:br_organisationDetail_nbproblembyapplication
+			with organisationdetails.recorduid to recorduid
+		limit:10
+	}
+	
+	organisationDetail_overviewnbproblem = Record {
+		view:br_organisationDetail_overviewnbproblem
+			with organisationdetails.uid to uid
+	}
+
+	organisationDetail_overviewnbproblem_prev = Record {
+		view:br_organisationDetail_overviewnbproblem
+			with organisationdetails.uid to uid 
+		timeslot: FromPage(-1)
+	}
+
+	organisationDetail_overviewnbproblem_trend = Dataset {
+		view:br_organisationDetail_overviewnbproblem_trend
+			with organisationdetails.uid to uid 
+	}
+
+	organisationDetail_overviewnbproblemapp = Record {
+		view:br_organisationDetail_overviewnbproblemapp
+			with organisationdetails.uid to uid 
+	}
+
+	organisationDetail_overviewnbproblemapp_prev = Record {
+		view:br_organisationDetail_overviewnbproblemapp
+			with organisationdetails.uid to uid 
+		timeslot: FromPage(-1)
+	}
+
+	organisationDetail_overviewnbproblemapp_trend = Dataset {
+		view:br_organisationDetail_overviewnbproblemapp_trend
+			with organisationdetails.uid to uid
+	}
+
+	organisationDetail_overviewnbproblemfamily = Record {
+		view:br_organisationDetail_overviewnbproblemfamily
+			with organisationdetails.uid to uid
+	}
+
+	organisationDetail_overviewnbproblemfamily_prev = Record {
+		view:br_organisationDetail_overviewnbproblemfamily
+			with organisationdetails.uid to uid
+		timeslot: FromPage(-1)
+	}
+
+	organisationDetail_overviewnbproblemfamily_trend = Dataset {
+		view:br_organisationDetail_overviewnbproblemfamily_trend
+			with organisationdetails.uid to uid
+	}
+
+	organisationDetail_overviewnbproblemidentity = Record {
+		view:br_organisationDetail_overviewnbproblemidentity
+			with organisationdetails.uid to uid 
+	}
+
+	organisationDetail_overviewnbproblemidentity_prev = Record {
+		view:br_organisationDetail_overviewnbproblemidentity
+			with organisationdetails.uid to uid 
+		timeslot: FromPage(-1)
+	}
+
+	organisationDetail_overviewnbproblemidentity_trend = Dataset {
+		view:br_organisationDetail_overviewnbproblemidentity_trend
+			with organisationdetails.uid to uid
+	}
+
+	organisationDetail_overviewnbproblemperm = Record {
+		view:br_organisationDetail_overviewnbproblemperm
+			with organisationdetails.uid to uid 
+	}
+
+	organisationDetail_overviewnbproblemperm_prev = Record {
+		view:br_organisationDetail_overviewnbproblemperm
+			with organisationdetails.uid to uid 
+		timeslot: FromPage(-1)
+	}
+
+	organisationDetail_overviewnbproblemperm_trend = Dataset {
+		view:br_organisationDetail_overviewnbproblemperm_trend
+			with organisationdetails.uid to uid
+	}
+
+	// ---------------------------------
+	// ---------------------------------
+	// Layouting
+	// ---------------------------------
+	// ---------------------------------
+	
+	Grid {
+		columns:GridColumn{},GridColumn{},GridColumn{} 
+		GridRow {
+			GridCell {
+				span:3
+				
+				Combo {
+					variable:currentorganisationuid
+					label:$organisationmanagerlabel.myorganisations
+					layout:Layout {grab:vertical False horizontal True}
+					allow-none:True
+					options:Dynamic {
+						data:mymanagedorganisations
+						value:Current uid
+						text:Current displayname
+					}
+				}
+			}
+		}
+		GridRow {
+			height:grow 1
+			GridCell {
+				Flow {
+					disposition:Vertical
+					Group {
+						title:$organisationmanagerlabel.organisationmetrics
+						mixins:metricsMixin
+
+						Text {
+							label:$organisationmanagerlabel.nbpeople
+							value:organisationDetail_nbpeople.nbidentity
+							compact:True
+							decorator: Decorator {
+								after: LineSparkline {
+									data: organisationDetail_nbpeople_trend
+									column: nbidentity
+									tooltip: Current timeslotcommitdate
+									width: 40
+								}
+								width: 40
+							}
+						}
+						
+						Text {
+							label:$organisationmanagerlabel.nbdirectpeople
+							value:organisationDetail_nbdirectpeople.nbidentity
+							compact:True
+							decorator: Decorator {
+								after: LineSparkline {
+									data: organisationDetail_nbdirectpeople_trend
+									column: nbidentity
+									tooltip: Current timeslotcommitdate
+									width: 40
+								}
+								width: 40
+							}
+						}
+						
+						Text {
+							label:$organisationmanagerlabel.nbarrivals
+							value:organisationDetailnbnewcomers.nbidentity
+							compact:True
+							info-popup: organisationDetailPage_newcomerspopup(organisationdetails.recorduid to recorduid)
+						}
+						Text {
+							label:$organisationmanagerlabel.nbmovein
+							value:organisationDetail_nbmovein.nbidentity
+							compact:True
+							info-popup: organisationDetailPage_moveinpopup(organisationdetails.code to code)
+						}
+						Text {
+							label:$organisationmanagerlabel.nbdeparture
+							value:organisationDetail_leavers.nbidentity
+							compact:True
+							info-popup: organisationDetailPage_leaverspopup(organisationdetails.recorduid to recorduid)
+						}
+						Text {
+							label:$organisationmanagerlabel.nbmoveout
+							value:organisationDetail_nbmoveout.nbidentity
+							compact:True
+							info-popup: organisationDetailPage_moveoutpopup(organisationdetails.code to code)
+						}
+						Text {
+							label:$organisationmanagerlabel.nbaccountchg
+							value:organisationDetail_nbaccountchanged.nbidentity
+							compact:True
+							info-popup: organisationDetailPage_nbaccountchanged(organisationdetails.code to code)
+						}
+						Text {
+							label:$organisationmanagerlabel.nbpermissionchg
+							value:organisationDetail_nbpermissionchanged.nbidentity
+							compact:True
+							info-popup: organisationDetailPage_nbpermissionchanged(organisationdetails.code to code)
+						}
+					}
+					Group {
+						title:$organisationmanagerlabel.problemmetrics
+						mixins:metricsMixin
+						
+					
+						Text {
+							label:$organisationmanagerlabel.nbproblems
+							value:organisationDetail_overviewnbproblem.nbdefects
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(organisationDetail_overviewnbproblem.nbdefects) using organisationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(organisationDetail_overviewnbproblem.nbdefects, organisationDetail_overviewnbproblem_prev.nbdefects)) using organisationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(organisationDetail_overviewnbproblem.nbdefects, organisationDetail_overviewnbproblem_prev.nbdefects,$organisationmanagercontrolFormat.diff) 
+									width: Pack
+								}
+								width: 60
+							}
+						}												
+						Link {
+							label:$organisationmanagerlabel.nbpeopleproblems
+							value:organisationDetail_overviewnbproblemidentity.nbidentity
+							target: Report browsing_organisationdetailidentityproblems with organisationdetails.recorduid to recorduid 
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(organisationDetail_overviewnbproblemidentity.nbidentity) using organisationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(organisationDetail_overviewnbproblemidentity.nbidentity, organisationDetail_overviewnbproblemidentity_prev.nbidentity)) using organisationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(organisationDetail_overviewnbproblemidentity.nbidentity, organisationDetail_overviewnbproblemidentity_prev.nbidentity, $organisationmanagercontrolFormat.diff)
+									width: Pack
+								}
+								width: 60
+							}
+						}												
+/*						
+						Text {
+							label:$organisationmanagerlabel.nbtypeproblems
+							value:organisationDetail_overviewnbproblemfamily.nbcontrols
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(organisationDetail_overviewnbproblemfamily.nbcontrols) using organisationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(organisationDetail_overviewnbproblemfamily.nbcontrols, organisationDetail_overviewnbproblemfamily_prev.nbcontrols)) using organisationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(organisationDetail_overviewnbproblemfamily.nbcontrols, organisationDetail_overviewnbproblemfamily_prev.nbcontrols, $organisationmanagercontrolFormat.diff)
+									width: Pack
+								}
+								width: 60
+							}
+						}	
+*/											
+						Text {
+							label:$organisationmanagerlabel.nbapplicationproblems
+							value:organisationDetail_overviewnbproblemapp.nbapplication
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(organisationDetail_overviewnbproblemapp.nbapplication) using organisationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(organisationDetail_overviewnbproblemapp.nbapplication, organisationDetail_overviewnbproblemapp_prev.nbapplication)) using organisationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(organisationDetail_overviewnbproblemapp.nbapplication, organisationDetail_overviewnbproblemapp_prev.nbapplication, $organisationmanagercontrolFormat.diff)
+									width: Pack
+								}
+								width: 60
+							}
+						}												
+						Text {
+							label:$organisationmanagerlabel.nbpermissionproblems
+							value:organisationDetail_overviewnbproblemperm.nbpermission
+							compact:True
+							decorator: Decorator {
+								before: Image {
+									image: TemplateImageSelection(organisationDetail_overviewnbproblemperm.nbpermission) using organisationmanagernbproblemsControlImage
+									width: 18
+								}
+								after: Image {
+									image: TemplateImageSelection(Difference(organisationDetail_overviewnbproblemperm.nbpermission, organisationDetail_overviewnbproblemperm_prev.nbpermission)) using organisationmanagerEvolutionImage
+									width: 18
+								}, Text {
+									value: Difference(organisationDetail_overviewnbproblemperm.nbpermission, organisationDetail_overviewnbproblemperm_prev.nbpermission, $organisationmanagercontrolFormat.diff)
+									width: Pack
+								}
+								width: 60
+							}
+						}												
+					}
+				}
+			}
+			GridCell {
+				// Graphs
+				Grid {
+					columns:GridColumn{}
+					GridRow {
+						fill:True
+						height:grow 1
+						group: r
+						GridCell {
+							Group  {
+								title:$organisationmanagerlabel.graphprbsuborgs
+								Chart {
+									file: "charts/treemap"
+									data: organisationDetail_nbproblembyorg
+									series: (Current displayname) as String in "category", (Current nbdefects) as Double in "value"
+									label: Label {
+										break: True
+									}
+									layout: Layout {
+										grab: horizontal True vertical True
+									}
+								}
+							}
+						}
+					}
+					GridRow {
+						fill:True
+						height:grow 1
+						group: r
+						GridCell {
+							Group {
+								title:$organisationmanagerlabel.graphtop10job
+								Chart {
+									file: "charts/histogram"
+									data:organisationDetail_nbproblembyjob
+									series: (Current jobtitledisplayname) as String in "category", (Current nbdefects) as Double in "value"
+									label: Label {
+										break: True
+									}
+									layout: Layout {
+										grab: horizontal True vertical True
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			GridCell {
+				Grid {
+					columns:GridColumn{}
+					GridRow {
+						fill:True
+						height:grow 1
+						group: r
+						GridCell {
+							Group {
+								title:$organisationmanagerlabel.graphtop10problems
+								Chart {
+									file: "charts/histogram"
+									data: organisationDetail_nbproblems
+									series: (Current controldisplayname) as String in "category", (Current nbdefects) as Double in "value"
+									label: Label {
+										break: True
+									}
+									layout: Layout {
+										grab: horizontal True vertical True
+									}
+								}
+							}
+						}
+					}
+					GridRow {
+						fill:True
+						height:grow 1
+						group: r
+						GridCell {
+							Group {
+								title:$organisationmanagerlabel.graphtop10impact
+								Chart {
+									file: "charts/histogram"
+									data: organisationDetail_nbproblembyapplication
+									series: (Current applicationdisplayname) as String in "category", (Current nbdefects) as Double in "value"
+									label: Label {
+										break: True
+									}
+									layout: Layout {
+										grab: horizontal True vertical True
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+// -------------------------------------------------------------------------------------------
+// Popup pages
+
+
+organisationDetailPage_newcomerspopup = InfoPopup {
+	width: 600
+	height:300
+
+	identityUID = Variable
+		
+	recorduid = Variable {
+		type: Integer
+	}
+	
+	organisationDetail_newcomerspopup = Dataset {
+		view:br_organisationDetail_newcomerspopup with recorduid to recorduid
+	}
+	
+	Header {
+		value:$organisationmanagerlabel.popuparrival
+	}
+	Spacer {
+		height: 15
+	}
+	Table {
+		data:organisationDetail_newcomerspopup
+		layout:Layout {grab:horizontal True vertical True}
+		hide-header:False
+
+		Column {
+			column:uid
+			hidden:True
+			selection:identityUID
+		}
+		Column {
+			header:$identity.concept
+			column:label
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$allocation.jobtitledisplayname
+			column:jobtitledisplayname
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$organisation.concept
+			column:organisationlabel
+			width:100%
+			sortable:True
+		}
+	}
+}
+
+organisationDetailPage_moveinpopup = InfoPopup {
+	width: 800
+	height:300
+	
+	identityUID = Variable
+	
+	code = Variable {
+		type: String
+	}
+	
+	organisationDetail_nbmoveinpopup = Dataset {
+		view:br_organisationDetail_nbmoveinpopup with code to code
+	}
+	
+	Header {
+		value:$organisationmanagerlabel.popupmovein
+	}
+	Spacer {
+		height: 15
+	}
+	Table {
+		data:organisationDetail_nbmoveinpopup
+		layout:Layout {grab:horizontal True vertical True}
+		hide-header:False
+
+		Column {
+			column:uid
+			hidden:True
+			selection:identityUID
+		}
+		Column {
+			header:$identity.concept
+			column:label
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$allocation.jobtitledisplayname
+			column:jobtitledisplayname
+			sortable:True
+		}
+		Column {
+			header:$organisation.concept
+			column:organisationlabel
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$allocation.jobtitledisplayname
+			column:formerjobtitledisplayname
+			sortable:True
+		}
+		Column {
+			header:$organisation.concept
+			column:formerorganisationlabel
+			width:100%
+			sortable:True
+		}
+	}
+}
+
+organisationDetailPage_leaverspopup = InfoPopup {
+	width: 600
+	height:300
+	
+	recorduid = Variable {
+		type: Integer
+	}
+	
+	organisationDetail_leaverspopup = Dataset {
+		view:br_organisationDetail_leaverspopup with recorduid to recorduid
+	}
+	
+	Header {
+		value:$organisationmanagerlabel.popupdeparture
+	}
+	Spacer {
+		height: 15
+	}
+	Table {
+		data:organisationDetail_leaverspopup
+		layout:Layout {grab:horizontal True vertical True}
+		hide-header:False
+		Column {
+			header:$identity.concept
+			column:label
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$allocation.jobtitledisplayname
+			column:jobtitledisplayname
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$organisation.concept
+			column:organisationlabel
+			width:100%
+			sortable:True
+		}
+	}
+}
+
+organisationDetailPage_moveoutpopup = InfoPopup {
+	width: 600
+	height:300
+	
+	identityUID = Variable
+	
+	code = Variable {
+		type: String
+	}
+	
+	organisationDetail_nbmoveoutpopup = Dataset {
+		view:br_organisationDetail_nbmoveoutpopup with code to code
+	}
+	
+	Header {
+		value:$organisationmanagerlabel.popupmoveout
+	}
+	Spacer {
+		height: 15
+	}
+	Table {
+		data:organisationDetail_nbmoveoutpopup
+		layout:Layout {grab:horizontal True vertical True}
+		hide-header:False
+
+		Column {
+			column:uid
+			hidden:True
+			selection:identityUID
+		}
+		Column {
+			header:$identity.concept
+			column:label
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$allocation.jobtitledisplayname
+			column:jobtitledisplayname
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$organisation.concept
+			column:organisationlabel
+			width:100%
+			sortable:True
+		}
+	}
+}
+
+
+organisationDetailPage_nbaccountchanged = InfoPopup {
+	width: 600
+	height:300
+	
+	identityUID = Variable
+	
+	code = Variable {
+		type: String
+	}
+	
+	organisationDetail_nbaccountchangedpopup = Dataset {
+		view:br_organisationDetail_nbaccountchangedpopup with code to code
+	}
+	
+	Header {
+		value:$organisationmanagerlabel.popupaccountchanged
+	}
+	Spacer {
+		height: 15
+	}
+	Table {
+		data:organisationDetail_nbaccountchangedpopup
+		layout:Layout {grab:horizontal True vertical True}
+		hide-header:False
+
+		Column {
+			column:uid
+			hidden:True
+			selection:identityUID
+		}
+		Column {
+			header:$identity.concept
+			column:label
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$allocation.jobtitledisplayname
+			column:jobtitledisplayname
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$organisation.concept
+			column:organisationlabel
+			width:100%
+			sortable:True
+		}
+	}
+}
+
+
+organisationDetailPage_nbpermissionchanged = InfoPopup {
+	width: 600
+	height:300
+	
+	identityUID = Variable
+	
+	code = Variable {
+		type: String
+	}
+	
+	organisationDetail_nbpermissionchangedpopup = Dataset {
+		view:br_organisationDetail_nbpermissionchangedpopup with code to code
+	}
+	
+	Header {
+		value:$organisationmanagerlabel.popuppermissionchanged
+	}
+	Spacer {
+		height: 15
+	}
+	Table {
+		data:organisationDetail_nbpermissionchangedpopup
+		layout:Layout {grab:horizontal True vertical True}
+		hide-header:False
+		
+		Column {
+			column:uid
+			hidden:True
+			selection:identityUID
+		}
+		Column {
+			header:$identity.concept
+			column:label
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$allocation.jobtitledisplayname
+			column:jobtitledisplayname
+			width:100%
+			sortable:True
+		}
+		Column {
+			header:$organisation.concept
+			column:organisationlabel
+			width:100%
+			sortable:True
+		}
+	}
+}
+

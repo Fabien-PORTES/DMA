@@ -1,0 +1,15 @@
+
+import "/webportal/pages/reports/standard.page"
+
+Activity {
+	concept: JobTitle
+	kind: Search
+	to: Report browsing_jobsearch
+}
+
+Activity {
+	concept: JobTitle
+	kind: Detail
+	to: Report browsing_jobdetail
+}
+

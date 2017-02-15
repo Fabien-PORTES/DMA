@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_employeetypes" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="br_employeetypes">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378213406030_1363" attribute="employeetypedisplayname" removedfromprojection="false" globalfilter="false"/>
+</View>

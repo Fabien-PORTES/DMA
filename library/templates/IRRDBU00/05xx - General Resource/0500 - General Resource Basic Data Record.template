@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource basic data record" description="The General Resource Basic Data record defines the basic information about a general resource. There is one record per general resource profile.">
+	<Source type="FORMATTED" filter="^0500 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRBD_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the General Resource Basic Data record (0500)."/>
+		<Attribute name="A4199536690768339793" attribute="GRBD_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRBD_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRBD_GENERIC" column="262-265" type="Boolean" multivalued="false" description="Is this a generic profile?"/>
+		<Attribute name="A3188661801656117613" attribute="GRBD_CLASS" column="267-269" type="Number" multivalued="false" description="The class number of the profile."/>
+		<Attribute name="A4037269903301147695" attribute="GRBD_CREATE_DATE" column="271-280" type="Date" multivalued="false" description="Date the profile was created."/>
+		<Attribute name="A7863438466300294503" attribute="GRBD_OWNER_ID" column="282-289" type="String" multivalued="false" description="The user ID or group name which owns the profile."/>
+		<Attribute name="A8801039954934473602" attribute="GRBD_LASTREF_DATE" column="291-300" type="Date" multivalued="false" description="The date that the resource was last referenced."/>
+		<Attribute name="A2460635583838380635" attribute="GRBD_LASTCHG_DATE" column="302-311" type="Date" multivalued="false" description="The date that the resource was last changed."/>
+		<Attribute name="A5281244329858370167" attribute="GRBD_ALTER_CNT" column="313-317" type="Number" multivalued="false" description="The number of times that the resource was accessed with ALTER authority."/>
+		<Attribute name="A5281244329858370168" attribute="GRBD_CONTROL_CNT" column="319-323" type="Number" multivalued="false" description="The number of times that the resource was accessed with CONTROL authority."/>
+		<Attribute name="A5281244329858370169" attribute="GRBD_UPDATE_CNT" column="325-329" type="Number" multivalued="false" description="The number of times that the resource was accessed with UPDATE authority."/>
+		<Attribute name="A5281244329858370170" attribute="GRBD_READ_CNT" column="331-335" type="Number" multivalued="false" description="The number of times that the resource was accessed with READ authority."/>
+		<Attribute name="A5281244329858370171" attribute="GRBD_UACC" column="337-344" type="String" multivalued="false" description="The universal access of this resource. For profiles in classes other than DIGTCERT, the valid values are NONE, READ, EXECUTE, UPDATE, CONTROL, and ALTER. For DIGTCERT profiles, the valid values are TRUST, NOTRUST, and HIGHTRST."/>
+		<Attribute name="A5281244329858370172" attribute="GRBD_AUDIT_LEVEL" column="346-353" type="String" multivalued="false" description="Indicates the level of resource-owner-specified auditing that is performed. Valid values are ALL, SUCCESS, FAIL, and NONE."/>
+		<Attribute name="A5281244329858370173" attribute="GRBD_LEVEL" column="355-357" type="Number" multivalued="false" description="The level of the resource."/>
+		<Attribute name="A5281244329858370174" attribute="GRBD_GAUDIT_LEVEL" column="359-366" type="String" multivalued="false" description="Indicates the level of auditor-specified auditing that is performed. Valid values are ALL, SUCCESS, FAIL, and NONE."/>
+		<Attribute name="A5281244329858370175" attribute="GRBD_INSTALL_DATA" column="368-622" type="String" multivalued="false" description="Installation-defined data."/>
+		<Attribute name="A5281244329858370176" attribute="GRBD_AUDIT_OKQUAL" column="624-631" type="String" multivalued="false" description="The resource-owner-specified successful access audit qualifier. This is set to blanks if AUDIT_LEVEL is NONE. Otherwise, it is set to either READ, UPDATE, CONTROL, or ALTER."/>
+		<Attribute name="A5281244329858370177" attribute="GRBD_AUDIT_FAQUAL" column="633-640" type="String" multivalued="false" description="The resource-owner-specified failing access audit qualifier. This is set to blanks if AUDIT_LEVEL is NONE. Otherwise, it is set to either READ, UPDATE, CONTROL, or ALTER."/>
+		<Attribute name="A5281244329858370178" attribute="GRBD_GAUDIT_OKQUAL" column="642-649" type="String" multivalued="false" description="The auditor-specified successful access audit qualifier. This is set to blanks if GAUDIT_LEVEL is NONE. Otherwise, it is set to either READ, UPDATE, CONTROL, or ALTER."/>
+		<Attribute name="A5281244329858370179" attribute="GRBD_GAUDIT_FAQUAL" column="651-658" type="String" multivalued="false" description="The auditor-specified failing access audit qualifier. This is set to blanks if GAUDIT_LEVEL is NONE. Otherwise, it is set to either READ, UPDATE, CONTROL, or ALTER."/>
+		<Attribute name="A5281244329858370180" attribute="GRBD_WARNING" column="660-663" type="String" multivalued="false" description="Does this resource have the WARNING attribute?"/>
+		<Attribute name="A5281244329858370181" attribute="GRBD_SINGLEDS" column="665-668" type="Boolean" multivalued="false" description="If this is a TAPEVOL profile, is there only one data set on this tape?"/>
+		<Attribute name="A5281244329858370182" attribute="GRBD_AUTO" column="670-673" type="Boolean" multivalued="false" description="If this is a TAPEVOL profile, is the TAPEVOL protection automatic?"/>
+		<Attribute name="A5281244329858370183" attribute="GRBD_TVTOC" column="675-678" type="Boolean" multivalued="false" description="If this is a TAPEVOL profile, is there a tape volume table of contents on this tape?"/>
+		<Attribute name="A5281244329858370184" attribute="GRBD_NOTIFY_ID" column="680-687" type="String" multivalued="false" description="User ID that is notified when violations occur."/>
+		<Attribute name="A5281244329858370185" attribute="GRBD_ACCESS_SUN" column="689-692" type="Boolean" multivalued="false" description="Can the terminal be used on Sunday?"/>
+		<Attribute name="A5281244329858370186" attribute="GRBD_ACCESS_MON" column="694-697" type="Boolean" multivalued="false" description="Can the terminal be used on Monday?"/>
+		<Attribute name="A5281244329858370187" attribute="GRBD_ACCESS_TUE" column="699-702" type="Boolean" multivalued="false" description="Can the terminal be used on Tuesday?"/>
+		<Attribute name="A5281244329858370188" attribute="GRBD_ACCESS_WED" column="704-707" type="Boolean" multivalued="false" description="Can the terminal be used on Wednesday?"/>
+		<Attribute name="A5281244329858370189" attribute="GRBD_ACCESS_THU" column="709-712" type="Boolean" multivalued="false" description="Can the terminal be used on Thursday?"/>
+		<Attribute name="A5281244329858370190" attribute="GRBD_ACCESS_FRI" column="714-717" type="Boolean" multivalued="false" description="Can the terminal be used on Friday?"/>
+		<Attribute name="A5281244329858370191" attribute="GRBD_ACCESS_SAT" column="719-722" type="Boolean" multivalued="false" description="Can the terminal be used on Saturday?"/>
+		<Attribute name="A5281244329858370192" attribute="GRBD_START_TIME" column="724-731" type="String" multivalued="false" description="After what time can a user logon from this terminal?"/>
+		<Attribute name="A5281244329858370193" attribute="GRBD_END_TIME" column="733-740" type="String" multivalued="false" description="After what time can a user not logon from this terminal?"/>
+		<Attribute name="A5281244329858370194" attribute="GRBD_ZONE_OFFSET" column="742-746" type="String" multivalued="false" description="Time zone in which the terminal is located. Expressed as hh:mm. Blank if the time zone has not been specified."/>
+		<Attribute name="A5281244329858370195" attribute="GRBD_ZONE_DIRECT" column="748-748" type="String" multivalued="false" description="The direction of the time zone shift. Valid values are E(east), W(west), and blank."/>
+		<Attribute name="A5281244329858370196" attribute="GRBD_SECLEVEL" column="750-752" type="Number" multivalued="false" description="The security level of the general resource."/>
+		<Attribute name="A5281244329858370197" attribute="GRBD_APPL_DATA" column="754-1008" type="String" multivalued="false" description="Installation-defined data."/>
+		<Attribute name="A5281244329858370198" attribute="GRBD_SECLABEL" column="1010-1017" type="String" multivalued="false" description="The security label for the general resource."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+	<Checks>
+		<Check name="U1314367823667" attribute="GRBD_UACC" checktype="regexp" checkvalue="^NONE|EXECUTE|READ|UPDATE|CONTROL|ALTER|TRUST|NOTRUST|HIGHTRST$" event="Invalid UACC"/>
+		<Check name="U1314367823668" attribute="GRBD_AUDIT_LEVEL" checktype="regexp" checkvalue="^ALL|SUCCESS|FAIL|NONE$" event="Invalid audit level"/>
+		<Check name="U1314367823670" attribute="GRBD_GAUDIT_LEVEL" checktype="regexp" checkvalue="^ALL|SUCCESS|FAIL|NONE$" event="Invalid gaudit level"/>
+		<Check name="U1314367823671" attribute="GRBD_AUDIT_OKQUAL" checktype="regexp" checkvalue="^READ|UPDATE|CONTROL|ALTER$" event="Invalid audit okqual"/>
+		<Check name="U1314367823672" attribute="GRBD_AUDIT_FAQUAL" checktype="regexp" checkvalue="^READ|UPDATE|CONTROL|ALTER$" event="Invalid audit faqual"/>
+		<Check name="U1314367823673" attribute="GRBD_GAUDIT_OKQUAL" checktype="regexp" checkvalue="^READ|UPDATE|CONTROL|ALTER$" event="Invalid gaudit okqual"/>
+		<Check name="U1314367823674" attribute="GRBD_GAUDIT_FAQUAL" checktype="regexp" checkvalue="^READ|UPDATE|CONTROL|ALTER$" event="Invalid gaudit faqual"/>
+	</Checks>
+</Discovery>

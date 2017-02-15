@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1320413284887" title="Unix /etc/group file">
+	<Source type="CSV" separator=":" multiseparator="," encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A2552407062003061447" attribute="group_name" column="1" type="String" multivalued="false" hint="groupdisplayname" description="It is the name of group. If you run ls -l command, you will see this name printed in the group field."/>
+		<Attribute name="A5203143507487670133" attribute="password" column="2" type="String" multivalued="false" description="Generally password is not used, hence it is empty/blank. It can store encrypted password. This is useful to implement privileged groups."/>
+		<Attribute name="A4525116140832000293" attribute="GID" column="3" type="String" multivalued="false" hint="groupidentifier,groupcode" description="Each user must be assigned a group ID. You can see this number in your /etc/passwd file."/>
+		<Attribute name="A4697669267957322400" attribute="group_list" column="4" type="String" multivalued="true" hint="groupemembers" description="It is a list of user names of users who are members of the group. The user names, must be separated by commas."/>
+	</Attributes>
+</Discovery>

@@ -1,0 +1,12 @@
+
+
+
+homepage2 = Page {
+	title:"A simple home page with a priority level"
+	homepage-for:All priority 10
+
+	Header {
+		value:"This is a home page for everybody with a priority of 10"
+	}
+}
+

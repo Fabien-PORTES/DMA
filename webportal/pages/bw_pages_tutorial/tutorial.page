@@ -1,0 +1,253 @@
+/**
+ * Tutorial Pages homepage 
+ * 
+ * Copyright Brainwave 2014
+ */
+ 
+  import "/webportal/pages/bw_pages_tutorial/gettingstarted/myfirstpage.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/widgettour.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/databinding1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/databinding2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/databinding3.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/databinding4.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/masterdetail1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/layout1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/layout2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/layout3.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/layout4.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/layout5.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/layout6.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/layout7.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/layout8.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/layout9.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/link1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/i18n.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/i18n2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/parameter1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/parameter2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/parameter3.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/parameter4.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/chart1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/chart2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/report1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/action1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/action2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/action3.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/action4.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/action5.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/action6.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/action7.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/condition1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/condition2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/accessright1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/accessright2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/accessright3.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/accessright4.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/homepage1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/homepage2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/homepage3.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/style1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/mixin1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/decorator1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/decorator2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/decorator3.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/decorator4.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/decorator5.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/dialog1.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/dialog2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/tutfilebrowser.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/tutfilebrowser2.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/tutfilebrowser3.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/calculator.page"
+  import "/webportal/pages/bw_pages_tutorial/widgets/stocks.page"
+  
+  
+  
+ tutorialPage = Page {
+ 	title: "Pages Tutorial"
+ 	homepage-for:All priority 1
+ 	
+	Text {
+		value:"Welcome to the Pages technical tutorial, you will find here a series of Pages samples which will help you to put your grip on the Pages technology and taking the most of it! Don't hesitate to dive into the /webportal/pages/bw_pages_tutorial/ subdirectory of your project to browse and modify the sample sources."
+		compact:True
+		lines:10
+		layout:Layout {hint:height 64}
+	} 
+ 
+ 	Grid {
+ 		columns:GridColumn{group:group1},GridColumn{group:group1}
+ 		GridRow {
+ 			GridCell {
+ 				Group {
+ 					title:"Getting started with Pages"
+					Link{value:"My first Page" target:Page myfirstpage}
+ 				}
+ 			}
+ 			GridCell {
+ 				Group {
+ 					title:"Widgets"
+					Link{value:"Widgets tour" target:Page widgettour}
+ 				
+ 				}
+ 			}
+ 		}
+ 		GridRow {
+ 			GridCell {
+ 				Group {
+ 					title:"Layouting"
+					Link{value:"Using the Layout property" target:Page layout1}
+					Link{value:"Layouting with groups" target:Page layout2}
+					Link{value:"Layouting with flows" target:Page layout3}
+					Link{value:"Layouting with Grid" target:Page layout4}
+					Link{value:"Layouting with splitter" target:Page layout5}
+					Link{value:"Layouting with tiles" target:Page layout6}
+					Link{value:"Layouting with tab folders" target:Page layout7}
+					Link{value:"Layouting with button groups" target:Page layout8}
+					Link{value:"Layouting with conditional group" target:Page layout9}
+ 				}
+ 			}
+ 			GridCell {
+ 				Group {
+ 					title:"Homepages and navigation"
+					Link{value:"A simple home page" target:Page homepage1}
+					Link{value:"A simple home page with a priority level" target:Page homepage2}
+					Link{value:"A featured home page with a priority level" target:Page homepage3}
+					Link{value:"Links examples" target:Page link1}
+ 				}
+ 			}
+ 		}
+ 		GridRow {
+ 			GridCell {
+ 				Group {
+ 					title:"Actions"
+					Link{value:"A simple Action example" target:Page action1}
+					Link{value:"Message box and Flash examples" target:Page action2}
+					Link{value:"Go to examples" target:Page action3}
+					Link{value:"A simple picker example" target:Page action4}
+					Link{value:"Playing with variables" target:Page action5}
+					Link{value:"Playing with multi valued indexed variables" target:Page action6}
+					Link{value:"Adding icon commands to an edit widget" target:Page action7}
+ 				}
+ 			}
+ 			GridCell {
+ 				Group {
+ 					title:"Data binding"
+					Link{value:"A simple Dataset" target:Page databinding1}
+					Link{value:"A simple Record" target:Page databinding2}
+					Link{value:"Dataset and record with a parameter" target:Page databinding3}
+					Link{value:"Dataset with a parameter and dynamic update" target:Page databinding4}
+ 				}
+ 			}
+ 		}
+ 		GridRow {
+ 			GridCell {
+ 				Group {
+ 					title:"Master details"
+					Link{value:"A Master/Detail example" target:Page masterdetail1}
+ 				}
+ 			}
+ 			GridCell {
+ 				Group {
+ 					title:"Conditional layout"
+					Link{value:"Layouting with conditional group" target:Page layout9}
+					Link{value:"Simple condition to enable/disable a button" target:Page condition1}
+					Link{value:"Nested conditions to enable/disable a button" target:Page condition2}
+ 				}
+ 			}
+ 		}
+ 		GridRow {
+ 			GridCell {
+ 				Group {
+ 					title:"Parameters"
+					Link{value:"A simple parameter example" target:Page parameter1}
+					Link{value:"Constrained parameters examples" target:Page parameter2}
+					Link{value:"Data binded parameters examples" target:Page parameter3}
+					Link{value:"Data binded editable parameters" target:Page parameter4}
+ 				}
+ 			}
+ 			GridCell {
+ 				Group {
+ 					title:"Reports"
+					Link{value:"A report declaration sample" target:Page report1}
+ 				}
+ 			}
+ 		}
+ 		GridRow {
+ 			GridCell {
+ 				Group {
+ 					title:"Graphs"
+					Link{value:"A simple Chart example" target:Page chart1}
+					Link{value:"A simple data binded pie chart example" target:Page chart2}
+ 				}
+ 			}
+ 			GridCell {
+ 				Group {
+ 					title:"Styling"
+					Link{value:"A simple style example" target:Page style1}
+					Link{value:"A simple mixin example" target:Page mixin1}
+ 				}
+ 			}
+ 		}
+ 		GridRow {
+ 			GridCell {
+ 				Group {
+ 					title:"Dialog box"
+					Link{value:"Simple dialog box" target:Page dialog1}
+					Link{value:"A page with a custom identity picker dialog box" target:Page dialog2}
+ 				}
+ 			}
+ 			GridCell {
+ 				Group {
+ 					title:"Decorators"
+					Link{value:"A compact text with a static value and an image decorator" target:Page decorator1}
+					Link{value:"A compact text with a static value and a sparkline decorator" target:Page decorator2}
+					Link{value:"A compact text with a static value and a pie decorator" target:Page decorator3}
+					Link{value:"A compact text with a static value and a Bar decorator" target:Page decorator4}
+					Link{value:"A compact text with a static value and a BulletSparkline decorator" target:Page decorator5}
+ 				
+ 				}
+ 			}
+ 		}
+ 		GridRow {
+ 			GridCell {
+ 				Group {
+ 					title:"Access rights"
+					Link{value:"A simple Page access right example" target:Page accessright1}
+					Link{value:"A Page access right example with several features" target:Page accessright2}
+					Link{value:"A Page access right example with negative features" target:Page accessright3}
+					Link{value:"Widget features" target:Page accessright4}
+ 				}
+ 			}
+ 			GridCell {
+ 				Group {
+ 					title:"Internationalization"
+					Link{value:"Simple nationalized page" target:Page i18n}
+					Link{value:"Nationalized page with dynamic labels" target:Page i18n2}
+ 				}
+ 			}
+ 		}
+ 		GridRow {
+ 			GridCell {
+ 				Group {
+ 					title:"Complex samples"
+					Link{value:"File browser" target:Page tutfilebrowser}
+					Link{value:"File browser with layout" target:Page tutfilebrowser2}
+					Link{value:"File browser with layout and tree" target:Page tutfilebrowser3}
+					Link{value:"Calculator" target:Page calculator}
+					Link{value:"Stock picker" target:Page stocks}
+ 				}
+ 			}
+ 			GridCell {
+ 				Group {
+ 					title:"Workflows"
+					Text {
+						value:'Install the workflow tutorial facet for samples'
+						compact:True
+					} 				
+ 				}
+ 			}
+ 		}
+ 	}
+ }
+ 
+ 

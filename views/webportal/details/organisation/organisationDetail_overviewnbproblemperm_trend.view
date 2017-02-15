@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_overviewnbproblemperm_trend" errorifempty="false" distinct="true" identitysecure="false" concept="controllogv2" displayname="organisation detail overviewnbproblemperm" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1383245556226_17764"/>
+	<ViewAttribute name="A1383245509939_17760" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1383245512560_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1383245556226_17764" attribute="timeslotcommitdate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383245556912_17765" attribute="timeslotellapsedtime" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1383245560111_0" operation="lt" ignoreifempty="false">
+			<Value name="0" data="180"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1383245584993_17767" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383245588628_17768" kind="inner" identitysecure="false" join="identity">
+			<ViewJoin name="J1365869980154_90" kind="inner" identitysecure="false" join="uporganisation">
+				<ViewAttribute name="1383245597661_17771" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1380732771394_0" reference="uid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewJoin name="J1383245601389_17772" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383245609766_17773" kind="inner" identitysecure="false" join="permission">
+				<ViewAttribute name="1383245618955_17775" attribute="recorduid" alias="nbpermission" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

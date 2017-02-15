@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NotifyRule PUBLIC "-//Brainwave//DTD Notify Rule 1.0//EN" "urn:brainwave:igrc:dtds/notifyrule.dtd">
+<NotifyRule version="1" name="actionpackModifyAccount" displayname="Modify account" description="Simple notification to modify an account">
+	<Mail sendermail="issecurity@acme.com" sendername="IS Security" body="&lt;body&gt;&#xA;{image.header}&#xA;&lt;pre&gt;&#xA;Dear {dataset.fullname.get()},&#xA;&#xA;Please modify the {param.login.get()} account on {param.repository.get()} by clicking on this &lt;a href=&apos;{task.url.get()}&apos;&gt;link&lt;/a&gt;.&#xA;&#xA;Best Regards,&#xA;The security team&#xA;&lt;/pre&gt;&#xA;{image.account_48}&#xA;&lt;/body&gt;" recipientview="br_identity" recipientfullnameattribute="fullname" recipientmailattribute="mail" recipientuidattribute="uid" subject="Modify account {param.login.get()} on {param.repository.get()}">
+		<MailParams>
+			<MailParam name="login" displayname="login"/>
+			<MailParam name="repository" displayname="repository"/>
+		</MailParams>
+		<Embeddeds>
+			<Embedded name="I1415609787004" embeddedimage="header" embeddedfile="/reports/icons/various/mailheader.png"/>
+			<Embedded name="I1415609801639" embeddedimage="account_48" embeddedfile="/reports/icons/32/red/account.png"/>
+		</Embeddeds>
+	</Mail>
+</NotifyRule>

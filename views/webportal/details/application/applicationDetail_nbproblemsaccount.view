@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbproblemsaccount" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="applicationDetail_nbproblemsaccount">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="1383240179869_16533" attribute="recorduid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1383240186572_16535" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1367578459330_0" operation="isNull" ignoreifempty="false"/>
+		<ViewAttributeFilter name="F1367578461943_1" operation="isFalse" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1383240198290_16536" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383240206504_16537" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383240211837_16538" attribute="controlresulttype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383240214809_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1383240234854_16541" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383240242121_16542" kind="inner" identitysecure="false" join="application">
+				<ViewAttribute name="1383240253976_16544" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1376484196747_0" reference="uid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

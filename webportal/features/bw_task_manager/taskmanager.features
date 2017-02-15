@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Features PUBLIC "-//Brainwave//DTD Features 1.0//EN" "urn:brainwave:igrc:dtds/features.dtd">
+<Features version="1" name="taskmanager" description="Task manager" include="true">
+	<Feature name="tm_mailbox_cansendmailtocandidate" description="Can send a mail to any task candidate from the Mailbox">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338316267"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_mytasks_canreassign" description="Can reassign a task">
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myprocess_cansuspend" description="Can suspend a process from the My Processes view">
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myprocess_canlaunchnewprocess" description="Can launch a new process from the My processes view">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myprocess_canstop" description="Can stop a process from the My processes view">
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myprocess_canforcereassign" description="Can force a reassign from the My processes view">
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myprocess_cansendmailtocandidate" description="Can send a mail to any task candidate from the My processes">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myprocess_cansendmailtoassignee" description="Can send a mail to the task assignee from the My processes">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myprocess_canseetaskcandidates" description="Can see all task candidates from the My processes">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myprocess_canassigntasktocandidate" description="Can assign a task to a candidate from the My processes">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myarchive_cansendmailtoassignee" description="Can send a mail to the task assignee from the My archive">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_canaccesspage" description="Gives an access to the Task Manager page">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338342741"/>
+		<FeatureSet name="I1388338316267"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_mailbox_cansendmailtoprocessowner" description="Can send a mail to the process owner">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338342741"/>
+		<FeatureSet name="I1388338316267"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_mytasks_cansendmailtoprocessowner" description="Can send a mail to the process owner">
+		<FeatureSet name="I1388338299121"/>
+		<FeatureSet name="I1388338342741"/>
+		<FeatureSet name="I1388338316267"/>
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_myprocess_cangrabanytask" description="Can grab a task from the My Processes">
+		<FeatureSet name="I1388338330191"/>
+	</Feature>
+	<Feature name="tm_canaccesscompleted" description="user can have access to completed tasks">
+		<FeatureSet name="I1388338299121"/>
+	</Feature>
+</Features>

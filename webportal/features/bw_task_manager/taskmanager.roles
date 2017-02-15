@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Roles PUBLIC "-//Brainwave//DTD Roles 1.0//EN" "urn:brainwave:igrc:dtds/roles.dtd">
+<Roles version="1" name="taskmanager" description="Task manager roles - GIVEN AS AN EXAMPLE ONLY, TO BE REMOVED FROM YOUR PROJECT">
+	<Role name="r5" portalrolename="taskmanager_poweruser" description="Can launch new processes, send emails in all tabs, assign tasks to candidates"/>
+	<Role name="r6" portalrolename="taskmanager_standarduser" description="Can send emails to other candidates, cannot start new processes"/>
+	<Role name="r7" portalrolename="taskmanager_all" description="Access to all the task manager features. poweruser  + suspend, resume, stop processes; reassign a task to any individual" rolerule=""/>
+	<Role name="r8" portalrolename="taskmanager_limiteduser" description="Limited to the minimum : cannot start new processes, can only acquire tasks from the inbox"/>
+</Roles>

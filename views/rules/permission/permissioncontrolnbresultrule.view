@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissioncontrolnbresultrule" distinct="true" concept="permission" displayname="# of results for each permission control">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303799041682_1051" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	<ViewJoin name="J1303799056002_1053" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1303799060766_1054" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303799064981_0" operation="ilike" ignoreifempty="false">
+				<Value name="0" data="control_%"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1303799060766_1055" attribute="ruleentity" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303799077774_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Permission"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1303799060766_1056" attribute="ruledisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303799060766_1057" attribute="ruledescription" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303799060766_1058" attribute="rulenotes" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1304088288753_16456" kind="inner" join="application">
+		<ViewAttribute name="A1316337613793_6183" attribute="applicationtype" operator="or" removedfromprojection="true">
+			<ViewAttributeFilter name="F1316337618569_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Profile"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

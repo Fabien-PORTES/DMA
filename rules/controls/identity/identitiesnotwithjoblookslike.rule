@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesnotwithjoblookslike" operator="and" query="identity" displayname="Identities with job doesn&apos;t looks like {job}" version="2">
+	<RequestParam name="job" displayname="job name" query="identity" criteria="eqJobTitle" criteriaparam="jobTitleParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestGroup name="G1332851617363_142" operator="and" inverse="true">
+		<RequestCriteria name="C1332848373074_54" criteria="likeJobTitle">
+			<RequestCriteriaParam name="jobTitleParam" reference="job" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

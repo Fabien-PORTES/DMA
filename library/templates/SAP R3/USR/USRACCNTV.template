@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343319381327" title="Generated Table for View USRACCNTV " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A9003201919413016932" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A5422609788353207140" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A7023759553942986958" attribute="accnt" column="ACCNT" type="String" multivalued="false" persistent="false" description="Account ID"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343319440046" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

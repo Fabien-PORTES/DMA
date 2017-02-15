@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identitypermmining" distinct="false" concept="identity" displayname="# of Identities corresponding to a given rule result with the same permission">
+	<ViewParam name="rulename" displayname="Rule name"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1300964574593_486" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1300964581881_487" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1300964584736_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1303401631192_294" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	<ViewJoin name="J1303401648763_296" kind="inner" join="accountreconciliation">
+		<ViewJoin name="J1303401651425_297" kind="inner" join="right">
+			<ViewJoin name="J1303401654841_298" prefix="perm_" kind="inner" join="permission">
+				<ViewAttribute name="A1303401675274_299" attribute="recorduid" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_300" attribute="uid" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_301" attribute="code" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_302" attribute="displayname" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_303" attribute="applicationrecorduid" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_304" attribute="applicationuid" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_305" attribute="applicationcode" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_306" attribute="applicationdisplayname" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_307" attribute="custom1" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_308" attribute="custom2" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_309" attribute="custom3" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_310" attribute="custom4" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_311" attribute="custom5" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_312" attribute="custom6" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_313" attribute="custom7" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_314" attribute="custom8" operator="or" removedfromprojection="false"/>
+				<ViewAttribute name="A1303401675274_315" attribute="custom9" operator="or" removedfromprojection="false"/>
+				<ViewJoin name="J1304088198454_16298" kind="inner" join="application">
+					<ViewAttribute name="A1316337538201_6099" attribute="applicationtype" operator="or" removedfromprojection="true">
+						<ViewAttributeFilter name="F1316337541876_0" operation="eq" ignoreifempty="false">
+							<Value name="0" data="Profile"/>
+						</ViewAttributeFilter>
+					</ViewAttribute>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

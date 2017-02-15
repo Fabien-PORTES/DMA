@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_accountreconstatusapp" distinct="true" concept="account" displayname="account reconciliation status" notes="">
+	<ViewParam name="applicationrecorduid" displayname="application record uid"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1332922665031_9308" kind="left" join="reconciliation">
+		<ViewAttribute name="A1332922680106_9310" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1332922798906_9315" attribute="noownercode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1332922676763_9309" attribute="recorduid" alias="nbaccount" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1333111371197_140" prefix="application" kind="inner" join="applicationright">
+		<ViewAttribute name="A1333111375915_141" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1333111394290_0" reference="applicationrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1333121049906_144" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1333121055578_145" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

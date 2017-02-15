@@ -1,0 +1,7 @@
+DateTime {
+	type: Date
+	label: <template:widgetlabel/>
+	variable: <template:widgetvariablename/>
+	format: "yyyyMMddHHmmss"
+	allow-none: True
+}

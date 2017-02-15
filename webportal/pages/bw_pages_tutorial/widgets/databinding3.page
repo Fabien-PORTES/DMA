@@ -1,0 +1,38 @@
+databinding3 = Page {
+	title:'Dataset and record with a parameter'
+	
+	surnamefilterpattern = Variable
+	
+	identities = Dataset {
+		view:br_identity with 'ID000001%' to hrcode
+	}
+
+	identity = Record {
+		view:br_identity with 'ID0000001' to hrcode
+	}
+
+	Text {
+		label:'hr code'
+		value:identity.hrcode
+	}
+	Text {
+		label:'fullname'
+		value:identity.fullname
+	}
+	
+
+	Table {
+		data:identities
+		layout:Layout{grab: horizontal True vertical True}
+		Column {
+			column:hrcode
+		}
+		Column {
+			column:fullname
+		}
+	}
+}
+
+
+
+

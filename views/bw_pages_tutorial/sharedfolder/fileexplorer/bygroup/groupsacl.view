@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_groupsacl" prefix="group_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="group" displayname="br_groupsacl" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewComputedAttribute name="WRITE_OWNER" displayname="WRITE_OWNER" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;O&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_CONTROL" displayname="READ_CONTROL" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;G&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_DATA" displayname="READ_DATA" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;R&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_EXTENDED_ATTRIBUTES" displayname="READ_EXTENDED_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;F&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="APPEND_DATA" displayname="APPEND_DATA" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;A&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_EXTENDED_ATTRIBUTES" displayname="WRITE_EXTENDED_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;M&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="EXECUTE" displayname="EXECUTE" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;X&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_DATA" displayname="WRITE_DATA" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;W&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="DELETE" displayname="DELETE" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;D&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_ATTRIBUTES" displayname="WRITE_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;L&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="READ_ATTRIBUTES" displayname="READ_ATTRIBUTES" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;E&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="DELETE_CHILD" displayname="DELETE_CHILD" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;S&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewComputedAttribute name="WRITE_DAC" displayname="WRITE_DAC" type="String" expression="!dataset.isEmpty(&apos;action&apos;) &amp;&amp; dataset.action.get().indexOf(&apos;P&apos;)!=-1?dataset.negative.get()?&apos;2&apos;:&apos;1&apos;:&apos;0&apos;"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1435764946621_383" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435764959602_384" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1435765521918_426" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1435765526097_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1435765523041_427" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1435768281375_553" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclgroup">
+		<ViewAttribute name="1435768400550_576" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1435768400550_577" attribute="action" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1435768400551_578" attribute="negative" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1435768400551_579" attribute="order" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1435765073629_412" prefix="element_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+			<ViewAttribute name="1435768400551_580" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1435768400551_581" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1435768400551_582" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

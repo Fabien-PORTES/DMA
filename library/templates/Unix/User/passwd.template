@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1320412303198" title="Unix /etc/passwd file" description="Passwd is a text file, that contains a list of the system&apos;s accounts, giving for each account some useful information like user ID, group ID, home directory, shell, etc. Often, it also contains the encrypted passwords for each account.">
+	<Source type="CSV" separator=":" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A6339599456523744954" attribute="account" column="1" type="String" multivalued="false" hint="accountlogin" description="the name of the user on the system. It should not contain capital letters. "/>
+		<Attribute name="A385491740525827929" attribute="password" column="2" type="String" multivalued="false" description="the encrypted user password or a star. "/>
+		<Attribute name="A782518681440086069" attribute="UID" column="3" type="String" multivalued="false" hint="accountidentifier" description="the numerical user ID. "/>
+		<Attribute name="A5975994650111682788" attribute="GID" column="4" type="String" multivalued="false" description="the numerical primary group ID for this user. "/>
+		<Attribute name="A5089814310516449475" attribute="GECOS" column="5" type="String" hint="accountusername" multivalued="false" description="This field is optional and only used for informational purposes. Usually, it contains the full user name. GECOS means General Electric Comprehensive Operating System, which has been renamed to GCOS when GE&apos;s large systems division was sold to Honeywell. Dennis Ritchie has reported: &quot;Sometimes we sent printer output or batch jobs to the GCOS machine. The gcos field in the password file was a place to stash the information for the $IDENTcard. Not elegant.&quot; "/>
+		<Attribute name="A5795969679287410833" attribute="directory" column="6" type="String" multivalued="false" description="the user&apos;s $HOME directory. "/>
+		<Attribute name="A491286632910829827" attribute="shell" column="7" type="String" multivalued="false" description="the program to run at login (if empty, use /bin/sh). If set to a non-existing executable, the user will be unable to login through login"/>
+	</Attributes>
+</Discovery>

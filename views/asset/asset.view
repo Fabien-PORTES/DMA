@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_asset" distinct="true" concept="asset" displayname="Asset search or picker" notes="">
+	<ViewParam name="recorduid" displayname="Record UID"/>
+	<ViewParam name="code" displayname="Asset Code"/>
+	<ViewParam name="displayname" displayname="Asset Display Name"/>
+	<ViewSort name="sort" attribute1="A1302776796840_6" attribute2="A1302776796840_7"/>
+	<ViewAttribute name="A1302776796840_4" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302776807137_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302776796840_5" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_6" attribute="code" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302776846024_0" reference="code" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302776796840_7" attribute="displayname" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302776857584_0" reference="displayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302776796840_8" attribute="categoryrecorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_9" attribute="categoryuid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_10" attribute="categorycode" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_11" attribute="categorydisplayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_12" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_13" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_14" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_15" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_16" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_17" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_18" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_19" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302776796840_20" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1302801038859_309" prefix="manager_" kind="left" join="manager">
+		<ViewAttribute name="A1302801051957_310" attribute="recorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_311" attribute="uid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_312" attribute="repositoryrecorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_313" attribute="repositoryuid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_314" attribute="repositorycode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_315" attribute="repositorydisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_316" attribute="repositorymedia" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_317" attribute="repositoryextractdate" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_318" attribute="repositorytype" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_319" attribute="hrcode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_320" attribute="nickname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_321" attribute="givenname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_322" attribute="middlename" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_323" attribute="surname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_324" attribute="altname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_325" attribute="fullname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_326" attribute="mail" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_327" attribute="titlerecorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_328" attribute="titleuid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_329" attribute="titlecode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_330" attribute="titledisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_331" attribute="employeetyperecorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_332" attribute="employeetypeuid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_333" attribute="employeetypecode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_334" attribute="employeetypedisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_335" attribute="expertisedomainrecorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_336" attribute="expertisedomainuid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_337" attribute="expertisedomaincode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051957_338" attribute="expertisedomaindisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_339" attribute="jobtitlerecorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_340" attribute="jobtitleuid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_341" attribute="jobtitlecode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_342" attribute="jobtitledisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_343" attribute="arrivaldate" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_344" attribute="departuredate" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_345" attribute="internal" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_346" attribute="custom1" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_347" attribute="custom2" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_348" attribute="custom3" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_349" attribute="custom4" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_350" attribute="custom5" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_351" attribute="custom6" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_352" attribute="custom7" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_353" attribute="custom8" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801051958_354" attribute="custom9" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

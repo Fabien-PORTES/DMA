@@ -1,0 +1,16 @@
+import "/webportal/pages/identity/search.page"
+import "/webportal/pages/identity/details.page"
+import "/webportal/pages/reports/standard.page"
+
+
+Activity {
+	concept: Identity
+	kind: Search
+	to: Page identitySearchPage
+}
+
+Activity {
+	concept: Identity
+	kind: Detail
+	to: Page identityDetailsPage
+}

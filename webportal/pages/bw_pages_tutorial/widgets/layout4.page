@@ -1,0 +1,153 @@
+layout4 = Page {
+	title:'Layouting with Grid'
+	
+	Group {
+		title:'A simple grid'
+		Grid {
+			columns:GridColumn{},GridColumn{}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+		}
+	}
+
+
+	Group {
+		title:'A grid with constraints'
+		Grid {
+			columns:GridColumn{width:128px},GridColumn{width:grow}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+		}
+	}
+
+	Group {
+		title:'A grid with span'
+		Grid {
+			columns:GridColumn{width:128px},GridColumn{width:grow}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+			GridRow {
+				GridCell {
+					span:2
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+		}
+	}
+	
+
+	Group {
+		title:'Nested grid'
+		Grid {
+			columns:GridColumn{},GridColumn{}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Grid {
+						columns:GridColumn{},GridColumn{}
+						GridRow {
+							GridCell {
+								Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+							}
+							GridCell {
+								Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+							}
+						}
+						GridRow {
+							GridCell {
+								Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+							}
+							GridCell {
+								Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+							}
+						}
+						GridRow {
+							GridCell {
+								Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+							}
+							GridCell {
+								Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+							}
+						}
+					}
+				}
+			}
+			GridRow {
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+				GridCell {
+					Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+				}
+			}
+		}
+	}
+}

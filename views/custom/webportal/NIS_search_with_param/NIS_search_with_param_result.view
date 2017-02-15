@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_search_with_param_result" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="NIS_search_with_param_result" notes="" begindate="" enddate="">
+	<ViewParam name="repository_uids" displayname="repository_uids"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1485275186840_24324" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275187740_24325" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275188929_24326" attribute="identifier" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275192516_24329" attribute="login" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275193463_24330" attribute="givenname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275194485_24331" attribute="surname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275198114_24332" attribute="username" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275201536_24333" attribute="mail" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275202852_24334" attribute="employeenumber" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275210303_24335" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275211288_24336" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275212425_24337" attribute="custom3" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275213588_24338" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275221321_24339" attribute="custom5" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275222190_24340" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275223043_24341" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275223974_24342" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485275235419_24343" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1485275311903_24344" prefix="repository_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1485275318645_24345" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485275319695_24346" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1485276430458_24350" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1485276440707_0" reference="repository_uids" operation="in" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

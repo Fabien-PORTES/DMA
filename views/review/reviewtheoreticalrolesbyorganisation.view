@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_reviewtheoreticalrolesbyorganisation" prefix="identity" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="reviewtheoreticalrolesbyorganisation">
+	<ViewParam name="recorduid" displayname="organisation recorduid"/>
+	<ViewComputedAttribute name="ukey" displayname="ukey" type="String" expression="&apos;&apos;+dataset.identityrecorduid.get()+&apos;$$&apos;+dataset.permissionrecorduid.get()+&apos;$$&apos;+dataset.applicationrecorduid.get()"/>
+	<ViewComputedAttribute name="permissionkey" displayname="permission key" type="String" expression="&apos;&apos;+dataset.permissionrecorduid.get()+&apos;$$&apos;+dataset.applicationrecorduid.get()"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1359540451836_67" kind="inner" identitysecure="false" join="uporganisation">
+		<ViewAttribute name="1383236749899_16127" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1359540461964_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1383236761061_16128" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383236761837_16129" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1383236774877_16130" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383236777181_16131" kind="inner" identitysecure="false" join="controllog">
+			<ViewAttribute name="A1383236800670_16132" attribute="controlcode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1383236802102_16133" attribute="controlresulttype" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1383236804957_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="A1383236802814_16134" attribute="controltype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1383236814733_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="5"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+		<ViewJoin name="J1383236855117_16137" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383236861525_16138" prefix="permission" kind="inner" identitysecure="false" join="permission">
+				<ViewAttribute name="A1383236873094_16139" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1383236873997_16140" attribute="code" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1359539786427_58" prefix="application" kind="inner" identitysecure="false" join="application">
+					<ViewAttribute name="1383236883073_16144" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="1383236883075_16145" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+				</ViewJoin>
+				<ViewAttribute name="1383236930428_16150" attribute="permissiontype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1359711367458_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="Role"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+				<ViewAttribute name="1383236930433_16151" attribute="custom9" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1359711373894_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="composite role"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

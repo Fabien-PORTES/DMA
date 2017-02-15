@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryDetail_nbactiveleaveaccounts" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_repositoryDetail_nbactiveleaveaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1377505273878_366" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1377505404163_369" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1377505573808_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+		<ViewAttributeFilter name="F1377505580236_1" operation="isNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1377619293902_365" kind="inner" identitysecure="false" join="reconciliation">
+		<ViewAttribute name="A1377619304777_366" attribute="noownercode" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1377619307681_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="leave"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378712239311_377" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="1378712274341_388" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378712258488_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

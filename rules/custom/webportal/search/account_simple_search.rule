@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_account_simple_search_NIS" operator="and" query="account" displayname="Simple account search ({repository}, {login}, {username}, {givenname}, {surname}, {GECOS}, {uidNumber}, {GID})" version="10" notes="">
+	<RequestParam name="repository" displayname="Repository" query="account" criteria="eqRepository" criteriaparam="repositoryParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="login" displayname="Login" query="account" criteria="likeLogin" criteriaparam="loginParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="username" displayname="User name" query="account" criteria="likeUserName" criteriaparam="userNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="GECOS" displayname="GECOS" query="account" criteria="likeCustom" criteriaparam="customValueParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="uidNumber" displayname="UID Number" query="account" criteria="likeCustom" criteriaparam="customValueParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="givenname" displayname="Given Name" query="account" criteria="likeGivenName" criteriaparam="givenNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="surname" displayname="Surname" query="account" criteria="likeSurname" criteriaparam="surnameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="GID" displayname="GID" query="account" criteria="likeSid" criteriaparam="sidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1423218636838_395" criteria="eqRepository">
+		<RequestCriteriaParam name="repositoryParam" reference="repository" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423218673590_397" criteria="likeLogin">
+		<RequestCriteriaParam name="loginParam" reference="login" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423218707143_399" criteria="likeUserName">
+		<RequestCriteriaParam name="userNameParam" reference="username" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1485277041403_1786" criteria="likeCustom">
+		<RequestCriteriaParam name="customNumberParam" ignoreifempty="false">
+			<Value name="0" data="9"/>
+		</RequestCriteriaParam>
+		<RequestCriteriaParam name="customValueParam" reference="GECOS" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1485277748509_1797" criteria="likeCustom">
+		<RequestCriteriaParam name="customNumberParam" ignoreifempty="false">
+			<Value name="0" data="4"/>
+		</RequestCriteriaParam>
+		<RequestCriteriaParam name="customValueParam" reference="uidNumber" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1485277884853_1799" criteria="likeGivenName">
+		<RequestCriteriaParam name="givenNameParam" reference="givenname" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1485277908621_1801" criteria="likeSurname">
+		<RequestCriteriaParam name="surnameParam" reference="surname" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1487085585057_499" criteria="likeGuid">
+		<RequestCriteriaParam name="guidParam" reference="GID" ignoreifempty="false">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

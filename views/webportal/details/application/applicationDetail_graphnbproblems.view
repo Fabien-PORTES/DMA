@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_graphnbproblems" errorifempty="false" distinct="true" identitysecure="false" concept="controllogv2" displayname="applicationDetail_graphnbproblems" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort" attribute1="A1383238632696_16315" direction1="DESC" attribute2="A1383238623329_16314"/>
+	<ViewJoin name="J1383238597448_16310" kind="inner" identitysecure="false" join="controldiscrepancy">
+		<ViewJoin name="J1383238667464_16318" kind="inner" identitysecure="false" join="controlrootcause">
+			<ViewJoin name="J1383238671705_16319" kind="inner" identitysecure="false" join="application">
+				<ViewAttribute name="1383238736361_16329" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1367574251067_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1383238609889_16311" attribute="controlresulttype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1383238613785_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1383238622072_16313" attribute="controlcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383238623329_16314" attribute="controldisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1383238632696_16315" attribute="controlcode" alias="nbresult" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+</View>

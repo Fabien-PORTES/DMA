@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="bw_recon_identities_givenname" operator="or" query="identity" displayname="Recon Identities for givenname {givenname} with fuzzy set to {fuzzynb}" version="3">
+	<RequestParam name="fuzzynb" displayname="Fuzzy nb" query="identity" criteria="fuzzyFullName" criteriaparam="distanceParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="givenname" displayname="Givenname" query="identity" criteria="likeGivenName" criteriaparam="givenNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestGroup name="G1423069004109_1512" operator="or">
+		<RequestCriteria name="C1423068203347_1338" criteria="likeGivenName">
+			<RequestCriteriaParam name="givenNameParam" reference="givenname" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+		<RequestCriteria name="C1423068215089_1340" criteria="fuzzyGivenName">
+			<RequestCriteriaParam name="distanceParam" reference="fuzzynb" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+			<RequestCriteriaParam name="givenNameParam" reference="givenname" ignoreifempty="false">
+				<Value name="0"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

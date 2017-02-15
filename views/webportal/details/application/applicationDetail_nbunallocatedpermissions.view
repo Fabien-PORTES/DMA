@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_applicationDetail_nbunallocatedpermissions" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="br_applicationDetail_nbunallocatedpermissions">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1377529742567_201" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1377529746989_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1377529766324_203" kind="inner" identitysecure="false" join="permission">
+		<ViewAttribute name="A1377529796540_205" attribute="recorduid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewCriteria name="I1377530928182_226" criteria="noRight">
+		</ViewCriteria>
+	</ViewJoin>
+</View>

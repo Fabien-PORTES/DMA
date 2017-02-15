@@ -1,0 +1,7 @@
+Upload {
+	label: <template:widgetlabel/>
+	readonly: False
+	variable: <template:widgetvariablename/>
+	show-uploader: True
+	max-files: 1
+}

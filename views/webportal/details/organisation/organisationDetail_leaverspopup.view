@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_leaverspopup" distinct="true" concept="organisation" displayname="organisation detail leaverspopup" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewComputedAttribute name="organisationlabel" displayname="organisationlabel" type="String" expression="!dataset.isEmpty(&apos;organisationshortname&apos;)?dataset.organisationshortname.get()+&apos; - &apos;+dataset.organisationdisplayname.get():dataset.organisationdisplayname.get()"/>
+	<ViewComputedAttribute name="label" displayname="label" type="String" expression="!dataset.isEmpty(&apos;hrcode&apos;)?dataset.hrcode.get()+&apos; - &apos;+dataset.fullname.get():dataset.fullname.get()"/>
+	<ViewSort name="sort" attribute1="A1365928506133_19" attribute2="A1365928509460_20"/>
+	<ViewJoin name="J1365601367836_53" kind="inner" join="timeslotorganisations">
+		<ViewAttribute name="1365928478922_14" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1365601376816_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1365601445730_59" kind="inner" join="upidentity">
+			<ViewAttribute name="1365928478935_16" attribute="deletedaction" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1365601465977_0" operation="isTrue" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewAttribute name="A1365928506133_19" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1365928509460_20" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1365928517018_21" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1365930721349_32" kind="inner" join="allocation">
+				<ViewJoin name="J1365930723902_33" prefix="organisation" kind="inner" join="organisation">
+					<ViewAttribute name="A1365930737003_36" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+					<ViewAttribute name="A1365930738300_37" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+				</ViewJoin>
+				<ViewAttribute name="A1365930730487_34" attribute="jobtitledisplayname" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="1365928495512_18" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1365601424516_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

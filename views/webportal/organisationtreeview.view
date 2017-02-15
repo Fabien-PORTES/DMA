@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationtreeview" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="organisation" displayname="View used by the web portal to display the organisation hierarchy">
+	<ViewAttribute name="A1326099871250_2" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1326099872969_3" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1326099874703_4" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1326099876797_5" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1326099878094_6" attribute="organisationtypecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1326099879656_7" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1326099895906_8" prefix="parent_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentorganisation">
+		<ViewAttribute name="A1326099908015_9" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1327258656284_1837" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1382198661299_696" prefix="manager" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="manager">
+		<ViewAttribute name="A1382198664580_697" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1382198665672_698" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1382198680808_699" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1432111443768_345" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="deltareview_hrteam_identitypermchanged_previoustimeslot" errorifempty="false" distinct="true" identitysecure="false" concept="identity" displayname="Retreive for a given organisation and suorgs all the identities and their applications in the previous timeslot" notes="">
+	<ViewParam name="permissionuid" displayname="permission uid"/>
+	<ViewParam name="applicationuid" displayname="application uid"/>
+	<ViewParam name="identityrecorduid" displayname="identity record uid "/>
+	<ViewComputedAttribute name="permissionuniquekey" displayname="permission unique key" type="String" expression="dataset.app_uid.get()+&apos;$$&apos;+dataset.perm_uid.get()"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1335447346986_712" kind="inner" identitysecure="false" join="timeslotidentities">
+		<ViewAttribute name="A1335447351720_713" attribute="timeslotuid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1335447353752_0" operation="eqRelativePrevious" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewJoin name="J1335447395237_715" kind="inner" identitysecure="false" join="accountreconciliation">
+			<ViewAttribute name="A1335447406659_716" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1335447408690_0" operation="isFalse" ignoreifempty="false"/>
+				<ViewAttributeFilter name="F1382818071470_1" operation="isNull" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewJoin name="J1335452215345_919" prefix="perm_" kind="inner" identitysecure="false" join="permissionright">
+				<ViewJoin name="J1335452220251_920" prefix="app_" kind="inner" identitysecure="false" join="application">
+					<ViewAttribute name="A1335452229549_921" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+						<ViewAttributeFilter name="F1337155970013_0" reference="applicationuid" operation="eq" ignoreifempty="true"/>
+					</ViewAttribute>
+					<ViewAttribute name="A1337156920996_155" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1337156924570_0" operation="eq" ignoreifempty="false">
+							<Value name="0" data="Profile"/>
+						</ViewAttributeFilter>
+					</ViewAttribute>
+				</ViewJoin>
+				<ViewAttribute name="A1335452231189_922" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+					<ViewAttributeFilter name="F1337155953550_0" reference="permissionuid" operation="eq" ignoreifempty="true"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1335447782073_729" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1337155779861_0" reference="identityrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

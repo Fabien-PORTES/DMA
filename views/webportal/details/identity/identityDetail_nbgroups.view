@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityDetail_nbgroups" errorifempty="false" distinct="true" identitysecure="false" concept="group" displayname="br_identityDetail_nbgroups" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378219771836_1423" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378301481587_231" kind="inner" identitysecure="false" join="upaccount">
+		<ViewJoin name="J1378301486128_232" kind="inner" identitysecure="false" join="identityreconciliation">
+			<ViewAttribute name="1378301600459_366" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1378301575929_0" reference="uid" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

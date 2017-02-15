@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryDetail_nbmanualactivereconciliations" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_repositoryDetail_nbmanualactivereconciliations">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378710864623_290" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378710873113_292" kind="inner" identitysecure="false" join="repository">
+		<ViewAttribute name="A1378710879714_293" attribute="uid" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1378710903367_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1378710912649_295" kind="inner" identitysecure="false" join="reconciliation">
+		<ViewAttribute name="A1378710917050_296" attribute="rulename" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1378710922263_0" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="1378711194350_337" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1377505573808_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+		<ViewAttributeFilter name="F1377505580236_1" operation="isNull" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

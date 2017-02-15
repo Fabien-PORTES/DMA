@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="Full_Name_Equality" operator="and" query="account" displayname="Full_Name_Equality" version="4">
+</Request>

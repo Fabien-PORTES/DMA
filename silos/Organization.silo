@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Silo PUBLIC "-//Brainwave//DTD Silo 1.0//EN" "urn:brainwave:igrc:dtds/silo.dtd">
+<Silo version="1" name="Organization" displayname="Organization" type="hr" collector="/collectors/organization/AllOrganizations.collector" iterate="false" folder="{config.importfiles}\Extracts_AMC\ALIR" filter="1U40_AMC_DATA_ALIR.csv">
+</Silo>

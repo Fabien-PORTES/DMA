@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="Group OVM data record" description="The Group OVM Data record defines the OpenExtensions group identifiers (GIDs) that have been assigned to RACF groups. There is one record per group/GID combination.">
+	<Source type="FORMATTED" filter="^0130 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GPOVM_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the Group OVM Data record (0130)."/>
+		<Attribute name="A4199536690768339793" attribute="GPOVM_NAME" column="6-13" type="String" multivalued="false" description="Group name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GPOVM_GID" column="15-24" type="String" multivalued="false" description="OpenExtensions group identifier (GID) associated with the group name from the profile."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

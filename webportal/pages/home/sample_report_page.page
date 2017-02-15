@@ -1,0 +1,264 @@
+/* Import other pages here */
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/custom/sample_report/sample_report.page"
+
+/* Nationalized labels here */
+sample_report_pageNLS = NLS {
+	title [en "Search page with parameters and account categorisation" fr "Search page with parameters and account categorisation"]
+	parameters [en "Parameters" fr "Parameters"]
+	edit [en "Filter by repositories (picker)" fr "Filter by repositories (picker)"]
+	edit3 [en "Filter by reconciliation rules (lookup)" fr "Filter by reconciliation rules (lookup)"]
+	edit4 [en "Filter by account categorisation" fr "Filter by account categorisation"]
+	table [en "Results" fr "Results"]
+	table.column1 [ en "Account login" fr "Account login" ]
+	table.column2 [ en "Account username" fr "Account username" ]
+	table.column3 [ en "Repository displayname" fr "Repository displayname" ]
+	table.column4 [ en "AI Unique key" fr "Unique key" ]
+	table.column5 [ en "Account GECOS" fr "AI Account GECOS" ]
+	table.column6 [ en "Reconciliation detail" fr "Reconciliation detail" ]
+	table.column7 [ en "Reconciliation reliability" fr "Reconciliation reliability" ]
+	table.column8 [ en "Identity unique key" fr "Identity unique key" ]
+	button.link [en "Printable version" fr "Printable version"]
+	report.link.tooltip [en "Click on this link to export data" fr "Click on this link to export data"]
+	dialog.flash [ en "Account categorisation submitted" fr "Account categorisation submitted"]
+	dialog.comment [ en "Add instructions for account cateogrisation" fr "Add instructions for account cateogrisation"]
+	dialog.combo [en "Select categorisation" fr "Select categorisation"]
+}
+
+/*Dialog */
+sample_report_dialog = Dialog {
+	title: "Create an account ticket"
+	width: 750
+	
+	buttons: [
+	OkButton {
+		disabled: StringPredicate (comment) {
+			when IsEmpty then True
+			otherwise False
+		}
+		actions: Set comment to task.comment , Set inaccount_uid to task.account , Set account_categorisation to task.account_categorisation_label, Set erase_categorisation to task.erase_categorisation , TaskComplete task, Flash $sample_report_pageNLS.dialog.flash
+	}
+	CancelButton
+	]
+	
+	/* variables here */
+	comment = Variable {
+		type: String
+	}
+	erase_categorisation = Variable {
+		type: String
+		initial:True
+		}
+	account_categorisation = Variable {
+		type: String
+		}	
+	inaccount_uid = Variable {
+		type: String
+		}
+	/* Datasets and records here */
+task = TaskRecord ( create "simple_account_ticket_creation" )	
+	
+	/* dialog page content */
+	Group {
+		border: True
+		Combo {
+			variable: account_categorisation
+			label:$sample_report_pageNLS.dialog.combo
+			allow-none: False
+			options: Static {
+					Option {text: "1-Already Mapped, UID# Matches (ID OK)" value:"1-Already Mapped, UID# Matches (ID OK)"}
+					Option {text: "2-Already Mapped, ID OK Mismatched UID#" value:"2-Already Mapped, ID OK Mismatched UID#"}	
+					Option {text: "3-Already Mapped, ID OK Mismatched UID# (Conflicting)" value:"3-Already Mapped, ID OK Mismatched UID# (Conflicting)"}
+					Option {text: "4-New mapping to new SAM_N using changed NIS UID, current UID#" value:"4-New mapping to new SAM_N using changed NIS UID, current UID#"}	
+					Option {text: "5-New mapping to new SAM_N using changed NIS UID, newly allocated UID#" value:"5-New mapping to new SAM_N using changed NIS UID, newly allocated UID#"}
+					Option {text: "6-New mapping to existing SAM_N using changed NIS UID, current UID#" value:"6-New mapping to existing SAM_N using changed NIS UID, current UID#"}
+					Option {text: "7-New mapping to existing SAM_N using changed NIS UID, new UID#" value:"7-New mapping to existing SAM_N using changed NIS UID, new UID#"}
+					Option {text: "8-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping" value:"8-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping"}	
+					Option {text: "9-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping, after resolving conflicting UID# issue" value:"9-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping, after resolving conflicting UID# issue"}
+					Option {text: "10-Use existing mapping (SAM_N): change NIS UID to match existing mapping." value:"10-Use existing mapping (SAM_N): change NIS UID to match existing mapping."}	
+					Option {text: "11-New mapping to new SAM_N using NIS UID, UID#" value:"11-New mapping to new SAM_N using NIS UID, UID#"}
+					Option {text: "12-New mapping to new SAM_N using NIS UID, new UID#" value:"12-New mapping to new SAM_N using NIS UID, new UID#"}
+					Option {text: "13-Mapping already exists for this identity in this domain – transfer usage to mapped account UID_N, deactivate this one (UID)" value:"13-Mapping already exists for this identity in this domain – transfer usage to mapped account UID_N, deactivate this one (UID)"}
+					Option {text: "14-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping" value:"14-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping"}	
+					Option {text: "15-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping, after resolving conflicting UID# issue" value:"15-Use existing mapping (SAM_N): change NIS UID and UID# to match existing mapping, after resolving conflicting UID# issue"}
+					Option {text: "16-Use existing mapping (SAM_N): change NIS UID to match existing mapping" value:"16-Use existing mapping (SAM_N): change NIS UID to match existing mapping"}	
+					Option {text: "17-New mapping (using SAM_N, NIS UID and UID#)" value:"17-New mapping (using SAM_N, NIS UID and UID#)"}
+					Option {text: "18-New Mapping using SAM_N, NIS UID, new UID#" value:"18-New Mapping using SAM_N, NIS UID, new UID#"}						
+					Option {text: "19-To be Deactivated" value:"19-To be Deactivated"}
+					Option {text: "20-Unidentifiable (Lock NIS account to provoke reaction" value:"20-Unidentifiable (Lock NIS account to provoke reaction"}						
+						}
+				}
+		Edit {
+			label: $sample_report_pageNLS.dialog.comment
+			layout:Layout{hint:height 64}
+			multi-lines: True
+			variable: comment
+			}
+/*Depends on funtional, can be activated*/			
+//		Checkbox {
+//			variable: erase_categorisation
+//			commands: Command {actions: Set "true" to erase_categorisation}
+//			}	
+		}
+}
+
+/*Dialog */
+sample_report_page = Page {
+	title: $sample_report_pageNLS.title
+	homepage-for: All priority 1000
+	
+	/* Parameters here */
+	
+repository_picker = Parameter {
+		constraint: Picker { picker: repositoryMultiPicker returning outUid 
+								display: Display { value: Current repository_displayname data: repository match repository_uid }
+							}
+		label: $sample_report_pageNLS.edit
+		multivalued: True
+		tooltip: "Select at least one repository"
+	}
+reconciliation_rule = Parameter {
+	constraint: Lookup {
+			data: reconciliation_rule
+			text: Current recon_description
+			value: Current recon_description 
+			}
+		label: $sample_report_pageNLS.edit3
+		multivalued: True
+		tooltip: "Can be empty if unfiltered"		
+	}
+
+categorisation = Parameter {
+					constraint: Lookup {
+							data: categorisation
+							text: Current ticket_review_custom1
+							value: Current ticket_review_custom1
+								}
+					multivalued: True
+					label: $sample_report_pageNLS.edit4
+					}			
+									
+	/* Variables here */
+selected_account_uid = Variable { type: String }
+									
+	/* Datasets and records here */
+	repository = Dataset {
+		view: sample_report_repository_search
+		}
+	reconciliation_rule = Dataset {
+		view: sample_report_reconciliation_search
+		}
+	data = Dataset {
+		view: sample_report_multi_valued_param with reconciliation_rule to recon_rulenames , repository_picker to repo_uids , categorisation to categorisations
+		}
+	categorisation = Dataset {
+		view: sample_report_categorisation
+		}
+	/* Page content */
+	Splitter {
+		disposition: Horizontal
+		size: 30%
+		Group {
+			border: True
+			title: $sample_report_pageNLS.parameters
+			Grid {
+				columns: GridColumn {}
+				 GridRow {
+				 	GridCell {
+				 		span: 2
+								ParametersEdition {
+									allow-reset: True
+									label-position: Left
+									parameters: repository_picker , reconciliation_rule , categorisation
+												}	
+								}
+						}
+				GridRow {				
+					GridCell {
+							Button {
+								actions: GoTo Report custom_sample_reports_sample_report_multi_valued_param with reconciliation_rule to reconciliation_rule , repository_picker to repository
+								image: "32/details/printable_32.png"
+								text: "Printable report (includes all account categorisation)"
+								//layout: Layout { grab: vertical False horizontal True }
+								tooltip: $sample_report_pageNLS.report.link.tooltip
+								}							
+							}
+						}
+				GridRow {			
+					GridCell {
+							Button {
+								actions: Dialog sample_report_dialog ( selected_account_uid to inaccount_uid )
+								image: "32/details/review_32.png"
+								text: "Categorize selected account"
+								//layout: Layout { grab: vertical False horizontal True }
+								disabled: StringPredicate ( selected_account_uid ) 
+								{ when IsEmpty then True otherwise False	}
+								}												
+							}					
+						}
+					}
+				}				
+			Group {
+			border: False
+			//title: $sample_report_pageNLS.table	
+				PaginatedTable {
+					data: data
+					configurable: True
+					persist-configuration: True
+					double-click: GoTo Activity Account Detail with Current acc_uid to paramAccountUid
+					layout: Layout { grab: horizontal True vertical True }
+					page-size: 50
+					
+					Column {
+						column: acc_uid
+						hidden:True
+						selection: selected_account_uid
+						}
+					Column {
+						column: acc_login
+						header: $sample_report_pageNLS.table.column1
+						width: 10%
+						}
+					Column {
+						column: acc_username
+						header: $sample_report_pageNLS.table.column2
+						width: 30%
+						}
+					Column {
+						column: repo_displayname
+						header: $sample_report_pageNLS.table.column3
+						width: 10%
+						}	
+					Column {
+						column: acc_custom2
+						header: $sample_report_pageNLS.table.column4
+						width: 20%
+						}
+					Column {
+						column: acc_custom9
+						header: $sample_report_pageNLS.table.column5
+						width: 30%
+						}
+					Column {
+						column: recon_comment
+						header: $sample_report_pageNLS.table.column6
+						initially-masked: True
+						width: 20%
+						}
+					Column {
+						column: recon_reliability
+						header: $sample_report_pageNLS.table.column7
+						initially-masked: True
+						width: 20%
+						}
+					Column {
+						column: custom2
+						header: $sample_report_pageNLS.table.column8
+						initially-masked: True
+						width: 20%
+						}
+					}
+			}
+		}
+}	
+

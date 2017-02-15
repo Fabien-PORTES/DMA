@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition scriptfile="/collectors/NIS/ALL_NIS_except_A350.javascript" label="ALL_NIS_except_A350" name="P1482531246689" startingpoint="C1482531254946">
+		<Component name="C1482531254946" type="discoverysource" x="80" y="9" w="200" h="64" title="Own_NIS">
+			<Discovery file="/discovery/NIS/Own_NIS.discovery"/>
+		</Component>
+		<Component name="C1481184912424_1" type="joinfilter" x="89" y="264" w="200" h="64" title="Add AD4Unix to NIS">
+			<Cache active="true" main="_UID_UPPER" join="_AD4UNIX_UID_upper"/>
+			<Join source="C1481184901432_1" zeroerror="true" zeroevent="NO_JOIN_ON_UID" severalaction="first" zerotechnical="true" severalerror="true" severalevent="SEVERAL DATASET"/>
+		</Component>
+		<Component name="C1482233123468_2" type="changefilter" x="25" y="118" w="200" h="64" title="true false">
+			<Actions>
+				<Action name="U1482233173090" action="add" attribute="_TRUE" type="Boolean" multivalued="false" newvalue="true" errorexist="false"/>
+				<Action name="U1482233181694" action="add" attribute="_FALSE" type="Boolean" multivalued="false" errorexist="false" newvalue="false"/>
+			</Actions>
+		</Component>
+		<Component name="C1475224816108_2" type="account" x="80" y="398" w="200" h="64" title="Create Accounts">
+			<Account key="UID_Current_NIS" error="false">
+				<Attribute name="givenname" attribute="_firstname"/>
+				<Attribute name="username" attribute="_fullname"/>
+				<Attribute name="surname" attribute="_surname"/>
+				<Attribute name="custom9" attribute="gecos"/>
+				<Attribute name="mail" attribute="_EMAIL_NIS"/>
+				<Attribute name="custom4" attribute="uid_number"/>
+				<Attribute name="login" attribute="uid"/>
+				<Attribute name="custom6" attribute="_FALSE"/>
+				<Attribute name="guid" attribute="gid"/>
+				<Attribute name="sid" attribute="uidnumber"/>
+				<Attribute name="employeenumber" attribute="_login"/>
+				<Attribute name="manager" attribute="type"/>
+				<Attribute name="reftype1" attribute="type"/>
+				<Attribute name="smartcardrequired" attribute="standard_name"/>
+			</Account>
+			<Media code="repo"/>
+			<Manager check="false"/>
+		</Component>
+		<Component name="C1475224816108_3" type="account" x="573" y="377" w="200" h="64" title="Create Accounts with AD4Unix">
+			<Account key="UID_Current_NIS">
+				<Attribute name="login" attribute="uid"/>
+				<Attribute name="givenname" attribute="_firstname"/>
+				<Attribute name="username" attribute="_fullname"/>
+				<Attribute name="surname" attribute="_surname"/>
+				<Attribute name="custom9" attribute="gecos"/>
+				<Attribute name="mail" attribute="_EMAIL_NIS"/>
+				<Attribute name="custom4" attribute="uid_number"/>
+				<Attribute name="custom5" attribute="_AD4Unix_SAM_upper"/>
+				<Attribute name="custom8" attribute="_AD4Unix_FIRST_Windomain"/>
+				<Attribute name="custom6" attribute="_NIS_IN_AD4Unix"/>
+				<Attribute name="guid" attribute="gid"/>
+				<Attribute name="sid" attribute="uidnumber"/>
+				<Attribute name="employeenumber" attribute="_login"/>
+				<Attribute name="manager" attribute="type"/>
+				<Attribute name="reftype1" attribute="type"/>
+				<Attribute name="smartcardrequired" attribute="standard_name"/>
+			</Account>
+			<Media code="repo"/>
+			<Manager check="false"/>
+		</Component>
+		<Component name="C1481187785280_1" type="changefilter" x="574" y="246" w="200" h="64" title="Flag if NIS account Domain in AD4Unix">
+			<Actions>
+				<Action name="U1481189944372" action="multifilter" attribute="nis_domain" remove="false" oldname="repo"/>
+				<Action name="U1481190432334" action="add" attribute="_NIS_IN_AD4Unix" type="Boolean" multivalued="false" newvalue="{!dataset.nis_domain.get().isEmpty()}" errorexist="false"/>
+				<Action name="U1481205341290" action="default" attribute="_NIS_IN_AD4Unix" newvalue="0" errorunknown="false"/>
+			</Actions>
+		</Component>
+		<Component name="C1481184901432_1" type="discoverysource" x="503" y="46" w="200" h="64" title="ad4unix">
+			<Discovery file="/discovery/AD4UNIX/ad4unix.discovery"/>
+		</Component>
+		<Link name="L1481184926122_1" source="C1481184912424_1" target="C1475224816108_2" priority="1" expression="(dataset.hasEvent(&apos;NO_JOIN_ON_UID&apos;))"/>
+		<Link name="L1481187789644_1" source="C1481184912424_1" target="C1481187785280_1" priority="2" expression="(! dataset.hasEvent(&apos;NO_JOIN_ON_UID&apos;))"/>
+		<Link name="L1481187790485_1" source="C1481187785280_1" target="C1475224816108_3" priority="1"/>
+		<Link name="L1481184914827_1" source="C1481184901432_1" target="C1481184912424_1" priority="1"/>
+		<Link name="L1482531299433" source="C1482531254946" target="C1482233123468_2" priority="1"/>
+		<Component name="C1487085991413" type="references" x="274" y="101" w="200" h="64" title="standard Naming">
+			<ReferenceValue check="true" code="type" type="type" label="type"/>
+			<ReferenceType check="true" code="type" label="type"/>
+		</Component>
+		<Link name="L1487085997562" source="C1482233123468_2" target="C1487085991413" priority="2"/>
+		<Link name="L1487085998497" source="C1487085991413" target="C1481184912424_1" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

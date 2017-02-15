@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource TME resource record" description="The general resource TME resource record identifies resources and access authorities for groups defined in the role. There is one record per general resource/resource combination.">
+	<Source type="FORMATTED" filter="^0572 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRTMER_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the general resource TME resource record (0572)."/>
+		<Attribute name="A4199536690768339793" attribute="GRTMER_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRTMER_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRTMER_ORIGIN_ROLE" column="262-507" type="String" multivalued="false" description="Role profile from which resource access is inherited."/>
+		<Attribute name="A7466509792483562716" attribute="GRTMER_PROF_CLASS" column="509-516" type="String" multivalued="false" description="Class name of the origin-role resource."/>
+		<Attribute name="A7466509792483562717" attribute="GRTMER_PROF_NAME" column="518-763" type="String" multivalued="false" description="Resource name defined in the origin role."/>
+		<Attribute name="A7466509792483562718" attribute="GRTMER_ACCESS_AUTH" column="765-772" type="String" multivalued="false" description="Access permission to the resource."/>
+		<Attribute name="A7466509792483562719" attribute="GRTMER_COND_CLASS" column="774-781" type="String" multivalued="false" description="Class name for conditional access."/>
+		<Attribute name="A7466509792483562720" attribute="GRTMER_COND_PROF" column="783-1028" type="String" multivalued="false" description="Resource profile for conditional access."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+</Discovery>

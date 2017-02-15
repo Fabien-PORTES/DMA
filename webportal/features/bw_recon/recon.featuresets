@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FeatureSets PUBLIC "-//Brainwave//DTD FeatureSets 1.0//EN" "urn:brainwave:igrc:dtds/featuresets.dtd">
+<FeatureSets version="1" name="recon" description="Reconciliation Page">
+	<FeatureSet name="I1424270795164" featureset="bw_recon" description="Reconciliation Page" r1424271252593="true" r0="false"/>
+</FeatureSets>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_notreconciledaccounts" operator="and" query="account" displayname="Not reconciled accounts" version="3">
+	<RequestCriteria name="C1321626082117_39" criteria="notReconciliatedAccounts">
+	</RequestCriteria>
+	<RequestGroup name="G1322064468016_207" operator="or">
+		<RequestCriteria name="C1322064479838_208" criteria="isNullProperty">
+			<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+				<Value name="0" data="service"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+		<RequestCriteria name="C1322064494925_210" criteria="neService">
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_myrepositories" errorifempty="false" distinct="true" identitysecure="false" concept="repository" displayname="br_myrepositories" notes="">
+	<ViewComputedAttribute name="icon" displayname="icon" type="String" expression="&apos;16/audit/repository_16.png&apos;"/>
+	<ViewSort name="sort" attribute1="A1379079847344_716"/>
+	<ViewAttribute name="A1379079842756_714" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1379079844207_715" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1379079847344_716" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1379079852977_717" attribute="type" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1379079860732_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="A"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

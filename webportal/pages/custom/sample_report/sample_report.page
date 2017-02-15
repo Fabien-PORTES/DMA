@@ -1,0 +1,28 @@
+report = NLS {
+	choice.true [en "True" fr "Oui"]
+	choice.false [en "False" fr "Non"]
+	repository.label [ en "Repository picker mith multi selection" fr "Repository picker mith multi selection"]
+	identity.label [en "Identity pickup" fr "Identity pickup"]
+	disabled.label [en "Disabled choice" fr "Disabled choice"]
+	recon_rule.label [en "Reconciliation name lookup with multi selection" fr "Reconciliation name lookup with multi selection"]
+}
+
+custom_sample_reports_sample_report_multi_valued_param = Report {
+	report: "/reports/custom/sample_reports/sample_report_multi_valued_param.rptdesign" with ^repository to ^repository, ^reconciliation_rule to ^reconciliation_rule
+	title: "Account reconciliation by repository and reconciliation rule"
+	^repository = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		multivalued: True
+		label: $report.repository.label
+	}
+	^reconciliation_rule = Parameter {
+		mandatory: False
+		hidden: True
+		type: String
+		multivalued: True
+		label: $report.recon_rule.label
+	}
+}
+

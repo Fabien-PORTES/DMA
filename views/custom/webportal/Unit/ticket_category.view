@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="ticket_category" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketreview" displayname="ticket_category">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1487092385704_565" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1486480372933_827" prefix="ticket_action_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketaction">
+		<ViewJoin name="J1486545701738_1724" prefix="ticket_log_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticket">
+			<ViewAttribute name="1487092567901_599" attribute="tickettype" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1486545803016_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="ACCOUNTCATEGORISATION"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

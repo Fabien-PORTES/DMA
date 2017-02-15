@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="brp_application_all_accounts" errorifempty="false" distinct="true" concept="application" displayname="brp_application_all_accounts" notes="">
+	<ViewParam name="recordUid" displayname="recordUid"/>
+	<ViewSort name="sort" attribute1="A1375455345230_226"/>
+	<ViewAttribute name="A1375455265465_219" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1375455288744_0" reference="recordUid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1375455300695_221" kind="inner" join="permission">
+		<ViewJoin name="J1375455322894_222" prefix="account_" kind="inner" join="accountright">
+			<ViewAttribute name="A1375455332150_223" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1375455334734_224" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1375455343327_225" attribute="identifier" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1375455345230_226" attribute="login" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1375456307767_258" attribute="username" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

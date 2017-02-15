@@ -1,0 +1,7 @@
+DateTime {
+	type: Date
+	label: <template:variablelabel/>
+	variable: <template:taskvariablename/>
+	format: "yyyyMMddHHmmss"
+	allow-none: <template:variablemandatory/>
+}

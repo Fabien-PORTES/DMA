@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Roles PUBLIC "-//Brainwave//DTD Roles 1.0//EN" "urn:brainwave:igrc:dtds/roles.dtd">
+<Roles version="1" name="workflowadministration" description="Workflow Administration Roles">
+	<Role name="r9" portalrolename="workflowtechadmin" description="Workflow technical administrator"/>
+	<Role name="r10" portalrolename="workflowfuncadmin" description="Workflow functional administrator"/>
+	<Role name="r11" portalrolename="workflowauditor" description="Workflow auditor"/>
+</Roles>

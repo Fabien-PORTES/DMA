@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_reconciledmanuallyaccount" operator="and" query="account" displayname="Accounts reconciled manually" version="2">
+	<RequestCriteria name="C1321625180008_7995" criteria="manuallyReconciliatedAccounts">
+	</RequestCriteria>
+</Request>

@@ -1,0 +1,17 @@
+
+import "/webportal/pages/application/search.page"
+import "/webportal/pages/application/details.page"
+import "/webportal/pages/reports/standard.page"
+
+Activity {
+	concept: Application
+	kind: Search
+	to: Page applicationSearchPage
+}
+
+Activity {
+	concept: Application
+	kind: Detail
+	to: Page applicationDetailsPage
+}
+

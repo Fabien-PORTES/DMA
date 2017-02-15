@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_permissionDetail_permissionaccountacl" errorifempty="false" distinct="true" identitysecure="false" concept="permission" displayname="br_permissionDetail_permissionaccountacl" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1379436739010_651"/>
+	<ViewJoin name="J1379436673776_643" kind="inner" identitysecure="false" join="aclaccount">
+		<ViewAttribute name="A1379436712517_647" attribute="repositorydisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1379436734780_649" attribute="action" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1379436736981_650" attribute="negative" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1379436739010_651" attribute="order" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1379436792676_652" prefix="account_" kind="inner" identitysecure="false" join="account">
+			<ViewAttribute name="A1379436816876_654" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1379436819217_655" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1379436871546_662" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1379436684403_645" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1379436687899_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

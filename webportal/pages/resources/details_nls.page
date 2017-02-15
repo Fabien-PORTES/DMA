@@ -1,0 +1,253 @@
+
+// All the NLS used in detail pages are included here
+
+accountDetails = NLS {
+	title [en "Account Details" fr "Détails du Compte" ]
+	dynamictitle [en "Account Details {0}" fr "Détails du Compte {0}" ]
+	subtitle [en "{0,choice,0#Present in the Repository {1} |1#does not have an associated Repository}" fr "{0,choice,0#Présent dans le Référentiel {1} |1#n''a pas de Référenciel associé}"]	
+	number_applications [ en "Applications" fr "Applications"]
+	reconciled_identity [ en "Reconciled Identity" fr "Identité Réconciliée"]
+	didyouknow.title [en "Did you know?" fr "Le saviez-vous ?" ]
+	didyouknow.response1 [en "This account belongs to someone who left the company."
+						  fr "Ce compte appartient à quelqu'un qui a quitté l'entreprise." ]
+	noowneraccount [en "Account without owner" fr "Compte sans propriétaire"]
+	noownervalue [en "{0,choice,0#No|1#Yes ({1})}" fr "{0,choice,0#Non|1#Oui ({1})}"]
+	updatemanager [en "Set or update the manager of\nthe account without an owner" fr "Positionner ou mettre à jour\nle responsable du compte sans propriétaire"]
+	noownermanager [en "No-owner account manager" fr "Reponsable du compte sans propriétaire"]
+}
+
+accountDetailsManager_Dialog_NLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Update account manager" fr "Mettre à jour le responsable du compte"]
+	dynamictitle [en "Update account manager \"{0}\"" fr "Mettre à jour le reponsable du compte \"{0}\""]
+	managerhrcode [en "Current manager HR code" fr "Matricule du responsable actuel"]
+	managerfullname [en "Current manager fullname" fr "Nom du responsable actuel"]
+	newmanagerconfirm [en "Are you sure that you want to assign {0}-{1}\nas the manager of the {2} account?" fr "Etes vous sur de vouloir positionner {0}-{1} en tant que responsable\ndu compte {2}"]
+	newmanagerremove [en "Are you sure that you want to remove {0}-{1}\nas the manager of the {2} account?" fr "Etes vous sur de vouloir supprimer {0}-{1} en tant que responsable\ndu compte {2}"]
+	confirmupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+	removeupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+
+	noowneraccountype [en "No owner account type" fr "Type de compte sans propriétaire"]
+	noowneraccountcomments [en "Comments" fr "Commentaires"]
+	
+	setmanager [en "Set a manager for this account" fr "Assigner un responsable pour ce compte"]
+	removemanager [en "Remove the current manager" fr "Supprimer le responsable actuel"]
+	
+	manageraudittrail [en "View change history" fr "Voir l'historique des modifications"]
+
+	question [en "What do you want to do?" fr "Que voulez-vous faire ?"]	
+	changeinprogress [en "A change request is already in progress. Changes are disabled until the current request is complete" fr "Une demande de changement est déja en cours. Les demandes de changements sont désactivés tant que la demande est en cours"]
+}
+
+applicationDetails = NLS {
+	title [en "Application Details" fr "Détails de L'Application" ]
+	dynamictitle [en "Application Details {0}" fr "Détails de L''Application {0}" ]
+	repository_displayname [ en "Repository" fr "Référentiel" ]
+	organisation_displayname [ en "Organization" fr "Organisation" ]
+	number_accounts [en "Active Accounts" fr "Comptes Actifs"]
+	number_service_accounts [en "Service Accounts" fr "Comptes de Service"]
+	number_orphan_accounts [en "Orphan Accounts" fr "Comptes Orphelins"]
+	number_identities  [ en "Identities" fr "Identités" ]
+	updatemanager [en "Set or update the application manager" fr "Positionner ou mettre à jour\nle responsable de cette application"]
+	description [en "Description" fr "Description"]
+	updatemetadata [en "Updating application metadata:" fr "Mise à jour des méta données de l'application"]
+}
+
+applicationDetailsManager_Dialog_NLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Update application manager" fr "Mettre à jour le responsable d''application"]
+	dynamictitle [en "Update application manager for \"{0}\"" fr "Mettre à jour le reponsable de l''application \"{0}\""]
+	managerhrcode [en "Current manager HR code" fr "Matricule du responsable actuel"]
+	managerfullname [en "Current manager fullname" fr "Nom du responsable actuel"]
+	newmanagerconfirm [en "Are you sure that you want to assign {0}-{1}\nas the manager of the {2} application?" fr "Etes vous sur de vouloir positionner {0}-{1} en tant que responsable\nde l''application {2}"]
+	newmanagerremove [en "Are you sure that you want to remove {0}-{1}\nas the manager of the {2} application?" fr "Etes vous sur de vouloir supprimer {0}-{1} en tant que responsable\nde l''application {2}"]
+	confirmupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+	removeupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+	
+	setmanager [en "Set a manager for this application" fr "Assigner un responsable pour cette application"]
+	removemanager [en "Remove the current manager" fr "Supprimer le responsable actuel"]
+	
+	manageraudittrail [en "View change history" fr "Voir l'historique des modifications"]
+
+	question [en "What do you want to do?" fr "Que voulez-vous faire ?"]	
+	changeinprogress [en "A change request is already in progress. Changes are disabled until the current request is complete" fr "Une demande de changement est déja en cours. Les demandes de changements sont désactivés tant que la demande est en cours"]
+	
+	managertype [en "Manager type" fr "Type de responsable"]
+}
+
+applicationDetailsMetadata_Dialog_NLS = NLS {
+	title [en "Update sharing metadata" fr "Mettre à jour les informations du partage"]
+	description[en 'Please update the metadata associated with this application' 
+				fr 'Veuillez mettre à jour les meta données associées à cette application'
+				]
+	done [en "Your request to update metadata has been received successfully" fr "Votre demande de modification des metadonnées a bien été enregistrée"]
+}
+
+groupDetails = NLS {
+	title [en "Group Details" fr "Détails du Groupe" ]
+	dynamictitle [en "Group Details {0}" fr "Détails du Groupe {0}" ]
+	subtitle [en "Present in the Repository {0}" fr "Présent dans le Référentiel {0}" ]
+	nbaccounts [ en "Accounts" fr "Comptes" ]
+	nbaccounts.response [ en "{0} direct / {1} total" fr "{0} direct / {1} total"]
+	updatemanager [en "Set or update the permission manager" fr "Positionner ou mettre à jour\nle responsable de cette permission"]
+}
+
+groupDetailsManager_Dialog_NLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Update group manager" fr "Mettre à jour le responsable du groupe"]
+	dynamictitle [en "Update group manager for \"{0}\" on \"{1}\"" fr "Mettre à jour le reponsable groupe \"{0}\" sur le référentiel \"{1}\""]
+	managerhrcode [en "Current manager HR code" fr "Matricule du responsable actuel"]
+	managerfullname [en "Current manager fullname" fr "Nom du responsable actuel"]
+	newmanagerconfirm [en "Are you sure that you want to assign {0}-{1}\nas the manager of the {2} group on the {3} repository?" fr "Etes vous sur de vouloir positionner {0}-{1} en tant que responsable\ndu groupe {2} sur le référentiel {3}"]
+	newmanagerremove [en "Are you sure that you want to remove {0}-{1}\nas the manager of the {2} group on the {3} repository?" fr "Etes vous sur de vouloir supprimer {0}-{1} en tant que responsable\ndu groupe {2} sur le référentiel {3}"]
+	confirmupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+	removeupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+	
+	setmanager [en "Set a manager for this group" fr "Assigner un responsable pour ce groupe"]
+	removemanager [en "Remove the current manager" fr "Supprimer le responsable actuel"]
+	
+	question [en "What do you want to do?" fr "Que voulez-vous faire ?"]	
+	changeinprogress [en "A change request is already in progress. Changes are disabled until the current request is complete" fr "Une demande de changement est déja en cours. Les demandes de changements sont désactivés tant que la demande est en cours"]
+
+	manageraudittrail [en "View change history" fr "Voir l'historique des modifications"]
+}
+
+identityDetails = NLS {
+	title [en "Identity Details" fr "Détails de la Personne"]
+	dynamictitle [en "{0} Details" fr "Détails de {0}"]
+	identityteam.title [en "Team" fr "Equipe"]
+	identityteam.response[en "Works with {0}" fr "Travaille avec {0}"]
+	identityteam.response.others [en "{0,choice,-1#.|0#.|1# and {0} others.|1< and {0} others.}" fr "{0,choice,-1#.|0#.|1# et {0} autre.|1< et {0} autres.}"]
+	didyouknow.title [en "Did you know?" fr "Le saviez-vous ?" ]
+	didyouknow.response1 [en "{0,choice,0#This user has no application|1#This user has access to one application|2#This user has access to {1} applications}"
+						  fr "{0,choice,0#Cet utilisateur n''a aucune application|1#Cet utilisateur a accès à une application|2#Cet utilisateur a accès à {1} applications}" ]
+	didyouknow.response2 [en "{0,choice,0# and no SoD issue has been detected.|1# and 1 SoD issue has been detected.|2# and {1} SoD issues have been detected.}"
+						  fr "{0,choice,0# et aucun problème de SoD n''a été identifié.|1# et 1 problème de SoD a été identifié.|2# et {1} problèmes de SoD ont été identifié.}" ]
+	didyouknow.response3 [en "{0,choice,0#|0<This user left and still has active permissions ({1}).}"
+						  fr "{0,choice,0#|0<Cet utilisateur est parti et a toujours des permissions actives ({1}).}"]
+}
+
+organisationDetails = NLS {
+	title [en "Organization Details" fr "Détails de L'Organisation" ]
+	dynamictitle [en "Organization Details {0}" fr "Détails de L''Organisation {0}" ]
+	manager_fullname [ en "Manager" fr "Manager"]
+	manager_job [en "Manager Job Title" fr "Métier du Manager"]
+	number_members [en "Number of Persons" fr "Nombre de Personnes"]
+	number_members.response [ en "{0} direct / {1} total" fr "{0} direct / {1} total"]
+	
+	number_children [en "Subdepartments" fr "Sous Départements"]
+	number_children.response [ en "{0} direct / {1} total" fr "{0} direct / {1} total"]
+	
+	team.title [ en "Direct Members" fr "Membres Directs"]
+	team.response.others [en "{0,choice,-1#.|0#.|1# and {0} others.|1< and {0} others.}" fr "{0,choice,-1#.|0#.|1# et {0} autre.|1< et {0} autres.}"]
+}
+
+permissionDetails = NLS {
+	title [en "Permission Details" fr "Détails de la Permission" ]
+	dynamictitle [en "Permission Details {0}" fr "Détails de la Permission {0}" ]
+	detailtitle [en "{0,choice,0#{1}|1#{2}}" fr "{0,choice,0#{1}|1#{2}}" ]
+	subtitle [en "Application permission: {0}" fr "Permission de l''application: {0}" ]
+	number_accounts [en "Active Accounts" fr "Comptes Actifs" ]
+	number_identities [en "Identities" fr "Identités" ]
+	description [en "Description" fr "Description" ]
+	updatemetadata [en "Set or update permission metadata" fr "Positionner ou mettre à jour\nles méta données associées à cette permission" ]
+	updatemanager [en "Set or update permission manager" fr "Positionner ou mettre à jour\nle responsable de cette permission"]
+}
+
+permissionDetailsManager_Dialog_NLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Update permission manager" fr "Update permission manager"]
+	dynamictitle [en "Update permission manager for \"{0}\" on \"{1}\"" fr "Mettre à jour le reponsable de la permission \"{0}\" sur l''application \"{1}\""]
+	managerhrcode [en "Current manager HR code" fr "Matricule du responsable actuel"]
+	managerfullname [en "Current manager fullname" fr "Nom du responsable actuel"]
+	newmanagerconfirm [en "Are you sure that you want to assign {0}-{1}\nas the manager of the {2} permission on the {3} application?" fr "Etes vous sur de vouloir positionner {0}-{1} en tant que responsable\nde la permission {2} sur l''application {3}"]
+	newmanagerremove [en "Are you sure that you want to remove {0}-{1}\nas the manager of the {2} permission on the {3} application?" fr "Etes vous sur de vouloir supprimer {0}-{1} en tant que responsable\nde la permission {2} sur l''application {3}"]
+	confirmupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+	removeupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+	
+	setmanager [en "Set a manager for this permission" fr "Assigner un responsable pour cette permission"]
+	removemanager [en "Remove the current manager" fr "Supprimer le responsable actuel"]
+	
+	manageraudittrail [en "View change history" fr "Voir l'historique des modifications"]
+
+	question [en "What do you want to do?" fr "Que voulez-vous faire ?"]	
+	changeinprogress [en "A change request is already in progress. Changes are disabled until the current request is complete" fr "Une demande de changement est déja en cours. Les demandes de changements sont désactivés tant que la demande est en cours"]
+}
+
+permissionDetailsMetadata_Dialog_NLS = NLS {
+	title [en "Update permission information" fr "Mettre à jour les informations de la permission"]
+	description[en 'Please update the metadata associated with this permission\nBy doing so, you will facilitate analysis and sensitivity classification' 
+				fr 'Veuillez mettre à jour les meta données associées à cette permission\nce faisant, vous faciliterez les analyses ainsi que la détermination du niveau de sensibilité'
+				]
+	done [en "Your request to update metadata has been received successfully" fr "Votre demande de modification des metadonnées a bien été enregistrée"]
+}
+
+repositoryDetails = NLS {
+	title [en "Repository Details" fr "Détails du Référentiel" ]
+	dynamictitle [en "Repository Details {0}" fr "Détails du Référentiel {0}" ]
+	
+	number_applications [en "Applications" fr "Applications"]
+	number_groups [en "Groups" fr "Groupes"]
+	number_active_accounts [en "Active Accounts" fr "Comptes Actifs"]
+	number_active_service_accounts [en "Service Accounts" fr "Comptes de Service"]
+	
+	
+	didyouknow.title [en "Did you know?" fr "Le saviez-vous ?" ]
+	
+	didyouknow.response1 [en "{0,choice,0#|1#This repository has 1 active orphan account|2#This repository has {1} active orphan accounts}"
+						  fr "{0,choice,0#|1#Ce référentiel a 1 compte actif orphelin|2#Ce référentiel a {1} comptes actifs orphelins}" ]
+
+	updatemanager [en "Set or update the repository manager" fr "Positionner ou mettre à jour\nle responsable de ce référentiel"]
+}
+
+repositoryDetailsManager_Dialog_NLS = NLS {
+	mandatoryfields [en "*: mandatory fields" fr "* : champs obligatoires"]
+	actionsection [en "Actions" fr "Actions"]
+	cancel.buttontext [en "Cancel" fr "Annuler"]
+	cancel.confirm [en "Cancel process creation?" fr "Annuler la création du processus ?"]
+	complete.buttontext [en "Start process" fr "Initier le processus"]
+	complete.confirm [en "Start process?" fr "Démarrer le processus ?"]
+	complete.flashmessage [en "Process started" fr "Processus démarré"]
+	title [en "Update repository manager" fr "Mettre à jour le responsable de référentiel"]
+	dynamictitle [en "Update repository manager for \"{0}\"" fr "Mettre à jour le reponsable du référentiel \"{0}\""]
+	managerhrcode [en "Current manager HR code" fr "Matricule du responsable actuel"]
+	managerfullname [en "Current manager fullname" fr "Nom du responsable actuel"]
+	newmanagerconfirm [en "Are you sure that you want to assign {0}-{1}\nas the manager of the {2} repository?" fr "Etes vous sur de vouloir positionner {0}-{1} en tant que responsable\ndu référentiel {2}"]
+	newmanagerremove [en "Are you sure that you want to remove {0}-{1}\nas the manager of the {2} repository?" fr "Etes vous sur de vouloir supprimer {0}-{1} en tant que responsable\ndu référentiel {2}"]
+	confirmupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+	removeupdate [en "Your request has been received successfully" fr "Votre demande a bien été prise en compte"]
+	
+	setmanager [en "Set a manager for this repository" fr "Assigner un responsable pour ce référentiel"]
+	removemanager [en "Remove the current manager" fr "Supprimer le responsable actuel"]
+	
+	manageraudittrail [en "View change history" fr "Voir l'historique des modifications"]
+
+	question [en "What do you want to do?" fr "Que voulez-vous faire ?"]	
+	changeinprogress [en "A change request is already in progress. Changes are disabled until the current request is complete" fr "Une demande de changement est déja en cours. Les demandes de changements sont désactivés tant que la demande est en cours"]
+
+	managertype [en "Manager type" fr "Type de responsable"]
+}

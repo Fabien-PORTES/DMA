@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_notexpiredaccounts" operator="and" query="account" displayname="Accounts Not Expired" version="4" notes="">
+	<RequestGroup name="G1331841271584_54" operator="or">
+		<RequestGroup name="G1331841282801_55" operator="and" inverse="true">
+			<RequestCriteria name="C1331841286514_56" criteria="ltExpirePeriod">
+				<RequestCriteriaParam name="expireDatePeriodParam" ignoreifempty="false">
+					<Value name="0" data="1"/>
+				</RequestCriteriaParam>
+			</RequestCriteria>
+		</RequestGroup>
+		<RequestCriteria name="C1331841310569_58" criteria="isNullProperty">
+			<RequestCriteriaParam name="propertyParam" ignoreifempty="false">
+				<Value name="0" data="expireDate"/>
+			</RequestCriteriaParam>
+		</RequestCriteria>
+	</RequestGroup>
+</Request>

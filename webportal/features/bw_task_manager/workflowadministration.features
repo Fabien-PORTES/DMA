@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Features PUBLIC "-//Brainwave//DTD Features 1.0//EN" "urn:brainwave:igrc:dtds/features.dtd">
+<Features version="1" name="workflowadministration" description="Workflow Administration" include="true">
+	<Feature name="wadmin_process_cansuspend" description="Can suspend a process from the Processes view">
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_process_canstop" description="Can stop a process from the processes view">
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_process_canforcereassign" description="Can force a reassign from the processes view">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_process_cansendmailtocandidate" description="Can send a mail to any task candidate from the processes">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_process_cansendmailtoassignee" description="Can send a mail to the task assignee from the processes">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_process_canseetaskcandidates" description="Can see all task candidates from the processes">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+		<FeatureSet name="I1390642567392"/>
+	</Feature>
+	<Feature name="wadmin_process_canassigntasktocandidate" description="Can assign a task to a candidate from the processes">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_archive_cansendmailtoassignee" description="Can send a mail to the task assignee from the archive">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_canaccesspage" description="Gives an access to the Workflow Administration page">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+		<FeatureSet name="I1390642567392"/>
+	</Feature>
+	<Feature name="wadmin_process_canshowerror" description="Can show error details from the processes view">
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_process_canretryonerror" description="Can retry on error from the processes view">
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_process_canskiponerror" description="Can skip on error from the process view">
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_process_cansendmailtoprocessowner" description="Can send a mail to the process owner from the processes view">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_archive_cansendmailtoprocessowner" description="Can send a mail to the process owner from the archive view">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+	<Feature name="wadmin_process_cangrabanytask" description="Can take the task from the processes">
+		<FeatureSet name="I1390642526645"/>
+		<FeatureSet name="I1390642494571"/>
+	</Feature>
+</Features>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationtype_picker" distinct="true" concept="organisation" displayname="Organisation type picker" notes="">
+	<ViewSort name="sort" attribute1="A1347550343749_1822"/>
+	<ViewAttribute name="A1347550342670_1821" attribute="organisationtypecode" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1347618011449_0" operation="isNotNull" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1347550343749_1822" attribute="organisationtypedisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

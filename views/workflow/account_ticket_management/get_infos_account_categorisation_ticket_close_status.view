@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="get_infos_account_categorisation_ticket_close_status" prefix="ticket_review_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketreview" displayname="get_infos_account_categorisation_ticket_close_status" notes="" begindate="" enddate="">
+	<ViewParam name="ticket_review_recorduid" displayname="ticket_review_recorduid">
+		<Value name="0" data="29"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1486550348994_2160" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486550895180_0" reference="ticket_review_recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486550452078_2164" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550453349_2165" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550454328_2166" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550455276_2167" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550456206_2168" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550457108_2169" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550458148_2170" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550459259_2171" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550463556_2172" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550464536_2173" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550468728_2174" attribute="custom10" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550469637_2175" attribute="custom11" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550470690_2176" attribute="custom12" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550471594_2177" attribute="custom13" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550475202_2178" attribute="custom14" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550476601_2179" attribute="custom15" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550477478_2180" attribute="custom16" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550478328_2181" attribute="custom17" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550479205_2182" attribute="custom18" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486550480178_2183" attribute="custom19" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1486550917573_2185" prefix="account_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accounts">
+		<ViewAttribute name="A1486550924118_2186" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

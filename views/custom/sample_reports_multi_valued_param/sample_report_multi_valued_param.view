@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="sample_report_multi_valued_param" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="sample_report_multi_valued_param" notes="" begindate="" enddate="">
+	<ViewParam name="recon_rulenames" displayname="recon_rulenames"/>
+	<ViewParam name="repo_uids" displayname="repo_uids"/>
+	<ViewParam name="categorisations" displayname="categorisations"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1479726630172_368" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479726747119_388" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479726755407_389" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1479726767318_390" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1479726669065_371" prefix="acc_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountreconciliation">
+		<ViewAttribute name="A1479726712547_381" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479726713993_382" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479726715353_383" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479726716981_384" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479726720897_385" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479726731807_386" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479726736031_387" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1479739238974_487" attribute="disabled" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1479726675183_372" prefix="recon_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="reconciliation">
+			<ViewAttribute name="A1479726683205_374" attribute="reconciliationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1479726686279_375" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1479726687917_376" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1479726690579_377" attribute="description" operator="or" removedfromprojection="false" globalfilter="true">
+				<ViewAttributeFilter name="F1479919077286_0" reference="recon_rulenames" operation="in" ignoreifempty="true"/>
+				<ViewAttributeFilter name="F1485867763982_1" operation="isNull" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewAttribute name="A1479726692224_378" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1479726693737_379" attribute="reliability" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1479726697231_380" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1479907741681_834" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" enabled="param.categorisations.get()!=null" join="ticketreview">
+			<ViewAttribute name="A1479907748373_835" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1479907750727_0" reference="categorisations" operation="in" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+</View>

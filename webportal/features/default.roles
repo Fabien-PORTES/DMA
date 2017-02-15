@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Roles PUBLIC "-//Brainwave//DTD Roles 1.0//EN" "urn:brainwave:igrc:dtds/roles.dtd">
+<Roles version="1" name="default" description="default">
+			<Role name="r0" portalrolename="user" description="All users" rolerule="" activetimeslot="true"/>
+			<Role name="r1" portalrolename="organisationmanager" rolerule="control_organisationmanagers" description="People in charge of Organizational Units" identityrule=""/>
+			<Role name="r2" portalrolename="applicationmanager" description="People in charge of applications" rolerule="control_applicationmanagers"/>
+	<Role name="r1433773804308" portalrolename="igrc_administrator" activetimeslot="true" description="Administrator of the IGRC platform" rolerule=""/>
+</Roles>
+

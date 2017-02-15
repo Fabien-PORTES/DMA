@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="wf_getapplications" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="Get applications given their UIDs" notes="">
+	<ViewParam name="applicationuids" displayname="application uids"/>
+	<ViewSort name="sort" attribute1="A1389001139740_1726"/>
+	<ViewAttribute name="A1389001139740_1724" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001139740_1725" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1389001163356_0" reference="applicationuids" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1389001139740_1726" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001139740_1727" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001139740_1728" attribute="applicationtype" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001139740_1729" attribute="repositoryrecorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001139740_1730" attribute="importaction" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001139740_1731" attribute="deletedaction" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001141834_1732" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001142633_1733" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001143135_1734" attribute="custom3" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001143911_1735" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001144461_1736" attribute="custom5" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001145030_1737" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001145619_1738" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001146187_1739" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1389001146811_1740" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+</View>

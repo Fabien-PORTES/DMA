@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1314366420514" title="General resource access record" description="The General Resource Access record defines the users or groups who have specific access to general resources. There is one record per general resource/authorization combination.">
+	<Source type="FORMATTED" filter="^0505 .*$" encoding="ISO-8859-1"/>
+	<Attributes hasheader="false">
+		<Attribute name="A5910523806096512778" attribute="GRACC_RECORD_TYPE" column="1-4" type="String" multivalued="false" description="Record type of the General Resource Access record (0505)."/>
+		<Attribute name="A4199536690768339793" attribute="GRACC_NAME" column="6-251" type="String" multivalued="false" description="General resource name as taken from the profile name."/>
+		<Attribute name="A1290406167931330025" attribute="GRACC_CLASS_NAME" column="253-260" type="String" multivalued="false" description="Name of the class to which the general resource profile belongs."/>
+		<Attribute name="A7466509792483562715" attribute="GRACC_AUTH_ID" column="262-269" type="String" multivalued="false" description="User ID or group name which is authorized to use the general resource."/>
+		<Attribute name="A3188661801656117613" attribute="GRACC_ACCESS" column="271-278" type="String" multivalued="false" description="The authority that the user or group has over the resource. Valid values are NONE, READ, UPDATE, CONTROL, and ALTER."/>
+		<Attribute name="A4037269903301147695" attribute="GRACC_ACCESS_CNT" column="280-284" type="Number" multivalued="false" description="The number of times that the resource was accessed."/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy-MM-dd" booleanvalues="YES"/>
+	<Checks>
+		<Check name="U1314367823667" attribute="GRACC_ACCESS" checktype="regexp" checkvalue="^NONE|READ|UPDATE|CONTROL|ALTER$" event="Invalid Access"/>
+	</Checks>
+</Discovery>

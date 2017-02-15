@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbpeople" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="organisation detail nbpeople" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="directrecorduid" displayname="directrecorduid"/>
+	<ViewComputedAttribute name="p1percent" displayname="p1percent" type="Integer" expression="dataset.nbidentity.get()&gt;0 &amp;&amp; dataset.nbidentity.get()/100&gt;0?dataset.nbidentity.get()/100:1"/>
+	<ViewComputedAttribute name="p5percent" displayname="p5percent" type="Integer" expression="dataset.nbidentity.get()&gt;0 &amp;&amp; dataset.nbidentity.get()/20&gt;0?dataset.nbidentity.get()/20:1"/>
+	<ViewComputedAttribute name="p10percent" displayname="p10percent" type="Integer" expression="dataset.nbidentity.get()&gt;0 &amp;&amp; dataset.nbidentity.get()/10&gt;0?dataset.nbidentity.get()/10:1"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1365600503078_25" kind="inner" identitysecure="false" join="upidentity">
+		<ViewAttribute name="A1365600505712_26" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1366276840847_247" kind="inner" identitysecure="false" join="organisation">
+			<ViewAttribute name="A1366276853970_248" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1366276855784_0" reference="directrecorduid" operation="eq" ignoreifempty="true"/>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1365600525470_29" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1365600528377_0" reference="recorduid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

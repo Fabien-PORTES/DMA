@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_physicalroom" distinct="true" concept="application" displayname="Physical room list or picker" notes="">
+	<ViewParam name="recorduid" displayname="physical room record uid"/>
+	<ViewParam name="code" displayname="physical room code"/>
+	<ViewParam name="displayname" displayname="physical room display name"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1306930590376_43" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1306931646372_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1306930590376_44" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930590376_45" attribute="code" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1306931655084_0" reference="code" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1306930590376_46" attribute="displayname" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1306931662621_0" reference="displayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1306930590376_47" attribute="repositoryrecorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930590376_48" attribute="repositoryuid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930590376_49" attribute="repositorycode" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930590376_50" attribute="repositorydisplayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930590376_51" attribute="repositorymedia" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930590376_52" attribute="repositoryextractdate" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930590376_53" attribute="repositorytype" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930593131_54" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930593835_55" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930594547_56" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930595322_57" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930596074_58" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930596819_59" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930597515_60" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930598251_61" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1306930599058_62" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1306941014909_602" prefix="manager_" kind="left" join="manager">
+		<ViewAttribute name="A1306941034942_603" attribute="recorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1306941038374_604" attribute="fullname" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1316336991151_5648" attribute="applicationtype" operator="or" removedfromprojection="true">
+		<ViewAttributeFilter name="F1316336995427_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Physical"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

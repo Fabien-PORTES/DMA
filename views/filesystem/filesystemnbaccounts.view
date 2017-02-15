@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_filesystemnbaccounts" distinct="true" concept="permission" displayname="Filesystem permission list or picker with # of accounts" notes="">
+	<ViewParam name="parentrecorduid" displayname="Filesystem permission parent record uid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1304347894498_47" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347894498_48" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347894498_49" attribute="code" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347894498_50" attribute="displayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347898773_55" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347899565_56" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347900261_57" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347900949_58" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347901637_59" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347902277_60" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347902965_61" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347903789_62" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1304347904621_63" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1304347910709_64" kind="left" join="accountright">
+		<ViewAttribute name="A1304347914533_65" attribute="recorduid" alias="nbaccounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewJoin name="J1304350541969_71" kind="inner" join="uppermission">
+		<ViewAttribute name="A1304350544672_72" attribute="recorduid" operator="or" removedfromprojection="true">
+			<ViewAttributeFilter name="F1304350558962_0" reference="parentrecorduid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1305892780573_7033" prefix="application" kind="inner" join="application">
+		<ViewAttribute name="A1316332717392_1650" attribute="applicationtype" operator="or" removedfromprojection="true">
+			<ViewAttributeFilter name="F1316332721504_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Filesystem"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1322664173246_839" attribute="recorduid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322664173916_840" attribute="uid" removedfromprojection="false"/>
+		<ViewAttribute name="A1322664174429_841" attribute="code" removedfromprojection="false"/>
+		<ViewAttribute name="A1322664174973_842" attribute="displayname" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

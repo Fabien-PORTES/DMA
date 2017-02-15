@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisation_picker" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="Organization picker" notes="">
+	<ViewParam name="paramDisplayname" displayname="Organization display name"/>
+	<ViewParam name="paramShortname" displayname="Organization short name"/>
+	<ViewParam name="paramUid" displayname="Organization uid"/>
+	<ViewParam name="paramNotUid" displayname="Organization excluded uid"/>
+	<ViewParam name="paramType" displayname="Organisation type"/>
+	<ViewParam name="paramCode" displayname="Organization code"/>
+	<ViewSort name="sort" attribute1="A1336050761201_67" attribute2="A1336050760529_66"/>
+	<ViewAttribute name="A1336050758013_63" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1336050759888_65" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336050802310_0" reference="paramCode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1336050760529_66" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336050817513_0" reference="paramShortname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1336050761201_67" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1336050827482_0" reference="paramDisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1384264582092_889" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1384264587935_0" reference="paramNotUid" operation="notIn" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1384264584393_890" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1384264604877_0" reference="paramUid" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1390827946897_930" attribute="organisationtypecode" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1390827950316_0" reference="paramType" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

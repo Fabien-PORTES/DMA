@@ -1,0 +1,17 @@
+
+mytitlestyle1 = Style {
+	bold:True
+	size:38px
+	foreground:RGB(255,64,64)
+}
+
+style1 = Page {
+	title:'A simple style example'
+
+	Header { 
+		value:"Hello world ;-)"
+		styling:mytitlestyle1
+	}
+}
+
+

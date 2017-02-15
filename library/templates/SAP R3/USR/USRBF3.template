@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343319649258" title="User Buffer Content for Fast RFC Logon - New " description=" ">
+	<Source type="CSV" separator="\t" textseparator="&quot;" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A2689085985445409426" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A1198368130932363321" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User name"/>
+		<Attribute name="A698933410585804577" attribute="reload" column="RELOAD" type="String" multivalued="false" persistent="false" description="Customized (&apos;C&apos;) or standard menu (&apos;S&apos;) flag"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343319677603" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

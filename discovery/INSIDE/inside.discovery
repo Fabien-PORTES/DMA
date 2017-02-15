@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1475079833891">
+	<Source file="{config.importfiles}/Extracts_DMA/INSIDE.xlsx" type="EXCEL" sheetname="Feuil1" sheetnumber="1" headerlinenumber="1" startingcolumn="A" startingrow="1"/>
+	<Attributes hasheader="true">
+		<Attribute name="0" attribute="appli_code" column="appli code" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="1" attribute="appli_name" column="appli name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="2" attribute="domain" column="domain" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="3" attribute="account" column="account" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="4" attribute="owner_account" column="owner account" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="5" attribute="owner_name" column="owner name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="6" attribute="deputy_account" column="deputy account" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="7" attribute="deputy_name" column="deputy name" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1475595125547" attribute="domain" checktype="notregexp" checkvalue="ACDSADAM.*"/>
+	</Checks>
+	<Actions>
+		<Action name="U1475595604984" action="add" attribute="_OWNER_FULLNAME" newvalue="{dataset.owner_name.get().replace(&quot;\\(.*\\)&quot;,&quot;&quot;).normalize()}"/>
+		<Action name="U1475595722457" action="add" attribute="_DEPUTY_FULLNAME" newvalue="{dataset.deputy_name.get().replace(&quot;\\(.*\\)&quot;,&quot;&quot;).normalize()}"/>
+		<Action name="U1475596178770" action="add" attribute="_OWNER_REF" newvalue="owner"/>
+		<Action name="U1475596195799" action="add" attribute="_DEPUTY_REF" newvalue="deputy"/>
+		<Action name="U1476278045629" action="add" attribute="_ACCOUNTKEY" newvalue="{dataset.domain.get()+&quot;\\&quot;+dataset.account.get().toUpperCase()}"/>
+		<Action name="U1481216394863" action="add" attribute="_Account_upper" newvalue="{dataset.account.get().toUpperCase()}"/>
+		<Action name="U1485774024410" action="add" attribute="OWNER_UPPER_ACCOUNT" newvalue="{dataset.owner_account.get().toUpperCase()}"/>
+	</Actions>
+</Discovery>

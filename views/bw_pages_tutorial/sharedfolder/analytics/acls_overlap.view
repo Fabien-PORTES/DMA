@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="acls_overlap" prefix="element_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="acls_overlap">
+	<ViewParam name="uids" displayname="uids"/>
+	<ViewSort name="sort" attribute1="A1443443950942_755"/>
+	<ViewAttribute name="A1443443930096_752" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1443443935064_0" reference="uids" operation="in" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1443443950050_754" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1443443950942_755" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1443443952406_757" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1443443967202_758" prefix="parent_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="uppermission">
+		<ViewAttribute name="A1443443976066_759" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1443444008165_0" reference="uids" operation="in" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

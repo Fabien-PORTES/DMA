@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="loadAll" description="Load all organizations (from ECL + departments)" name="P1467983218256" startingpoint="start">
+		<Component name="start" type="library/components/start.component" x="50" y="50" w="250" h="64" title="start"/>
+		<Component name="C1467983218256_1" type="callfilter" x="69" y="294" w="250" h="64" title="company">
+			<Line provisioningfile="/collectors/organization/company.collector"/>
+		</Component>
+		<Component name="C1467983218256_2" type="callfilter" x="57" y="375" w="250" h="64" title="departement">
+			<Line provisioningfile="/collectors/organization/departement.collector"/>
+		</Component>
+		<Link name="Ltart" source="start" target="C1475593732260" priority="1"/>
+		<Link name="L1467983218256_1" source="C1467983218256_1" target="C1467983218256_2" priority="1"/>
+		<Component name="N1467983853126_2" type="note" x="540" y="265" w="508" h="263" title="Collect both company &amp; departments&#xA;&#xA;company have &apos;ou&apos; for organizationtype&#xA;Department organizations have &apos;dpt&apos; for organizationtype"/>
+		<Component name="C1475593732260" type="changefilter" x="84" y="124" w="200" h="64" title="nomenclatures">
+			<Actions>
+				<Action name="U1475593784229" action="add" attribute="ORG_CODE_DEPT" type="String" multivalued="false" newvalue="dpt" errorexist="false"/>
+				<Action name="U1475593894730" action="add" attribute="ORG_CODE_COMPANY" type="String" multivalued="false" newvalue="ou" errorexist="false"/>
+			</Actions>
+		</Component>
+		<Component name="C1475593738324" type="references" x="87" y="202" w="200" h="64" title="Dept code">
+			<OrganisationType check="true" code="ORG_CODE_DEPT" label="ORG_CODE_DEPT"/>
+		</Component>
+		<Link name="L1475593756076" source="C1475593732260" target="C1475593738324" priority="1"/>
+		<Link name="L1475593757417" source="C1475593738324_1" target="C1467983218256_1" priority="1"/>
+		<Component name="C1475593738324_1" type="references" x="335" y="201" w="200" h="64" title="Company">
+			<OrganisationType check="true" code="ORG_CODE_COMPANY" label="ORG_CODE_COMPANY"/>
+		</Component>
+		<Link name="L1475593909394" source="C1475593738324" target="C1475593738324_1" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

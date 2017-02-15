@@ -1,0 +1,129 @@
+/* Import other pages here */
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/resources/mappings.page"
+
+/* Nationalized labels here */
+account_ticket_management_change_informationsNLS = NLS {
+	dialog.title [en "Change ticket(s) information(s)" fr "Change ticket(s) information(s)"]
+	change_ticket [en "change_ticket" fr "change_ticket"]
+}
+
+account_ticket_management_change_informations = Dialog {
+	title: $account_ticket_management_change_informationsNLS.dialog.title
+	width: 750
+	height: 650
+
+	buttons: [
+	OkButton {
+		disabled: StringPredicate (comment) {
+			when IsEmpty then True
+			otherwise False
+		}
+		actions: Set inselected_tickets to task_account_ticket_management.ticket_review_recorduids, 
+		Set comment to task_account_ticket_management.new_ticket_review_comment,
+		Set account_categorisation to task_account_ticket_management.new_ticket_review_custom1,
+		Set modified_uid to task_account_ticket_management.new_ticket_review_custom3,
+		Set modified_uid_number to task_account_ticket_management.new_ticket_review_custom4,
+		Set modified_GECOS to task_account_ticket_management.new_ticket_review_custom5,
+		Set modified_samaccountname to task_account_ticket_management.new_ticket_review_custom6,				
+		TaskComplete task_account_ticket_management wait,
+		Flash $account_categorizationNLS.dialog.flash
+	}
+	CancelButton
+	]
+/* Variables here */
+	inselected_tickets = Variable {
+		type: String
+		multivalued: True
+		}
+	comment = Variable {
+		type: String
+	}
+	modified_uid = Variable {
+		type: String
+	}
+	modified_uid_number = Variable {
+		type: String
+	}
+	modified_GECOS = Variable {
+		type: String
+	}
+	modified_samaccountname = Variable {
+		type: String
+	}	
+	erase_categorisation = Variable {
+		type: String
+		initial:True
+		}
+	account_categorisation = Variable {
+		type: String
+		}
+/*Dataset and record here */
+task_account_ticket_management = TaskRecord ( create "account_ticket_management_campaign" )		
+/*Dialog here */		
+
+	Group {
+		border: True
+		Combo {
+			variable: account_categorisation
+			label:$account_categorizationNLS.dialog.combo
+			allow-none: False
+			options: Static {
+					Option {text: Transform $account_categorizationNLS.option_empty using optionStringMapping  value:$account_categorizationNLS.option_empty}
+					Option {text: $account_categorizationNLS.option1 value:$account_categorizationNLS.option1}
+					Option {text: $account_categorizationNLS.option2 value:$account_categorizationNLS.option2}	
+					Option {text: $account_categorizationNLS.option3  value:$account_categorizationNLS.option3}
+					Option {text: $account_categorizationNLS.option4  value:$account_categorizationNLS.option4}	
+					Option {text: $account_categorizationNLS.option5  value:$account_categorizationNLS.option5}
+					Option {text: $account_categorizationNLS.option6  value:$account_categorizationNLS.option6}
+					Option {text: $account_categorizationNLS.option7  value:$account_categorizationNLS.option7}
+					Option {text: $account_categorizationNLS.option8  value:$account_categorizationNLS.option8}	
+					Option {text: $account_categorizationNLS.option9  value:$account_categorizationNLS.option9}
+					Option {text: $account_categorizationNLS.option10 value:$account_categorizationNLS.option10}	
+					Option {text: $account_categorizationNLS.option11 value:$account_categorizationNLS.option11}
+					Option {text: $account_categorizationNLS.option12 value:$account_categorizationNLS.option12}
+					Option {text: $account_categorizationNLS.option13 value:$account_categorizationNLS.option13}
+					Option {text: $account_categorizationNLS.option14 value:$account_categorizationNLS.option14}	
+					Option {text: $account_categorizationNLS.option15 value:$account_categorizationNLS.option15}
+					Option {text: $account_categorizationNLS.option16 value:$account_categorizationNLS.option16}	
+					Option {text: $account_categorizationNLS.option17 value:$account_categorizationNLS.option17}
+					Option {text: $account_categorizationNLS.option18 value:$account_categorizationNLS.option18}						
+					Option {text: $account_categorizationNLS.option19 value:$account_categorizationNLS.option19}
+					Option {text: $account_categorizationNLS.option20  value:$account_categorizationNLS.option20}						
+						}
+				}
+		Edit {
+			label: $account_categorizationNLS.dialog.comment
+			layout:Layout{hint:height 64}
+			multi-lines: True
+			variable: comment
+			}
+		Group {
+			title:$account_categorizationNLS.dialog.modify_value
+		Edit {
+			label: $account_categorizationNLS.dialog.uid
+			layout:Layout{hint:height 64}
+			multi-lines: True
+			variable: modified_uid
+			}
+		Edit {
+			label: $account_categorizationNLS.dialog.uid_number
+			layout:Layout{hint:height 64}
+			multi-lines: True
+			variable: modified_uid_number
+			}
+		Edit {
+			label: $account_categorizationNLS.dialog.GECOS
+			layout:Layout{hint:height 64}
+			multi-lines: True
+			variable: modified_GECOS
+			}
+		Edit {
+			label: $account_categorizationNLS.dialog.samaccountname
+			layout:Layout{hint:height 64}
+			multi-lines: True
+			variable: modified_samaccountname
+			}
+		}
+	}
+}

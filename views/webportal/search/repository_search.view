@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repository_search" errorifempty="false" distinct="true" identitysecure="false" concept="repository" displayname="br_repository_search" notes="">
+	<ViewParam name="accountIdentifier" displayname="accountIdentifier"/>
+	<ViewParam name="repositoryDisplayname" displayname="repositoryDisplayname"/>
+	<ViewParam name="repositoryCode" displayname="repositoryCode"/>
+	<ViewParam name="groupCode" displayname="groupCode"/>
+	<ViewParam name="applicationDisplayname" displayname="applicationDisplayname"/>
+	<ViewSort name="sort" attribute1="A1376492491351_222"/>
+	<ViewAttribute name="A1376492485593_219" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376492487808_220" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1376492489603_221" attribute="code" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1378997244258_0" reference="repositoryCode" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1376492491351_222" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1378997251764_0" reference="repositoryDisplayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1376492499108_226" attribute="type" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1376493607269_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="A"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1376492590824_229" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;applicationDisplayname&apos;)" join="application">
+		<ViewAttribute name="A1376492608063_230" attribute="displayname" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1376493400900_0" reference="applicationDisplayname" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1376492702640_281" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;groupCode&apos;)" join="group">
+		<ViewAttribute name="A1376985605559_693" attribute="code" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1376985617106_0" reference="groupCode" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1376492705308_282" kind="inner" identitysecure="false" enabled="!param.isEmpty(&apos;accountIdentifier&apos;)" join="account">
+		<ViewAttribute name="A1376492752532_284" attribute="identifier" operator="or" removedfromprojection="true" globalfilter="true">
+			<ViewAttributeFilter name="F1376493476931_0" reference="accountIdentifier" operation="ilike" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

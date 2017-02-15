@@ -1,0 +1,14 @@
+ButtonGroup {
+	layout: Layout {
+		grab: horizontal False vertical False
+		align: horizontal End vertical Beginning
+	}
+	Button {
+		text: $<template:pageNLSname/>.<template:widgetnlsname/>.button1
+		actions: GoTo HomePage
+	}
+	Button {
+		text: $<template:pageNLSname/>.<template:widgetnlsname/>.button2
+		actions: GoTo HomePage
+	}
+}			

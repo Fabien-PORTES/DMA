@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_identitiesnotfromorganisation" operator="and" query="identity" displayname="Identities not from organisation {uid} (including sub organisations)" version="3">
+	<RequestParam name="uid" displayname="uid" query="organisation" criteria="eqUid" criteriaparam="uidParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestGroup name="G1332849536061_25" operator="and" inverse="true">
+		<RequestJoin name="J1332848465119_59" operator="and" join="uporganisation">
+			<RequestCriteria name="C1415543375385_315" criteria="eqUid">
+				<RequestCriteriaParam name="uidParam" reference="uid" ignoreifempty="false">
+					<Value name="0"/>
+				</RequestCriteriaParam>
+			</RequestCriteria>
+		</RequestJoin>
+	</RequestGroup>
+</Request>

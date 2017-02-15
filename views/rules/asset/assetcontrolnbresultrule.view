@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_assetcontrolnbresultrule" distinct="true" concept="asset" displayname="# of results for each asset control">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303800109663_1099" attribute="recorduid" alias="nbresult" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+	<ViewJoin name="J1303800110656_1100" kind="inner" join="ruleresult">
+		<ViewAttribute name="A1303800116663_1101" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303800119781_0" operation="ilike" ignoreifempty="false">
+				<Value name="0" data="control_%"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1303800116663_1102" attribute="ruleentity" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1303800132713_0" operation="eq" ignoreifempty="false">
+				<Value name="0" data="Asset"/>
+			</ViewAttributeFilter>
+		</ViewAttribute>
+		<ViewAttribute name="A1303800116664_1103" attribute="ruledisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303800116664_1104" attribute="ruledescription" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1303800116664_1105" attribute="rulenotes" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

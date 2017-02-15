@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_fileshareapp_list_by_identity" distinct="true" concept="application" displayname="Fileshareapp list by identity" notes="">
+	<ViewParam name="uid" displayname="identity uid">
+		<Value name="0" data="ID0000002_1335261224432_140"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1344329067083_2" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344329067083_3" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344329067083_4" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344329067083_5" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344329067083_6" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1344329073945_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Filesystem"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1344329067083_7" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344329067083_8" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1344329067083_9" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1344329105508_11" kind="inner" join="permission">
+		<ViewJoin name="J1344329123492_12" kind="inner" join="accountright">
+			<ViewAttribute name="A1344329134977_13" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1344329138306_0" operation="isNull" ignoreifempty="false"/>
+				<ViewAttributeFilter name="F1344329143399_1" operation="isFalse" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewJoin name="J1344329152915_15" kind="inner" join="identityreconciliation">
+				<ViewAttribute name="A1344329166165_16" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1344329170182_0" reference="uid" operation="eq" ignoreifempty="true"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+</View>

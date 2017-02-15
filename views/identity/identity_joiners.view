@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identity_joiners" errorifempty="false" distinct="true" identitysecure="true" concept="identity" displayname="identity_joiners">
+	<ViewAttribute name="A1382522344626_1604" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382522345476_1605" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382522350498_1606" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382522352612_1607" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382522354306_1608" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1382522365650_1609" attribute="importaction" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1382522371336_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="C"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1382522417458_1611" kind="left" identitysecure="false" join="allocation">
+		<ViewJoin name="J1382522419788_1612" prefix="organisation" kind="left" identitysecure="false" join="organisation">
+			<ViewAttribute name="A1382522426839_1613" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1382522427712_1614" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1382522428454_1615" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1382522429336_1616" attribute="shortname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1382522430072_1617" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1382522441221_1618" attribute="jobtitledisplayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1382522441917_1619" attribute="jobtitlecode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

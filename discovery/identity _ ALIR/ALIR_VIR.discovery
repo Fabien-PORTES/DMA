@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1477493674788">
+	<Source file="{config.importfiles}\Extracts_DMA\1U40_AMC_DATA_ALIR.csv" type="CSV" separator=";" textseparator="&quot;" encoding="CP1252"/>
+	<Attributes hasheader="true">
+		<Attribute name="A3533380103779655466" attribute="external_uid" column="External UID" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A1005060057392510409" attribute="unique_key" column="Unique Key" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5462821740849731177" attribute="category" column="Category" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A7349950545731076346" attribute="identity_state" column="Identity State" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A5065813481877563157" attribute="login" column="Login" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4354981049558079306" attribute="first_name_usual" column="First Name Usual" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A7975204976902795440" attribute="last_name_usual" column="Last Name Usual" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A3295283033733159639" attribute="contact_email" column="Contact Email" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A280553541313250597" attribute="company_uid" column="Company UID" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A740489977605999294" attribute="company_name" column="Company name" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A1421956492714429631" attribute="department" column="Department" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A8439330706948440469" attribute="related_department" column="Related Department" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A1985894014151970567" attribute="display_name" column="Display Name" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A4475152704626265267" attribute="addomain" column="ADDomain" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A6389611819274839479" attribute="airbus_mail" column="Airbus Mail" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1992318817709519487" attribute="mobile_phone" column="Mobile Phone" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A6614939724551968715" attribute="principal_fixed_telephone" column="Principal Fixed Telephone" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A3112576036432502298" attribute="second_name" column="Second Name" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A6853633986141886812" attribute="secondary_fixed_telephone" column="Secondary Fixed Telephone" type="String" multivalued="false" persistent="false" hidden="true"/>
+		<Attribute name="A3706308741544452829" attribute="_ad_gecos" column="_AD_gecos" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2286093897500211302" attribute="_ad_gidnumber" column="_AD_gidnumber" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2020322142610851266" attribute="_ad_employeenumber" column="_AD_employeenumber" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2228258756227003935" attribute="_ad_identifier" column="_AD_identifier" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4880400076546959316" attribute="_ad_username" column="_AD_username" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7857764081223391186" attribute="_ad_uidnumber" column="_AD_uidnumber" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Limit count="500000"/>
+	<Checks>
+	</Checks>
+	<Actions>
+		<Action name="U1477558435255" action="add" attribute="_first_name" newvalue="{dataset.first_name_usual.get().trim()}"/>
+		<Action name="U1477558674293" action="default" attribute="_first_name" newvalue="UNKNOWN"/>
+		<Action name="U1477558460324" action="add" attribute="_last_name" newvalue="{dataset.last_name_usual.get().trim()}"/>
+		<Action name="U1477558679906" action="default" attribute="_last_name" newvalue="UNKNOWN"/>
+		<Action name="U1477474232576" action="add" attribute="_FULLNAME" newvalue="{dataset._last_name.get().normalize()} {dataset._first_name.get().normalize()}"/>
+		<Action name="U1477474240950" action="add" attribute="_INTERNAL" type="Boolean" newvalue=""/>
+	</Actions>	
+</Discovery>

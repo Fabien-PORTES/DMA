@@ -1,0 +1,119 @@
+import "/webportal/pages/styles/workflow_styles.page"
+
+workflowDefaultMixin = Mixin {
+	Group {
+		border: True
+		compact: False
+		layout: Layout {
+			align: horizontal Fill vertical Fill
+			grab: horizontal True vertical True
+		}
+	}
+	Text {
+		compact: True
+	}
+	Table {
+		hide-header: True
+		show-count: False
+		show-filter: False
+		layout: Layout {
+			grab: horizontal True vertical True
+			align: horizontal Fill vertical Fill			
+			minimal: height 80			
+		}		
+	}
+	Commands {
+		orientation: Vertical
+		position: After
+		presentation: Icon
+	}
+	Spacer {
+		height: 50
+	}
+	Spinner {
+		wrap: True
+		layout: Layout {
+			align: horizontal Beginning vertical Center
+			hint: width 100	
+		}		
+	}
+	Combo {
+		layout: Layout {
+			align: horizontal Beginning vertical Center
+		}
+	}
+	Label {
+		layout: Layout {
+			align: vertical Beginning horizontal Beginning
+		}
+	}
+	Grid {
+		layout: Layout {
+			grab: horizontal True vertical True
+			align: horizontal Fill vertical Fill
+		}
+		GridRow {
+			fill: True
+		}
+	}
+	MultiEdit {
+		layout: Layout {
+			grab: horizontal True vertical True
+			align: horizontal Fill vertical Fill
+			minimal: height 80			
+		}		
+		show-header: False
+		buttons-presentation: Icon		
+	}
+}
+
+workflowTextWithCommandMixin = Mixin {
+	Text {
+		compact: True
+		layout: Layout {
+			grab: horizontal False vertical False
+			align: horizontal Beginning vertical Beginning
+			hint: width 300
+		}
+	}
+}
+
+workflowTitleMixin = Mixin {
+	Header {
+		layout: Layout {
+			grab: horizontal True vertical False
+			align: horizontal Fill vertical Beginning
+		}
+		styling: titleStyle
+	}
+}
+
+workflowActionsMixin = Mixin {
+	This Group {
+		border: False
+		compact: False
+		layout: Layout {
+			align: horizontal Fill vertical End
+			grab: horizontal True vertical False
+		}
+	}
+	ButtonGroup {
+		align: Right
+		uniform: True
+		spacing: 5		
+	}
+}
+
+workflowJointEditionMixin = Mixin {
+	MultiEdit {
+		layout: Layout {
+			grab: horizontal True vertical True
+			align: horizontal Fill vertical Fill
+			minimal: height 80			
+		}		
+		show-header: True
+		buttons-presentation: Icon		
+	}	
+}
+
+

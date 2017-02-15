@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="fileexplorergetgroupchildof" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="group" displayname="get group child of" notes="">
+	<ViewParam name="parentrecorduid" displayname="parentrecorduid"/>
+	<ViewSort name="sort" attribute1="A1433517399869_5571"/>
+	<ViewAttribute name="A1433517399869_5567" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5568" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5569" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5570" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5571" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5572" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5573" attribute="grouptype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5574" attribute="dynamic" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5575" attribute="filter" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5576" attribute="creationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5577" attribute="creationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5578" attribute="modificationdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5579" attribute="modificationday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5580" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433517399869_5581" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1433517466324_5585" prefix="parent" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentgroup">
+		<ViewAttribute name="A1433517472219_5586" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1433517490604_0" reference="parentrecorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

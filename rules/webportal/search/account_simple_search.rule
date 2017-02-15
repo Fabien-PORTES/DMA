@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="br_account_simple_search" operator="and" query="account" displayname="Simple account search ({repository}, {login}, {username})" version="5">
+	<RequestParam name="repository" displayname="Repository" query="account" criteria="eqRepository" criteriaparam="repositoryParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="login" displayname="Login" query="account" criteria="likeLogin" criteriaparam="loginParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestParam name="username" displayname="User name" query="account" criteria="likeUserName" criteriaparam="userNameParam">
+		<Value name="0"/>
+	</RequestParam>
+	<RequestCriteria name="C1423218636838_395" criteria="eqRepository">
+		<RequestCriteriaParam name="repositoryParam" reference="repository" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423218673590_397" criteria="likeLogin">
+		<RequestCriteriaParam name="loginParam" reference="login" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+	<RequestCriteria name="C1423218707143_399" criteria="likeUserName">
+		<RequestCriteriaParam name="userNameParam" reference="username" ignoreifempty="true">
+			<Value name="0"/>
+		</RequestCriteriaParam>
+	</RequestCriteria>
+</Request>

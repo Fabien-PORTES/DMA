@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identityDetail_nbaccounts" errorifempty="false" distinct="true" identitysecure="false" concept="account" displayname="br_identityDetail_nbaccounts" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="restriction" displayname="restriction"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1378219824343_1433" attribute="uid" alias="count" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1378219842537_1435" kind="inner" identitysecure="false" join="identityreconciliation">
+		<ViewAttribute name="A1378219850885_1436" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1378219853273_0" reference="uid" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1378219929112_1440" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.restriction.get() == &apos;active&apos;">
+		<ViewAttributeFilter name="F1378220037084_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="0"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1378219931765_1441" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.restriction.get() == &apos;inactive&apos;">
+		<ViewAttributeFilter name="F1378220058223_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1378220014899_1442" attribute="notnormalaccount" operator="or" removedfromprojection="true" globalfilter="false" enabled="param.restriction.get() == &apos;privileged&apos;">
+		<ViewAttributeFilter name="F1378220076508_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="1"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

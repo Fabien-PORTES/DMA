@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="fileexplorergettimeslots" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="importlog" displayname="get timeslots" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewParam name="commitdate" displayname="commit date"/>
+	<ViewSort name="sort" attribute1="A1433853783272_1528" direction1="DESC"/>
+	<ViewAttribute name="A1433853783272_1524" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1433854254843_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1433853783272_1525" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433853783272_1526" attribute="importdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433853783272_1527" attribute="importday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433853783272_1528" attribute="commitdate" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1433944452087_0" reference="commitdate" operation="le" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1433853783272_1529" attribute="commitday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1433853783272_1530" attribute="status" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1433853801240_0" operation="in" ignoreifempty="false">
+			<Value name="0" data="C"/>
+			<Value name="1" data="A"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

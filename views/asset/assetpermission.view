@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_assetpermission" distinct="true" concept="asset" displayname="Assets with corresponding permissions" notes="">
+	<ViewParam name="recorduid" displayname="Asset record uid"/>
+	<ViewParam name="code" displayname="Asset code"/>
+	<ViewParam name="displayname" displayname="Asset display name"/>
+	<ViewSort name="sort" attribute1="A1302801265176_836" attribute2="A1302801265176_833" attribute3="A1302801265176_832"/>
+	<ViewAttribute name="A1302801252389_776" attribute="recorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302801315946_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302801252389_777" attribute="uid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_778" attribute="code" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302801324108_0" reference="code" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302801252389_779" attribute="displayname" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1302801334826_0" reference="displayname" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1302801252389_780" attribute="categoryrecorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_781" attribute="categoryuid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_782" attribute="categorycode" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_783" attribute="categorydisplayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_784" attribute="custom1" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_785" attribute="custom2" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_786" attribute="custom3" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_787" attribute="custom4" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_788" attribute="custom5" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_789" attribute="custom6" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_790" attribute="custom7" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_791" attribute="custom8" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1302801252389_792" attribute="custom9" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1302801255742_829" prefix="perm_" kind="inner" join="support">
+		<ViewAttribute name="A1302801265176_830" attribute="recorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_831" attribute="uid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_832" attribute="code" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_833" attribute="displayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_834" attribute="applicationrecorduid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_835" attribute="applicationuid" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_836" attribute="applicationcode" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_837" attribute="applicationdisplayname" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_838" attribute="custom1" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_839" attribute="custom2" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_840" attribute="custom3" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_841" attribute="custom4" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_842" attribute="custom5" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_843" attribute="custom6" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_844" attribute="custom7" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_845" attribute="custom8" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1302801265176_846" attribute="custom9" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+</View>

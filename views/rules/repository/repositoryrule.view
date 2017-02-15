@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryrule" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="repository" displayname="br_repositoryrule" notes="">
+	<ViewParam name="rulename" displayname="rulename"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1455813257551_2598" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2599" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2600" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2601" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2602" attribute="media" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2603" attribute="extractDate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2604" attribute="extractday" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2605" attribute="type" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2606" attribute="repositorytype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2607" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1455813257551_2608" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1455813261361_2609" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ruleresult">
+		<ViewAttribute name="A1455813277907_2610" attribute="rulename" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1455813279737_0" reference="rulename" operation="eq" ignoreifempty="true"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1455874582667_398" prefix="account_" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+		<ViewAttribute name="A1455874590288_399" attribute="uid" alias="nbaccounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

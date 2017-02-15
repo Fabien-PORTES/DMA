@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="ad4unix_mapping_status" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="ad4unix_mapping_status">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1487081385721_395" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

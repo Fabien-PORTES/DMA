@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_nbdirectpeople_trend" errorifempty="false" distinct="true" identitysecure="false" concept="organisation" displayname="organisation detail nbdirectpeople trend">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1380971903236_854"/>
+	<ViewJoin name="J1365600715395_35" kind="inner" identitysecure="false" join="identity">
+		<ViewAttribute name="A1365600720046_36" attribute="recorduid" alias="nbidentity" operator="or" aggregate="COUNT" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1380971879527_852" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1380971891249_0" reference="uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1380971903236_854" attribute="timeslotcommitdate" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1380971904065_855" attribute="timeslotellapsedtime" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1380971907520_0" operation="lt" ignoreifempty="false">
+			<Value name="0" data="180"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

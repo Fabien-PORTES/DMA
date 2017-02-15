@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provisioning version="1.0">
+	<Definition label="company" description="Collect Airbus Organizations" scriptfile="collectors/organization/company.javascript" name="P1467882024931_1" startingpoint="C1467882072030">
+		<Component name="C1467882072030" type="discoverysource" x="392" y="43" w="200" h="64" title="company">
+			<Discovery file="/discovery/organization/company.discovery"/>
+		</Component>
+		<Component name="C1467882108765" type="organisation" x="392" y="209" w="200" h="64" title="Organization">
+			<Organisation code="company_uid">
+				<Attribute name="displayname" attribute="company_name"/>
+				<Attribute name="organisationType" attribute="_organizationtype"/>
+				<Attribute name="shortname" attribute="company_uid"/>
+			</Organisation>
+		</Component>
+		<Link name="L1467885565557" source="C1467882072030" target="C1467882108765" priority="1"/>
+	</Definition>
+	<Configuration default="noname">
+		<Values name="noname" configuration="noname"/>
+	</Configuration>
+</Provisioning>

@@ -1,0 +1,7 @@
+Combo {
+	label: <template:variablelabel/>
+	variable: <template:taskvariablename/>
+	options: Static {
+		<template:staticlistelements/>
+	}
+}

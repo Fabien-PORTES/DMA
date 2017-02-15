@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bwfs_aclsbygroup" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="group" displayname="acls by group" notes="">
+	<ViewParam name="recorduid" displayname="recorduid"/>
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1444116568109_335"/>
+	<ViewAttribute name="A1444116514761_326" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1444116519286_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1444116515556_327" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1444116526219_0" reference="uid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1444116535995_330" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="aclgroup">
+		<ViewJoin name="J1444116552746_331" prefix="permission" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="permission">
+			<ViewJoin name="J1444116558292_332" prefix="application" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+				<ViewAttribute name="A1444116583684_339" attribute="code" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1444116584665_340" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1444116585472_341" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1444116590588_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="Filesystem"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+				<ViewAttribute name="A1444119101148_347" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+				<ViewAttribute name="A1444119101956_348" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1444116575638_336" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1444116576474_337" attribute="code" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1444116577301_338" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1444119098736_346" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1444116565707_333" attribute="action" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444116566564_334" attribute="negative" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1444116568109_335" attribute="order" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

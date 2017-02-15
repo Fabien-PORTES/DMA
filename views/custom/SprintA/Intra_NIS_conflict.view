@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="Intra_NIS_conflict" errorifempty="false" distinct="false" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="controllogv2" displayname="Intra_NIS_conflict" notes="">
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1478685365748_37025" attribute="controldisplayname" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1478685383616_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="Intra_NIS_conflict"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewJoin name="J1478685393158_37352" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="controldiscrepancy">
+		<ViewJoin name="J1478709100417_92445" prefix="NIS_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="account">
+			<ViewAttribute name="A1478709104614_92446" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1478709110896_92447" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewJoin name="J1478710499968_92493" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+				<ViewAttribute name="A1478710524460_92494" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+			<ViewAttribute name="A1478786400758_743" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1483543349280_456" attribute="login" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

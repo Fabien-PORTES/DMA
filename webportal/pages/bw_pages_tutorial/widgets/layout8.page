@@ -1,0 +1,13 @@
+layout8 = Page {
+	title:'Layouting with button groups'
+	
+	
+	ButtonGroup {
+		align:Left
+		Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+		Button {actions:Message 'hello' text:'hello' layout:Layout{grab:horizontal True vertical True}}
+	}
+}
+

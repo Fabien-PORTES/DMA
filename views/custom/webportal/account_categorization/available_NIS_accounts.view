@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="available_NIS_accounts" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="available_NIS_accounts" notes="" begindate="" enddate="">
+	<ViewParam name="account_uids" displayname="account_uids"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1486463680854_1649" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="repository">
+		<ViewAttribute name="A1486992065930_436" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486992068946_437" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1486463696387_1652" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486463697500_1653" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486464660378_0" reference="account_uids" operation="notIn" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486463698809_1654" attribute="login" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486463699959_1655" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486463703155_1656" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="1486464142581_1659" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486992075330_438" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486992078522_439" attribute="username" removedfromprojection="false" globalfilter="false"/>
+</View>

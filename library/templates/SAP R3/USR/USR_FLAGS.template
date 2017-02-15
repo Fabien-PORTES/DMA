@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343318440684" title="Various Flags for Authorization Programs " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A8810572151543490195" attribute="flag" column="FLAG" type="String" multivalued="false" persistent="false" description="Flag for various authorization programs"/>
+		<Attribute name="A1288203409529580473" attribute="value" column="VALUE" type="String" multivalued="false" persistent="false" description="Value of flag for use in various authorization programs"/>
+		<Attribute name="A8904862953846258632" attribute="text" column="TEXT" type="String" multivalued="false" persistent="false" description="Texts in user master/authorizations"/>
+	</Attributes>
+</Discovery>

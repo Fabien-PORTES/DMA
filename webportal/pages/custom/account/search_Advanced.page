@@ -1,0 +1,642 @@
+/* Import other pages here */
+import "/webportal/pages/resources/concepts_nls.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/resources/pages_nls.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/resources/pickers.page"
+import "/webportal/pages/custom/account/details.page"
+/* Nationalized labels here */
+
+search_Advanced = Page {
+	title: $accountNisSearch.titleAdvanced
+	tags: "DMA_homepage", "DMA_search" priority 200
+	icon: "16/audit/account_16.png"
+	large-icon: "48/red/account.png"
+	/* Parameters here */
+
+	/* Variables here */
+	selectedIsReconciled = Variable {
+		type: Boolean
+	}
+	selectedPasswordLocked = Variable {
+		type: Boolean
+	}
+	
+	selectedPasswordCracked = Variable {
+		type: Boolean
+	}
+	
+	selectedPasswordNotRequired = Variable {
+		type: Boolean
+	}
+	
+	loginSearch = Variable {
+		type: String
+		}
+	gidSearch = Variable {
+		type: String
+		}
+	
+	repositorySearch = Variable {
+		type: String
+		multivalued: True
+		}
+	samaccontnameSearch = Variable {
+		type: String
+	}
+	uidNumberSearch = Variable {
+		type: String
+	}
+	
+	reconruleSearch = Variable {
+		type: String
+	}
+	
+	GECOSSearch = Variable {
+		type: String
+	}
+	FullNameSearch = Variable {
+		type: String
+	}
+	FirstNameSearch = Variable {
+		type: String
+	}
+	SurNameSearch = Variable {
+		type: String
+	}
+	categorySearch = Variable {
+		type: String
+	}
+	typeSearch = Variable {
+		type: String
+	}
+	statusNIS_Search = Variable {
+		type: String
+	}
+	
+	
+	selectedAccountUid = Variable {
+		type: String
+	}
+
+	/* Datasets and records here */
+	viewDataset = Dataset {
+		view: accountNIS with selectedIsReconciled to isReconciled, loginSearch to login, repositorySearch to repository, gidSearch to gid_NIS,
+		 samaccontnameSearch to custom8_sam, uidNumberSearch to custom4, reconruleSearch to recon_displayname,
+		 GECOSSearch to custom9, FullNameSearch to ac_fullname, FirstNameSearch to ac_givenname, SurNameSearch to ac_surname,
+		 categorySearch to ticket_Category, typeSearch to type, statusNIS_Search to disabled
+	}
+	
+	select_accountNIS_Repository = Dataset {
+		view: accountNIS_Repository
+	}
+	select_accountNIS_Recon = Dataset {
+		view: accountNIS_Recon
+	}
+	select_accountNIS_Type = Dataset {
+		view: accountNIS_Type
+	}
+	select_ticket_category = Dataset {
+		view: ticket_category
+	}
+	select_account_Status = Dataset {
+		view: account_Status
+	}
+	
+	
+	/* Page content */
+	Splitter {
+		disposition: Vertical
+		size: 25%
+			Grid {
+				columns: GridColumn { fill: True align: leading}
+				 GridRow {
+				 //LIGNE 1
+					GridCell {
+				 		span: 1
+						Edit {
+						variable: loginSearch
+						label: $accountNISAttributes.Login
+						}
+					}
+					GridCell {
+				 		span: 1
+						Combo {
+							options: Dynamic {
+								data:select_accountNIS_Repository
+								text:Current displayname
+								value: Current displayname
+							}
+							allow-none:True
+							variable: repositorySearch
+							label: $accountNISAttributes.repository
+							}
+					}
+					GridCell {
+				 		span: 1
+						Edit {
+						variable: uidNumberSearch
+						match: '[\\d%\\-\\_]+'
+						label: $accountNISAttributes.custom4
+						}
+					}
+					GridCell {
+				 		span: 1
+						Edit {
+						variable: gidSearch
+						match: '[\\d%\\-\\_]+'
+						label: $accountNISAttributes.guid
+						}
+					}
+
+				}
+				GridRow {
+				//LIGNE 2
+					GridCell {
+				 		span: 1
+						Checkbox {
+						variable: selectedIsReconciled 
+						label: "Accounts are reconciled"
+						}
+					}
+					GridCell {
+				 		span: 2
+						Combo {
+							options: Dynamic {
+								data:select_accountNIS_Recon
+								text:Current description
+								value: Current description
+							}
+							allow-none:True
+							modify-event: Set True to selectedIsReconciled 
+							variable: reconruleSearch
+							label: $accountNISAttributes.recon.displayname
+							}
+					}
+				}
+				GridRow {
+				//LIGNE 3
+					GridCell {
+				 		span: 1
+						Edit {
+						variable: GECOSSearch
+						label: $accountNISAttributes.custom9
+						}
+					}
+					GridCell {
+				 		span: 1
+						Edit {
+						variable: FullNameSearch
+						label: $accountNISAttributes.username
+						}
+					}
+					GridCell {
+				 		span: 1
+						Edit {
+						variable: FirstNameSearch
+						label: $accountNISAttributes.givenname
+						}
+					}
+					GridCell {
+				 		span: 1
+						Edit {
+						variable: SurNameSearch
+						label: $accountNISAttributes.surname
+						}
+					}
+					
+				}
+				GridRow {
+					//LIGNE 4
+					GridCell {
+				 		span: 1
+						Combo {
+							options: Dynamic {
+								data:select_accountNIS_Type
+								text:Current managerdata
+								value: Current managerdata
+							}
+							allow-none:True
+							variable: typeSearch
+							label: $accountNISAttributes.manager
+							}
+					}
+					GridCell {
+				 		span: 1
+						Combo {
+							options: Dynamic {
+								data:select_account_Status
+								text:Current disabled
+								value: Current disabled
+							}
+							allow-none:True
+							variable: statusNIS_Search
+							label: $accountNISAttributes.disabled
+							}
+					}
+					
+				}
+				GridRow {
+					//LIGNE 5
+					GridCell {
+				 		span: 2
+						Combo {
+							options: Dynamic {
+								data:select_ticket_category
+								text:Current custom1
+								value: Current custom1
+							}
+							allow-none:True
+							variable: categorySearch
+							label: $ticketReviewAttributes.custom1
+							}
+					}
+				GridCell {
+				 		span: 1
+						Edit {
+						variable: samaccontnameSearch
+						label: $identityAdAttributesPref.custom8
+						}
+					}
+				}
+				GridRow{
+					GridCell {
+				 		span: 1
+						Checkbox {
+						variable: selectedPasswordLocked 
+						label: "Password is locked"
+						}
+					}
+					GridCell {
+				 		span: 1
+						Checkbox {
+						variable: selectedPasswordCracked 
+						label: "Password is cracked"
+						}
+					}
+					GridCell {
+				 		span: 1
+						Checkbox {
+						variable: selectedPasswordNotRequired 
+						label: "Password is not Required"
+						}
+					}
+				}
+				
+			}
+			
+//		}
+	Group {
+		PaginatedTable {
+			page-size:50
+			data: viewDataset 
+			show-filter: True
+			//show-count: True
+			configurable:True
+			persist-configuration:True
+			hide-header: False
+			layout: Layout {
+				grab: horizontal True vertical True
+			}
+			double-click: GoTo Page accountNISDetailsPage with selectedAccountUid to paramAccountUid 
+			Column {
+						column: uid
+						hidden: True
+						selection: selectedAccountUid
+					}
+					Column {
+						column: identifier
+						header: $accountNISAttributesPref.hrcode
+						width: 100%
+						
+						initially-masked: True
+					}
+					Column {
+						column: login
+						header: $accountNISAttributesPref.Login
+						width: 100%
+						sortable:True
+						initially-masked: False
+						filterable:True
+					}
+					Column {
+						column: repository_displayname
+						header: $accountNISAttributesPref.repository
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom4
+						header: $accountNISAttributesPref.custom4
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: guid
+						header: $accountNISAttributesPref.guid
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: custom9
+						header: $accountNISAttributesPref.custom9
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: username
+						header: $accountNISAttributesPref.username
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: lastlogindate
+						header: $account.lastlogindate
+						width: 100%
+						
+						initially-masked: True
+					}
+					
+					Column {
+						column: identity_hrcode
+						header: $identityAdAttributesPref.hrcode
+						width: 100%
+						initially-masked: True
+					}
+					Column {
+						column: identity_fullname
+						header: $identityAdAttributesPref.FullName
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: identity_custom8
+						header: $identityAdAttributesPref.custom8
+						width: 100%
+						sortable:True
+						initially-masked: False
+					}
+					Column {
+						column: givenname
+						header: $accountNISAttributesPref.givenname
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: surname
+						header: $accountNISAttributesPref.surname
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: employeenumber
+						header: $accountNISAttributesPref.employeeNumber
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: mail
+						header: $accountNISAttributesPref.mail
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: passwordlastsetdate
+						header: $account.passwordlastsetdate
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: expiredate
+						header: $account.expiredate
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: nextpwdchangedate
+						header: $account.nextpwdchangedate
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: managerdata
+						header: $account.managerdata
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: disabled
+						header: $account.disabled
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: locked
+						header: $account.locked
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: logincount
+						header: $account.logincount
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: badpasswordcount
+						header: $account.badpasswordcount
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: passwordnotrequired
+						header: $account.passwordnotrequired
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: passwordcantchange
+						header: $account.passwordcantchange
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: notnormalaccount
+						header: $account.notnormalaccount
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: dontexpirepassword
+						header: $account.dontexpirepassword
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: passwordexpired
+						header: $account.passwordexpired
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: smartcardrequired
+						header: $account.smartcardrequired
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: groupchanged
+						header: $account.groupchanged
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: permissionchanged
+						header: $account.permissionchanged
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: recon_noownercode
+						header: $preconciliation.noownercode
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: recon_reconciliationdate
+						header: $preconciliation.reconciliationdate
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: recon_description
+						header: $reconciliation.description
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: recon_comment
+						header: $preconciliation.comment
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: recon_reliability
+						header: $preconciliation.reliability
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: recon_rulename
+						header: $preconciliation.rulename
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: recon_leavedate
+						header: $preconciliation.leavedate
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: identity_givenname
+						header: $pidentity.givenname
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: identity_surname
+						header: $pidentity.surname
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					
+					Column {
+						column: identity_mail
+						header: $pidentity.mail
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: identity_phone
+						header: $pidentity.phone
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: identity_mobile
+						header: $pidentity.mobile
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: identity_arrivaldate
+						header: $pidentity.arrivaldate
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: identity_departuredate
+						header: $pidentity.departuredate
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: identity_active
+						header: $pidentity.active
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+					Column {
+						column: identity_internal
+						header: $pidentity.internal
+						width: 100%
+						sortable:True
+						initially-masked: True
+					}
+		}
+
+	}
+	}
+}

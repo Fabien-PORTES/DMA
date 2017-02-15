@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_unassignedpermissions" operator="and" query="permission" displayname="Unassigned Permissions" version="5">
+	<RequestJoin name="J1331845409803_221" operator="and" countOperator="exact" countNumber1="0" countNumber2="0" join="right">
+	</RequestJoin>
+</Request>

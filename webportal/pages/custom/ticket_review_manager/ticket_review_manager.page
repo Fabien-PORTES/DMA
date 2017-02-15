@@ -1,0 +1,194 @@
+/* Import other pages here */
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/custom/account_categorisation_ticket_details/account_categorisation_ticket_details.page"
+/* Nationalized labels here */
+
+
+ticket_review_manager = Page {
+	title: $ticket_review_managerNLS.title
+	tags: "DMA_homepage"
+	icon: "16/red/asset.png"
+	large-icon: "48/audit/asset_48.png" 
+	/* Parameters here */
+	// Search Definition Here
+	/* Variables here */
+	
+	selectedAccountUid = Variable {
+	type:String
+	}
+	
+	/* Datasets and records here */
+	viewDataset = Dataset {
+		view: ticket_review_manager_informations
+	}
+	
+	
+	/* Page content */
+	Group {
+		Table {
+			data: viewDataset 
+			show-filter: True
+			hide-header: False
+			double-click: GoTo Page details_Ticket_Review with selectedAccountUid to paramAccountUid
+			layout: Layout {
+				grab: horizontal True vertical True
+			}
+			
+			Column {
+				column: old_uid
+				selection:selectedAccountUid
+				hidden:True
+			
+			}
+			Column {
+				column: actor_enddate
+				header: $ticket_review_managerNLS.viewtable.actor_enddate
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_status
+				header: $ticket_review_managerNLS.viewtable.review_status
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_comment
+				header: $ticket_review_managerNLS.viewtable.review_comment
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_categorization
+				header: $ticket_review_managerNLS.viewtable.review_categorization
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_custom2
+				header: $ticket_review_managerNLS.viewtable.review_custom2
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_desired_samaccountname
+				header: $ticket_review_managerNLS.viewtable.review_desired_samaccountname
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_desired_GECOS
+				header: $ticket_review_managerNLS.viewtable.review_desired_gecos
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_desired_uid
+				header: $ticket_review_managerNLS.viewtable.review_desired_uid
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_desired_uid_number
+				header: $ticket_review_managerNLS.viewtable.review_desired_uid_number
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+		}
+	}
+	Group {
+		Table {
+			data: viewDataset 
+			show-filter: True
+			hide-header: False
+			double-click: GoTo Page details_Ticket_Review with selectedAccountUid to paramAccountUid
+			layout: Layout {
+				grab: horizontal True vertical True
+			}
+			Column {
+				column: old_uid
+				selection:selectedAccountUid
+				hidden:True
+			}
+			Column {
+				column: actor_actorfullname
+				header: $ticket_review_managerNLS.viewtable.actor_actorfullname
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: actor_enddate
+				header: $ticket_review_managerNLS.viewtable.actor_enddate
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_status
+				header: $ticket_review_managerNLS.viewtable.review_status
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_comment
+				header: $ticket_review_managerNLS.viewtable.review_comment
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_categorization
+				header: $ticket_review_managerNLS.viewtable.review_categorization
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_custom2
+				header: $ticket_review_managerNLS.viewtable.review_custom2
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_desired_samaccountname
+				header: $ticket_review_managerNLS.viewtable.review_desired_samaccountname
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_desired_GECOS
+				header: $ticket_review_managerNLS.viewtable.review_desired_gecos
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_desired_uid
+				header: $ticket_review_managerNLS.viewtable.review_desired_uid
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+			Column {
+				column: review_desired_uid_number
+				header: $ticket_review_managerNLS.viewtable.review_desired_uid_number
+				sortable: True
+				filterable: True
+				width: 10%
+			}
+		}	
+	}	
+}

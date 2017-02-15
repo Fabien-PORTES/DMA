@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="accountsnbperm" distinct="true" concept="account" displayname="# of permissions by account" notes="">
+	<ViewParam name="repositoryrecorduid" displayname="repository record uid"/>
+	<ViewAttribute name="A1321964543765_2" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1321964552303_3" attribute="login" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1321964559623_4" attribute="repositorycode" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1321964563122_5" attribute="givenname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1321964564319_6" attribute="surname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1321964565337_7" attribute="username" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1321964568992_8" attribute="mail" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1321964630617_15" kind="inner" join="permissionright">
+		<ViewAttribute name="A1321964659701_19" attribute="recorduid" alias="nbpermission" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false"/>
+		<ViewJoin name="J1321964640141_16" kind="inner" join="application">
+			<ViewAttribute name="A1321964644523_17" attribute="applicationtype" operator="or" removedfromprojection="true">
+				<ViewAttributeFilter name="F1321964649402_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="Profile"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1321964573944_9" attribute="disabled" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1321964576946_0" operation="isNull" ignoreifempty="false"/>
+		<ViewAttributeFilter name="F1321964579759_1" operation="isFalse" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1321964789679_21" attribute="repositoryrecorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1321964825244_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+</View>

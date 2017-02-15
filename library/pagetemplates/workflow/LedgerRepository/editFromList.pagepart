@@ -1,0 +1,9 @@
+Text {
+	label: <template:variablelabel/>
+	value: <template:variablerecord/>.displayname
+	mixins: workflowTextWithCommandMixin
+	commands: Command { 
+		actions: Dialog repositoryPicker(<template:taskvariablevaluelist/> to inUidList,<template:taskvariablename/> from outUid)
+		icon: "16/audit/repository_16.png"
+	}
+}

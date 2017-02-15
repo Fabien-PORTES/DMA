@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343308635311" title="Assign user name address key " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A8216266923573431863" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client"/>
+		<Attribute name="A1610304291081446444" attribute="bname" column="BNAME" type="String" multivalued="false" persistent="false" description="User Name in User Master Record"/>
+		<Attribute name="A2688348408841690870" attribute="persnumber" column="PERSNUMBER" type="String" multivalued="false" persistent="false" description="Person number"/>
+		<Attribute name="A8588292186074834062" attribute="addrnumber" column="ADDRNUMBER" type="String" multivalued="false" persistent="false" description="Address number"/>
+		<Attribute name="A2202723331169199679" attribute="kostl" column="KOSTL" type="String" multivalued="false" persistent="false" description="Cost center"/>
+		<Attribute name="A2886133541164323125" attribute="start_menu" column="START_MENU" type="String" multivalued="false" persistent="false" description="Start menu"/>
+		<Attribute name="A8156878398030704583" attribute="idadtype" column="IDADTYPE" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5324745628383476242" attribute="bpperson" column="BPPERSON" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3759403606295900772" attribute="organization" column="ORGANIZATION" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2536960890573475392" attribute="responsible" column="RESPONSIBLE" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1343308685921" attribute="mandt" checktype="mandatory"/>
+	</Checks>
+</Discovery>

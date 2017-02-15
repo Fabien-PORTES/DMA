@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="NIS_search_with_param_domains" prefix="repository_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="repository" displayname="NIS_search_with_param_domains">
+	<ViewAttribute name="A1485273579990_24319" attribute="repositorytype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1485273582294_0" operation="eq" ignoreifempty="false">
+			<Value name="0" data="NIS"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+	<ViewAttribute name="A1485273599885_24322" attribute="code" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485276390182_24348" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485276408989_24349" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+</View>

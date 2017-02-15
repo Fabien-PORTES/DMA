@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1473945326881">
+	<Source file="{config.importfiles}/Extracts_AMC/PROD/ALIR/1U40_AMC_DATA_ALIR.csv" type="CSV" separator=";" textseparator="&quot;" encoding="ISO-8859-1"/>
+	<Attributes hasheader="true">
+		<Attribute name="A1922603069594446431" attribute="external_uid" column="External UID" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7657333691489833791" attribute="unique_key" column="Unique Key" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1227623021876854458" attribute="category" column="Category" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A8566739467627413811" attribute="identity_state" column="Identity State" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3963789659299174532" attribute="login" column="Login" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3161524465737194132" attribute="first_name_usual" column="First Name Usual" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3042027237742972739" attribute="last_name_usual" column="Last Name Usual" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A7719562180036594975" attribute="contact_email" column="Contact Email" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A8261485143105647816" attribute="company_uid" column="Company UID" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1569766756714087201" attribute="company_name" column="Company name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A436740115278699238" attribute="department" column="Department" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A5279523502697364337" attribute="related_department" column="Related Department" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A1018474239244460323" attribute="display_name" column="Display Name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A3984778211044908353" attribute="addomain" column="ADDomain" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A734063642801439787" attribute="airbus_mail" column="Airbus Mail" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2265944170471430119" attribute="mobile_phone" column="Mobile Phone" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A4347936481242179491" attribute="principal_fixed_telephone" column="Principal Fixed Telephone" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A2062704777858677391" attribute="second_name" column="Second Name" type="String" multivalued="false" persistent="false"/>
+		<Attribute name="A8938562003001186510" attribute="secondary_fixed_telephone" column="Secondary Fixed Telephone" type="String" multivalued="false" persistent="false"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1474014760089" attribute="unique_key" checktype="mandatory" event="unique_key is mandatory"/>
+		<Check name="U1474014794784" attribute="category" checktype="mandatory" event="category is mandatory"/>
+		<Check name="U1474014807530" attribute="identity_state" checktype="mandatory" event="identity_state is mandatory"/>
+		<Check name="U1474634940495" attribute="last_name_usual" checktype="mandatory" event="last name is mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1473945747160" action="add" attribute="_department"/>
+		<Action name="U1473945819136" action="multireplace" attribute="_department" newvalue="{dataset.department.get()}" condition="(dataset.equals(&apos;category&apos;, &apos;employee&apos;, false, true))"/>
+		<Action name="U1473945886886" action="default" attribute="_department" newvalue="{dataset.related_department.get()}" condition="(dataset.equals(&apos;category&apos;, &apos;third party&apos;, false, true))"/>
+		<Action name="U1477562759125" action="default" attribute="_department" newvalue="UNKNOWN"/>
+		<Action name="U1473947053847" action="add" attribute="_internal" type="Boolean" newvalue="true" condition="(dataset.equals(&apos;category&apos;, &apos;employee&apos;, false, true))" description="true if category=Employee"/>
+		<Action name="U1473947112184" action="default" attribute="_internal" newvalue="false" condition="(dataset.equals(&apos;category&apos;, &apos;third party&apos;, false, true))"/>
+		<Action name="U1467896732135" action="add" attribute="_lastname" newvalue="{dataset.last_name_usual.get().toUpperCase()}" description="last_name_usual to uppercase"/>
+		<Action name="U1467896941717" action="add" attribute="_firstname" newvalue="{dataset.first_name_usual.get().charAt(0).toUpperCase()+ dataset.first_name_usual.get().slice(1).toLowerCase()}" description=""/>
+		<Action name="U1467897074733" action="add" attribute="_fullname" newvalue="{dataset._lastname.get() + &apos; &apos; + dataset._firstname.get()}" description="lastname givenname"/>
+		<Action name="U1467983106556" action="reference" attribute="category" newvalue="Job" oldname="category"/>
+		<Action name="U1473948050041" action="default" attribute="login" newvalue="{dataset.unique_key.get()}"/>
+		<Action name="U1467896635681" action="add" attribute="_ALIR_matricule" newvalue="{dataset.login.get().toUpperCase()}" description="long login attribute in upper case"/>
+		<Action name="U1475239502217" action="add" attribute="_EMPLOYEE" newvalue="Employee"/>
+		<Action name="U1481099979675" action="add" attribute="_ALIR_Unique_Key" newvalue="{dataset.unique_key.get().toUpperCase()}"/>
+		<Action name="U1481100024961" action="add" attribute="_ALIR_FULLNAME" newvalue="{dataset._fullname.get().toUpperCase()}"/>
+	</Actions>
+</Discovery>

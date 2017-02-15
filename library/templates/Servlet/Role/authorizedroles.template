@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="X1320418039069" title="web.xml roles with access granted to the application" description="The web.xml file defines each servlet and JSP page within a Web Application. It also enumerates enterprise beans referenced in the Web application.&#xA;The file goes into the WEB-INF directory under the document root of a web application. ">
+	<Source type="XML" itempath="/web-app/security-constraint/auth-constraint"/>
+	<Attributes>
+		<Attribute name="A1259693408375773744" attribute="role_name" column="role-name" type="String" multivalued="false" hint="permissioncode,permissiondisplayname" description="Valid role name authorized to access to this application. This role name can be mapped to a permission"/>
+	</Attributes>
+</Discovery>

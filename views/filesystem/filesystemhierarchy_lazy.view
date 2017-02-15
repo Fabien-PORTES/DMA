@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_filesystemhierarchy_lazy" prefix="root_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="permission" displayname="br_filesystemhierarchy_lazy" notes="">
+	<ViewParam name="rootuid" displayname="rootuid"/>
+	<ViewParam name="rootrecorduid" displayname="rootrecorduid"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1426071002368_389" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1426072450310_0" reference="rootrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1426071004088_390" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1426072429218_0" reference="rootuid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1427893805246_980" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="childpermission">
+		<ViewJoin name="J1426071167674_405" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountright">
+			<ViewAttribute name="1427893814506_984" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1426071218726_0" operation="isNull" ignoreifempty="false"/>
+				<ViewAttributeFilter name="F1426071227444_1" operation="isFalse" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewAttribute name="1427893814506_985" attribute="recorduid" alias="nbaccounts" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1426071302874_410" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="accountright">
+			<ViewAttribute name="1427893824568_990" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+				<ViewAttributeFilter name="F1426071218726_0" operation="isNull" ignoreifempty="false"/>
+				<ViewAttributeFilter name="F1426071227444_1" operation="isFalse" ignoreifempty="false"/>
+			</ViewAttribute>
+			<ViewJoin name="J1426071322143_413" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+				<ViewAttribute name="1427893824568_991" attribute="recorduid" alias="nbidentities" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewJoin name="J1426071590471_442" prefix="aplication_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="application">
+			<ViewAttribute name="1427893829018_998" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false">
+				<ViewAttributeFilter name="F1426071605890_0" operation="eq" ignoreifempty="false">
+					<Value name="0" data="Filesystem"/>
+				</ViewAttributeFilter>
+			</ViewAttribute>
+			<ViewAttribute name="1427893829018_999" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1427893829018_1000" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1427893829018_1001" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="1427893829018_1002" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewAttribute name="1427893869851_1008" attribute="permissiontype" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1427893869852_1009" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1427893869853_1010" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1427893869854_1011" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="1427893869855_1012" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

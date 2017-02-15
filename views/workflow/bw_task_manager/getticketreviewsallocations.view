@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_getticketreviewsallocations" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketreview" displayname="get ticket reviews" notes="">
+	<ViewParam name="ticketactionrecorduid" displayname="ticketactionrecorduid"/>
+	<ViewSort name="sort" attribute1="A1475593744827_2082"/>
+	<ViewAttribute name="A1475593744827_2082" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2083" attribute="status" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2084" attribute="comment" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2085" attribute="custom1" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2086" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2087" attribute="custom3" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2088" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2089" attribute="custom5" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2090" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2091" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2092" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2093" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2094" attribute="custom10" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2095" attribute="custom11" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2096" attribute="custom12" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2097" attribute="custom13" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2098" attribute="custom14" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2099" attribute="custom15" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2100" attribute="custom16" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2101" attribute="custom17" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2102" attribute="custom18" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475593744827_2103" attribute="custom19" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1475593750222_2104" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketaction">
+		<ViewAttribute name="A1475593758886_2105" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1475593760830_0" reference="ticketactionrecorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewJoin name="J1475648607750_1217" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="allocations">
+		<ViewAttribute name="A1475648613481_1218" attribute="jobtitlecode" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1475648614319_1219" attribute="jobtitledisplayname" removedfromprojection="false" globalfilter="false"/>
+		<ViewJoin name="J1475648615547_1220" prefix="organisation" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="organisation">
+			<ViewAttribute name="A1475648621775_1221" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1475648622283_1222" attribute="code" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1475648623077_1223" attribute="shortname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1475648623678_1224" attribute="displayname" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1475648624801_1225" attribute="organisationtypecode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1475648625503_1226" attribute="organisationtypedisplayname" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+		<ViewJoin name="J1475648635219_1227" prefix="identity" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identity">
+			<ViewAttribute name="A1475648640295_1228" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1475648641009_1229" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+			<ViewAttribute name="A1475648641983_1230" attribute="fullname" removedfromprojection="false" globalfilter="false"/>
+		</ViewJoin>
+	</ViewJoin>
+</View>

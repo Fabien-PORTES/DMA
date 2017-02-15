@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_organisationDetail_applications" prefix="application_" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="br_organisationDetail_applications" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1378391788179_635"/>
+	<ViewJoin name="J1378391728148_627" kind="inner" identitysecure="false" join="account">
+		<ViewJoin name="J1378391735964_628" kind="inner" identitysecure="false" join="identityreconciliation">
+			<ViewJoin name="J1378391762596_630" kind="inner" identitysecure="false" join="uporganisation">
+				<ViewAttribute name="A1378391771852_631" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1378391774524_0" reference="uid" operation="eq" ignoreifempty="false"/>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+	</ViewJoin>
+	<ViewAttribute name="A1378391785036_633" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378391786572_634" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378391788179_635" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378391790195_636" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1378391792157_637" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

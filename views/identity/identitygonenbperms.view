@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_identitygonenbperms" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" concept="identity" displayname="# of permissions for a given identity who left" notes="">
+	<ViewParam name="recorduid" displayname="Record uid"/>
+	<ViewParam name="today" displayname="today" defaultvalue="{(new Date()).toLDAPString()}"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1303303496080_813" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1303303536721_0" reference="recorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewJoin name="J1303303503680_814" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="accountreconciliation">
+		<ViewJoin name="J1303303506440_815" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="right">
+			<ViewJoin name="J1303303508736_816" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="permission">
+				<ViewAttribute name="A1303303512000_817" attribute="recorduid" alias="nbperms" operator="or" aggregate="COUNT DISTINCT" removedfromprojection="false" globalfilter="false"/>
+				<ViewJoin name="J1304087172268_13410" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" join="application">
+					<ViewAttribute name="A1316333633780_3811" attribute="applicationtype" operator="or" removedfromprojection="true" globalfilter="false">
+						<ViewAttributeFilter name="F1316333638274_0" operation="eq" ignoreifempty="false">
+							<Value name="0" data="Profile"/>
+						</ViewAttributeFilter>
+					</ViewAttribute>
+				</ViewJoin>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="1382688756377_5542" attribute="disabled" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1382688617400_0" operation="isNull" ignoreifempty="false"/>
+			<ViewAttributeFilter name="F1382688620486_1" operation="isFalse" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1422977121002_849" attribute="departuredate" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1422977124979_0" reference="today" operation="lt" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

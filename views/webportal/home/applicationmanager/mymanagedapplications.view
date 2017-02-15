@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_mymanagedapplications" errorifempty="false" distinct="true" identitysecure="false" concept="application" displayname="My managed applications" notes="">
+	<ViewParam name="uid" displayname="uid"/>
+	<ViewSort name="sort" attribute1="A1381155811035_794" direction1="ASC"/>
+	<ViewJoin name="J1381155800237_791" kind="inner" identitysecure="false" join="manager">
+		<ViewAttribute name="A1381155815149_800" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1381155818867_0" reference="uid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1381155811035_792" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1381155811035_793" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1381155811035_794" attribute="code" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1381155811035_795" attribute="displayname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1381155811035_796" attribute="applicationtype" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1381155811035_797" attribute="repositoryrecorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1381155811035_798" attribute="importaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1381155811035_799" attribute="deletedaction" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1343318526912" title="Personal User Settings / Without Transport " description=" ">
+	<Source type="CSV" separator="\t" encoding="UTF-16LE" skiplines="3"/>
+	<Attributes hasheader="true">
+		<Attribute name="A6469733488355749018" attribute="mandt" column="MANDT" type="String" multivalued="false" persistent="false" description="Client ID of Current User"/>
+		<Attribute name="A355606829988344082" attribute="uname" column="UNAME" type="String" multivalued="false" persistent="false" description="User Name"/>
+		<Attribute name="A259974341445002783" attribute="id" column="ID" type="String" multivalued="false" persistent="false" description="Name of the user, position, etc."/>
+		<Attribute name="A3063547958542219581" attribute="change_dat" column="CHANGE_DAT" type="String" multivalued="false" persistent="false" description="Date of menu generation"/>
+		<Attribute name="A9035869721964422545" attribute="change_tim" column="CHANGE_TIM" type="String" multivalued="false" persistent="false" description="Time when the menu was generated last"/>
+		<Attribute name="A6284648269317252485" attribute="value" column="VALUE" type="String" multivalued="false" persistent="false" description="Extended program name"/>
+	</Attributes>
+	<Format booleanvalues="X"/>
+</Discovery>

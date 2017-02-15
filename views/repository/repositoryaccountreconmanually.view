@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="br_repositoryaccountreconmanually" prefix="account" distinct="true" concept="account" displayname="Accounts reconciliation detail for a given rule on a given repository (manual reconciliation)">
+	<ViewParam name="repositoryrecorduid" displayname="repository record uid"/>
+	<ViewSort name="sort" attribute1="A1322051477545_38" attribute2="A1322051483439_40" attribute3="A1322052007184_49" attribute4="A1322052013251_52"/>
+	<ViewAttribute name="A1322051460647_35" attribute="recorduid" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1322051468797_36" attribute="repositoryrecorduid" operator="or" removedfromprojection="false">
+		<ViewAttributeFilter name="F1322052098601_0" reference="repositoryrecorduid" operation="eq" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1322051476027_37" attribute="identifier" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1322051477545_38" attribute="login" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1322051482023_39" attribute="givenname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1322051483439_40" attribute="surname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1322051487071_41" attribute="username" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1322051489170_42" attribute="mail" operator="or" removedfromprojection="false"/>
+	<ViewJoin name="J1322051932747_43" prefix="recon" kind="inner" join="reconciliation">
+		<ViewJoin name="J1322051935932_44" prefix="identity" kind="inner" join="identity">
+			<ViewAttribute name="A1322052002410_48" attribute="recorduid" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1322052007184_49" attribute="hrcode" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1322052008380_50" attribute="givenname" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1322052009619_51" attribute="surname" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1322052013251_52" attribute="fullname" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1322052014319_53" attribute="mail" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1322052029469_57" attribute="arrivaldate" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1322052030755_58" attribute="departuredate" operator="or" removedfromprojection="false"/>
+			<ViewAttribute name="A1322052031992_59" attribute="internal" operator="or" removedfromprojection="false"/>
+		</ViewJoin>
+		<ViewAttribute name="A1322051979875_45" attribute="rulename" operator="or" removedfromprojection="false">
+			<ViewAttributeFilter name="F1322061610684_0" operation="isNull" ignoreifempty="false"/>
+		</ViewAttribute>
+		<ViewAttribute name="A1322051983707_46" attribute="reconciliationdate" operator="or" removedfromprojection="false"/>
+		<ViewAttribute name="A1322051985095_47" attribute="comment" operator="or" removedfromprojection="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1322052110264_67" attribute="repositorycode" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1322052111500_68" attribute="repositorydisplayname" operator="or" removedfromprojection="false"/>
+	<ViewAttribute name="A1322052556040_69" attribute="disabled" operator="or" removedfromprojection="false"/>
+</View>

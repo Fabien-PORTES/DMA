@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request name="control_accountsownergone" operator="and" query="account" displayname="Accounts whose owner has left the company/organisation" version="2">
+	<RequestJoin name="J1331846053707_248" operator="and" join="identityreconciliation">
+		<RequestCriteria name="C1331846079603_251" criteria="neEmployed">
+		</RequestCriteria>
+	</RequestJoin>
+</Request>
