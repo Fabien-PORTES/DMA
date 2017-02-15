@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="recon_suggest_dialog_suggested_all_identities" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="recon_suggest_dialog_suggested_all_identities" notes="" begindate="" enddate="">
+	<ViewParam name="SAM" displayname="SAMAccountname"/>
+	<ViewParam name="windomain" displayname="windomain"/>
+	<ViewParam name="alirLogin" displayname="ALIR Login"/>
+	<ViewComputedAttribute name="SAM_LOGIN" displayname="SAM or Login" type="String" expression="dataset.custom8.get() == null ? dataset.hrcode.get() : dataset.custom8.get()"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1485333970041_370" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333972365_371" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486644607556_0" reference="alirLogin" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1485333974951_372" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333976039_373" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333986286_374" attribute="internal" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333990691_375" attribute="custom2" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333995871_377" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333998643_378" attribute="custom7" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485334004445_380" attribute="custom13" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485334006075_381" attribute="custom14" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486375741199_1066" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486375742186_1067" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485334002975_379" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486476153291_552" attribute="custom8" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486636214145_0" reference="SAM" operation="ilike" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486638363257_172616" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486638365497_0" reference="windomain" operation="in" ignoreifempty="true"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486644364953_468" attribute="custom11" operator="or" removedfromprojection="false" globalfilter="false"/>
+</View>

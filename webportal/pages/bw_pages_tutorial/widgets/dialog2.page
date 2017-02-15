@@ -1,0 +1,66 @@
+
+dialog2_dialog = Dialog {
+	title:'Identity picker'
+	buttons:[
+		OkButton {
+			disabled:StringPredicate(outSelectedUID) { when IsEmpty then True otherwise False}
+		}
+		CancelButton 
+	]
+	
+	inMylabel = Variable // input parameter
+	outSelectedUID = Variable // output parameter
+	outSelectedHrcode = Variable // output parameter
+	outSelectedFullname = Variable // output parameter
+	
+	identities = Dataset {
+		view:br_identity
+	}
+	
+	Header {
+		value:inMylabel
+	}
+	Table {
+		data:identities
+		layout:Layout {grab:horizontal True vertical True}
+		Column {
+			column:uid
+			hidden:True
+			selection:outSelectedUID
+		}
+		Column {
+			column:hrcode
+			selection:outSelectedHrcode
+		}
+		Column {
+			column:fullname
+			selection:outSelectedFullname
+			width:100%
+		}
+	}
+}
+
+
+dialog2 = Page {
+	title:'A page with a simple identity picker dialog box'
+	
+	uid = Variable
+	hrcode = Variable
+	fullname = Variable
+	
+	Button {
+		text:'Pick an identity'
+		actions:Dialog dialog2_dialog("Please pick an identity" to inMylabel, 
+		                              uid from outSelectedUID, 
+		                              hrcode from outSelectedHrcode, 
+		                              fullname from outSelectedFullname)
+	}
+	Text {
+		label:'hr code'
+		value:hrcode
+	}
+	Text {
+		label:'full name'
+		value:fullname
+	}
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="recon_suggest_dialog_MANUAL_RECONCILIATION_already_present" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="recon_suggest_dialog_MANUAL_RECONCILIATION_already_present" notes="" begindate="" enddate="">
+	<ViewParam name="account_uid" displayname="account_uid">
+		<Value name="0" data="THE182_1485265747620_684446"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1486377625008_1202" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1486377628446_0" reference="account_uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewJoin name="J1486377648812_1205" prefix="ticket_review_" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketreview">
+		<ViewJoin name="J1486377657276_1206" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticketaction">
+			<ViewJoin name="J1486377701562_1208" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="ticket">
+				<ViewAttribute name="A1486377704822_1209" attribute="tickettype" operator="or" removedfromprojection="true" globalfilter="false">
+					<ViewAttributeFilter name="F1486377772278_0" operation="eq" ignoreifempty="false">
+						<Value name="0" data="MANUAL RECONCILIATION"/>
+					</ViewAttributeFilter>
+				</ViewAttribute>
+			</ViewJoin>
+		</ViewJoin>
+		<ViewAttribute name="A1486377814316_1213" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+</View>

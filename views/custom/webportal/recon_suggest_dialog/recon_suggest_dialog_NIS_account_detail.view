@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="recon_suggest_dialog_NIS_account_detail" prefix="account_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="recon_suggest_dialog_NIS_account_detail" notes="" begindate="" enddate="">
+	<ViewParam name="account_uid" displayname="account_uid">
+		<Value name="0" data="THE182_1485265747620_684446"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1485333761200_363" attribute="uid" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1485333800552_0" reference="account_uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1485333776101_364" attribute="username" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333794521_367" attribute="custom9" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333792701_366" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486370595152_816" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486370677435_817" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333779774_365" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485336460678_390" attribute="identifier" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486371292596_898" attribute="login" removedfromprojection="false" globalfilter="false"/>
+</View>

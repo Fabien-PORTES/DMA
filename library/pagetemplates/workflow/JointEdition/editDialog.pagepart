@@ -1,0 +1,17 @@
+<template:jointeditioneditdialog/> = Dialog {
+	title: <template:jointeditioneditdialogtitle/>
+	mixins: workflowDefaultMixin
+	width: 800
+	height: <template:jointeditiondialogheight/>
+	
+	buttons: [
+		OkButton {
+			disabled: <template:jointeditiondialogcompletecondition/>
+		}
+		CancelButton
+	]
+	
+	<template:jointeditiondialogvariables/>
+	<template:jointeditiondialogdatasets/>	
+	<template:jointeditiondialogeditcomponents/>
+}

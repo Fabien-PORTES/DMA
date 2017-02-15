@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="tm_getticketlogfromprocessid" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketlog" displayname="get ticket log from process id" notes="">
+	<ViewParam name="processid" displayname="process id"/>
+	<ViewAttribute name="A1457453508218_6109" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6110" attribute="debugmode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6111" attribute="tickettype" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6112" attribute="ticketnumber" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6113" attribute="timeslotuid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6114" attribute="submissiondate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6115" attribute="submissionday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6116" attribute="closedate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6117" attribute="closeday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6118" attribute="duedate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6119" attribute="dueday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6120" attribute="ticketopen" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6121" attribute="status" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6122" attribute="title" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6123" attribute="description" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6124" attribute="issueruid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6125" attribute="issuerfullname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6126" attribute="priority" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1457453508218_6127" attribute="processinstanceid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1457453514436_0" reference="processid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1457453508218_6128" attribute="externalreference" removedfromprojection="false" globalfilter="false"/>
+</View>

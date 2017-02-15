@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_grabticketslogs" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketlog" displayname="grabticketslogs" notes="" begindate="" enddate="">
+	<ViewParam name="ticketlog" displayname="ticketlog"/>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1475594726235_2196" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="upticket">
+		<ViewAttribute name="A1475594738076_2197" attribute="recorduid" operator="or" removedfromprojection="true" globalfilter="false">
+			<ViewAttributeFilter name="F1475594742214_0" reference="ticketlog" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+	<ViewAttribute name="A1475594739893_2198" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475654997088_1968" attribute="tickettype" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1475654999137_0" operation="ne" ignoreifempty="false">
+			<Value name="0" data="PURGELOG-PURGE"/>
+		</ViewAttributeFilter>
+	</ViewAttribute>
+</View>

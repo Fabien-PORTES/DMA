@@ -1,0 +1,36 @@
+
+default_dialog = Dialog {
+	title:'Default dialog box'
+	
+}
+
+dialog1_dialog = Dialog {
+	title:'Simple dialog box'
+	width:800
+	height:600
+	buttons:[OkButton {
+				actions:Message 'ok!'
+			 }
+			 CancelButton
+			]
+			
+	Text {
+		value:'A simple text...'
+	}
+}
+
+
+dialog1 = Page {
+	title:'A page with a simple dialog box'
+	
+	Button {
+		text:'Show me the default dialog box'
+		actions:Dialog default_dialog
+	}
+
+	Button {
+		text:'Show me a simple dialog box'
+		actions:Dialog dialog1_dialog
+	}
+}
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="accountNIS_Login" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="accountNIS_Login">
+	<ViewAttribute name="A1486375492946_76352" attribute="login" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_getchildticketlogs" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketlog" displayname="get child ticket logs" notes="">
+	<ViewParam name="parentTicketLogRecorduid" displayname="parent ticketlog recorduid"/>
+	<ViewSort name="sort" attribute1="A1475588540426_1973"/>
+	<ViewAttribute name="A1475588540426_1960" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1961" attribute="debugmode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1962" attribute="tickettype" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1963" attribute="ticketnumber" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1964" attribute="timeslotuid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1965" attribute="submissiondate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1966" attribute="submissionday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1967" attribute="closedate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1968" attribute="closeday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1969" attribute="duedate" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1970" attribute="dueday" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1971" attribute="ticketopen" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1972" attribute="status" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1973" attribute="title" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1974" attribute="description" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1975" attribute="issueruid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1976" attribute="issuerfullname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1977" attribute="priority" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1978" attribute="processinstanceid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1979" attribute="externalreference" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1980" attribute="custom1" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1981" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1982" attribute="custom3" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1983" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1984" attribute="custom5" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1985" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1986" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1987" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1988" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1989" attribute="custom10" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1990" attribute="custom11" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1991" attribute="custom12" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1992" attribute="custom13" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1993" attribute="custom14" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1994" attribute="custom15" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1995" attribute="custom16" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1996" attribute="custom17" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1997" attribute="custom18" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475588540426_1998" attribute="custom19" removedfromprojection="false" globalfilter="false"/>
+	<ViewJoin name="J1475588557266_1999" prefix="parent" kind="inner" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="parentticket">
+		<ViewAttribute name="A1475588568050_2000" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false">
+			<ViewAttributeFilter name="F1475588570499_0" reference="parentTicketLogRecorduid" operation="eq" ignoreifempty="false"/>
+		</ViewAttribute>
+	</ViewJoin>
+</View>

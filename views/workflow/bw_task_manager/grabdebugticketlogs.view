@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="bw_grabdebugticketlogs" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="ticketlog" displayname="grabdebugticketlogs">
+	<ViewAttribute name="A1475596347248_2259" attribute="recorduid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1475596348295_2260" attribute="debugmode" operator="or" removedfromprojection="true" globalfilter="false">
+		<ViewAttributeFilter name="F1475596351353_0" operation="isTrue" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

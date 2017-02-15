@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Roles PUBLIC "-//Brainwave//DTD Roles 1.0//EN" "urn:brainwave:igrc:dtds/roles.dtd">
+<Roles version="1" name="br_ticketlogmanager" description="ticketlog manager roles">
+	<Role name="r1475653116156" portalrolename="tlm_auditor" description="technical auditor - can access to the TicketLog manager in readonly mode"/>
+	<Role name="r1475653121510" portalrolename="tlm_funcowner" description="can access to the ticketlog manager and can download compliance reports"/>
+	<Role name="r1475653127721" portalrolename="tlm_developer" description="can access to the ticketlog manager, can download compliance reports and can delete tickets in debug mode"/>
+	<Role name="r1475653132230" portalrolename="tlm_techowner" description="can access to the ticketlog manager, can download compliance reports and can delete any kind of ticket"/>
+</Roles>

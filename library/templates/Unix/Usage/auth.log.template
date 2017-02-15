@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1320328332243" title="/var/log/auth.log user authentication" description="The Authorization Log tracks usage of authorization systems, the mechanisms for authorizing users which prompt for user passwords, such as the Pluggable Authentication Module (PAM) system, the sudo command, remote logins to sshd and so on. The Authorization Log file may be accessed at /var/log/auth.log. This log is useful for learning about user logins and usage of the sudo command. ">
+	<Source type="LINE" encoding="ISO-8859-1" ignoreemptyline="true"/>
+	<Attributes>
+		<Attribute name="A1320328360099" attribute="line" column="line" type="String" multivalued="false" hidden="true"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="yyyy MMM dd HH:mm:ss"/>
+	<Actions>
+		<Action name="U1320328456398" action="consumecount" oldvalue="15" newvalue="1" oldname="line" attribute="datetimetemp" hidden="true"/>
+		<Action name="U1320328489602" action="add" attribute="datetimestring" newvalue="2011 {dataset.datetimetemp.get()}" type="String" hidden="true"/>
+		<Action name="U1320328840267" action="consumesep" oldvalue=" " oldname="line" attribute="computername" description="Computer name on which the session is opened"/>
+		<Action name="U1320328867504" action="consumesep" oldvalue=": " oldname="line" attribute="process" description="Process ID"/>
+		<Action name="U1320328999721" action="validsql" condition="(dataset.line like &apos;Accepted password for%&apos;) OR (dataset.line like &apos;Accepted publickey for%&apos;)"/>
+		<Action name="U1320329034570" action="consumesep" oldvalue="for " oldname="line" attribute="temp1" hidden="true"/>
+		<Action name="U1320329061968" action="consumesep" oldvalue=" from " oldname="line" attribute="login" description="login used to open the session"/>
+		<Action name="U1320329089535" action="consumesep" oldvalue=" port " oldname="line" attribute="ip" description="IP address from which the access is made"/>
+		<Action name="U1320329101853" action="consumesep" oldvalue=" " oldname="line" attribute="port" description="TCP port from which the access is made"/>
+		<Action name="U1320329117712" action="consumesep" oldvalue="," newvalue="true" oldname="line" attribute="protocol" description="Protocol used to access to the computer"/>
+		<Action name="U1320329255755" action="convertdate" oldname="datetimestring" attribute="datetime" type="Date" newvalue="yyyy MMM dd HH:mm:ss" oldvalue="1900 Oct 01 11:10:00" description="Date and time of the access"/>
+		<Action name="U1320331341655" action="add" attribute="isservice" type="Boolean" newvalue="{dataset.login.get().equalsIgnoreCase(&apos;root&apos;)}" description="True if the account login is ROOT"/>
+	</Actions>
+</Discovery>

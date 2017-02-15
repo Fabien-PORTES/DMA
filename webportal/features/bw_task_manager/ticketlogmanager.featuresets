@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FeatureSets PUBLIC "-//Brainwave//DTD FeatureSets 1.0//EN" "urn:brainwave:igrc:dtds/featuresets.dtd">
+<FeatureSets version="1" name="br_ticketlogmanager" description="ticketlog manager">
+	<FeatureSet name="I1475652540410" featureset="tlm_auditor" description="technical auditor - can access to the TicketLog manager in readonly mode" r1475653116156="true"/>
+	<FeatureSet name="I1475652597646" featureset="tlm_funcowner" description="can access to the ticketlog manager and can download compliance reports" r1474919623448="false" r1475653121510="true"/>
+	<FeatureSet name="I1475652620173" featureset="tlm_developer" description="can access to the ticketlog manager, can download compliance reports and can delete tickets in debug mode" r1474919623448="true" r1475653127721="true"/>
+	<FeatureSet name="I1475652648853" featureset="tlm_techowner" description="can access to the ticketlog manager, can download compliance reports and can delete any kind of ticket" r1475653132230="true"/>
+</FeatureSets>

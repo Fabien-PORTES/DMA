@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1321539139053" title="Windows 2008 Security Events : Logons and Logoffs" description="This template parses Windows security events as extracted &#xA;by Microsoft&apos;s PsLogList tool (http://technet.microsoft.com/en-us/sysinternals/bb897544.aspx).&#xA;&#xA;This template is useful if you want to track usages on sensitive servers&#xA;&#xA;Security events are filtered in a way that only logon and logoff events are retreived&#xA;You can extract events locally or remotely&#xA;&#xA;Please read the readme.txt file on the root folder of the template for details on how to generate&#xA;the corresponding CSV file.">
+	<Source type="CSV" separator="," encoding="ISO-8859-15"/>
+	<Attributes hasheader="false">
+		<Attribute name="A1217702764436108191" attribute="event_number" column="1" type="String" multivalued="false" hidden="true"/>
+		<Attribute name="A1217702764433132191" attribute="event_family" column="2" type="String" multivalued="false" hidden="true"/>
+		<Attribute name="A1217702764436165477" attribute="event_source" column="3" type="String" multivalued="false" description="Source of the audit trail"/>
+		<Attribute name="A1217702764436108988" attribute="event_result" column="4" type="String" multivalued="false" description="Result of the audit trail"/>
+		<Attribute name="A1217702764436103699" attribute="server" column="5" type="String" multivalued="false" description="Computer name on which the event occured"/>
+		<Attribute name="A1217702764436177777" attribute="date_time" column="6" type="Date" multivalued="false" description="Date and time when the event occured"/>
+		<Attribute name="A1217702764436102222" attribute="event_id" column="7" type="String" multivalued="false" description="Event ID (see Microsoft documentation for details)"/>
+		<Attribute name="A1217702764436106666" attribute="info" column="8" type="String" multivalued="false" hidden="true"/>
+		<Attribute name="A1255555555436108191" attribute="texte" column="9" type="String" multivalued="false" hidden="true"/>
+	</Attributes>
+	<Format datetype="custom" dateformat="dd/MM/yyyy HH:mm:ss"/>
+	<Checks>
+		<Check name="U1321539368271" attribute="event_number" checktype="regexp" checkvalue="^[0-9]+$"/>
+	</Checks>
+	<Actions>
+		<Action name="U1321539952879" action="validsql" condition="dataset.event_id in (&apos;4624&apos;,&apos;4634&apos;,&apos;4625&apos;)"/>
+		<Action name="U1321540636109" action="add" attribute="event_label" newvalue="{dataset.event_id.get()}" description="Event ID corresponding label"/>
+		<Action name="U1321540659966" action="replace" attribute="event_label" oldvalue="4634" newvalue="An account was logged off"/>
+		<Action name="U1321540676568" action="replace" attribute="event_label" oldvalue="4624" newvalue="An account was successfully logged on"/>
+		<Action name="U1326548799998" action="replace" attribute="event_label" oldvalue="4625" newvalue="An account failed to log on"/>
+		<Action name="U1321541172971" action="add" attribute="description" newvalue="{dataset.texte.get()}" hidden="false" description="Full text description (useful for debugging)"/>
+		<Action name="U1321541295155" action="consumesep" oldvalue=":" oldname="texte" attribute="t1" hidden="true"/>
+		<Action name="U1321541317043" action="consumesep" oldvalue=":" oldname="texte" attribute="t2" hidden="true"/>
+		<Action name="U1321541369953" action="consumesep" oldvalue=":  " oldname="texte" attribute="t3" hidden="true"/>
+		<Action name="U1321541408890" action="consumesep" oldvalue=" " oldname="texte" attribute="account_name" description="Microsoft Windows account name"/>
+		<Action name="U1321541476334" action="consumesep" oldvalue=":  " oldname="texte" attribute="t5" hidden="true"/>
+		<Action name="U1321541499579" action="consumesep" oldvalue=" " oldname="texte" attribute="account_domain" description="Microsoft Windows account domain"/>
+		<Action name="U1321541562014" action="validsql" condition="dataset.account_name not like &apos;%$&apos;"/>
+		<Action name="U1321542400353" action="consumesep" oldvalue=":" oldname="texte" attribute="t6" hidden="true"/>
+		<Action name="U1321542422758" action="consumesep" oldvalue=":   " oldname="texte" attribute="t7" hidden="true"/>
+		<Action name="U1321542473251" action="consumesep" oldvalue=" " oldname="texte" attribute="logon_type" description="This is a valuable piece of information as it tells you HOW the user just logged on: 2 	Interactive (logon at keyboard and screen of system), 3	Network (i.e. connection to shared folder on this computer from elsewhere on network), 4 Batch (i.e. scheduled task), 5	Service (Service startup), 7 Unlock (i.e. unnattended workstation with password protected screen saver), 8 NetworkCleartext (Logon with credentials sent in the clear text. Most often indicates a logon to IIS with &quot;basic authentication&quot;) See this article for more information, 9 NewCredentials such as with RunAs or mapping a network drive with alternate credentials.  This logon type does not seem to show up in any events, 10 RemoteInteractive (Terminal Services, Remote Desktop or Remote Assistance), 11 CachedInteractive (logon with cached domain credentials such as when logging on to a laptop when away from the network)"/>
+		<Action name="U1321543816851" action="validsql" condition="dataset.logon_type not in (&apos;0&apos;,&apos;4&apos;,&apos;5&apos;,&apos;7&apos;,&apos;9&apos;)"/>
+		<Action name="U1321542496640" action="add" attribute="logon_type_label" newvalue="{dataset.logon_type.get()}" description="Explicit label of logon type"/>
+		<Action name="U1321542600034" action="replace" attribute="logon_type_label" oldvalue="2" newvalue="Interactive"/>
+		<Action name="U1321542617460" action="replace" attribute="logon_type_label" oldvalue="3" newvalue="Network"/>
+		<Action name="U1321333333333" action="replace" attribute="logon_type_label" oldvalue="4" newvalue="Batch"/>
+		<Action name="U1332145462541" action="replace" attribute="logon_type_label" oldvalue="5" newvalue="Service"/>
+		<Action name="U1321542662216" action="replace" attribute="logon_type_label" oldvalue="7" newvalue="Unlock"/>
+		<Action name="U1321530117796" action="replace" attribute="logon_type_label" oldvalue="8" newvalue="NetworkCleartext"/>
+		<Action name="U1321542698777" action="replace" attribute="logon_type_label" oldvalue="9" newvalue="NewCredentials"/>
+		<Action name="U1321542636544" action="replace" attribute="logon_type_label" oldvalue="10" newvalue="RemoteInteractive"/>
+		<Action name="U1315476427186" action="replace" attribute="logon_type_label" oldvalue="11" newvalue="CachedInteractive"/>
+	</Actions>
+</Discovery>
+

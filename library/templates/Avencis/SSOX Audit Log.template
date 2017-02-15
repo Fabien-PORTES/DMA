@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Discovery PUBLIC "-//Brainwave//DTD Discovery 1.0//EN" "urn:brainwave:igrc:dtds/discovery.dtd">
+<Discovery version="1.0" name="C1320768489862" title="Avencis SSOX Audit Log" description="Audit logs extracted from the Avencis SSOX&apos;s Audit Server product.Please check the auditLabels.csv file for a description of the audit events.Excerpt from the documentation : &quot;Le serveur d’audit a pour objet de collecter et de centraliser des informations sur le comportement des utilisateurs  SSOX et l&apos;utilisation des ressources de l&apos;entreprise bénéficiant du SSO. Via ces informations, il est possible d’évaluer le taux d’utilisation des applications ou de déceler des comportements suspects (ex : un utilisateur connecté en même temps sur 5 postes différents).&quot;">
+	<Source type="LINE" encoding="UTF-16LE" ignoreemptyline="true"/>
+	<Attributes>
+		<Attribute name="A1320768513783" attribute="line" column="line" type="String" multivalued="false" hidden="true"/>
+	</Attributes>
+	<Checks>
+		<Check name="U1320768545958" attribute="line" checktype="mandatory"/>
+	</Checks>
+	<Actions>
+		<Action name="U1320768580096" action="consumesep" oldvalue=" " oldname="line" attribute="date1string" hidden="true"/>
+		<Action name="U1320768600506" action="consumesep" oldvalue=";" oldname="line" attribute="time1string" hidden="true"/>
+		<Action name="U1320768617264" action="consumesep" oldvalue=";" oldname="line" attribute="ip" description=" Adresse IP du client, sous forme numérique "/>
+		<Action name="U1320768646507" action="consumesep" oldvalue=" " oldname="line" attribute="date2string" hidden="true"/>
+		<Action name="U1320768662128" action="consumesep" oldvalue=";" oldname="line" attribute="time2string" hidden="true"/>
+		<Action name="U1320768799534" action="consumesep" oldvalue=";" oldname="line" attribute="status1" hidden="true"/>
+		<Action name="U1320768816727" action="consumesep" oldvalue=";" oldname="line" attribute="serversource" description="Source"/>
+		<Action name="U1320768958753" action="consumesep" oldvalue=";" oldname="line" attribute="accountkey" description="Utilisateur"/>
+		<Action name="U1320768988096" action="consumesep" oldvalue=";" oldname="line" attribute="class" hidden="false" description="Numéro de classe d&apos;evenement"/>
+		<Action name="U1320768997942" action="consumesep" oldvalue=";" oldname="line" attribute="event" type="Number" description="Numéro d&apos;evenement dans la classe"/>
+		<Action name="U1320769165516" action="add" attribute="description" newvalue="{dataset.line.get()}" description="Information d&apos;audit"/>
+		<Action name="U1320783239254" action="add" attribute="datetime1string" newvalue="{dataset.date1string.get()} {dataset.time1string.get()}" hidden="true"/>
+		<Action name="U1320783394585" action="convertdate" oldname="datetime1string" attribute="datetimeserver" type="Date" newvalue="dd/MM/yyyy HH:mm:ss:SSS" oldvalue="01/01/1900 00:00:00:000" description="Date de réception de l’événement d’audit sur le serveur"/>
+		<Action name="U1320783447032" action="add" attribute="datetime2string" newvalue="{dataset.date2string.get()} {dataset.time2string.get()}" hidden="true"/>
+		<Action name="U1320783502194" action="convertdate" oldname="datetime2string" attribute="datetimelocal" type="Date" newvalue="dd/MM/yyyy HH:mm:ss:SSS" oldvalue="01/01/1900 00:00:00:000" description="Date d’envoi de l’événement d’audit sur le client"/>
+	</Actions>
+</Discovery>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="recon_suggest_dialog" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="account" displayname="recon_suggest_dialog" notes="" begindate="" enddate="">
+	<ViewParam name="account_uid" displayname="account_uid">
+		<Value name="0" data="THE182_1485265747620_684446"/>
+	</ViewParam>
+	<ViewSort name="sort"/>
+	<ViewJoin name="J1485278891457_24369" prefix="identity_already_present_" kind="left" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" join="identityreconciliation">
+		<ViewAttribute name="A1485278927551_24372" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486459559196_1449" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1486459573010_1450" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1487065796273_82638" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+		<ViewAttribute name="A1487065830977_82639" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+	</ViewJoin>
+	<ViewAttribute name="A1485278899973_24370" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1485278911017_0" reference="account_uid" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+</View>

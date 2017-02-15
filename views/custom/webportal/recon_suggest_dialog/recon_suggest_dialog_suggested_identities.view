@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="recon_suggest_dialog_suggested_identities" prefix="identity_" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="recon_suggest_dialog_suggested_identities">
+	<ViewAttribute name="A1485333970041_370" attribute="uid" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333972365_371" attribute="hrcode" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333974951_372" attribute="fullname" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333976039_373" attribute="mail" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333986286_374" attribute="internal" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333990691_375" attribute="custom2" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333994082_376" attribute="custom4" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333995871_377" attribute="custom6" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485333998643_378" attribute="custom7" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485334002975_379" attribute="custom9" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485334004445_380" attribute="custom13" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1485334006075_381" attribute="custom14" removedfromprojection="false" globalfilter="false"/>
+</View>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Features PUBLIC "-//Brainwave//DTD Features 1.0//EN" "urn:brainwave:igrc:dtds/features.dtd">
+<Features version="1" name="br_ticketlogmanager" description="ticketlog manager" include="true">
+	<Feature name="tlm_canaccesspage" description="can access to the TicketLog Manager page">
+		<FeatureSet name="I1475652540410"/>
+		<FeatureSet name="I1475652597646"/>
+		<FeatureSet name="I1475652620173"/>
+		<FeatureSet name="I1475652648853"/>
+	</Feature>
+	<Feature name="tlm_candownloadcompliancereport" description="can download compliance reports">
+		<FeatureSet name="I1475652648853"/>
+		<FeatureSet name="I1475652620173"/>
+		<FeatureSet name="I1475652597646"/>
+	</Feature>
+	<Feature name="tlm_canpurgedebugtickets" description="can purge tickets in debugmode">
+		<FeatureSet name="I1475652620173"/>
+		<FeatureSet name="I1475652648853"/>
+	</Feature>
+	<Feature name="tlm_canpurgetickets" description="can purge ticketlogs - USE IT WITH CAUTION">
+		<FeatureSet name="I1475652648853"/>
+	</Feature>
+</Features>

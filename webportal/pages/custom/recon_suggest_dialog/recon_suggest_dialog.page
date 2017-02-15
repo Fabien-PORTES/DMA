@@ -1,0 +1,398 @@
+/* Import other pages here */
+import "/webportal/pages/resources/mappings.page"
+import "/webportal/pages/styles/styles.page"
+import "/webportal/pages/custom/resources/DMA_nls.page"
+import "/webportal/pages/custom/account_categorization/account_categorization.page"
+
+/* Nationalized labels here */
+recon_suggest_dialogNLS = NLS {
+	title [en "Create reconciliation for a given account" fr "Create reconciliation for a given account"]
+	grouptitle [en "Suggested identities" fr "Suggested identities"]
+	tabitem1 [en "Identities with the same fullname" fr "Identities with the same fullname"]
+	tabitem2 [en "Identities with the same lastname and firstname" fr "Identities with the same lastname and firstname"]
+	tabitem3 [en "Identities with the same uid" fr "Identities with the same uid"]
+	tabitem4 [en "Identities with the same uid number" fr "Identities with the same uid number"]
+	tabitem5 [en "All Identities" fr "All Identities"]
+}
+
+recon_suggest_dialog = Dialog {
+	title: $recon_suggest_dialogNLS.title
+	width: 1050
+	height: 850
+	
+	/* Parameters */
+
+
+	
+	
+	buttons: [
+	OkButton {
+		disabled: StringPredicate (selected_identity_uid) {
+			when IsEmpty then True
+			otherwise False
+		}
+		actions: Set inaccount_uid to task.account, Set selected_identity_uid to task.identity , TaskComplete task , Flash "Reconciliation created"
+	}
+	ActionButton {
+		text: "Ok and go to categorization"
+		disabled: StringPredicate (selected_identity_uid) {
+			when IsEmpty then True
+			otherwise False
+		}
+		actions: Set inaccount_uid to task.account, Set selected_identity_uid to task.identity , TaskComplete task , GoTo Page account_categorization with inaccount_uid to inaccount_uids , Flash "Reconciliation created"
+		close: True 
+	}
+	CancelButton
+		]
+	
+	inaccount_uid = Variable {
+		type: String
+		}
+	selected_identity_uid = Variable {
+		type: String
+		}	
+	selected_tabitem = Variable {
+		type: Integer
+		initial: "0"
+		}
+	// all identities filters
+	samaccountname = Variable {
+		type: String
+		}
+	winDomain = Variable {
+		type: String
+		multivalued:True
+	}
+	ALIR_Login = Variable {
+		type: String
+	}
+	const_ALIR = Variable {
+		type: String
+		initial: 'ALIR'
+	}
+	
+//vue filter all identities
+	identityAD_Windomain = Dataset{
+		view: identityAD_Windomain
+	}
+	
+	
+	/* Datasets and records here */
+task = TaskRecord ( create "recon_suggest_dialog" )
+NIS_account = Record {
+					view: recon_suggest_dialog_NIS_account_detail with inaccount_uid to account_uid
+					}
+identities_same_fullname = Dataset {
+					view: recon_suggest_dialog_identities_same_fullname with NIS_account.account_username to fullname
+					disabled: IntPredicate ( selected_tabitem ) {
+						when != 1 then True
+						otherwise False
+						}
+					}
+					
+identities_same_lastname_firstname = Dataset {
+					view: recon_suggest_dialog_identities_same_lastname_firstname with NIS_account.account_givenname to firstname , NIS_account.account_surname to lastname
+					disabled: IntPredicate ( selected_tabitem ) {
+						when != 2 then True
+						otherwise False
+						}
+					}
+					
+identities_same_UID =	Dataset {
+					view: recon_suggest_dialog_identities_same_UID with NIS_account.account_identifier to AD_uid
+					disabled: IntPredicate ( selected_tabitem ) {
+						when != 3 then True
+						otherwise False
+						}
+					}
+					
+identities_same_UID_number = Dataset {
+					view: recon_suggest_dialog_identities_same_UID_number with NIS_account.account_custom4 to UID_number
+					disabled: IntPredicate ( selected_tabitem ) {
+						when != 4 then True
+						otherwise False
+						}
+					}
+
+all_identities = Dataset {
+					view: recon_suggest_dialog_suggested_all_identities with samaccountname to SAM, winDomain to windomain, ALIR_Login to alirLogin
+					disabled: IntPredicate ( selected_tabitem ) {
+						when != 5 then True
+						otherwise False
+						}
+					}					
+
+	/* dialog page content */
+Group {
+	layout: Layout { grab: horizontal True vertical True }
+	title: $recon_suggest_dialogNLS.grouptitle
+	TabFolder {
+		TabItem {
+			text: $recon_suggest_dialogNLS.tabitem1
+			activation-event: Set "1" to selected_tabitem	
+				Table {
+					layout: Layout { grab: horizontal True vertical True }
+					data: identities_same_fullname
+						Column {
+							column: uid
+							hidden: True
+							selection: selected_identity_uid
+							}
+						Column {
+							header: $identityALIRAttributes.hrcode
+							filterable: True
+							column: SAM_LOGIN
+						}
+						Column {
+							column: custom4
+							header: $identityAdAttributes.custom4
+							filterable: True
+						}
+						Column {
+							column: fullname
+							header: $identityAdAttributes.FullName
+							}
+						Column {
+							text: Transform Current custom11 using diabled_Mapping
+							column: custom11
+							header: $identityAdAttributes.custom11
+							}
+						Column {
+							column: custom13
+							header: $identityAdAttributes.custom13
+							}
+						Column {
+							column: custom14
+							header: $identityAdAttributes.custom14
+							}
+						Column {
+							column: mail
+							header: $identityAdAttributes.mail
+							}
+						}
+			}
+		TabItem {
+			text: $recon_suggest_dialogNLS.tabitem2
+			activation-event: Set "2" to selected_tabitem
+				Table {
+					layout: Layout { grab: horizontal True vertical True }
+					data: identities_same_lastname_firstname
+							Column {
+							column: uid
+							hidden: True
+							selection: selected_identity_uid
+							}
+						Column {
+							column: uid
+							hidden: True
+							selection: selected_identity_uid
+							}
+						Column {
+							header: $identityALIRAttributes.hrcode
+							filterable: True
+							column: SAM_LOGIN
+						}
+						Column {
+							column: custom4
+							header: $identityAdAttributes.custom4
+							filterable: True
+						}
+						Column {
+							column: fullname
+							header: $identityAdAttributes.FullName
+							}
+						Column {
+							text: Transform Current custom11 using diabled_Mapping
+							column: custom11
+							header: $identityAdAttributes.custom11
+							}
+						Column {
+							column: custom13
+							header: $identityAdAttributes.custom13
+							}
+						Column {
+							column: custom14
+							header: $identityAdAttributes.custom14
+							}
+						Column {
+							column: mail
+							header: $identityAdAttributes.mail
+							}
+						}	
+			}
+		TabItem {
+			text: $recon_suggest_dialogNLS.tabitem3
+			activation-event: Set "3" to selected_tabitem
+				Table {
+					layout: Layout { grab: horizontal True vertical True }
+					data: identities_same_UID
+						Column {
+							column: uid
+							hidden: True
+							selection: selected_identity_uid
+							}
+						Column {
+							header: $identityALIRAttributes.hrcode
+							filterable: True
+							column: SAM_LOGIN
+						}
+						Column {
+							column: custom4
+							header: $identityAdAttributes.custom4
+							filterable: True
+						}
+						Column {
+							column: fullname
+							header: $identityAdAttributes.FullName
+							}
+						Column {
+							text: Transform Current custom11 using diabled_Mapping
+							column: custom11
+							header: $identityAdAttributes.custom11
+							}
+						Column {
+							column: custom13
+							header: $identityAdAttributes.custom13
+							}
+						Column {
+							column: custom14
+							header: $identityAdAttributes.custom14
+							}
+						Column {
+							column: mail
+							header: $identityAdAttributes.mail
+							}
+						}			
+			}
+		TabItem {
+			text: $recon_suggest_dialogNLS.tabitem4
+			activation-event: Set "4" to selected_tabitem
+				Table {
+					layout: Layout { grab: horizontal True vertical True }
+					data: identities_same_UID_number
+						Column {
+							column: uid
+							hidden: True
+							selection: selected_identity_uid
+							}
+						Column {
+							header: $identityALIRAttributes.hrcode
+							filterable: True
+							column: SAM_LOGIN
+						}
+						Column {
+							column: custom4
+							header: $identityAdAttributes.custom4
+							filterable: True
+						}
+						Column {
+							column: fullname
+							header: $identityAdAttributes.FullName
+							}
+						Column {
+							text: Transform Current custom11 using diabled_Mapping
+							column: custom11
+							header: $identityAdAttributes.custom11
+							}
+						Column {
+							column: custom13
+							header: $identityAdAttributes.custom13
+							}
+						Column {
+							column: custom14
+							header: $identityAdAttributes.custom14
+							}
+						Column {
+							column: mail
+							header: $identityAdAttributes.mail
+							}
+						}			
+			}
+		TabItem {
+			text: $recon_suggest_dialogNLS.tabitem5
+			activation-event: Set "5" to selected_tabitem
+			
+			Group {
+				Grid {
+					align: leading
+					columns: GridColumn { }
+					GridRow {
+						align: leading
+						GridCell {
+							Edit {
+							label: $identityAdAttributes.custom8
+							variable: samaccountname
+							}
+						}
+						GridCell { 
+							Combo {
+							label: $identityAdAttributes.repository
+							variable: winDomain
+							allow-none:True
+							
+							options:  Dynamic {
+								data: identityAD_Windomain
+								text: Current custom4
+								value: Current custom4
+								}
+							}
+						}
+					}
+					GridRow {
+						GridCell {
+							Edit {
+							label: $identityALIRAttributes.hrcode
+							variable: ALIR_Login
+							modify-event: Set const_ALIR to winDomain
+							}
+						}
+					}
+				}
+			}
+			
+				PaginatedTable {
+					layout: Layout { grab: horizontal True vertical True }
+					page-size: 50
+					show-filter: True
+					data: all_identities
+						Column {
+							column: uid
+							hidden: True
+							selection: selected_identity_uid
+							}
+						Column {
+							header: $identityALIRAttributes.hrcode
+							filterable: True
+							column: SAM_LOGIN
+						}
+						Column {
+							column: custom4
+							header: $identityAdAttributes.custom4
+							filterable: True
+						}
+						Column {
+							column: fullname
+							header: $identityAdAttributes.FullName
+							}
+						Column {
+							text: Transform Current custom11 using diabled_Mapping
+							column: custom11
+							header: $identityAdAttributes.custom11
+							}
+						Column {
+							column: custom13
+							header: $identityAdAttributes.custom13
+							}
+						Column {
+							column: custom14
+							header: $identityAdAttributes.custom14
+							}
+						Column {
+							column: mail
+							header: $identityAdAttributes.mail
+							}
+						}			
+			}							
+		}	
+	}
+}

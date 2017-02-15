@@ -1,0 +1,34 @@
+/* Import other pages here */
+
+/* Nationalized labels here */
+<template:pageNLSname/> = NLS {
+<template:additionalNLS/>
+}
+
+<template:pagename/> = Dialog {
+	title: <template:pagetitle/>
+
+	width: 750
+	height: 650
+
+	buttons: [
+		OkButton {
+			disabled: StringPredicate (<template:pagename/>Validation) {
+				when IsEmpty then True
+				otherwise False
+			}
+		}
+		CancelButton
+	]
+
+/* variables here */
+	<template:pagename/>Validation = Variable {
+		type: String
+	}
+<template:additionalvariables/>
+/* Datasets and records here */
+<template:additionaldatasets/>
+
+/* dialog page content */
+<template:editcomponents/>
+}

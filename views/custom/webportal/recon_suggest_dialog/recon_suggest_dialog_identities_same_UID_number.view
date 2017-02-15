@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View name="recon_suggest_dialog_identities_same_UID_number" errorifempty="false" distinct="true" identitysecure="false" applicationsecure="false" repositorysecure="false" searchpoint="false" concept="identity" displayname="recon_suggest_dialog_identities_same_UID_number" notes="" begindate="" enddate="">
+	<ViewParam name="UID_number" displayname="UID_number"/>
+	<ViewComputedAttribute name="SAM_LOGIN" displayname="SAM or Login" type="String" expression="dataset.custom8.get() == null ? dataset.hrcode.get() : dataset.custom8.get()"/>
+	<ViewSort name="sort"/>
+	<ViewAttribute name="A1486370222640_781" attribute="recorduid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486370225857_782" attribute="uid" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486370230136_783" attribute="fullname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486370281611_786" attribute="hrcode" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486370304499_787" attribute="mail" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486370309784_788" attribute="custom6" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486370315966_790" attribute="custom14" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486370876642_848" attribute="custom13" operator="or" removedfromprojection="false" globalfilter="false">
+		<ViewAttributeFilter name="F1486371507222_0" reference="UID_number" operation="eq" ignoreifempty="false"/>
+	</ViewAttribute>
+	<ViewAttribute name="A1486372392221_963" attribute="givenname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486372396088_964" attribute="surname" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486482938419_903" attribute="custom4" operator="or" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486644307113_448" attribute="custom8" removedfromprojection="false" globalfilter="false"/>
+	<ViewAttribute name="A1486644312834_449" attribute="custom11" removedfromprojection="false" globalfilter="false"/>
+</View>

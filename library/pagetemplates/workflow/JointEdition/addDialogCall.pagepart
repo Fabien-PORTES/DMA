@@ -1,0 +1,1 @@
+add-dialog: <template:jointeditionadddialog/><template:jointeditionaddmappedvariablelist/> returning <template:jointeditionaddvariablelist/>
